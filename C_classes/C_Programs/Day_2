@@ -16,14 +16,31 @@ Sample Input3  : int a = 86;
 Sample Output3 : 90
 
 Ans:-
-  #include<stdio.h>
-    int main() {
-    int a = 34, b;
-    b = (35/10) * 10;
-    printf("%d", b);
-    return 0;
-    }
-  
+  #include <stdio.h>
+
+          int main() {
+            int a ;
+            scanf("%d",&a);
+            if(a%10 <5){
+                printf("%d",(a/10)*10 );
+            }else {
+                printf("%d", ((a/10)+1)*10);
+            }
+          
+              return 0;
+          }
+  //////////////////or 
+
+// Online C compiler to run C program online
+          #include <stdio.h>
+          
+                    int main() {
+                      int a ;
+                      scanf("%d",&a);
+                        printf("%d", a%10 <5 ? (a/10)*10 :  ((a/10)+1)*10 );
+                    
+                        return 0;
+                    }
 
   
 
