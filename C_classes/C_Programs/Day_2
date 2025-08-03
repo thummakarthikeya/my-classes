@@ -62,7 +62,23 @@ Write a 'C' program to take the number of days and convert into (days:months:yea
 
 Sample input  : int days = 500
 
-Sample Output :  1 year 4 month and 15 days. 
+Sample Output :  1 year 4 month and 15 days.
+
+
+// Online C compiler to run C program online
+#include <string.h>
+#include <stdio.h>
+
+int main() {
+    int a ;
+    printf("Enter a number ");
+    scanf("%d",&a);
+    int year = a/365;
+    int months = (a%365)/30;
+    int days = (a%365)%30;
+    printf(" %d year %d months %d days ",year,months, days);
+    return 0;
+}
 
 Q-4
 -------
@@ -72,6 +88,23 @@ Write a 'C' program to take the number of seconds and convert into (H:M:S)
 Sample input  : int seconds = 3665
 
 Sample Output : 1 hour 1 minute and 5 second
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    
+    int num, hours, minutes, seconds;
+    printf("num = ");
+    scanf("%d",&num);
+    hours = num/(60*60);
+    minutes = (num%(60*60))/60;
+    seconds = num%60;
+    printf("%dhour %d minute and %d second ",hours,minutes,seconds);
+
+    return 0;
+}
 
 
                                
