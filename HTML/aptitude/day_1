@@ -1,0 +1,32 @@
+
+Question No	Question Description	Attempted Answer	Result	Status
+1	* Which tag is used to define a comment in HTML?	b) <!-- -->		Attempted
+2	* Which of the following is a paired tag?	c) <p>		Attempted
+3	Which tag is used to define an unordered list in HTML?	B. <ul>		Attempted
+4	* What is the purpose of <!DOCTYPE html> in an HTML document?	c) It defines the document type and HTML version		WRONG ANSWER
+5	* What is the purpose of HTML comments?	b) To explain the code		Attempted
+6	Which HTML element is used to define the structure of an HTML document?	a) <html>		Attempted
+7	* What is the main purpose of HTML tags?	c) Define structure and content		Attempted
+8	* What is the purpose of the <body> tag?	c) Contain visible page content		Attempted
+9	* Where should the <!DOCTYPE html> declaration be placed?	d) At the very beginning of the HTML document		Attempted
+10	*The correct <!DOCTYPE> declaration for HTML5 is:	c) <!DOCTYPE html>		Attempted
+11	* Which of the following can be found in the <head> section?	c) <title>		Attempted
+12	What is the purpose of the <meta> tag in HTML?	B. To provide metadata about the HTML document		Attempted
+13	* What tag is used to define metadata in HTML?	a) <meta>		Attempted
+14	* The content of the HTML document is placed within:	c) <body> c) <body>		Attempted
+15	How do you add a comment in HTML?	b) <!-- This is a comment -->		Attempted
+16	* The basic structure of an HTML document starts with:	b) <html>		Attempted
+17	* What is the purpose of the <head> section in HTML?	b) To store styling and scripting information		Attempted
+18	Which HTML attribute specifies an alternate text for an image?	C. alt		Attempted
+19	* What is a self-closing tag?	c) A tag that doesn’t require a closing tag		Attempted
+20	* HTML tags are enclosed using:	d) Angle brackets <>		Attempted
+21	* Which of the following is a container tag?	c) <p>		Attempted
+22	What is the correct HTML for inserting an image?	B. <img src="image.png" alt="MyImage"/>		Attempted
+23	* HTML comments are displayed in the browser.	a) True		Attempted  ..................WRONG ANSWER
+24	What is the default file extension for an HTML file?	a) .html		Attempted
+25	* What are the two types of HTML tags?	b) Opening and closing		Attempted..............WRONG ANSWER
+26	How do you make a list that lists its items with numbers in HTML?	B. <ol>		Attempted
+27	* Which tag defines the title that appears in the browser tab?	c) <title>		Attempted
+28	What is the correct HTML for creating a hyperlink?	B. <a href="http://www.example.com">Example</a>		Attempted
+29	What does the <div> tag represent in HTML?	A. A division or a section in an HTML document		Attempted
+30	How do you group related elements in a form in HTML?	null		Not Attempted................WRONG ANSWER
