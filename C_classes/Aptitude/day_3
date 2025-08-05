@@ -1,0 +1,33 @@
+Question No	Question Description	Attempted Answer	Result	Status
+1	* What is the output? int a = 10, b = 20; printf("%d", a > b ? a : b);	
+B) 20		Attempted
+2	*Predict the output: int a = 3; printf(a < 2 ? "Low" : a < 5 ? "Mid" : "High");	
+B) Mid		Attempted
+3	*Find minimum of two: int x = 7, y = 4; printf("%d", x < y ? x : y);	
+B) 4		Attempted
+4	*What will be the output? int x = 1; x && printf("1") && printf("2") || printf("3");	
+A) 123		Attempted
+5	* Output? int a = 2, b = 3; a > b ? printf("A") : a == b ? printf("E") : printf("B");
+B		Attempted
+6	* Choose the correct output: int a = 1, b = 2; int c = (a | b) && !(a & b); printf("%d", c);	
+0		Attempted
+7	* Ternary chain for three numbers: int a = 10, b = 20, c = 15; printf("%d", a > b ? (a > c ? a : c) : (b > c ? b : c));	C) 
+  20		Attempted
+8	* What does this print? int x = 0; x || printf("X") && printf("Y");	A)
+  XY		Attempted
+9	* Evaluate: int a = 1, b = 0; printf("Start "); a && printf("A ") || b && printf("B "); printf("End");	
+A) Start A End		Attempted
+10	*Evaluate the result: int x = 1, y = 0; int z = x && y || x; printf("%d", z);	B) 
+  1	Attempted
+11	*What is printed? int a = 5; printf(a % 2 == 0 ? "Even" : a > 4 ? "Odd" : "Small");	B)
+  Odd		Attempted
+12	What is the output? int a = 5, b = 3; int c = a & b | a ^ b; printf("%d", c);	A)
+  7		Attempted
+13	* Output of this? int a = 5; a > 6 ? printf("A") : a < 10 ? printf("B") : printf("C");	
+B		Attempted
+14	* What is the output? int a = 0, b = 1; int c = !a ? b : a; printf("%d", c);	B) 
+  1		Attempted
+15	What is the Output ? char ch = 'A'; int x = 5, y = 10; int res = (ch < 'Z') ? x++ : y++; printf("%d %d %d", res, x, y);
+A) 5 6 10		Attempted
+16	* Evaluate this ternary operation: int a = 2, b = 3; int c = (a & b) ? a : b; printf("%d", c);
+A) 2		Attempted
