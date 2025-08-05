@@ -1,0 +1,116 @@
+FindMaxBET3Number
+ Write a 'C' program to check and print the Maximum number among three numbers using ternary operator.
+Sample Input
+10 200 134
+Sample Output
+200
+
+#include<stdio.h>
+int main() {
+    int a,b,c;
+    //printf("Enter the 1st number");
+    scanf("%d",&a);
+    //printf("Enter the 2nd number");
+    scanf("%d",&b);
+    //printf("Enter the 3rd number");
+    scanf("%d",&c);
+
+    (a>b && a>c ) ? printf("%d",a):(b>a&&b>c) ?
+    printf("%d",b):(c>a&&c>b) ? 
+    printf("%d",c) : printf("All are same");
+
+}
+
+
+
+///////////////////////////////////////////////
+
+FindMIN
+Write a 'C' program to check and print the minimum number among two numbers  using ternary operator.
+Sample Input
+100 200
+Sample Output
+100
+
+
+#include<stdio.h>
+
+int main(){
+    int a,b;
+    scanf("%d",&a);
+    scanf("%d",&b);
+    (a<b) ? printf("%d", a) : (b<a) ? printf("%d",b) : printf("Both are same") ;
+
+    return 0;
+}
+
+
+
+///////////////////////////////////////////////
+
+ReverseNumber
+Write a 'C' program to reverse the given 3 digit number without using control statments.
+Sample Input
+123
+Sample Output
+321
+
+#include<stdio.h>
+int main(){
+    int a,rev;
+    scanf("%d", &a);
+    rev = (a%10)*100 + a/10 % 10 *10 +a/100 ;
+
+    printf("%d",rev);
+}
+
+/////////////////////////////////////////////
+
+FindMAX
+Write a 'C' program to check and print the Maximum number among two numbers without using ternary operator and control statments.
+
+Sample input : int a = 10 , b = 20
+Sample Output : MAX = 20
+Sample Input
+10 20 
+Sample Output
+MAX = 20
+
+#include<stdio.h>
+int main(){
+    int a, b;
+    scanf("%d", &a);
+    scanf("%d", &b);
+
+    a > b && printf("MAX = %d", a);
+    b > a && printf("MAX = %d", b);
+    b == a && printf("Both are same");
+}
+
+
+//////////////////////////////////////////
+FindEvenOdd
+Write a 'C' program to check and print that given number is even or odd without using ternary operator and control statments.
+
+Sample input : int a = 10
+Sample Output : EVEN
+
+Sample input : int a = 125
+Sample Output : ODD
+Sample Input
+10
+Sample Output
+Even
+
+
+#include<stdio.h>
+int main(){
+    int a;
+    scanf("%d", &a);
+
+    a%2 == 0 && printf("Even" );
+    a%2 == 1 && printf("Odd");
+}
+
+
+////////////////////////////////////////////
