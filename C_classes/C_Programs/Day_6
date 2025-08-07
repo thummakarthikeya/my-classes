@@ -1,0 +1,136 @@
+Employee Attendance Check
+A company decides to reward employees with a bonus if their monthly attendance is satisfactory. An employee is eligible for the bonus if their attendance percentage is greater than or equal to 75%.
+
+Given the total number of working days in a month and the number of days the employee was present, write a program to determine whether the employee is eligible for the bonus.
+
+Take two inputs: presentDays and totalDays.
+If attendance is >= 75%, employee is eligible for bonus.
+
+Input Format:
+------------------
+Take two inputs: presentDays and totalDays.
+If attendance is >= 75%, employee is eligible for bonus.
+
+
+Print "Eligible for bonus" if attendance percentage is ≥ 75%.
+
+Output Format:
+-------------------
+Print "Not eligible for bonus" if attendance percentage is < 75%.
+Sample Input
+20 16
+Sample Output
+Eligible for bonus
+Constraints:
+0 <= presentDays <= 1000
+
+1 <= totalDays <= 1000
+
+
+
+#include<stdio.h>
+int main(){
+    int presentDays,totalDays;
+    scanf("%d%d", &totalDays,&presentDays);
+    int attendancePercentage = (presentDays*100 / totalDays) ;
+
+    (attendancePercentage >=75) ? printf("Eligible for bonus") : printf("Not eligible for bonus");
+}
+
+
+
+////////////////////////////////////////////////
+
+
+Speeding Fine System
+A traffic monitoring system is used to calculate fines based on a vehicle's speed.
+
+The speed limit is set to 60 km/h.
+
+If a vehicle exceeds the speed limit, the following fines are applied:
+
+Speed > 60 and ≤ 80 → ₹100 fine
+
+Speed > 80 → ₹500 fine
+
+Speed ≤ 60 → No fine
+
+Given the speed of a vehicle, write a program to determine the appropriate fine.
+
+Input Format :
+A single integer speed — the speed of the vehicle in km/h.
+
+Output Format :
+
+"₹100" if speed is more than 60 and up to 80.
+"₹500" if speed is more than 80.
+"No fine" if speed is 60 or less.
+Sample Input
+65
+Sample Output
+100
+
+
+#include<stdio.h>
+int main(){
+    int Speed;
+    scanf("%d", &Speed);
+
+    ((Speed > 60) && Speed <=80) ? printf("100") : (Speed > 80 ) ? printf("500") : (Speed <= 60) ? printf("No Fine") : printf(" ");
+}
+
+
+////////////////////////////////////////////////
+
+
+Uppercase to Lowercase
+Write a c program to determine if a character is uppercase or lowercase using the ternary operator.
+Sample Input
+A
+Sample Output
+A is an uppercase letter.
+
+
+#include<stdio.h>
+int main(){
+    char ch;
+    scanf("%c", &ch);
+
+    ((ch >= 65) && (ch <= 90) ) ? printf("%c is an uppercase letter.", ch) : printf("%c is a lowercase letter.", ch);
+}
+
+
+
+/////////////////////////////////////////////
+
+
+LEAP_YEAR_PROGRAM
+Develop a program to check whether a given year is a leap year or not, using logical operators and the ternary operator. 
+
+Leap Year Rule:
+----------------------
+A year is a leap year if it satisfies:
+
+Divisible by 4 AND not divisible by 100,
+OR
+Divisible by 400
+Sample Input
+2020
+Sample Output
+Leap Year
+Constraints:
+An integer value representing the year (e.g., 2020)
+Leap Year or Not a Leap Year
+
+
+#include<stdio.h>
+int main(){
+    int year;
+    scanf("%d",&year);
+    (((year%4 == 0) && year%100 != 0 )|| year%400 == 0)? printf("Leap Year") : printf("Not a Leap Year");
+}
+
+
+
+?/////////////////////////////////////////
+
