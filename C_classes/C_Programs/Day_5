@@ -1,0 +1,140 @@
+Check_Vowel
+Check if a Character is a Vowel or Consonant using Ternary & Logical Operators
+
+
+Example I/0 :
+Input: a      → Output: Vowel  
+Input: Z      → Output: Consonant  
+Input: e      → Output: Vowel 
+Sample Input
+a
+Sample Output
+Vowel
+
+#include<stdio.h>
+int main(){
+    char ch;
+    scanf("%c", &ch);
+    (ch == 'a' || ch=='e'||ch=='i'|| ch=='o'||ch=='u') ? printf("Vowel") : printf("Consonant");
+}
+
+
+//////////////////////////////////////////////
+
+
+Check_Temperature
+Check if Temperature is Cold, Normal or Hot
+Problem:
+Write a C program that takes a temperature value in Celsius as input and displays:
+"Cold" if temperature < 20
+"Normal" if temperature is between 20 and 30
+"Hot" if temperature > 30
+Use nested ternary operator
+Sample Input
+15
+Sample Output
+Cold
+
+
+#include<stdio.h>
+int main(){
+    int temp;
+    scanf("%d", &temp);
+    (temp < 20) ? printf("Cold"): (temp> 20 && temp<30) ? printf("Normal") : printf("Hot");
+}
+
+
+
+//////////////////////////////////////////////
+
+
+Check_Pass_Fail
+Create a program to determine whether a student has passed or failed based on their marks and a grace rule.
+
+✅ Rule Definition:
+A student is considered Pass if either of the following conditions is satisfied:
+
+Marks ≥ 35
+
+Marks ≥ 30 and grace is available (grace == 1)
+
+Otherwise, the student is considered Fail.
+
+📥 Inputs:
+marks: (Integer) The marks obtained by the student (0–100 range).
+
+grace: (Integer) The grace indicator:
+
+0 → No grace available
+
+1 → Grace can be applied
+
+📤 Output:
+"Pass" or "Fail" depending on the evaluation.
+Sample Input
+36 0
+Sample Output
+pass
+
+
+#include<stdio.h>
+int main(){
+    int marks, grace;
+    scanf("%d%d",&marks,&grace);
+    (marks >= 35) ? printf("Pass") : ((marks >= 30) && (grace == 1)) ?printf("Pass") : printf("Fail");
+}
+
+
+
+/////////////////////////////////////////////
+
+
+Check_Divisible
+Check if a Number is Even and Divisible by 5
+Sample Input
+20
+Sample Output
+Even and Divisible by 5
+
+
+#include<stdio.h>
+int main(){
+    int a;
+    scanf("%d", &a);
+
+    (a%5 == 0) ? printf("Even and Divisible by 5") : printf("Not both Even and Divisible by 5");
+}
+
+
+
+////////////////////////////////////////////////
+
+Movie_Ticket
+Discount on Movie Ticket Based on Age and Type
+Problem:
+A movie theater gives:
+50% discount to children (age < 12)
+30% discount to students (age 12-25)
+No discount to others
+Write a program using ternary operator to compute and print final price of a ticket.
+
+Example I/O :
+Input: price=200, age=10  → Output: Final ticket price: 100.00  
+Input: price=200, age=20  → Output: Final ticket price: 140.00  
+Input: price=200, age=30  → Output: Final ticket price: 200.00  
+
+Sample Input
+200 10
+Sample Output
+Final ticket price: 100.00
+
+
+#include<stdio.h>
+int main(){
+    int price,age;
+    scanf("%d%d",&price,&age);
+    
+    (age < 12) ? printf("Final ticket price: %.2f", (float)price-((price*50)/100)) : ((age >=12) && (age <=25)) ? printf("Final ticket price: %.2f", (float)price-((price*30)/100)) : printf("Final ticket price: %.2f",(float)price);
+}
+
+
