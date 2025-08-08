@@ -1,0 +1,235 @@
+1)
+What will be the output of the above program?
+#include <stdio.h>
+
+int main() {
+   int a = 10, b = 5, c = 0;
+    
+    (a > b)?c++:(b < 10)?c += 2:b++;
+
+    
+    printf("%d", c);
+    return 0;
+
+}
+
+
+a) 0
+
+b) 1------------------
+
+c) 5
+
+d) 6
+======================
+2)
+What will be the output of the following code?
+
+int x = 10, y = 20;
+int result = (x > y) ? ((x > 15) ? x : y) : ((y > 15) ? y : x);
+printf("%d", result);
+
+a) 10
+b) 15
+c) 20--------------
+d) 0
+
+answer: 
+======================
+3)What will be the output of the following code?
+
+int x = 10, y = 20;
+int z = (x > y) ? x : y;
+printf("%d", z);
+
+	a) 10
+	b) 20---------------
+	c) 0
+	d) Compilation error
+========================
+4)
+What will be the output of the following C code?
+#include<stdio.h>
+int main()
+{
+  printf(1+"learning"+1);
+  return 0;
+}
+
+a) earnin
+b) arning----------
+c) 2learning
+d) Compile time error
+e) learning
+=====================
+5)
+What will be the output of the following C code?
+#include<stdio.h>
+int main()
+{
+  printf("%f", 5.0 % 2.0);
+  return 0;
+}
+
+a) 2.500000
+b) 2
+c) Error
+d) 2.000000
+
+Ans : C
+
+========================
+6)
+What will be the output of the following C code?
+#include<stdio.h>
+int main()
+{
+  int i = 1;
+  int j ;
+  j = (i=i+8, i%5);
+  printf("%d",j);
+  return 0;
+}
+
+a) 9
+b) 0
+c) 4-----------------------
+d) 1
+=======================
+7)
+What will be the output of the following C code?
+#include<stdio.h>
+int main()
+{
+	int x = 2;
+	(x & 1) ? printf("true") : printf("false");
+	return 0;
+}
+
+A. Compilation error
+B. true
+C. false------------------------
+D. Runtime error
+=================================
+8)
+#include <stdio.h>
+int main() {
+    char ch = 'A';
+    int x = 65;
+    printf("%c\n", (ch == x ? ch + 1 : x > 60 ? 'Z' - 1 : 90));
+    return 0;
+}
+Options
+a) B--------------------
+b) Y
+c) A
+d) Compilation error
+
+======================
+9)
+#include <stdio.h>
+int main() {
+    char ch = 'a';
+    int num = 97;
+    printf("%d\n", ch == num ? num == 'a' ? ch + 2 : ch - 2 : 'b');
+    return 0;
+}
+Options
+a) 99
+b) 95
+c) b
+d) Compilation error
+=======================
+10)
+#include <stdio.h>
+int main() {
+    char ch = 'M';
+    int num = 77;
+    printf("%c\n", ch == num ? (num > 'L' ? 'P' : 'Q') : num < 'N' ? 'R' : 'S');
+    return 0;
+}
+Options
+a) P
+b) Q
+c) R
+d) S
+======================
+11)
+#include <stdio.h>
+int main() {
+    int a = 5;
+    float b = 5.0;
+    char ch = 'E';
+    printf("%c\n", (a == b ? (a & 3) ? ch + 1 : ch - 1 : (int)b | 2));
+    return 0;
+}
+Options:
+a) D
+b) F
+c) ASCII of F
+d) 7
+
+12)
+#include <stdio.h>
+int main() {
+    int a = 0;
+    char c = 'B';  // 66
+    float f = 0.0;
+    int result;
+
+    result = (!a || f < 1 ? c + 4 : c - 4);
+    printf("%d\n", result);
+
+    return 0;
+}
+Options:
+a) 70
+b) 62
+c) 66
+d) 72
+
+
+13)
+#include <stdio.h>
+int main() {
+    int a = 0;
+    char c = 'B';  // 66
+    float f = 0.0;
+
+    printf("%s\n", (!a || f < 1 ? "TrueCase" : "FalseCase"));
+
+    return 0;
+}
+Options:
+a) TrueCase
+b) FalseCase
+c) Compilation error
+d) Segmentation fault
+
+
+14)
+#include <stdio.h>
+int main() {
+    int n = 5;
+    printf("%s\n", (n > 3 ? "High" : 10));
+    return 0;
+}
+Options:
+a) Prints High
+b) Prints ASCII char for 10
+c) Compile-time error: incompatible types in conditional expression
+d) Runtime error
+
+
+15)
+#include <stdio.h>
+int main() {
+    int a = 10;
+    printf("%d\n", a > 5 ? "Ten" : "Five");
+    return 0;
+}
+Options:
+a) Prints ASCII of 'T' or 'F'
+b) Compile-time error: incompatible types
+c) Warning: format ‘%d’ expects ‘int’ but argument is ‘char *’
+d) Prints pointer address
