@@ -1,0 +1,11 @@
+--> media : HTml5 suooirts logt of media elements such as responsive images, videos, audio, iframes etc..,
+    i. picture tag : picture tag allows the browser to choose diff images based on device
+        it contains "source" tags to provides source with  'srcet' and make it work with 'media' for diff devices.
+always sources media should be in decreaseing order and need to keep default img tag at last.
+
+
+<picture>
+  <source media="(min-width:1080px)"  srcset="http//....">
+  <source media="(min-width:768px)" scrset="http//">
+  <img src="http......"  alt="hero" height="200px" />
+</picture>
