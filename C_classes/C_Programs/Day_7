@@ -246,8 +246,27 @@ Output: Safe to move
 Input: Adults = 6, Children = 5  
 Output: Overload! Reduce weight.
 
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int adult, child;
+    scanf("%d%d",&adult,&child);
+    
+    if((adult*75 + child*30) >500){
+        printf("Overload! Reduce weight.");
+    }else{
+        printf("Safe to move");
+    }
+
+    return 0;
+}
+
+
+
 Q-2
--------
+-------////////////////////////////////////////////////////
 Daylight Duration
 You’re given sunrise and sunset times in hours (24-hour format).
 Check if the day is:
@@ -260,6 +279,22 @@ Example:
 Input: Sunrise=6, Sunset=18 → Long Day  
 Input: Sunrise=7, Sunset=17 → Short Day
 
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int Sunrise, Sunset;
+    scanf("%d%d",&Sunrise,&Sunset);
+    
+    if((Sunset  - Sunrise) >= 12){
+        printf("Long Day");
+    }else{
+        printf("Short Day");
+    }
+
+    return 0;
+}
+/////////////////////////////////////////////////////////
 Q-3
 -----------
 Write a C program that reads two integers and prints the one closer to zero.
@@ -281,6 +316,33 @@ Constraints:
 Use only if–else statements for decision making.
 
 You may use the abs() function from <stdlib.h>.
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a,b;
+    scanf("%d%d",&a,&b);
+    
+    if(a*(a) == b*(b) ){
+        if(a>b){
+            printf("%d", a);
+            return 0;
+        }else{
+            printf("%d", b);
+            return 0;
+        }
+    }
+    
+    if(a*(a) > b*(b)){
+        printf("%d",b);
+    }else{
+        printf("%d", a);
+    }
+
+    return 0;
+}
+
 
 
 
