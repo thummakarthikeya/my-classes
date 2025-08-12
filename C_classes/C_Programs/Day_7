@@ -1,0 +1,348 @@
+MarriageEligibility
+Write a C program to read  age of person and  check the person is eligible for marriage or not using if-else.
+	if user age is above 21 then eligible.
+Sample input  :
+                Enter your age: 25
+Sample output :  
+		you are eligible to marriage.
+
+Sample input  :
+		 Enter your age: 16
+Sample output :
+		 Sorry are not eligible to marriage.
+
+Sample Input
+25
+Sample Output
+you are eligible to marriage.
+
+
+#include<stdio.h>
+int main(){
+    int age;
+    scanf("%d", &age);
+    if(age > 21){
+        printf("you are eligible to marriage.");
+    }else{
+        printf("Sorry are not eligible to marriage.");
+    }
+}
+
+
+
+////////////////////
+
+
+
+LeapYear
+[Tile: Leap Year or Not] [Using if-else]
+----------------------------------------
+Write a C program to determine if a given year is a leap year or not based on the following conditions: [Using if-else]
+
+A year is a leap year if :- 
+----------------------------
+It is divisible by 4, and
+It is not divisible by 100, except:
+If it is divisible by 400, then it is a leap year.
+
+Example Input:
+--------------
+Enter a year: 2020
+
+Example Output:
+---------------
+Leap Year
+
+Additional Test Cases:
+----------------------
+
+Test Case 1 :-
+---------------
+Input: 1900
+
+Output: Not a Leap Year
+
+Test Case 2 :-
+--------------
+Input: 2000
+Output: Leap Year
+
+Test Case 3 :-
+---------------
+Input: 2024
+Output: Leap Year
+
+Test Case 4 :-
+--------------
+Input: 2100
+Output: Not a Leap Year
+Sample Input
+2020
+Sample Output
+Leap Year
+
+
+#include<stdio.h>
+int main(){
+    int year;
+    scanf("%d", &year);
+    if((year%4 ==0&&year%100!=0) || (year%400 == 0)){
+        printf("It is a leap year.");
+    }else{
+
+    
+        printf("It is not a leap year.");
+    }
+}
+
+
+
+////////////////////////////////////////
+
+Character is Alphabet or Not
+Write a C program to check whether a character is alphabet or not.
+Sample Input
+Sample input  : char ch = 'A
+Sample input  : char ch = '9';
+
+Sample Output
+Sample output : Alphabet
+Sample output : Not Alphabet
+
+
+
+#include<stdio.h>
+int main(){
+    char ch;
+    // char ch2;
+    scanf("%c", &ch);
+    // scanf("%c", &ch2);
+
+    if((ch >= 65 && ch<=90) || ch >= 97 && ch<=122){
+        printf("%c is Alphabet",ch);
+    }else{
+        printf("%c Is Not Alphabet", ch);
+    }
+}
+
+
+
+/////////////////////////////////////////////
+
+
+
+ConvertAlphabet
+Write a C program to convert Character
+  (Upper to Lower or Lower to Upper).
+Sample Input
+Sample input  : char ch ='A'
+Sample input  : char ch = 'b';
+Sample Output
+Sample output : a
+Sample output : B
+
+
+
+#include<stdio.h>
+int main(){
+    char ch;
+    scanf("%c", &ch);
+
+    if(ch>=65 && ch<=90){
+        printf("%c",ch+32);
+    }else{
+        printf("%c", ch-32);
+    }
+}
+
+
+/////////////////////////////////////
+
+
+PassOrFail
+Write a C program that takes the marks of a student in three subjects as input and prints whether the student has passed or failed in three subject using  if statement.
+	if marks is above 35 then pass and student is fail in any one subject then fail.
+
+
+Sample input  :  
+		Enter three subject marks : 57 66 88
+Sample output : 
+		Result is pass 
+
+Sample input  :  
+		Enter three subject marks : 71 64 32
+Sample output : 
+		Result is Fail
+Sample Input
+57
+66
+88
+Sample Output
+Result is pass
+
+
+
+#include<stdio.h>
+int main(){
+    int marks1;
+    int marks2;
+    int marks3;
+
+    scanf("%d%d%d",&marks1,&marks3,&marks3);
+    if(marks1 > 35 && marks2>35 && marks3 > 35){
+        printf("Result is pass");
+    }else{
+        printf("Result is Fail");
+    }
+}
+
+
+/////////////////////////////////////
+
+
+MaxBetweenThree
+Write a C program to find maximum between three numbers.
+
+Sample input  : int a = 100, b = 200, c = 300
+Sample output : 300
+Sample Input
+100 200 300
+Sample Output
+300
+
+
+
+#include<stdio.h>
+int main(){
+    int a,b,c;
+    scanf("%d%d%d",&a,&b,&c);
+
+    if(a>=b && a>=c){
+        printf("%d", a);
+        return 0;
+    }
+    if(b>=a && b>=c){
+        printf("%d",b);
+        return 0;
+    }
+    if(c>=a && c>=b){
+        printf("%d",c);
+        return 0;
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Q-1
+----------
+An elevator can hold 500 kg max. Each adult weighs 75 kg, each child weighs 30 kg.
+Write a program to check if the total weight is within the limit.
+
+Example:
+Input: Adults = 4, Children = 3  
+Output: Safe to move
+
+Input: Adults = 6, Children = 5  
+Output: Overload! Reduce weight.
+
+Q-2
+-------
+Daylight Duration
+You’re given sunrise and sunset times in hours (24-hour format).
+Check if the day is:
+
+Short Day → Less than 12 hours daylight
+
+Long Day → 12 hours or more daylight
+
+Example:
+Input: Sunrise=6, Sunset=18 → Long Day  
+Input: Sunrise=7, Sunset=17 → Short Day
+
+Q-3
+-----------
+Write a C program that reads two integers and prints the one closer to zero.
+If both numbers are at the same distance from zero, print the larger number.
+
+Example 1:
+Input: -5  3  
+Output: 3
+
+Example 2:
+Input: -2  2  
+Output: 2
+
+Example 3:
+Input: -1  -3  
+Output: -1
+Constraints:
+
+Use only if–else statements for decision making.
+
+You may use the abs() function from <stdlib.h>.
+
+
+
+
+Q-4
+---------
+Write a C program that reads:
+The number of students in a classroom.
+The number of chairs available.
+
+If the number of students is greater than the number of chairs, print how many extra chairs need to be arranged.
+Otherwise, print "All students are seated perfectly".
+
+Example 1:
+Input:  
+Students: 30  
+Chairs: 25  
+
+Output:  
+Need 5 more chairs
+
+Example 2:
+Input:  
+Students: 20  
+Chairs: 20  
+
+Output:  
+All students are seated perfectly
+
+Example 3:
+Input:  
+Students: 15  
+Chairs: 18  
+
+Output:  
+All students are seated perfectly
+
+Q - 5
+-------------
+Temperature Unit Converter
+Write a C program that:
+Reads a temperature value (integer or float) and a character (C or F).
+If the character is C, it means the given temperature is in Celsius, so convert it to Fahrenheit.
+If the character is F, it means the given temperature is in Fahrenheit, so convert it to Celsius.
+Print the converted temperature value.
+
+Formula:
+
+Celsius → Fahrenheit: F = (C × 9/5) + 32
+Fahrenheit → Celsius: C = (F − 32) × 5/9
+
+Example:
+Input: 100 C  
+Output: 212.00 F  
+
+Input: 98.6 F  
+Output: 37.00 C
+
+
+
+
+
+
+
+
