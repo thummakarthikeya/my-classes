@@ -169,3 +169,176 @@ int main(){
 }
 
 ///////////////////////////////////////
+
+
+
+
+
+CompareTwoNumber
+Create a C program that reads two integers from the user and prints "Equal" if they are equal, and "Not Equal" otherwise.(Use only if)
+Sample Input
+Input as :
+Enter a number : 10 10
+Sample Output
+Output as :
+Equal
+
+
+
+
+/////////////////////////////////
+
+
+
+NumberDivisible
+Write a C program to check whether a number is divisible by 5 and 11 or not.
+Sample Input
+Input as : 
+Enter a number : 55
+Sample Output
+Output as : 
+55 is divisible by both 5 and 11
+
+
+
+////////////////////////////////
+
+
+OddEven
+Develop a C program that takes an integer input and checks whether it is even or odd. Print "Even" if it's even, and "Odd" if it's odd.  (Use Only If )
+Sample Input
+Input as : 
+Enter a Integer : 20
+Sample Output
+Output as : 
+Even
+Explanation
+[Use Only If ]
+
+
+
+
+//////////////////////////////
+
+
+HourFormat
+Write a C program that takes an hour in the 24-hour format as input and identifies the time of day as "Morning," "Afternoon," "Evening," or "Night." Implement this using a series of if statements. Ensure that the program also checks for invalid input, displaying an appropriate message if the entered hour is not within the valid range (0-23). Present the program with a suitable title and header for clarity.
+Sample Input
+Input as :
+Enter the hour (24-hour format): 13
+Sample Output
+Output as :
+It's Afternoon.
+Explanation
+NA
+
+
+
+
+//////////////////////////////////
+
+
+CheckVowel
+Develop a C program that reads a character from the user and prints "Vowel" if the character is a vowel (a, e, i, o, u or their uppercase equivalents), and "Consonant" if it's a consonant.
+Sample Input
+Input as : 
+Enter a character : I
+Sample Output
+Output as :
+Vowel
+Explanation
+NA
+
+
+/////////////////////////////////
+
+
+ATM_Machine
+Write a C program that takes a withdrawal amount from the user and checks if it is a multiple of 100 before processing. If it is not a multiple of 100, display "Invalid amount".
+Sample Input
+2500
+Sample Output
+Valid amount
+
+
+
+/////////////////////////////////
+
+
+CeheckDIgitSum_Even_Or_Odd
+Write a C program that takes a two digit number from the user and checks whether the sum of its digits is even.
+Sample Input
+1234
+Sample Output
+Sum of digits is even
+
+
+/////////////////////////////////
+
+Check_Weekend
+Write a C program that takes a day number (1 to 7) as input and checks whether it is a weekday or weekend.
+Assumptions :
+
+1 = Monday
+2 = Tuesday
+3 = Wednesday
+4 = Thursday
+5 = Friday
+6 = Saturday
+7 = Sunday
+
+Rules:
+
+Output "Weekday" for 1 to 5
+Output "Weekend" for 6 and 7
+
+If the input is outside 1–7, display "Invalid day number"
+Sample Input
+3
+Sample Output
+Weekday
+
+
+
+
+///////////////////////////////////////////
+
+
+Check_Last_Digit
+Write a C program to check whether the last digit of a number is 5
+Sample Input
+124
+Sample Output
+Last digit is 5
+
+
+
+
+//////////////////////////////////////////
+
+
+AbsoluteValue
+Write a C program that takes an integer from the user and prints its absolute value without using the abs() function.
+
+
+Sample Input
+-45
+Sample Output
+45
+
+
+
+
+//////////////////////////////////////////
+
+
+Check_Digit_Or_Not
+Write a C program to check if an entered character is a digit or not a digit.
+Sample Input
+9
+Sample Output
+Digit
+
+
+
+
