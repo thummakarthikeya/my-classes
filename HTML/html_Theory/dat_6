@@ -1,0 +1,18 @@
+pattern attribute Ex: <pattern="[A-Za-z0-9]{3,10}">
+ for email <input type="email" placeholder="Enter your email" pattern="[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]{2,}" required />
+{}---it is used to 
+{a}=-----
+{a,b} ----minimum a and maximum b character 
+  \d------digits,
+\w -------
+
+
+->  html5 offers a lot of new features such as responsive media(picture), semantic elements(header,footer, nav, figure), svg, canvas etc..,
+-> svg(scalable vector graphics): it is 
+  <svg>
+    <circle cx="200" cy="100" r="50" fill="red" ></circle> //the output will be a red circle 
+    <rect x="100" y="60" height"100" width"100" rx="20" ry="20" fill="red"></rect> // the output is a red square
+  </svg>
+  <svg>
+    <path d="M 20 20 L 20 150 L 350 150  L 350 20 Z" fill"red"></path> // output will be a rectangle with red colour it is about drawing the cordinates 
+  </svg>
