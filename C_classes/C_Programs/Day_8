@@ -1,0 +1,260 @@
+ElectricityBill
+
+[Title: Electricity Bill Calculator -Using else-if ladder]
+----------------------------------------------------------
+Write a C program to input electricity unit charges and calculate the total electricity bill according to the following conditions:[using ternary-operator]
+
+-> For the first 50 units: Rs. 0.50 per unit
+-> For the next 100 units: Rs. 0.75 per unit
+-> For the next 100 units: Rs. 1.20 per unit
+-> For units above 250: Rs. 1.50 per unit
+
+Additionally, a surcharge of 20% is added to the bill.
+
+Sample Input :-
+---------------
+Enter the number of units: 280
+
+Sample Output :-
+-----------------
+Total electricity bill: Rs. 318.00
+Sample Input
+Enter the number of units: 280
+Sample Output
+Total electricity bill: Rs. 318.00
+
+
+#include<stdio.h>
+int main(){
+    int units;
+    float bill;
+    scanf("%d", &units);
+    if(units==0){
+        bill=0;
+    }
+    else if(units > 0 && units <= 50){
+         bill=units*0.50;
+    }else if(units >50 && units <= 150){
+        bill=(50*0.50)+ (units-50)*0.75;
+    }else if(units >150 && units <= 250){
+       bill= (50*0.50)+(100*0.75)+ (units-150)*1.20;
+    }else {
+        bill= (50*0.50)+(100*0.75)+(100*1.20)+ (units-250)*1.50;
+    }
+    bill=bill+bill*0.2;
+    printf("Total electricity bill: Rs. %.2f",bill);
+}
+
+
+/////////////////////////////////////////////////
+
+
+NumberOfDaysInMonth
+Write a C program to enter month number between(1-12) and print number of days in month using if else. How to print number of days in a given month using if else in C programming. Logic to find number of days in a month in C program. 
+
+
+
+Input as :
+
+Enter month number (1-12): 4
+
+Output as :
+
+Number of days: 30
+Sample Input
+4
+Sample Output
+Number of days: 30
+
+
+#include<stdio.h>
+int main(){
+    int month;
+    scanf("%d",&month);
+
+    if(month == 1 || month == 3 || month == 5 || month == 6|| month == 7 || month == 8 || month == 10 || month == 12){
+        printf("Number of days: 31");
+
+    }else if(month == 2){
+        printf("Number of days: 28");
+    }else if(month == 4 || month == 6 || month == 9 || month == 11){
+        printf("Number of days: 30");
+    }else{
+        printf("Invalid month number. Please enter between 1 and 12.");
+    }
+    }
+
+
+
+
+////////////////////////////////////////////
+
+
+TriangleValidation
+Write a C program to check whether the triangle is equilateral, isosceles or scalene triangle.
+  
+         Validity Check:
+         If all three sides are equal then the triangle is equilateral.
+         If exactly two sides are equal then the triangle is isosceles.
+         If all sides are different then the triangle is scalene.
+Sample Input
+Sample input :  Enter the lengths of the three sides of the triangle:
+                Side 1: 3
+                Side 2: 3
+                Side 3: 3
+Sample Output
+Sample output : The triangle is equilateral.
+
+
+
+#include<stdio.h>
+int main(){
+    int side1,side2,side3;
+    scanf("%d%d%d", &side1,&side2,&side3);
+
+    if(!(side1+side2 > side3)&& (side3+side2 > side1) && (side1+side3 > side2)){
+        printf("The lengths do not form a valid triangle.");
+    }
+    else if(side1 == side2 && side2 == side3){
+        printf("The triangle is an equilateral triangle.");
+    }else if(side1 == side2 || side1 == side3 || side2==side3){
+        printf("The triangle is an isosceles triangle.");
+    }else{
+        printf("The triangle is a scalene triangle.");
+    }
+
+
+}
+
+
+
+////////////////////////////////////////////////////
+
+
+
+BonusEligibility
+Write a C program using else if statements to determine the type of bonus an employee is eligible for based on their years of service.
+-Read year on service from the user.
+
+- If an employee has less than 2 years of service, they are not eligible for a bonus.
+- If an employee has between 2 and 4 years of service, they are eligible for a 10% bonus.
+- If an employee has between 5 and 9 years of service, they are eligible for a 15% bonus.
+- If an employee has 10 or more years of service, they are eligible for a 20% bonus.
+
+ Case 1:
+Input: 
+	Enter years Of Service = 12
+Output: 
+	Employee is eligible for a 20% bonus
+
+ Case 2:
+Input: 
+	Enter years Of Service = 7
+Output: 
+	Employee is eligible for a 15% bonus
+
+ Case 3:
+Input:
+	 Enter years Of Service = 3
+Output:
+	 Employee is eligible for a 10% bonus
+
+ Case 4:
+Input: 
+	Enter years Of Service = 1
+Output:
+	 Employee is not eligible for a bonus
+Sample Input
+12
+Sample Output
+20% bonus
+
+
+
+#include<stdio.h>
+int main(){
+    int year;
+    scanf("%d", &year);
+
+    if(year <= 2){
+        printf("Not Eligible ");
+    }else if(year > 2 && year <=4 ){
+        printf("10% bonus.");
+    }else if(year > 5 && year <=9 ){
+        printf("15%% bonus");
+    }else{
+        printf("20%% bonus");
+    }
+}
+
+
+
+////////////////////////////////////
+
+CalculateGrades
+
+Problem :-
+-----------
+You are tasked with writing a C program that determines the grade of a student based on their total marks. The total marks are out of 100. The grading system is as follows:
+
+if percentage is 
+-----------------
+	-> 90 to 100: Grade A
+	-> 80 to 89: Grade B
+	-> 70 to 79: Grade C
+	-> 60 to 69: Grade D
+	-> Below 60: Grade F
+
+Write a C program that takes the total marks as input and prints the corresponding grade using an if-else ladder.
+
+Example Input :-
+-----------------
+Enter the total marks: 85
+
+Example Output:
+---------------
+Grade B
+
+Additional Test Cases:
+----------------------
+
+Test Case 1:
+-------------
+Input: 92
+Output: Grade A
+
+Test Case 2:
+--------------
+Input: 75
+Output: Grade C
+
+Test Case 3:
+-------------
+Input: 58
+Output: Grade F
+Sample Input
+85
+Sample Output
+Grade B
+
+#include<stdio.h>
+int main(){
+    int grade;
+    scanf("%d", &grade);
+
+    if(grade<60 ){
+        printf("Grade F");
+    }else if(grade >=60 && grade <=69){
+        printf("Grade D");
+    }else if(grade >=70 && grade <=79){
+        printf("Grade C");
+    }else if(grade >=80 && grade <=89){
+        printf("Grade B");
+    }else if(grade >=90 && grade <=100){
+        printf("Grade A");
+    }else{
+        printf("Invalid marks entered.");
+    }
+}
+
+
