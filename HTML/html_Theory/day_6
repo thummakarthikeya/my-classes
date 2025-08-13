@@ -1,11 +1,14 @@
 pattern attribute Ex: <pattern="[A-Za-z0-9]{3,10}">
  for email <input type="email" placeholder="Enter your email" pattern="[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]{2,}" required />
-{}---it is used to 
-{a}=-----
-{a,b} ----minimum a and maximum b character 
-  \d------digits,
-\w -------
-
+ 1. []  -- it is used to represent a group
+    2. {}  -- it is used to specify a range
+        {a}-- exactly a characters
+        {a,} -- minimum a characters
+        {a,b} -- minimum a and maximum b characters
+    3. \d -- digits, \w -- words
+    4. . -- wildcard -- any characters
+    5. * -- 0 or more of previous
+    6. + -- 1 or more of previous
 
 ->  html5 offers a lot of new features such as responsive media(picture), semantic elements(header,footer, nav, figure), svg, canvas etc..,
 -> svg(scalable vector graphics): it is 
