@@ -1,0 +1,2 @@
+int a = strcmp(variable,"value")
+if it is correct then a will be 1 or 0
