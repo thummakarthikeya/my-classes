@@ -1,0 +1,169 @@
+ServiceCenter
+
+[Title: Vehicle Service Center Management System Using nested else-if ladder]
+-----------------------------------------------------------------------------
+Write a C program for a service center by following the given rules and guidelines.
+
+This service center only accepts 2-wheelers, 3-wheelers, and 4-wheelers. If any other vehicle comes to you, you must display a message: "This service center does not accept vehicles other than 2-wheelers, 3-wheelers, and 4-wheelers."
+
+If the vehicle is a 2-wheeler, 3-wheeler, or 4-wheeler, you should ask the user what the age of the vehicle is.
+
+If the age of the vehicle is above 8 months, only then will you accept the service; otherwise, you must show a message: "Your vehicle service will be done after a while."
+
+If the vehicle's age is greater than 8 months, display options to the user on the console.
+
+Options :-
+----------
+-> Enter 1 for a tire problem
+-> Enter 2 for a fuel problem
+-> Enter 3 for an engine issue
+-> Enter 4 for general services
+
+If the user enters 1 as input for a tire problem, you should display the message: "How many tires are you facing issues with?" Based on the number of tires, generate the bill.
+
+For example, if the tire cost is Rs. 400, and the user provides 3 tires, the bill should be generated as Rs. 1200 in the format below.
+
+Bill Format :-
+---------------
+-> Name of the owner
+
+-> Name of the bike
+
+-> Issue
+
+-> Bill
+--------
+For fuel problems, the cost is Rs. 1500.
+
+For engine issues, the cost is Rs. 5000.
+
+For general servicing, the cost is Rs. 1000.
+
+Please generate the bill in the above format.
+
+Enter owner's name: John Doe
+Enter vehicle name: Yamaha FZ
+Enter vehicle type (2 for 2-wheeler, 3 for 3-wheeler, 4 for 4-wheeler): 2
+Enter vehicle age in months: 12
+
+Select the issue:
+-> Enter 1 for tire problem
+-> Enter 2 for fuel problem
+-> Enter 3 for engine issue
+-> Enter 4 for general services
+Enter your choice: 1
+How many tires are you facing issues with? 2
+
+----- Bill Format -----
+-> Name of the owner: John Doe
+-> Name of the bike: Yamaha FZ
+-> Issue: Tire Problem
+-> Bill: Rs. 800.00
+Sample Input
+Enter owner's name: John Doe
+Enter vehicle name: Yamaha FZ
+Enter vehicle type (2 for 2-wheeler, 3 for 3-wheeler, 4 for 4-wheeler): 2
+Enter vehicle age in months: 12
+
+Select the issue:
+-> Enter 1 for tire problem
+-> Enter 2 for fuel problem
+-> Enter 3 for engine issue
+-> Enter 4 for general services
+Enter your choice: 1
+How many tires are you facing issues with? 2
+Sample Output
+----- Bill Format -----
+-> Name of the owner: John Doe
+-> Name of the bike: Yamaha FZ
+-> Issue: Tire Problem
+-> Bill: Rs. 800.00
+
+
+
+
+#include<stdio.h>
+int main(){
+    char name[20], vehiclename[20];
+    int vehicletype;
+    int vehicleage;
+    int issue;
+    int issuetires;
+    int costtires;
+    float bill;
+    
+    printf("Enter owner's name: ");
+    scanf("%s",name);
+
+    printf("Enter vehicle name: ");
+    scanf("%s",vehiclename);
+
+    printf("Enter vehicle type (\n2 for 2-wheeler,\n 3 for 3-wheeler,\n 4 for 4-wheeler): \n ");
+    scanf("%d", &vehicletype);
+    
+    
+
+    if(vehicletype == 2 || vehicletype == 3 || vehicletype == 4 ){
+        
+        printf("Enter vehicle age in months: ");
+        scanf("%d",&vehicleage);
+        
+        if(vehicleage <8){
+            printf("Your vehicle service will be done after a while.");
+        } else{
+            printf("Select the issue:\n");
+            printf("-> Enter 1 for tire problem \n");
+            printf("-> Enter 2 for fuel problem\n");
+            printf("-> Enter 3 for engine issue\n");
+            printf("-> Enter 4 for general services :");
+            
+            scanf("%d", &issue);
+            
+            if(issue == 1){
+            printf("How many tires are you facing issues with? :");
+            scanf("%d",&issuetires);
+            costtires = 400;
+            bill=costtires*issuetires;
+            
+            printf("----- Bill Format -----\n");
+            printf("Name of the owner: %s \n", name);
+            printf("Name of the bike: %s \n", vehiclename);
+            printf("Issue: Tire Problem\n");
+            printf("Bill: Rs. %.2f\n", bill);
+            
+            }else if(issue == 2){
+                bill = 1500;
+                printf("----- Bill Format -----\n");
+                printf("Name of the owner: %s\n", name);
+                printf("Name of the bike: %s\n", vehiclename);
+                printf("Issue: fuel problem\n");
+                printf("Bill: Rs. %f\n", bill);
+            }else if(issue == 3){
+                bill = 5000;
+                printf("----- Bill Format -----\n");
+                printf("Name of the owner: %s\n", name);
+                printf("Name of the bike: %s\n", vehiclename);
+                printf("Issue: engine issue\n");
+                printf("Bill: Rs. %f\n", bill);
+            }else if(issue == 4){
+                bill = 1000;
+                printf("----- Bill Format -----\n");
+                printf("Name of the owner: %s\n", name);
+                printf("Name of the bike: %s\n", vehiclename);
+                printf("Issue: general services\n");
+                printf("Bill: Rs. %f\n", bill);
+            }else {
+                printf("Invalid Option");
+            }
+            
+        }
+
+        
+    }
+
+    
+    
+}
+
+
+/////////////////////////////////////////////////////
