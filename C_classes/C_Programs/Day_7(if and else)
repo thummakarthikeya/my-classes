@@ -423,6 +423,26 @@ Output: 37.00 C
 
 
 
+#include <stdio.h>
+
+int main() {
+    float a;
+    char b;
+    scanf(" %f",&a);
+    scanf(" %c",&b);
+    
+    if(b =='C' || b == 'c'){
+        float fahrenheit = (a * 9.0/5.0)+32;
+        printf(" %.2f F",fahrenheit);
+    }else if(b=='F' || b=='f'){
+        float celsius  = (a-32) * 5.0/9.0;
+        printf(" %.2f C",celsius);
+    }else {
+        printf("Invalid Celsius or Fahrenheit");
+    }
+
+    return 0;
+}
 
 
 
