@@ -1,0 +1,164 @@
+Prev_Next_Multiple
+Write a C program to find the previous multiple & next multiple of 100 of a given three digit number using if-else. 
+if the number is not 3 digit print invalid massage.
+
+Sample input  : 234
+
+Sample output : Previous multiple : 200
+		                    next multiple : 300
+Sample Input
+234
+Sample Output
+Previous multiple : 200
+next multiple : 300
+
+
+
+  #include<stdio.h>
+int main(){
+    int a;
+    int pre,next;
+    scanf("%d",&a);
+
+    if(a <100 || a >=1000 ){
+        printf("Invalid Input");
+        return 0;
+    }
+    pre = a/100;
+    next = 100 * (pre+1);
+    pre = pre*100;
+    
+    printf("Previous multiple : %d\n",pre);
+    printf("next multiple : %d", next);
+    
+}
+
+
+
+/////////////////////////////////////////////////
+
+
+Profit_Or_Loss
+write a C program takes the cost price and selling price of an item as input and prints whether the transaction was profitable or loss-making.
+
+Sample input  :
+	Cost Price: 100
+	Selling Price: 150
+
+Expected Output: 
+	The transaction was profitable.
+Sample Input
+100 150
+Sample Output
+The transaction was profitable.
+
+
+#include<stdio.h>
+int main(){
+    int cost,selling;
+    scanf("%d%d",&cost,&selling);
+    if(cost == selling){
+        printf("No profit, no loss.");
+    }else if(selling  > cost){
+        printf("The transaction was profitable.");
+    }else{
+        printf("The transaction was loss-making.");
+    }
+    
+}
+
+
+/////////////////////////////////////////////////////////
+
+
+Time_Of_Day
+Write a C program that takes the time of day as input (in hours) and prints whether it is morning, afternoon, evening, or night using an if statement.
+
+-categorize the time of day into four categories:
+if the time between 0 - 5 then print Night
+if the time between 6 - 11 then print Morning
+if the time between 12 -17 then print Afternoon
+if the time between 18 - 23 then print Evening
+
+Sample Input
+3
+Sample Output
+It is night.
+
+
+#include<stdio.h>
+int main(){
+    int time;
+    scanf("%d",&time);
+
+    if(time >= 0 && time <=5){
+        printf("It is night.");
+    }else if(time >= 6 && time <=11){
+        printf("It is morning.");
+    }else if(time >= 12 && time <=17){
+        printf("It is afternoon.");
+    }else if(time >= 18 && time <=23){
+        printf("It is evening.");
+    }else{
+        printf("Invalid time.");
+    }
+}
+
+
+/////////////////////////////////////////////////
+
+Find_Day_Of_Week
+Write a C program to find the day of the week for a given number (1 for Monday, 2 for Tuesday, etc.) using nested if-else statements.
+
+Input:
+	Enter a number (1-7): 4
+Output:
+	The day is Thursday.
+Sample Input
+4
+Sample Output
+The day is Thursday
+
+
+#include<stdio.h>
+int main(){
+    int day;
+    scanf("%d", &day);
+
+    if(day == 1){
+        printf("The day is Monday.");
+    }else if(day == 2){
+        printf("The day is Tuesday.");
+    }else if(day == 3){
+        printf("The day is Wednesday.");
+    }else if(day == 4){
+        printf("The day is Thursday.");
+    }else if(day == 5){
+        printf("The day is Friday.");
+    }else if(day == 6){
+        printf("The day is Saturday.");
+    }else if(day == 7){
+        printf("The day is Sunday.");
+    }else {
+        printf("Invalid input!.");
+    }
+}
+
+
+////////////////////////////////////////////
+
+
+EvenNumbers_With_Goto
+write a C program that prints all even numbers from 1 to a user-given number N using goto and labels.
+
+input :
+ Enter a number : 10
+output :
+  1 to 10 even numbers are : 2 4 6 8 10
+Sample Input
+10
+Sample Output
+ 1 to 10 even numbers are : 2 4 6 8 10
+
+
+
