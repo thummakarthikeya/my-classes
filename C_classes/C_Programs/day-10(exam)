@@ -162,3 +162,39 @@ Sample Output
 
 
 
+#include <stdio.h>
+
+int main() {
+    int N, i;
+
+    scanf("%d", &N);
+
+    if (N == 0) {
+        printf("invalid!.\n");
+        return 0;
+    }
+
+    printf("1 to %d even numbers are: ", N);
+
+    if (N > 0) {
+        i = 2;  
+    posLoop:
+        if (i <= N) {
+            printf("%d ", i);
+            i += 2;
+            goto posLoop;
+        }
+    } else {
+        i = -2;  
+    negLoop:
+        if (i >= N) {
+            printf("%d ", i);
+            i -= 2;
+            goto negLoop;
+        }
+    }
+
+    return 0;
+}
+
+
