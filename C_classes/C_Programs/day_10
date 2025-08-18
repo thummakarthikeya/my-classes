@@ -1,0 +1,119 @@
+CalculateGrades
+
+[Title:- Determine Student Grade Based on Total Marks] 
+-------------------------------------------------------
+Write a program that takes the marks of five subjects as input (each subject mark should be between 0 and 100). The program should:
+
+Check if all marks are within the range of 0–100. If any marks are invalid, display an error message and exit.
+If any subject mark is below 35, directly display "Fail" without calculating the total or grade.
+Otherwise, calculate the total marks, percentage, and determine the grade using the following criteria:
+
+-> 90%–100%: Grade A
+-> 75%–89%: Grade B
+-> 50%–74%: Grade C
+-> 35%–49%: Grade D
+-> Below 35%: Fail
+
+Test Cases-1 :-
+---------------
+Input:
+------
+Subject 1: 95
+Subject 2: 89
+Subject 3: 88
+Subject 4: 92
+Subject 5: 91
+
+Output:
+-------
+Total Marks: 455
+Percentage: 91.0%
+Grade: A (Valid)
+
+Test Cases-2 :-
+---------------
+Input:
+------
+Subject 1: 85
+Subject 2: 90
+Subject 3: 110
+Subject 4: 88
+Subject 5: 92
+
+Output:
+-------
+"Invalid input. Marks for each subject must be between 0 and 100." (Invalid)
+
+Test Cases-3 :-
+----------------
+Input:
+------
+Subject 1: 20
+Subject 2: 25
+Subject 3: 30
+Subject 4: 35
+Subject 5: 40
+
+Output:
+--------
+"Fail" (Valid)
+
+Test Cases-4 :-
+----------------
+Input:
+------
+Subject 1: 40
+Subject 2: 50
+Subject 3: 34
+Subject 4: 60
+Subject 5: 70
+
+Output:
+--------
+"Fail" (Valid - One subject is below 35)
+Sample Input
+95
+89
+88
+92
+91
+Sample Output
+Total Marks: 455
+Percentage: 91.0%
+Grade: A
+
+
+
+#include<stdio.h>
+int main(){
+   int subject1,subject2,subject3,subject4,subject5,subjects;
+   float Percentage;
+
+   scanf("%d%d%d%d%d",&subject1,&subject2,&subject3,&subject4,&subject5);
+
+   if(subject1 < 35 ||subject2 < 35 ||subject3 < 35 ||subject4 < 35 ||subject5 < 35 ){
+    printf("Fail");
+   }else{
+        subjects = subject1+subject2+subject3+subject4+subject5;
+        printf("Total Marks: %d\n",subjects);
+        Percentage = ((float)subjects/500)*100;
+        printf("Percentage: %.2f%\n",Percentage);
+        if(Percentage>=90 && Percentage<=100){
+            printf("Grade: A\n");
+        }else if(Percentage>=75 && Percentage<=89){
+            printf("Grade: B");
+        }else if(Percentage>=50 && Percentage<=74){
+            printf("Grade: C");
+        }else if(Percentage>=35 && Percentage<=49){
+            printf("Grade: D");
+        }else if(Percentage<35){
+            printf("Fail");
+        }
+
+
+   } 
+}
+
+
+/////////////////////////////////////////////////
+
