@@ -116,6 +116,55 @@ int main(){
     }
 }
 
+
+
+or
+
+
+#include<stdio.h>
+int main() {
+    int subject1, subject2, subject3, subject4, subject5, subjects;
+    float Percentage;
+
+    scanf("%d%d%d%d%d", &subject1, &subject2, &subject3, &subject4, &subject5);
+
+    switch(subject1 < 35 || subject2 < 35 || subject3 < 35 || subject4 < 35 || subject5 < 35) {
+        case 1:
+            printf("Fail");
+            break;
+
+        case 0:
+            subjects = subject1 + subject2 + subject3 + subject4 + subject5;
+            printf("Total Marks: %d\n", subjects);
+            Percentage = ((float)subjects / 500) * 100;
+            printf("Percentage: %.2f%%\n", Percentage);
+
+            // convert percentage into grade band
+            switch ((int)Percentage / 10) {
+                case 10: // 100
+                case 9:  // 90–99
+                    printf("Grade: A\n");
+                    break;
+                case 8:  // 80–89
+                case 7:  // 70–79
+                    printf("Grade: B\n");
+                    break;
+                case 6:  // 60–69
+                case 5:  // 50–59
+                    printf("Grade: C\n");
+                    break;
+                case 4:  // 40–49
+                    printf("Grade: D\n");
+                    break;
+                default: // <40
+                    printf("Fail\n");
+            }
+            break;
+    }
+
+    return 0;
+}
+
 /////////////////////////////////////////////////
 
 
