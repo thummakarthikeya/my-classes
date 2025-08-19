@@ -1,0 +1,52 @@
+Scenario Question :-
+---------------------
+A restaurant wants to build a simple program that helps customers order their meals based on a menu selection. The menu has the following options:
+
+1. Pizza - $10
+2. Burger - $7
+3. Pasta - $8
+4. Salad - $5
+5. Exit
+
+The user needs to select an item by entering the corresponding number (1-5) and also need to enter the number of quantities they want to order.
+If the user selects an invalid option, they should be notified. 
+The program should display the selected item and total price.
+If the user selects "Exit," the program should terminate.
+
+Task :-
+--------
+Write a C program using the switch case statement to implement the above scenario. Your program should:
+
+-> Display the menu options to the user.
+-> Accept the user's choice.
+-> Read the quantity of order.
+-> Calculate the total price.
+-> Use a switch case to determine the selected item and print the item name and price.
+-> Handle invalid choices and print an appropriate message.
+
+Expected Output Example :-
+---------------------------
+Menu :-
+-------
+1. Pizza - $10
+2. Burger - $7
+3. Pasta - $8
+4. Salad - $5
+5. Exit
+
+Enter your choice: 2
+Enter the quantity: 5
+
+You selected Burger. Price: $35
+
+Menu :-
+
+1. Pizza - $10
+2. Burger - $7
+3. Pasta - $8
+4. Salad - $5
+5. Exit
+
+Enter your choice: 5
+
+Exiting the program. Thank you!
