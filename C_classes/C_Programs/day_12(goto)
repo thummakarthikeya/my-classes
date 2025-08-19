@@ -1,0 +1,100 @@
+Que 1 :
+========
+
+Write a C program to print N natural numbers in reverse order using simple if and goto statments.
+
+Sample input : 5
+Sample Output : 5 4 3 2 1
+
+Sample input : 7
+Sample Output : 7 6 5 4 3 2 1
+
+Sample input : -5
+Sample Output : Invalid Input.
+
+Sample input : 0
+Sample Output : Invalid Input.
+
+---------------------------
+
+Que 2 :
+========
+
+Write a C program to print all EVEN numbers from 1 to given N number using simple if and goto statments.
+
+Sample input : 10
+Sample Output : 2 4 6 8 10
+
+Sample input : 5
+Sample Output : 2 4
+
+Sample input : -5
+Sample Output : Invalid Input.
+
+Sample input : 0
+Sample Output : Invalid Input.
+
+---------------------------
+
+Que 3 :
+========
+
+Write a C program to print all ODD numbers from 1 to given N number using simple if and goto statments.
+
+Sample input : 10
+Sample Output : 1 3 5 7 9
+
+Sample input : 5
+Sample Output : 1 3 5
+
+Sample input : -5
+Sample Output : Invalid Input.
+
+Sample input : 0
+Sample Output : Invalid Input.
+
+---------------------------
+
+Que 4 :
+========
+
+Write a C program to count the number of digits in a given positive integer using only if and goto statements.
+
+Sample input : 125
+Sample Output : 3
+
+
+Sample input : 1254
+Sample Output : 4
+
+
+Sample input : -123
+Sample Output : Invalid Input
+
+Sample input : 0
+Sample Output : 1
+
+---------------------------
+
+Que 5 :
+========
+
+Write a C program to reverse a given positive integer number using only if and goto statements
+
+Sample input : 123
+Sample Output : 321
+
+Sample input : 4321
+Sample Output : 1234
+
+
+Sample input : -123
+Sample Output : Invalid Input
+
+Sample input : 0
+Sample Output : Invalid Input
+
+---------------------------
+
+
+
