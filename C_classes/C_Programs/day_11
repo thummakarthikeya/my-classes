@@ -1,0 +1,140 @@
+OddEvenByUsingSwitch
+Write a C program to check the number is even or odd by using Switch Case.
+Sample Input
+10
+Sample Output
+Even
+
+
+#include<stdio.h>
+int main(){
+    int a;
+    scanf("%d",&a);
+
+    switch(a%2==0){
+        case 1:
+        printf("Even");
+        break;
+
+        case 0:
+        printf("Odd");
+        break;
+    }
+}
+
+///////////////////////////////////////
+
+VowelOrConsonantUsingSwitch
+Write a C program to check whether a Alphabet is vowel or consonant using Switch Case.
+Sample Input
+a
+Sample Output
+Vowel
+
+
+
+#include<stdio.h>
+int main(){
+    char ch;
+    scanf("%c",&ch);
+
+    switch(ch){
+    case 'a': case 'e': case 'i': case 'o': case 'u':
+        case 'A': case 'E': case 'I': case 'O': case 'U':
+            printf("Vowel\n");
+            break;
+        printf("Vowel");
+        break;
+
+        default:
+        if(ch>='a' && ch<='z' || ch>='A' && ch<='Z'){
+            printf("Consonant");   
+        }else{
+        printf("Invalid input");
+
+        }
+    }
+}
+
+
+//////////////////////////////////////
+Calculate the Day of the Week
+[Title:- Calculate the Day of the Week]
+----------------------------------------
+Write a program that takes a number (1-7) as input and prints the day of the week using a switch statement. If the number is outside this range, display an error message.
+
+Test Case-1 :-
+--------------
+Input :- 1
+--------
+
+Output :- "Monday" (Valid)
+----------
+
+Test Case-2 :-
+--------------
+Input :- 7
+--------
+
+Output :- "Sunday" (Valid)
+---------
+
+Test Case-3 :-
+--------------
+Input :- 0/-1
+--------
+
+Output :- "Invalid day number. Enter a number between 1 and 7." (Invalid)
+---------
+Sample Input
+1
+Sample Output
+Monday
+Explanation
+Use switch case's
+
+
+#include<stdio.h>
+int main(){
+    int a;
+    scanf("%d",&a);
+
+    switch(a){
+        case 1:
+        printf("Monday");
+        break;
+
+        case 2:
+        printf("Tuesday");
+        break;
+
+        case 3:
+        printf("Wednesday");
+        break;
+
+        case 4:
+        printf("Thursday");
+        break;
+
+        case 5:
+        printf("Friday");
+        break;
+
+        case 6:
+        printf("Saturday");
+        break;
+
+        case 7:
+        printf("Sunday");
+        break;
+
+        default:
+        printf("Invalid input! Please enter a number between 1 and 7.");
+    }
+}
+
+
+///////////////////////////////////////////////////
+
+
+
