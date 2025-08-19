@@ -15,6 +15,28 @@ Sample Output : Invalid Input.
 Sample input : 0
 Sample Output : Invalid Input.
 
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a;
+    scanf("%d",&a);
+     if(a<0 || a==0){
+        printf("INvalid input");
+        return 0;
+    }
+    start:
+    if(a==0){
+        return 0;
+    }
+    printf("%d", a--);
+    
+    goto start;
+
+    return 0;
+}
+
 ---------------------------
 
 Que 2 :
@@ -33,6 +55,26 @@ Sample Output : Invalid Input.
 
 Sample input : 0
 Sample Output : Invalid Input.
+
+#include <stdio.h>
+int main() {
+    int a;
+    int b=1;
+    scanf("%d",&a);
+     if(a<=0){
+        printf("Invalid input");
+        return 0;
+    }
+    start:
+    if(b%2==0){
+        printf("%d ", b);
+    }
+    b++;
+    if(b<=a){
+         goto start;
+    }
+    return 0;
+}
 
 ---------------------------
 
