@@ -97,4 +97,52 @@ Sample Output : Invalid Input
 ---------------------------
 
 
+EvenNumbers_With_Goto
+write a C program that prints all even numbers from 1 to a user-given number N using goto and labels.
+
+input :
+ Enter a number : 10
+output :
+  1 to 10 even numbers are : 2 4 6 8 10
+Sample Input
+10
+Sample Output
+ 1 to 10 even numbers are : 2 4 6 8 10
+
+
+
+#include <stdio.h>
+
+int main() {
+    int N, i;
+
+    scanf("%d", &N);
+
+    if (N == 0) {
+        printf("invalid!.\n");
+        return 0;
+    }
+
+    printf("1 to %d even numbers are: ", N);
+
+    if (N > 0) {
+        i = 2;  
+    posLoop:
+        if (i <= N) {
+            printf("%d ", i);
+            i += 2;
+            goto posLoop;
+        }
+    } else {
+        i = -2;  
+    negLoop:
+        if (i >= N) {
+            printf("%d ", i);
+            i -= 2;
+            goto negLoop;
+        }
+    }
+
+    return 0;
+}
 
