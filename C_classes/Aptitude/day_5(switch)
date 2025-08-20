@@ -1,0 +1,16 @@
+	Question Description	Attempted Answer	Result	Status
+1	Consider the following code: #include <stdio.h> int main() { int num = 20; switch (printf("%d", num)) { case 1: printf(" Case 1"); break; case 2: printf(" Case 2"); break; default: printf(" Default case"); } return 0; } What will be the output of the program? --	a) 2 Case 1		Attempted
+2	In the SWITCH-CASE statement the default case must be used?	TRUE		Attempted
+3	what will be the output of the program, If the input provided is 10? #include <stdio.h> int main() { int x; switch (scanf("%d", &x)) { case 0: printf("Case 0"); break; case 1: printf("Case 1"); break; default: printf("Default case"); } return 0; }	b) Case 1		Attempted
+4	What is the output of C Program with switch statement.? int main() { int a=3; switch(a) { case 2: printf("ZERO "); break; case default: printf("RABBIT "); } }	Compiler error		Attempted
+5	What will be the output of the following code? ---------------------------------------------- int x = 2; switch (x) { default: printf("Default"); case 1: printf("One"); case 2: printf("Two"); case 3: printf("Three"); }	c) TwoThree		Attempted
+6	How many 'default' cases can a 'switch' statement have in C?	One		Attempted
+7	What will be the output of the program? #include <stdio.h> int main() { int num = 20; switch (printf("%d", num)) { case 1: printf(" Case 1"); break; case 2: printf(" Case 2"); break; default: printf(" Default case"); } return 0; }	b) 2 Case 2		Attempted
+8	What will be the output of the given C program? #include<stdio.h> int main() { int a = 2; int x= 2; int y = 1; switch(a) { case y: printf("Welcome"); break; case x: printf("Know Program"); break; default: printf("Hello"); break; } return 0; }	Compile-time error		Attempted
+9	Find the output of the below program? #include<stdio.h> int main() { int a = 66; const char ch = 'A',ch1 = 'B',ch3 = 'C'; switch(a) { case ch1: printf("saturday"); break; case ch: printf("sunday"); break; default : printf("monday"); } }	Compile Time Error		Attempted
+10	How can you break out of a switch case in C?	c) Using break		Attempted
+11	What is the output of C Program with Switch Statement.? int main() { int a=5; switch(a) { case 0: printf("0 "); case 3: printf("3 "); case 5: printf("5 "); default: printf("RABBIT "); } a=10; switch(a) { case 0: printf("0 "); case 3: printf("3 "); case 5: printf("5 "); default: printf("RABBIT "); break; } return 0; }	5 RABBIT RABBIT		Attempted
+12	Can a switch statement work with floating-point values in C?	b) No		Attempted
+13	What will be the output of the following code? int x = 2; switch (x) { default: printf("Default"); case 1: printf("One"); case 2: printf("Two"); case 3: printf("Three"); }	c) TwoThree		Attempted
+14	What is the output of C Program with switch statement.? #include<stdio.h> int main() { char code='K'; switch(code) { case 'A': printf("ANT ");break; case 'K': printf("KING "); break; default: printf("NOKING"); } printf("PALACE"); }	KING PALACE		Attempted
+15	What is the output of C Program with switch statement or block.? int main() { int a; switch(a) { printf("APACHE "); } printf("HEROHONDA"); }
