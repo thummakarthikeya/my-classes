@@ -1,0 +1,61 @@
+colour = to get the best colors combination use "coolers"
+  for live example use "realtime colors" wesite
+
+  colors decide the brand and user interface web page, It is recommended to use colours according according to the brand and target audience.
+  colors can be mentioned in css in various ways.They are 
+  i. hexCode -- Every color will have an hexa decimal code of 6 digits followed by #
+  ii. we can also give colours using RGB(Red, Green, Blue) -- any colour can be represented as a combination of colors red, green and blue 
+      from 0 to 255 values. Ex..   h1 {
+                                         color: rgb(255,255,0);
+                                      }
+      we cn assign alpha  0.0 to 1.0 showing traperancy form lightness to darkness 
+  iii. neme: VSCode provide multiple colors with name 
+
+
+Fonts : Every font family in the world belong to these any one of these 5 types
+        serif: these fount has stroke at corners example times new Roman.
+        sans-serif:these founts dont have strokes and these are used in most of the websites Ex: arial, calibri.
+        mono-space:these fonts have equal height if letters like a typewriter.
+        cursive: These fonts are styled  and curved.
+        fantasy-fount: These fonts are used for spectal effects.
+
+How to get founts in websites :
+          font-family : it is used to apply fonts to specific element.
+
+
+
+       font-size : it is used to change the size of the font.
+       font-weight : it is used to change the thickness of the font(100-900/bpld/bolder)
+       font-style : it is used to change the style of the font(normal/italic)
+
+         To have the different fount which is not defalult in our vscode then go to ' google founts' we have more than 1000 fonts in it.
+        now to use it in css we have to write the 
+          -> @import url("google font link ") 
+          we can even import  fonts from google using below procedure :
+            search "google fonts"---> select a font ----> click 'get font' ---> click 'get embed code' ---> select 'import' and
+              copy the code to css
+
+Units: Units are used to measuere the size of elements. Most used units are px(percentage) -- it is used x% of parents size
+
+         vh/vw ----- it is the x$ of viewport(screen) height or viewport width "vh->viewport height" and "vw-> viewport width"
+         Ex: if 50vh then that means exact screen 50% 
+
+Background: we can assign a background color or "background-image" to webpage using the following properties .Ex:(background-image: url(''))
+       
+        ⭐⭐⭐
+        background-image: url('')    
+        background-repeate: no-repeate;
+        background-postion: cover;
+        background-size: cover;
+        background-attachement : auto/scroll/fixed;(it is very important because if we put 'fixed ' the background image 
+                                                    will be fixed ifen the the content is motre like wordpress)
+        linear-gradients:(orange, yellow); Ex:(background-image:linear-gradients:(orange, yellow));
+                                              background-image:linear-gradients:(to top/bottom/left/right orange, yellow);
+                                              background-image:linear-gradients:(to top/bottom/left/right rgb(red,orange, yellow));
+                                              background-image:linear-gradients:(45deg rgb(red,orange, yellow));
+                                              h1{
+                                                color:linear-gradients:(45deg rgb(red,orange, yellow));
+                                              }
+                                              background-image:radial-gradients:(45deg rgb(black,white));(the colors will be in rounds
+                                                                        like outer circle will be black and inner circle will be black)
+
