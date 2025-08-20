@@ -60,4 +60,301 @@ int main(){
 
 ///////////////////////////////////////
 
+BasicReverceRange
+Write a C program using a while loop that reads two integers, N1 and N2, from the user. The program should print all the numbers from N1 to N2 (inclusive) in a single line, separated by commas, in reverse order.
 
+Test Case-1 :- [Basic Reverse Range]
+--------------
+Input :-
+---------
+N1 = 10, N2 = 1
+
+Expected Output :-
+------------------
+10,9,8,7,6,5,4,3,2,1
+
+Test Case-2 :- [Negative to Positive Range in Reverse]
+--------------
+Input :-
+--------
+N1 = 5, N2 = -5
+
+Expected Output :-
+-------------------
+5,4,3,2,1,0,-1,-2,-3,-4,-5
+
+Test Case-3 :- [Single Number (N1 = N2)]
+--------------
+Input :-
+--------
+N1 = 7, N2 = 7
+
+Expected Output :-
+------------------
+7
+
+Test Case-4 :- [Forward Input (N1 < N2)]
+--------------
+Input :-
+--------
+N1 = 1, N2 = 10
+
+Expected Output :-
+------------------
+Invalid input. N1 should be greater than or equal to N2.
+
+Test Case-5 :- [Zero to Negative Range]
+--------------
+Input :-
+---------
+N1 = 0, N2 = -3
+
+Expected Output :-
+------------------
+0,-1,-2,-3
+
+Test Case-6 :- [Negative Range in Reverse]
+---------------
+Input :-
+--------
+N1 = -5, N2 = -10
+
+Expected Output :-
+-------------------
+-5,-6,-7,-8,-9,-10
+
+Test Case-7 :- [Same Start and End with Negative Value]
+--------------
+Input :-
+--------
+N1 = -3, N2 = -3
+
+Expected Output :-
+------------------
+-3
+Sample Input
+10
+1
+Sample Output
+10,9,8,7,6,5,4,3,2,1
+
+
+#include<stdio.h>
+int main(){
+    int n1,n2;
+    scanf("%d%d", &n1,&n2);
+    
+    if(n1<n2){
+        printf("Invalid input. N1 should be greater than or equal to N2.");
+        return 0;
+    }
+    printf("%d",n1);
+        while(n1 > n2){
+            n1--;
+            printf(",");
+            printf("%d",n1);
+        }
+}
+
+////////////////////////////////////
+
+
+Print Even Numbers
+[Title:- Print Even Numbers up to N]
+-------------------------------------
+Write a C program that takes an integer input N from the user and prints all even numbers up to N using a while (true) loop. The program should validate the input and terminate if the user enters zero or a negative value.
+
+Test Cases :-
+-------------
+
+Test-Case-1 :-
+--------------
+Input: N = 8
+Output: 2 4 6 8
+Explanation: Prints all even numbers from 2 to 8.
+
+Test-Case-2 :-
+---------------
+Input: N = 0
+Output: Invalid input. Program terminated.
+Explanation: Input is zero; program exits.
+
+Test-Case-3 :-
+--------------
+Input: N = -5
+Output: Invalid input. Program terminated.
+Explanation: Negative value entered; program exits.
+Sample Input
+8
+Sample Output
+2 4 6 8
+
+
+#include<stdio.h>
+int main(){
+    int a;
+    scanf("%d",&a);
+    int b=1;
+
+    if(a<=0){
+        printf("Invalid input.");
+        return 0;
+    }
+
+    printf("Even numbers up to %d are: ", a);
+    while(b<=a){
+        if(b%2==0){
+            printf("%d ",b);
+        }
+        b++;
+    }
+}
+
+////////////////////////////////////////////////
+
+
+PrintASCIUsingWhile
+Write a C program that prints all characters from uppercase 'A' to lowercase 'z' along with their ASCII values using a while loop.
+
+Sample Output :-
+-----------------
+Character and its ASCII value:
+A: 65
+B: 66
+C: 67
+...
+Y: 89
+Z: 90
+[: 91
+\: 92
+]: 93
+^: 94
+_: 95
+`: 96
+a: 97
+b: 98
+c: 99
+...
+x: 120
+y: 121
+z: 122
+Sample Input
+-
+Sample Output
+
+
+#include<stdio.h>
+int main(){
+    char ch;
+    char a = 'A';
+    scanf("%c",&ch);
+    printf("Character and its ASCII value:\n");
+    while(a <= 122){
+        printf("%c: %d\n",a,a);
+        a++;
+    }
+
+}
+
+//////////////////////////////////
+PrintBetweemGivenNumber
+Write a C program using a while loop that reads two integers, N1 and N2, from the user. The program should print all the numbers from N1 to N2 (inclusive) in a single line, separated by commas.
+
+Sample-run :-
+--------------
+
+Test Case-1 :- [Basic Range]
+--------------  
+Input :-
+--------
+N1 = 1, N2 = 10
+
+Expected Output :-
+------------------
+1,2,3,4,5,6,7,8,9,10
+
+Test Case-2 :- [Negative to Positive Range]
+--------------
+Input :-
+--------
+N1 = -5, N2 = 5
+
+Expected Output :-
+------------------
+-5,-4,-3,-2,-1,0,1,2,3,4,5
+
+Test Case-3 :- [Single Number (N1 = N2)]
+--------------
+Input :-
+--------
+N1 = 7, N2 = 7
+
+Expected Output :-
+------------------
+7
+
+Test Case 4 :- [Reverse Input (N1 > N2)]
+--------------
+Input :-
+--------
+N1 = 10, N2 = 1
+
+Expected Output :-
+-------------------
+Invalid input. N1 should be less than or equal to N2.
+
+Test Case 5 :- [Zero Range]
+--------------
+Input :-
+--------
+N1 = 0, N2 = 3
+
+Expected Output :-
+------------------
+0,1,2,3
+
+Test Case 6 :- [Negative Range]
+--------------
+Input :-
+---------
+N1 = -10, N2 = -5
+
+Expected Output :-
+-------------------
+-10,-9,-8,-7,-6,-5
+
+Test Case 7 :- [Same Start and End with Negative Value]
+--------------
+Input :-
+--------
+N1 = -2, N2 = -2
+
+Expected Output :-
+------------------
+-2
+Sample Input
+1
+10
+Sample Output
+1,2,3,4,5,6,7,8,9,10
+
+
+#include<stdio.h>
+int main(){
+    int n1,n2;
+    scanf("%d%d",&n1,&n2);
+    if(n1>n2){
+        printf("Invalid input. N1 should be less than or equal to N2.");
+        return 0;
+    }
+
+    printf("%d",n1);
+    while(n1 < n2){
+        n1++;
+        printf(",");
+        printf("%d", n1);
+        
+    }
+}
+
+////////////////////////////////////////
