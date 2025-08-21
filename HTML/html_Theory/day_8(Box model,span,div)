@@ -1,0 +1,36 @@
+span = we use span instead of div because if we write anything in div it takes to next line so we use span it remains in the same line 
+
+
+Box model : browser treates every element as a Box . 
+            a BOX CONTAINS = i. border
+                            ii. border-radious
+                           iii. padding 
+                            iv.  margin
+i.border : border is the surrounding line for the elements 
+          "border-top: size shape color;"
+          "border-bottom: size shape color;"
+          "border: 5px solid Red;"
+          "border: size shape color;"
+
+ii. border-radious: it is the corner radious surrounds the border corners. 
+          "border-radious:size;"
+we can also assign each corner radious seperately.
+          "border-radious: 20px;"
+          "border-top-left-radious: 20px;"
+          "border-right-bottom-radious: 20px;"
+the combination of border top and boder-bottom it is very good for perticular text with red colour .
+we can even assign border-left , border-right, border-top, border-bottom.
+
+
+iii. padding: it is the space between border and the actual content of element (inside the element)
+    "padding: size;"
+    we can also assign padding as padding-left , padding-right, padding-top, padding-bottom etc.
+   normally , padding makes each box increase ots height or width because by default all are cintent boxes. so we need to use box-sizing:border-box;
+    ⭐⭐⭐box-sizing:border-box;
+
+iv. margin : it is the space outside the border. used for gap between the elements
+    'margin:size;'
+    we can also assign margin as margin-left, margin-right, margin-top, margin-bottom.
+
+
+    
