@@ -67,7 +67,7 @@ Background: we can assign a background color or "background-image" to webpage us
     linear-gradiant: gradients are the transformation of the one color to another . linear graident asigns colirs in straight way.
     background-image: linear-gradient (position, color1 , color2.....) position can ve to left /to right /to bottom/to top /xdeg we can even 
                       assign the gradient(color1,color2);
-background-clip: text;
+background-clip: text;----------(only the text will be in gradient)
 
 redial-gradient: it is used to assign gradients circles 
 
