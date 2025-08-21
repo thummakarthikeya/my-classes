@@ -358,3 +358,185 @@ int main(){
 }
 
 ////////////////////////////////////////
+Write a C program that asks the user to input a integer and calculates the sum of its digits. Using While loop.
+
+Input : 
+	Enter a three digit number : 123
+Output :
+	Sum of the digits : 6
+
+
+
+#include <stdio.h>
+
+int main() {
+    int a;
+    scanf("%d",&a);
+    int b=0;
+    while(a!=0){
+        int temp = a%10;
+        b = b+temp;
+        a = a/10;
+    }
+    printf("%d", b);
+    return 0;
+}
+==========================================================================================================
+Write a C program that asks the user to input an integer and count the digits and print the count of the digits.
+
+Input : 
+	Enter a number : 546
+Output:
+	Count of the digits is : 3
+
+#include<stdio.h>
+int main(){
+    int a;
+    scanf("%d",&a);
+    int res=0;
+    while(a!=0){
+        int temp = a%10;
+        res++;
+        a=a/10;
+    }
+    printf("%d", res);
+}
+
+==========================================================================================================
+Write a C program that asks the user to input an integer and reverse that number and display the reverse of that given number.
+
+Input as : 
+	Enter a number : 123
+Output as : 
+	Reverse of the given number is : 321
+
+
+
+#include<stdio.h>
+int main(){
+    int a;
+    scanf("%d",&a);
+    int res=0;
+    while(a!=0){
+        int temp = a%10;
+        res = res*10+temp;
+        a=a/10;
+    }
+    printf("%d", res);
+}
+==========================================================================================================
+Write a C program that takes a  integer as input and prints its each  digits in separate line reverse order using a while loop.
+
+
+case 1:
+-------
+input :
+	Enter a number : 1234
+
+output : 
+	4
+	3
+	2
+	1
+
+
+#include<stdio.h>
+int main(){
+    int a;
+    scanf("%d",&a);
+    int res=0;
+    while(a!=0){
+        printf("%d\n",a%10);
+        a = a/10;
+    }
+}
+==========================================================================================================
+write a C program to find the factorial of a given number. Take the input from the user.
+Input as :
+	Enter a number : 5
+Output as :
+	Factoria of 5 : 120
+
+
+#include<stdio.h>
+int main(){
+    int a;
+    int b=1;
+    scanf("%d",&a);
+    
+    while(a!=0){
+        b = b*a;
+        a--;
+    }
+    printf("%d",b);
+}
+
+
+/////////////////////////////////////////////////
+
+
+Q-1
+------
+
+Write a C program to find the Maximum digit in a given integer number. 
+For example, if the input number is 153830, the output should be 8 since 8 is the highest digit in the number.
+
+Sample input : 153830
+
+Sample Output : 8 is highest digit in the number.
+
+
+
+#include<stdio.h>
+int main(){
+    int a,min=9,max=-9;
+    scanf("%d",&a);
+    
+    while(a!=0){
+        int temp = a%10;
+        if(max<temp){
+            max = temp;
+        }
+        if(min>temp){
+            min = temp;
+        }
+        a = a/10;
+    }
+    printf("min = %d max = %d",min, max);
+}
+
+Q-2
+------
+
+Write a C program to calculate the power of a base number raised to an exponent using a while loop. 
+The program should take two inputs: the base and the exponent. If either the base or the exponent is zero or negative, 
+the program should display the message "Invalid input...Please enter positive values" and terminate. Otherwise, 
+the program should calculate and display the result as base^exponent = result.
+
+Sample input  : Enter base: 2
+                Enter exponent: -5
+Sample output : Invalid input...Please enter positive values
+
+----------------------------
+Sample input  : Enter base: 2
+                Enter exponent: 5
+Sample output : 2^5 = 32
+
+----------------------------
+
+Sample input  : Enter base: 3
+                Enter exponent: 4
+Sample output : 3^4 = 81
+
+
+
+Q-3
+-------
+
+
+Write a C program that takes an integer N from the user and displays the square of all numbers from 1 to N using a while loop.
+
+Sample Input:
+	Enter a number: 4
+Sample Output:
+	1 4 9 16
