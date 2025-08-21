@@ -63,3 +63,11 @@ Background: we can assign a background color or "background-image" to webpage us
                                               background-image:radial-gradients:(45deg rgb(black,white));(the colors will be in rounds
                                                                         like outer circle will be black and inner circle will be black)
 
+
+    linear-gradiant: gradients are the transformation of the one color to another . linear graident asigns colirs in straight way.
+    background-image: linear-gradient (position, color1 , color2.....) position can ve to left /to right /to bottom/to top /xdeg we can even 
+                      assign the gradient(color1,color2);
+background-clip: text;
+
+redial-gradient: it is used to assign gradients circles 
+
