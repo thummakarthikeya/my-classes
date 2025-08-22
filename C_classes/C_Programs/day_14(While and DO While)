@@ -12,6 +12,30 @@ Input (n)	Square (n²)	Sum of Digits of n²	Output
 7				                  49		    4+9 = 13 ≠ 7		 Not Neon
 12			                 144		   1+4+4 = 9 ≠ 12   	 Not Neon
 
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a,b=0,c=0;
+    scanf("%d",&a);
+
+    b = a*a;
+    
+    while(b!=0){
+        int temp = b%10;
+        c = c+temp;
+        b=b/10;
+    }
+    if(a==c){
+        printf("neon number %d",c);
+    }else{
+        printf("not neon number %d", c);
+    }
+
+    return 0;
+}
+
 Q-2
 -------
 Check Automorphic Number
@@ -28,6 +52,27 @@ Input (n)	Square (n²)	   Ends With?		   Output
 7				49		No (ends with 9)	Not Automorphic
 11				121		No (ends with 21)	Not Automorphic
 
+// Online C compiler to run C program online
+
+#include <stdio.h>
+int main() {
+    int a,b;
+    scanf("%d",&a);
+    b = a*a;
+    
+    while(a!=0 ){
+        if(b%10 != a%10){
+        printf("Not automorphic");
+        return 0;
+        }
+        b=b/10;
+        a= a/10;
+    }
+    printf("automorphic");
+    return 0;
+}
+
+
 Q-3
 -------
 Check Harshad (Niven) Number
@@ -43,6 +88,29 @@ Input (n)	Sum of Digits		Divisible?		Output
 19				1+9 = 10		19 % 10 ≠ 0		Not Niven
 1729			1+7+2+9 = 19	1729 % 19 = 0	Niven
 11				1+1 = 2			11 % 2 ≠ 0		Not Niven
+
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a,b=0,c=0;
+    scanf("%d",&a);
+    c = a;
+    
+    while(a!=0){
+        int temp = a%10;
+        b= b+temp;
+        a=a/10;
+    }
+    if(c%b != 0){
+        printf("not Niven");
+    }else{
+        printf("Niven");
+    }
+    return 0;
+}
 
 Q-4
 ------
@@ -63,6 +131,8 @@ Enter number: 0
 
 Sample Output:
 Sum of positive numbers: 45
+
+
 
 Q-5
 -----
