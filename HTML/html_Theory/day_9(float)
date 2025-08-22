@@ -1,0 +1,26 @@
+shortcut for link tag is = link:css
+
+->Float: to come image and text content side by side.(float is used to make any 
+        element left or right side of screen . it makes the elment remove form
+          actual executatoon and next element takes up the space of floation)
+Ex: image {
+          float: left;  or  float: right;  or  float: none;
+          }
+
+we can even clear floating elements for any another element for any other elements using
+->clear: right/left/none;
+  this is clear the right side part of the content of perticular para or any text if iage etc.
+
+
+
+
+
+->display:  display is used to arrange the elements in a specific way 
+  display: block; will make the elements into block so that each element will display in new line 
+  display: incline; -- will maek the elements into inline so that each element follows the previous elements(maintains same flow)
+          but inline elements canot handle  height/width/vertical margines
+  display: inline-block -- works like inline but accept height/width
+  display:none; (removes the element(visibility: hidden just hides the elements))removes the element make the next element to occupy his place.
+
+
+->visibility:hidden; makes transperant but it will be present there 
