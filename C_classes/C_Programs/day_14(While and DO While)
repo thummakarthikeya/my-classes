@@ -1,0 +1,103 @@
+Q-1
+---------
+Check Neon Number
+A number is neon if sum of digits of its square = number.
+Example: 9² = 81 → 8+1 = 9.
+
+Condition: Sum of digits of square = number
+
+Input (n)	Square (n²)	Sum of Digits of n²	Output
+9	                        81	     8+1 = 9          Neon
+1				                   1			  1				         Neon
+7				                  49		    4+9 = 13 ≠ 7		 Not Neon
+12			                 144		   1+4+4 = 9 ≠ 12   	 Not Neon
+
+Q-2
+-------
+Check Automorphic Number
+A number is automorphic if its square ends with the number.
+Example: 25² = 625 → ends with 25.
+
+Condition: Square ends with the number
+
+Input (n)	Square (n²)	   Ends With?		   Output
+5				25		Yes (ends with 5)	Automorphic
+6				36		Yes (ends with 6)	Automorphic
+25				625		Yes (ends with 25)	Automorphic
+76				5776	Yes (ends with 76)	Automorphic
+7				49		No (ends with 9)	Not Automorphic
+11				121		No (ends with 21)	Not Automorphic
+
+Q-3
+-------
+Check Harshad (Niven) Number
+A number is Harshad if divisible by sum of its digits.
+Example: 18 ÷ (1+8) = 2.
+
+Condition: Number % Sum of digits == 0
+
+Input (n)	Sum of Digits		Divisible?		Output
+18				1+8 = 9			18 % 9 = 0		Niven
+12				1+2 = 3			12 % 3 = 0		Niven
+21				2+1 = 3			21 % 3 = 0		Niven
+19				1+9 = 10		19 % 10 ≠ 0		Not Niven
+1729			1+7+2+9 = 19	1729 % 19 = 0	Niven
+11				1+1 = 2			11 % 2 ≠ 0		Not Niven
+
+Q-4
+------
+Positive Number Sum
+Create a program that keeps taking positive numbers from user and calculates their sum using do-while loop. Stop when user enters 0 or negative number.
+
+Hints:
+- Initialize sum to 0
+- Take input in each iteration
+- Add to sum only if number is positive
+- Stop when non-positive number is entered
+
+Sample Input:
+Enter number: 10
+Enter number: 20
+Enter number: 15
+Enter number: 0
+
+Sample Output:
+Sum of positive numbers: 45
+
+Q-5
+-----
+Odd Number Printer
+Create a program that prints all odd numbers from 1 to a given number using do-while loop.
+
+Hints:
+- Start with 1 (first odd number)
+- Check if number is odd using modulo operator (% 2!= 0)
+- Continue until number exceeds the limit
+
+Sample Input:
+Enter limit: 10
+
+Sample Output:
+Even numbers up to 10:
+1 3 5 7 9
+
+Q-6
+--------
+Input Validation System
+Write a program that asks user to enter a positive integer and validates the input using do-while loop.
+
+Hints:
+- Continue asking until user enters a positive number
+- Handle negative numbers and zero
+- Display appropriate error messages
+- Show the valid input once entered
+
+Sample Input:
+Enter a positive integer: -5
+Enter a positive integer: 0
+Enter a positive integer: 15
+
+Sample Output:
+Invalid! Please enter a positive number.
+Invalid! Please enter a positive number.
+Valid input: 15
