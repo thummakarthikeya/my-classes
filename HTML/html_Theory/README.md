@@ -1,4 +1,6 @@
 these classes has to be done still:
+block line 
+inline
 postiion
 flex
 grid
