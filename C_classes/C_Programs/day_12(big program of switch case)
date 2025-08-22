@@ -50,3 +50,61 @@ Menu :-
 Enter your choice: 5
 
 Exiting the program. Thank you!
+
+
+
+
+#include <stdio.h>
+
+int main() {
+    int choice, quantity,price=0;
+
+    while (1) {
+        // Display menu
+        printf("\nMenu :-\n");
+        printf("1. Pizza - $10\n");
+        printf("2. Burger - $7\n");
+        printf("3. Pasta - $8\n");
+        printf("4. Salad - $5\n");
+        printf("5. Exit\n");
+
+        // Take user choice
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+
+        // Exit condition before asking for quantity
+        if (choice == 5) {
+            printf("\nExiting the program. Thank you!\n");
+            break;
+        }
+
+        // Ask for quantity only if valid menu item
+        printf("Enter the quantity: ");
+        scanf("%d", &quantity);
+
+        // Switch case for menu
+        switch (choice) {
+            case 1:
+                price = price +10*quantity;
+                printf("\nYou selected Pizza. Price: $%d\n", price);
+                break;
+            case 2:
+                price = price +7*quantity;
+                printf("\nYou selected Burger. Price: $%d\n",price);
+                break;
+            case 3:
+                price = price +8*quantity;
+                printf("\nYou selected Pasta. Price: $%d\n", price);
+                break;
+            case 4:
+                 price = price +5*quantity;
+                printf("\nYou selected Salad. Price: $%d\n",price);
+                break;
+            default:
+                printf("\nInvalid choice! Please select from 1-5.\n");
+                break;
+        }
+    }
+
+    return 0;
+}
