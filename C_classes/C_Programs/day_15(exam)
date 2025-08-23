@@ -1,0 +1,185 @@
+Banking_System_Menu
+Question 2: Banking System Menu
+Develop a simple banking menu system using switch statement for basic operations.
+
+Hints:
+- Menu options: 1-Check Balance, 2-Deposit, 3-Withdraw
+- Initialize balance to some value (e.g., 1000.0)
+- Display updated balance after each transaction
+Sample Input:
+Current Balance: 1000.0
+Choose operation: 2
+Enter deposit amount: 500.0
+
+Sample Output:
+Deposit successful!
+Updated Balance: 1500.0
+Sample Input
+1
+Sample Output
+Your current balance: ₹1000.00
+
+
+  #include<stdio.h>
+int main(){
+    int a;
+    float balance = 1000,Deposit,Withdraw;
+    scanf("%d",&a);
+
+    switch(a){
+        case 1:
+        printf("Current Balance: %.1f", balance);
+        break;
+
+        case 2:
+        scanf("%f",&Deposit);
+        balance = balance+Deposit;
+        printf("Deposit successful!\n");
+        printf("Updated Balance: %.1f",balance);
+        break;
+
+        case 3:
+        scanf("%f",&Withdraw);
+        if(Withdraw > balance){
+            printf("Insufficient funds!");
+            return 0;
+        }
+        balance = balance - Withdraw;
+        printf("Withdrawal successful!\n");
+        printf("Updated Balance: %.1f",balance);
+        break;
+    }
+}
+
+
+
+/////////////////////////////////////////////////////
+
+
+Simple_Calculator
+Create a calculator program that performs basic arithmetic operations (+, -, *, /, %) based on user input using switch statement.
+
+Hints:
+- Take two numbers and one operator as input
+- Display error message for invalid operators
+
+Sample Input:
+15.5 4.5  +
+
+Sample Output:
+15.5 + 4.5 = 20.0
+Sample Input
+15.5 4.5 +
+Sample Output
+15.5 + 4.5 = 20.0
+
+
+  #include<stdio.h>
+int main(){
+    float a,b;
+    char ch;
+    scanf("%f %f %c",&a,&b,&ch);
+    // scanf("%c",);
+
+    switch(ch){
+        case '+':
+        printf("%.1f + %.1f = ",a,b);
+        printf("%.1f",a+b);
+        break;
+
+        case '-':
+        printf("%.1f - %.1f = %.1f",a,b,a-b);
+        break;
+
+        case '*':
+        printf("%.1f * %.1f = %.1f",a,b,a*b);
+        break;
+
+        case '/':
+        printf("%.1f / %.1f = %.1f",a,b,a/b);
+        break;
+    }
+
+}
+
+
+//////////////////////////////////////
+
+
+: Vending_Machine_Simulator
+Question 3: Vending Machine Simulator
+Simulate a vending machine operation using switch statement for product selection and payment processing.
+
+Hints:
+- Products: 1-Soda(30₹), 2-Chips(15₹), 3-Candy(10₹), 4-Water(20₹)
+- Handle payment validation and change calculation
+- Track inventory for each product
+- Display transaction details and remaining change
+
+Sample Input:
+Select product: 2
+Insert money: 20
+
+Sample Output:
+Product: Chips - 15
+Payment: 20
+Change: 5
+Transaction successful! Enjoy your chips!
+Sample Input
+2
+20
+Sample Output
+Product: Chips - 15₹
+Payment: 20₹
+Change: 5₹
+
+
+
+#include<stdio.h>
+int main(){
+    int a,money,Change=0;
+    scanf("%d%d", &a,&money);
+    
+    switch(a){
+        case 1:
+        printf("Product: Soda- 30₹\n");
+        printf("Payment: %d₹\n", money);
+        Change = 30-money;
+        printf("Change: %d₹\n",Change);
+        printf("Transaction successful! Enjoy your Soda!");
+        break;
+
+        case 2:
+        printf("Product: Chips - 15₹\n");
+        printf("Payment: %d₹\n", money);
+        Change = money-15;
+        printf("Change: %d₹\n",Change);
+        printf("Transaction successful! Enjoy your Chips!");
+        break;
+
+        case 3:
+        if(money <30){
+            printf("Insufficient money! Transaction cancelled.");
+            return 0;
+        }
+        printf("Product: Candy- 10₹\n");
+        printf("Payment: %d₹\n", money);
+        
+        Change = 10-money;
+        printf("Change: %d₹\n",Change);
+        printf("Transaction successful! Enjoy your Soda!");
+        break;
+
+        case 4:
+        printf("Product: Water - 20₹\n");
+        printf("Payment: %d₹\n", money);
+        Change = 20-money;
+        printf("Change: %d₹\n",Change);
+        printf("Transaction successful! Enjoy your Water!");
+        break;
+
+        default:
+        printf("invalid input!");
+    }
+
+}
