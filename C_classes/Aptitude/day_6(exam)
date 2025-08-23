@@ -1,0 +1,22 @@
+tion No	Question Description	Attempted Answer	Result	Status
+1	5)*. What is the purpose of the default case in a switch statement?	b) It executes when no other case matches		Attempted
+2	3)*. What happens if you don't use a break statement in a case?	c) Fall-through to the next case		Attempted
+3	7)*. What will be the output of this code? int x = 2; switch(x) { case 1: printf("One"); case 2: printf("Two"); case 3: printf("Three"); }	b) TwoThree		Attempted
+4	14)*. What will happen if you use continue inside a switch case?	a) It will skip to the next case		Attempted
+5	12)*. What is the correct way to handle multiple values for the same action?	b) case 1: case 2: case 3: printf("Multiple"); break;		Attempted
+6	8)*. Where can the default case be placed in a switch statement?	c) Anywhere within the switch block		Attempted
+7	19)*. Can goto statements be used to jump into a switch case from outside?	c) Yes, but it's undefined behavior		Attempted
+8	4)*. Which keyword is used to exit from a switch case?	d) return		Attempted
+9	10. What happens if two case labels have the same value?	a) The first one executes		Attempted
+10	15). Can you declare variables inside a case block?	d) Yes, without any restrictions		Attempted
+11	6)*. Can you use variables as case labels in a switch statement?	b) No, only constants are allowed		Attempted
+12	16)*. What is the range of values that can be used in a switch statement with char data type?	b) -128 to 127		Attempted
+13	9)*. Which of the following is NOT allowed in a switch statement?	c) Float values as case labels		Attempted
+14	2)*. Which of the following data types can be used in a switch statement?	a) int, char		Attempted
+15	1)*. What is the correct syntax for a switch statement in C?	a) switch(variable) { case value: statements; }		Attempted
+16	18)*. What happens if a switch statement has no default case and no case matches?	c) Program continues after the switch block		Attempted
+17	13)*. Which statement about switch is FALSE?	c) Switch can handle string comparisons directly in C		Attempted
+18	17). Which of the following switch statements is valid?	b) switch('A') { case 'A': break; }		Attempted
+19	11)*. Can you use expressions in case labels?	b) No, only constant expressions		Attempted
+20	20. What is the maximum number of case labels allowed in a switch statement?	c) Implementation dependent		Attempted
+Exam Result
