@@ -1,0 +1,164 @@
+MultiplicationTableUsingForLoop
+
+Write a program in C to display the multiplication table for a given integer. 
+
+
+
+Test Data :
+
+Input the number (Table to be calculated) : 15
+
+Expected Output :
+
+15 X 1 = 15
+
+...
+
+...
+
+15 X 10 = 150
+Sample Input
+5
+Sample Output
+5 X 1 = 5
+5 X 2 = 10
+5 X 3 = 15
+5 X 4 = 20
+5 X 5 = 25
+5 X 6 = 30
+5 X 7 = 35
+5 X 8 = 40
+5 X 9 = 45
+5 X 10 = 50
+
+
+
+  #include<stdio.h>
+int main(){
+    int a;
+    int b=1;
+    scanf("%d",&a);
+    if(a<0){
+        printf("Negative value not allowed.");
+        return 0;
+    }
+    for(int i=0; i<10; i++){
+        printf("%d X %d = %d\n",a,b,a*b);
+        b++;
+    }
+}
+
+///////////////////////////////////////////
+
+FindCube
+Write a program in C to display the cube of the number up to an integer.
+
+
+
+Test Data :
+
+Input number of terms : 5
+
+Expected Output :
+
+Number is : 1 and cube of the 1 is :1
+
+Number is : 2 and cube of the 2 is :8
+
+Number is : 3 and cube of the 3 is :27
+
+Number is : 4 and cube of the 4 is :64
+
+Number is : 5 and cube of the 5 is :125
+Sample Input
+3
+Sample Output
+Number is : 1 and cube of the 1 is :1
+Number is : 2 and cube of the 2 is :8
+Number is : 3 and cube of the 3 is :27
+
+
+#include<stdio.h>
+int main(){
+    int a;
+    scanf("%d",&a);
+
+    if(a<=0){
+        printf("Negative value not allowed.");
+    }
+    for(int i=1; i<=a; i++){
+        printf("Number is : %d and cube of the %d is :%d\n",i,i,i*i*i);
+    }
+
+}
+
+
+
+///////////////////////////////////////
+
+
+Factorial Calculation
+[Title:- Factorial Calculation] [for-loop]
+------------------------------------------
+
+Write a C program to calculate the factorial of a given positive integer.
+The program should prompt the user to enter a number, compute its factorial, and display the result.
+
+-> If the user enters a negative number, the program should display an error message: "Invalid input. Please enter a positive integer."
+-> If the input is 0, the program should print: "Factorial of 0 = 1," because by definition, 0! = 1.
+
+|-----------------------------------|
+|Formula: n! = 1 × 2 × 3 × ... × n. |
+|-----------------------------------|
+
+Valid Test Cases :-
+-------------------
+Test-Case-1 :-
+--------------
+Input: 5
+Output: Factorial of 5 = 120
+
+Test-Case-2 :-
+---------------
+Input: 3
+Output: Factorial of 3 = 6
+
+Test-Case-3 :-
+---------------
+Input: 0
+Output: Factorial of 0 = 1
+
+Invalid Test Cases :-
+---------------------
+Test-Case-4 :- (Negative Input)
+-------------------------------
+Input: -4
+Output: Invalid input. Please enter a positive integer.
+
+Test-Case-5 :- (Non-integer Input)
+----------------------------------
+Input: "abc" (non-integer)
+Output: Error (Depending on the system, the program might crash or display invalid behavior).
+Sample Input
+3
+Sample Output
+Factorial of 3 = 6
+
+
+#include<stdio.h>
+int main(){
+    int a,b=1;
+
+    scanf("%d", &a);
+   
+   if(a<=0){
+    printf("Invalid input Please enter a positive integer.");
+    return 0;
+    
+   }
+    for(int i=a; i>0; i--){
+       b  = b*i;
+    }
+    
+printf("Factorial of %d = %d",a,b);
+}
