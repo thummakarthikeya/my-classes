@@ -5,6 +5,24 @@ Example:
 Input: N=7
 Output: 0 1 1 2 3 5 8
 
+#include <stdio.h>
+
+int main() {
+    int a,res=0,temp=0,b=1;
+    scanf("%d", &a);
+    
+    for(int i=0; i<a; i++){
+        printf("%d ",res);
+        
+        res = b+temp;
+        b = temp;
+        temp = res;
+    }
+    return 0;
+}
+
+///////////////////////////////////////////
+
 Q2.  Check Perfect Number
 Question:
 A number is Perfect if the sum of its divisors (excluding itself) equals the number.
@@ -14,6 +32,26 @@ Example:
 Input: 28 → Divisors (1+2+4+7+14=28) → Perfect Number
 
 
+#include <stdio.h>
+
+int main() {
+    int a,dublicate,val=0;
+    scanf("%d", &a);
+    dublicate = a;
+    for(int i=1; i<=a/2; i++){
+        if(a%i==0){
+            val= val+i;
+        }
+    }
+    
+    if(dublicate == val){
+        printf("perfect num");
+    }else{
+        printf("not a perfect num");
+    }
+    return 0;
+}
+//////////////////////////////////////
 
 Q3.  Print Multiples of a Number
 
@@ -21,11 +59,43 @@ Print the first N multiples of a number.
 Example:
 Input: x = 7, N = 5 → Output: 7 14 21 28 35
 
+#include <stdio.h>
+
+int main() {
+    int a,b,dublicate,val=0;
+    scanf("%d%d", &a,&b);
+    
+    for(int i=1; i<=b; i++){
+       printf("%d ", a*i);
+    }
+    return 0;
+}
+
+//////////////////////////////////////////////
+
+
 Q4. Greatest Common Divisor (GCD)
 Find GCD of two numbers using a for loop.
 
 Example:
 Input: 12, 18 → GCD = 6
+
+#include <stdio.h>
+int main() {
+    int a,b,gcd=0;
+    scanf("%d%d", &a,&b);
+    for(int i=1; i<=a && i<=b; i++){
+       if(a%i == 0 && b%i == 0){
+           gcd = i;
+       }
+    }
+    printf("%d", gcd);
+    return 0;
+}
+
+/////////////////////////////////////////////////
+
+
 
 
 Q5. Power of a Number
@@ -34,6 +104,19 @@ Find x^y using a for loop.
 Example:
 Input: x=2, y=5 → Output: 32
 
+#include <stdio.h>
+int main() {
+    int a,b,power=1;
+    scanf("%d%d", &a,&b);
+    for(int i=1; i<=b; i++){
+      
+      power = power*a; 
+    }
+    printf("%d", power);
+    return 0;
+}
+
+///////////////////////////////////////////////
 
 Q6. Sum of an Arithmetic Progression (AP)
 
@@ -41,6 +124,22 @@ Find sum of first N terms of AP.
 Example:
 Input: a=2, d=3, N=5 → Sequence: 2 5 8 11 14 → Sum=40
 
+
+#include <stdio.h>
+int main() {
+    int a,b,total,power=1, tol=0;
+    scanf("%d%d%d", &a,&b,&total);
+    printf("Sequence: ");
+    for(int i=1; i<=total; i++){
+      printf("%d ", a);
+      tol  = tol + a;
+      a = a+b;
+    }
+    printf("%d", tol);
+    return 0;
+}
+
+////////////////////////////////////////////////////////////
 Q7. Question: LCM of Two Numbers using for Loop in C
 Problem Statement:
 Write a program in C to find the Least Common Multiple (LCM) of two given numbers using a for loop. The program should take two integers as input and print their LCM.
@@ -68,3 +167,21 @@ num2 = 20
 
 Output:
 LCM of 15 and 20 = 60
+
+
+#include <stdio.h>
+int main() {
+    int a,b,max;
+    scanf("%d%d", &a,&b);
+    max = a>b ? a : b;
+    printf("LCM of %d and %d",a,b);
+    
+    for(;;){
+        if(max%a == 0 && max%b == 0 ){
+            printf("LCM of %d and %d is = %d",a,b,max);
+            break;
+        }
+        max++;
+    }
+    return 0;
+}
