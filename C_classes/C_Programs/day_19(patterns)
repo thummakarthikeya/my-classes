@@ -139,6 +139,60 @@ int main() {
 
 
 
+  1  2  3  4  5
+  2  4  6  8 10
+  3  6  9 12 15
+  4  8 12 16 20
+  5 10 15 20 25
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    for(int i=1; i<=5; i++){
+        for(int j=1; j<=5; j++){
+            printf("%3d",j*i);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+
+///////////////////////////////////////////////////////
+
+
+
+  5 10 15 20 25
+  4  9 14 19 24
+  3  8 13 18 23
+  2  7 12 17 22
+  1  6 11 16 21
+
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+      int a=5;
+
+      for(int i=a; i>=1; i--){
+            int k=i;
+
+        for(int j=1; j<=5; j++){
+            printf("%3d",k);
+            k=k+5;
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+
+////////////////////////////////////////////////////////////
+
 
 
 
