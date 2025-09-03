@@ -49,7 +49,7 @@ Background: we can assign a background color or "background-image" to webpage us
         ⭐⭐⭐
         background-image: url('')    
         background-repeate: no-repeate;
-        background-postion: cover;
+        background-postion: center;
         background-size: cover;
         background-attachement : auto/scroll/fixed;(it is very important because if we put 'fixed ' the background image 
                                                     will be fixed ifen the the content is motre like wordpress)
