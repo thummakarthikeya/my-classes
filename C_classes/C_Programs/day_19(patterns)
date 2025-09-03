@@ -189,9 +189,222 @@ int main() {
     }
     return 0;
 }
+////////////////////////////////////////////////////////////
+  0  1  0  1  0
+  1  0  1  0  1
+  0  1  0  1  0
+  1  0  1  0  1
+  0  1  0  1  0
+
+#include <stdio.h>
+
+int main() {
+   int n=5,i,j;
+    for(i = 1;i<=n;i++) {  
+        for(j = 1;j<=n;j++) { 
+            printf("%3d",(i+j)%2);  
+        }                      
+        printf("\n");
+    }
+
+    return 0;
+}
+
+////////////////////////////////////////////////////////////
+
+
 
 
 ////////////////////////////////////////////////////////////
+
+  1  0  0  0  0  0  1
+  0  1  0  0  0  1  0
+  0  0  1  0  1  0  0
+  0  0  0  1  0  0  0
+  0  0  1  0  1  0  0
+  0  1  0  0  0  1  0
+  1  0  0  0  0  0  1
+
+
+#include <stdio.h>
+
+int main() {
+   int n=7,i,j;
+    for(i = 1;i<=n;i++) {  
+        for(j = 1;j<=n;j++) { 
+            if(i==j || i+j == n+1) {
+            printf("%3d",1);
+            }else {
+                printf("%3d",0);
+            }
+        }                      
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+
+//////////////////////////////////////////////////////////
+
+   1   2   3   4   5
+  10   9   8   7   6
+  11  12  13  14  15
+  20  19  18  17  16
+  21  22  23  24  25
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a=0;
+    
+    for(int i=1; i<=5; i++){
+        
+        if(i%2!=0){
+            for(int j=1; j<=5; j++){
+                printf("%4d", ++a);
+              
+            }
+        }else{
+            for(int j=5; j>=1; j--){
+                printf("%4d", a--);
+            }
+        }
+        printf("\n");
+        a=a+5;
+    }
+
+    return 0;
+}
+
+
+/////////////////////////////////////////////////////
+
+
+   1   6  11  16
+   2   7  12  17
+   3   8  13  18
+   4   9  14  19
+   5  10  15  20
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a=1;
+    
+    for(int i=1; i<=5; i++){
+        a=i;
+        for(int j=1; j<5; j++){
+          
+            printf("%4d", a);
+              a=a+5;
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+////////////////////////////////////////////
+
+
+  A  B  C  D
+  E  F  G  H
+  I  J  K  L
+  M  N  O  P
+  Q  R  S  T
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    char a='A';
+    
+    for(int i=1; i<=5; i++){
+        for(int j=1; j<5; j++){
+            printf("%3c", a++);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+///////////////////////////////////////////////
+
+  A  B  C  D  E
+  B  C  D  E  F
+  C  D  E  F  G
+  D  E  F  G  H
+  E  F  G  H  I
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    char a='A',b='A';
+    
+    for(int i=1; i<=5; i++){
+        
+        for(int j=1; j<=5; j++){
+            printf("%3c", b++);
+        }
+        printf("\n");
+        b=a+i;
+    }
+
+    return 0;
+}
+
+
+
+/////////////////////////////////////////////////////
+
+  E  J  O  T  Y
+  D  I  N  S  X
+  C  H  M  R  W
+  B  G  L  Q  V
+  A  F  K  P  U
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    char a='A',b='A';
+    
+    for(int i=1; i<=5; i++){
+        b=a+5-i;
+        for(int j=5; j>=1; j--){
+            printf("%3c", b++);
+            b=b+4;
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+
+
+///////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
 
 
 
