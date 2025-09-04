@@ -34,3 +34,42 @@ iv. margin : it is the space outside the border. used for gap between the elemen
 
 
     
+
+
+//////////////////////////class notes without spelling mistakes ///////////////////////////////////
+
+
+Linear-gradients:  gradients are the transformation of one color to another. linear graident assigns colors in straight way.
+         background-image:linear-gradient(position,color1,color2....)
+         position can be to left/to right/to bottom/to top/xdeg
+      we can even assign the gradient or image to text
+      color:transparant;
+      background-image:linear-gradient(color1,color2);
+      background-clip:text;
+
+   Radial-gradient: it is used to assign gradients circular way
+         background-image:radial-gradient(color1,color2)
+Box Model:  Browsers treat Every element as a Box. A Box contains
+   i. border
+   ii. border-radius
+   iii. padding
+   iv. margin
+
+i. border : border is the surrounding line for an element
+          border: size shape color;
+   we can even assign border-left,border-right,border-top,border-bottom
+
+ii. border-radius : it is the corner radius surround the border corners.
+         border-radius:size;
+         50% of border-radius make actual circle for square shape
+         we can also assign each corner radius separately
+
+iii. padding: it is the space between border and actual content of element(inside the element)
+         padding:size;
+    we can also assign padding as padding-left,padding-right,padding-top,padding-bottom
+    Normally, padding makes each box increase its height or width because by default all are content boxes.so we need to use
+    box-sizing:border-box;
+
+iv. margin : it is the space outside the border . used for gap between the elements
+     margin:size;
+    we can also assign margin as margin-left,margin-right,margin-top,margin-bottom
