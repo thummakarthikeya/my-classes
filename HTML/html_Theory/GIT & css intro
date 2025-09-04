@@ -1,0 +1,33 @@
+GIT :
+    Git is a version control sytem. it is distributed in Nature.
+  1. download and install git from internet
+  2. After installing, go to "cmd" and type "git -v". if properly installed , version will come
+  3. open vs code, open code folder , open terminal--> new terminal in vs code
+ 4.   git init
+5.  git add .
+6.  git commit -m "message"
+7. for the first time, you need to verify who are you
+        git config --global user.name "username"
+        git config --global user.email "your email"
+
+we need one website to store, share, deploy our code called "github"
+8. goto "github.com" account
+9. git remote add origin "link"
+10. git push -u origin main/master
+
+On Every Change, repeat, 5 , 6  and 10
+
+
+
+our code Link: https://github.com/prasad-bigdp/html4pm
+
+/////////////////////////////////////////////////////////////////
+
+
+CSS Introduction:
+  CSS stands for Cascading Style Sheets. Cascading refers to the styles that are applied to elements in a web page.CSS is used to style/design the layout or appearance of web pages.
+ 
+  CSS can be used in HTML in three ways
+     i. Inline Styling
+     ii. internal Styling
+     iii. External Styling
