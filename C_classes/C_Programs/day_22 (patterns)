@@ -1,5 +1,12 @@
 Ques - 1
 =========================
+
+  1  2  3  4  5
+ 10  9  8  7  6
+ 11 12 13 14 15
+ 20 19 18 17 16
+ 21 22 23 24 25
+
 // Online C compiler to run C program online
 #include <stdio.h>
 
@@ -20,6 +27,13 @@ int main() {
 --------------------------------------------------------------------------
 Ques - 2
 =========================
+
+  1  6 11 16
+  2  7 12 17
+  3  8 13 18
+  4  9 14 19
+  5 10 15 20
+
 // Online C compiler to run C program online
 #include <stdio.h>
 
@@ -39,6 +53,13 @@ int main() {
 ============================================
 Ques - 3
 =========================
+
+  A  B  C  D
+  E  F  G  H
+  I  J  K  L
+  M  N  O  P
+  Q  R  S  T
+
 // Online C compiler to run C program online
 #include <stdio.h>
 
@@ -59,6 +80,13 @@ int main() {
 ===============================================
 Ques - 4
 =========================
+
+  A  B  C  D  E
+  B  C  D  E  F
+  C  D  E  F  G
+  D  E  F  G  H
+  E  F  G  H  I
+
 // Online C compiler to run C program online
 #include <stdio.h>
 
@@ -79,6 +107,13 @@ int main() {
 =================================================
 Ques - 5
 =========================
+
+  E  J  O  T  Y
+  D  I  N  S  X
+  C  H  M  R  W
+  B  G  L  Q  V
+  A  F  K  P  U
+
 // Online C compiler to run C program online
 #include <stdio.h>
 
@@ -101,6 +136,14 @@ int main() {
 ========================================================
 Ques - 6
 =========================
+
+  *            
+  *  *         
+  *  *  *      
+  *  *  *  *   
+  *  *  *  *  *
+
+
 int main() {
     int n=5;
     for(int i = 1;i<=n;i++) { 
@@ -117,6 +160,12 @@ int main() {
 Ques - 7
 =========================
 // Online C compiler to run C program online
+
+  1         
+  2  3      
+  4  5  6   
+  7  8  9 10
+
 #include <stdio.h>
 
 int main() {
@@ -138,6 +187,13 @@ int main() {
 =========================================================
 Ques - 8
 =========================
+
+  2            
+  2  4         
+  2  4  6      
+  2  4  6  8   
+  2  4  6  8 10
+
 // Online C compiler to run C program online
 #include <stdio.h>
 
@@ -154,9 +210,7 @@ int main() {
             }         
         }
       printf("\n"); 
-    }
-
-   
+    }  
     return 0;
 }
 =================================================
@@ -165,8 +219,15 @@ Ques - 9
 =========================
 Solution - 1
 -------------------
-#include <stdio.h>
 
+  1               
+  1  1            
+  1  2  1         
+  1  2  3  1      
+  1  2  3  4  1   
+  1  1  1  1  1  1
+
+#include <stdio.h>
 int main() {
     int n=6;
     for(int i = 1;i<=n;i++) { 
@@ -178,20 +239,25 @@ int main() {
                 }else {
                     printf("%3d",j);
                 }
-               
             } else {
                 printf("%3c",' ');
             }         
         }
       printf("\n"); 
     }
-
-   
     return 0;
 }
 
 Solution - 2
 -------------------------
+
+  1
+  1  1
+  1  2  1
+  1  2  3  1
+  1  2  3  4  1
+  1  1  1  1  1  1
+
 // Online C compiler to run C program online
 #include <stdio.h>
 
@@ -211,8 +277,6 @@ int main() {
         
       printf("\n"); 
     }
-
-   
     return 0;
 }
 
