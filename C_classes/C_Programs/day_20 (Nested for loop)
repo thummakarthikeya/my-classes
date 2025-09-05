@@ -1,0 +1,57 @@
+Ques - 1
+--------------
+A Strong Number is a number in which the sum of the factorial of its digits equals the number itself.
+
+Example:
+
+145 = 1! + 4! + 5! = 1 + 24 + 120 = 145 
+2 = 2! = 2 
+
+40585 = 4! + 0! + 5! + 8! + 5! = 40585
+Check the given number is strong number or not by using nested while loop.
+Example : 
+Input as : 145
+Output as : 145 is a strong number.
+
+Example : 
+Input as : 125
+Output : 125 is not a strong number.
+
+
+Ques - 2
+---------------
+Find All Palindrome Numbers in a Range  by using nested for loop and while loops.
+Problem: Print all palindrome numbers between 1 and 1000.
+
+Outer for → pick each number in range
+Inner for → reverse digits
+
+Example Output:
+1 2 3 ... 121 131 ... 999
+
+Ques - 3
+-----------------
+Find Prime Numbers in a Range  by using nested for loop.
+
+Problem: Write a program to print all prime numbers between 1 and 50 using nested for loops.
+Outer for → goes through numbers 1 to 50
+Inner for → checks if a number is prime
+
+Example Output:
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
+
+Ques - 4
+-------------------
+Print All Perfect Numbers in a Range by using nested for loops.
+
+Problem: A perfect number is one where the sum of divisors (excluding itself) equals the number.
+Write a program to find all perfect numbers between 1 and 1000.
+
+Outer for → numbers 1 to 1000
+Inner for → sum divisors
+
+Example Output:
+6 28 496
+
+
+
