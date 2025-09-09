@@ -78,6 +78,111 @@ int main() {
 //////////////////////////////////////////////////////
 
 
+              1            
+           3  2  1         
+        5  4  3  2  1      
+     7  6  5  4  3  2  1   
+  9  8  7  6  5  4  3  2  1
+
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int n=5;
+    int x=n,y=n;
+int k=1,temp=1;
+    for(int i=1; i<=n; i++){
+        k=i+5;
+        for(int j=1; j<=n*2-1; j++){
+            k--;
+            if(j<x || j>y){
+                printf("   ");
+            }else{
+                printf("%3d",k );
+            }
+        }
+        x--;
+        y++;
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+
+or
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int n=5;
+    int x=n,y=n;
+int k=1,temp=1;
+    for(int i=1; i<=n; i++){
+        temp = k;
+        for(int j=1; j<=n*2-1; j++){
+            if(j<x || j>y){
+                printf("   ");
+            }else{
+                printf("%3d", k--);
+            }
+        }
+        k = temp+2;
+        x--;
+        y++;
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+////////////////////////////////////////////////////////////
+
+
+              1            
+           2  1  2         
+        3  2  1  2  3      
+     4  3  2  1  2  3  4   
+  5  4  3  2  1  2  3  4  5
+
+
+#include <stdio.h>
+
+int main() {
+    int n=5;
+    int x=n,y=n;
+// int k=1,temp=1;
+    for(int i=1; i<=n; i++){
+        
+        int k=5+1;
+        int temp=1;
+        for(int j=1; j<=n*2-1; j++){
+            k--;
+            if(j<x || j>y){
+                printf("   ");
+            }else{
+                if(j<=5){
+                   printf("%3d",k ); 
+                }else{
+                    printf("%3d",++temp );
+                }
+            }
+        }
+        x--;
+        y++;
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+///////////////////////////////////////////////////////
 
 
 
