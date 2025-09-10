@@ -1,0 +1,253 @@
+Print Even and Odd Elements Separately
+Write a program to print all even elements and all odd elements separately from a given array.
+
+Input Format
+
+First line: an integer n (size of the array).
+
+Second line: n space-separated integers (array elements).
+
+Output Format
+
+Print even elements in one line as:
+Even elements are : e1 e2 e3 ...
+
+Print odd elements in another line as:
+Odd elements are : o1 o2 o3 ...
+Sample Input
+7
+1 2 3 4 5 6 7
+Sample Output
+Even elements are : 2 4 6
+Odd elements are : 1 3 5 7
+
+
+
+  // Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    // Write C code here
+    int size;
+    scanf("%d",&size);
+    
+    int arr[size];
+
+    if(size == 0){
+        printf("Invalid array size");
+        return 0;
+    }
+    
+    for(int i=0; i<size; i++){
+        scanf("%d",&arr[i]);
+    }
+    int even, odd;
+    printf("Even elements are : ");
+    for(int i=0; i<size; i++){
+        if(arr[i]%2 == 0){
+            printf("%d ", arr[i]);
+        }
+    }
+
+    printf("\nOdd elements are : ");
+    for(int i=0; i<size; i++){
+        if(arr[i]%2 != 0){
+            printf("%d ", arr[i]);
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+///////////////////////////////////////////////////
+
+
+StoreAndPrintElements
+Write a program in C to store elements in an array and print it.
+Input 10 elements in the array :
+element - 0 : 1
+element - 1 : 1
+
+
+Input Format  : 1st take the size of an Array and after that take all the elements based on the array size
+
+Output Format : print all the stored Elements of an Array
+Sample Input
+10 1 2 3 4 5 6 7 8 9 10
+Sample Output
+10 1 2 3 4 5 6 7 8 9 10
+
+
+  #include <stdio.h>
+
+int main() {
+    int size;
+    scanf("%d", &size);
+
+    if (size <= 0) {
+        printf("Invalid Input");
+        return 0;
+    }
+
+    int arr[size];
+
+    // Input array elements
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Print array elements
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+
+////////////////////////////////////////////////////////////
+
+
+Find Middle Element(s) of an Array
+Write a program to find the middle element(s) of a given array.
+
+If the array size is odd, print only the middle element.
+
+If the array size is even, print both middle elements.
+
+Note: Middle elements should be found using index calculation.
+
+Input Format
+
+First line: an integer n (size of the array).
+
+Second line: n space-separated integers (array elements).
+
+Output Format
+
+If odd → print single middle element.
+
+If even → print both middle elements.
+Sample Input
+5
+1 2 3 4 5
+Sample Output
+3
+
+
+  #include <stdio.h>
+
+int main() {
+    int size;
+    scanf("%d", &size);
+
+    if (size <= 0) {
+        printf("Invalid array size");
+        return 0;
+    }
+
+    int arr[size];
+
+    // Input array elements
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Print array elements
+    for (int i = 0; i < size; i++) {
+        
+        if(size%2 != 0){
+
+            if(i==size/2){
+            printf("%d ", arr[i]);
+        }
+
+        }else{
+
+            if(i==size/2){
+            printf("%d %d", arr[i-1], arr[i]);
+         }
+        }
+        
+        
+        
+    }
+
+    return 0;
+}
+
+
+
+  /////////////////////////////////////////////////////////////////////
+
+
+
+Swap First and Last Element of an Array
+Write a program to swap the first and last element of a given array.
+
+Input Format
+
+First line: an integer n (size of the array).
+
+Second line: n space-separated integers (array elements).
+
+Output Format
+
+Print the array after swapping the first and last element.
+Sample Input
+6
+1 2 3 4 5 6
+Sample Output
+6 2 3 4 5 1
+
+
+
+  #include <stdio.h>
+
+int main() {
+    int size;
+    scanf("%d", &size);
+
+    if (size <= 0) {
+        printf("Invalid array size");
+        return 0;
+    }
+
+    if (size <= 1) {
+        printf("Array size too small to swap");
+        return 0;
+    }
+
+    int arr[size];
+
+    // Input array elements
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    int last = 0;
+
+        last = arr[size-1];
+        arr[size-1] = arr[0];
+        arr[0] = last;
+
+    // Print array elements
+    for (int i = 0; i < size; i++) {
+       
+       printf("%d ", arr[i]);
+        
+    }
+
+    return 0;
+}
+
+
+
+///////////////////////////////////////////////////////////////
+
+
+
+  
