@@ -248,6 +248,249 @@ int main() {
 
 ///////////////////////////////////////////////////////////////
 
+Searching Element Indices
+Write a C program to find the element given by user is present in the 
+
+array or not 
+
+If the element is present in the array also programmer have to print 
+
+index position of that searching element.
+
+If the user pass the element for searching in the array is not present
+
+then also provide a appropriate message to the user that element is not 
+
+present inside the array.
+
+
+Input 1:-
+
+[1,2,3,4,5,6,7]
+
+
+Enter the number you want to search : 5
+
+
+Output :-
+
+
+The element which you have sreached is present inside the 4rth index 
+
+
+Input 2:-
+
+[1,2,3,4,3,6]
+
+
+Enter the number you want to search : 9
+
+
+Output :
+
+
+The element which you have sreached is not present inside the Array.
+Sample Input
+7
+1
+2
+3
+4
+5
+6
+7
+5
+Sample Output
+The element which you have sreached is present inside the 4 index
+
+
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    // Write C code here
+    int size;
+    scanf("%d",&size);
+    
+    int arr[size];
+
+    if(size <= 0){
+        printf("Invalid Arrays Size");
+        return 0;
+    }
+    
+
+    for(int i=0; i<size; i++){
+        scanf("%d",&arr[i]);
+    }
+
+
+    int search;
+    scanf("%d",&search);
+   
+   for(int i=0; i<size; i++){
+        if(arr[i] == search){
+            printf("The element which you have searched is present inside the %d index", i);
+            return 0;
+        }
+   }
+
+   printf("The element which you have searched is not present inside the Array.");
+
+    return 0;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+Sum of Elements
+-> Reads an integer N from the user to define the size of a dynamically allocated array.
+-> Prompts the user to input N integer values into the array.
+-> Calculates and prints the sum of all elements in the array.
+
+Sample TestCase :-
+--------------------------
+Input :-
+--------
+Enter the size of the array: 6  
+Enter 6 elements into the array:  
+8  2  3  4  5  6  
+
+Output :-
+---------
+The sum of all elements in the array is: 28  
+Sample Input
+5
+-2  -4  -6  -8  -10
+Sample Output
+The sum of all elements in the array is: -30
+
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    // Write C code here
+    int size;
+    scanf("%d",&size);
+    
+    int arr[size];
+
+    if(size == 0){
+        printf("Invalid input. Array size must be greater than 0");
+        return 0;
+    }
+    if(size < 0){
+        printf("Invalid input. Array size must be a positive integer");
+        return 0;
+    }
+    
+
+    for(int i=0; i<size; i++){
+        scanf("%d",&arr[i]);
+    }
+
+    int sum=arr[0];
+   
+   for(int i=1; i<size; i++){
+        sum = sum+arr[i];
+   }
+   printf("The sum of all elements in the array is: %d",sum);
+
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+PrintUniqueElement
+
+Write a program in C to print all unique elements in an array. 
+
+Test Data :
+
+Print all unique elements of an array:
+
+------------------------------------------
+
+Input the number of elements to be stored in the array: 4
+
+Input 4 elements in the array :
+
+element - 0 : 3
+
+element - 1 : 2
+
+element - 2 : 2
+
+element - 3 : 5
+
+Expected Output :
+
+The unique elements found in the array are:
+
+3 5
+
+Sample Input
+4
+3
+2
+2
+5
+Sample Output
+The unique elements found in the array are:
+3 5
+
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    // Write C code here
+    int size;
+    scanf("%d",&size);
+    
+    int arr[size];
+
+    if(size <= 0){
+        printf("Invalid Array size");
+        return 0;
+    }
+    
+    for(int i=0; i<size; i++){
+        scanf("%d",&arr[i]);
+    }
+    int inc=0;
+           printf("The unique elements found in the array are:\n");
+    for(int i=0; i<size; i++){
+        inc = 0;
+        for(int j=0; j<size; j++){
+            if(arr[i] == arr[j]){
+                inc++;
+            }
+        }
+
+        if(inc == 1){
+            printf("%d ",arr[i]);
+        }
+    }
+
+  
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////
+
+
+
 
 
   
