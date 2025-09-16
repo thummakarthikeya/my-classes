@@ -1,0 +1,90 @@
+// Online C compiler to run C program 
+
+// function name reverse
+// parameters : int n
+// return type int
+
+#include <stdio.h>
+int reverse(int n){
+    int a = n;
+    int rev = 0;
+    while(a!=0){
+        int last = a%10;
+        rev = rev*10+last;
+        a= a/10;
+    }
+    return rev;
+}
+
+int main() {
+    printf("Enter a number : ");
+   int val;
+   scanf("%d",&val);
+   int res = reverse(val);
+   printf("%d", res);
+    return 0;
+}
+
+
+
+
+///////////////////////////////////////////////////////////
+
+
+
+// Online C compiler to run C program 
+// adam number
+// explanation
+// squar of 12 = 144
+// reverse of 12 = 21
+// squar of 21 = 441
+// now squar of 12 and squar of reverse of 12 are reverse of each other. therefore 12 s adam number.
+
+
+
+#include <stdio.h>
+int reverse(int n){
+    int a = n;
+    int rev = 0;
+    while(a!=0){
+        int last = a%10;
+        rev = rev*10+last;
+        a= a/10;
+    }
+    return rev;
+}
+
+
+int squar(int n){
+    return n*n;
+}
+
+int main() {
+    printf("Enter a number : ");
+   int val;
+   scanf("%d",&val);  //12
+   int sqr1 = squar(val);//144
+   int rev1 = reverse(val); //21   
+   int sqr2 = squar(rev1); //441
+   int rev2 = reverse(sqr2); //144
+   
+   if(rev2 == sqr1){
+       printf("TRUE because rev2 = %d and sqr1 = %d",rev2, sqr1);
+   } else{
+       printf("False because rev2 = %d and sqr1 = %d",rev2, sqr1);
+   }
+   
+   
+   
+//   printf("%d", res);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
