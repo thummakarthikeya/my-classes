@@ -1,0 +1,201 @@
+Day 08 Notes :
+============
+Command Line Argument :
+-----------------------
+In java, Whenever we pass any argument to the main method then it is called Command Line Argument.
+
+public static void main(String [] args) //Command Line Argument
+{
+}
+
+By using command line argument, We can pass some value at runtime.
+
+Advantage of command line argument is, single time compilation and number of time execution with different value.
+-----------------------------------------------------------------
+Programs on Command Line Argument :
+-----------------------------------
+//WAP in java to pass some value using command line argument
+
+public class Command
+{
+    public static void main(String[] args)
+    {
+        System.out.println(args[0]);
+    }
+}
+
+javac Command.java
+java Command Scott Smith
+
+Output is : Scott
+--------------------------------------------------------------------------
+//WAP in java to pass some value using command line argument
+
+public class Command
+{
+    public static void main(String[] args)
+    {
+        System.out.println(args[1]);
+    }
+}
+
+javac Command.java
+java Command Scott Smith
+
+Output is : Smith
+
+Note : Every time we modify .java file (Source code) then we need to re-compile
+       our java program.
+---------------------------------------------------------------------------
+public class Command
+{
+    public static void main(String[] args)
+    {
+        System.out.println(args[0]);
+    }
+}
+
+javac Command.java
+java Command             [Not paasing any value at runtime]
+
+The above program is expecting at-least one value from the command line
+argument, If we don't pass any value at runtime then we will get a
+runtime exception i.e java.lang.ArrayIndexOutOfBoundsException.
+---------------------------------------------------------------------------
+//WAP to accept all different kinds of values using command line argument
+
+public class DifferentValuesUsingCommand
+{
+    public static void main(String[] x)
+    {
+        System.out.println(x[0]);
+        System.out.println(x[1]);
+        System.out.println(x[2]);
+    }
+}
+
+javac DifferentValuesUsingCommand.java
+java DifferentValuesUsingCommand 78 89.90 NIT
+
+Output :
+         78
+     89.90
+     NIT
+--------------------------------------------------------------------------WAP to print full name of the Indian Player Abhishek Sharma using Command
+line argument.
+
+public class FullName
+{
+    public static void main(String[] name)
+    {
+        System.out.print(name[0]);
+           
+    }
+}
+
+javac FullName.java
+java FullName "Abhishek Sharma"
+Output : Abhishek Sharma
+
+java FullName "Virat Kohli"
+Output : Virat Kohli
+
+Note : Single time compilation and number of times execution.
+-------------------------------------------------------------------------
+WAP in java to add two numbers by using Command Line Argument :
+--------------------------------------------------------------
+public class CommandAdd
+{
+    public static void main(String[] num)
+    {
+        System.out.println("Sum is :"+(num[0] + num[1]));
+    }
+}
+
+javac CommandAdd.java
+java CommandAdd 100 200
+
+Output is : Sum is : 100200
+
+Note : Here num is String type of variable hence '+' operator will
+       behave as String concatenation operator.
+--------------------------------------------------------------------------
+How to convert a String value into integer :
+---------------------------------------------
+There is a predefined class called Integer available in java.lang package.
+This Integer class contains a predefined static method called parseInt(String x), this parseInt() method accept a single parameter
+variable of type String.
+
+This parseInt(String x) method whose return type is int, will automatically convert the given String into integer type and return the integer value.
+
+//WAP in java to perform addition of two numbers by using command line
+argument with arithmetic operator.
+public class CommandAddition
+{
+    public static void main(String[] args)
+    {
+          //Convert the String into integer
+          int x = Integer.parseInt(args[0]);
+          int y = Integer.parseInt(args[1]);
+
+          System.out.println("Sum of two integer is :"+(x+y));
+    }
+}
+--------------------------------------------------------------------------
+//WAP to find out the cube of a number by using command line argument.
+
+public class FindCube
+{
+    public static void main(String[] args)
+    {
+        int num = Integer.parseInt(args[0]);
+
+        System.out.println("Cube is :"+(num*num*num));
+
+        System.out.println("Cube of "+num+" is :"+(num*num*num));
+
+    }
+}
+--------------------------------------------------------------------------
+//WAP to find out the area of rectangle by using command line argument :
+------------------------------------------------------------------------
+public class FindAreaOfRectangle
+{
+    public static void main(String[] args)
+    {
+        int length = Integer.parseInt(args[0]);
+        int breadth = Integer.parseInt(args[1]);
+
+        int areaOfRectangle = length * breadth;
+
+        System.out.println("Area of Rectangle is :"+areaOfRectangle);
+
+    }
+}
+--------------------------------------------------------------------------
+WAP to find out the area of Circle by using command line argument.
+------------------------------------------------------------------
+
+Converting String to double :
+-----------------------------
+There is a predefined class called Double available in java.lang package, This Double class contains a static method called parseDouble(String str)
+through which we can convert the given String into double type.
+
+double radius = Double.parseDouble(args[0]);
+
+//Program
+public class AreaOfCircle
+{
+    public static void main(String[] args)
+    {
+        final double PI = 3.14;
+                 double radius =  Double.parseDouble(args[0]);  
+
+        double areaOfCircle = PI * radius * radius;
+        System.out.println("Area of Circle is :"+areaOfCircle);
+               
+    }
+}
+-------------------------------------------------------------------------
+How to find out the length of an array ?
+---------------------------------------
