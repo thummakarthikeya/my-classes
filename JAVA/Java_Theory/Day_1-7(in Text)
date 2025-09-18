@@ -1,0 +1,454 @@
+What is a Language?
+-------------------
+A language is a medium of communication through which we can express our thoughts and ideas and communicate with others.
+
+Example: English, Telgu, Hindi, French, etc.
+
+
+What is Programming language ?
+------------------------------
+A programming language is a medium of communication between a programmer and a computer.
+
+It allows programmers to write instructions that a computer can understand and execute.
+
+Example: C, C++, Java, Python.
+
+
+What is Java ?
+----------------
+Java is a :
+
+   High-level → closer to human language, easy to understand.
+
+   Object-Oriented → everything is treated as an object.
+
+   Secure and Robust → prevents errors and provides strong memory management.
+
+   Platform-Independent → "Write Once, Run Anywhere" (WORA).
+
+
+Applications of Java:
+----------------------
+Java is used to develop various types of applications:
+
+  a) Desktop Applications (e.g., IDEs, tools)
+  b) Web Applications
+  c) Mobile Applications (Android)
+  d) Enterprise Applications (banking, ERP, etc.)
+  e) Gaming Applications
+  f) Cloud-based and AI/ML Applications
+
+flavors of Java :
+-----------------
+a) Java SE (Java Standard Edition) Standalone/Desktop Apps
+b) Java EE (Java Enterprise Edition) Web & Enterprise Apps
+c) Java ME (Java Micro Edition)    Mobile & Embedded Devices
+d) JavaFX (Java FX)  Rich Internet Apps (UI/Graphics)
+
+History of Java
+----------------
+Name of the Language  : Java
+   First Name of Java : OAK (Tree Name) 1991
+         Release Date : 23rd JAN 1996
+     Developed By : James Gosling and his friends
+         Project Name : Green Project
+             Java : Island, Indonesia
+      Official Symbol : Coffee CUP.
+     
+What is a function ?
+---------------------
+A function is a self defined block which is used to perform some calculation, printing the data and so on.
+
+A function may OR may not return a value.
+
+Example :
+public void sum(int x, int y)
+{
+}
+
+A function is divided into two types :
+
+ 1) Predefined OR Built-in function
+ 2) User-defined OR Custom function
+
+Predefined OR Built-in function
+-------------------------------
+A function which is developed by language creator itself is called
+predefined function.
+
+User-defined OR Custom Function
+--------------------------------
+A function which is written by user/developer for its own requirement and
+specification is called User-defined function.
+
+Advantages of Function :
+-------------------------
+1) Modularity :
+---------------
+Dividing the bigger task into number of smaller task.
+
+2) Easy to understand :
+-----------------------
+Once the task is divided into number of independent modules then it is easy to understand the entire module.
+
+3) Reusability :
+-----------------
+We can reuse a particular module for 'n' number of times.
+
+Note :In java, we always reuse our java classes.
+
+4) Easy debugging :
+-------------------
+Each module is isolated from another module so the debugging is easy because we can debug only one module where we have syntax or semantics error.
+===============================================================
+Why we pass parameter to a function ?
+-------------------------------------------
+We should pass parameter to a function for getting more information regarding the function.
+
+If We don't pass parameter then the information are not complete, It is partial information.
+
+Example :
+---------
+public void deposit(double amount)
+{
+}
+
+public void doSum(int x, int y)
+{
+}
+
+public void sleep(int hours)
+{
+}
+===============================================================
+Why functions are called Method in java ?
+------------------------------------------
+In C++ language, there is a facility to write a function inside the class as well outside of the class by using scope resolution operator (::) but in java we can write a function inside the class only, we can't define a function outside of the class, that is reason functions are called Method in java.
+
+----------------------------------------------------------------
+What is platform independency in java ?
+----------------------------------------
+C and C++ programs are platform dependent programs that means the .exe file created on one machine will not be executed on the another machine if the system configuration is different.
+
+That is the reason C and C++ programs are not suitable for website development.
+
+The role of java compiler :
+---------------------------
+1) Syntax verification.
+2) Verify the compatibility issues (L.H.S = R.H.S)
+3) Will Convert Source code into byte code.
+
+Java is a platform independent language. Whenever we write a java program, the extension of java program must be .java.
+
+Now this .java file we submit to java compiler (javac) for compilation process. After successful compilation the compiler will generate a very special byte code file i.e .class file (also known as bytecode). Now this .class file we submit to JVM for execution purpose.
+
+The role of JVM is to load and execute the .class file. Here JVM plays a major role because It converts the .class file into appropriate machine code instruction (Operating System format) so java becomes platform independent language and it is highly suitable for website development.
+
+Note :- Each OS (Windows, Linux, Mac) has its own JVM implementation that means JVM is platform dependent technology where as Java is platform Independent technology.
+
+JVM internally contains an interpreter so it executes the code line by line. It is written in 'C' langugae hance platform dependent.
+
+Note : All the browsers internally contain JVM are known as
+       JEB (Java Enabled Browsers) browser.
+----------------------------------------------------------------
+**What is difference between bit code and byte code :
+----------------------------------------------------
+Bit code is directly understood by Operating System but on the other hand byte code is understood by JVM, JVM is going to convert this byte code into appropriate machine understandable format.
+
+----------------------------------------------------------------
+* What is the difference between JDK, JRE, JVM and JIT compiler?
+----------------------------------------------------------------
+JDK :
+-----
+It stands for Java Development Kit.It contains JRE and JDK tools. It is a developer version that means by using JDK we can develop and execute java programs.
+
+In order to develop and execute it supports various JDK tools which are as follows :
+
+ a) javac    : java compiler, responsible for compilation.
+ b) java    : Java launcher,responsible for executing java
+                  program.
+ c) jdb        : java debugger, for debugging purpose
+ d) jconsole    : java Console, to display the output in the
+                  console.
+ e) javap    : java Profiler, To get the details of a class
+ f) javadoc    : Java documention, for Generating java
+                  documentation.
+         
+JRE :
+-----
+It stands for Java Runtime Environment.It contains JVM and class
+libraries. It is a client version that means by using JRE we can only execute our java programs (We can't develop). From java 11 version JRE folder is removed so now, from java 11v we can execute a java program without compilation by using following
+commnd :
+
+        java FileName.java [This is the command to directly execute our java code]
+   
+JVM :
+-----
+The main purpose of JVM to load and execute the .class file.JVM takes .class file and convert the .class file into Operating System understandable format.
+
+JVM is platform dependent, It provides various features like
+Class loading, class verification, allocating the memory for static data member, Garbage collection, Security Manager and so on.
+
+What is the difference Compiler and Interpreter :
+--------------------------------------------------
+
+
+What is JIT Compiler :
+-----------------------
+JIT (Just-In-Time) Compiler is a part of the JVM execution engine.
+
+It is used to increase the performance of Java programs.
+
+Internally JVM uses an interpreter, which executes bytecode line by line hence execution is slow.
+
+To overcome this limitation, JVM uses JIT Compiler.
+
+How JIT compiler Works:
+-----------------------
+When the JVM finds some methods or instructions that are repeated frequently (called hotspots), Instead of interpreting them line by line again and again, JIT compiles those bytecode instructions into native machine code.
+
+At the time of execution, JIT compiler directly provides these native machine code to JVM for fast execution.
+----------------------------------------------------------------
+What is data type in java ?
+----------------------------
+It defines the type of data that a variable can store.
+
+It also describes :
+  a) Size → How much memory it occupies in RAM.
+
+  b) Range → What values it can hold (e.g., byte → -128 to 127).
+
+  c) Operations → What kind of operations can be performed (e.g., addition for numbers).
+
+How many data types in java ?
+------------------------------
+Java data types are mainly divided into two categories:
+
+1) Primitive Data type
+2) Reference Data type
+
+
+What is the difference between statically typed and dynamically typed language ?
+--------------------------------------------------------------
+Statically typed language :
+----------------------------
+The languages where data type is compulsory before initialization of a variable are called Statically typed language.
+In these languages, once we define the type of the variable then it will hold same kind of value till the end of the program.
+
+Example of statically typed languages :
+C,C++, JSE, C# and so on
+
+Dynamically typed language :
+----------------------------
+The languages where Data type is not compulsory, It is optional to initialize the variable are called Dynamically Typed Language.
+
+In these languages we can provide all different kinds of values to the variable during the execution of the program.
+
+Example of dynamically typed languages :
+Visual Basic, Javascript, Python and so on
+----------------------------------------------------------------
+What is comment in java ?
+--------------------------
+Comments are used to enhance the readability of the code. It is ignored by the Compiler.
+
+In java, We have 3 types of comments
+
+1) Single line Comment
+   //
+
+2) Multiline Commment
+   /*
+   
+   
+   */
+   
+3) Documentation comment
+   /**
+   Name of the Project : Online Shopping
+     Number of Modules : 70 Modules
+          Project Date : 12th March 2024
+     Last Modification : 9th Oct 2024
+                Author : James Goling and his friends
+   */
+
+================================================================
+WAP in java to display welcome message :
+-----------------------------------------
+public class Welcome
+{
+    public static void main(String[] args)
+    {
+        System.out.println("Hello Batch 40!!!!");
+    }
+}
+
+
+Description of main() method :
+-------------------------------
+public :
+--------
+It is an access modifier in java which defines the accessibility level of main method. Our main method must be declared as public otherwise JVM can't access our main  method so the execution of the program will not be started.
+
+If we don't declare our main method with public access modifier then code will compile but it will not be executed by JVM.
+
+static :
+--------
+As of now, we have 2 types of methods in java :
+
+ 1) static method (OBJECT IS NOT REQUIRED)
+ 2) non static method (OBJECT IS REQUIRED)
+ 
+ static method :
+ ---------------
+ If any method declared with static keyword then it is called static method. In order to call and execute static methods, Object is not required.
+ 
+ Case 1 :
+ ---------
+ If a static method declared in the same class where main method is available then we can directly call the static method from main method as shown in the Program.
+ 
+ public class StaticTest
+{
+    public static void main(String[] args)
+    {
+        greet();
+    }
+   
+    public static void greet()
+    {
+        System.out.println("Hello Everyone!!!");
+    }
+}
+
+Case 2 :
+--------
+If a static method is available in another class (Where main method is not available) then to call the static method CLASS
+name is required as shown in the program.
+ 
+class Welcome
+{
+    public static void greet()
+    {
+        System.out.println("Hello Batch 40");
+    }
+}    
+public class StaticDemo
+{
+    public static void main(String[] args)
+    {
+        Welcome.greet();
+    }
+}
+
+Our main method must be declared with static keyword so, JVM can invoke main method with the help of class name.
+
+If we don't declare our main method as static keyword then code will compile (It is a non static method) but it will not be executed by JVM.
+
+Note : There is no any syntax rule given by java compiler that method must be public and static.
+----------------------------------------------------------------
+void :
+------
+It is a keyword in java. We should write void before the name of the method so that particular method will not return any kind of value.
+
+If we put the return type of the method as void then there is no communication between one module to another module.[It is one way communication]
+
+If we don't write void or any other kind of return type before the main method then code WILL NOT compile because java compiler has provided syntax rule that every method must contain return type.
+
+Note : If main method is not declared with void then program will NOT BE executed.
+
+Note : Without return type we can't define a method in java [Syntax Rule]
+----------------------------------------------------------------
+main() method :
+---------------
+It is a user-defined method because a user is responsible to define some logic inside the main method.
+
+main() method is very important method because every program execution will start from main() method only, as well as the execution of the program ends with main() method only.
+-----------------------------------------------------------------
+Q) Can we write multiple method with same name ?
+------------------------------------------------
+Yes, We can write multiple methods with same name but parameter must be different otherwise code will not compile.
+
+Note :- We can also write multiple main methods with different parameter but JVM will always execute the main method which takes String [] args (String array) as a parameter as shown in the program below.
+
+public class Welcome
+{
+    public static void main(String[] args)
+    {            
+        System.out.println("Hello Batch 40!!!!");    
+        main("NIT");
+    }
+   
+    public static void main(String args)
+    {            
+        System.out.println(args);        
+    }
+   
+}
+
+Output : Hello Batch 40
+         NIT
+-----------------------------------------------------------------
+String [] args :    
+----------------
+String is a predefined class in java available in java.lang package (just like header file) and args is an array variable
+of type String so, it can hold multiple values.
+
+IQ :
+----
+Why the main method of java accepts String array as a parameter ?
+
+String is a collection of alpha-numeric character so it can accept all different kind of values. Java software people has
+provided String array as a parameter so it can ACCEPT MULTIPLE
+VALUES OF DIFFERENT TYPE, that means providing more wider scope to accept hetrogeneous types of values.
+-----------------------------------------------------------------
+System.out.println() :
+----------------------
+It is an output statement in java, By using this statement we can print different types of values on the console.
+
+In this statement System is a predefined class available in java.lang pacakage, out is a reference variable of type PrintStream class available in java.io package and println() is
+a predefined method available in PrintStream class.
+
+Note :Actually It is HAS-A relation concept, System class has
+PrintStream class as shown below.
+
+public class System
+{
+   PrintStream out = null;  //HAS-A Relation
+}
+-----------------------------------------------------------------
+WAP in java to add two numbers :  
+--------------------------------
+public class Addition
+{
+    public static void main(String[] args)
+    {
+        int x = 100;
+        int y = 200;
+        int z = x + y;
+        System.out.println("The Sum is :"+z);    
+       
+    }
+}
+-----------------------------------------------------------------
+//WAP to add two numbers without 3rd variable :
+-----------------------------------------------
+public class AdditionWithout3rdVariable
+{
+    public static void main(String[] args)
+    {
+        int x = 100;
+        int y = 200;
+        System.out.println("Sum is :"+x+y); //100200
+        System.out.println(+x+y); //300
+        System.out.println(""+x+y); //100200
+        System.out.println("Sum is :"+(x+y));
+    }
+}
+-----------------------------------------------------------------
+public class IQ
+{
+    public static void main(String[] args)
+    {
+        String str = 25 + 25 + "NIT" + 90 + 89;
+        System.out.println(str); //50NIT9089
+    }
+}
