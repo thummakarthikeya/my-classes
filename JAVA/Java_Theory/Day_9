@@ -1,0 +1,146 @@
+Day 09 Notes :
+-----------------------
+If we arrange our java classes into a particular group by using pacakges (folders) then we will get the following two advantages :
+
+1) Fast searching is possible.
+2) Name can be reusable.
+
+Example :
+
+We have a Date class available in java.util package where as We have
+another Date class available in java.sql package.
+
+Program that describes a package is folder in windows :
+--------------------------------------------------------
+A package is a keyword in java and it must be the first statement of any java program.
+
+package arithmetic;
+public class Addition
+{
+   
+}  
+
+Command for compilation of the classes which contains Package statement.
+
+[javac -d . FileName.java ]
+
+javac  -d  .  Addition.java
+
+It will compile Addition.java, Addition.java contains arithmetic package, one package i.e folder called arithmetic will be created and automatically Addition.class file will be placed inside the package or folder called arithmetic.
+
+Types of Packages :
+---------------------------
+1) Predefined OR Built-in package : The packages which are created by java software people for arranging the programs are called predefined package.
+
+Example : java.lang, java.util, java.io, java.sql, java.net and so on
+
+2) Userdefined Package OR Custom package : The packages which are created by user for arranging the user-defined programs are called user-defined package.
+
+Example :
+basic;
+com.ravi.basic;
+com.tcs.online_shopping;
+com.wipro.shopping_cart
+----------------------------------------------------------------
+18-10-2024
+-----------
+Command Line Argument program by using Eclise IDE :
+---------------------------------------------------
+WAP to find out the square of the number by using Command Line Argument.
+
+package com.nit.command_line_argument;
+
+public class FindSquare
+{
+    public static void main(String[] args)
+    {        
+        int num = Integer.parseInt(args[0]);  
+        System.out.println("Square of "+num+" is :"+(num*num));
+    }
+}
+
+Steps to execute the command Line Argument Program using Eclipse IDE
+---------------------------------------------------------------------
+Right click on the program -> Run As -> Run configuration -> Verify your main class name -> select argument tab -> pass the appropriate value -> Run
+---------------------------------------------------------------
+WAP to find out the area of rectangle :
+----------------------------------------
+package com.nit.command_line_argument;
+
+public class AreaOfRectangle {
+
+    public static void main(String[] args)
+    {
+        int length = Integer.parseInt(args[0]);
+        int breadth = Integer.parseInt(args[1]);
+       
+        int areaOfRect = length * breadth;
+        System.out.println("Area of Rectangle is :"+areaOfRect);
+    }
+
+}
+------------------------------------------------------------------
+How to convert String value into float and double :
+---------------------------------------------------
+1) String to float :
+---------------------
+ float x =  Float.parseFloat(String str);
+ 
+2) String to double :
+---------------------
+ double y =   Double.parseDouble(String str);
+
+
+WAP to find out the area of Circle by using command Line Arg:
+-------------------------------------------------------------
+package com.nit.command_line_argument;
+
+public class AreaOfCircle {
+
+    public static void main(String[] args)
+    {
+        final double PI = 3.14;          
+        double radius = Double.parseDouble(args[0]);
+       
+        double areaOfCircle = PI * radius * radius;
+       
+        System.out.println("Area of Circle is :"+areaOfCircle);
+       
+    }
+
+}
+------------------------------------------------------------------
+WAP in java to pass some value from command line argument based on the following criteria :
+
+If the array length is 0 : It should print length is 0
+If the array length is 1 : It should find the cube of the number
+if the array length is 2 : It should print sum of the number
+ 
+package com.nit.command_line_argument;
+
+public class ArrayLengthCalculation {
+
+    public static void main(String[] args)
+    {
+        if(args.length ==0)
+        {
+          System.err.println("Array Length is 0");
+        }
+        else if(args.length == 1)
+        {
+            int num = Integer.parseInt(args[0]);
+            System.out.println("Cube of "+num+" is :"+(num*num*num));
+           
+        }
+        else if(args.length == 2)
+        {
+            int x = Integer.parseInt(args[0]);
+            int y = Integer.parseInt(args[1]);
+            int sum = x + y;
+            System.out.println("Sum is :"+sum);
+        }    
+
+    }
+
+}
+------------------------------------------------------------------
