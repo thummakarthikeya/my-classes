@@ -1,0 +1,46 @@
+Features of Java Programming Langauge :
+===================================
+What are important features of Java ?
+=====================================
+1) Simple
+Java is easy to learn, especially if you know C or C++.
+No complex concepts like pointers, multiple inheritance.
+
+2) Object-Oriented
+Everything in Java is treated as an object (except primitive types).
+Supports encapsulation, inheritance, polymorphism, abstraction.
+
+3) Platform Independent
+"Write Once, Run Anywhere" (WORA).
+Java code is compiled into bytecode, which runs on any machine with JVM.
+
+4) Secure
+Provides built-in security like Bytecode Verifier.
+Widely used in banking, enterprise apps.
+
+5) Robust
+Strong memory management (Garbage Collector).
+Exception handling and type checking reduce errors.
+
+6) Portable
+Java bytecode can run on any platform (Windows, Mac, Linux, etc.).
+
+7) Multithreaded
+Supports multithreading for parallel execution.
+Useful in gaming, animations, and real-time applications.
+
+8) Distributed
+Java can be used to build distributed applications.
+
+9) High Performance
+JIT compiler provides high performance.
+
+10) Dynamic
+Can load classes dynamically at runtime.
+Runtime polymorphism.
+
+11) Interpreted + Compiled
+Java programs are first compiled into bytecode (by javac) and then interpreted/executed by JVM.
+
+12) Architecture Neutral
+No hardware-dependent features → bytecode works everywhere.
