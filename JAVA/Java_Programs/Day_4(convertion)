@@ -1,0 +1,165 @@
+Cycle_Selling_Price
+Rohan purchased an old cycle for Rs. 1200 and spent Rs. 250 on repairs, Rs. 350 in coloring, and added new accessories worth Rs. 500. He wants a profit of Rs. 1500. Find the Selling Price of the cycle.
+
+Input Format
+
+Four command line arguments: cycle cost, repair cost, coloring cost, accessories cost
+
+Fifth argument: profit expected
+
+Output Format
+
+Selling Price of the cycle
+Sample Input
+1200 250 350 500 1500
+Sample Output
+Selling Price: 3800
+Explanation
+
+
+
+///////////////////////////////////////////////////////////////////
+
+
+Simple_Interest_Calculation
+Write a program to calculate Simple Interest and Amount given Principal, Rate, and Time.
+
+Input Format
+
+First command line argument: Principal (integer)
+
+Second command line argument: Rate (float)
+
+Third command line argument: Time (integer)
+
+Output Format
+
+Simple Interest
+
+Total Amount
+Sample Input
+10000 5 2
+Sample Output
+Simple Interest: 1000.0
+Amount: 11000.0
+
+
+
+////////////////////////////////////////////////////////////////////////
+
+Electricity_Bill
+Calculate electricity bill based on units consumed:
+
+For 100 units → Fixed charge = Rs. 160
+
+For 101–250 units → Rs. 1 per unit (above 100)
+
+For 251+ units → Rs. 1.2 per unit (above 250)
+
+Input Format
+
+One command line argument: Units consumed (integer)
+
+Output Format
+
+Total Bill Amount
+Sample Input
+100
+Sample Output
+Bill: 160.0
+
+
+//////////////////////////////////////////////////////////////////////////
+
+
+Discount_Net_Bil
+A whole-seller gives discounts as follows:
+
+Net Bill (Rs.)	Discount %
+< 5000	5%
+5000–9999	10%
+>= 10000	15%
+
+Write a program to input Net Bill and display:
+
+Discount %
+
+Discount Amount
+
+Amount Payable
+
+Input Format
+
+One command line argument: Net Bill (integer)
+
+Output Format
+
+Discount %
+
+Discount Amount
+
+Amount Payable
+Sample Input
+12000
+Sample Output
+Discount %: 15
+Discount Amount: 1800.0
+Amount Payable: 10200.0
+
+
+
+
+//////////////////////////////////////////////////////////////////
+
+
+TV_Selling_Price
+A shopkeeper buys a TV set for Rs. 32,500 and sells it at a profit of 27%. Apart from this, a GST of 5% is charged. Write a program to calculate and display the Total Selling Price, Profit, and GST charge.
+(You can initialize directly the mentioned value other wise you can take value through Command Line
+
+Input Format
+
+First command line argument: Cost Price (integer)
+
+Second command line argument: Profit percentage (integer)
+
+Third command line argument: GST percentage (integer)
+
+Output Format
+
+Total Selling Price
+
+Profit
+
+GST charge
+Sample Input
+32500 27 5
+Sample Output
+Profit: 8775.0
+GST: 2063.75
+Total Selling Price: 43338.75
+
+
+////////////////////////////////////////////////////////////////////////
+
+
+
+Convert_Days
+Write a program to input number of days and convert it into years, months, and days. Assume 1 year = 365 days, 1 month = 30 days.
+
+Input Format
+
+One command line argument: Number of days (integer)
+
+Output Format
+
+Years
+
+Months
+
+Days
+Sample Input
+400
+Sample Output
+Years: 1
+Months: 1
+Days: 5
