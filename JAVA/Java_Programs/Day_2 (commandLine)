@@ -1,0 +1,262 @@
+Armstrong
+
+public class Armstrong {
+    public static void main(String[] args) {
+        int num = Integer.parseInt(args[0]);
+        int originalNum = num;
+        int count = 0;
+        while(num != 0 ){
+            num = num/10;
+            count++;
+        }
+        num = originalNum;
+
+        int res = 0;
+
+        while(num != 0){
+            int last = num%10;
+            res = last^count + res;
+            num = num/10;   
+        }
+
+        if(originalNum == res){
+            System.out.println("Armstrong");
+        } else {
+            System.out.println("Not a Armstrong");
+        }
+
+    }
+    
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////
+
+
+Basic Salary
+
+
+
+public class BasicSalary {
+    public static void main(String[] args) {
+
+        int basic = Integer.parseInt(args[0]);
+        int HRA = Integer.parseInt(args[1]);
+        int Conveyance  = Integer.parseInt(args[2]);
+        int entertainmentAllowance = Integer.parseInt(args[3]);
+
+        int result = basic + HRA + Conveyance + entertainmentAllowance;
+    
+
+        System.out.println("total salary of person : "+ result);
+    }
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+
+
+
+Dominos Bill
+-------------
+
+
+package basic.BillGenerate;
+public class BillGenerate
+{
+    public static void main(String [] args)
+    {   
+        int chickenRoll = Integer.parseInt(args[0]) ;
+        int vegetablePuffs = Integer.parseInt(args[1]) ;
+        int discount = Integer.parseInt(args[2]);
+    
+        System.out.println("chickenRoll :" +(chickenRoll*4) );
+        System.out.println("vegetablePuffs :"+ (vegetablePuffs*3));
+        System.out.println("discount :"+(discount));
+        System.out.println("final bill :" + ((chickenRoll*4)+(vegetablePuffs*3)-(discount)));
+    }
+}
+
+
+
+or
+
+
+class DominosBill {
+
+    public static void main(String []args){
+
+    int chicken_rolls = 60;
+    int vegetable_puffs = 25;
+    int discount = 50;
+
+
+    
+    int chicken = Integer.parseInt(args[0]);
+    int puff = Integer.parseInt(args[1]);
+
+    
+    System.out.println("You have selected "+ chicken + " chicken_rolls");
+    System.out.println("You have selected "+ puff + " vegetable_puffs");
+
+    int result = ((chicken*chicken_rolls) + (puff*vegetable_puffs)) - discount;
+
+    System.out.print("So Your total bill is: " + result + "with a discount of " + discount);
+
+    }
+
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+Factorial
+-----------
+
+public class Factorial {
+    public static void main(String[] args) {
+        int num = Integer.parseInt(args[0]);
+
+        int result = 1;
+
+        while (num != 0) {
+            result = result * num;
+            num--;
+        }
+
+        System.out.println("Factorial is : "+ result);
+    }
+    
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////
+
+Fahrenheit To Celsius
+----------------------
+
+public class FahrenheitToCelsius {
+    public static void main(String[] args) {
+        int Fahrenheit  = Integer.parseInt(args[0]);
+        int celsius = ((Fahrenheit-32)*5)/9;
+
+        System.out.println("celsius : "+ celsius);
+    }
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////
+
+
+Palindrome or not
+--------------------
+
+
+public class PalindromeOrNot {
+    public static void main(String[] args) {
+        int num = Integer.parseInt(args[0]);
+
+        int originalNum = num;
+        int storeResult = 0;
+        while (num !=0) {
+            int last = num%10;
+            storeResult = storeResult*10 + last;
+            num = num/10;
+        }
+
+        if(originalNum == storeResult){
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
+
+
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////
+
+Pattern
+--------
+
+
+public class Pattern {
+    public static void main(String[] args) {
+        
+        System.out.println("@@@@@@@@");
+        System.out.println("@      @");
+        System.out.println("@      @");
+        System.out.println("@      @");
+        System.out.println("@      @");
+        System.out.println("@      @");
+        System.out.println("@@@@@@@@");
+
+    }
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+
+
+Swap to numbers
+-------------------
+
+
+public class SwapTwoNumbers {
+    public static void main(String[] args) {
+        int  firstNum = Integer.parseInt(args[0]);
+        int secondNum = Integer.parseInt(args[1]);
+
+
+        System.out.println("firstNum : "+ firstNum);
+        System.out.println("SecondNum : "+ secondNum);
+
+
+        System.out.println("");
+
+        int resFirstNum = firstNum + secondNum;
+        int resSecondNum = resFirstNum - secondNum;
+        resFirstNum = resFirstNum - resSecondNum;
+
+        System.out.println("firstNum : "+ resFirstNum);
+        System.out.println("SecondNum : "+ resSecondNum);
+
+
+    }
+}
+
+
+
+/*
+ 
+
+a = 5, b = 10
+
+a = a+b;  // a = 15, b = 10
+b = a-b;  // b = 5, a = 15
+a = a-b;  // a = 10, b = 5
+
+
+
+
+ */
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+
