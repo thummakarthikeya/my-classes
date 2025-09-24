@@ -1,0 +1,105 @@
+Assignment 01
+--------------
+Write a java program to covert string to double using parseDouble() and multiply two decimal Numbers and display the result by taking input from the command line argument?
+
+java MultiplyDecimals 12.5 3.2
+
+Output : Multiplication Result: 40.0
+
+
+
+public class StringDouble {
+    public static void main(String[] args) {
+        
+        double val1 = Double.parseDouble(args[0]);
+        double val2 = Double.parseDouble(args[1]);
+        
+        System.out.println("Multiplication Result :" +(val1*val2));
+    }
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+
+
+
+-----------------------------------------------------------------------
+Assignment 02
+--------------
+Program to find sum of the number from Command Line Argument.
+
+java SumOfNumbers 10 20 30 40
+
+Output : 100
+
+
+public class SumOfNumbers {
+    public static void main(String[] args) {
+        int num1 = Integer.parseInt(args[0]);
+        int num2 = Integer.parseInt(args[1]);
+        int num3 = Integer.parseInt(args[2]);
+        int num4 = Integer.parseInt(args[3]);
+        
+
+        System.out.println("Sum of numbers :"+(num1 + num2 + num3 + num4));
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+Assignment -04
+---------------
+
+Write a Java program that performs different operations based on the number of arguments passed through the command-line arguments based on different criteria :
+
+ a) It should print "No arguments provided!", If argument length is 0
+ b) It should print square of the given number, If argument length is 1
+ c) It should print sum and producet of the given numbers, If argument length is 2
+ d) It should print the sum of all the numbers if argument length is more than 2.
+
+java CommandLineOperations
+Output : No arguments provided!
+
+
+java CommandLineOperations 5
+Output : Square of 5 = 25
+
+
+java CommandLineOperations 4 6
+Output : Sum = 10
+         Product = 24
+
+
+java CommandLineOperations 1 2 3 4
+Output : Sum of all numbers = 10
+
+
+
+this is 4th question
+
+
+public class Operations {
+    public static void main(String[] args) {
+        int len = args.length;
+
+        if(len == 0){
+            System.out.println("No arguments provided!");
+        }
+        else if(len == 1){
+            int first = Integer.parseInt(args[0]);
+
+            System.out.println("square of the given number :"+(first * first));
+
+        }else{
+            int res=0;
+            for(int i=0; i<len; i++){
+                int second = Integer.parseInt(args[i]);
+                res = res + second;
+            }
+            System.out.println("Sum of the given numbers :"+ res);
+        }
+    }
+}
