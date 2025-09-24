@@ -8,3 +8,8 @@ public class Practice{
         System.out.println(Integer.parseInt(args[0])+Integer.parseInt(args[1]));
     }   
 }
+
+
+this is how we compile and run this using package 
+javac -d . Practice.java
+java basic.vin.Practice
