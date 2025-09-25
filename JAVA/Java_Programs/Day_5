@@ -30,8 +30,51 @@ public class AreaOfCube {
 2) Write a java program to calculate the total surface area of a cylinder? 
 Formula = 2 pi square r * 2 pi r h (take the pi as 3.14 with final modifier).
 
+
+public class AreaOfCylinder {
+    public static void main(String[] args) {
+        final float pi = 3.14f;
+        int radius = Integer.parseInt(args[0]);
+        float height = Float.parseFloat(args[1]);
+
+         System.out.println("Total surface Area Of Cylinder:" +((2*pi*radius)*(radius+height)));
+    }
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
 3) Write a Java program to calculate compound interest for 3 years? 
 Formula = amount=principle*((1+rate/100)*(1+rate/100)*(1+rate/100));
+
+
+import java.util.Scanner;
+
+public class CompoundInterest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Taking inputs
+        double principle = sc.nextDouble();
+        double rate = sc.nextDouble();
+
+        // Fixed time (3 years)
+        int time = 3;
+
+        // Applying formula
+        double amount = principle * Math.pow((1 + rate / 100), time);
+
+        // Printing result
+        System.out.println("Amount after 3 years = " + amount);
+
+        sc.close();
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 4) write Java Program Convert Fahrenheit To Celsius | Vice Versa
  Formula =
@@ -39,6 +82,31 @@ Formula = amount=principle*((1+rate/100)*(1+rate/100)*(1+rate/100));
  Fahrenheit=((9*Celsius)/5)+32;
  Note [ Write two seprate program for converting celsius into 
  Fahrenheit and Fahrenheit into celsius ]
+
+
+public class FahrenheitCelsius {
+    public static void main(String[] args) {
+        
+        int Celsius = Integer.parseInt(args[0]);
+        int Fahrenheit  = Integer.parseInt(args[1]);
+
+        System.out.println("Your first input is celsius and second input is fahrenheit");
+
+         if(args.length == 0){
+            System.out.println("No arguments provided!");
+            return;
+        }
+        System.out.println("Celsius="+(Fahrenheit-32)*5/9);
+
+        System.out.println("Fahrenheit="+(9*Celsius)/5+32);
+    }
+}
+
+
+// Celsius=(Fahrenheit-32)*5/9;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 5) What will be the output of the following program. 
 
