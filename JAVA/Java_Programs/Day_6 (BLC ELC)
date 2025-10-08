@@ -67,6 +67,39 @@ For example,
 If the given value is 123, return 200.
 
 Create an ELC class Main to test the application
+
+
+package Elc;
+import java.util.*;
+
+import Blc.NextMultipleOfHundred;
+
+public class MultipleOf100 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number: ");
+		int num  = sc.nextInt();
+		
+		System.out.println(NextMultipleOfHundred.getNextMultipleOfHundred(num));
+		
+	}
+
+}
+
+
+
+package Blc;
+
+public class NextMultipleOfHundred {
+	
+	public static int getNextMultipleOfHundred(int num) {
+		
+		
+		return ((num/100)+1)*100;
+	}
+
+}
+
 ------------------------------------------------------------------------
 
 Assignment 03 :
@@ -84,6 +117,46 @@ If a = 23, b = 34, c = 66
 Note:Don't use any control statements and looping statements
 
 Create an ELC class Main to test the application
+
+package Elc;
+import java.util.*;
+
+import Blc.RoundedSum;
+
+public class RoundedNum {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int firstNum =sc.nextInt(); 
+		int secondNum =sc.nextInt(); 
+		int thirdNum =sc.nextInt(); 
+		
+		System.out.println(RoundedSum.sumOfRoundedValues(firstNum,secondNum,thirdNum));
+	}
+}
+
+
+package Blc;
+
+public class RoundedSum {
+	public static int sumOfRoundedValues(int num1, int num2, int num3) {
+//		--------sir logic -----
+//		int res1 =((num1/10)+(num1%10)/5)*10;
+//		int res2 =((num2/10)+(num2%10)/5)*10;
+//		int res3 =((num3/10)+(num3%10)/5)*10;
+		
+//		-------------my logic--------------
+		int res1 = num1%10 <=5 ? (num1/10)*10 : ((num1/10)+1)*10;
+		int res2 = num2%10 <=5 ? (num2/10)*10 : ((num2/10)+1)*10;
+		int res3 = num3%10 <=5 ? (num3/10)*10 : ((num3/10)+1)*10;	
+		
+		return res1+res2+res3;
+	} 
+
+}
+
+
+
 ------------------------------------------------------------------------------------------
 Assignment 04 :
 ---------------
