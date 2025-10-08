@@ -1,0 +1,145 @@
+All BLC and ELC classes must be public.
+
+Assignment 01 :
+---------------
+Define a method which returns the difference of digits of the given two digit number.
+Write the method with the following specifications: 
+Name of the BLC class:TwoDigitsDifference
+Name of method: getDiffOfDigits()
+Access Modifier : public, static
+Arguments: one argument of type integer
+Return type: an integer value
+For example,
+If the given value is 83, 8 - 3 return 5.  If x = 38, 3 - 8 return -5.
+
+Create an ELC class Main to test the application
+
+
+
+
+package Elc;
+import java.util.*;
+
+import Blc.TwoDigitsDifference;
+
+public class TwoDigitNumber {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int num = sc.nextInt();
+		
+		int diff  =TwoDigitsDifference.getDiffOfDigits(num); 
+		System.out.println(diff);
+	}
+}
+
+package Blc;
+
+public class TwoDigitsDifference {
+	public static int getDiffOfDigits(int num) {
+		
+		int num1 = num%10;
+		int num2 = num/10;
+		
+		int res = num2-num1;
+		return res;
+	}
+
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+Assignment 02 :
+---------------
+Define a method which returns the next multiple of 100 for the given number.
+Write the method with the following specifications: 
+Name of the BLC class:NextMultipleOfHundred
+Name of method: getNextMultipleOfHundred()
+Access Modifier : public, static
+Arguments: one argument of type integer
+Return type: an integer value
+For example,
+If the given value is 123, return 200.
+
+Create an ELC class Main to test the application
+------------------------------------------------------------------------
+
+Assignment 03 :
+---------------
+Define a method which returns the sum of three rounded numbers. If the right most digit of the number is less than 5, then round off its value to the previous multiple of 10 otherwise if the right most digit of the number is greater or equal to 5, and then round off to the next multiple of 10. 
+Write the method with the following specifications: 
+Name of the BLC class : RoundedSum
+Name of method: sumOfRoundedValues() 
+Access Modifier : public, static
+Arguments: three argument of type integer
+Return type: an integer value 
+For example
+If a = 23, b = 34, c = 66
+   20 + 30 + 70 = 120
+Note:Don't use any control statements and looping statements
+
+Create an ELC class Main to test the application
+------------------------------------------------------------------------------------------
+Assignment 04 :
+---------------
+Write a program to find the area of the circle on the following criteria
+
+Explanation:
+Create a BLC(Business Logic Class) called Circle which contains a static method getArea()
+Name of the Method 		:	getArea()
+Parameter of the Method		:	one parameter of type double(radius)
+Return type of the Method	:	String
+Access modifier of the Method	:	public, static
+
+Write the logic inside the method based on the following criteria
+a) If parameter value is 0 or Negative it should return 0
+b) If parameter value is positive it should print area of circle in two digits after decimal value example (12.89)
+
+Create another class Test in the same package which is ELC class (contains main method) to test the application. Don’t create the Object in the Test class, call the static method getArea() of Circle class  and print the output in the main method.
+
+Note :- Both the classes must be declared with public access modifier
+
+Assignment 05 :
+---------------
+Write a program to print the Student data in the given format
+
+Explanation:
+Create a BLC(Business Logic Class) class Student which contains a static method getStudentDetails()
+
+Name of the Method 		:	getStudentDetails()
+Parameter of the Method		:	3 parameters roll ,name and fees of type int , String and double respectively.
+Return type of the Method	:	String
+Access modifier of the Method	:	public and static
+
+Create another class Test in the same package which is ELC class (contains main method) to test the application. Don’t create the Object in the Test class, call the static method getStudentDetails() which should print the Student data in the following format
+[ Roll is :101, Name is :Ravi, Fees is :14000.9]
+
+Note :- Both the classes must be declared with public access modifier
+
+
+Assignment 06 :
+---------------
+Write a program to check whether a number is even or odd
+
+Explanation:
+Create a BLC(Business Logic Class) class EvenOrOdd which contains a static method isEven()
+
+Name of the Method 		: isEven()
+Parameter of the Method		: one parameter of type integer
+Return type of the Method	: boolean
+Access modifier of the Method	: public
+
+Write the logic inside the method isEven () to check number is even or odd
+
+Create another class Test in the same package which is ELC class (contains main method) to test the application. Don’t create the Object in the Test class, call the static method isEven()
+of EvenOrOdd class  to return number is even or odd and print the result in main method.
+
+Note :- Both the classes must be declared with public access modifier
+
+
+
