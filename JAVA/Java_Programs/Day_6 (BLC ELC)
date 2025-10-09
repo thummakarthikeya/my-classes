@@ -216,3 +216,43 @@ Note :- Both the classes must be declared with public access modifier
 
 
 
+package BLC;
+
+public class EvenOrOdd  {
+
+	public static boolean isEven(int a) {
+		if(a%2==0) {
+			return true ;
+		}
+		else
+		{
+			return false ;
+		}
+	}
+}
+===============================================================================================
+package ELC;
+
+import BLC.EvenOrOdd;
+
+public class TestEvenOrOdd {
+	
+	public static void main(String[] args) {
+		
+		int x = 10;
+		boolean result = EvenOrOdd.isEven(x);
+		
+		if(result== true) {
+			System.out.println("Even");
+			
+		}else {
+		System.out.println("odd");
+		}
+	}
+
+}
+================================================================================================
+OUTPUT :
+======
+Even
+===================================================================================================
