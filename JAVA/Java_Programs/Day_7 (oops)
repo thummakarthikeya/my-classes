@@ -1,0 +1,108 @@
+package Elc;
+
+public class Dog {
+
+     String name;
+     double height; 
+     int age;
+     
+     public void getDogInformation() {
+    	 System.out.println("name of the dog is :"+ name);
+    	 System.out.println("name of the height is :"+ height);
+    	 System.out.println("name of the age is :"+ age);
+     }
+     
+     public void bark() {
+    	 System.out.println("Bark");
+     }
+	
+	public static void main(String[] args) {
+		
+		Dog dog = new Dog();
+		dog.name="chesy";
+		dog.height = 6.4;
+		dog.age = 10;
+		
+		dog.getDogInformation();
+		
+		dog.bark();
+		
+	}
+
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+package Elc;
+
+public class Fan {
+	
+	 String name;
+	 String coil;
+	 int wings;
+	 
+	 public void switchOn() {
+		 System.out.println("name of the fan :"+name);
+		 System.out.println("name of the coil :"+coil);
+		 System.out.println("name of the wings :"+wings);
+	 }
+	 
+	 public void switchOff() {
+		 System.out.println("Fan is off");
+	 }
+	 
+	 public static void main(String[] args) {
+		Fan fan = new Fan();
+		
+		fan.name = "bajarj";
+		fan.coil = "copper";
+		fan.wings = 3;
+		
+		fan.switchOn();
+		fan.switchOff();
+	}
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+package Elc;
+
+public class Car {
+
+
+	 String name;
+	 int model;
+	 String color;
+	 
+	 public void getCarInformation() {
+		 System.out.println("the car name is :" + name );
+		 System.out.println("the car model is :" + model );
+		 System.out.println("the car color is :" + color );
+	 }
+	 
+	 
+	 public void drive() {
+		 System.out.println("the car driver is fully drunk");
+	 }
+	 
+	 public static void main(String[] args) {
+		Car car = new Car();
+		
+		car.name = "lamborghini";
+		car.model = 0007;
+		car.color = "Light Green";
+		
+		
+		
+		car.getCarInformation();
+		
+		car.drive();
+		
+		
+		
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
