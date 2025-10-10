@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      main {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .box {
+        background-color: white;
+        box-shadow: 0px 0px 5px gray;
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .btn {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="main">
+      <div class="box">
+        <h3>Color Changer</h3>
+        <p>click the button to change the color</p>
+        <div class="color-box">
+          <button
+            class="btn"
+            style="background-color: blue"
+            value="blue"
+          ></button>
+          <button
+            class="btn"
+            style="background-color: green"
+            value="green"
+          ></button>
+          <button
+            class="btn"
+            style="background-color: red"
+            value="red"
+          ></button>
+          <button
+            class="btn"
+            style="background-color: pink"
+            value="pink"
+          ></button>
+          <button
+            class="btn"
+            style="background-color: orange"
+            value="orange"
+          ></button>
+          <button
+            class="btn"
+            style="background-color: purple"
+            value="purple"
+          ></button>
+          <button
+            class="btn"
+            style="background-color: black"
+            value="black"
+          ></button>
+          <button
+            class="btn"
+            style="background-color: white"
+            value="white"
+          ></button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const main = document.getElementById("main");
+      const btnArray = document.querySelectorAll(".btn");
+
+      btnArray.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          changeColor(e);
+        });
+      });
+
+      function changeColor(e) {
+        main.style.backgroundColor = e.target.value;
+
+        e.target.style.outline = "2px solid " + e.target.value;
+        // console.log(e.target);
+      }
+    </script>
+  </body>
+</html>
