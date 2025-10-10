@@ -1,0 +1,107 @@
+package Elc;
+import java.util.*;
+
+import Blc.ProductInfo;
+
+public class Product {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the product id");
+		int id = Integer.parseInt( sc.nextLine());
+		System.out.println("Enter the product name");
+		String name = sc.nextLine();
+		System.out.println("Enter the product price");
+		double price = Double.parseDouble(sc.nextLine());
+		
+		ProductInfo mobile = new ProductInfo();
+		mobile.setProductData(id,name,price);
+		mobile.getProductInfo();
+		
+	}
+
+}
+
+
+
+
+package Blc;
+
+public class ProductInfo {
+	
+	int id_s;
+	String name_s ;
+	double price_s;
+	
+	public void setProductData(int id, String name, double price) {
+		id_s = id;
+		name_s = name;
+		price_s = price;
+		
+	}
+	
+	public void getProductInfo(){
+		System.out.println("the product id :"+id_s );
+		System.out.println("the product name :"+name_s);
+		System.out.println("the product price :"+price_s);
+	}
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////
+
+
+package Elc;
+import java.util.*;
+
+import Blc.EmployeInfo;
+
+public class Employee {
+	public static void main(String[] args) {
+		
+		EmployeInfo karthikeya = new EmployeInfo();
+		
+		karthikeya.setEmployeeData();
+		karthikeya.getEmployeeData();
+		
+		
+		
+	}
+
+}
+
+
+
+package Blc;
+
+import java.util.Scanner;
+
+public class EmployeInfo {
+	
+
+ int employeeId;
+ String employeeName;
+ double employeeSalary;
+ 
+ public void setEmployeeData() {
+	 
+	 	Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Employe id :");
+		employeeId = Integer.parseInt(sc.nextLine());
+		
+		System.out.println("Enter Employe name :");
+		employeeName = sc.nextLine();
+		
+		System.out.println("Enter Employe salary :");
+		employeeSalary = Double.parseDouble(sc.nextLine());
+	 
+ }
+ public void getEmployeeData(){
+	 System.out.println("the emplouyee id is :"+employeeId);
+	 System.out.println("the emplouyee employeeName is :"+employeeName);
+	 System.out.println("the emplouyee employeeSalary is :"+employeeSalary);
+ }
+
+
+}
