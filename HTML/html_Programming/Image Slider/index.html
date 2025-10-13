@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <div class="container-fluid" style="height: 60vh">
+      <button id="prevBtn" class="btn" style="height: 100%">
+        <i class="bi bi-caret-left"></i>
+      </button>
+      <img
+        src="images/img.jpeg"
+        alt=""
+        style="width: 90%; height: 100%"
+        id="img"
+      />
+      <button class="btn" id="nextBtn" style="height: 100%">
+        <i class="bi bi-caret-right"></i>
+      </button>
+    </div>
+
+    <script>
+      const imgArray = [
+        "./images/img.jpeg",
+        "./images/img1.jpg",
+        "./images/img2.jpg",
+      ];
+
+      const nextBtn = document.getElementById("nextBtn");
+      const prevBtn = document.getElementById("prevBtn");
+      const img = document.getElementById("img");
+
+      nextBtn.addEventListener("click", nextImg);
+      prevBtn.addEventListener("click", prevImg);
+
+      let index = 0;
+      function nextImg() {
+        if (index >= imgArray.length) {
+          index = 0;
+        }
+        img.src = imgArray[index];
+        index++;
+        
+      }
+
+      function prevImg() {
+        if (index <= 0) {
+          index = imgArray.length;
+        }
+        index--;
+        img.src = imgArray[index];
+      }
+
+      setInterval(() => {
+        nextImg();
+      }, 3000);
+    </script>
+  </body>
+</html>
