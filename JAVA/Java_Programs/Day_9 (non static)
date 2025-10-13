@@ -1,0 +1,205 @@
+Assignment 01 :
+------------
+A BLC (Business Logic Class) called Student is given to you.
+Instance Variables/Non static fields: 
+studentId :int
+studentName : String
+studentMarks: int
+studentGrade: char
+
+Create a method public void setStudentData() with the parameters: id, name, marks.
+
+Note that studentGrade is not set through method because it is a calculated value.
+
+Methods :
+displayDetails(): This method should return a String with  the details of the student in the following format:
+Student [name=John Smith, studentId=123, marks=95, grade=A] 
+
+method : calculateGrade():public:void
+calculateGrade(): This is a public method that calculates the grade based on the marks that is set. 
+If marks is above 90, grade is set to A. 
+If marks is between 81 and 90, grade is set to B, 
+if marks is between 71 and 80, grade is set to C, 
+if marks is between 61 and 70, grade is set to D, 
+if marks is less than 61, grade is set to E.
+Use this method when you need to set or reset grade.
+
+An ELC(Executable Logic class) Tester with main method is given to you to test your code.
+
+
+package Elc;
+import java.util.Scanner;
+
+import Blc.Student;
+public class StudentTester {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter student id");
+		int id = Integer.parseInt(sc.nextLine());
+		
+		System.out.println("Enter student name");
+		String name = sc.nextLine();
+		
+		System.out.println("Enter student Marks");
+		int marks = Integer.parseInt(sc.nextLine());
+		
+		Student tarun = new Student();
+		
+		tarun.setStudentData(id, name, marks);
+		tarun.calculateGrade();
+		tarun.displayDetails();
+
+		
+	}
+
+}
+
+
+package Blc;
+
+public class Student {
+	int studentId;
+	String studentName ;
+	int studentMarks;
+	char studentGrade;
+	
+	public void setStudentData(int id,String name,int marks) {
+		studentId = id;
+		studentName = name;
+		studentMarks = marks;
+		
+	}
+	
+	public void calculateGrade() {
+		
+		if(studentMarks >90){
+			studentGrade = 'A'; 
+		}else if( studentMarks> 81 && studentMarks< 90) {
+			studentGrade = 'B'; 
+		}else if( studentMarks> 71 && studentMarks< 80) {
+			studentGrade = 'C'; 
+		}else if( studentMarks> 61 && studentMarks< 70) {
+			studentGrade = 'D'; 
+		}else if(studentMarks< 61) {
+			studentGrade = 'E'; 
+		}
+		
+	}
+	
+	public String displayDetails() {
+		String res ="name="+studentName +"studentId="+studentId+"marks="+studentMarks+"grade="+studentGrade;
+		return res;
+		
+	}
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Assignment 02 :
+---------------
+Create a BLC class Employee class with properties 
+
+String firstName
+String lastName
+int employeeId
+double salary
+int noOfProject
+
+
+Create a setEmployeeData() method with 5 parameters variables to initialize all the instance variables.
+
+Write public void calculateSalary() method that will add extra ammount in salary based on NoOfProject by using following criteria.
+
+NoOfProject is more than 5 and less than 10 then add 5000 to the salary.
+NoOfProject is more than 10 and less than 20 then add 10000 to the salary.
+NoOfProject is more than 20 then add 15000 to the salary.
+
+Take a method called public void displayDetails() to display the employee details with updated salary.
+
+Take an ELC class Tester with main method to test your logic.
+
+
+
+
+package Elc;
+import java.util.Scanner;
+
+import Blc.Employee;
+
+public class EmployeTester {
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		
+		System.out.println("Enter First name :");
+		String name = sc.nextLine();
+		
+		System.out.println("Enter Last Name :");
+		String lastName = sc.nextLine();
+		
+		System.out.println("Enter  id :");
+		int id = Integer.parseInt(sc.nextLine());
+		
+		System.out.println("Enter salary:");
+		double salary = Double.parseDouble(sc.nextLine());
+		
+		System.out.println("Enter  noProjects :");
+		int noProjects =Integer.parseInt(sc.nextLine()); 
+		
+		Employee karthikeya = new Employee();
+		
+		karthikeya.setEmployeeData(name, lastName, id, salary, noProjects);
+		karthikeya.calculateSalary();
+		karthikeya.displayDetails();
+		
+		
+	}
+
+}
+
+
+package Blc;
+
+public class Employee {
+
+	String firstName;
+	String lastName;
+	int employeeId;
+	double salary;
+	int noOfProject;
+	
+	public void setEmployeeData(String name,String lastName,int id,double salary,int projects) {
+		 firstName=name;
+		 lastName=lastName;
+		 employeeId=id;
+		 salary=salary;
+		 noOfProject=projects;
+	}
+	
+	public void calculateSalary() {
+		
+		if(noOfProject > 5 && noOfProject < 10) {
+			salary = salary+5000;
+		}else if(noOfProject > 10 && noOfProject < 20) {
+			salary = salary+10000;
+		}else if(noOfProject > 20 ) {
+			salary = salary+15000;
+		}
+		
+	}
+	
+	public void displayDetails() {
+		System.out.println("firstName "+firstName);
+		System.out.println(" lastName"+lastName);
+
+		System.out.println("employeeId"+employeeId);
+
+		System.out.println("salary"+salary);
+
+	}
+
+}
