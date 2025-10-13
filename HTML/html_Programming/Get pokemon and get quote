@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>POKE - DEX</h1>
+    <div id="inputs">
+        <input type="text" placeholder="Enter pokiman name " id="inp">
+        <button id="btn"> search</button>
+    </div>
+
+    <div id="output"></div>
+<br>
+<br>
+    <button id="quoteBtn">Get Quote</button>
+    <div id="QuoteOutput"></div>
+    
+
+<script>
+    // const { createElement } = require("react");
+
+const outputdiv =  document.getElementById("output");
+const input  =  document.getElementById("inp");
+const btn = document.getElementById("btn");
+function getPokimanDetails(){
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${input.value}`)
+        .then((res)=>res.json())
+        .then((data)=>displayData(data))
+        .catch((err)=>console.log(err))
+
+}
+
+btn.addEventListener('click', getPokimanDetails);
+
+function displayData(data){
+    outputdiv.textContent = '';
+    const pname = document.createElement('h2');
+    pname.textContent = "Name: " + data.name;
+    const pImage = document.createElement('img');
+    pImage.src = data.sprites.front_default;
+    pImage.alt = data.name;
+        const height = document.createElement('p');
+    height.textContent = "height:" + data.height;
+        const weight = "weight:" + data.weight;
+    outputdiv.append(pImage,pname,height,weight);
+}
+
+
+// https://pokeapi.co/api/v2/pokemon/ditto
+
+
+const quote = document.getElementById('quoteBtn');
+
+
+function getQuote(){
+    fetch(`https://dummyjson.com/quotes/random`)
+        .then((res)=>res.json())
+        .then((data)=>displayQuote(data))
+        .catch((err)=> console.log(err))
+}
+
+
+const quoteOutput = document.getElementById("QuoteOutput");
+
+function displayQuote(data){
+    quoteOutput.textContent = "";
+
+    const para = document.createElement("p");
+    para.textContent = data.quote;
+    quoteOutput.append(para);
+
+    
+}
+
+
+
+quote.addEventListener('click', getQuote);
+
+</script>
+</body>
+</html>
