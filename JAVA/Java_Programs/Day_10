@@ -1,0 +1,190 @@
+package Elc;
+import java.util.*;
+
+import Blc.Loan;
+
+public class CheckLoanDeatils {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter Loan Amount :");
+		double principal =Double.parseDouble(sc.nextLine());
+		
+		System.out.println("Enter Interest Rate :");
+		 double interestRate = Double.parseDouble(sc.nextLine());
+		 
+		 System.out.println("Enter number of months for Loan :");
+		 int durationMonths = Integer.parseInt(sc.nextLine());
+		 
+		 Loan loan = new Loan(principal,interestRate,durationMonths);
+		 
+		 
+		 System.out.println("Principal: "+loan.getterDurationMonths());
+		 System.out.println("Interest Rate (Yearly %):"+loan.getterInterestRate());
+		 System.out.println("Duration (months):"+loan.getterPrincipal());
+		
+		sc.close();
+	}
+}
+
+
+
+package Blc;
+
+public class Loan {
+	private double principal;
+	private double interestRate;
+	private int durationMonths;
+
+	 public Loan(double principal, double interestRate, int durationMonths) {
+//		super();
+		 
+		 if(principal <=0 || interestRate <=0 || durationMonths<=0) {
+			 System.out.println("Error");
+		 }else {
+				this.principal = principal;
+				this.interestRate = interestRate;
+				this.durationMonths = durationMonths;
+		 }
+		 
+	
+	 }
+	 
+	 
+	 public double getterPrincipal() {
+		 return principal;
+	 }
+	 
+	 
+	 public double getterInterestRate() {
+		 return interestRate;
+	 }
+	 
+	 
+	 public int getterDurationMonths() {
+		 return durationMonths;
+	 }
+	 
+	 
+	 
+	 
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+package Elc;
+import java.util.*;
+
+import java.util.Scanner;
+
+import Blc.InventoryItem;
+
+public class InventoryMain {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter Item Name: ");
+		String itemName =sc.nextLine();
+		
+		System.out.println("Enter Price Per Unit: ");
+		 double pricePerUnit = Double.parseDouble(sc.nextLine());
+		 
+		 System.out.println("Enter Quantity In Stock: ");
+		 int quantityInStock = Integer.parseInt(sc.nextLine());
+		 
+		 
+		 InventoryItem inventory = new InventoryItem(itemName, pricePerUnit, quantityInStock);
+		 
+		 
+		 System.out.println("Inventory Item Details:");
+		 
+		 System.out.println("Item Name: "+inventory.getItemName());
+		 System.out.println("Price Per Unit: "+inventory.getPricePerUnit());
+		 System.out.println("Quantity in Stock: "+inventory.getQuantityInStock());
+		 System.out.println("Total Inventory Value: "+inventory.calculateTotalValue());
+		 
+		 
+		 System.out.println("Any updation in Stock Price OR Quantity :");
+		 
+		 String check = sc.nextLine();
+		 if(check=="No"||check=="no") {
+			 System.exit(0);
+		 }else {
+				 System.out.println("Enter New Price Per Unit :");
+				 inventory.setPricePerUnit(Double.parseDouble(sc.nextLine()));
+				 
+				 System.out.println("Enter New Quantity In Stock: ");
+				 inventory.setQuantityInStock(Integer.parseInt(sc.nextLine()) );
+				 
+				 System.out.println(" ");
+				 System.out.println("Updated Inventory Item Details:");
+				 System.out.println("Item Name: "+inventory.getItemName());
+				 System.out.println("Price Per Unit: "+inventory.getPricePerUnit());
+				 System.out.println("Quantity in Stock: "+inventory.getQuantityInStock());
+				 System.out.println("Total Inventory Value: "+inventory.calculateTotalValue());
+				 
+		 }
+	}
+
+}
+
+
+package Blc;
+
+public class InventoryItem {
+	private String itemName;
+	private double pricePerUnit;
+	private int quantityInStock 	;
+	
+	public InventoryItem(String itemName, double pricePerUnit, int quantityInStock) {
+		super();
+		this.itemName = itemName;
+		this.pricePerUnit = pricePerUnit;
+		this.quantityInStock = quantityInStock;
+	}
+	
+	
+	public double calculateTotalValue() {
+		return (this.pricePerUnit * quantityInStock);
+	}
+	
+	
+	public String getItemName() {
+		return itemName;
+	}
+
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+
+	public double getPricePerUnit() {
+		return pricePerUnit;
+	}
+
+
+	public void setPricePerUnit(double pricePerUnit) {
+		this.pricePerUnit = pricePerUnit;
+	}
+
+
+	public int getQuantityInStock() {
+		return quantityInStock;
+	}
+
+
+	public void setQuantityInStock(int quantityInStock) {
+		this.quantityInStock = quantityInStock;
+	}
+
+
+	
+	
+	
+	
+	
+
+}
