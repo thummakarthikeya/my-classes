@@ -1,0 +1,67 @@
+public class Employee
+{
+	int id = 100;
+	
+	public static void main(String[] args) 
+	{
+		int val = 200;
+
+		Employee e1 = new Employee();     
+
+		e1.id = val;
+
+		update(e1);	  
+		
+		System.out.println(e1.id);
+
+        Employee e2 = new Employee(); 
+
+		e2.id = 900;
+        
+		switchEmployees(e2,e1); 
+
+		  //GC [How many objects are eligible for GC]
+
+			System.out.println(e1.id);
+		    System.out.println(e2.id);
+	    } 
+		
+	 public static void update(Employee e)  
+	 {
+        e.id = 500;
+		e = new Employee();
+		e.id = 400;
+		System.out.println(e.id);
+	 }
+
+	 public static void switchEmployees(Employee e1, Employee e2)
+	  {
+		 int temp = e1.id; 
+		 e1.id = e2.id; 
+		 e2 = new Employee();
+		 e2.id = temp;
+	  }
+   }
+
+
+
+=================stack memory ==========================
+  main
+  val = 200
+  e1 = 1000x
+  temp = 900
+  e1=>2000x   //it will be deleted after the methode is exit
+  e2=>3000x
+  e2=>4000x   //it will be deleted after the methode is exit
+
+
+  ====================heap memory=====================
+  1000x  => employe object e1 => (200)=>500
+  2000x => employee object e1 => 400
+  3000x => employee objecrt e2 => (900)=>500 , 500
+  4000x => employee object e2 => 900          
+
+
+
+
+
