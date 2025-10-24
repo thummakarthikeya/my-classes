@@ -48,3 +48,142 @@ Student Marks                 Grade
 < 60                            D
 
 Create an ELC class StudentGradeCalculator which contains main method to test the application.
+
+
+
+
+
+
+
+
+
+package Elc;
+import java.util.Scanner;
+
+import Blc.CalculateStudentGrade;
+import Blc.Student;
+import Blc.StudentGrade;
+
+public class StudentGradeCalculator {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner (System.in);
+		
+		String name =sc.nextLine();
+		int marks =Integer.parseInt(sc.nextLine());
+		Student s=new Student(name, marks);
+		StudentGrade ss=CalculateStudentGrade.calculateGrade(s);
+		System.out.println(ss);
+		
+		
+	}
+
+}
+
+
+
+
+
+package Blc;
+
+public class Student {
+	
+		 private String name ;
+		 private int marks ;
+		 
+		 public Student(String name, int marks) {
+			super();
+			this.name = name;
+			this.marks = marks;
+		 }
+
+		 public String getName() {
+			 return name;
+		 }
+
+		 public void setName(String name) {
+			 this.name = name;
+		 }
+
+		 public int getMarks() {
+			 return marks;
+		 }
+
+		 public void setMarks(int marks) {
+			 this.marks = marks;
+		 }
+
+		 @Override
+		 public String toString() {
+//			return " [name=" + name + ", marks=" + marks + "]";
+			return this.name;
+		 }
+		 
+		 
+}
+
+
+
+package Blc;
+
+public class StudentGrade {
+	private  Student student;
+	private  char studentGrade ;
+	
+	public StudentGrade(Student student, char studentGrade) {
+		super();
+		this.student = student;
+		this.studentGrade = studentGrade;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public char getStudentGrade() {
+		return studentGrade;
+	}
+
+	public void setStudentGrade(char studentGrade) {
+		this.studentGrade = studentGrade;
+	}
+
+	@Override
+	public String toString() {
+		return "[The Student " + student + " has " + studentGrade +" Grade ]";
+	}
+	
+	
+	
+
+}
+
+
+
+package Blc;
+
+public class CalculateStudentGrade {
+	public static StudentGrade  calculateGrade(Student marks) {
+		
+		
+		if(marks.getMarks() > 90 ) {
+			return new StudentGrade(marks,'A');
+			
+		}else if(marks.getMarks() >= 75) {
+			return new StudentGrade(marks,'B');
+			
+		}else if(marks.getMarks() >= 60) {
+			return new StudentGrade(marks,'C');
+			
+		}else if(marks.getMarks() < 60) {
+			return new StudentGrade(marks, 'D');
+			
+		}
+		return null;
+	}
+
+}
+
