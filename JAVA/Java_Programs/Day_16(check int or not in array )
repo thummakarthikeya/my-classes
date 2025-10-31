@@ -1,0 +1,11 @@
+
+
+
+to check whether the arr[i] is integer is not 
+int arr[]={1,"hava", 3 , 5 ,7 , "java"};
+int add=0;
+for(Object o : arr){
+  if(o instanceof Integer i){
+    add+=i;
+  }
+}
