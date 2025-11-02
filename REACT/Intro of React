@@ -1,0 +1,22 @@
+What is a component in React ?
+-> it is a building block of page or UI.
+
+A React component is a reusable piece of UI that represents a part of a web page, such as:
+
+A button
+
+A form
+
+A navbar
+
+Or even an entire page (if designed that way)
+
+🧱 Think of it like this:
+
+A page is made up of multiple components.
+
+So the relationship is opposite of what you said.
+
+----------------------------------------------
+
+
