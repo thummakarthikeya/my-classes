@@ -17,6 +17,9 @@ A page is made up of multiple components.
 
 So the relationship is opposite of what you said.
 
+--> components are 2 types :
+  i)functional component(new version using {count, setcount})
+  ii)class component (on=ld version (uses this keykord))
 ----------------------------------------------
 
 
