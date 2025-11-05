@@ -1,0 +1,386 @@
+
+Assignment 01 :
+---------------
+Develop an array for Custom class object.
+
+Coding requirement :
+--------------------
+Create a BLC class called Student.
+
+Attributes/Properties/Fields [tightly encapsulated]
+
+id, name and marks
+
+Take a parameetrized constructor to initialize all the fields.
+
+Generate toString() method.
+
+Take an ELC class called StudentArrayDemo with main method.
+
+Create Student array with size 3 manually.
+
+Assign Student objects to array elements using index manually.
+
+Take a forEach() loop to retrieve and pring array data.
+
+Sample Output :
+----------------
+Student [id=101, name=Ravi, marks=89.5]
+Student [id=102, name=Anita, marks=92.0]
+Student [id=103, name=Kiran, marks=85.75]
+
+
+
+
+
+package Elc;
+import java.util.*;
+
+import Blc.Student;
+
+public class StudentArrayDemo {
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+			
+		Student arr[] =new Student[3];
+		
+		for(int i=0; i<arr.length; i++) {
+			
+			System.out.println("Enter id");
+			int id=Integer.parseInt(sc.nextLine());
+			
+			System.out.println("Enter name");
+			String name = sc.nextLine();
+			
+			System.out.println("Enter marks");
+			int marks = Integer.parseInt(sc.nextLine());
+			
+			arr[i]=new Student(id,name, marks); 
+			
+		}
+		
+		
+		
+		for(Student s : arr) {
+			System.out.println(s);
+		}
+	}
+}
+
+
+
+
+package Blc;
+
+public class Student {
+	private int id;
+	private String  name;
+	private int marks;
+	public Student(int id, String name, int marks) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.marks = marks;
+	}
+	
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", marks=" + marks + "]";
+	}
+	
+	
+	
+}
+
+
+==========================================================================================
+Assignment 02 :
+---------------
+Develop an array for Custom class object.
+
+Coding requirement :
+--------------------
+Create a BLC class called Employee.
+
+Attributes/Properties/Fields [tightly encapsulated]
+
+id, name and salary
+
+Take a parameetrized constructor to initialize all the fields.
+
+Generate toString() method.
+
+Take an ELC class called EmployeeArrayDemo with main method.
+
+Create Scanner class object to initialize employee array dynamically. [User choice] 
+
+Take a for loop to initialize the employee array with user input.
+
+Take a forEach() loop to retrieve and pring array data.
+
+Sample Output :
+----------------
+Enter number of employees: 3
+
+Enter details for Employee 1:
+Enter ID: 111
+Enter Name: Scott
+Enter Salary: 45789
+
+Enter details for Employee 2:
+Enter ID: 222
+Enter Name: Smith
+Enter Salary: 78908
+
+Enter details for Employee 3:
+Enter ID: 333
+Enter Name: Alen
+Enter Salary: 99567
+
+===== Employee Details =====
+Employee [id=111, name=Scott, salary=45789.0]
+Employee [id=222, name=Smith, salary=78908.0]
+Employee [id=333, name=Alen, salary=99567.0]
+
+
+
+package Elc;
+
+import java.util.Scanner;
+import Blc.Employee;
+
+public class EmployeeArrayDemo {
+	public static void main(String[] args) {
+		
+	
+	
+	Scanner sc= new Scanner(System.in);
+	System.out.println("Enter the number of employees");
+	int length =Integer.parseInt(sc.nextLine());
+	
+	Employee arr[] =new Employee[length];
+	
+	for(int i=0; i<arr.length; i++) {
+		
+		System.out.println("Enter id");
+		int id=Integer.parseInt(sc.nextLine());
+		
+		System.out.println("Enter name");
+		String name = sc.nextLine();
+		
+		System.out.println("Enter salary");
+		int salary = Integer.parseInt(sc.nextLine());
+		
+		arr[i]=new Employee(id,name, salary); 
+		
+	}
+	
+	for(Employee e:arr) {
+		System.out.println(e);
+	}
+	}
+
+}
+
+
+
+
+package Blc;
+
+public class Employee {
+	
+	private int id;
+	private String  name;
+	private int salary;
+	
+	public Employee(int id, String name, int salary) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+	}
+	
+	
+	
+	
+
+}
+
+
+==========================================================================================
+Assignment 03 :
+---------------
+Develop an array for Custom class object.
+
+Coding requirement :
+--------------------
+Create a BLC class called Product.
+
+Attributes/Properties/Fields [tightly encapsulated]
+
+id, name and price
+
+Take a parameetrized constructor to initialize all the fields.
+
+Take getter method for id field.
+
+Generate toString() method.
+
+Take an ELC class called ProductArrayDemo with main method.
+
+Create Scanner class object to initialize product array dynamically. [User choice] 
+
+Take a for loop to initialize the product array with user input.
+
+We need to search the Prodcut from product array based on the product id, With the help of Scanner class ask user to input id value, using for each loop, search whether the given id product is available or not. [see test cases for more details]
+
+If product is available based on the given id, print the product object otherwise print 
+product object is not available with the given id. [Product id is working as a primary key]
+
+Sample Output :
+----------------
+Test Case 1 :
+--------------
+Enter number of products: 3
+
+Enter details for Product 1:
+Enter Product ID: 111
+Enter Product Name: Camera
+Enter Product Price: 67890
+
+Enter details for Product 2:
+Enter Product ID: 222
+Enter Product Name: Laptop
+Enter Product Price: 89000
+
+Enter details for Product 3:
+Enter Product ID: 333
+Enter Product Name: Mobile
+Enter Product Price: 75000
+
+Enter Product ID to search: 222
+
+Product Found: Product [id=222, name=Laptop, price=89000.0]
+
+Test case 2 :
+-------------
+Enter number of products: 3
+
+Enter details for Product 1:
+Enter Product ID: 111
+Enter Product Name: Camera
+Enter Product Price: 78908
+
+Enter details for Product 2:
+Enter Product ID: 222
+Enter Product Name: Mobile
+Enter Product Price: 56789
+
+Enter details for Product 3:
+Enter Product ID: 333
+Enter Product Name: Laptop
+Enter Product Price: 78908
+
+Enter Product ID to search: 4
+
+Product with ID 4 not found.
+
+
+
+Batch_51_Assignment.txt
+Displaying Batch_51_Assignment.txt.
+
+
+
+
+package Elc;
+
+import java.util.Scanner;
+
+import Blc.Product;
+
+public class ProductArrayDemo {
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		System.out.print("Enter number of products: ");
+		int a=Integer.parseInt(sc.nextLine());
+		System.out.println(" ");
+		Product arr[]=new Product[a];
+		
+		for(int i=0; i<a; i++) {
+			int num =i;
+			System.out.println("Enter details for Product " + ++num);
+			
+			System.out.print("enter id:");
+			int id=Integer.parseInt(sc.nextLine());
+			
+			System.out.print("enter name:");
+			String name=sc.nextLine();
+			
+			System.out.print("enter product price:");
+			int price=Integer.parseInt(sc.nextLine());
+			
+			arr[i]=new Product(id, name, price);
+			System.out.println(" ");
+		}
+		
+//		for(Product p : arr) {
+//			System.out.println(p);
+//		}
+		System.out.println(" ");
+		System.out.print("Enter Product ID to search: ");
+		int find = Integer.parseInt(sc.nextLine());
+		System.out.println(" ");
+		for(Product p : arr) {
+
+			if(find == p.getId()) {
+				System.out.println("Product Found: "+p);
+			}
+			
+		}
+		
+	}
+
+}
+
+
+
+
+package Blc;
+
+public class Product {
+	private int id;
+	private String  name;
+	private int price;
+	
+	public Product(int id, String name, int price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + "]";
+	}	
+}
