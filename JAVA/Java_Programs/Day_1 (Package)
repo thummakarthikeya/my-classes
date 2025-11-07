@@ -13,3 +13,6 @@ public class Practice{
 this is how we compile and run this using package 
 javac -d . Practice.java
 java basic.vin.Practice
+
+
+javap -verbose Test.    (used to know what is there in class)
