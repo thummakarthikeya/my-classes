@@ -41,6 +41,20 @@ public void bark() : Method to print that "Dog is barking"
 
 Create an ELC class MultilevelInheritance which contains main method, Create the Object for more specialized class and call the behavior.
 
+
+package Blc;
+
+public class Animal {
+	
+	public void eat() {
+		System.out.println("Animal is eating");
+	}
+
+}
+
+
+
+
 ========================================================================
 Q2)
 
@@ -83,4 +97,96 @@ sample input : Dog dog = new Dog("Tommy", true, "Bulldog");
 sample output : 
               Dog [getName()=Tommy, isHasFur()=true, breed=Bulldog]
 
+
+
+
+
+package Blc;
+
+public class ZooAnimal {
+	private String name;
+	public ZooAnimal(String name) {
+		this.name = name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+
+}
+
+
+
+
+
+package Blc;
+
+public class ZooMammal extends ZooAnimal {
+	private boolean hasFur;
+	 public ZooMammal(String name,boolean hasFur) {
+		 super(name);
+		 this.hasFur = hasFur;
+	 }
+
+	 public void setHasFur(boolean hasFur) {
+		 this.hasFur = hasFur;
+	 }
+	 
+	 public boolean getHasFur() {
+		 return hasFur;
+	 }
+}
+
+
+
+
+
+package Blc;
+
+public class ZooDog extends ZooMammal{
+	private String breed;
+	public ZooDog(String breed,String name,boolean hasFur) {
+		
+		super(name,hasFur);
+		this.breed = breed;
+	}
+	
+	public void setbreed(String breed) {
+		 this.breed = breed;
+	 }
+	 
+	 public String getbreed() {
+		 return breed;
+	 }
+	 @Override
+	 public String toString() {
+		return "Dog  [getName()="+ getName() + ", isHasFur()=" + getHasFur() + ", hashCode()=" + hashCode() + ", breed="
+				+ super.toString() + "]";
+	 }
+	 
+	 
+	 
+}
+
+
+
+
+
+package Elc;
+
+import Blc.ZooDog;
+
+public class Main {
+	public static void main(String[] args) {
+		ZooDog zd = new ZooDog("shezu", "chesi", true);
+		System.out.println(zd);
+		
+	}
+
+}
 
