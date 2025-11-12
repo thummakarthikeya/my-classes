@@ -1,0 +1,235 @@
+Assignment :
+ ------------
+ Create a Program to Develop Hierarchical Inheritance for Employee Management System
+  
+ Here Employee is super class and it has two sub classes PermanentEmployee and ContractEmployee.
+    
+ We need to display the details of PermanentEmployee including provident fund and net Salary.
+ 
+ We need to display the details of ContractEmployee including contract
+ duration.
+  
+ Coding Requirements :
+ ----------------------
+ Create a BLC class called Employee.
+   
+ Attributes/ Properties [protected]
+ employeeId - int
+ employeeName - String
+ employeeSalary - double
+  
+ 
+ Create a Parameterized constructor to initialize all fields.
+ Create another BLC class PermanentEmployee which extends from Employee
+ 
+ Attributes/ Properties [protected]
+ providentfund - double
+  
+  
+ Create a parameterized constructor to initialize super class properties only
+  
+ [Note : providentfund property will not initialize through constructor]
+  
+   
+ Initialize providentfund manually, It must be 12% of the salary.
+ 
+ Genarate toString() method to print all the properties of super class as well as sub class.
+ [See the test cases for more details]
+  
+ Method :
+ --------
+ Method Name  :   netSalary()
+ Modifier     :   public
+ Argument     :   No argument
+ return type  :   void
+  
+ This method should print netSalary i.e salary + providentfund
+  
+ Create another BLC class ContractEmployee which extends from Employee
+  
+ Attributes/ Properties [protected]
+  
+ contractDuration - int
+  
+ Create a parameterized constructor to initialized all fields (super class and sub class)
+  
+ Genarate toString() method to print all the properties of super class as well as sub class.
+ [See the test cases for more details]
+  
+  
+ Create an ELC class EmployeeSystem which contains main method.
+  
+ Create both sub class objects and print the result.
+  
+  
+ Test Cases for Output :
+ ------------------------
+    Test Case 1 :
+    -------------
+    Enter permanent employee Id :101
+	Enter permanent employee Name :Scott
+	Enter permanent employee Salary :100000
+	PermanentEmployee [empoyeeId=101, employeeName=Scott, employeeSalary=100000.0, providentfund=12000.0]
+	Net Salary is :112000.0
+	========================================
+	Enter contract employee Id :102
+	Enter contract employee Name :Smith
+	Enter contract employee Salary :80000
+	Enter contract duration in year :5
+	ContractEmployee [empoyeeId=102, employeeName=Smith, employeeSalary=80000.0, contractDuration=5 years]
+
+    
+  
+    Test Cases for Input Validation :
+    ---------------------------------
+    Test Cases 1:
+    -------------
+	Enter permanent employee Id :-90
+	Enter permanent employee Name :Scott
+	Enter permanent employee Salary :12000
+	Invalid Employee Id
+	
+	Test Cases 2:
+    -------------
+    Enter permanent employee Id :101
+	Enter permanent employee Name :
+	Enter permanent employee Salary :6543
+	Employee Name can't be null
+
+    Test Cases 3 :
+    ---------------
+    Enter permanent employee Id :120
+	Enter permanent employee Name :Alen
+	Enter permanent employee Salary :-78908
+	Salary can't be 0 or negative
+
+
+
+
+
+
+
+
+package Blc;
+
+public class ContractEmployee extends Employee {
+	 protected int contractDuration;
+
+	 public ContractEmployee(int employeeId, String employeeName, double employeeSalary, int contractDuration) {
+		super(employeeId, employeeName, employeeSalary);
+		this.contractDuration = contractDuration;
+	 }
+	 
+	 @Override
+		public String toString() {
+			return "ContractEmployee [ employeeId=" + employeeId
+					+ ", employeeName=" + employeeName +", employeeSalary=" + employeeSalary +", contractDuration=" + contractDuration + "year]";
+		}
+	
+}
+
+
+
+package Blc;
+
+public class PermanentEmployee extends Employee {
+	protected double providentfund = 0.12 ;
+	
+
+	public PermanentEmployee(int employeeId, String employeeName, double employeeSalary) {
+		super(employeeId, employeeName, employeeSalary);
+		
+		this.providentfund *= employeeSalary;
+	}
+	
+	public double  netSalary() {
+		return employeeSalary + providentfund;
+	}
+	
+	@Override
+	public String toString() {
+		return "PermanentEmployee [ employeeId=" + employeeId + ", employeeName="
+				+ employeeName + ", employeeSalary=" + employeeSalary  +" providentfund=" + providentfund +"] \nNet Salary is :"+netSalary()+ "]";
+	}
+	 
+	 
+
+}
+
+
+
+
+
+
+package Blc;
+
+public class Employee {
+	protected int employeeId ;
+	protected String employeeName ;
+	protected  double employeeSalary ;
+	
+	
+	public Employee(int employeeId, String employeeName, double employeeSalary) {
+		super();
+		if( employeeId <=0 ) {
+			System.out.println("Invalid employeeId");
+			System.exit(0);
+		}
+		if( employeeName =="" ) {
+			System.out.println("Invalid employeeName");
+			System.exit(0);
+		}
+		if( employeeSalary <= 0) {
+			System.out.println("Invalid employeeSalary");
+			System.exit(0);
+		}
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
+		this.employeeSalary = employeeSalary;
+		
+	}
+	
+	
+
+}
+
+
+
+package Elc;
+import java.util.Scanner;
+
+import Blc.ContractEmployee;
+import Blc.PermanentEmployee;
+
+public class EmployeeSystem {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter permanent employee Id : ");
+		int id =Integer.parseInt(sc.nextLine());
+		System.out.println("Enter permanent employee Name : ");
+		String name = sc.nextLine();
+		System.out.println("Enter permanent employee Salary : ");
+		double salary = Double.parseDouble(sc.nextLine());
+		System.out.println("Enter permanent employee Id : ");
+		
+		int id2 =Integer.parseInt(sc.nextLine());
+		System.out.println("Enter permanent employee Name : ");
+		String name2 = sc.nextLine();
+		System.out.println("Enter permanent employee Salary : ");
+		double salary2 = Double.parseDouble(sc.nextLine());
+		System.out.println("Enter contract duration in year : ");
+		int year = Integer.parseInt(sc.nextLine());
+		
+		
+		PermanentEmployee pe = new PermanentEmployee(id, name, salary);
+		System.out.println(pe);
+		
+		ContractEmployee ce = new ContractEmployee(id2, name2, salary2, year);
+		System.out.println(ce);
+	}
+
+}
+
+
+
