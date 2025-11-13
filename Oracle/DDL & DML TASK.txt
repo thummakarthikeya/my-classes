@@ -1,0 +1,181 @@
+                            DDL TASK
+                          ===========
+
+1.Create a STUDENT table with the following columns
+
+-----> SID 
+
+-----> SNAME
+
+-----> GENDER
+
+-----> FEE
+
+-----> DOB
+
+
+2.What is the command to view the structure of the STUDENT table?
+
+
+
+3.insert records into the STUDENT table.
+
+
+
+4.Write a query to add a new student record with the NAME 'SURYA' 
+  and a FEE of 10000 into the STUDENT table.
+
+
+
+5.Write a query to display all the records from the STUDENT table.
+
+
+
+6.Write a query to add a new column ADDRESS into the STUDENT table.
+
+
+
+7.Write a query to increase the size of the SNAME column to 20 in the student table.
+
+
+
+8.Write a query to drop the ADDRESS column from the STUDENT table.
+
+
+
+9.Write a query to rename the column SNAME to NAME in the 
+  student table.
+
+
+
+10.Write a query to completely delete the STUDENT table along with its structure.
+
+
+
+11.Write a query to restore the STUDENT table after drooping.
+
+
+
+12.What is the command to rename the table STUDENT to STUDENTDATA?
+
+
+
+13.Write a query to remove all rows from the A1 table but keep its
+   structure for future use.
+ 
+    create table a1
+    (
+    sno number(10),
+    sname varchar2(10)
+    );
+ 
+insert into a1 values(1,'surya');
+insert into a1 values(2,'anushka');
+commit;
+------------------------------------------------------------------------------------------------------
+1.What is DATABASE ?
+
+ Database is a place where we can store structured collection
+ of inter related data.
+
+------------------------------------------------------------------------------------------------------
+
+2.What is SQL ?
+
+  SQL is structured query language.in sql we are writing queries.
+with the help of queries we are communicating with the database.
+
+  SQL language was introduced by E.F Codd. He was a mathematician that's
+why he was represented data in the format of matrix(rows and columns).
+
+
+------------------------------------------------------------------------------------------------------
+
+3.What are DDL commands ? What is the purpose of create command ?
+
+• DDL stands for Data Definition Language
+
+• DDL command are used to define structure of the 
+  table.
+
+• The following are the DDL commands.
+
+1)Create                   
+2)Alter
+3)Drop                     
+4)Flashback                
+5)Truncate
+6)Purge
+7)Rename (oracle 9i)
+
+1)Create:- create command is used to create database objects like 
+=========  tables, views, sequences, indexes,procedures,functions,.....etc 
+
+
+Creating a table:-
+=================
+syntax:-
+========
+create table tablename(columnname1 datatype(size),columnname2 datatype(size),.... );
+
+NOTE:-By default DDL commands are auto committed.No need to give any commit
+===== command explicitly.
+
+------------------------------------------------------------------------------------------------------
+4.What are DML commands
+
+• DML stands for Data Manipulation Language.
+
+• DML commands are used to manipulate data in a table.
+
+• Simply in DML all operations we are performing on data.
+
+• The following are the DML commands.
+
+1.Insert
+2.Update
+3.Delete
+4.Merge (oracle 9i)
+
+
+
+
+1)insert: It is used to insert data into a table.
+========
+
+Method1:-
+========
+insert into tablename values(value1,value2,.......);
+
+
+Method2:-(Using Substitutional operator)
+========
+
+    &------>Enter value for
+
+Same like scanf function in C language.i.e is used to read
+the values from the keyboard.
+
+Here also '&' it is used to read the values from the keyboard.
+
+syntax:-
+=======
+insert into tablename values(&col1,&col2.....);
+
+
+Method3(Skipping columns):-in first 2 methods we need to provide values
+=========================  for all the columns then only record is
+                           inserted.
+
+•For EG 10 columns are there i am interested to give values for only 3
+ columns then we are using Skipping column method.
+
+syntax:-
+=======
+insert into tablename(col1,col2,col3)values(value1,value2,col3);
+
+NOTE:-DML commands are not auto commit commands.after inserting data use commit
+====  command then only data is saved permanently in database.
+
+
+
