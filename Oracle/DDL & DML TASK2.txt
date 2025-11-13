@@ -1,0 +1,65 @@
+                                   DDL & DML
+                                 ============
+
+
+1.Create a table named PRODUCT with PID,PNAME,CATEGORY,PRICE and insert the
+  records as below.
+
+
+     PID        PNAME	       CATEGORY	        PRICE
+    -----   -------------    --------------    --------
+      1	      LED TV	      ELECTRONICS       25000
+      2	      MOBILE	      ELECTRONICS       15000
+      3       FRIDGE          APPLIANCES	30000
+      4	    WASHING MACHINE   APPLIANCES	20000
+      5	    OFFICE CHAIR      FURNITURE	        5000
+
+
+
+2.Write a query to display product names and categories from PRODUCT table?
+
+
+3.Write a query to display product names,categories and price from
+  PRODUCT table?
+
+
+------------------------------------------------------------------------------------------------------
+1.Create STUDENTS table with following columns and insert the records as following
+
+     SID        SNAME         MARKS        GRADE          DOB
+   -------    ---------    ---------      --------     ----------
+      1         SURYA          82            B          31-DEC-97
+      2         KIRAN          20            F          18-SEP-96
+      3         ANUSHKA        98            A          22-APR-98
+      4         GOWTHAM        64            C          06-JAN-95
+      5         NITISH         45            D          12-MAR-96  
+
+
+
+2.Write a query to add a new column email into STUDENTS table.
+
+
+3.Write a query to increase the size of sname column to 20 in STUDENTS table
+
+
+4.Write a query to drop the grade column from STUDENTS table.
+
+
+5.Write a query to rename the column SNAME to NAME in the 
+  STUDENTS table.
+
+
+6.Write a query to completely delete the STUDENTS table along with its structure.
+
+
+7.Write a query to restore the STUDENTS table.
+
+
+8.Write a query to rename the table STUDENTS to STUDENT_DETAILS.
+
+----------------------------------------------------------------------------------------------------
+  
+
+
+
+
