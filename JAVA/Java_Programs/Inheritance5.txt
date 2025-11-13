@@ -1,0 +1,185 @@
+﻿Q1) Assignment 01 :
+-------------------
+ Student Fee Management System
+
+ A University needs an efficient way to manage and process fees for its students. There are different types of students with varying fee structures. 
+   
+ The university wants a system to handle the following scenarios:
+
+1) Day Scholars: Students who attend classes daily but do not stay in hostels. They have an additional transport fee with exam fee. This fee needs to be managed and calculated separately.
+
+2) Hostellers: Students who stay in university hostels and have additional hostel fees. Their total fee is the sum of the exam fee and hostel fee.
+
+Coding Requirement :
+---------------------
+Create a BLC class as Student  
+
+Attributes/Properties: [protected]
+------------------------------------
+studentId : int 
+name :String 
+examFee:double
+
+Define parameterized constructor to initialized all fields. 
+
+Create two BLC sub classes of Student called DayScholar and Hosteller. 
+Add the following implementations to each class.
+
+DayScholar:
+-----------
+
+Attributes/Properties [protected]
+---------------------------------
+transportFee : double 
+
+
+Define parameterized constructor to initialized all fields super and sub class. 
+
+Generate the toString() method which will display all fields super and sub class.
+
+Methods: 
+  
+1) Name of the method :  payFee()
+      Access modifier :  public
+          return type :  double
+            parameter :  double amount
+	    
+In this method calculate and return the fees of DayScholar Student.
+
+Write the logic so, If Student will pay excessive amount than original fees then Money will be refunded to student but If the Student will pay less amount than original fess then student need to pay more amount to pay the remaining fees.
+
+From ELC class, call this method to pay Student fees.
+
+Hosteller:
+----------
+Attributes/Properties [protected]
+----------------------------------
+hostelFee :double
+
+Define parameterized constructor to initialized all fields super and sub class. 
+
+Generate the toString() method which will display all fields super and sub class
+
+
+Methods: 
+  
+1) Name of the method :  payFee()
+      Access modifier :  public
+          return type :  double
+            parameter :  double amount
+	    
+In this method calculate and return the fees of Hosteller Student.
+
+Write the logic so, If Student will pay excessive amount than original fees then Money will be refunded to student but If the Student will pay less amount than original fess then student need to pay more amount to pay the remaining fees.
+
+From ELC class, call this method to pay Student fees.
+
+An ELC class StudentFeesCalculation is given to you with a main method. Use this class to test your application. Write Switch case with Scanner class to select the Student type through different Options :
+
+Select a particular type of Student :
+		 1) Hosteller Student :
+		 2) DayScholer Student :
+
+
+Test Cases for Output :
+------------------------
+Test Case 1 :
+-------------
+Select a particular type of Student :
+		 1) Hosteller Student :
+		 2) DayScholer Student :
+1
+You have selected Hosteller!!!
+Enter Student Id :101
+Enter Student Name :Ravishankar
+Enter Exam Fees :5000
+Enter Hostel Fee :90000
+Enter your total Fees :100000
+Refundabale Amount is :-5000.0
+Hosteller [studentId=101, name=Ravishankar, examFee=5000.0, hostelFee=90000.0]
+
+Test Case 2 :
+-------------
+Select a particular type of Student :
+		 1) Hosteller Student :
+		 2) DayScholer Student :
+1
+You have selected Hosteller!!!
+Enter Student Id :101
+Enter Student Name :Ravishankar
+Enter Exam Fees :5000
+Enter Hostel Fee :75000
+Enter your total Fees :70000
+Payable Amount is :10000.0
+Hosteller [studentId=101, name=Ravishankar, examFee=5000.0, hostelFee=75000.0]
+   
+Test Case 3 :
+-------------
+Select a particular type of Student :
+		 1) Hosteller Student :
+		 2) DayScholer Student :
+2
+You have selected Day Scholler!!!
+Enter Student Id :111
+Enter Student Name :Raj
+Enter Exam Fees :5000
+Enter Transport Fee :35000
+Enter your total Fees :50000
+Refundabale Amount is :-10000.0
+DayScholer [studentId=111, name=Raj, examFee=5000.0, transportFee=35000.0]
+
+Test Case 4:
+-------------
+Select a particular type of Student :
+		 1) Hosteller Student :
+		 2) DayScholer Student :
+2
+You have selected Day Scholler!!!
+Enter Student Id :111
+Enter Student Name :Raj
+Enter Exam Fees :5000
+Enter Transport Fee :35000
+Enter your total Fees :32000
+Payable Amount is :8000.0
+DayScholer [studentId=111, name=Raj, examFee=5000.0, transportFee=35000.0]
+
+Test Cases for Input Validation :
+---------------------------------
+Test Cases 1:
+-------------
+Select a particular type of Student :
+		 1) Hosteller Student :
+		 2) DayScholer Student :
+1
+You have selected Hosteller!!!
+Enter Student Id :-111
+Enter Student Name :Ravi
+Enter Exam Fees :12678
+Enter Hostel Fee :5000
+Student Id cannot be zero OR -ve
+   
+Test Cases 2:
+-------------
+Select a particular type of Student :
+		 1) Hosteller Student :
+		 2) DayScholer Student :
+1
+You have selected Hosteller!!!
+Enter Student Id :101
+Enter Student Name :null
+Enter Exam Fees :5000
+Enter Hostel Fee :12000
+Name cannot be null or blank
+
+Test Cases 3:
+-------------
+Select a particular type of Student :
+		 1) Hosteller Student :
+		 2) DayScholer Student :
+1
+You have selected Hosteller!!!
+Enter Student Id :101
+Enter Student Name :Ravi
+Enter Exam Fees :-9000
+Enter Hostel Fee :12000
+Exam fees cannot be negative
