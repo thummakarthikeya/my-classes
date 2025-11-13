@@ -60,6 +60,31 @@
 ----------------------------------------------------------------------------------------------------
   
 
+----------------------------------------------> answers <------------------------------------------------
+
+SQL>select * from student;
+
+SQL> create table Product (pid number(3), pname varchar2(20), category varchar(15), price number(7));
+
+SQL> insert into Product values(&pid, '&pname ', '&category', &price );
+
+SQL> /
+
+SQL> select *from products;
+
+SQL> select category, price from product;
+
+SQL> desc student;
+
+SQL> select* from student order by sid;
+
+SQL> update student set address='kollur' where address = '02-may-2001';
+
+SQL> DELETE FROM student;
+
+SQL>flashback table student to before drop;
+
+SQL> alter table student modify sid number(4);
 
 
 
