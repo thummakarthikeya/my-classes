@@ -1,0 +1,160 @@
+ Java Inheritance Problem: Student Payment DetailsYou are required to implement a class hierarchy for managing student details and fee payments.1.
+Base Class: StudentImplement a class named Student with the following members:Instance Variables:studentId: intname: StringexamFee: doubleConstructor
+: A parameterized constructor to initialize all instance variables.Methods:displayDetails(): Returns a String containing the student details in the format:
+Student[name=...,studentId=...,examFee=...]payFee(double amount): Takes the amount paid as a parameter. This method should be designed to calculate and return 
+the remaining fee due (positive value) or the excess amount paid (negative value) against the student's total applicable fee.2. Derived Class: DayScholarImplement
+a class named DayScholar that inherits from Student with the following additions/modifications:Instance Variable:transportFee: doubleConstructor: A parameterized
+constructor that calls the base class constructor and initializes transportFee.Methods:displayDetails(): Override the base method. Returns a String in the format:
+DayScholar[transportFee=..., name=...,studentId=...,examFee=...]payFee(double amount): Override the base method. The Total Fee for a DayScholar is examFee +
+transportFee. Calculate and return the remaining fee due or the excess amount paid.3. Derived Class: HostellerImplement a class named Hosteller that inherits
+from Student with the following additions/modifications:Instance Variable:hostelFee: doubleConstructor: A parameterized constructor that calls the base class 
+constructor and initializes hostelFee.Methods:displayDetails(): Override the base method. Returns a String in the format: Hosteller[HostelFee=..., name=...,
+studentId=...,examFee=...]payFee(double amount): Override the base method. The Total Fee for a Hosteller is examFee + hostelFee. Calculate and return the
+remaining fee due or the excess amount paid.4. Testing Class: TesterDayScholarHostellerIn the main method of the TesterDayScholarHosteller class, you must
+read the required input from the user (student type, ID, name, fees, and amount paid) and then:Create an object of the appropriate subclass (DayScholar or Hosteller).
+Print the details using the object's displayDetails() method.Call the object's payFee() method with the amount paid.Based on the returned value (remainingAmount)
+:If remainingAmount is less than or equal to 0, print: All Fees are clearIf remainingAmount is greater than 0, print: Remaining amount to pay is: <remainingAmount>
+Input/Output Requirements (Based on Test Cases):The main program must guide the user with prompts and produce output matching the examples provided.ActionInput
+PromptsOutput Format (Example)Select TypeEnter 1 for DayScholar, 2 for Hosteller:DayScholar FeesEnter studentId, name, examFee, transportFee, amountPaidDayScholar
+[...] followed by payment status.Hosteller FeesEnter studentId, name, examFee, HostelFee, amountPaidHosteller[...] followed by payment status.
+
+
+
+
+import java.util.*;
+
+class TesterDayScholarHosteller {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int select = 0;
+        System.out.println("Invalid Session");
+        
+        select = sc.nextInt();
+        if (select != 1 && select != 2) {
+            System.out.println("Invalid Choice");
+            System.exit(0);
+        }
+        
+        int studentId = sc.nextInt();
+        String name = sc.next();
+        double examFee = sc.nextDouble();
+        double totalFee = sc.nextDouble();
+        double transportFee = 0;
+        double hostellFee = 0;
+
+        if (studentId <= 0) {
+            System.out.println("Id should be Positive.");
+            System.exit(0);
+        }
+
+        if (totalFee <= 0) {
+            System.out.println("Amount should be Positive.");
+            System.exit(0);
+        }
+
+        if (select == 1) { // DayScholar
+            transportFee = sc.nextDouble();
+            if (transportFee <= 0) {
+                System.out.println("TransportFee should be Positive.");
+                System.exit(0);
+            }
+            
+            DayScholar ds = new DayScholar(studentId, name, examFee, transportFee);
+            double totalRequired = ds.displayDetails();
+            
+            if (totalFee >= transportFee) {
+                System.out.println("All fees are clear");
+            } else {
+                System.out.println("Remaining amount to pay is: " + (transportFee - totalFee));
+            }
+            
+        } else if (select == 2) { // Hosteller
+            hostellFee = sc.nextDouble();
+            if (hostellFee <= 0) {
+                System.out.println("HostellFee should be Positive.");
+                System.exit(0);
+            }
+            
+            Hosteller hs = new Hosteller(studentId, name, examFee, hostellFee);
+            double totalRequired = hs.displayDetails();
+            
+            if (totalFee >= hostellFee) {
+                System.out.println("All fees are clear");
+            } else {
+                System.out.println("Remaining amount to pay is: " + (hostellFee - totalFee));
+            }
+        }
+    }
+}
+
+class Student {
+    protected int studentId;
+    protected String name;
+    protected double examFee;
+
+    public Student(int studentId, String name, double examFee) {
+        if (studentId <= 0) {
+            System.out.println("The student ID should be Positive!");
+            System.exit(0);
+        }
+        if (examFee <= 0) {
+            System.out.println("Exam Fee should be Positive.");
+            System.exit(0);
+        }
+        this.studentId = studentId;
+        this.name = name;
+        this.examFee = examFee;
+    }
+
+    public String displayDetails() {
+        return "Student[studentId=" + studentId + ", name=" + name + ", examFee=" + examFee + "]";
+    }
+}
+
+class DayScholar extends Student {
+    protected double transportFee;
+
+    public DayScholar(int studentId, String name, double examFee, double transportFee) {
+        super(studentId, name, examFee);
+        if (transportFee <= 0) {
+            System.out.println("Transport Fee should be Positive.");
+            System.exit(0);
+        }
+        this.transportFee = transportFee;
+    }
+
+    @Override
+    public double displayDetails() {
+        // Calculate and return the total fee required for a Day Scholar
+        return examFee + transportFee;
+    }
+
+    public String displayStudentDetails() {
+        // This is a helper method to match the string formatting shown in the image, though the requirement seems to be returning the total fee.
+        return "DayScholar [transportFee=" + transportFee + ", name=" + name + ", studentId=" + studentId + ", examFee=" + examFee + "]";
+    }
+}
+
+class Hosteller extends Student {
+    protected double hostellFee;
+
+    public Hosteller(int studentId, String name, double examFee, double hostellFee) {
+        super(studentId, name, examFee);
+        if (hostellFee <= 0) {
+            System.out.println("Hostel Fee should be Positive.");
+            System.exit(0);
+        }
+        this.hostellFee = hostellFee;
+    }
+
+    @Override
+    public double displayDetails() {
+        // Calculate and return the total fee required for a Hosteller
+        return examFee + hostellFee;
+    }
+    
+    public String displayStudentDetails() {
+        // This is a helper method to match the string formatting shown in the image, though the requirement seems to be returning the total fee.
+        return "Hosteller [hostellFee=" + hostellFee + ", name=" + name + ", studentId=" + studentId + ", examFee=" + examFee + "]";
+    }
+}
