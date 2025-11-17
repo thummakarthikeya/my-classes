@@ -1,0 +1,102 @@
+1. Write an SQL query to fetch the highest salary from each department.
+
+2. Write an SQL query to display the second highest salary in the employees table.
+
+3. Write a query to find employees whose salary is greater than the average salary of their department.
+
+4. Write a query to count how many employees are working in each department.
+
+5. Write an SQL query to list all employees who have duplicate names.
+
+6. Write a query to display employees who earn the highest salary in the entire company.
+
+7. Write a query to show the top 3 highest salaries.
+
+8. Write a query to find departments that have more than 5 employees.
+
+9. Write an SQL query to fetch all employees whose names contain exactly 5 characters.
+
+10. Write an SQL query to find employees who joined in the year 2022 (assume join_date column exists).
+
+11. Write a query to select employees who do not belong to any department (department_id is NULL).
+
+12. Write a query to display employees sorted by salary in descending order and name in ascending order.
+
+13. Write an SQL query to fetch employees whose salary is greater than the salary of employee ‘John’.
+
+14. Write an SQL query to delete all employees whose salary is below the minimum salary of department 10.
+
+15. Write an SQL query to update the salary of all employees by increasing it by 10%.
+
+16. Write a query to show the department with the maximum total salary.
+
+17. Write a query to retrieve employees who earn the same salary.
+
+18. Write a query to find the number of employees who earn more than 5000.
+
+19. Write a query to display the lowest salary for every job role (assume job column exists).
+
+20. Write a query to fetch all employees who work in departments 10, 20, and 30 but have a salary less than 4000.
+
+
+1. Write an SQL query to find the 3rd highest salary in each department using a window function.
+
+2. Write a query to list employees whose salary is above the department average using a correlated subquery.
+
+3. Write a query to find employees who earn more than every employee in department 20.
+
+4. Write an SQL query to fetch the top 2 earners from each department using RANK() or DENSE_RANK().
+
+5. Write a query to display department names that have no employees (use LEFT JOIN).
+
+6. Write a query to list employees who have never been assigned a project (assume project_assignment table exists).
+
+7. Write an SQL query to find employees whose salary is greater than the salary of at least two employees in the same department.
+
+8. Write a query to retrieve the employees with the highest salary per job role using PARTITION BY.
+
+9. Write a query to find departments where the total salary exceeds 1,00,000.
+
+10. Write a query to show the running total of salaries ordered by hire_date.
+
+11. Write a query to find the difference between the highest and lowest salary in each department.
+
+12. Write a query to list employees who joined in the last 6 months (use SYSDATE).
+
+13. Write a query to select employee names that appear more than once in the table (use HAVING).
+
+14. Write a query to display all employees who do not have a manager (self join).
+
+15. Write a query to show employees along with their manager names (self join).
+
+16. Write a query to list departments that have more than 3 employees earning above 5000.
+
+17. Write a query to find employees whose salary is above the overall company median salary.
+
+18. Write a query to display each employee's salary as a percentage of their department's total salary.
+
+19. Write a query to show the employee who earns the maximum salary without using MAX().
+
+20. Write a query to find employees whose salary matches someone else’s salary in a different department.
+
+21. Write a query to get all employees who were hired on a Monday (use TO_CHAR).
+
+22. Write a query to display all departments where the average salary is greater than the company-wide average salary.
+
+23. Write a query to list employees who are earning more than their manager.
+
+24. Write a query to find employees who joined earlier than their manager.
+
+25. Write a query to find the cumulative count of employees hired by year.
+
+**26. Write a query to categorize employees into salary bands:
+
+Low (<3000), Medium (3000–7000), High (>7000) using CASE.**
+
+27. Write a query to display the oldest three employees in the company based on hire_date.
+
+28. Write a query to find employees who work in multiple departments (assume dept_assignment table exists).
+
+29. Write a query to list employees who have the same hire month, regardless of year.
+
+30. Write a query to find the employees whose salary increased compared to their previous record (audit table comparison).
