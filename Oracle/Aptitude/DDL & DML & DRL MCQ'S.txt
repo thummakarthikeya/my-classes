@@ -1,0 +1,440 @@
+                                  SQL MCQ'S
+                                ============
+Topic:DDL,DML,DRL
+
+
+1.DDL statements are used for which of the following Oracle database objects?
+
+a) Tables
+
+b) Materialized views    
+
+c) indexes   
+
+d) All of the above
+
+
+Answer: 
+
+
+------------------------------------------------------------------------------------------------------
+2.What does the TRUNCATE command do in Oracle?
+
+a) Deletes table and its structure
+
+b) Removes all rows but keeps the structure
+
+c) Deletes selected rows with WHERE clause
+
+d) Drops only column data
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+3.Which statement is true about ALTER TABLE?
+
+a) It can be used to delete records from a table
+
+b) It can add, drop, or modify table columns
+
+c) It is used only for constraint creation
+
+d) It cannot modify column data types
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+4.The DDL command to remove a table including its structure is:
+
+a) TRUNCATE
+
+b) DELETE
+
+c) DROP
+
+d) CLEAR
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+5.What is the full form of DDL command
+
+a) Data deleting language
+
+b) Data definition language
+
+c) Data delegating language         
+
+d) Dummy data language
+
+
+Answer: 
+ 
+
+------------------------------------------------------------------------------------------------------
+6.Which of the following is a DML statement?
+
+a) CREATE TABLE
+
+b) INSERT INTO
+
+c) DROP TABLE
+
+d) ALTER TABLE
+
+
+Answer:- 
+
+------------------------------------------------------------------------------------------------------
+7.UPDATE emp SET salary = salary * 1.1; belongs to which category?
+
+a) DDL
+
+b) DCL
+
+c) DML
+
+d) TCL
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+8.Which DML statement is used to remove specific rows from a table?
+
+a) DELETE
+
+b) TRUNCATE
+
+c) DROP
+
+d) ALTER
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+9.Which of the following DML commands cannot use a WHERE clause?
+
+a) DELETE
+
+b) INSERT
+
+c) UPDATE
+
+d) None of the above
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+10.Which command is used to change the structure of an existing table?
+
+a) CHANGE
+
+b) ALTER
+
+c) MODIFY
+
+d) UPDATE
+
+
+Answer: 
+
+-----------------------------------------------------------------------------------------------------
+11.What is the result of the following statement: 
+
+  ALTER TABLE employees DROP COLUMN salary;
+
+a) Drops the employees table
+
+b) Drops the salary column from employees table
+
+c) Drops all data from employees table
+
+d) Drops all columns except salary
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+12.Which command would you use to change the datatype of a column in a table?
+
+a) ALTER TABLE MODIFY
+
+b) ALTER TABLE CHANGE
+
+c) UPDATE TABLE
+
+d) RENAME COLUMN
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+13.What is the main difference between DROP and TRUNCATE commands?
+
+a) DROP removes only data, TRUNCATE removes structure
+
+b) DROP removes structure and data, TRUNCATE removes only data
+
+c) DROP can be rolled back, TRUNCATE cannot
+
+d) TRUNCATE is slower than DROP
+
+
+Answer:
+
+------------------------------------------------------------------------------------------------------
+14.Which of the following is a DDL command in oracle SQL ?
+
+a)SELECT
+
+b)INSERT
+
+c)CREATE
+
+d)UPDATE
+
+
+Answer: 
+------------------------------------------------------------------------------------------------------
+15.Which of the following is a DML command ?
+
+a)DELETE
+
+b)CREATE
+
+c)DROP 
+
+d)ALTER
+
+
+Answer: 
+------------------------------------------------------------------------------------------------------
+16.Which command is used to modify existing data in a table ?
+
+a)CHANGE
+
+b)MODIFY
+
+c)UPDATE
+
+d)ALTER
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+17.In SQL, which of the following is not a data Manipulation Language Commands?
+
+a) Delete	
+
+b) Truncate	
+
+c) Update	
+
+d) Merge
+
+
+Answer: 
+------------------------------------------------------------------------------------------------------
+18.Which of the following is not a DDL command?
+
+a) CREATE
+
+b) DROP
+
+c) TRUNCATE
+
+d) UPDATE
+
+
+Answer: 
+------------------------------------------------------------------------------------------------------
+19.Which statement is used to retrieve data  from a table ?
+
+a)SELECT
+
+b)GET
+
+c)FETCH
+
+d)SHOW
+
+
+Answer: 
+------------------------------------------------------------------------------------------------------
+19.What is the syntax for creating a table?
+
+a) CREATE TABLE [schema.] table (column datatype [DEFAULT expr] [,..]);
+
+b) CREATE TABLE INTO [schema.] table (column datatype [DEFAULT expr] [,..] );
+
+c) CREATE TABLE VALUES [schema.] table (column datatype [DEFAULT expr] [,..] );
+
+d) None of the above
+
+
+Answer: 
+-----------------------------------------------------------------------------------------------------
+20.What is Functionality of TRUNCATE Command?
+
+a) It Deletes All Records and Structure Temporarily 
+
+b) It Deletes All Records and Structure Permanently
+
+c) It Deletes Specified Records Temporarily	      
+
+d) It Deletes All Records Permanently
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+21.Whcih SQL Sub-Language commands contains AUTO COMMIT
+
+a) DML		
+
+b) DDL	
+
+c) Both DDL & DML
+
+d) DRL
+
+
+Answer: 	
+------------------------------------------------------------------------------------------------------
+22.Select * from employee where salary>10000 and dept_id=101;
+
+ Which of the following fields are displayed as output?
+
+a) Salary, dept_id	
+
+b) Dept_Id	
+
+c) Salary	
+
+d) All the field of employee table
+
+
+Answer: 
+------------------------------------------------------------------------------------------------------
+23. Which of the following statements contains an error?
+
+a) Select empid where empid = 1009 and lastname = 'GELLER';
+
+b) Select * from emp where empid = 10003;
+
+c) Select empid from emp where empid = 10006;
+
+d) Select empid from emp;
+
+
+Answer: 
+------------------------------------------------------------------------------------------------------
+24.Which statement is true about DELETE and TRUNCATE
+
+a) DELETE is DDL,TRUNCATE is DML
+
+b) DELETE can be rolled, TRUNCATE can not
+
+c) TRUNCATE fires DELETE triggers
+
+d) DELETE REMOVES table structure
+
+
+Answer: 
+------------------------------------------------------------------------------------------------------
+25.Consider the following Instructor table with the following 4 columns
+
+---> Id
+---> Name
+---> City
+---> Country
+
+Which of the following SQL query correctly inserts a new record in
+instructor table with Id = 5 and Name = 'SURYA'
+
+a) Insert into Instructor values (5, 'SURYA');
+
+b) Insert into Instructor values (5, SURYA);
+
+c) Insert into Instructor values ('5', 'SURYA');
+
+d) Insert into Instructor (Id, Name) values (5, 'SURYA');
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+26.How can you change LastName "Thomas" to "Michel" in the Users table?
+
+a) UPDATE User SET LastName = 'Thomas' INTO LastName = 'Michel';
+
+b) MODIFY Users SET LastName = 'Michel' WHERE LastName = 'Thomas';
+
+c) MODIFY Users SET LastName = 'Thomas' INTO LastName = 'Michel';
+
+d) UPDATE Users SET LastName = 'Michel' WHERE LastName = 'Thomas';
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+27.The command to eliminate a table from a database
+
+a) REMOVE TABLE CUSTOMERS;
+
+b) DELETE TABLE CUSTOMERS;
+
+c) DROP TABLE CUSTOMERS;
+
+d) UPDATE TABLE CUSTOMERS;
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+28.What does the following code snippet do ?
+
+Alter table student add address varchar2(20);
+
+a) Adds a column called ADDRESS in the table student
+
+b) Checks if a column called ADDRESS is present in the table student
+
+c) invalid syntax
+
+d) None of the above 
+
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+29.Which datatype accepts IMAGES, AUDIO FILES, VIDEO FILES
+
+a) NUMBER
+
+b) TIMESTAMP
+
+C) BLOB
+
+d) VARCHAR2
+
+
+Answer: 
+------------------------------------------------------------------------------------------------------
+30.Which of the following commands can be used to rename a table in Oracle?
+
+a) RENAME
+
+b) CHANGE
+
+c) ALTER
+
+d) UPDATE
+
+Answer: 
+------------------------------------------------------------------------------------------------------
