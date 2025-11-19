@@ -1,4 +1,9 @@
-Methods = stack area;
-objects & instance variables = heap area;
-class =  method area;
-byte code to bit code = (JVM) Interpreter
+Local variables & method calls → Stack Area
+
+Objects & instance variables → Heap Area
+
+Class information (class metadata), static variables, constant pool → Method Area
+
+byte code is executed by = (JVM) Interpreter
+
+Just-In-Time (JIT) =  Compiler converts bytecode into native machine code at runtime for faster execution
