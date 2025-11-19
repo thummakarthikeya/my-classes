@@ -1,3 +1,3 @@
 Methods = stack area;
-objects  = heap area;
+objects & instance variables = heap area;
 class =  method area;
