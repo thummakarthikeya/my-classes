@@ -1,0 +1,44 @@
+                              TCL COMMANDS
+                            ===============
+                             
+
+1.create a table with sno, sname column
+
+---->after creating the table insert 3 records
+
+---->Then use commit command to save the data permanetly in harddisk. 
+
+---->again insert 2 records
+
+---->set the savepoint with name p1
+
+---->again insert 2 records 
+
+---->set the savepoint with name p2
+
+---->again insert 2 records 
+
+---->perform rollback to p2;
+
+---->see the output
+
+---->perform rollback to p1;
+
+---->see the output
+
+---->perform rollback;
+
+Then see the output 
+
+-----------------------------------------------------------------------------------------------------
+THESE TABLE is REQUIRED FOR TOMMORROW OPERATORS TASK CREATE AS IT IS.
+
+1.create the student1 table and insert the records as below.
+
+  SNO      SNAME      SUB1         SUB2        SUB3 
+  -----    -------    ------       ------      ------  
+    1      GOWTHAM      72           18          24
+    2       KAVYA       60           50          45
+    3      PREETHI      12           30          25
+    4       KIRAN       80           88          74
+
