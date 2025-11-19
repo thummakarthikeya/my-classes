@@ -21,5 +21,5 @@ application or system = loads all the .class files
 
 class to class or interface to interface = extends   
 interface to class = implements
-
- = extends
+collection is a = interface
+collections is a = class
