@@ -7,3 +7,11 @@ Class information (class metadata), static variables, constant pool → Method A
 byte code is executed by = (JVM) Interpreter
 
 Just-In-Time (JIT) =  Compiler converts bytecode into native machine code at runtime for faster execution
+
+Loading
+------
+Bootstrap  = String and all the lang files etc;
+
+platform or extension = loads all the third party files ;
+
+application or system = loads all the .class files 
