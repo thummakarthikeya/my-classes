@@ -1,0 +1,235 @@
+﻿Q1. What is the result of the expression 5 + 3 * 2 in Java?
+a. 16
+b. 11
+c. 13
+d. 10
+Answer: b. 11 (Multiplication has higher precedence than addition)
+
+Q2. Which of the following is the correct operator for bitwise AND in Java?
+a. &&
+b. &
+c. |
+d. ||
+Answer: b. & (Bitwise AND operator)
+
+Q3. What is the result of the expression 10 / 3 in Java?
+a. 3.33
+b. 3
+c. 4
+d. 3.0
+Answer: b. 3 (Integer division)
+
+Q4. Which of the following is the ternary operator in Java?
+a. ::
+b. ?:
+c. @
+d. &
+Answer: b. ?: (Ternary operator)
+
+Q5. What is the result of the expression 7 % 3 in Java?
+a. 1
+b. 2
+c. 3
+d. 4
+Answer: a. 1 (Modulus operator gives the remainder)
+
+Q6. Which of the following operators is used to concatenate two strings in Java?
+a. +
+b. &
+c. |
+d. +=
+Answer: a. + (String concatenation)
+
+Q7. What is the result of the expression true && false in Java?
+a. true
+b. false
+c. 0
+d. 1
+Answer: b. false (Logical AND)
+
+Q8. Which of the following operators is used for logical OR in Java?
+a. |
+b. &&
+c. ||
+d. &
+Answer: c. || (Logical OR)
+
+Q9. Which of the following is the correct order of precedence (highest to lowest) in Java?
+A. (), * / %, + -
+B. + -, * / %, ()
+C. * / %, (), + -
+D. (), + -, * / %
+Answer: A
+
+
+Q10.Which operator is used to combine multiple conditions in an if statement in Java?
+a. ||
+b. &
+c. &&
+d. |
+Answer: c. && (Logical AND)
+
+Q11. Which operator is used to perform a logical NOT operation in Java?
+a. ~
+b. !
+c. -
+d. &
+Answer: b. ! (Logical NOT operator)
+
+Q12. What will be the result of the following code?
+int x = 5;
+int y = ++x * 10;
+System.out.println(y);
+a. 50
+b. 60
+c. 40
+d. 10
+Answer: b. 60 (++x increments x to 6 before the multiplication)
+
+Q13. Which operator is used to compare two values for inequality in Java?
+a. ==
+b. =
+c. !=
+d. <>
+Answer: c. != (Inequality operator)
+
+Q14. What is the result of the following expression?
+
+int x = 10;
+int y = ++x + x++;
+System.out.println(y);
+
+A. 21
+B. 22
+C. 20
+D. 23
+Answer: B [++x is pre-increment  becomes 11, then x++ returns 11 and becomes 12 ,  11 + 11 = 22]
+
+Q15. What is the result of the expression 10 % 4 in Java?
+a. 2
+b. 0
+c. 4
+d. 1
+Answer: a. 2 (Modulus operator gives the remainder)
+
+Q16. Which of the following is not a valid operator in Java?
+a. >>>
+b. &=
+c. #
+d. %
+Answer: c. # (# is not a valid operator in Java)
+
+Q17. What is the value of the expression true || false && true in Java?
+a. true
+b. false
+c. null
+d. 1
+Answer: a. true (&& has higher precedence than ||)
+
+Q18.What is the output.
+int x = 5;
+int y = 10;
+System.out.println(x < y && y > x);
+
+A. false
+B. true
+C. 0
+D. Compilation error
+Answer: B
+
+Q19. Which of these operators has the lowest precedence?
+A. *
+B. +
+C. =
+D. &&
+Answer: C [Assignment (=) has the lowest precedence.]
+
+
+Q20. What is the result of the following expression if a = 5 and b = 3?
+int result = a + (b * a) / b;
+a. 5
+b. 8
+c. 10
+d. 6
+Answer: b. 8 ((b * a) / b is evaluated first, resulting in 5 + 3)
+
+Q21.Which operator has the highest precedence in Java?
+A. &&
+B. *
+C. ++
+D. ()
+Answer: D
+
+Q22. Which operator is used to perform a bitwise OR operation in Java?
+a. ||
+b. |
+c. &
+d. ^
+Answer: b. | (Bitwise OR operator)
+
+Q23. What does the expression a *= b + 5 do in Java?
+a. Sets a to a * b + 5
+b. Sets a to a * (b + 5)
+c. Sets a to a + b * 5
+d. Sets a to a * b and adds 5
+Answer: b. Sets a to a * (b + 5) (Compound assignment operator)
+
+Q24. What is the result of the expression 5 & 3 in Java?
+a. 7
+b. 1
+c. 5
+d. 3
+Answer: b. 1 (Bitwise AND)
+
+Q25. Which operator is used to check if two object references point to the same object in memory in Java?
+a. ==
+b. equals
+c. instanceof
+d. !=
+Answer: a. == (Reference comparison)
+
+Q26. What does the operator += do in Java?
+a. It adds the right operand to the left operand and assigns the result to the left operand.
+b. It subtracts the right operand from the left operand and assigns the result to the left operand.
+c. It multiplies the left operand by the right operand and assigns the result to the left operand.
+d. It divides the left operand by the right operand and assigns the result to the left operand.
+Answer: a. It adds the right operand to the left operand and assigns the result to the left operand.
+
+Q27. What will be the result of the following code?
+int x = 5;
+int y = x++;
+System.out.println(y);
+a. 6
+b. 4
+c. 5
+d. 0
+Answer: c. 5 (x++ is post-increment, so y is assigned x's value before incrementing)
+
+Q28. Which of the following operators is used to access a class’s member variables 
+or methods in Java?
+a. ->
+b. .
+c. ::
+d. :
+Answer: b. . (Dot operator)
+
+Q29. What is the output of this code?
+int a = 5;
+int b = 10;
+int c = a + b * 2;
+System.out.println(c);
+
+A. 30
+B. 20
+C. 25
+D. 35
+Answer: C
+[b * 2 = 20, then a + 20 = 25]
+
+Q30. Which operator is used to combine multiple conditions in an if statement in Java?
+a. ||
+b. &
+c. &&
+d. |
+Answer: c. && (Logical AND)
+
