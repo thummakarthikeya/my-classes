@@ -1,0 +1,268 @@
+﻿MCQ :
+-----
+Q1) What is the main responsibility of the ClassLoader in JVM?
+a) Executing bytecode
+b) Loading class files into memory
+c) Managing garbage collection
+d) Compiling Java code to bytecode
+
+Q2) The Java Heap Memory is used for storing:
+a) Primitive local variables
+b) Objects and instance variables
+c) Method calls
+d) Class definitions
+
+Q3) Which part of the JVM executes Java bytecode?
+a) Just-In-Time (JIT) Compiler
+b) Java Virtual Machine (JVM) Interpreter
+c) Java Development Kit (JDK)
+d) Java Runtime Environment (JRE)
+
+Q4) What is the purpose of the Just-In-Time (JIT) compiler in JVM?
+a) Convert Java source code into bytecode
+b) Interpret bytecode one instruction at a time
+c) Convert bytecode into native machine code at runtime
+d) Load Java classes into memory
+
+Q5) Which of the following is the highest-level class loader in the JVM hierarchy?
+a) System ClassLoader
+b) Bootstrap ClassLoader
+c) Extension ClassLoader
+d) Custom ClassLoader
+
+Q6) Which of the following class loaders loads classes from CLASSPATH?
+a) Bootstrap ClassLoader
+b) Extension ClassLoader
+c) System (Application) ClassLoader
+d) Native Method ClassLoader
+
+Q7) What is the output of the following code?
+public class Test 
+{
+    public static void main(String[] args)
+    {
+         System.out.println(String.class.getClassLoader());
+    }
+}   
+a) null
+b) Bootstrap ClassLoader
+c) AppClassLoader
+d) Exception at runtime
+
+
+Q8) What is the output of the following code?
+public class Test 
+{
+    public static void main(String[] args)
+    {
+        System.out.println(Test.class.getClassLoader());
+    }
+}
+a) null
+b) Bootstrap ClassLoader
+c) AppClassLoader
+d) PlatformClassLoader
+
+
+Q9) What is the output of the following code?
+public class Test 
+{
+    public static void main(String[] args)
+    {
+        System.out.println(Test.class.getClassLoader().getParent());
+    }
+}
+a) null
+b) Bootstrap ClassLoader
+c) AppClassLoader
+d) PlatformClassLoader
+
+
+Q10) What is the output of the following code?
+public class Test
+{
+    public static void main(String[] args) throws ClassNotFoundException {
+        ClassLoader cl = ClassLoader.getSystemClassLoader();
+        Class cls = cl.loadClass("java.lang.String");
+        System.out.println(cls.getClassLoader());
+    }
+}
+
+a) null
+b) Bootstrap ClassLoader
+c) Exception at runtime
+d) System ClassLoader
+==========================================================================================
+Assignment-1 
+
+Title :- Car Has An Engine
+
+Objective :-
+------------
+Create a Car class that contains an Engine object as a composition. The Engine class should store details about the engine, while the Car class should include details about the car along with validation checks for numeric values.
+
+Create a BLC class Engine.
+
+A class to represent an engine with a model and capacity attributes.
+
+Field Declarations :-
+-------------------------
+private String model; 		—> Stores the model of the engine.
+private int engineCapacity; 	—> Stores the capacity of the engine (must be positive).
+
+Constructor Declaration :-
+---------------------------
+public Engine(String model, int engineCapacity) -> Initializes the engine model and capacity.
+
+Note:-
+------
+If engineCapacity <= 0, print "Error Invalid Input" and terminate object creation.
+
+Getter Methods :-
+------------------
+-> public String getModel()
+-> public int getEngineCapacity()
+Returns model and capacity.
+
+toString() method :-
+--------------------
+@Override 
+public String toString() -> Returns a string representation of the engine in the format :-  
+
+Engine Model: [model], Engine Capacity: [capacity]cc
+
+Create another BLC class called Car. 
+
+A class to represent a car that contains an engine.
+
+variable Declarations :-
+-------------------------
+private String make; 	—> Stores the car's make.
+private String model; 	—> Stores the car's model.
+private int year; 	—> Stores the car's manufacturing year (must be positive).
+private final Engine engine; 	—> Stores the engine object.
+
+Constructor Declaration :-
+---------------------------
+public Car(String make, String model, int year) -> Initializes make, model, and year.
+
+Use composition logic to create Engine object.
+
+Note :-
+-------
+If year <= 0, print "Error Invalid Input" and terminate object creation.
+
+toString() method :-
+--------------------
+@Override 
+public String toString() -> Returns a string representation of the car in the format :- 
+
+Create an ELC class CompositionDemo with main method to test this application.
+
+-----------------------------------------------------------------------------
+Assignment 02 :
+----------------
+Title :- Customer and Orders Management
+
+Task Description :-
+-------------------
+Create a program that manages customers and their orders using Aggregation.
+
+Create a BLC class Order.
+
+A class to represent an order with details like order ID, product name, and price.
+
+Field Declarations :-
+------------------------
+private String orderId; 	-> Stores the order ID
+private String itemName; 	-> Stores the name of the product ordered
+private double price; 		-> Stores the price of the product
+
+Constructor Declaration :-
+---------------------------
+-> public Order(String orderId, String itemName, double price) A constructor to initialize the order ID, item name, and price.
+
+getter() Methods Declaration :-
+--------------------------------
+-> public String getOrderId();
+-> public String getProductName();
+-> public double getPrice();
+
+toString() Method Declaration :-
+---------------------------------
+@Override
+public String toString();
+A method to return a string representation of the order.
+
+Create a class called Customer.
+
+A class to represent a customer with details 
+
+Field Declarations :-
+------------------------
+-> private String name; // Stores the customer's name
+-> private String email; // Stores the customer's email
+-> private String address; //Stroes the customer's address
+-> private long mobileNo; //Stroes the customer's mobile number
+-> private Order order; // Stores the order object
+
+Constructor Declaration :-
+---------------------------
+->Take a parameterized constructor to initialize all the fields.
+
+toString Method Declaration :-
+------------------------------
+@Override
+public String toString();
+A method to return a string representation of the customer, including order details.
+
+
+Create an ELC class Zomoto class with the following tasks:
+
+-> Create a main method.
+-> Create an Order object.
+-> Create a Customer object that includes the Order.
+-> Display the customer information.
+
+-----------------------------------------------------------------------------------------
+Assignment 3 :
+---------------
+Title :- Modeling Employee and Address Details 
+
+Create a BLC class Address
+
+Fields :-
+------------
+Implement a class with private fields for street and city.
+
+Constructor :-
+--------------
+Provide a constructor to initialize these fields.
+
+getter() & toString() method :-
+-------------------------------
+Implement getter methods and a toString() method to display the address.
+
+
+Create another BLC class Person.
+
+
+Fields :-
+--------
+Implement a class with private fields for name and an Address object.
+
+Constructor :-
+--------------
+Provide a constructor to initialize name and address.
+
+method getPersonDetails()
+--------------------------
+Implement a method to display the person's name and address.
+
+Create an ELC class called Test
+
+Implement a main method :-
+---------------------------
+-> Instantiate an Address object with sample data.
+-> Instantiate a Person object using the Address object created earlier.
+-> Print the person's details using the method in the Person class.
