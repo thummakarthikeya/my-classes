@@ -1,0 +1,492 @@
+﻿Q1) Find the output :
+
+class Parent 
+{
+    public void show() 
+    { 
+      System.out.println("Parent");
+    }
+}
+class Child extends Parent 
+{
+    public void show() 
+    { 
+       System.out.println("Child"); 
+    }
+}
+public class Main 
+{
+    public static void main(String[] args) 
+    {
+        Child obj = new Child();
+        obj.show();
+    }
+}
+
+Q2) Find the output of the Program
+
+class Parent 
+{
+   protected int num = 100;
+}
+class Child extends Parent 
+{
+    protected int num = 200;
+}
+public class Test 
+{
+   public static void main(String[] args) 
+   {
+        Child obj = new Child();
+        System.out.println(obj.num);
+    }
+}
+
+Q3) 
+
+If class B extends class A, what can class B access from class A?
+a) Only public members
+b) public and protected members
+c) private members
+d) All members regardless of access modifiers
+
+Q4) Find the output of the Program
+
+class A 
+{
+    A() 
+    {
+        System.out.println("Class A Constructor");
+    }
+}
+class B extends A 
+{
+    B() 
+    {
+        System.out.println("Class B Constructor");
+    }
+}
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        B obj = new B();
+    }
+}
+
+Q5) Find the output of the Program
+
+class A 
+{
+    A(int x)
+    {
+        System.out.println("Class A: " + x);
+    }
+}
+class B extends A 
+{
+    B() 
+    {
+        super(10);
+        System.out.println("Class B");
+    }
+}
+public class Test 
+{
+    public static void main(String[] args)
+    {
+        B obj = new B();
+    }
+}
+
+Q6) Find the output of the Program
+
+class Parent 
+{
+    Parent()
+    {
+        System.out.println("Parent Constructor");
+    }
+}
+class Child extends Parent
+{
+    Child() 
+    {
+        this(10);
+        System.out.println("Child Constructor");
+    }
+    Child(int x) 
+    {
+        super();
+        System.out.println("Child Constructor with x: " + x);
+    }
+}
+public class Main 
+{
+    public static void main(String[] args)
+    {
+        Child obj = new Child();
+    }
+}
+
+Q7) Which of the following is NOT true about constructor chaining?
+
+a) A constructor can call another constructor of the same class using this()
+b) A constructor can call a superclass constructor using super()
+c) this() and super() can be used together in the same constructor
+d) Constructor chaining helps in code reusability
+
+
+Q8) Which of the following is true about super() and this()?
+a) Both must be the first statement in a constructor
+b) Both can be used together in a constructor
+c) this() calls the constructor of the same class, and super() calls the superclass constructor
+d) Both can be used outside constructors
+
+
+Q9) Find the output of the following code
+class Parent 
+{
+    { 
+    System.out.println("Parent Non-Static Block");
+    }
+}
+
+class Child extends Parent 
+{
+    { 
+    System.out.println("Child Non-Static Block");
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        Child obj = new Child();
+    }
+}
+
+Q10) Find the output of the following code
+
+class Alpha
+{
+    { 
+    System.out.println("Block 1"); 
+    }
+    { 
+    System.out.println("Block 2"); 
+    }
+    
+    Alpha() 
+    {
+        System.out.println("Alpha Constructor");
+    }
+}
+
+class Beta extends Alpha
+{
+    { 
+    System.out.println("Block 11"); 
+    }
+    { 
+    System.out.println("Block 22"); 
+    }
+    
+    Beta() 
+    {
+        System.out.println("Beta Constructor");
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args) {
+        new Beta();
+    }
+}
+
+Q11) Find the output of the following code 
+
+class Grandparent 
+{
+ public void print() 
+ {
+     System.out.println("Grandparent");
+ }
+}
+
+class Parent extends Grandparent 
+{
+ public void print() 
+ {
+     System.out.println("Parent");
+ }
+}
+
+class Child extends Parent 
+{
+ public void Print() 
+ {
+     super.super.print(); 
+     System.out.println("Child");
+ }
+}
+
+public class Test 
+{
+ public static void main(String[] args) {
+     Child c = new Child();
+     c.Print();
+ }
+}
+
+
+Q12)
+What is a blank final variable in Java?
+
+A) A non static final variable with user initialized value. 
+B) A non static final variable that is not initialized at declaration but must be initialized till constructor body.
+C) A final variable that can be modified inside a method.
+D) A static final variable.
+
+Q13) What happens if a blank final field is not initialized in all constructors?
+A) The program runs normally
+B) It is initialized with a default value
+C) A compile-time error occurs
+D) It is initialized when accessed for the first time
+
+
+
+Q14) Find the Output of the following code
+
+class A 
+{
+    final int num;
+    
+    A()
+    {
+        num = 100;
+    }
+}
+class B extends A 
+{
+    B() 
+    {
+        num = 200;  
+    	System.out.println(num);
+    }
+}
+
+public class Test 
+{
+ public static void main(String[] args) {
+    new B(); 
+ }
+}
+
+Q15) Find the output of the Program
+
+class Parent 
+{
+    final int x;
+    Parent() 
+    {
+        x = 10;
+    }
+}
+
+class Child extends Parent {
+    Child() 
+    {
+        System.out.println(x);
+    }
+    
+    public static void main(String[] args) 
+    {
+        new Child();
+    }
+}
+
+Q16) Find the output of this program
+
+class Vehicle
+{
+	protected String name;
+
+	public Vehicle(String name) 
+	{
+		super();
+		this.name = name;
+	}
+	
+	public String printVehicleName()
+	{
+		return "Vehicle is Running";
+	}
+	
+}
+class Car extends Vehicle
+{
+	public Car(String name) 
+	{
+		super(name);		
+	}
+	
+	public String printVehicleName()
+	{
+		return "Car is Running";
+	}
+}
+
+
+public class Test 
+{
+ public static void main(String[] args) 
+ {
+    Car c1 = new Car("Naxon");
+    String name = c1.printVehicleName();
+    System.out.println(name);
+ }
+}
+
+
+Q17) Find the output of this program [Help u to know method calling]
+
+class Base
+{
+   int value=0;
+   public Base()
+   {
+      addValue();
+   }
+   void addValue()
+   {
+      value += 10;
+   }
+   int getValue()
+   {
+      return value;
+   }
+}
+class Derived extends Base
+{
+      public Derived()
+      {
+       addValue();
+      }
+      void addValue()
+      {
+        super.addValue();
+        value +=  30;
+      }
+    }
+    public class Test5 
+    {
+      public static void main(String[] args)
+      {
+          Derived b = new Derived();		  
+          System.out.println(b.getValue());
+      }
+    }
+
+Q18) Find the output 
+
+class Foo 
+{ 
+ public int a = 3; 
+ public void addFive() 
+{
+	 a += 5; System.out.print("f "); } 
+ } 
+ class Bar extends Foo 
+{ 
+ public int a = 8; 
+ public void addFive() { this.a += 5; System.out.print("b " ); } 
+ }  
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		 Foo f = new Foo(); 
+		 f.addFive(); 
+		 System.out.println(f.a);
+		 
+		 System.out.println("............");
+		 Bar b = new Bar();
+		 b.addFive();
+		 System.out.println(b.a);
+		 
+	}
+}
+
+Q19) Find the Output
+
+class Grandparent 
+{
+    String name = "grandparent";
+    void act() 
+    {
+        System.out.println(name);
+    }
+}
+
+class Parent extends Grandparent 
+{
+    String name = "parent";
+}
+
+class Child extends Parent 
+{
+    String name = "child";
+    
+}
+
+public class Test 
+{
+   public static void main(String[] args) 
+   {
+        Child yo = new Child();
+        yo.act();
+    }
+}
+
+Q20) Find the Output
+
+class Grandparent 
+{
+    String name = "grandparent";
+    void act() 
+    {
+        System.out.println(name);
+    }
+}
+
+class Parent extends Grandparent 
+{
+    String name = "parent";
+    
+    void act() 
+    {
+        System.out.println(name);
+    }
+}
+
+class Child extends Parent 
+{
+    String name = "child";
+    
+}
+
+public class Test 
+{
+   public static void main(String[] args) 
+   {
+        Child yo = new Child();
+        yo.act();
+    }
+}
+
+
+
+
