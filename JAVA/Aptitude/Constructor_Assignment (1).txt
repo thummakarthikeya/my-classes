@@ -1,0 +1,398 @@
+﻿1. What is the output of following code?
+class Test 
+{
+Test()
+{
+System.out.println("Constructor");
+}
+
+{
+System.out.println("Non-static block");
+}
+}
+public class Main
+{
+public static void main(String[] args) 
+{
+System.out.println("main method");
+new Test();
+}
+}
+
+2. what is the output of following code?
+class Test 
+{    
+    { 
+    System.out.println("Non-static Block"); 
+    }
+    Test() 
+    { 
+    System.out.println("Constructor");
+    }
+    
+    public static void main(String[] args) 
+    {
+        Test obj1 = new Test();
+        Test obj2 = new Test();
+    }
+}
+
+3.What is true about a non-static block?
+A) It executes before the static block
+B) It executes after the constructor
+C) It executes before the constructor
+D) It cannot contain instance variables
+
+Answer: C) It executes before the constructor
+
+
+4. What is the output of following code?
+
+class Test 
+{
+	 int x = 10;
+	    
+	    { x += 5; }
+	    
+	    { x += 10; }
+	    
+	    public static void main(String[] args) 
+	    {
+	        Test obj1 = new Test();
+	        System.out.println(obj1.x);
+	    }
+}
+
+
+
+5. What is the output of following code?
+class Test 
+{
+	Test() {
+        System.out.println("Constructor Called");
+    }
+    
+    public static void main(String[] args) 
+    {
+        Test obj1;
+        System.out.println("Main Method");
+    }
+}
+
+6.Can a non-static block initialize instance variables?
+A) No, only constructors can initialize instance variables.
+B) Yes, but only static variables.
+C) Yes, it can initialize instance variables before the constructor 
+   executes.
+D) Only final instance variables.
+
+
+7. What is the output of following code?
+class Test
+{
+int a ;
+public static void main(String args[ ])
+{
+new Test();
+}
+{
+System.out.println(this.a);
+this.a = 100 ;
+}
+Test()
+{
+System.out.println(this.a);
+}
+}
+
+8. What is the output of following code?
+class Employee
+{
+int eno ;
+String ename ;
+float esal ;
+public static void main(String[] args)
+{
+Employee e = new Employee();
+System.out.println("Eno : "+e.eno);
+System.out.println("Ename : "+e.ename);
+System.out.println("Esal : "+e.esal);
+}
+}
+
+9.What is the output of following code?
+class Test 
+{
+final int a;
+
+public static void main(String[] args) 
+{
+Test obj=new Test();
+System.out.println(obj.a);
+}
+}
+
+10. What is the output of following code?
+class Test 
+{
+int a;
+{
+Test obj = new Test();
+System.out.println(a);
+}
+public static void main(String[] args)
+{
+Test obj=new Test();
+System.out.println(obj.a);
+}
+}
+
+11. Write a java program to show overriding toString() method to print
+object data?
+
+class Example
+{
+int eid;
+String ename;
+String company;
+public String toString(){
+return
+"eid:"+eid+"\n"+"ename:"+ename+"\n"+"company:"+company+"\n";
+}
+public static void main(String[] args)
+{
+Example e1=new Example();
+e1.eid=7279;
+e1.ename="Ganesh";
+e1.company="Naresh IT";
+System.out.println(e1);
+}
+}
+
+12. Write a java program shows creating class with static and non-static
+variables and their modifications?
+class Example
+{
+static int a = 10;
+       int b = 20;
+public static void main(String[] args)
+{
+   System.out.println(a);
+   System.out.println(b);
+}
+}
+
+13. Write a java program can we create object without having non-static
+variable in the class?
+class Test
+{
+void m1(){
+System.out.println("m1() method");
+}
+public static void main(String[] args)
+{
+System.out .println("main method");
+Test t=new Test();
+t.m1();
+}
+}
+
+14. Find the output of the Program.
+
+class Demo
+{
+    Demo() 
+    { 
+    this(10); 
+    System.out.println("No Argument Constructor");
+    }
+    Demo(int x) 
+    { 
+     System.out.println("Parameterized Constructor: " + x); 
+    }    
+    public static void main(String[] args) 
+    {
+        Demo obj = new Demo();
+    }
+}
+
+
+15. Find the Output and Check How many times NSB will be executed. 
+
+class Foo
+{
+	public Foo(int x, int y)
+	{
+		this(2.4, 5.7);
+		System.out.println("Integer parameter constructor");
+	}
+	public Foo(double x, double y)
+	{
+		System.out.println("Double parameter constructor");
+	}
+	
+	{
+		System.out.println("Non static block");
+	}
+	
+}
+
+public class InstanceBlockDemo4 {
+
+	public static void main(String[] args) 
+	{
+		Foo f1 = new Foo(100,200);
+
+	}
+
+}
+
+
+16. Find the Output of the Program.
+
+class NIT
+{
+	public NIT()
+	{
+		System.out.println("Constructor");
+		
+		
+	}
+
+	        {
+		  System.out.println("Non static block");	
+		}
+}
+
+public class InstanceBlockDemo6 
+{
+
+	public static void main(String[] args)
+	{
+		new NIT();
+
+	}
+
+}
+
+17 Find the Output :
+
+class Test
+{
+  private int x = 99 ;   
+ 
+  {
+	  x = 15; 
+  }
+  
+  public Test()
+  {
+	  super();
+	  x = 56; 
+  }
+  
+  public int getX()
+  {
+	  return this.x;
+  }
+}
+
+public class Order 
+{
+	public static void main(String[] args) 
+	{
+		Test t1 = new Test();	
+		
+		System.out.println(t1.getX());
+	}
+
+}
+
+18. Find the Output
+class Test
+{
+	final int x;
+	
+	public void setData()
+	{
+		x = 200;
+		System.out.println(x);
+	}
+}
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Test t1 = new Test();
+		t1.setData();
+	}
+}
+
+19. Find the Output
+class Demo
+{
+	final int x;
+	
+	{
+		print();
+		x = 222;
+	}
+	public void print()
+	{
+		System.out.println("Default Value :"+x);
+	}
+	
+	
+}
+public class Test 
+{
+	public static void main(String[] args) 
+	{
+		Demo d1 = new Demo();
+		System.out.println("User value :"+d1.x);
+	}
+}
+
+20. Find the Output
+class Foo
+{
+	final int x;
+	 
+	{
+		x = 123;
+	}
+	 
+	 
+	public Foo()
+	{
+	   x = 300;	
+	}
+}
+public class Test 
+{
+	public static void main(String[] args) 
+	{
+		Foo f1 = new Foo();
+		System.out.println(f1.x);
+	}
+}
+
+
+21. Find the Output
+
+class Test 
+{
+    Test() 
+    { 
+    this(10); 
+    }
+    Test(int x) 
+    { 
+    this();
+    }    
+    public static void main(String[] args)
+    {
+        Test obj = new Test();
+    }
+}
+
