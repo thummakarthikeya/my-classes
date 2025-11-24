@@ -1,0 +1,266 @@
+﻿ Q1) Find the Output
+
+class A 
+{
+    A() 
+    {
+        System.out.println("A Constructor");
+    }
+}
+
+class B extends A 
+{
+    B()
+    {
+        System.out.println("B Constructor");
+    }
+}
+
+public class Test
+{
+    public static void main(String[] args)
+    {
+        new B();
+    }
+}
+-------------------------------------------------------------------------------------------
+Q2) Find the Output 
+
+class Alpha
+{
+    Beta b = new Beta();
+
+    public Alpha()
+    {
+      System.out.println("Alpha class constructor");
+    }
+
+
+    {
+      System.out.println("Non static block of Alpha class");
+    }
+}
+class Beta
+{
+public Beta()
+{
+System.out.println("Beta class constructor");
+}
+}
+
+public class Test
+{
+    public static void main(String[] args)
+    {
+       new Alpha();
+       
+    }
+}
+-------------------------------------------------
+Q3) Find the Output
+
+class ConstructorsTest
+{
+    public static void main(String[] args)
+    {
+        U u = new U();
+        U u1 = new U(1);
+        V v = new V();
+        V v1 = new V(1);
+        T t = new T();
+        T t1 = new T(1);
+    }
+}
+class U {
+    V v = new V();
+
+    U() 
+    { 
+     System.out.print("U"); 
+    }
+
+    U(int i) 
+    {
+     System.out.print("u");
+    }
+}
+
+class V
+{
+    V() 
+    {
+     System.out.print("V");
+    }
+
+    V(int i)
+    {
+     System.out.print("v"); 
+    }
+}
+
+class T extends V 
+{
+    T() 
+    {
+     System.out.print("T"); 
+    }
+
+    T(int i) 
+    {
+     System.out.print("t"); 
+    }
+}
+---------------------------------------------------------------------------------------------
+Q4) Find the Output
+
+class OutPut
+{
+    public static void main(String[] args)
+    {
+        new Alpha();
+        new Base();
+    }
+}
+class Alpha extends Base
+{
+    Alpha()
+    {
+        System.out.print("Base");
+    }
+}
+class Base
+{  
+    Base()
+    {
+        System.out.println("Base");
+    }
+}
+-----------------------------------------------------------------------------------------
+Q5) Find the Output
+
+class Parent 
+{
+    int x = 10;
+}
+
+class Child extends Parent 
+{
+    int x = 20;
+    void print()
+    {
+        System.out.println(x);
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        new Child().print();
+    }
+}
+------------------------------------------------------------------------------------------
+ Assignment :
+ ------------
+ Create a Program to Develop Hierarchical Inheritance for Employee Management System
+  
+ Here Employee is super class and it has two sub classes PermanentEmployee and ContractEmployee.
+    
+ We need to display the details of PermanentEmployee including provident fund and net Salary.
+ 
+ We need to display the details of ContractEmployee including contract
+ duration.
+  
+ Coding Requirements :
+ ----------------------
+ Create a BLC class called Employee.
+   
+ Attributes/ Properties [protected]
+ employeeId - int
+ employeeName - String
+ employeeSalary - double
+  
+ 
+ Create a Parameterized constructor to initialize all fields.
+ Create another BLC class PermanentEmployee which extends from Employee
+ 
+ Attributes/ Properties [protected]
+ providentfund - double
+  
+  
+ Create a parameterized constructor to initialize super class properties only
+  
+ [Note : providentfund property will not initialize through constructor]
+  
+   
+ Initialize providentfund manually, It must be 12% of the salary.
+ 
+ Genarate toString() method to print all the properties of super class as well as sub class.
+ [See the test cases for more details]
+  
+ Method :
+ --------
+ Method Name  :   netSalary()
+ Modifier     :   public
+ Argument     :   No argument
+ return type  :   void
+  
+ This method should print netSalary i.e salary + providentfund
+  
+ Create another BLC class ContractEmployee which extends from Employee
+  
+ Attributes/ Properties [protected]
+  
+ contractDuration - int
+  
+ Create a parameterized constructor to initialized all fields (super class and sub class)
+  
+ Genarate toString() method to print all the properties of super class as well as sub class.
+ [See the test cases for more details]
+  
+  
+ Create an ELC class EmployeeSystem which contains main method.
+  
+ Create both sub class objects and print the result.
+  
+  
+ Test Cases for Output :
+ ------------------------
+    Test Case 1 :
+    -------------
+    Enter permanent employee Id :101
+	Enter permanent employee Name :Scott
+	Enter permanent employee Salary :100000
+	PermanentEmployee [empoyeeId=101, employeeName=Scott, employeeSalary=100000.0, providentfund=12000.0]
+	Net Salary is :112000.0
+	========================================
+	Enter contract employee Id :102
+	Enter contract employee Name :Smith
+	Enter contract employee Salary :80000
+	Enter contract duration in year :5
+	ContractEmployee [empoyeeId=102, employeeName=Smith, employeeSalary=80000.0, contractDuration=5 years]
+
+    
+  
+    Test Cases for Input Validation :
+    ---------------------------------
+    Test Cases 1:
+    -------------
+	Enter permanent employee Id :-90
+	Enter permanent employee Name :Scott
+	Enter permanent employee Salary :12000
+	Invalid Employee Id
+	
+	Test Cases 2:
+    -------------
+    Enter permanent employee Id :101
+	Enter permanent employee Name :
+	Enter permanent employee Salary :6543
+	Employee Name can't be null
+
+    Test Cases 3 :
+    ---------------
+    Enter permanent employee Id :120
+	Enter permanent employee Name :Alen
+	Enter permanent employee Salary :-78908
+	Salary can't be 0 or negative
