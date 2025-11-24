@@ -1,0 +1,668 @@
+﻿Q1)
+
+class A 
+{
+    int x = 10;
+    A() 
+    {
+      print();
+    }
+    void print() { System.out.println("A: " + x); }
+}
+
+class B extends A 
+{
+    int x = 20;
+    void print()
+    {
+     System.out.println("B: " + x); 
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        new B();
+    }
+}
+
+-----------------------------------------------------------------------------------
+
+Q2) 
+class A 
+{
+    { 
+      System.out.print("A-I "); 
+    }
+    A() 
+    { 
+     System.out.print("A-C "); 
+    }
+}
+
+class B extends A 
+{
+    { 
+       System.out.print("B-I "); 
+    }
+    B() 
+    {
+      System.out.print("B-C "); 
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        new B();
+    }
+}
+
+-----------------------------------------------------------------------------------
+
+Q3)
+class A 
+{
+    int val = 100;
+
+    A() 
+    {
+        init();
+    }
+
+    void init()
+    {
+        System.out.println("A: " + val);
+    }
+}
+
+class B extends A 
+{
+    int val = 200;
+
+    B() 
+    {
+        init();
+    }
+
+    void init() 
+    {
+        System.out.println("B: " + val);
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args)
+    {
+        new B();
+    }
+}
+
+-----------------------------------------------------------------------------------
+Q4) 
+class X
+{
+    int a = getA();
+
+    X()
+    {
+        show();
+    }
+
+    int getA() 
+    {
+        return 10;
+    }
+
+    void show()
+    {
+        System.out.println("X: " + a);
+    }
+}
+
+class Y extends X 
+{
+    int a = getA();
+
+    Y() 
+    {
+        show();
+    }
+
+    int getA() 
+    {
+        return 20;
+    }
+
+    void show() 
+    {
+        System.out.println("Y: " + a);
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args)
+    {
+        new Y();
+    }
+}
+-----------------------------------------------------------------------------------
+Q5)
+class Vehicle 
+{
+    void run()
+    {
+        System.out.println("Vehicle is running");
+    }
+}
+
+class Bike extends Vehicle 
+{
+    void run() 
+    {
+        super.run();       
+        System.out.println("Bike is running");
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        new Bike().run();
+    }
+}
+-----------------------------------------------------------------------------------
+
+Q6) Find the Output
+
+class A 
+{
+    A() 
+    {
+        System.out.println("A constructor");
+    }
+}
+
+class B extends A 
+{
+    B() 
+    {
+        this(5);
+        System.out.println("B no-arg constructor");
+    }
+
+    B(int x) 
+    {
+        super();
+        System.out.println("B int constructor: " + x);
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        new B();
+    }
+}
+-----------------------------------------------------------------------------------
+Q7) Find the Output
+
+class Parent 
+{
+    Parent(String msg) 
+    {
+        System.out.println("Parent: " + msg);
+    }
+}
+
+class Child extends Parent 
+{
+    Child() 
+    {
+        this("Hello");
+        System.out.println("Child default");
+    }
+
+    Child(String s) 
+    {
+        super(s);
+        System.out.println("Child: " + s);
+    }
+}
+
+public class Test
+{
+    public static void main(String[] args) 
+    {
+        new Child();
+    }
+}
+-----------------------------------------------------------------------------------
+Q8) Find the Output
+
+class A 
+{
+    A()
+    {
+        this(10);
+        System.out.println("A no-arg");
+    }
+
+    A(int x) 
+    {
+        System.out.println("A int: " + x);
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        new A();
+    }
+}
+-----------------------------------------------------------------------------------
+Q9) What will be the output of the following program?
+
+class Base 
+{
+    Base() 
+    {
+        System.out.println("Base constructor");
+    }
+}
+
+class Derived extends Base
+{
+    Derived()
+    {
+        super();
+        this(5);
+        System.out.println("Derived no-arg");
+    }
+
+    Derived(int x) 
+    {
+        System.out.println("Derived int: " + x);
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args)
+    {
+        new Derived();
+    }
+}
+-----------------------------------------------------------------------------------
+Q10) What will be the output of the following program?
+
+class OutPut
+{
+    public static void main(String s[])
+    {
+        int i = 2;
+        B b = new B();
+        b.execute();
+    }
+}
+
+class A
+{
+    A()
+    {
+        int i = 1;
+    }
+}
+
+class B extends A
+{
+    void execute()
+    {
+        System.out.println("i = " + i);
+    }
+}
+-----------------------------------------------------------------------------------
+Q11) What will be the output of the following program?
+
+class FourWheeler
+{
+    public static void main(String[] args)
+    {
+        new Car(0);
+    }
+}
+
+class Vehicle
+{
+    int i;
+    int j;
+
+    Vehicle(int i)
+    {
+        this.i = i;
+        j = i;
+    }
+
+    Vehicle(int i, int j)
+    {
+        this.i = i;
+        this.j = j;
+    }
+}
+
+class Bus extends Vehicle
+{
+    double j;
+
+    Bus(double j)
+    {
+        this.j = j;
+    }
+}
+
+class Car extends Vehicle
+{
+    Car(int i)
+    {
+        super(i);
+        System.out.print("Executed Successfully");
+    }
+}
+-----------------------------------------------------------------------------------
+Q12) What will be the output of the following program?
+
+class BaseClass 
+{
+    BaseClass()
+    {
+        System.out.print("*");
+    }
+    BaseClass(String str) 
+    {
+        this();
+        System.out.print("@" + str);
+    }
+}
+public class ChildClass extends BaseClass 
+{
+    ChildClass()
+    {
+        System.out.print("#");
+    }
+    ChildClass(String name) 
+    {
+        this();
+        System.out.print("$" + name);
+    }
+    public static void main(String args[]) 
+    {
+        new ChildClass("hello");
+    }
+}
+-----------------------------------------------------------------------------------
+Q13) What will be the output of the following program?
+
+class Base 
+{
+    Base() 
+    {
+        System.out.println("Base()");
+    }
+    Base(int x) 
+    {
+        System.out.println("Base(int): " + x);
+    }
+}
+
+class Derived extends Base
+{
+    Derived() 
+    {
+        this(20);
+        System.out.println("Derived()");
+    }
+    Derived(int y)
+    {
+        super(y);
+        System.out.println("Derived(int): " + y);
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        new Derived();
+    }
+}
+-----------------------------------------------------------------------------------
+Q14) What will be the output of the following program?
+
+class X 
+{
+    X() 
+    {
+        this(10);
+    }
+    X(int a) 
+    {
+        this();
+    }
+}
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        new X();
+    }
+}
+-----------------------------------------------------------------------------------
+Q15) What will be the output of the following program?
+
+class Alpha
+{
+	public Alpha(String msg)
+	{
+		System.out.println("Alpha "+msg);
+	}
+}
+class Beta extends Alpha
+{
+	public Beta()
+	{
+		super(getMessage());
+		System.out.println("Beta class constructor!!");
+	}
+	
+	public String getMessage()
+	{
+		return "class constructor";
+	}	
+}
+
+public class Test
+{
+   public static void main(String[] argv) 
+   {
+	   new Beta();
+   }
+}
+
+-----------------------------------------------------------------------------------
+Q16) What will be the output of the following program?
+
+class Alpha
+{
+	public Alpha(String msg)
+	{
+		System.out.println("Alpha "+msg);
+	}
+}
+class Beta extends Alpha
+{
+	public Beta()
+	{
+		super(getMessage());
+		System.out.println("Beta class constructor!!");
+	}
+	
+	public static String getMessage()
+	{
+		return "class constructor";
+	}	
+}
+
+public class Test
+{
+   public static void main(String[] argv) 
+   {
+	   new Beta();
+   }
+}
+
+
+-----------------------------------------------------------------------------------
+Q17) What will be the output of the following program?
+
+class Alpha
+{
+	private Alpha(String msg)
+	{
+		System.out.println("Alpha "+msg);
+	}
+}
+class Beta extends Alpha
+{
+	public Beta()
+	{
+		super("class constructor");
+		System.out.println("Beta class constructor!!");
+	}	
+}
+public class Test
+{
+   public static void main(String[] argv) 
+   {
+	   new Beta();
+   }
+}
+-----------------------------------------------------------------------------------
+Q18) What will be the output of the following program?
+
+package com.ravi.oop;
+
+class Base 
+{
+       public Base(String s) 
+       {
+         System.out.println("Base class parameterized String");
+       }
+       public Base(int i) 
+       {
+    	   System.out.println("Base class parameterized int");
+       }
+}
+class Derived extends Base 
+{
+       public Derived(String s) 
+       {
+          super(s);
+          System.out.println("Derived class parameterized String");
+       }
+       public Derived(int i) 
+       {
+             super(i);
+          System.out.println("Derived class parameterized int");
+       }
+}
+public class Test
+{
+   public static void main(String[] argv) 
+   {
+	   new Derived("Java");
+	   //new Derived(10);
+   }
+}
+-----------------------------------------------------------------------------------
+Q19) What will be the output of the following program?
+
+class A
+{
+int i;
+void display()
+{
+System.out.println(i);
+}
+}
+class B extends A
+{
+int j;
+void display()
+{
+System.out.println(j);
+}
+}
+class Inheritance
+{
+public static void main(String args[])
+{
+B obj = new B();
+obj.i=1;
+obj.j=2;
+obj.display();
+}
+}
+-----------------------------------------------------------------------------------
+Q20) What will be the output of the following program?
+
+class Constructors 
+{
+    public static void main(String[] args)
+    {
+        new A(3);
+        new B(5, 6);
+        new B(6, 7).C(1, 2, 3);
+        new C(3, 3, 4).B(4, 5);
+        new C(1, 1, 1);
+    }
+}
+class A 
+{
+    A(int i)
+    {  
+      print(i * 2);   
+    }
+    void print(int i) 
+    { 
+    System.out.print(i + " ");   
+    }
+}
+class B extends A
+{
+    B(int j, int k) 
+    {
+        super(j);
+        print(k * 4);
+    }
+    void C(int j, int k, int l) 
+    {
+      print(j + k + l - 3);   
+    }
+}
+class C extends B 
+{
+    C(int j, int k, int l) 
+    {
+        super(j, k);
+        print(l - 3);
+    }
+    void B(int i, int k)
+    {  
+      print(i * 6);   
+    }
+}
