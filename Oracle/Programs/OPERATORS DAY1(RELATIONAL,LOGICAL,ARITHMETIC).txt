@@ -1,0 +1,277 @@
+                          OPERATORS TASK
+                         ===================
+
+2.Relational operators
+======================
+•Relational operators are also called as comparison operators.
+
+•Relational operators are used in where clause only.
+
+•Oracle SQL having following relational operators.
+ =,<,<=,>,>=,<> or !=
+
+syntax:-
+=======
+select * from tablename
+where columnname relationaloperator value;
+
+
+
+ *
+*** Where clause is used to filtering the rows or restricting the 
+ *          records purpose we are using.
+
+------------------------------------------------------------------------------------------------------
+1.Write a query to display all the managers from the emp table.
+
+Note:-Oracle is not a case sensitive language. But string comparison 
+====      is case sensitive.
+
+
+
+
+2.Write a query to display the employee records whose salary is 3000 from emp table.
+
+
+
+
+
+3.Write a query to display the employees who are getting more than 2000 salary from emp table?
+
+
+
+
+4.Write a query to display the employees whose salary is 3000 or more from emp table.
+
+
+
+
+5.Write a query to display the employees who are belongs to 10th department from emp table?
+
+
+
+
+6.Write a query to display the employee record whose name is SMITH from emp table.
+
+
+
+
+7.Write a query to display the employees except job as CLERK from emp table?
+
+
+
+
+8.list all the customers belonging to district by name kolar output the following
+  columns in each row customer_id,name,gender,phone[FRAGMA DATA INTERVIEW QUESTION]
+
+                          (or)
+
+  Write an SQL query to list the CUSTOMER_ID, NAME, GENDER, and PHONE of all
+  customers who belong to the district 'Kolar'
+
+
+CREATE TABLE CUSTOMER123 
+(
+CUSTOMER_ID  NUMBER(10),
+NAME VARCHAR(10),
+GENDER CHAR(1),
+PHONE VARCHAR2(10),
+EMAIL VARCHAR2(20),
+DISTRICT VARCHAR2(10),
+STATE VARCHAR2(10)
+);
+
+
+INSERT INTO CUSTOMER123 VALUES(201, 'SURYA', 'M', '9876543210', 'surya@gmail.com', 'Kolar', 'Karnataka');
+INSERT INTO CUSTOMER123 VALUES(202, 'ANUSHKA','F', '9123456780', 'anushka@gmail.com','Kolar','Karnataka');
+INSERT INTO CUSTOMER123 VALUES(203, 'GOWTHAM','M', '9988776655','gowtham@gmail.com', 'Kolar', 'Karnataka');
+INSERT INTO CUSTOMER123 VALUES(204, 'PRIYA', 'F', '9012345678', 'priya@gmail.com', 'Bangalore','Karnataka');
+INSERT INTO CUSTOMER123 VALUES(205, 'KIRAN', 'M', '9001122334', 'kiran@gmail.com', 'Kolar','Karnataka');
+INSERT INTO CUSTOMER123 VALUES(206, 'KAVYA', 'F', '9345678901', 'kavya@gmail.com', 'Mysore','Karnataka');
+
+COMMIT;
+
+
+
+  
+9.Write a query to display the employee records who joined on 17th December 1980 from emp table?
+
+
+NOTE:- Calendar order is Ascending order
+=====
+
+      1-JAN-2024 ---->Minmum date
+      2-JAN-2024
+      •   
+      •   
+      •
+      •   
+      31-DEC-2024----->Maximum date 
+
+
+
+
+10.Write a query to display the employee records who joined after 1981 from emp table?
+
+
+
+
+11.Write a query to display the employee records who joined before 1981 from emp table?
+
+
+
+
+12.Write a query to display the employees who are getting more than 30000 annsal from emp table?
+
+
+Note:-Generally in all relational databases we are not allowed to use
+      column aliasname in where clause.
+
+
+column aliasname: It is used to change column heading in final output.
+=================
+
+•To give column aliasname we use AS keyword.(Using AS is optional) 
+ 
+
+•To give column aliasname as multiple words,use double quotes (").
+
+EG:-
+===
+ sal*12 as "ann sal"
+
+------------------------------------------------------------------------------------------------------
+3.LOGICAL OPERATORS
+===================
+ if you want to specify more than one condition in where clause then we are
+using either AND or by using logical operator OR.
+
+AND:-AND operator displays the record if both first condition and 
+====  second condition are true.
+
+syntax:-select * from tablename
+======  where condition1 and condition2;
+
+OR:-OR operator is used to displays a record if either first 
+=== condition or second condition is true.
+
+syntax:-select * from tablename
+======   where condition1 or condition2;
+
+
+
+1.Write a query to display the employees whose clerks are getting more than 1000 salary
+  from emp table?
+
+
+
+
+2.Write a query to display the employees whose clerks are belongs to 20th department
+  from emp table?
+
+
+Note:- In every relational databases if we want to retrieve multiple values 
+=====  within a single column then we must use OR operator. 
+
+
+
+
+3.Write a query to display the employees whose job is CLERK or SALESMAN or MANAGER 
+  from emp table?
+
+
+
+
+4.Write a query to display the employees who are belongs to 20,30,50,70,90 departments
+  from emp table?
+
+
+
+
+5.Write a query to display the employee records whose salary 
+   between 2450 and 3000 from emp table?
+            |
+ Range of values are there go with AND (or) BETWEEN Operator
+
+
+
+
+6.Write a query to display the emp records whose joined in 1981 from emp table?
+
+
+
+
+7.Write a quey to display students who passed in all 3 subjects.
+
+
+SQL>select * from student1;
+
+   SNO      SNAME      SUB1         SUB2        SUB3 
+  -----    -------    ------       ------      ------  
+    1      GOWTHAM      72           18          24
+    2       KAVYA       60           50          45
+    3       PREETHI     12           30          25
+    4       KIRAN       80           88          74
+
+
+•Total marks  : 100
+
+•Pass mark: 35
+
+•A student is passed only if they score 35 or more in all 3 subjects
+
+•A student is failed if they score less than 35 in any one subject
+
+
+
+
+8.Write a query to display failed students records.
+
+
+
+------------------------------------------------------------------------------------------------------
+                    1)Arithmetic operators
+                    =======================
+
+•Arithmetic operators are used in number,date datatype columns.
+
+Note:-Arithmetic operators are used in select clause. Rarely we are using
+=====  in where clause.
+
+
+1.Write a query to display ename, sal, annsal from emp table?
+
+
+
+2.Calculate the experience of the all employees from emp table?
+
+
+sysdate:-it returns current date of the system in oracle date 
+=======    format.in oracle by default date format
+                        is DD-MON-YY
+
+
+
+
+3.Calculate TA,HRA,TAX and NETSAL from emp table based on
+  following conditions?
+
+10% on sal=>TA
+20% on sal=>HRA
+5% on sal =>TAx
+NETSAL =SAL+TA+HRA-TAX
+
+[TA--->Total Allowance  HRA--->House Rent Allowances   NETSAL--->Take-home Salary]
+
+Gross Salary includes all earnings (before deductions).
+
+Net Salary is the actual salary received after all deductions.
+
+
+
+
+4.Write a query to display the all employee salaries after adding 1200 rupees?
+
+
+
+
