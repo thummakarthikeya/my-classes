@@ -138,6 +138,8 @@ Syntax:-
 1.Write a query to display the employees who are not getting commission
   from emp table? 
 
+SQL> select*from emp wheRE COMM IS NOT NULL AND COMM != 0;
+
 
 
 
@@ -149,6 +151,7 @@ Syntax:-
 
 3.Write a query to display the employee record who are not having the manager
   from emp table?
+
 
 
 
