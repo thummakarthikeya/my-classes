@@ -1,0 +1,249 @@
+ Reverse a String
+
+Write a program to print the reverse of a given String.
+
+The program should take a String as input and display the reversed version of that String.
+
+Input Format
+
+A single String.
+
+Output Format
+
+The reversed String.
+
+Examples
+Example 1
+Input:
+hello
+Output:
+olleh
+
+
+import java.io.*;
+void main(){
+    String a = IO.readln();
+    IO.print("Reversed String: ");
+    for(int i=a.length()-1; i>=0; i--){
+        IO.print(a.charAt(i));
+    }
+}
+
+
+==============================================================================
+
+
+2. Print Duplicate Characters and Their Count
+
+
+
+Write a Java program to find:
+
+All duplicate characters
+
+Count how many duplicate characters are present
+
+Ignore spaces. Consider only characters.
+
+ Input Format
+----------------
+A single String containing characters.
+
+Output Format
+-----------------
+Each duplicate character with its count
+
+If no duplicates → show appropriate message
+
+Examples
+Example 1
+Input:
+programming
+Output:
+g → 2
+r → 2
+m → 2
+
+
+import java.io.*;
+
+void main(){
+    String a = IO.readln();
+    StringBuilder sb = new StringBuilder(a);
+    IO.println("Duplicate Characters:");
+    int count=0;
+    for(int i=0; i<sb.length(); i++){
+        count=1;
+        for(int j=i+1; j<sb.length(); j++){
+            if(sb.charAt(i) == ( sb.charAt(j)) && sb.charAt(i) != '*'){
+                sb.setCharAt(j,'*');
+                count++;
+            }
+        }
+            if(count >1){
+                IO.println(sb.charAt(i)+" = "+count);
+            }
+    }
+}
+
+
+
+=========================================================================
+
+3. Check Whether a String Contains Any Vowel
+
+Write a Java program to check whether the given String contains any vowel (a, e, i, o, u).
+
+Examples
+Example 1
+Input:
+A single string
+Output:
+"Contains vowels" or "No vowels found"
+
+
+import java.io.*;
+
+void main(){
+    String a = IO.readln();
+
+int c = 0;    
+    for(int i=0; i<a.length(); i++){
+
+        if( a.charAt(i) >='0' && a.charAt(i) <='9' ){
+           c++;
+        }
+
+        if( a.charAt(i) == 'A' ||
+            a.charAt(i) == 'E' ||
+            a.charAt(i) == 'I'||
+            a.charAt(i) == 'O'||
+            a.charAt(i) == 'a'||
+            a.charAt(i) == 'e'||
+            a.charAt(i) == 'i'||
+            a.charAt(i) == 'o'||
+            a.charAt(i) == 'u'){
+                IO.println("Contains vowels");
+                System.exit(0);
+            }
+    }
+    if(c==a.length()){
+        IO.println("No letters");
+        System.exit(0);
+    }
+    IO.println("No vowels found");
+}
+
+===========================================================================================
+
+4. Count Occurrence of a Given Character
+
+
+import java.io.*;
+
+void main(){
+    String a = IO.readln();
+    String b = IO.readln();
+    char ch =b.charAt(0);
+    int count=0;
+        
+    for(int i=0; i<a.length(); i++){
+        if(ch == a.charAt(i)){
+            count++; 
+        }
+    }
+    IO.print("Occurrence of ");
+    IO.println("'"+b+"' = "+count);
+        
+}
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////
+
+5. Sort the Characters of a String
+
+
+import java.io.*;
+
+void main(){
+   String  str= IO.readln();
+    char ch[] = str.toCharArray();
+    for(int i=0; i<str.length(); i++){
+        
+        for(int j=i+1; j<str.length(); j++){
+            if(ch[i]> ch[j]){
+               char temp = ch[i];
+                ch[i]=ch[j];
+                ch[j] = temp;
+            }
+        }
+        IO.print(ch[i]);
+    }    
+}
+
+
+////////////////////////////////////////////////////////////
+6. RemoveCharacter
+
+Remove All Occurrences of a Character
+
+Specifications:
+
+Class Name: RemoveCharacter
+
+Attributes:
+
+String inputString
+
+char removeChar
+
+Method:
+
+public String deleteOccurrences(String inputString, char removeChar)
+
+Removes all occurrences of removeChar from inputString and returns the result.
+
+Main Method: Create an object of RemoveCharacter, call deleteOccurrences() with user input, and print result.
+
+Description: Delete all instances of a specified character from the string.
+Input Rule: While taking input from the user, do not use the nextLine() method; use the next() method.
+
+Examples
+Example 1
+Input:
+abracadabra a
+Output:
+brcdbr
+
+import java.io.*;
+
+void main(){
+    String str = IO.readln();
+    char ch [] = str.toCharArray();
+    char target = IO.readln().charAt(0);
+    int count=0;
+    for(int i=0; i<ch.length; i++){
+
+        if(ch[i] != target){
+            IO.print(ch[i]);
+            
+            count++;
+        }
+    
+    }
+
+    if(count<1){
+        IO.println("empty");
+        System.exit(0);
+    }
+    
+   
+
+}
+
