@@ -1,0 +1,233 @@
+1. Check Whether String Contains Digit
+Easy
+100 points
+• 120 min suggested
+Problem Description
+Write a program to check whether the given String contains any digit.
+
+ Input Format
+
+A single String input
+
+ Output Format
+
+"Contains Digit" if digit found
+
+"No Digit" if digit not found
+
+"Invalid Input" if empty string
+
+Examples
+Example 1
+Input:
+Hello123
+Output:
+Contains Digit
+Explanation:
+NOTE : For Empty String validation Use trim()
+
+
+
+
+import java.util.*;
+
+void main(){
+    String str = IO.readln();
+
+    if(str.trim().isEmpty()){
+        IO.println("Invalid Input");
+        System.exit(0);
+    }
+
+    for(int i=0; i<str.length(); i++){
+        if(str.charAt(i) >= '0' && str.charAt(i) <= '9'){
+            IO.println("Contains Digit");
+            System.exit(0);
+        }
+    }
+
+    IO.println("No Digit");
+    
+}
+
+
+
+================================================================================
+
+
+
+
+2. Count Uppercase & Lowercase Letters
+Easy
+100 points
+• 120 min suggested
+Problem Description
+Write a program to count and print number of uppercase and lowercase letters in a string.
+Input Format :
+----------------
+One string input
+
+Output Format :
+------------------
+OnUppercase : x
+Lowercase : y
+
+If no letters → print "No alphabets found"
+If input empty → "Invalid Input"
+
+Examples
+Example 1
+Input:
+Hello World
+Output:
+Uppercase : 2
+Lowercase : 8
+
+
+
+
+import java.util.*;
+
+void main(){
+    String str = IO.readln();
+    int upper = 0;
+    int lower = 0;
+    int other = 0;
+
+    if(str.trim().isEmpty()){
+        IO.println("Invalid Input");
+        System.exit(0);
+    }
+    
+    for(int i=0; i<str.length(); i++){
+        if(Character.isUpperCase(str.charAt(i))){
+            upper++;
+
+        }else if(Character.isLowerCase(str.charAt(i))){
+            lower++;
+            
+        }else{
+            other++;
+        }
+    }
+    if(other == str.length()){
+        IO.println("No alphabets found");
+        System.exit(0);
+    }
+    IO.println("Uppercase : " +upper);
+    IO.println("Lowercase : "+lower);
+}
+
+
+
+
+=========================================================================================
+
+3. Frequency of Each Character
+Easy
+100 points
+• 120 min suggested
+Problem Description
+Write a program to count the frequency of each character in a String.
+
+ Input Format
+
+One String input
+
+Output Format
+
+Print each character and its frequency in separate lines
+
+If input empty → print "Invalid Input"
+
+Examples
+Example 1
+Input:
+hello world
+Output:
+h : 1
+e : 1
+l : 3
+o : 2
+  : 1
+w : 1
+r : 1
+d : 1
+Explanation:
+NOTE :- For Empty String validation you have to use trim() method
+
+
+import java.util.*;
+
+void main(){
+    String s = IO.readln();
+
+    if(s.trim().isEmpty()){
+        IO.println("Invalid Input");
+        System.exit(0);
+    }
+
+    StringBuilder str = new StringBuilder(s);
+
+
+    int count=0;
+    for(int i=0; i<str.length(); i++){
+        count = 1;
+        for(int j=i+1; j<str.length(); j++){
+            if(str.charAt(i) == str.charAt(j) && str.charAt(i) != '*' ){
+               str.setCharAt(j,'*');
+                count++;
+            }
+        }
+        if(count >0 && str.charAt(i) != '*'){
+            IO.println(str.charAt(i)+" : "+count);
+        }
+    }
+
+}
+
+
+
+==================================================================================
+
+
+4. Check if a String is a Palindrome
+Easy
+100 points
+• 120 min suggested
+Problem Description
+Write a program to check whether a given String is a palindrome or not.
+
+Input Format
+
+A single String s
+
+ Output Format
+
+Print "Palindrome" if string reads same forward & backward
+
+Else print "Not Palindrome"
+
+If input is empty → print "Invalid Input"
+
+Examples
+Example 1
+Input:
+1 ≤ length of string ≤ 1000
+
+Case-sensitive comparison
+Output:
+madam
+
+
+import java.util.*;
+
+void main(){
+    String str = IO.readln();
+    StringBuilder sb = new StringBuilder(str).reverse();
+
+    if(str.isEquals(sb)){
+        IO.println("palandrom");
+    }
+    
+}
