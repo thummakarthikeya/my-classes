@@ -22,7 +22,7 @@ Syntax:-
 1.Write a query to display the employees whose ename start with S 
    from emp table using like operator?
 
-
+SQL> select * from emp where ename like 'S%';
 
 
 2.Write a query to display the employees whose ename end with S from
@@ -141,7 +141,7 @@ NOTE:-Where clause is used to filters the records in a table. And there
    and earning salary between 1500 and 3000 and joined in the year 1981 
    and are not working in departments 10 or 20 from EMP table ?
 
-
+SQL> SELECT * FROM EMP WHERE JOB IN ('CLERK','MANAGER') AND  SAL BETWEEN 1500 AND 3000 AND HIREDATE LIKE '%81' AND DEPTNO NOT IN(10,20);
 
 ------------------------------------------------------------------------------------------------------
                    Concatenation Operator(|| double pipe):
@@ -278,6 +278,7 @@ SQL>SELECT * FROM USERS;
      comm-->comm+500
 
 After executing the update command see the output use ROLLBACK command
+
 
 
 
