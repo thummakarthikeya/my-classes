@@ -226,8 +226,14 @@ void main(){
     String str = IO.readln();
     StringBuilder sb = new StringBuilder(str).reverse();
 
-    if(str.isEquals(sb)){
-        IO.println("palandrom");
-    }
+
+       String str2 =  sb.toString();
+       //IO.println(str +" "+str2);
+        if(str.equals(str2)){
+            IO.println("Palindrome");
+        }else{
+            IO.println("Not Palindrome");
+
+        }
     
 }
