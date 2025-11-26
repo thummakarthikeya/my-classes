@@ -85,7 +85,6 @@ Lowercase : 8
 
 
 
-
 import java.util.*;
 
 void main(){
@@ -117,8 +116,6 @@ void main(){
     IO.println("Uppercase : " +upper);
     IO.println("Lowercase : "+lower);
 }
-
-
 
 
 =========================================================================================
