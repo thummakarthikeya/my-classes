@@ -18,36 +18,39 @@ SQL> SELECT * FROM ITEM;
 
 1.Write a query to display itemname,color and price of items whose price is more than 800.
 
+SQL> select item_size,color,price from item where price>800;
 
 
 2.Write a query to display all items details where the color is not 'Black'.
-
+SQL> select * from item where color != 'Black';
 
 
 3.Write a query to display the item details where the item name is either 
   shirt,saree,or chudidar.
-
+SQL> select *from item where item_name in('Shirt','Saree','Chudidar');
 
 
 4.Write a query to display all details of the item where the itemname is 'Shirt' 
   and the itemsize is 42.
+SQL> select *from item where item_name ='Shirt' and item_size = 42;
+
 
 
 5.Write a query to display item details where the item name is saree and 
   color must be pink.
-
+SQL> select *from item where item_name ='Saree' and color = 'Pink' ;
 
 
 6.Write a query to display item details where the price between 500 and 1200.
-
+SQL> select *from item where price>=500 and price<=1200 ;
 
 
 7.Write a query to display item details where the items was purchased in 2024
-
+SQL> select *from item where pur_date like '%24';
 
 
 8.Write a query to display items where the item sizes are NULL
-
+SQL> select *from item where item_size is null;
 
 
 9.Write a query to display items where the itemname start with 'S'
@@ -68,6 +71,8 @@ SQL> SELECT * FROM ITEM;
 • The item was purchased in the year 2025
 
 • The color is not 'Red' or 'Black'
+
+SQL> select *from item where item_name in('Shirt','Pant') and price >=500 and price<=800 and pur_date like '%25' and color not in('Red', 'Black');
  
 -----------------------------------------------------------------------------------------------------
 CREATE TABLE ITEM (
@@ -249,3 +254,4 @@ NOTE:-2 and 3 point is very important.
 
 
                      
+
