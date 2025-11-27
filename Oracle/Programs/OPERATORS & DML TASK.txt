@@ -136,17 +136,16 @@ Delete from tablename where condition;
 
 1.Set salary to 3500 for the employee whose employee number is 7934 
   from emp1 table?
- 
+ SQL> update emp1 set sal = 3500 where empno=7934;
 
 
 2.Set job to MANAGER & increase 2000 rupees to an employee whose
   employee no is 7369 from emp1 table?
-
+SQL> update emp1 set job = 'Manager', sal = sal+2000 where empno = 7369;
 
 
 3.Increase the salary by 20% whose job title is MANAGER from emp1 table?
-
-
+SQL> update emp1 set sal = sal+0.20  where job = 'Manager';
 
 4.Update the employees salary to 12000 whose current salary is 5000 
   
@@ -254,4 +253,5 @@ NOTE:-2 and 3 point is very important.
 
 
                      
+
 
