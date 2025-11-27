@@ -1,0 +1,251 @@
+                                 OPERATORS
+                              =============
+
+
+SQL> SELECT * FROM ITEM;
+
+   ITEM_NO    ITEM_NAME    COLOR       ITEM_SIZE      PRICE      PUR_DATE
+  --------   ----------  ----------   ----------   ----------  ---------------
+      1        Shirt        Red           40          500         02-JAN-25
+      2        Pant         Blue          42          799         10-NOV-24
+      3        Saree        Pink                      1200        19-MAR-23
+      4        Chudidar     Green         38          899         16-JAN-25
+      5        Lehanga      Yellow                    1500        24-AUG-25
+      6        Shirt        Blue          42          550         16-APR-25
+      7        Pant         Black         40          750         12-DEC-24
+      8        Saree        Black                     1300        18-SEP-24
+
+
+1.Write a query to display itemname,color and price of items whose price is more than 800.
+
+
+
+2.Write a query to display all items details where the color is not 'Black'.
+
+
+
+3.Write a query to display the item details where the item name is either 
+  shirt,saree,or chudidar.
+
+
+
+4.Write a query to display all details of the item where the itemname is 'Shirt' 
+  and the itemsize is 42.
+
+
+5.Write a query to display item details where the item name is saree and 
+  color must be pink.
+
+
+
+6.Write a query to display item details where the price between 500 and 1200.
+
+
+
+7.Write a query to display item details where the items was purchased in 2024
+
+
+
+8.Write a query to display items where the item sizes are NULL
+
+
+
+9.Write a query to display items where the itemname start with 'S'
+
+
+
+10.Write a query to display the details of the item where the ITEM_NAME is 
+   Shirt,and the COLOR is 'Red', and the ITEM_SIZE is 40.
+
+
+
+11.Write a query to display items from the ITEM table where:
+
+• The item is either a 'Shirt' or a 'Pant'
+
+• The price is between 500 and 800
+
+• The item was purchased in the year 2025
+
+• The color is not 'Red' or 'Black'
+ 
+-----------------------------------------------------------------------------------------------------
+CREATE TABLE ITEM (
+ITEM_NO NUMBER(5),
+ITEM_NAME VARCHAR2(10),  
+COLOR VARCHAR2(10),  
+ITEM_SIZE  NUMBER(5),  
+PRICE NUMBER(10),  
+PUR_DATE  DATE        
+);
+
+
+INSERT INTO ITEM  VALUES (1, 'Shirt', 'Red', 40, 500,'02-JAN-2025');
+INSERT INTO ITEM  VALUES (2, 'Pant', 'Blue', 42, 799,'10-NOV-2024');
+INSERT INTO ITEM  VALUES (3, 'Saree', 'Pink', NULL, 1200,'19-MAR-2023');
+INSERT INTO ITEM  VALUES (4, 'Chudidar', 'Green', 38, 899,'16-JAN-2025');
+INSERT INTO ITEM  VALUES (5, 'Lehanga', 'Yellow', NULL, 1500,'24-AUG-2025');
+INSERT INTO ITEM  VALUES (6, 'Shirt', 'Blue', 42, 550,'16-APR-2025');
+INSERT INTO ITEM  VALUES (7, 'Pant', 'Black', 40, 750,'12-DEC-2024' );
+INSERT INTO ITEM  VALUES (8, 'Saree', 'Black', NULL, 1300.00,'18-SEP-2024');
+
+COMMIT;
+
+
+
+------------------------------------------------------------------------------------------------------
+NOTE:-Before we are performing all these update and delete operations.
+====      better to create one more copy of emp table as follows
+
+create table emp1
+as
+select * from emp;
+
+
+
+2) Update: It is used to change data within a table.
+==========
+
+syntax:-
+=======
+ update tablename set columnname=newvalue 
+         where columnname=oldvalue; 
+
+
+3) Delete:- It is used to delete rows from a table. 
+==========       
+
+syntax:-
+=========
+Delete from tablename;
+
+Delete from tablename where condition;
+ 
+---->First command is to delete all rows
+
+----->Second command is to delete particular rows. 
+
+
+
+------------------------------------------------------------------------------------------------------
+
+1.Set salary to 3500 for the employee whose employee number is 7934 
+  from emp1 table?
+ 
+
+
+2.Set job to MANAGER & increase 2000 rupees to an employee whose
+  employee no is 7369 from emp1 table?
+
+
+
+3.Increase the salary by 20% whose job title is MANAGER from emp1 table?
+
+
+
+4.Update the employees salary to 12000 whose current salary is 5000 
+  
+
+
+
+5.Increase the salary by 1000 rupees for all employees in the emp1 table?
+
+
+
+6.increase 20% on salary, 15% on commission to the employees
+  who are getting commission from emp1 table?
+
+
+
+7.Set commission to 800 to the employees who are not getting 
+  commission from emp1 table?
+
+
+
+8.Set comm has null whose empno are 7521,7698,7900 from 
+  emp1 table?
+
+
+
+9.increase 10% on salary who joined in  the year 1982 
+  from emp1 table?
+
+
+
+10.increase 20% on salary who have more than 42 
+   years of experience in the emp1 table?
+
+
+
+11.increase 15% on salary to the employees whose annual salary is
+    more than 30000 in the emp1 table?
+
+
+
+12.increase 20% on salary for the employee whose name starts with 'A'
+   and ends with 'S' from emp1 table?
+
+
+
+13.Delete an employee record whose employee number is 7900 
+   from emp1 table?
+
+
+
+
+14.delete all the managers records from emp1 table?
+
+
+
+
+15.Write a query to delete the employee records whose 
+   salaries are less than 3000 ?
+
+
+
+
+16.delete all 10 , 30 department records from emp1 table?
+
+
+
+17.delete all records from emp1 table, And get it back the all    
+   the records by using rollback command ?
+
+
+ *
+***What are differences b/w delete and truncate?(V.V.I.M.P)
+ *
+NOTE:-2 and 3 point is very important.
+
+======================================================================================
+               TRUNCATE           |               DELETE
+======================================================================================
+1.it is a DDL command.            |1.it is a DML command.
+                                  |
+2.structure remains same          |2.structure remains same
+  data deleted permanently.       |  data is deleted temporally
+                                  |  and storing in a buffer.
+                                  |
+2.it cannot be rollback.          |3.it can be rollback.        
+                                  |
+3.it is an auto commit command    |3.it is not auto commit command.
+                                  |
+4.Where clause cannot be used     |4.Where clause can be used here.
+  here.                           |
+                                  |
+5.We can delete all the records   |5.Using it we can delete single or
+  only.we can not delete single   |  specific group of records or all 
+  or specific group of records.   |  records.
+                                  |
+6.it is faster.                   |6.it is slower.
+                                  |
+7.Deletes data block by block.    | 7.Deletes data row by row.
+                                  |
+                                  |
+===============================*********===========================================
+
+
+
+
+
+                     
