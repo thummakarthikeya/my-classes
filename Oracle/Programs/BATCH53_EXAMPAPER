@@ -1,0 +1,76 @@
+Naresh I Technologies.
+Test Paper.
+B – 53.
+1.Write a SQL query to create a table named EMP10 with Columns 
+empno, ename and sal. (2M)
+
+2.Write an SQL query to insert the following records into the EMP10 table.(2M)
+
+                  EMPNO               ENAME                    SAL     
+                -----------              ------------                ---------
+                 1001                   SURYA                     7000
+                 1002               ANUSHKA                   8000
+                 1003                  KIRAN                      4000
+                 1004              GOWTHAM               5000
+
+3A.Write a query to add a new column DEPTNO into EMP10. (1M)
+
+3b.Write a query to increase the size of ename column to 20 in
+      EMP10 table. (1M)
+
+4A.Write a query to display all employees whose ename starts with 'A'
+      from EMP10 table. (1M)
+
+4B.Write a query to delete the employees records whose salaries are
+      less than 5000 from EMP10 table. (1M)
+
+5a. Write a query to completely delete the EMP10 table along with
+       its structure. (1M)
+
+5b.Write a query to display AMEERPET from ‘AMEERPET HYDERABAD’
+     string. (1M)
+	
+6a.Write a query to which employees are working as MANAGERs from
+      EMP table? (1M)
+
+6b.Write a query to display who are working in 10, 30 Departments from 
+      EMP table? (1M)
+
+7a.Write a query to display which employees are not getting Commissions 
+      from EMP table? (1M)
+
+7b.Write a query to display which Employee has No BOSS from EMP 
+      table? (1M)	
+	
+8. Write a query to display how many CLERKs in EMP table? (2M)
+
+9. Write a query to display the MAXIMUM salary in 30th department from
+    EMP table? (2M)
+	
+10. Write a query to display who are getting Annual Salaries more than 
+     Rs.25000/- from EMP table? (2M)
+
+
+11. Write a query to find who are joined in 1981 year from EMP table? (2M)	
+
+12.Write a query to display employees who are working as either 'MANAGER'
+     or 'CLERK' And earning salary between  1500 and 3000 and joined in the
+     year 1981 and are not working in  departments 10 or 20
+     from EMP table? (3M)
+
+13.Write an SQL query to display the NAME (use alias USERNAME) and their
+     EMAIL (use alias EMAILID) of users  who have a phone number
+     ending with '29'  from  the USERS table? (3M)
+
+SQL> SELECT * FROM USERS;
+
+   USER_ID            NAME                     EMAIL                                   PHONE
+  ---------            --------------         ------------------------                  -----------------
+      1                ANUSHKA              anushka@gmail.com              9876526229
+      2               GOWTHAM            gowtham@gmail.com            9912347810
+      3                SURYA                    surya@gmail.com                   9988776629
+      4                KAVYA PAPA         kavya@gmail.com                  9988776655
+
+
+14.Set JOB as a 'MANAGER' and increase 20% on salary to employee whose
+     names  starts With  'A' and ends with 'S' from the EMP table ?(2M)
