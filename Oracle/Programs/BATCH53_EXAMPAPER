@@ -1,8 +1,15 @@
 Naresh I Technologies.
 Test Paper.
 B – 53.
+
+
+
+SQL> set pagesize 200;
+SQL> set linesize 160;
+
 1.Write a SQL query to create a table named EMP10 with Columns 
 empno, ename and sal. (2M)
+SQL> create table EMP10(EMPNO number(2), ENAME varchar2(20), SAL number(8));
 
 2.Write an SQL query to insert the following records into the EMP10 table.(2M)
 
@@ -13,22 +20,34 @@ empno, ename and sal. (2M)
                  1003                  KIRAN                      4000
                  1004              GOWTHAM               5000
 
+SQL> insert into EMP10 values(&EMPNO, '&ENAME', &SAL);
+
 3A.Write a query to add a new column DEPTNO into EMP10. (1M)
+SQL> Alter table emp10 ADD (DEPTNO number(3));
+
 
 3b.Write a query to increase the size of ename column to 20 in
       EMP10 table. (1M)
+SQL> alter table EMP10 modify EMPNO number(4);
+
 
 4A.Write a query to display all employees whose ename starts with 'A'
       from EMP10 table. (1M)
+SQL> select * from emp10 where ename like 'A%';
+
 
 4B.Write a query to delete the employees records whose salaries are
       less than 5000 from EMP10 table. (1M)
+SQL> select * from emp10 where sal <5000;
 
 5a. Write a query to completely delete the EMP10 table along with
        its structure. (1M)
+SQL> drop table EMP10;
+
 
 5b.Write a query to display AMEERPET from ‘AMEERPET HYDERABAD’
      string. (1M)
+SQL> SELECT SUBSTR('AMEERPET HYDERABAD',1,8) AS SUB FROM DUAL;
 	
 6a.Write a query to which employees are working as MANAGERs from
       EMP table? (1M)
