@@ -62,26 +62,38 @@ SQL> select * from emp where comm is null or comm = 0;
 
 7b.Write a query to display which Employee has No BOSS from EMP 
       table? (1M)	
+SQL> select * from emp where JOB != 'BOSS' ;
+
 	
 8. Write a query to display how many CLERKs in EMP table? (2M)
+SQL> select COUNT (* ) from emp where JOB = 'CLERK'  ;
+
 
 9. Write a query to display the MAXIMUM salary in 30th department from
     EMP table? (2M)
+SQL> select MAX(SAL) FROM EMP WHERE DEPTNO = 30;
+
 	
 10. Write a query to display who are getting Annual Salaries more than 
      Rs.25000/- from EMP table? (2M)
 
 
 11. Write a query to find who are joined in 1981 year from EMP table? (2M)	
+SQL> select * FROM EMP WHERE HIREDATE LIKE '%81';
+
 
 12.Write a query to display employees who are working as either 'MANAGER'
      or 'CLERK' And earning salary between  1500 and 3000 and joined in the
      year 1981 and are not working in  departments 10 or 20
      from EMP table? (3M)
+SQL> select * FROM EMP WHERE JOB IN('MANAGER','CLERK')  AND SAL BETWEEN 1500 AND 3000 AND HIREDATE LIKE '%81' AND DEPTNO NOT IN(20,10);
+
 
 13.Write an SQL query to display the NAME (use alias USERNAME) and their
      EMAIL (use alias EMAILID) of users  who have a phone number
      ending with '29'  from  the USERS table? (3M)
+SQL> SELECT NAME AS USERNAME,EMAIL AS EMAILID, PHONE_NUMBER FROM USERS WHERE PHONE_NUMBER LIKE '%29' ;
+
 
 SQL> SELECT * FROM USERS;
 
