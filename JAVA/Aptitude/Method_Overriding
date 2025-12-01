@@ -1,0 +1,306 @@
+MCQ :
+-----
+Q1)
+
+class Vehicle
+{
+	public int fuelCapacity()
+	{
+		return 40;
+	}	
+	
+	public void printTankCapacity()
+	{
+		System.out.println(this.fuelCapacity());
+	}
+}
+class Car extends Vehicle
+{
+	@Override
+	public int fuelCapacity()
+	{
+		return 18;
+	}	
+}
+
+public class Test
+{
+
+	public static void main(String[] args)
+	{
+		Vehicle v1 = new Car();
+		v1.printTankCapacity();
+
+	}
+
+}
+--------------------------------------------------------------------
+Q2) In this Program add code to print value 40.
+
+class Vehicle
+{
+	public int fuelCapacity()
+	{
+		return 40;
+	}	
+	
+	public void printTankCapacity()
+	{
+		System.out.println(this.fuelCapacity());
+	}
+}
+class Car extends Vehicle
+{
+	@Override
+	public int fuelCapacity()
+	{
+		return 18;
+	}	
+}
+
+public class Test
+{
+
+	public static void main(String[] args)
+	{
+		Vehicle v1 = new Car();
+		v1.printTankCapacity();
+
+	}
+
+}
+---------------------------------------------------------------------
+Q3)
+
+class Bird
+{
+	public void fly()
+	{
+		System.out.println("Genric Bird is flying");
+	}
+	
+	public void roam()
+	{
+		System.out.println("Generic Bird is roamig");
+	}	
+	
+}
+class Parrot extends Bird
+{
+	
+	public int fly(double height)
+	{
+		System.out.println("Parrot is flying with :"+height+" height");
+		return 0;
+	}
+	
+	public void roam()
+	{
+		System.out.println("Parrot Bird is roamig");
+		
+	}
+}
+public class MethodOverridingDemo1 {
+
+	public static void main(String[] args) 
+	{
+		Parrot p = new Parrot();
+		p.fly(15.6);
+		p.roam();
+	}
+
+}
+----------------------------------------------------------------------
+Q4)
+
+class Base
+	{
+        int value=0;
+        Base()
+		{
+        addValue();
+        }
+        void addValue(){
+        value += 10;
+        }
+       int getValue(){
+         return value;
+       }
+     }
+    class Derived extends Base{
+      Derived()
+	  {
+       addValue();
+      }
+     void addValue(){
+		 super.addValue();
+     value +=  30;
+      }
+    }
+    public class Test5 {
+      public static void main(String[] args){
+          Derived b = new Derived();		  
+          System.out.println(b.getValue());
+      }
+    }
+-----------------------------------------------------------------------
+Q5)
+class Mammal 
+ { 
+ String name = "furry "; 
+ String makeNoise() 
+ { 
+  return "generic noise"; 
+ } 
+} 
+class Zebra extends Mammal 
+{ 
+ String name = "stripes "; 
+ 
+ String makeNoise() 
+ { 
+  return "bray"; 
+ } 
+} 
+public class ZooKeeper { 
+ public static void main(String[] args)
+ { 
+  new ZooKeeper().go(); 
+ } 
+ void go()
+ { 
+  Mammal m = new Zebra(); 
+  System.out.println(m.name + m.makeNoise()); 
+ } 
+}
+-----------------------------------------------------------------------
+Q6)
+public class Test11
+{
+	public static void main(String [] args)
+	{
+		Animal a = new Animal();
+		Animal b = new Horse();
+		a.eat();
+		b.eat();
+		b.buck();
+	}
+}
+class Animal
+{
+	public void eat()
+	{
+		System.out.println("Generic Animal eating");
+
+	}
+	
+}
+class Horse extends Animal
+{
+	public void eat()
+	{
+		System.out.println("Horse Eating");
+	}
+		public void buck()
+	{
+			System.out.println("Printing");
+	}
+}
+-----------------------------------------------------------------------
+Q7)
+
+class A 
+{
+static void foo()
+{
+System.out.println("A");
+}
+}
+
+class B extends A
+{
+static int foo()
+{
+System.out.println("B");
+return 1;
+}
+}
+-----------------------------------------------------------------------
+Q8)
+
+class A 
+{
+void foo() 
+{
+System.out.println("A");
+}
+}
+
+class B extends A 
+{
+void foo() 
+{
+System.out.println("B");
+}
+}	
+
+class Test15
+{
+public static void main(String[] args)
+{
+A obja;
+B objb = new B();
+objb.foo();
+obja = objb;
+obja.foo();
+}
+}
+----------------------------------------------------------------------
+Q9) Find the compilation errors
+
+public class Test19 extends Singer
+ {
+  public static String sing() 
+  {
+    return "fa";
+  }
+
+  public static void main(String[] args) 
+  {
+    Test19 t = new Test19();
+    Singer s = new Test19();
+    System.out.println(t.sing() + " " + s.sing());
+  }
+}
+
+class Singer 
+{
+  public static String sing() 
+  {
+    return "la";
+  }
+}
+
+-----------------------------------------------------------------------
+Q10)
+class A 
+{
+private void printName(){
+System.out.println("Value-A");
+}
+}
+class B extends A
+{
+public void printName(){
+System.out.println("Name-B");
+}
+}
+public class Test23
+{
+public static void main (String[] args) 
+{
+A b = new B();
+b.printName();
+}
+}
+
