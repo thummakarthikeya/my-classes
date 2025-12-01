@@ -57,6 +57,8 @@ SQL> SELECT SUBSTR('AMEERPET HYDERABAD',1,8) AS SUB FROM DUAL;
 
 7a.Write a query to display which employees are not getting Commissions 
       from EMP table? (1M)
+SQL> select * from emp where comm is null or comm = 0;
+
 
 7b.Write a query to display which Employee has No BOSS from EMP 
       table? (1M)	
