@@ -1,0 +1,350 @@
+Q10)
+class A 
+{
+private void printName(){
+System.out.println("Value-A");
+}
+}
+class B extends A
+{
+public void printName(){
+System.out.println("Name-B");
+}
+}
+public class Test23
+{
+public static void main (String[] args) 
+{
+A b = new B();
+b.printName();
+}
+}
+----------------------------------------------------------------------
+Q11)
+class A 
+	{
+public void printValue()
+	{
+System.out.println("Value-A");
+    }
+    }
+class B extends A
+{
+public void printNameB()
+{
+System.out.println("Name-B");
+}
+}
+class C extends A
+{
+public void printNameC()
+{
+System.out.println("Name-C");
+}
+}
+ public class Test27
+	{
+ public static void main (String[] args) 
+	{
+ B b = new B();
+ C c = new C();
+ newPrint(b);
+ newPrint(c);
+    }
+ public static void newPrint(A a)
+	{
+ a.printValue();
+ }
+ }
+--------------------------------------------------------------------
+Q12)
+
+class A1 
+{
+public void printName()
+{
+System.out.println("Value-A");
+}
+}
+class B1 extends A1
+{
+public void printName()
+{
+System.out.println("Name-B");
+}
+}
+public class Test28
+{
+public static void main (String[] args)
+{
+A1 b = new B1();
+newPrint(b);
+}
+public static void newPrint(A1 a)
+{
+a.printName();
+}
+}
+-----------------------------------------------------------------------
+Q13)
+class A 
+{
+public void printName()
+{
+System.out.println("Value-A");
+}
+}
+class B extends A
+{
+public void printName()
+{
+System.out.println("Name-B");
+}
+}
+class C extends A
+{
+public void printName()
+{
+System.out.println("Name-C");
+}
+}
+public class Test29
+{
+public static void main (String[] args) {
+A b = new B();
+C c = new C();
+b = c;
+newPrint(b);
+}
+public static void newPrint(A a){
+a.printName();
+}
+}
+-----------------------------------------------------------------------
+Q14)
+
+class A 
+{
+public void printName()
+{
+System.out.println("Value-A");
+}
+}
+class B extends A
+{
+public void printName()
+{
+System.out.println("Name-B");
+}
+}
+class C extends A
+{
+public void printName()
+{
+System.out.println("Name-C");
+}
+}
+public class Test30
+{
+public static void main (String[] args) 
+{
+B b = new B();
+C c = new C();
+b = c;
+newPrint(b);
+}
+public static void newPrint(A a)
+{
+a.printName();
+ }
+ }
+----------------------------------------------------------------------
+Q15)
+
+class B 
+{
+public String getCountryName()
+{
+return "USA";
+}
+
+public StringBuffer getCountryName()
+{
+StringBuffer sb = new StringBuffer();
+sb.append("UK");
+return sb;
+}
+
+}
+public class Test32
+{
+public static void main(String[] args)
+{
+B b = new B();
+System.out.println(b.getCountryName().toString());
+}
+}
+
+----------------------------------------------------------------------
+Q16)
+
+class A
+{
+public static void printName()
+{
+System.out.println("Value-A");
+}
+}
+class B extends A
+{
+public static void printName()
+{
+System.out.println("Name-B");
+}
+}
+public class Test38
+{
+public static void main (String[] args) 
+{
+A a = new B();
+a.printName();
+}
+}
+----------------------------------------------------------------------
+Q17)
+
+class A
+{
+public void printName()
+{
+System.out.println("Name-A");
+}
+}
+class B extends A
+{
+public void printName()
+{
+System.out.println("Name-B");
+}
+public void printValue()
+{
+System.out.println("Value-B");
+}
+}
+public class Test41
+{
+public static void main (String[] args)
+{
+A b = new B();
+b.printValue();
+}
+}
+----------------------------------------------------------------------
+Q18)
+
+class A 
+{
+public void printName()
+{
+System.out.println("Name-A");
+}
+}
+class B extends A
+{
+public void printName()
+{
+System.out.println("Name-B");
+}
+public void printValue() 
+{
+System.out.println("Value-B");
+}
+}
+public class Test42
+{
+public static void main (String[] args)
+{
+A a = new A();
+B b = (B)a;
+b.printName();
+}
+}
+
+----------------------------------------------------------------------
+Q19)
+
+class A 
+{
+public void printName() 
+{
+System.out.println("Name-A");
+}
+}
+class B extends A
+{
+public void printName()
+{
+System.out.println("Name-B");
+}
+public void printValue()
+{
+System.out.println("Value-B");
+}
+}
+public class Test43
+{
+public static void main (String[] args){
+B b = new B();
+A a = (A)b;
+a.printName();
+}
+}
+---------------------------------------------------------------------
+Q20)
+
+class A
+{
+public void printName()
+{
+System.out.println("Name-A");
+}
+}
+class B extends A
+{
+public String printName()
+{
+System.out.println("Name-B");
+return null;
+}
+}
+public class Test44
+{
+public static void main (String[] args)
+{
+A a = new B();
+a.printName();
+}
+}
+-----------------------------------------------------------------------
+class Animal { }
+class Horse extends Animal { }
+class q31
+{
+      public void doStuff(Animal a) 
+      {
+           System.out.println("In the Animal version");
+      }
+      public void doStuff(Horse h) 
+      {
+           System.out.println("In the Horse version");
+      }
+      public static void main (String [] args) 
+      {
+            q31 q = new q31();
+            Animal ob1 = new Animal();
+            Animal ob2 = new Horse();
+            q.doStuff(ob1);
+            q.doStuff(ob2);
+     }
+}
+
