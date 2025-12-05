@@ -1,0 +1,179 @@
+                          Functions Task
+                         =================
+ *
+***Dual :- Dual is an oracle predefined virtual table which contains only
+ *         one row and one column. Dual table is used to test oracle
+           predefined, user defined functions functionality.
+
+
+    when ever we are installing oracle server then automatically
+dual table is created with in SYS user but we are allowed to use
+dual table in all other users in oracle database.
+
+
+
+ *
+***Note:- in oracle by default datatype of the dual table column
+ * =====     is varchar2.
+
+ 
+SQL> select * from dual;
+
+     D    ------->dummy column
+   -----
+     X
+
+SQL>desc dual;
+
+ Name                Type
+-------          ------------
+ DUMMY            VARCHAR2(1)
+
+
+
+Testing predefined functions functionality:-
+==========================================
+EX:-
+==
+sql>select nvl(null,40) from dual;
+   
+             40
+
+sql>select nvl(20,30) from dual;
+
+             20
+
+     by using dual table we can also perform mathematical
+operations.
+ 
+
+Eg:-
+===
+SQL> select 100+200 from dual; //one value as result &
+                                 work with non table data.
+
+•When we want to get one value as result and we want to work with 
+ non table values then use dual.
+
+-----------------------------------------------------------------------------------
+                          CHARACTER FUNCTIONS
+                         =====================
+
+1.Write a query to display employee names to uppercase in 
+  emp table 
+ 
+
+2.Write a query to display all employee names from the emp table
+  in lowercase.
+
+
+3.Update all item names in the ITEM table to upper case
+  
+
+4.What is the output of the following query
+
+SQL>SELECT INITCAP('ab cd ef') from dual;
+
+a) AB CD EF
+
+b) Ab Cd Ef
+
+c) Ab cd ef
+
+d) ab cd ef
+
+
+Answer:-
+
+
+
+5.Write a query to display the employee records whose names having 4 characters
+  by using length function from emp table?
+
+
+
+6.Write a query to display the employee name and the length of each name
+  from the emp table by using appropriate character function ?
+
+
+
+7.Write a query to display the employees records whose ename length
+  is more than 5 characters from emp table by using length() function?
+
+
+NOTE:-length function returns total length of string including 
+=====       spaces.
+
+
+8.What the o/p of the following
+
+SQL>select length('AB CD') from dual;
+
+A. 4
+
+B. 5
+
+C. 6
+
+D. None of the above
+
+Answer:-
+
+
+9.Check the following lpad() and rpad() queries output
+
+SQL>select lpad('kiran',10,'#") from dual;
+
+
+SQL>select lpad('gowtham',10,'$@') from dual;
+
+
+SQL>select lpad('X',4,'X') from dual;
+
+•The total length specified is 4  
+
+•The original string length is 1 (because 'X' is a single character)
+
+•Total length-string length = 4-1
+                            =  3 
+  
+•3 X's will be printed on left side of the 
+ given string. 
+
+•Since the original string is already 'X', after padding with 3 'X's on the left,
+ the output becomes 'XXXX'
+
+output:-
+=======
+XXXX
+
+
+
+SQL>select rpad('ABCD',10,'#')from dual;
+
+
+SQL>select rpad('kiran',10)||'hello' from dual;
+
+
+SQL>select rpad(ename,20)||sal from emp;
+
+
+
+10.Check the following queries outputs
+ 
+
+SQL> select ltrim('SSMISSTHSS','S')from dual;
+
+
+
+SQL>select ltrim('     GOWTHAM     ') from dual;
+
+
+
+SQL>select rtrim('SSMISSTHSS','S') from dual;
+
+
+
+SQL>select trim( '*' from '*****GOWTHAM*****') from dual;
+
+

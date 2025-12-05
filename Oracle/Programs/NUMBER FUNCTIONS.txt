@@ -1,0 +1,265 @@
+                      
+                          NUMBER FUNCTIONS
+                        ====================
+
+Round(m,n):- It rounds given floated valued number 'm' 
+==========                based on 'n'.
+
+
+Eg:-
+====
+SQL> select round(1.8) from dual;
+                    |--->checking above 50% or below 50%
+
+            2
+
+
+
+SQL> select round(1.23456,3) from dual;
+
+          1.235
+    
+   round(1.23456,3) -->+ve number checks left to right up to 
+                         3 decimal
+
+
+      
+Execution:-
+==========
+      
+Step1:- 1.234  ---->(Here remaining number 56 is above 50% (out of 100))
+  
+step2:- 1.234               
+            1
+        =====
+        1.235
+        =====   
+
+
+Note:- Round function always checks remaining number. if remaining
+=====     number is above 50% then automatically 1 is added
+               to the rounded number.
+
+
+Eg:-
+===
+ SQL> select round(1285.765,-1) from dual;
+
+       -4-3-2-1
+           1285.765,-1  ------>-ve sign take decimal right to left
+          <----    
+
+
+Execution:-
+=========
+step1:-1280 (-1 position replaced with 0.5 is above 
+                 50%(out of 10))
+                                 
+
+
+step2:-    1280
+             1    (1 is added to other than zero)
+          ======
+           1290
+          ======   
+
+
+SQL>select round(1285,-2) from dual;
+
+Execution:-
+==========
+Step1: 1285   ( Here 85 is replace with 00 and also
+                85 is above 50%(out of 100)) 
+
+
+Step2: 1200
+        1
+      ======
+       1300
+      ======
+
+Trunc(m,n):- It truncates given floated valued number 'm' 
+==========            based on 'n'.
+
+This function doesn't check remaing numbers.
+
+Eg:-
+====
+SQL>select trunc(1.8) from dual;
+      
+           1
+
+SQL> select trunc(1.23456,3) from dual;
+       1.234
+
+
+Greatest(exp1,exp2,…. expn), Least(exp1,exp2,…. expn):-
+======================================================
+      Greatest returns maximum value among given expressions.
+Where as Least returns minimum value among given expressions.
+
+
+Eg:-
+===
+SQL> select greatest(3,5,8,9) from dual ;
+
+                       9
+
+
+SQL> select ename, sal, comm, greatest(sal,comm)
+      from emp 
+     where comm is not null; 
+
+
+ENAME             SAL       COMM GREATEST(SAL,COMM)
+---------- ---------- ---------- ------------------
+ALLEN            1600        300               1600
+WARD             1250        500               1250
+MARTIN           1250       1400               1400
+
+
+
+
+Ceil() and Floor():- These two functions always return integers.
+===================
+
+           Ceil() returns nearest,greatest integer.where as floor()
+returns nearest ,lowest integer.
+
+
+Eg:-
+===
+SQL>select ceil(1.3) from dual;
+
+        2
+
+
+SQL>select floor(1.9) from dual;
+
+        1
+
+
+
+          | 
+          |
+          |        1.4 near to 1,but ceil() returns greatest
+          |              integer is 2
+          |                |
+       ---|----------------|-----------------------------
+         1|1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2
+          |
+
+------------------------------------------------------------------------------------------------------
+1.What is the output of following
+SQL>select mod(10,2) from dual;
+
+a) 1
+
+b) error
+
+c) 0
+
+d) none
+
+Answer:
+
+------------------------------------------------------------------------------------------------------
+ 
+2.select round(89.4),trunc(89.8) from dual;
+   Which values are displayed
+
+a) 89,90
+
+b) 90,90
+
+c) 90,89
+
+d) 89,89
+
+Answer:
+
+-----------------------------------------------------------------------------------------------------
+
+3.select round(45.95),trunc(45.95) from dual;
+  Which values are displayed
+
+a) 46 and 45
+
+b) 45 and 46
+
+c) 46 and 46
+
+d) none
+
+Answer:
+
+------------------------------------------------------------------------------------------------------
+
+4.select greatest(500,800,100,150,200) from dual;
+
+a) 100
+
+b) 800
+
+c) 200
+
+d) error
+
+Answer:
+
+------------------------------------------------------------------------------------------------------
+
+5.select ceil(7.2),floor(7.8) from dual;
+
+a) 7,8
+
+b) none
+
+c) 8,8
+
+d) 8,7
+
+Answer:
+
+------------------------------------------------------------------------------------------------------
+What is the output of following queries
+
+6.select ROUND (65.726, -1) from dual;
+  
+7.select ROUND(45.953, -1), ROUND(45.936, 2) from dual;
+
+8.select ROUND(50.456,1) from dual;
+
+9.select FLOOR(5.67) from dual;
+
+10.select TRUNC(1.23439,3) from dual;
+
+11.select TRUNC(1.8) from dual;
+
+12.select ROUND(8967.89, -1) from dual;
+
+13.select ROUND(8967.89, -2) from dual;
+
+14.Write an SQL query to round the SALARY column to the nearest
+   thousand in the EMP table.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,310 @@
+                                   Naresh I Technologies
+                                       Test paper
+                                        B – 47
+
+1. Which of the following is NOT a DDL command in Oracle?
+
+a) CREATE
+
+b) ALTER
+
+c) SELECT
+
+d) DROP
+
+Answer:
+
+2. What does DDL stand for in Oracle?
+
+a) Data Deleting Language
+
+b) Data Definition Language
+
+c) Data Delegating Language
+
+d) Dummy Data Language
+
+Answer: b) Data Definition Language
+
+3. Which DDL command is used to remove a table from the database permanently?
+
+a) TRUNCATE
+
+b) DROP
+
+c) DELETE
+
+d) REMOVE
+
+Answer: 
+
+
+4. Which command is used to change the structure of an existing table?
+
+a) CHANGE
+
+b) ALTER
+
+c) MODIFY
+
+d) UPDATE
+
+Answer:
+
+
+5. The TRUNCATE command in Oracle is used to:
+
+a) Remove all rows from a table without logging individual row deletions
+
+b) Remove the table structure
+
+c) Remove a column
+
+d) Change a column’s datatype
+
+Answer: 
+
+6. Which of the following commands can be used to rename a table in Oracle?
+
+a) RENAME
+
+b) CHANGE
+
+c) ALTER
+
+d) UPDATE
+
+Answer: 
+
+
+7. What is the effect of the DROP command on a table?
+
+a) Deletes all rows but keeps the structure
+
+b) Deletes the table structure and data
+
+c) Only deletes data
+
+d) Renames the table
+
+Answer: 
+
+
+8. Which DDL command is used to add a new column to an existing table?
+
+a) INSERT
+
+b) ADD
+
+c) ALTER
+
+d) CREATE
+
+Answer:
+
+
+9.Which of the following statements contains an error?
+
+A. select * from emp where empid=1003;
+
+B. select empid from emp where empid=1006;
+
+C. select empid from emp;
+
+D. select empid where empid=1009 and firstname='ANUSHKA'; 
+
+Answer:
+
+
+10. Which operator in Oracle is used to compare two values for equality?
+
+a) =
+
+b) ==
+
+c) :=
+
+d) EQ
+
+Answer:
+
+
+11. The ‘||’ operator in Oracle is used for:
+
+a) Addition
+
+b) Concatenation
+
+c) Subtraction
+
+d) Division
+
+Answer: 
+
+12. Which operator is used to check if a value exists in a list of values?
+
+a) LIKE
+
+b) IN
+
+c) BETWEEN
+
+d) EXISTS
+
+Answer: 
+
+
+13. Which of the following statements is true about DDL commands?
+
+a) They can be rolled back
+
+b) They implicitly commit transactions
+
+c) They only affect data, not structure
+
+d) They are not logged
+
+Answer: b) They implicitly commit transactions
+
+14. Which DDL command is used to remove all rows from a table but keep the 
+    structure for future use?
+
+a) DROP
+
+b) DELETE
+
+c) TRUNCATE
+
+d) REMOVE
+
+Answer: 
+
+15. Which operator is used to check for NULL values in Oracle?
+
+a) = NULL
+
+b) IS NULL
+
+c) == NULL
+
+d) EQ NULL
+
+Answer:
+
+16. What is the result of the following statement: 
+
+   ALTER TABLE employees DROP COLUMN salary;
+
+a) Drops the employees table
+
+b) Drops the salary column from employees table
+
+c) Drops all data from employees table
+
+d) Drops all columns except salary
+
+Answer: 
+
+17. The BETWEEN operator in Oracle is used to:
+
+a) Check if a value matches a pattern
+
+b) Check if a value falls within a range
+
+c) Check if a value is NULL
+
+d) Concatenate two strings
+
+Answer: 
+
+
+18. Which command would you use to change the datatype of a column in a table?
+
+a) ALTER TABLE MODIFY
+
+b) ALTER TABLE CHANGE
+
+c) UPDATE TABLE
+
+d) RENAME COLUMN
+
+Answer: 
+
+
+19. Which of the following is NOT a valid operator in Oracle SQL?
+
+a) +
+
+b) -
+
+c) *
+
+d) %%
+
+Answer: 
+
+20. What is the main difference between DROP and TRUNCATE commands?
+
+a) DROP removes only data, TRUNCATE removes structure
+
+b) DROP removes structure and data, TRUNCATE removes only data
+
+c) DROP can be rolled back, TRUNCATE cannot
+
+d) TRUNCATE is slower than DROP
+
+Answer: 
+
+------------------------------------------------------------------------------------------------------
+Queries:
+
+1.Write a SQL query to create a table named employees 
+  with columns: emp_id , emp_name , and salary. (2 Marks )
+
+2.insert 5 records into employees table?
+
+3.Write a SQL query to add a new column called department_id 
+  to the employees table. (2 Marks )
+
+4.Write a SQL query to modify the emp_name column in the employees table
+  to increase its size to varchar2(20). (2 Marks )
+
+5.Write a SQL query to rename the table employees to staff. (2 Marks )
+
+6.Write a SQL query to drop the column department_id from the staff table. (2 Marks )
+
+7.Write a SQL query to delete the staff table from the database. (2 Marks )
+
+8.Write a SQL query to remove all rows from the employees table but keep its 
+  structure for future use. (2 Marks )
+
+9.Write a SQL query to display all columns from the employees table for those 
+  employees whose department_id is either 10, 20, or 30. (2 Marks )
+
+10.Write a SQL query to display all columns from the employees table for those 
+  employees whose salary is between 3000 and 5000 (inclusive). (2 Marks )
+
+11.Write a SQL query to display all columns from the employees table for those 
+   employees whose name starts with the letter 'A'. (2 Marks )
+
+12.Write a SQL query to display the emp_id and a concatenated string showing the 
+   employee’s name and salary in the format: “emp_name earns salary” from 
+   the employees table. (2 Marks )
+
+13.Write a query display all the NAMES that contains SIRISHA from following EMP555 table? (2 Marks )
+
+           NAME
+     ----------------
+      SIRISHA GAYATRI
+      GAYATRI SIRISHA
+      ANUSHKA SHETTY
+      ANU SIRISHA RAI
+      SURYA SURYA
+
+14.Write a query to display ENAME as (use aliasname EMP_NAME), SAL,JOB from EMP table 
+   and whose salary is greater than 2000 ?( 2 Marks )
+
+15.Write a query To display employee who are working as a MANAGER,CLERK and earning salary
+   between 1500 and 3000 and joined in 1981 year and not working in the
+   departments 10,20 ? ( 4 Marks )
+
