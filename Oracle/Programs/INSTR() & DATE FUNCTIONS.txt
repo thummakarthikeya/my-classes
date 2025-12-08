@@ -1,0 +1,139 @@
+                            CHARACTER FUNCTIONS
+                          ======================
+
+
+1.Check following instr() queries outputs
+
+
+instr():-it is used to check whether the substring is existed 
+=======         in the given string or not.
+
+
+•if sub string is existed in the given string, it returns the position.
+
+•if sub string is not existed in the given string ,it returns 0.
+
+
+syntax: instr(columnname(or)string , sub string, searching position,
+======            No of occurrences from searching position);
+
+
+Searching position -> +ve or –ve
+Searching and No of occurrences -> must be numbers.
+
+
+         always instr() returns position based on last 2 parameters. 
+but oracle server counts number of characters always left side first 
+position onwards.
+
+
+
+SQL> select instr('ABCDEFGHCDKMNBCDJ','CD',1,1) from dual;
+
+
+
+SQL> select instr('ABCDEFGHCDKMNBCDJ','CD',5,2) from dual;
+
+
+
+SQL> select instr('ABCDEFGHCDKMNBCDJ','CD',-5,2) from dual;
+
+
+
+SQL> select instr('krishna stami lord krishna jai krishna','krishna',1,2) from dual;
+
+
+
+SQL> select instr('krishna stami lord krishna jai krishna','krishna',-1,3) from dual;
+
+
+
+SQL> select instr('gowtham raj','raj') from dual;
+
+
+
+SQL> select instr('gowtham raj','sai') from dual;
+
+
+
+SQL> select instr('ABC*D','*') from dual; // it returns the position of the 
+                                             delemiters(special characters)
+
+
+2.Write a query to check whether the substring 'radha' is exists in the given string or not
+
+Given string: krishna stami lord krishna jai krishna
+
+
+
+
+3.Find 4th apperence of 'a' in the string 'Maharashtraa'[INTERVIEW QUESTION]
+
+
+
+
+4.Write a query which is used to retrieve first part(before first .)
+  from the MAILID column in the EMAILS table by using
+  substr(),instr() functions 
+
+create table emails
+(
+mailid varchar2(30)
+);
+
+insert into emails values('abc.xyz@gmail.com');
+insert into emails values('pqrst.kkkk@gmail.com');
+commit;
+
+
+
+
+SQL>SELECT * FROM EMAILS;
+
+    MAILID
+  ----------
+  abc.xyz@gmail.com
+  pqrst.kkkk@gmail.com
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------
+                              Date Functions Task
+                            =======================
+
+1.Write a query to display current system date?
+
+
+2.Write query to display the current system date and time?
+
+
+3.Write a query to display last date of the current month?
+
+
+4.Write a query to display last date of the month from the
+  given date 16-APR-2024?
+
+
+5.Write a query to display next month first date?
+
+
+6.Write a query to display first date of the current month by using 
+  sysdate,add_months(),last_day() functions?
+
+
+7.Write a query to display next Friday's date?
+
+
+8.Write a query to display next month first sunday date?
+
+
+9.Write a query which is used to display employee names and also number of years 
+  those employees are working upto today's date from emp table
+  by using months_between() function?
+
+
+
+
