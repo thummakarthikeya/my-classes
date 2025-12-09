@@ -1,0 +1,35 @@
+Assignment 01 :
+---------------
+Write a program to implement an interface Payable with method pay() using amount to pay.
+
+Two classes Employee and Contractor implement it using anonymous inner class.
+
+
+
+
+package Elc;
+interface Payable{
+	void pay(double amount);	
+}
+
+
+
+public class Employee {
+public static void main(String[] args) {
+		Payable employee = new Payable() {
+			public void pay(double amount) {
+				System.out.println("Hello i am an employee paying "+ amount);
+			}	
+		};
+		
+		Payable contractor = new Payable() {
+			public void pay(double amount) {
+				System.out.println("Hello i am a contractor paying "+ amount);
+			}
+		};
+		
+		employee.pay(200);
+		contractor.pay(200);	
+				
+}
+}
