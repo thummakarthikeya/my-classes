@@ -1,0 +1,685 @@
+                   GROUP FUNCTIONS Task
+                 =========================
+
+     oracle having following group functions.
+These are
+
+1)max()
+2)min()
+3)avg()
+4)sum()
+5)count(*)
+6)count(columnname)
+
+       all group functions are operate over no of values in a 
+table column and then returns single value.
+
+------------------------------------------------------------------------------------------------------
+1.Write a query to display total salary from emp table?
+
+
+
+2.Write a query to display total salaries of all managers
+  from emp table?
+
+
+
+3.Write a query to display total salaries of 10,30 departments 
+  from table?
+
+
+
+4.Write a query to display average salary of all employees from emp table?
+
+
+
+
+5.Write a query to display average salary of all clerks
+  from emp table?
+
+
+
+6.Write a query to display minimum salary from emp table? 
+
+
+
+
+7.Write a query to display maximum salary from emp table?
+
+
+
+
+8.Write a query to display maximum and minimum salary from emp table?
+
+
+
+
+9.Write a query to display the total no of employees in emp table?
+
+
+
+
+10.Write a query to display the no of managers in emp table?
+
+
+
+
+11.Write a query to display the no of employees in 10,30 departments
+   from emp table?
+
+
+
+
+12.Write a query to display the no of employees in 4th quarter
+   from emp table?
+
+
+
+13.Write a query to display the no of employees joined in 1981 year
+
+
+Count(column name):- It counts number of not null values within
+==================      a column. 
+
+14.Write a query to display how many employees are getting commission
+   from emp table?
+
+
+
+15.Write a SQL query to display
+
+   Count the number of shows(use alias NUMBER_OF_SHOWS) Scheduled after 1st February 2023.
+
+Your output should have a column as given below
+
+  NUMBER_OF_SHOWS
+
+
+NOTE:If a flight is scheduled on perticular date i.e considered as one show
+
+Number of shows=how many flights are scheduled after 01-feb-2023 
+
+
+CREATE TABLE FLIGHT 
+(
+FLIGHT_ID NUMBER(10),
+DEPATURE_DATE DATE
+);
+
+INSERT INTO FLIGHT VALUES (101, DATE '2023-01-10');
+INSERT INTO FLIGHT VALUES (102, DATE '2023-01-25');
+INSERT INTO FLIGHT VALUES (103, DATE '2023-02-02');
+INSERT INTO FLIGHT VALUES (104, DATE '2023-02-10');
+INSERT INTO FLIGHT VALUES (105, DATE '2023-03-05');
+
+COMMIT;
+
+
+
+
+
+16.What is the output of the following statement
+
+select Max(100,200) from dual;
+
+A. 100  
+   
+B. 100,200
+
+C. 200       
+    
+D. Error
+
+
+Answer:
+
+
+
+17.A table T_COUNT has 12 number values as 1,2,3,32,1,1,null,
+   24,12,null,null,32
+
+predict the output of the below query
+
+select count(*) from T_count;
+
+A. 6
+
+B. 12            
+    
+C. 9
+
+D. Throws exception because COUNT function doesn't work with null values
+
+
+Answer:
+
+------------------------------------------------------------------------------------------------------
+1.Write a query to convert given date string into client
+   requirement format using to_char() 
+
+Given date is -> '15-JUN-05'
+Display format is-> '15/JUNE/05'
+
+
+NOTE:Whenever we are using to_char() function then always first parameter 
+==== must be oracle date type otherwise oracle server returns an error.
+
+
+
+2.Write a query to find which day india got independence
+
+
+
+3.Write a query which is used to add 5 days to the given date
+   '09-feb-05'
+
+
+
+4.Write a query which is used to add 5 days to the given date
+   '09-02-05'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 to_char[number to char] 
+                    ============================
+
+1.Write a query which is used to substitute a message 
+   inplace of null values in mgr column from emp table
+           by using to_char()?
+
+Hint:king has no manager.in king mgr column we need to display a message
+      NO MANAGER 
+
+
+2.Write a query which is used to substitute a message
+   inplace of null values in comm column from emp table 
+             by using to_char()?
+
+
+Hint:-10 employees are not getting the commission.in place of null
+      display a message N/A
+
+
+------------------------------------------------------------------------------------------------------
+1)Write a query to display the employees who are joining today from emp table?
+
+   in oracle date type contains 2 parts.These are
+
+1)Date part
+2)Time part 
+
+SQL>insert into emp(empno,ename,hiredate)values(1,'subbarao',sysdate);
+
+SQL>select * from emp;
+
+SQL>select * from emp where hiredate=sysdate;
+                           
+                  10-dec-25 10:43:54=10-dec-25 10:43:58(not matching that's why no rows
+                                                                                selected)
+
+                            
+   no rows selected
+
+SQL> select ename,to_char(hiredate,'dd-mon-yy hh:mi:ss') from emp;
+
+ENAME      TO_CHAR(HIREDATE,'DD-MON-YY
+---------- ---------------------------
+SMITH      17-dec-80 12:00:00
+ALLEN      20-feb-81 12:00:00
+WARD       22-feb-81 12:00:00
+JONES      02-apr-81 12:00:00
+MARTIN     28-sep-81 12:00:00
+BLAKE      01-may-81 12:00:00
+CLARK      09-jun-81 12:00:00
+SCOTT      09-dec-82 12:00:00
+KING       17-nov-81 12:00:00
+TURNER     08-sep-81 12:00:00
+ADAMS      12-jan-83 12:00:00
+JAMES      03-dec-81 12:00:00
+FORD       03-dec-81 12:00:00
+MILLER     23-jan-82 12:00:00
+subbarao   10-dec-25 10:43:38
+
+insertion time retrieving time is alteast 1 sec also different.To overcome this problem
+time portion set to 0 by using trunc().Then date part only comparing then correct result.
+
+
+
+SOLUTION:-
+=========
+SQL>select * from emp where trunc(hiredate)=trunc(sysdate)
+
+
+
+
+------------------------------------------------------------------------------------------------------ 
+
+
