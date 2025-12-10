@@ -17,65 +17,88 @@ table column and then returns single value.
 ------------------------------------------------------------------------------------------------------
 1.Write a query to display total salary from emp table?
 
+SQL> select sum(sal) from emp;
+
 
 
 2.Write a query to display total salaries of all managers
   from emp table?
 
+SQL> select sum(sal) from emp where job = 'MANAGER' ;
 
 
 3.Write a query to display total salaries of 10,30 departments 
   from table?
 
+SQL> select sum(sal) from emp where DEPTNO in(10,30) ;
+
 
 
 4.Write a query to display average salary of all employees from emp table?
 
+SQL> select avg(sal) from emp  ;
 
 
 
 5.Write a query to display average salary of all clerks
   from emp table?
 
+SQL> select avg(sal) from emp where job = 'CLERK' ;
 
 
 6.Write a query to display minimum salary from emp table? 
 
+SQL> select min(sal) from emp ;
 
 
 
 7.Write a query to display maximum salary from emp table?
 
-
+SQL> SELECT * FROM EMP WHERE SAL = (SELECT MAX(SAL) FROM EMP);
+OR
+SQL> SELECT MAX(SAL) FROM EMP;
 
 
 8.Write a query to display maximum and minimum salary from emp table?
 
+SQL> SELECT * FROM EMP WHERE SAL = (SELECT MAX(SAL) FROM EMP) OR SAL = (SELECT MIN(SAL) FROM EMP);
+OR
+SQL> SELECT MIN(SAL),MAX(SAL) FROM EMP;
+OR
 
 
 
 9.Write a query to display the total no of employees in emp table?
 
+SQL> select count(ENAME) FROM EMP;
 
 
 
 10.Write a query to display the no of managers in emp table?
 
+SQL> select COUNT(ENAME) FROM EMP WHERE JOB = 'MANAGER';
 
 
 
 11.Write a query to display the no of employees in 10,30 departments
    from emp table?
 
+SQL> select COUNT(ENAME) FROM EMP WHERE DEPTNO = IN(10,30);
 
 
 
 12.Write a query to display the no of employees in 4th quarter
    from emp table?
 
+SQL> select COUNT(ENAME) FROM EMP WHERE TO_CHAR(HIREDATE, 'Q')  = '4';
+
+
 
 
 13.Write a query to display the no of employees joined in 1981 year
+
+SQL> select COUNT(ENAME) FROM EMP WHERE TO_CHAR(HIREDATE, 'YYYY')  = '1981';
+
 
 
 Count(column name):- It counts number of not null values within
@@ -83,6 +106,8 @@ Count(column name):- It counts number of not null values within
 
 14.Write a query to display how many employees are getting commission
    from emp table?
+
+SQL> select COUNT(ENAME) FROM EMP WHERE COMM != 0 AND COMM IS NOT NULL;
 
 
 
@@ -452,162 +477,6 @@ NOTE:Whenever we are using to_char() function then always first parameter
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                  to_char[number to char] 
                     ============================
 
@@ -681,5 +550,6 @@ SQL>select * from emp where trunc(hiredate)=trunc(sysdate)
 
 
 ------------------------------------------------------------------------------------------------------ 
+
 
 
