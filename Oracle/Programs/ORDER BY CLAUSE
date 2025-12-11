@@ -1,0 +1,159 @@
+                                 ORDER BY CLAUSE
+                                ==================
+
+Order by:-order by clause is used to sorting data either ascending 
+========  order or descending order.
+     
+order by clause having two keywords.
+1)asc
+2)desc
+
+syntax:-
+=======
+    select * from tablename
+    order by columnname[asc/desc];
+
+
+
+1.Write a query to display the names and salaries of employees,sorted by salary 
+    in descending order from EMP table?
+
+SQL> select * from emp order by sal;
+
+
+2.Write a query to display all employee names in alphabetical order ?
+
+SQL> select * from emp order by ename;
+
+
+
+
+3.Write a query to display the all employee records and arrange them according to
+  seniority ?
+
+SQL> select * from emp order by hiredate;
+
+
+
+
+4.Display the employee records arrange them in ascending order according
+  to department, If multiple employees are in the same department ,sort
+  them by salary in descending order with in the department.
+
+
+
+
+5.Check the following order by clause outputs
+
+1)select ename,comm 
+  from emp
+  order by comm desc;
+
+2)select ename,comm
+  from emp
+  order by comm desc nulls last;
+
+
+
+
+6.Write the query to display the emp_first_name and emp_last_name 
+  as emp_fullname and year of birth and sort them based on their
+  desending age.[INTERVIEW QUESTION]
+
+NOTE:-By default Calender order is ascending order
+
+
+SQL>select * from emp444;
+
+emp_id        emp_first_name        emp_last_name      birthdate
+------      -----------------     --------------      ------------
+  1            john                  doe               23-apr-1985
+  2            jill                  davis             15-jun-1999
+  3            jack                  Johnson           25-oct-1992
+  4            james                 Wilson            12-sep-1983
+
+
+
+7.Write a query to display FirstName,LastName and Age from the 
+  emp333 table for all users who are above the age of 25 
+  order by ID in ascending order,
+  your output should look like the following[INTERVIEW QUESTION]
+
+EXPECTED OUTPUT:-
+================
+
+       FIRSTNAME       LASTNAME         AGE
+      ----------      -----------     ------
+         Jenny          Richards        28
+         Noah           Fritz           30
+
+
+
+8.Write a query to print ID,NAME of the three highest scoring students.
+  print the NAMEs in desending order by SCORE, then acending order by ID 
+  for matching SCOREs  
+
+output format
+============
+The result should contain the IDs and the NAMEs of the three highest scoring students print the records in descending
+order by SCORE,then ascending order by ID for matching SCORES.
+
+
+
+
+9.Show all the jobs in the EMP table?
+
+
+
+10.Write a query to list all unique departments numbers from EMP table ?
+
+------------------------------------------------------------------------------------------------------
+create table emp444
+(
+empid number(10),
+emp_first_name varchar2(15),
+emp_last_name varchar2(15),
+birthdate date
+);
+
+insert into emp444 values(1,'john','doe','23-apr-1985');
+insert into emp444 values(2,'jill','davis','15-jun-1999');
+insert into emp444 values(3,'jack','johnson','25-oct-1992');
+insert into emp444 values(4,'james','willson','12-sep-1983');
+
+
+CREATE TABLE EMP333
+(
+ID NUMBER(5),
+FIRSTNAME VARCHAR2(10),
+LASTNAME VARCHAR2(10),
+AGE NUMBER(4)
+);
+
+INSERT INTO EMP333 VALUES(1,'John','Smith',20);
+INSERT INTO EMP333 VALUES(2,'Jenny','Richards',28);
+INSERT INTO EMP333 VALUES(3,'Alice','Smith',15);
+INSERT INTO EMP333 VALUES(4,'Noah','Fritz',30);
+INSERT INTO EMP333 VALUES(5,'Mark','Smith',12);
+
+
+
+create table student10
+(
+id number(4),
+name varchar2(10),
+score number(5)
+);
+
+insert into student10 values(1,'Bob',50);
+insert into student10 values(2,'John',60);
+insert into student10 values(3,'Harry',45);
+insert into student10 values(4,'Dick',85);
+insert into student10 values(5,'Dixie',85);
+insert into student10 values(6,'Sid',70);
+insert into student10 values(7,'Tom',65);
+insert into student10 values(8,'Alex',90);
+insert into student10 values(9,'Erika',70);
+
+COMMIT;
+
