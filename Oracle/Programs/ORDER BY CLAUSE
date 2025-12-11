@@ -40,6 +40,7 @@ SQL> select * from emp order by hiredate;
   to department, If multiple employees are in the same department ,sort
   them by salary in descending order with in the department.
 
+SQL> select * from emp order by DEPTNO , sal desc;
 
 
 
@@ -60,6 +61,8 @@ SQL> select * from emp order by hiredate;
   as emp_fullname and year of birth and sort them based on their
   desending age.[INTERVIEW QUESTION]
 
+SQL> select EMP_FIRST_NAME ||' '|| EMP_LAST_NAME as full_name, BIRTHDATE from emp444 order by BIRTHDATE desc;
+
 NOTE:-By default Calender order is ascending order
 
 
@@ -78,6 +81,8 @@ emp_id        emp_first_name        emp_last_name      birthdate
   emp333 table for all users who are above the age of 25 
   order by ID in ascending order,
   your output should look like the following[INTERVIEW QUESTION]
+
+SQL> select FIRSTNAME,LASTNAME,AGE from emp333 where age> 25;
 
 EXPECTED OUTPUT:-
 ================
