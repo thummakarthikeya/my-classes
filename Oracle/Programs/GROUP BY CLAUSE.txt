@@ -1,0 +1,305 @@
+                                 CLAUSES TASK
+                                ==============
+
+
+GROUP BY:- Group by clause is used to divide similar data items
+=========  into set of logical groups. And also group by clause    
+           reduces no of rows in each group.
+
+Syntax:-select columnname.......
+======  from tablename 
+        group by columnname;
+
+Execution order:-
+==============
+1.FROM 
+2.WHERE
+3.GROUP BY 
+4.HAVING
+5.SELECT
+6.ORDER BY
+
+
+RULE:- Other than group function columns specified after select
+=====  then those all columns must be specified after group by.
+       Otherwise oracle server returns an error not a GROUP BY 
+       expression.
+
+EX1:-
+==== 
+    SQL>select deptno,job
+        from emp
+        group by deptno,job;
+
+      DEPTNO          JOB
+    ----------     ---------
+        20          MANAGER
+        20          ANALYST
+        10         PRESIDENT
+        10           CLERK
+        30         SALESMAN
+        10          MANAGER
+        20           CLERK
+        30          MANAGER
+        30           CLERK
+
+EX2:-
+====
+
+     SQL> select deptno,job,sum(sal)
+          from emp
+          group by deptno,job;
+
+
+    DEPTNO JOB         SUM(SAL)
+---------- --------- ----------
+        20 MANAGER         4175
+        20 ANALYST         8400
+        10 PRESIDENT       6300
+        10 CLERK           2600
+        30 SALESMAN       10900
+        10 MANAGER         3750
+        20 CLERK           4300
+        30 MANAGER         3950
+        30 CLERK           2050
+
+
+Note:- In all relational databases we can also use group by clause
+=====   without using group functions.
+
+EX:-
+==    
+
+    SQL>select deptno from emp
+        group by deptno;
+
+        DEPTNO
+      ----------
+          30
+          10
+          20
+
+step1:-group by deptno;
+
+deptno                                                  Resultset table    
+------                                                  ----------------
+10                         10 it reduces into '1' 10      deptno
+20                         10--------------------->         10                                         30                         10
+10 similar data items into 20 it reduces into '1' 20
+20  set of logical groups  20---------------------->        20
+30-----------------------> 20
+10                         30 it reduces into '1' 30
+20                         30 ---------------------->       30
+30                         30
+
+
+step2:-select deptno from....
+=====          | 
+               |-------->This deptno is selected from result set table
+                         not from the original table.
+
+
+        DEPTNO
+      ----------
+          30
+          10
+          20
+
+individual group functions means there is no problem
+---------------------------------------------------
+SQL>select sum(sal) from emp;
+
+    SUM(SAL)
+   ----------         
+     29025
+
+individual group functions there is no problem.
+
+  
+ SQL>select deptno,sum(sal) from emp;//it won't work
+             ||          ||
+             ||          ||
+normal column means     group function means always
+record by record         all values at a time executed. 
+    executed       
+
+         synchronization is not there
+                   ||
+                   ||Solution is
+                   ||
+           we must use group by
+
+error:not a group by expression
+
+solution:-
+=========
+SQL>select deptno,sum(sal) 
+        from emp 
+     group by deptno;
+       ||
+     it takes other than group function column.
+
+
+    
+
+
+-----------------------------------------------------------------------------------------------------
+1.Write a query to display no of employees in each state 
+  from following PERSON table
+
+-->simply i want state wise count
+
+                                 group by
+EG:    Detailed data-------------------------------------->Summarized data
+
+
+       EMPID       ENAME        STATE                     STATE      COUNT(*)      
+     ---------    -------      --------                  -------    ---------         
+         1         SUBBARAO      AP                         AP          4       
+         2         KIRAN         TS                         TS          2           
+         3         NITISH        TS                         MP          1           
+         4         ADITYA        MP                         MH          1           
+         5         GOWTHAM       AP                                     
+         6         VISWAJITH     MH 
+         7         SURYA         AP
+         8         SHREYAS       AP
+
+
+
+2.Write a query to display the state wise gender wise no of employees 
+  from the following PERSONS table?[FRAGMA DATA INTERVIEW QUESTION]
+
+      EMPID     ENAME         GENDER        STATE
+      ------   ---------     --------      -------
+         1     SUBBARAO         M             AP
+         2      KAVYA           F             TS
+         3      KIRAN           M             TS
+         4     GOWTHAM          M             AP
+         5     PREETI           F             AP
+         6     SURYA            M             AP
+         7     ANUSHKA          F             AP
+         8     SHREYAS          M             TS
+
+
+
+3.Write a query to display number of employees in each department 
+   from emp table using group by?
+
+
+
+4.Write a query to display number of employees in each job from emp
+   table using group by?
+
+
+
+5.Write a query to display department wise and job wise number of employees 
+  emp table using group by ?
+
+
+
+6.Write a query to display department wise average salary from emp table 
+  by using group by ?
+
+
+
+7.Write a query to display department wise minimum and maximum salary
+  from emp using group by?
+
+
+
+8.Write an SQL query to generate a report showing[Proounce Solutions INTERVIEW QUESTION]
+
+    - Department Number
+
+    - Number of Employees
+
+    - Total Salary
+
+    - Average Salary
+
+
+
+9.Write a query to display the number of employees hired in each year from emp table, 
+  sorted by year.
+
+
+
+
+10.Write a query to display no of employees joined in each QUARTER 
+   from emp table using group by?
+
+
+
+
+11.Write a query to display state wise, region wise no of employees
+   from the following EMP222 table ?[MOCK INTERVIEW QUESTION]
+
+    EMPID         ENAME             STATE                  REGION
+  --------     ----------       ----------------          ---------
+     1001        ANUSHKA         ANDHRA PRADESH             SOUTH
+     1002        KIRAN           TELANGANA                  SOUTH
+     1003        SHREYAS          PUNJAB                    NORTH
+     1004        KAVYA            GOA                       WEST 
+     1005        GOWTHAM         ANDHRA PRADESH             SOUTH
+     1006        PREETHI          PUNJAB                    NORTH
+     1007        NITISH          MAHARASHTRA                WEST
+     1008        SATYA          ANDHRA PRADESH             SOUTH
+
+
+
+12.You are given a table ,territory.[Auto Rapido Interview Question 6LPA]
+
+Write a SQL query to get the number of territories in each region based on regionid.
+
+•The result should be in the increaing order of regionid
+
+Excepted Result Column Names:
+
+•regionid
+
+•number_of_territories
+
+sample input(territory table)
+============================
+
+  territoryid     territorydescription      regionid
+ -------------   ----------------------    ----------
+    01581              westboro                1
+    01730              bedford                 1
+    01833              georgetown              4
+    02116              boston                  4
+    02139              cambridge               2
+    02184              braintree               2
+    02903              providence              1
+    03801              hollis                  3
+    03801              portsmouth              3
+    06897              willton                 2
+
+
+sample output:
+=============
+
+ regionid          number_of_territories
+----------        -----------------------
+   1                   3
+   2                   3
+   3                   2
+   4                   2
+
+
+
+
+13.Write a query to display the number of employees joined in January or September
+   Months from emp table?
+
+
+
+
+
+14.Write a query to display the total salary of employees in departments 10 and 30
+   from the EMP table?
+
+
+
+
+
