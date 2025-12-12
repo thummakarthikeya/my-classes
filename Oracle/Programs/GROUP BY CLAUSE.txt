@@ -151,7 +151,7 @@ SQL>select deptno,sum(sal)
 
                                  group by
 EG:    Detailed data-------------------------------------->Summarized data
-
+SQL> select state,count(*) from PERSONS group by state;
 
        EMPID       ENAME        STATE                     STATE      COUNT(*)      
      ---------    -------      --------                  -------    ---------         
@@ -169,6 +169,8 @@ EG:    Detailed data-------------------------------------->Summarized data
 2.Write a query to display the state wise gender wise no of employees 
   from the following PERSONS table?[FRAGMA DATA INTERVIEW QUESTION]
 
+SQL> select state,gender ,count(*) from persons group by state,gender order by state;
+
       EMPID     ENAME         GENDER        STATE
       ------   ---------     --------      -------
          1     SUBBARAO         M             AP
@@ -184,27 +186,27 @@ EG:    Detailed data-------------------------------------->Summarized data
 
 3.Write a query to display number of employees in each department 
    from emp table using group by?
-
+SQL> select deptno, count(*) from emp group by deptno;
 
 
 4.Write a query to display number of employees in each job from emp
    table using group by?
-
+SQL> select job, count(*) from emp group by job;
 
 
 5.Write a query to display department wise and job wise number of employees 
   emp table using group by ?
-
+SQL> select deptno, job,count(*) from emp group by deptno,job order by deptno;
 
 
 6.Write a query to display department wise average salary from emp table 
   by using group by ?
-
+SQL> select deptno, avg(sal) from emp group by deptno;
 
 
 7.Write a query to display department wise minimum and maximum salary
   from emp using group by?
-
+SQL> select deptno,min(sal),max(sal) from emp group by deptno;
 
 
 8.Write an SQL query to generate a report showing[Proounce Solutions INTERVIEW QUESTION]
@@ -222,12 +224,27 @@ EG:    Detailed data-------------------------------------->Summarized data
 9.Write a query to display the number of employees hired in each year from emp table, 
   sorted by year.
 
+SQL>  select to_char(hiredate,'yyyy'),count(*) as no_of_emp from emp group by to_char(hiredate,'yyyy');
 
+TO_C  NO_OF_EMP
+---- ----------
+1980          1
+1981         10
+1982          2
+1983          1
 
 
 10.Write a query to display no of employees joined in each QUARTER 
    from emp table using group by?
 
+SQL> select to_char(hiredate,'q') as quator,count(*) as no_of_emp from emp group by to_char(hiredate,'q') order by quator;
+
+Q  NO_OF_EMP
+- ----------
+1          4
+2          3
+3          2
+4          5
 
 
 
@@ -244,6 +261,16 @@ EG:    Detailed data-------------------------------------->Summarized data
      1006        PREETHI          PUNJAB                    NORTH
      1007        NITISH          MAHARASHTRA                WEST
      1008        SATYA          ANDHRA PRADESH             SOUTH
+
+SQL> select region,state,count(*)as count_of_emp from emp222 group by region,state ;
+
+REGION     STATE                COUNT_OF_EMP
+---------- -------------------- ------------
+SOUTH      ANDHRA PRADESH                  3
+SOUTH      TELANGANA                       1
+NORTH      PUNJAB                          2
+WEST       GOA                             1
+WEST       MAHARASHTRA                     1
 
 
 
@@ -275,6 +302,7 @@ sample input(territory table)
     03801              portsmouth              3
     06897              willton                 2
 
+SQL> select regionid,count(*)as number_of_territories from TERRITORY group by regionid order by regionid;
 
 sample output:
 =============
@@ -292,12 +320,33 @@ sample output:
 13.Write a query to display the number of employees joined in January or September
    Months from emp table?
 
+SQL> select to_char(hiredate,'mm'),count(*) as number_of_employees from emp where to_char(hiredate,'mm') ='09' or to_char(hiredate, 'mm') ='01' group by to_char(hiredate,'mm') order by to_char(hiredate,'mm');
 
+or
+
+SQL> select to_char(hiredate,'mm'),count(*) as number_of_employees from emp where to_char(hiredate,'mm') like '%09%' or to_char(hiredate,'mm') like'%01%' group by to_char(hiredate,'mm') order by to_char(hiredate,'mm');
+
+or
+
+
+SQL> select to_char(hiredate,'mm'),count(*) as number_of_employees from emp where to_char(hiredate,'mm') in('09','01') group by to_char(hiredate,'mm') order by to_char(hiredate,'mm');
+
+TO NUMBER_OF_EMPLOYEES
+-- -------------------
+01                   2
+09                   2
 
 
 
 14.Write a query to display the total salary of employees in departments 10 and 30
    from the EMP table?
+
+SQL> select deptno, count(*) from emp where deptno in(10,30) group by deptno;
+
+    DEPTNO   COUNT(*)
+---------- ----------
+        30          6
+        10          3
 
 
 
