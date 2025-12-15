@@ -1,0 +1,141 @@
+Assignment 01 :
+---------------
+Write a Java program that defines a method testPredicate to test a given number against a provided predicate.
+class name CalculationLogic(ELC) :
+
+Method name : testPredicate
+Access Modifier : public
+Non-Access Modifier : static
+return type : boolean
+parameters : int, Predicate<Integer>
+This method should return a boolean value indicating whether the given number satisfies the provided predicate.
+
+
+In the main method:
+Define three predicates:
+isEven: Checks if a given number is even.
+isGreaterThanTen: Checks if a given number is greater than 10.
+isPrime: Verify the given number is prime or not.
+
+Define a sample integer number (e.g., 18).
+Test each predicate using the testPredicate method and print the result indicating whether the number satisfies each predicate.
+
+Test Cases:
+
+Test case 1 : Sample Number (18):
+18 is even: true
+18 is greater than 10: true
+18 is prime: false
+
+Test Case 2:
+
+For number1 = 6:
+6 is even: true
+6 is greater than 10: false
+6 is prime: false
+
+Test Case 3:
+For number2 = 17:
+17 is even: false
+17 is greater than 10: true
+17 is prime: true
+
+
+
+
+
+package Elc;
+import java.util.function.*;
+public class CalculationLogic {
+	public static void main(String[] args) {
+		Predicate<Integer> isEven= p ->{
+			 if(p%2==0) {
+				return true;
+			}else{
+				return false;
+			}
+		 
+		};
+			
+		
+		Predicate<Integer> isGreaterThanTen= p -> {
+			if(p > 10 ) {
+				return true ;
+			}else {
+				return false;
+			}
+		};
+		
+		Predicate<Integer> isPrime= p -> {
+			int count =0;
+			for(int i=1;i<=p;i++) {
+				if(p%i==0) {
+					count++;
+				}
+			}
+			if(count==2) {
+				return true;
+			}else {
+				return false;
+			}	
+			
+		};
+		
+		System.out.println("Is isEven number "+testPredicate(4, isEven));
+		System.out.println("Is isGreaterThanTen number "+testPredicate(4, isGreaterThanTen));
+		System.out.println("Is prime number "+testPredicate(4, isPrime));
+
+	}
+	
+	public static boolean testPredicate(int num,Predicate<Integer> predicate) {
+		return predicate.test(num);
+	}
+}
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------
+Assignment 02 :
+--------------
+Develop a scenario based program by using Functional interface to check whether a Car 
+is eligible for sale or not.
+
+Create one record called Car.
+Components :
+ brand : String
+ price : Double
+ mileage : Integer
+ 
+ Take an ELC class CarSelling with main method. Using IO class data input, Create the 
+ object for Car class.
+
+ In the ELC class write a Predicate<T> to verify whether Car is eligible for sale or 
+ not based on the following criteria.
+  a) Car price should be less or equal to 5 lac.
+  b) Car mileage must be greater or equal than 20.
+
+Test Case 01 :
+---------------
+Enter the brand name of the Car :Naxon
+Enter the price of the Car :450000
+Enter the mileage of the Car :22
+Naxon is eligible for sale
+
+Test Case 02 :
+---------------
+Enter the brand name of the Car :BE6
+Enter the price of the Car :1800000
+Enter the mileage of the Car :25
+BE6 is not eligible for sale
+
+Test Case 03 :
+--------------
+Enter the brand name of the Car :Tata Punch
+Enter the price of the Car :450000
+Enter the mileage of the Car :18
+Tata Punch is not eligible for sale
