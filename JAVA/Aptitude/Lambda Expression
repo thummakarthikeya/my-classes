@@ -1,0 +1,340 @@
+
+Batch_51_Assignment.txt
+Page
+1
+/
+1
+100%
+1.Choose the correct output of the following program
+
+interface Add
+{
+	int add(int b);
+}
+public class FunctionalInterface {
+	
+	public static void main(String[] args)
+	{
+		int a = 10;
+		
+		Add add = (int b) -> b;
+		System.out.println(add.add(a));
+	}
+}
+
+
+2.Choose the correct output of the following program
+@FunctionalInterface
+interface Cube
+{
+	int cube(int b);
+}
+public class FunctionalInterface {
+	
+	public static void main(String[] args) 
+	{
+		int a = 21;
+		
+		Cube cube = b -> b*b*b;
+		System.out.println(cube.cube(a));
+	}
+}
+
+
+3.What is the output of the following program
+interface Add
+{
+	int add(int b);
+	int add(int a, int b);
+}
+public class FunctionalInterface {
+	public static void main(String[] args) {
+		int a = 21;
+		Add add = b -> b+b;
+		System.out.println(add.add(a));
+	}
+}
+
+
+4.What is the output of the following program
+@FunctionalInterface
+interface Str
+{
+	int methodStr(String str);
+}
+public class FunctionalInterface {
+	public static void main(String[] args) {
+		Str str = (String s) -> "2";
+		System.out.println(str.methodStr("2"));
+	}
+}
+
+
+
+5.Choose the correct output of the following program
+public class FunctionalInterface {
+	public static void main(String[] args) {
+		String str -> str.equals("goolge");
+		System.out.println(str);
+	}
+}
+
+
+6.What is the output of the following code
+@FunctionalInterface
+interface NIT
+{
+	String get(String nit);
+}
+public class FunctionalInterfaceExample
+{
+	public static void main(String[] args) {
+		NIT nit = (str) -> str +"Welcome to"; // str concatenate to "Welcome to" 
+		NIT nit1 = (str) -> str + "NARESHIT"; // str1 concatenate to "NARESHIT"
+		information("Hai ", nit); // HAI + Welcome to
+		information("Hai ", nit1); // HAI + NARESHIT
+	}
+	public static void information(String str, NIT obj) {
+		String result = obj.get(str);
+		System.out.println(result);
+	}
+}
+
+7.By using FunctionalInterface annotation following code is correct or not?
+@FunctionalInterface
+interface NIT
+{
+	String myInterface(String a);
+	String newInterface();
+	
+}
+
+8.What is the output of the following code
+@FunctionalInterface
+interface NIT{
+ int square(int x);
+ default int add(int a, int b){
+     return a+b;
+ }
+ default int sub(int a, int b){
+     return a-b;
+ }
+ static int multiply(int a, int b){
+     return a*b;
+ }
+ static int divide(int a, int b){
+     return a/b;
+ }
+}
+public class FunctionalInterfaceExample implements NIT{
+ public static void main(String[] args){
+     int a = 25;
+     int b = 5;
+     FunctionalInterfaceExample fun = new FunctionalInterfaceExample();
+     int add = fun.add(a,b);
+     int sub = fun.sub(a,b);
+     int mul = NIT.multiply(a,b);
+     int div = NIT.divide(a,b);
+     System.out.println(add+" "+sub+" "+mul+" "+div+" "+fun.square(6));
+} 
+ @Override
+ public int square(int x) {
+     return x*x;
+ }
+}
+
+9.What is the output of the following code
+@FunctionalInterface
+interface NIT{
+ int square(int x);
+ static int add(int a, int b){
+     return a+b;
+ }
+ static int sub(int a, int b){
+     return a-b;
+ }
+ static int multiply(int a, int b){
+     return a*b;
+ }
+ static int divide(int a, int b){
+     return a/b;
+ }
+}
+public class FunctionalInterfaceExample{
+ public static void main(String[] args){
+     int a = 25;
+     int b = 5;  
+     int add = NIT.add(a,b);
+     int sub = NIT.sub(a,b);
+     int mul = NIT.multiply(a,b);
+     int div = NIT.divide(a,b);
+     System.out.print(add+" "+sub+" "+mul+" "+div+" ");
+      
+     NIT sq = (x) -> 
+     {
+    	 return x*x;
+     };
+     System.out.print(sq.square(6));
+ }
+}
+
+10. public class FunctionalInterfaceExample{
+	public static void main(String[] args) {
+		Function<String, String> fun = str -> str.substring(2,5);
+		System.out.println(fun.apply("Hyderabad"));
+	}
+}
+
+=========================================================================================
+Assignment 01 :
+---------------
+Write a Java program that defines a method testPredicate to test a given number against a provided predicate.
+class name CalculationLogic(ELC) :
+
+Method name : testPredicate
+Access Modifier : public
+Non-Access Modifier : static
+return type : boolean
+parameters : int, Predicate<Integer>
+This method should return a boolean value indicating whether the given number satisfies the provided predicate.
+
+
+In the main method:
+Define three predicates:
+isEven: Checks if a given number is even.
+isGreaterThanTen: Checks if a given number is greater than 10.
+isPrime: Verify the given number is prime or not.
+
+Define a sample integer number (e.g., 18).
+Test each predicate using the testPredicate method and print the result indicating whether the number satisfies each predicate.
+
+Test Cases:
+
+Test case 1 : Sample Number (18):
+18 is even: true
+18 is greater than 10: true
+18 is prime: false
+
+Test Case 2:
+
+For number1 = 6:
+6 is even: true
+6 is greater than 10: false
+6 is prime: false
+
+Test Case 3:
+For number2 = 17:
+17 is even: false
+17 is greater than 10: true
+17 is prime: true
+
+------------------------------------------------------------------------------------------
+Assignment 02 :
+--------------
+Develop a scenario based program by using Functional interface to check whether a Car 
+is eligible for sale or not.
+
+Create one record called Car.
+Components :
+ brand : String
+ price : Double
+ mileage : Integer
+ 
+ Take an ELC class CarSelling with main method. Using IO class data input, Create the 
+ object for Car class.
+
+ In the ELC class write a Predicate<T> to verify whether Car is eligible for sale or 
+ not based on the following criteria.
+  a) Car price should be less or equal to 5 lac.
+  b) Car mileage must be greater or equal than 20.
+
+Test Case 01 :
+---------------
+Enter the brand name of the Car :Naxon
+Enter the price of the Car :450000
+Enter the mileage of the Car :22
+Naxon is eligible for sale
+
+Test Case 02 :
+---------------
+Enter the brand name of the Car :BE6
+Enter the price of the Car :1800000
+Enter the mileage of the Car :25
+BE6 is not eligible for sale
+
+Test Case 03 :
+--------------
+Enter the brand name of the Car :Tata Punch
+Enter the price of the Car :450000
+Enter the mileage of the Car :18
+Tata Punch is not eligible for sale
+==========================================================================================
+Assignment 03 :
+-------------
+Develop a scenario based program by using Functional interface to check whether a customer 
+is eligible for loan or not.
+
+Create one record called Customer.
+Components :
+ name : String
+ salary : Double
+ creditScore : Integer
+ age : Integer
+
+Method :
+
+1) Method Name     : checkLoanEligibility()
+parameter          : No parameter
+Return Type        : boolean
+Access modifier    : public
+
+In this method by using Predicate<Customer> verify whether a customer is eligible for
+loan or not by using following criteria :
+
+a) Customer salary should be > 25000
+b) Credit Score should be > 700
+c) Age must be > 21
+
+By using Logical AND operator verify all the criteria and return true/false.
+
+
+Take an ELC class LoanEligibilityWithPredicate with main method, With the help of IO
+class create the input data, create the object for Customer class and verify whether the 
+customer is eligible for loan or not.
+
+
+Test Case 1 :
+--------------
+Enter Customer Name: Ravishankar
+Enter Salary: 30000
+Enter Credit Score: 720
+Enter Age: 18
+Ravishankar is NOT Eligible for Loan...
+
+Test Case 2 :
+--------------
+Enter Customer Name: Ravishankar
+Enter Salary: 80000
+Enter Credit Score: 600
+Enter Age: 24
+Ravishankar is NOT Eligible for Loan...
+
+
+Test Case 3 :
+--------------
+Enter Customer Name: Ravishankar
+Enter Salary: 15000
+Enter Credit Score: 780
+Enter Age: 24
+Ravishankar is NOT Eligible for Loan...
+
+Test Case 4 :
+-------------
+Enter Customer Name: Ravishankar
+Enter Salary: 70500
+Enter Credit Score: 720
+Enter Age: 24
+Ravishankar is Eligible for Loan...
+
+=========================================================================================
+Displaying Batch_51_Assignment.txt.
