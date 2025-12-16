@@ -214,3 +214,121 @@ public class CarSelling {
 		}
 	}
 }
+
+
+
+
+
+=====================================================================================================
+
+Assignment 03 :
+-------------
+Develop a scenario based program by using Functional interface to check whether a customer 
+is eligible for loan or not.
+
+Create one record called Customer.
+Components :
+ name : String
+ salary : Double
+ creditScore : Integer
+ age : Integer
+
+Method :
+
+1) Method Name     : checkLoanEligibility()
+parameter          : No parameter
+Return Type        : boolean
+Access modifier    : public
+
+In this method by using Predicate<Customer> verify whether a customer is eligible for
+loan or not by using following criteria :
+
+a) Customer salary should be > 25000
+b) Credit Score should be > 700
+c) Age must be > 21
+
+By using Logical AND operator verify all the criteria and return true/false.
+
+
+Take an ELC class LoanEligibilityWithPredicate with main method, With the help of IO
+class create the input data, create the object for Customer class and verify whether the 
+customer is eligible for loan or not.
+
+
+Test Case 1 :
+--------------
+Enter Customer Name: Ravishankar
+Enter Salary: 30000
+Enter Credit Score: 720
+Enter Age: 18
+Ravishankar is NOT Eligible for Loan...
+
+Test Case 2 :
+--------------
+Enter Customer Name: Ravishankar
+Enter Salary: 80000
+Enter Credit Score: 600
+Enter Age: 24
+Ravishankar is NOT Eligible for Loan...
+
+
+Test Case 3 :
+--------------
+Enter Customer Name: Ravishankar
+Enter Salary: 15000
+Enter Credit Score: 780
+Enter Age: 24
+Ravishankar is NOT Eligible for Loan...
+
+Test Case 4 :
+-------------
+Enter Customer Name: Ravishankar
+Enter Salary: 70500
+Enter Credit Score: 720
+Enter Age: 24
+Ravishankar is Eligible for Loan...
+
+=========================================================================================
+Displaying Batch_51_Assignment.txt.
+
+
+
+package Elc;
+import java.util.function.Predicate;
+import java.util.*;
+
+record Customer(String name ,Double salary , Integer creditScore , Integer age  ) {
+	
+}
+
+public class LoanEligibilityWithPredicate {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Predicate<Customer> s = c -> c.salary() > 25000   ;
+		Predicate<Customer> cs = c -> c.creditScore() > 700   ;
+		Predicate<Customer> a = c -> c.age() > 21   ;
+		System.out.println("Enter your name ");
+		String name = sc.nextLine();
+		
+		System.out.println("Enter salary name ");
+		Double salary = Double.parseDouble(sc.next());
+		
+		System.out.println("Enter creditScore name ");
+		Integer creditScore = Integer.parseInt(sc.next());
+		
+		System.out.println("Enter age name ");
+		Integer age = Integer.parseInt(sc.next());
+		
+		
+		Customer c = new Customer( name , salary ,  creditScore ,  age ); 
+		
+		if(s.test(c) && cs.test(c)&& a.test(c)) {
+			System.out.println(name+"is Eligible for Loan...");
+		}else {
+			System.out.println(name+"is NOT Eligible for Loan...");
+
+		}
+		
+	}
+
+}
