@@ -139,3 +139,78 @@ Enter the brand name of the Car :Tata Punch
 Enter the price of the Car :450000
 Enter the mileage of the Car :18
 Tata Punch is not eligible for sale
+
+
+package Elc;
+import java.util.function.Predicate;
+import java.util.*;
+
+ record Car(String brand,Double price ,Integer mileage ) {
+	
+	}
+
+
+
+public class CarSelling   {
+	public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	
+	Predicate<Car> p  = c->c.price() <= 500000;
+	Predicate<Car> m= c -> c.mileage() > 20;
+	System.out.print("Enter the name of the brand ");
+	String brand  = sc.nextLine();
+	
+	System.out.print("Enter the price of the Car ");
+	Double price  = Double.parseDouble(sc.next());
+	
+	System.out.print("Enter the mileage of the Car ");
+	Integer mileage = Integer.parseInt(sc.next());
+	
+	Car c =new Car( brand, price , mileage);
+	
+	if(p.test(c) && m.test(c)) {
+		System.out.println("Ok");
+		
+	}else {
+		System.out.println("Not Ok");
+
+	}
+	
+	
+	}
+	
+}
+
+
+
+
+
+
+---------or-----------
+
+package com.mahi.lambdaexpressions;
+
+import java.util.function.Predicate;
+
+record Car(String brand,Double price,Integer mileage) {
+	
+}
+public class CarSelling {
+
+	public static void main(String[] args) {
+		
+		Predicate<Car> c1=c3->c3.mileage()>20;
+		Predicate<Car> c2=c3->c3.price()<=500000D;
+		String name=IO.readln("Enter the brand name of the Car:");
+		Double price=Double.parseDouble(IO.readln("Enter the price of the Car :"));
+		Integer mileage=Integer.parseInt(IO.readln("Enter the mileage of the Car:"));
+		Car c3=new Car(name,price,mileage);
+		if(c1.test(c3)&&c2.test(c3)) {
+			IO.println(name+"is eligible for sale\r\n"
+					+ "");	    
+		}
+		else {
+			IO.println(name+"is not eligible for sale");
+		}
+	}
+}
