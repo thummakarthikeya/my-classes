@@ -1,0 +1,224 @@
+                                JOINS TASK
+                              ==============
+
+JOINS:- Joins are used to retrieve data from  
+======           multiple tables. 
+ 
+
+.In all relational databases when we are joining 'n' tables then we must
+ use 'n-1' joining conditions.
+
+EQUI JOIN:-Based on equality operator we are retrieving data from multiple tables.
+========== Here joining conditional columns must belongs to same datatype.
+
+NOTE:-Always equi join returns matching rows only(Here deptno 40
+===== does not display when we are using dept.deptno also)
+ 
+
+1.Inner join:- This join also returns matching rows only. Here also
+=============  joining conditional columns must belongs to same 
+               data type. Inner join (9i) performance is very high
+               compare to oracle 8i equi join.
+
+
+NOTE:-Equi join and inner join both are same. if we are interested in inner 
+      join write the queries by using inner join.no problem
+
+
+8i joins or NON ANSI joins syntax:-
+=================================
+select col1,col2.......
+from tablename1 , tablename2
+where tablename1.commoncolumnname= tablename2.Commoncolumnname;
+      --------------------------------------------------------
+                                 ||
+                                 ||
+                          (join condition)
+
+
+9i joins or ANSI JOINS syntax:-
+==============================
+
+Syntax:-
+========
+select col1,col2.......
+from tablename1 join tablename2
+on tablename1.commoncolumnname= tablename2.Commoncolumnname;
+   --------------------------------------------------------
+                               ||
+                               ||
+                         (join condition)
+
+
+USING TABLE ALIASNAMES JOINS:-
+=============================
+   In all relational databases for improve performance of the joins we can also
+use table aliasnames for the tables in from clause.Then those alias names must 
+be used in place of tablename with in select list and also with in the 
+joining condition.
+
+
+------------------------------------------------------------------------------------------------------
+1.Write a query to display the employee names and their department names from emp, dept tables.
+
+
+
+2.Write a query to display the employee names and their locations from emp, dept tables
+
+
+
+3.Write a query to display the employees who are working in the location CHICAGO 
+  from emp,dept tables ?
+
+Note: If we want to filter the data after joining condition then we 
+===== must use AND operator in 8i joins. where as in 9i joins we are
+      using either AND operator or WHERE clause also.
+
+
+
+4.Write a query to display no of employees in each location from emp, dept tables 
+  by using equi join or inner join?
+
+
+
+5.Write a query to display dname, sum(Sal) from emp,dept tables by using 
+  equi join or inner join?
+
+
+
+6.Write a query to display department name and sum of salaries and whose sum of salaries
+  is more than 9000 from emp,dept tables
+   
+
+
+7.Write a query to display BLAKE employee record along with department details
+   from emp, dept tables?
+
+
+
+
+8.Write a query to display student names and their corresponding faculty names
+  from studentenrollment and faculty tables
+
+
+SQL> SELECT * FROM STUDENTENROLLMENT;
+
+SNAME            FID
+---------     ---------
+GOWTHAM          1001
+SUBBARAO         1001
+GOWTHAM          1002
+SURYA            1001
+ANUSHKA
+KIRAN
+SUBBARAO         1002
+KAVYA            1003
+
+
+
+SQL> SELECT * FROM FACULTY;
+
+       FID           FNAME             SUBJECT         AGE
+     -------    -----------------     ----------     --------
+      1001           MURALI            ORACLE          38
+      1002        HARI KRISHNA         CORE JAVA       36
+      1003       SHIVA CHAITANYA       ORACLE          32
+
+
+9.Write query to display the students names and along with their faculty name,subject,age.
+  Show only the students who are assigned to faculty that teach the subject 'ORACLE'
+  from the above 2 tables
+
+  
+10.Write an SQL query to display the student names(whose names start with 'S')
+  along with their faculty name, subject, and age. 
+  Return only the records where the faculty teaches the subject 'ORACLE'
+  and their age between 35 and 40 from the above 2 tables.
+
+
+11.Write query to display the students names and along with their faculty name,subject,age.
+   Show only the students who are assigned to faculty that teach the subject 'CORE JAVA'
+
+
+12.Write a SQL query to display[Cognizant Interview Question]
+
+ The first_name and last_name and contact information of all passengers who have a
+ boarding pass for a flight ID 5 and having Gluten-free meal preference from the
+ following PASSENGER & BOARDINGPASS tables
+
+ Your output should have three columns as given below
+
+  FIRST_NAME         LAST_NAME       CONTACT
+
+------------------------------------------------------------------------------------------------------
+TABLE CREATIONS & INSERTIONS
+============================
+CREATE TABLE FACULTY (
+    FID NUMBER(10) PRIMARY KEY,
+    FNAME VARCHAR(20),
+    SUBJECT VARCHAR(10),
+    AGE NUMBER(2)
+);
+
+CREATE TABLE STUDENTENROLLMENT ( 
+    SNAME VARCHAR2(10),
+    FID NUMBER(10) REFERENCES FACULTY(FID)
+);
+
+INSERT INTO FACULTY VALUES (1001, 'MURALI', 'ORACLE', 38);
+INSERT INTO FACULTY VALUES(1002, 'HARI KRISHNA', 'CORE JAVA', 36);
+INSERT INTO FACULTY VALUES(1003, 'SHIVA CHAITANYA', 'ORACLE', 32);
+
+INSERT INTO STUDENTENROLLMENT VALUES('GOWTHAM',1001);
+INSERT INTO STUDENTENROLLMENT VALUES('SUBBARAO',1001);
+INSERT INTO STUDENTENROLLMENT VALUES('GOWTHAM',1002);
+INSERT INTO STUDENTENROLLMENT VALUES('SURYA', 1001);
+INSERT INTO STUDENTENROLLMENT VALUES('ANUSHKA',NULL);
+INSERT INTO STUDENTENROLLMENT VALUES('KIRAN',NULL);
+INSERT INTO STUDENTENROLLMENT VALUES('SUBBARAO',1002);
+INSERT INTO STUDENTENROLLMENT VALUES('KAVYA', 1003);
+
+
+CREATE TABLE PASSENGER
+(
+PASSENGER_ID NUMBER(10) PRIMARY KEY,
+FIRST_NAME VARCHAR2(10),
+LAST_NAME VARCHAR2(10),
+CONTACT VARCHAR2(10)
+);
+
+INSERT INTO PASSENGER VALUES(101,'ANUSHKA','SHETTY','9876543210');
+INSERT INTO PASSENGER VALUES(102,'SHREYAS','IYAR','9123456789');
+INSERT INTO PASSENGER VALUES(103,'KAVYA','PAPA','9988776655');
+INSERT INTO PASSENGER VALUES(104,'ABHISHEK','SHARMA','8899776655');
+INSERT INTO PASSENGER VALUES(105,'PREETI','ZINTA','7788991234');
+
+CREATE TABLE BOARDINGPASS
+(
+BOARDINGPASS_ID NUMBER(10) PRIMARY KEY,
+FLIGHT_ID NUMBER(10),
+PASSENGER_ID NUMBER(10) REFERENCES PASSENGER(PASSENGER_ID),
+MEAL VARCHAR2(15)
+);
+
+INSERT INTO BOARDINGPASS VALUES(1001,5,101,'Gluten-free');
+INSERT INTO BOARDINGPASS VALUES(1002,5,102,'Veg');
+INSERT INTO BOARDINGPASS VALUES(1003,4,103,'Gluten-free');
+INSERT INTO BOARDINGPASS VALUES(1004,5,104,'Gluten-free');
+INSERT INTO BOARDINGPASS VALUES(1005,4,105,'Gluten-free');
+
+
+
+COMMIT;
+
+
+SELECT * FROM STUDENTENROLLMENT;
+
+SELECT * FROM FACULTY;
+
+
+SELECT * FROM PASSENGER;
+SELECT * FROM BOARDINGPASS; 
+
+
+
