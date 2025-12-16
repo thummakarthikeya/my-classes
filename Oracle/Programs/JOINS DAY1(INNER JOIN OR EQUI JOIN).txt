@@ -61,6 +61,8 @@ joining condition.
 ------------------------------------------------------------------------------------------------------
 1.Write a query to display the employee names and their department names from emp, dept tables.
 
+SQL>  select ename,dept.deptno as deptname from dept  inner join emp  on emp.deptno  = dept.deptno ;
+
 
 
 2.Write a query to display the employee names and their locations from emp, dept tables
@@ -74,26 +76,33 @@ Note: If we want to filter the data after joining condition then we
 ===== must use AND operator in 8i joins. where as in 9i joins we are
       using either AND operator or WHERE clause also.
 
+SQL> select * from emp inner join dept on emp.deptno = dept.deptno where loc ='CHICAGO' ;
+
 
 
 4.Write a query to display no of employees in each location from emp, dept tables 
   by using equi join or inner join?
+
+SQL> select loc,count(*) from emp inner join dept on emp.deptno = dept.deptno group by loc ;
 
 
 
 5.Write a query to display dname, sum(Sal) from emp,dept tables by using 
   equi join or inner join?
 
+SQL> select dname, sum(sal) from emp inner join dept  on emp.deptno = dept.deptno group by dname;
 
 
 6.Write a query to display department name and sum of salaries and whose sum of salaries
   is more than 9000 from emp,dept tables
-   
+
+SQL> select dname, sum(sal) from emp inner join dept on emp.deptno = dept.deptno  group by dname having sum(sal) > 9000;
 
 
 7.Write a query to display BLAKE employee record along with department details
    from emp, dept tables?
 
+SQL> select * from emp inner join dept on emp.deptno = dept.deptno where ename = 'BLAKE';
 
 
 
@@ -129,15 +138,23 @@ SQL> SELECT * FROM FACULTY;
   Show only the students who are assigned to faculty that teach the subject 'ORACLE'
   from the above 2 tables
 
+SQL> select sname,fname,subject,age from studentenrollment s inner join faculty f on s.fid = f.fid where f.subject = 'ORACLE';
+
+
   
 10.Write an SQL query to display the student names(whose names start with 'S')
   along with their faculty name, subject, and age. 
   Return only the records where the faculty teaches the subject 'ORACLE'
   and their age between 35 and 40 from the above 2 tables.
 
+SQL> select sname,fname,subject,age from studentenrollment s inner join faculty f on s.fid = f.fid where f.subject = 'ORACLE' and sname like 'S%' and age >35 and age < 40;
+
 
 11.Write query to display the students names and along with their faculty name,subject,age.
    Show only the students who are assigned to faculty that teach the subject 'CORE JAVA'
+
+SQL> select sname,fname,subject,age from studentenrollment s inner join faculty f on s.fid = f.fid where f.subject = 'CORE JAVA';
+
 
 
 12.Write a SQL query to display[Cognizant Interview Question]
@@ -148,7 +165,13 @@ SQL> SELECT * FROM FACULTY;
 
  Your output should have three columns as given below
 
+
   FIRST_NAME         LAST_NAME       CONTACT
+
+
+
+SQL> select FIRST_NAME,LAST_NAME,CONTACT from PASSENGER p inner join BOARDINGPASS b on p.PASSENGER_ID = b.PASSENGER_ID where flight_id  = 5 and meal ='Gluten-free';
+
 
 ------------------------------------------------------------------------------------------------------
 TABLE CREATIONS & INSERTIONS
@@ -219,6 +242,7 @@ SELECT * FROM FACULTY;
 
 SELECT * FROM PASSENGER;
 SELECT * FROM BOARDINGPASS; 
+
 
 
 
