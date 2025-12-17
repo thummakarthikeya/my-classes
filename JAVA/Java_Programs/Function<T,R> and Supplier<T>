@@ -1,0 +1,276 @@
+
+Batch_51_Assignment.txt
+Page
+1
+/
+1
+100%
+Assignment 01 :
+----------------------
+Develop a scenario based program by using Functional interface to provide some discount on the Product on this Winter season.
+
+Coding Requirement :
+--------------------
+Create a record called Product.
+
+Components :
+------------
+ id : Integer
+ name : String
+ price : Double
+
+Take an ELC class CalculateProductDiscount with main method.
+In this create a Function<T,R> functional interface which will take Product as a input parameter and will return discounted price on the following criteria :
+
+a) 10% discount on Product price, If product price is greater then OR equal 
+   to 5000.
+b) 5% discount on Product price, If product price is less then 5000.
+
+Note : The Function<T,R> should return the final price that means discounted price. [price - discount].
+
+Take the Product data as a input from the user using IO class
+and print the following deatils given in the test cases.
+
+Test Case for Output :
+----------------------
+Test case 01 :
+--------------
+Enter Product Id :101
+Enter Product Name :Laptop
+Enter Product Price :50000
+Final price of the product is :45000.0
+
+Test case 02 :
+--------------
+Enter Product Id :102
+Enter Product Name :Head Phone
+Enter Product Price :4000
+Final price of the product is :3800.0
+
+
+package Elc;
+import java.util.function.Function;
+import java.util.*;
+
+ record Product(Integer id ,String	 name ,Double price ) {}
+
+public class CalculateProductDiscount {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+				Function<Product,Double> pd = p -> {
+					if(p.price()>=5000) {
+					return p.price()-p.price()*0.10;
+				}else {
+					return p.price()-p.price()*0.05;
+				}
+			};
+			
+		System.out.println("Enter id");
+		Integer id = Integer.parseInt(sc.next());
+		
+		System.out.println("Enter name");
+		String name = sc.next();
+		
+		System.out.println("Enter price");
+		Double price = Double.parseDouble(sc.next());
+		
+	Product p = new Product(id , name ,price );
+	if(pd.apply(p)!=0) {
+		System.out.println("Final price of the product is :"+pd.apply(p));
+	}
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+===========================================================================================================================================================
+
+Assignment 02
+-------------
+Develop a scenario based program by using Functional interface to provide the notification to the student on successful registration on a particular course.
+
+Coding Requirement :
+---------------------
+Take a record Student
+Components :
+id : Integer
+name : String
+course : String
+
+Take an ELC class StudentNotification with main method where :
+
+Create a Consumer<Student> to write a welcome notification message.[see the Test cases for more details]
+
+Take IO class for taking the input i.e. number of students [see Test Cases], Inside the loop take Student object and with the help of Consumer<T>, register the student in 
+a particular course using notification message.
+
+Test Cases :
+------------
+Test Case 01 :
+--------------
+Enter number of students: 3
+
+Enter details for Student 1:
+Enter ID: 101
+Enter Name: Ravishankar
+Enter Course: Java
+Hello Ravishankar! Welcome to the Java course.
+
+Enter details for Student 2:
+Enter ID: 102
+Enter Name: Rohan
+Enter Course: Advanced Java
+Hello Rohan! Welcome to the Advanced Java course.
+
+Enter details for Student 3:
+Enter ID: 103
+Enter Name: Elina
+Enter Course: Spring Boot
+Hello Elina! Welcome to the Spring Boot course.
+
+
+
+
+
+package Elc;
+import java.util.function.Consumer;
+import java.util.*;
+
+record Student(Integer id ,String	 name ,Double course ) {}
+
+public class StudentNotification {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("ENter no of Students ");
+		int no = sc.nextInt();
+		
+		Consumer<Student> cs = c -> {
+			System.out.println(c.name()+" Welcome to the Java course.");
+		};
+		
+		for(int i =0 ; i<no; i++) {
+			System.out.println("Enter id");
+			Integer id = Integer.parseInt(sc.next());
+			
+			System.out.println("Enter name");
+			String name = sc.next();
+			
+			System.out.println("Enter price");
+			Double course = Double.parseDouble(sc.next());
+			
+			Student s = new Student(id, name, course);
+			cs.accept(s);
+			
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===========================================================================================================================================================
+
+Assignment 03 :
+---------------
+Create a Java program using the Supplier interface to generate random passwords. The password should be 8 characters long.
+
+Contain a mix of uppercase letters, lowercase letters, digits, and special characters (e.g., @, #, $, !).
+
+Coding  Requirements:
+Create a PasswordGenerator class.
+
+Inside the main method :
+
+Define character sets [For password generation as shown below]
+
+ String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+ String lower = "abcdefghijklmnopqrstuvwxyz";
+ String digits = "0123456789";
+ String special = "@#$%!&*";
+
+Combine all the character set into a single String
+
+Define a Supplier<String> named passwordSupplier which will generate and return a Random Password (Using all character set) by using java.util.Random class.
+
+Use this supplier to generate and print a random secure password.
+
+Output :
+
+Generated Password: Ab3#eT9!
+
+
+
+
+
+package Elc;
+
+import java.util.Random;
+import java.util.function.Supplier;
+
+public class OTPGenerator {
+	public static void main(String[] args) {
+		 String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		 String lower = "abcdefghijklmnopqrstuvwxyz";
+		 String digits = "0123456789";
+		 String special = "@#$%!&*";
+		 
+		 String total  = upper + lower + digits + special;
+		 StringBuilder sb = new StringBuilder();
+		 Random password = new Random();
+		 
+		 Supplier<String> pass = () ->{
+			 
+			 for(int i=0; i<=8; i++) {
+				 
+				int random  = password.nextInt(total.length());
+				sb.append(total.charAt(random));
+				
+			 }
+			 
+			 return sb.toString();
+			 
+		 };
+		 
+		 System.out.println("OTP = " + pass.get());
+		 
+		 
+	}
+
+}
+
+
+
+
+
+
+Displaying Batch_51_Assignment.txt.
+
+
+
+
+
+
