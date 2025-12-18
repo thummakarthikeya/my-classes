@@ -1,0 +1,313 @@
+                                JOINS TASK
+                             ===============
+
+left outer join:-This join returns all rows from left side table and 
+================ matching rows from right side table. And also this join 
+                 returns null values in place of non matching rows in another table.
+
+Execution:-
+==========
+left outer join=====>inner join + left side table remaining
+                                  records(Here left side table
+                                               is main table)
+
+
+
+Right outer join:-This join returns all rows from right side table and 
+================  matching rows from left side table and also returns 
+                  null values in place of non matching rows in another table.
+
+
+execution:-
+==========
+Right outer join=====>inner join + right side table remaining
+                                   records(Here right side table
+                                           is main table)
+
+
+
+Full outer join:-This join returns all rows from both the tables
+================ because it is combination of left and right outer
+                 joins.this join also returns null values in place 
+                 of non matching rows in another table.
+
+full outer join ---->inner join + left side table remaining rows +right
+                                  side table remaining rows
+
+
+------------------------------------------------------------------------------------------------------
+SQL> SELECT * FROM EMPLOYEES;
+
+       EMPNO    ENAME         DEPTNO
+     -------  ----------      --------
+         1      KIRAN           10
+         2      GOWTHAM         20
+         3      SURYA
+         4      ANUSHKA         20
+        
+        
+
+
+SQL> SELECT * FROM DEPARTMENTS;
+
+      DEPTNO      DNAME      
+     -------    ----------
+        10         HR
+        20         IT
+        40      FINANCE
+
+
+1.Write a query to display employee names along with their corresponding department names
+  from EMPLOYEES,DEPARTMENTS tables?
+
+
+
+2.Write a query to display employee details along with department details,
+  and also display the employees who are not assigned to any department ?
+
+
+
+
+3.Write a query to display employee details along with department details,
+  including departments without any employees?
+
+                           
+
+
+4.Write a query to display the employees who are not assigned to any department.
+
+
+
+5.Write a query to display employee details with department details and also display 
+  employees who are Not assigned to any deparment and also the departments
+  that have no employees?
+
+
+
+6.Write a query to fetch all employee records from the employee details table
+  who have a salary record in the employee salary table[INTERVIEW QUESTION]
+
+EMPLOYEE_DETAILS TABLE:-
+======================
+
+  EMPID     NAME          DOB          STATE
+ ------   --------    -----------     -------
+   1       JOHN        23-APR-95        NY
+   2       SMITH       15-AUG-90        CA
+   3       ROHAN       27-APR-96        TX
+   4       JOHNSON     12-FEB-75        CA
+   5       BROWN       05-NOV-00        AL
+   6       JILL        15-JUN-99        CA
+   7       JAMES       12-SEP-83        WA
+   8       JACK        25-SEP-82        CA
+
+EMPLOYEE_SALARY TABLE:-
+======================
+
+  ID          SALARY
+------      ----------
+   1           15000
+   2           20000
+   3           25000
+   4           18000
+   5           35000
+   6           40000
+   7           45000
+               
+
+
+
+7.Write a query to display the courier details such as COURIER_ID, FROM_ADDRESS, TO_ADDRESS
+  and the STATUS of the couriers Delivered in the month of JANUARY
+
+sort the records based on to_address in ascending order[acenture interview question]
+
+
+SQL> SELECT * FROM COURIER;
+
+    COURIER_ID     FROM_ADDRESS        TO_ADDRESS     EXPECTED_DELIVERY_DATE
+   -----------    ---------------     ------------    ---------------------
+       101          Chennai            Mumbai             15-JAN-25
+       102          Delhi              Bangalore          20-JAN-25
+       103          Hyderabad          Pune               25-FEB-25
+       104          Kolkata            Ahmedabad          05-JAN-25
+       105          Mumbai             Delhi              10-MAR-25
+
+
+
+SQL> SELECT * FROM COURIER_STATUS;
+
+    COURIER_ID       STATUS      ACTUAL_DELIVERED_DATE
+    ---------       ----------    --------------------
+       101          Delivered         16-JAN-25
+       102          In Transit
+       103          Delivered         26-FEB-25
+       104          Delivered         06-JAN-25
+       105          Delivered         11-MAR-25
+
+  
+
+
+
+8.Describe in these two tables what is o/p of inner join,left outer 
+  join ,right outer join,full outer join
+
+NOTE:- Guess with out executing queries what is output in all cases
+
+SQL> select * from test10;
+
+       SNO
+   ----------
+         1
+         1
+
+SQL> select * from test20;
+
+       SNO
+   ----------
+         1 
+         1
+         1
+
+------------------------------------------------------------------------------------------------------
+ *
+***When ever we performing inner join on t1 and t2 tables how many
+ * rows are returned fastly tell me (V.V.I.M.P)
+
+SQL>select * from t1;
+
+      SNO
+     -----
+       1
+       1
+       2
+       2
+       3
+       4
+
+SQL>select * from t2;
+
+     SNO
+    -----
+      1
+      2
+      3
+      4
+      5
+
+------------------------------------------------------------------------------------------------------
+DROP TABLE  EMPLOYEES;
+DROP TABLE DEPARTMENTS;
+
+DROP TABLE EMPLOYEE_DETAILS;
+DROP TABLE EMPLOYEE_SALARY;
+
+DROP TABLE COURIER_STATUS;
+DROP TABLE COURIER;
+
+
+
+
+
+CREATE TABLE DEPARTMENTS
+(
+DEPTNO NUMBER(10) PRIMARY KEY,
+DNAME VARCHAR2(10) 
+);
+
+
+
+INSERT INTO DEPARTMENTS VALUES(10,'HR');
+INSERT INTO DEPARTMENTS VALUES(20,'IT');
+INSERT INTO DEPARTMENTS VALUES(40,'FINANCE');
+
+
+CREATE TABLE EMPLOYEES
+(
+EMPNO NUMBER(10),
+ENAME VARCHAR2(10),
+DEPTNO NUMBER(10) REFERENCES DEPARTMENTS(DEPTNO)
+);
+
+
+
+INSERT INTO  EMPLOYEES  VALUES(1,'KIRAN',10);
+INSERT INTO  EMPLOYEES  VALUES(2,'GOWTHAM',20);
+INSERT INTO  EMPLOYEES  VALUES(3,'SURYA',NULL);
+INSERT INTO  EMPLOYEES  VALUES(4,'ANUSHKA',20);
+
+
+
+
+CREATE TABLE EMPLOYEE_DETAILS (
+        EMPID NUMBER(4) PRIMARY KEY,
+        NAME VARCHAR2(10) ,
+        DOB DATE,
+        STATE VARCHAR2(10)
+   );
+
+
+ CREATE TABLE EMPLOYEE_SALARY (
+        ID NUMBER(4) PRIMARY KEY,
+        SALARY NUMBER(10, 2)
+   );
+
+
+INSERT INTO EMPLOYEE_DETAILS VALUES(1, 'JOHN', '23-APR-95', 'NY');
+INSERT INTO EMPLOYEE_DETAILS VALUES(2, 'SMITH', '15-AUG-90', 'CA');
+INSERT INTO EMPLOYEE_DETAILS VALUES(3, 'ROHAN', '27-APR-96', 'TX');
+INSERT INTO EMPLOYEE_DETAILS VALUES(4, 'JOHNSON', '12-FEB-75', 'CA');
+INSERT INTO EMPLOYEE_DETAILS VALUES(5, 'BROWN', '05-NOV-00', 'AL');
+INSERT INTO EMPLOYEE_DETAILS VALUES(6, 'JILL', '15-JUN-99', 'CA');
+INSERT INTO EMPLOYEE_DETAILS VALUES(7, 'JAMES', '12-SEP-83', 'WA');
+INSERT INTO EMPLOYEE_DETAILS VALUES(8, 'JACK', '25-OCT-82', 'CA');
+
+
+
+INSERT INTO EMPLOYEE_SALARY VALUES(1, 15000);
+INSERT INTO EMPLOYEE_SALARY VALUES(2, 20000);
+INSERT INTO EMPLOYEE_SALARY VALUES(3, 25000);
+INSERT INTO EMPLOYEE_SALARY VALUES(4, 18000);
+INSERT INTO EMPLOYEE_SALARY VALUES(5, 35000);
+INSERT INTO EMPLOYEE_SALARY VALUES(6, 40000);
+INSERT INTO EMPLOYEE_SALARY VALUES(7, 45000);
+
+CREATE TABLE COURIER (
+    COURIER_ID NUMBER(5) PRIMARY KEY,
+    FROM_ADDRESS VARCHAR2(15),
+    TO_ADDRESS VARCHAR2(10),
+    EXPECTED_DELIVERY_DATE DATE
+);
+
+     
+
+INSERT INTO COURIER VALUES (101, 'Chennai', 'Mumbai', '15-JAN-2025');
+INSERT INTO COURIER VALUES (102, 'Delhi', 'Bangalore','20-JAN-2025');
+INSERT INTO COURIER VALUES (103, 'Hyderabad', 'Pune', '25-FEB-2025');
+INSERT INTO COURIER VALUES (104, 'Kolkata', 'Ahmedabad','05-JAN-2025');
+INSERT INTO COURIER VALUES (105, 'Mumbai', 'Delhi', '10-MAR-2025');
+
+
+CREATE TABLE COURIER_STATUS (
+    COURIER_ID NUMBER(5),
+    STATUS VARCHAR2(10),
+    ACTUAL_DELIVERED_DATE DATE,
+    FOREIGN KEY (COURIER_ID) REFERENCES COURIER(COURIER_ID)
+);
+
+INSERT INTO COURIER_STATUS VALUES (101, 'Delivered','16-JAN-2025');
+INSERT INTO COURIER_STATUS VALUES (102, 'In Transit', NULL);
+INSERT INTO COURIER_STATUS VALUES (103, 'Delivered', '26-FEB-2025');
+INSERT INTO COURIER_STATUS VALUES (104, 'Delivered', '06-JAN-2025');
+INSERT INTO COURIER_STATUS VALUES (105, 'Delivered',  '11-MAR-2025');
+
+commit;
+
+
+
+
+
+
+
+
+
