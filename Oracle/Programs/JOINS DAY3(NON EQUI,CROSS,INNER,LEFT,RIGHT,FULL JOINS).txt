@@ -110,20 +110,27 @@ SQL>select * from PROJECTS;
 
 
 
+SQL> select * from employees1 e join PROJECTS p on e.empid = p.empid ;
+
+
 
 2.Write a query to display all projects and their assigned employees, if any. 
   Including unassigned projects.
 
+SQL> select * from employees1 e right join projects p on e.empid = p.empid;
+
 
 
 3.Write a query to display all employees and all projects.If an employee is not assigned to any     project or a project is not assigned to any employee, display all details
+
+SQL> select * from employees1 e full join projects p on e.empid = p.empid;
 
 
 
 4.Write a query to display all employees and the projects they are working on, if any.
   Including employees not assigned to any project.
 
-
+SQL> select * from employees1 e left join projects p on e.empid = p.empid;
 
 
 5.Write a query to display customer details along with their order details.
@@ -154,8 +161,13 @@ SQL> SELECT * FROM ORDERS;
        105                   27-APR-24        300
        106          2        16-APR-24        1000
 
+SQL>  select * from CUSTOMERS c inner join ORDERS o on c.CUSTOMERID = o.CUSTOMERID;
+
+
 
 6.Write a query to display customers who have not placed any orders.
+
+SQL>  select * from CUSTOMERS c  left join ORDERS o on c.CUSTOMERID = o.CUSTOMERID where o.CUSTOMERID is null;
 
 
 
@@ -237,4 +249,5 @@ INSERT INTO ORDERS VALUES (106, 2, '16-APR-2024', 1000);
 
 
 COMMIT;
+
 
