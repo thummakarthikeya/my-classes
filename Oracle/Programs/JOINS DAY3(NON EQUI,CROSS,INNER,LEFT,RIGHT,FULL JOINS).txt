@@ -1,0 +1,240 @@
+                                       JOINS TASK
+                                     ==============
+
+Non Equi Join:-Based on other than equality operator(>,<,>=,<=,<>,between,...)
+=============  we can retrieve data from multiple tables. Here also joining
+               conditional columns belongs to same data type.In oracle,
+               this join is also called as Between.... and Join.
+
+
+
+1.Check the following non equi join output
+
+SQL>select * from test3;
+ 
+      deptno
+     ---------
+        10
+        20
+
+SQL>select * from test4;
+       
+       deptno
+     ---------
+         10
+         20
+         30
+
+SQL>select * from 
+    test3 , test4
+    where test3.deptno>test4.deptno;
+
+
+
+NOTE:-in oracle when ever one table columns lies between another table
+=====  two columns then also we are retrieving data from those tables
+       by using non equi join.
+
+EG:-
+===
+SQL>select * from emp;
+SQL>select * from salgrade;
+
+SQL>select ename,sal,losal,hisal
+    from emp , salgrade
+    where sal between losal and hisal;
+
+
+Cross Join:- This join returns the Cartesian product of two tables.
+==========
+
+In oracle, we can also retrieve data from multiple tables without 
+using join condition .in this case oracle server internally uses default join.
+in oracle 8i side default join is cross join. 
+
+
+
+SQL>select ename,sal,dname,loc
+    from emp,dept;
+
+
+o/p:56 rows displayed(internally cross join is performed)
+
+
+2)Write a query to generate all possible combinations of car names and colors, so that 
+  each car name appears once with every color. 
+
+SQL>SELECT * FROM CARS;
+
+    CARNAME
+   ---------
+     BMW
+     TOYOTA
+     HONDA
+
+SQL>SELECT * FROM COLORS;
+
+    COLOUR
+   --------
+    RED
+    BLUE
+    BLACK
+
+------------------------------------------------------------------------------------------------------
+1.Write a query to display employee details along with the projects assigned to them.
+  Display only those employees who are assigned to a project.
+
+
+SQL>select * from EMPLOYEES1;
+
+EMPID      ENAME 
+-----    ---------    
+  1        SURYA
+  2        KAVYA
+  3        ANUSHKA
+  4        KIRAN
+  5        SUBBARAO
+
+
+
+SQL>select * from PROJECTS;
+
+
+  PID           PNAME                      EMPID
+--------     -------------------          --------
+  101        SENTIMENT ANALYSIS              3
+  102        ONLINE VOTING SYSTEM            
+  103        MOBILE APP DEVELOPMENT          2
+  104        EMPLOYEE PAYROLL                1
+  105        BANK ACCOUNT SYSTEM            
+
+
+
+
+2.Write a query to display all projects and their assigned employees, if any. 
+  Including unassigned projects.
+
+
+
+3.Write a query to display all employees and all projects.If an employee is not assigned to any     project or a project is not assigned to any employee, display all details
+
+
+
+4.Write a query to display all employees and the projects they are working on, if any.
+  Including employees not assigned to any project.
+
+
+
+
+5.Write a query to display customer details along with their order details.
+  Display only customers who have placed orders.
+
+
+
+SQL>SELECT * FROM CUSTOMERS;
+
+     CUSTOMERID       CUSTOMRNAME
+     ----------     ---------------
+         1             SURYA
+         2             ANUSHKA
+         3             KIRAN
+         4             KAVYA
+         5             GOWTHAM
+
+
+
+SQL> SELECT * FROM ORDERS;
+
+    ORDERID    CUSTOMERID    ORDERDATE     TOTAMOUNT
+  ----------   ----------   ----------    ----------
+       101          1        12-JAN-24        850
+       102          2        18-MAR-24        900
+       103          4        22-DEC-24        700
+       104          1        08-MAR-24        600
+       105                   27-APR-24        300
+       106          2        16-APR-24        1000
+
+
+6.Write a query to display customers who have not placed any orders.
+
+
+
+7.Write a query to display all customers along with their order details, 
+  including those customers who have not placed any orders.
+
+
+
+8.Write a query to display all orders and their corresponding customer details, 
+  if available. Include orders even if there is no matching customer in the customer table.
+
+
+
+9.Write a query to display all the customers and all orders, including customers
+  without orders and orders without customers ?
+
+
+
+10.Write a query to display orders that are not linked to any customer.
+
+
+
+------------------------------------------------------------------------------------------------------
+CREATE TABLE EMPLOYEES1 (
+    EMPID NUMBER(10) PRIMARY KEY,
+    ENAME VARCHAR2(10)
+);
+
+
+INSERT INTO EMPLOYEES1 VALUES (1, 'SURYA');
+INSERT INTO EMPLOYEES1 VALUES (2, 'KAVYA');
+INSERT INTO EMPLOYEES1 VALUES (3, 'ANUSHKA');
+INSERT INTO EMPLOYEES1 VALUES (4, 'KIRAN');
+INSERT INTO EMPLOYEES1 VALUES (5, 'SUBBARAO');
+
+CREATE TABLE PROJECTS (
+    PID   NUMBER(10) PRIMARY KEY,
+    PNAME VARCHAR2(30),
+    EMPID NUMBER(10) 
+);
+
+INSERT INTO PROJECTS VALUES (101, 'SENTIMENT ANALYSIS', 3);
+INSERT INTO PROJECTS VALUES (102, 'ONLINE VOTING SYSTEM', NULL);
+INSERT INTO PROJECTS VALUES (103, 'MOBILE APP DEVELOPMENT', 2);
+INSERT INTO PROJECTS VALUES (104, 'EMPLOYEE PAYROLL', 1);
+INSERT INTO PROJECTS VALUES (105, 'BANK ACCOUNT SYSTEM', NULL);
+
+
+
+CREATE TABLE CUSTOMERS (
+    CUSTOMERID   NUMBER(10) PRIMARY KEY,
+    CUSTOMRNAME  VARCHAR2(10)
+);
+
+INSERT INTO CUSTOMERS  VALUES (1, 'SURYA');
+INSERT INTO CUSTOMERS  VALUES (2, 'ANUSHKA');
+INSERT INTO CUSTOMERS  VALUES (3, 'KIRAN');
+INSERT INTO CUSTOMERS  VALUES (4, 'KAVYA');
+INSERT INTO CUSTOMERS  VALUES (5, 'GOWTHAM');
+
+CREATE TABLE ORDERS (
+    ORDERID     NUMBER(10) PRIMARY KEY,
+    CUSTOMERID  NUMBER(10) REFERENCES CUSTOMERS(CUSTOMERID),
+    ORDERDATE   DATE,
+    TOTAMOUNT   NUMBER(10)
+);
+
+INSERT INTO ORDERS VALUES (101, 1, '12-JAN-2024', 850);
+
+INSERT INTO ORDERS VALUES (102, 2, '18-MAR-2024', 900);
+
+INSERT INTO ORDERS VALUES (103, 4, '22-DEC-2024', 700);
+
+INSERT INTO ORDERS VALUES (104, 1, '08-MAR-2024', 600);
+
+INSERT INTO ORDERS VALUES (105, NULL,'27-APR-2024', 300);
+
+INSERT INTO ORDERS VALUES (106, 2, '16-APR-2024', 1000);
+
+
+COMMIT;
+
