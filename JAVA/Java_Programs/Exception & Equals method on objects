@@ -1,0 +1,353 @@
+Program 01 :
+------------
+Create an application to compare two objects based on the content by overriding the equals(Object obj) method of Object class.
+
+Create a BLC class called Product
+
+Instance variables :
+private int productId
+private String productName
+
+Create a parameterized constructor to initialize all properties.
+
+Override equals(Object obj) method from Object class to compare the content of Product object, Make sure that if end user try to compare the content of two different objects (Product and Employee) then program should provide proper message.
+
+Create an ELC class ProductEquality to test your application by creating two objects of Product class to compare the content by calling Product class overridden equals(Object obj) method.
+
+Follow the equals() and hashCode() contract.
+
+
+
+
+
+ 
+package Elc;
+import java.util.*;
+
+import Blc.Product;
+
+public class ProductEquality {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int id = sc.nextInt();
+		String name  = sc.next();
+		
+		Product p = new Product(id, name);
+		Product p1 = new Product(id, name);
+		Employee  e1=new Employee(id,name);
+         System.out.println(p.equals(e1)+"    "+p.hashCode()+"  "+p1.hashCode());
+         
+	}
+
+}
+
+class Employee{
+	
+	private int empId;
+    private String empName;
+	public Employee(int empId, String empName) {
+		super();
+		this.empId = empId;
+		this.empName = empName;
+	}
+}
+
+
+
+
+package Blc;
+
+public class Product {
+	private int productId;
+    private String productName;
+    
+    public Product(int productId,  String productName){
+        this.productId = productId;
+        this.productName = productName;
+        
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+    	if(obj instanceof Product p) {
+    		if(this.productId==p.productId&& this.productName.equals(p.productName)) {
+    			return true;
+    		}else {
+    			return false;
+    		}
+    		
+    	}else {
+    		System.out.println("object is not same type");
+    		return false;
+    	}
+    }
+
+}
+
+
+
+
+
+
+------------------------------------------------------------------------------------------
+Ques : 1
+=========
+
+Exception and Messages 
+
+-> Write a program to create an ELC class SimpleExceptionDemo ,which contains main method.
+
+-> This program should read two integer numbers for the variables a and b from console using Scanner class.
+
+-> If you enter any other character except number (0 - 9) then the error is caught by InputMisMatchException object.
+
+-> After that using following methods print the information about the error occurring causes in the console. getMessages(),  printStackTrace(), println(),  toString().
+
+
+
+TEST CASE 1 :
+-------------
+Input :
+Enter the first integer (a): 10
+Enter the second integer (b): 20
+
+Output:
+You entered a = 10 and b = 20
+
+
+TEST CASE 2 :
+-------------
+Input :
+Enter the first integer (a): abc
+
+Output:
+getMessage():=> null
+
+toString():=> java.util.InputMismatchException
+
+println():=> InputMismatchException occurred. Please enter only integer numbers.
+
+printStackTrace():=> 
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at com.testing.SimpleExceptionDemo.main(SimpleExceptionDemo.java:15)
+
+
+TEST CASE 3 :
+-------------
+Enter the first integer (a): 10
+Enter the second integer (b): abc
+
+Output :
+getMessage():=> null
+
+toString():=> java.util.InputMismatchException
+
+println():=> InputMismatchException occurred. Please enter only integer numbers.
+
+printStackTrace():=> 
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at com.testing.SimpleExceptionDemo.main(SimpleExceptionDemo.java:18)
+
+
+
+#########################################
+
+Ques : 2
+=========
+
+ArrayIndexOutOfBoundException 
+
+-> Create a class named ArrayIndexExceptionDemo inside the package com.testing that contains the main method.
+
+-> Inside the main method:
+
+   Declare and initialize an integer array with 2 elements as follows:
+   int a[] = new int[2];
+   a[0] = 10;
+   a[1] = 20;
+
+-> Prompt the user to enter an index value using the Scanner class.
+
+-> Try to print the value of the array element at the entered index.
+
+-> If the user enters an index outside the valid range (i.e., anything other than 0 or 1), the program should catch the ArrayIndexOutOfBoundsException.
+
+-> In the catch block, print the exception details using the following methods:
+
+   getMessage()
+
+   toString()
+
+   printStackTrace()
+
+Also, print a custom message using IO.println() explaining that the user tried to access an invalid index.
+
+
+TEST CASE 1 :
+-------------
+
+Input:
+3
+
+Output:
+getMessage():=> Index 3 out of bounds for length 2
+
+toString():=> java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 2
+
+println():=> You tried to access an invalid array index. Please check the index range.
+
+printStackTrace():=>
+java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 2
+	at com.testing.ArrayIndexExceptionDemo.main(ArrayIndexExceptionDemo.java:12)
+
+
+
+TEST CASE 2 :
+-------------
+
+Input : 
+2
+
+Output :
+getMessage():=> Index 2 out of bounds for length 2
+
+toString():=> java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2
+
+println():=> You tried to access an invalid array index. Please check the index range.
+
+printStackTrace():=>
+java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2
+	at com.testing.ArrayIndexExceptionDemo.main(ArrayIndexExceptionDemo.java:12)
+
+
+
+
+TEST CASE 3 :
+-------------
+
+Input:
+1 
+
+Output:
+20
+
+
+TEST CASE 4 :
+-------------
+
+Input:
+0 
+
+Output:
+10
+
+
+
+
+
+
+
+package Elc;
+
+import java.util.Scanner;
+import java.util.*;
+
+public class SimpleExceptionDemo {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		try {
+			System.out.print("Enter the first integer (a): ");
+			int num1 = sc.nextInt();
+			
+			System.out.print("Enter the second integer (b): ");
+			int num2 = sc.nextInt();
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.toString());
+			System.out.println("Given input is missmatched");
+			e.printStackTrace();
+			
+		}
+	}
+
+}
+
+
+
+
+#########################################
+
+Ques : 3
+=========
+
+IllegalStateException 
+
+-> Create a Java class named IllegalStateExceptionDemo inside the package ELC.
+
+-> Inside this class, define the following static method:
+
+   static void throwIllegalException() {
+       try {
+           throw new IllegalStateException("MyException");
+       } catch (IllegalStateException objA) {
+           System.out.println("Caught: " + objA);
+       }
+   }
+
+
+-> In the main method Print the message: Calling throwIllegalException from main method:
+
+-> Call the throwIllegalException() method.
+
+
+
+TEST CASE 1 :
+--------------
+Input:
+No input required.
+
+Output:
+Calling throwIllegalException from main method:
+Caught: java.lang.IllegalStateException: MyException
+
+
+
+
+package Elc;
+
+import java.util.Scanner;
+
+public class ArrayIndexExceptionDemo {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int a[] = new int[2];
+		   a[0] = 10;
+		   a[1] = 20;
+		   
+		   try {
+			   System.out.print("Enter the index num to get the value = ");
+			   int num = sc.nextInt();
+			   System.out.println(a[num]);
+		   }catch(IndexOutOfBoundsException e) {
+			   System.out.println("the error message for get is : "+e.getMessage());
+			   System.out.println("the error message for toString  is : "+e.toString());
+			   e.printStackTrace();
+			   System.out.println("ENter the correct index ");
+
+		   } 
+		   
+	}
+
+}
+
