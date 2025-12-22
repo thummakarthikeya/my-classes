@@ -1,0 +1,442 @@
+                           Self Join
+                         ============
+
+Self join:-Joining a table to itself is called self join. Here joining
+=========  conditional columns must belongs to same data type.
+
+  Generally in all relational databases self joins are used in
+following 2 senarios. These are
+
+1)Compare one table one column any value with all other values
+  in same column.
+
+2)Compare 2 different column values(same datatype) in a same table
+
+   Whenever we are using self join then we must create table aliasnames in from clause.
+These aliasnames must be different names. These aliasnames internally behaves like
+exact tables when query execution time.
+
+------------------------------------------------------------------------------------------------------
+ *
+*1*Write a query to display the employee names and their manager names
+ * from emp table by using self join(V.V.I.M.P)
+
+
+
+
+2.Write a query to display the employees who are reporting to BLAKE as a manager
+  from emp table by using self join?
+
+
+
+
+3.Write a query to display the employees who are getting more salary than their
+  manager salary from emp table using self join?
+
+
+
+
+4.Write a query to display BLAKE'S manager name from emp table 
+  by using self join?
+
+
+
+
+5.Write a query to display the employees who are joining
+         before their managers from emp table
+                by using self join?
+
+
+
+
+6. Write a query to display the employees who are getting same salary
+    as SCOTT salary from emp table using self join?
+
+
+NOTE:-when we are comparing one column any value with all other values in same column
+===== by using self join then we must display data from second alias table only.
+
+
+
+7.Describe in these two tables what is o/p of inner join, left outer
+   join ,right outer join, full outer join
+
+NOTE:- Guess the output with out executing queries in all cases
+
+SQL>select * from q1;
+
+         SNO
+       ------
+          1
+          2
+          3
+          4
+          5
+          6
+          8
+
+SQL>select * from q2;
+
+        SNO
+      -------
+         1
+         2
+         3
+         3
+         4
+         7
+         9
+
+
+
+8.What is the output when we are performing inner join on the following 
+  TEST01,TEST02 Tables.
+
+    SNO            SNO
+   ------         ------
+     1              1
+     1              2
+     1              3
+     null           null
+     null         
+     2
+
+
+a)  SNO           SNO
+   ------        ------
+     1             1
+     1             1
+     1             1
+     null          null
+     null          null
+     2              2
+
+
+
+b)   SNO           SNO
+    -----         -----
+      1             1
+      1             1
+      1             1
+      null          null
+      2             2
+
+
+
+c)    SNO          SNO
+     ------       ------
+       1            1
+       1            1
+       1            1
+       2            2
+
+
+
+d)    SNO          SNO
+     ------       ------
+       1            1
+       null        null
+       2            2
+
+
+Answer:-
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9.Write a query to display those doctors which are working in same hospital 
+  with different speciality from the below table?
+
+SQL>select * from hospital;
+
+         ID      NAME    HOSPITALNAME     SPECIALITY
+      ------ ----------  -------------    ----------
+         1     SMITH        APPOLO        PHYSICIAN
+         2     ALLEN        APPOLO        HOMEOPATHY
+         3     WARD         KIMS          PHYSICIAN
+         4     JONES        PRIME         PHYSICIAN 
+select 
+
+
+
+
+
