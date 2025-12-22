@@ -1,0 +1,369 @@
+
+Batch_51_Assignment.txt
+Page
+1
+/
+1
+100%
+Assignment 01
+==============
+
+Handling NumberFormatException and NullPointerException
+Objective:
+Write a Java program that demonstrates how to handle NumberFormatException and NullPointerException. 
+The program should include a method that takes a string input, prints its length, attempts to convert it to an integer, and performs operations that might result in a NullPointerException. 
+If an exception occurs, it should be caught and an appropriate message should be displayed.
+
+Instructions:
+-> Create a class named ExceptionHandlingDemo:
+
+-> Implement a static method handleExceptions that takes a String parameter representing the input.
+   Method name : handleExceptions
+   Access Modifier : public
+   Non-Access Modifier : static
+   return type : void
+   parameters : String
+
+-> Inside this method, use a try block to:
+   Print the length of the input string.
+   Attempt to convert the string input to an integer using Integer.parseInt().
+   Attempt to call a method on the input string to deliberately cause a NullPointerException if the string is null.
+   Catch NumberFormatException and print an appropriate message.
+   Catch NullPointerException and print an appropriate message.
+
+-> Create a main method:
+   Inside the main method, create a Scanner object to read input from the user.
+   Prompt the user to enter a string.
+   Read the user's input and pass it to the handleExceptions method.
+   Close the Scanner object.
+
+
+TEST CASE 1 :
+-------------
+Input : 123
+
+Output :
+Length of the input string: 3
+Converted to integer: 123
+Uppercase version: 123
+
+
+TEST CASE 2 :
+-------------
+Input : abc
+
+Output :
+Length of the input string: 3
+NumberFormatException: Input is not a valid integer.
+
+
+TEST CASE 3 :
+-------------
+Input : null
+
+Output :
+NullPointerException: Input is null.
+
+
+
+package Blc;
+import java.util.*;
+
+public class ExceptionHandlingDemo {
+	public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the string : ");
+        String str = sc.next();
+        handleExceptions(null);
+        
+        
+
+		
+	}
+	
+	public static void handleExceptions (String str) {
+		try {
+            System.out.println("Length of the input string: "+str.length());
+            int num = Integer.parseInt(str);
+            System.out.println("Converted to integer: "+num);
+            System.out.println("Uppercase version: "+ str.toUpperCase());
+            
+        	
+        }catch(NumberFormatException e) {
+        	System.out.println("NumberFormatException: Input is not a valid integer.");
+        	
+        }catch(NullPointerException e) {
+        	System.out.println("NullPointerException: Input is null.");
+
+        }
+	}
+
+}
+
+
+
+
+
+
+
+Assignment 02
+==============
+
+Handling ArithmeticException 
+
+Objective:
+Write a Java program that demonstrates how to handle ArithmeticException. 
+The program should include a method that performs division and throws an ArithmeticException if division by zero occurs. 
+Implement exception handling in the main method to catch and handle this exception.
+
+Instructions:
+-------------
+
+-> Create a class named DivisionExample:
+
+-> Implement a static method performDivision :
+   Takes two integer parameters: dividend and divisor.
+   Access Modifier : public
+   Non-Access Modifier : static
+   return type : int
+   parameters : int, int
+
+-> Performs division operation (dividend / divisor).
+   Throws an ArithmeticException if divisor is zero.
+
+-> Implement the main method:
+   Inside the main method, call the performDivision method with different inputs, including zero as a divisor.
+   Use a try-catch block to catch and handle any ArithmeticException thrown by performDivision method.
+   Print an appropriate error message when division by zero occurs.
+
+
+
+TEST CASE 1 :
+------------
+Input as : 
+Enter dividend : 10
+Enter divisor : 2
+
+Output as :
+Result of division : 5
+
+
+TEST CASE 2 : 
+-------------
+Input as : 
+Enter dividend : 5
+Enter divisor : 0
+
+Output :
+ArithmeticException caught: Division by zero: dividend=5, divisor=0
+
+
+
+
+
+
+package Elc;
+import java.util.*;
+
+public class DivisionExample {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter dividend :");
+		int num1 = sc.nextInt();
+		
+		System.out.print("Enter divisor :");
+		int num2 = sc.nextInt();
+		
+		try {
+			System.out.println(DivisionExample.performDivision(num1, num2));
+			
+		}catch(ArithmeticException e) {
+			System.out.println("ArithmeticException caught: Division by zero: dividend="+num1+", divisor=" +num2);
+		}
+		
+	}
+	
+	
+	public static int performDivision(int a, int b) {
+		return a/b;
+	}
+
+}
+
+
+
+
+
+#########################################000000000000000000000000000000000000000000000000000000000000
+
+Assignment 03
+==============
+
+Handling ClassCastException in Java
+
+Objective:
+You are required to write a Java program that intentionally causes a ClassCastException and properly handles it using a try-catch block. 
+The program should attempt to cast objects of different types to an incompatible type (String), and upon encountering a ClassCastException, 
+it should gracefully handle the error and display an appropriate message along with the stack trace.
+
+Instructions:
+-------------
+
+-> Create a class named ClassCastExceptionDemo.
+
+-> Implement a static method handleClassCastException:
+   Access Modifier : public
+   Non-Access Modifier : static
+   return type : void
+   parameters : No-Param
+
+-> Within the handleClassCastException method:
+
+   Declare and initialize an array of type Object with a variety of object types (e.g., String, Integer, Double, Character, Boolean).
+
+   Iterate through the array and attempt to cast each element to String inside a try block.
+
+   Catch any ClassCastException and:
+
+         Display a user-friendly error message indicating the failed cast.
+
+         Print the stack trace for debugging purposes.
+
+-> In the main method:
+
+   Call the handleClassCastException method to test the exception handling behavior.
+
+
+TEST CASE 1 :
+-------------
+Input:
+Objects: {"Hello", "World", "Java"}
+
+Expected Output:
+Casting successful: Hello
+Casting successful: World
+Casting successful: Java
+
+
+TEST CASE 2 :
+-------------
+Input:
+Objects: {"Hello", 123, "Java"}
+
+Expected Output:
+Casting successful: Hello
+ClassCastException: Cannot cast java.lang.Integer to String.
+java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
+    at ClassCastExceptionDemo.handleClassCastException(ClassCastExceptionDemo.java:14)
+    at ClassCastExceptionDemo.main(ClassCastExceptionDemo.java:26)
+
+
+TEST CASE 3 :
+-------------
+Input:
+Objects: {"Hello", true, "Java"}
+
+Expected Output:
+Casting successful: Hello
+ClassCastException: Cannot cast java.lang.Boolean to String.
+java.lang.ClassCastException: java.lang.Boolean cannot be cast to java.lang.String
+    at ClassCastExceptionDemo.handleClassCastException(ClassCastExceptionDemo.java:14)
+    at ClassCastExceptionDemo.main(ClassCastExceptionDemo.java:26)
+Casting successful: Java
+
+
+
+
+
+package Elc;
+import java.util.*;
+
+public class ClassCastExceptionDemo {
+	public static void main(String[] args) {
+		ClassCastExceptionDemo.handleClassCastException();
+		
+		
+	}
+	
+	public static void handleClassCastException() {
+		Scanner sc = new Scanner(System.in);
+		
+		Object arr[] = {"Hello", 123, "Java"};
+		
+		
+		for(int i=0; i<arr.length; i++) {
+			
+			String str = (String)arr[i];
+		
+			try {
+				System.out.println("Casting successful:"+str);
+		
+	
+			}catch(Exception e) {
+				System.out.println(e);
+				
+			}
+		}
+		
+		
+	}
+
+}
+
+
+
+Assignment 04 :
+---------------
+
+Handling ClassNotFoundException in Java
+
+Objective:
+Develop a Java application that demonstrates the use of Java Reflection and exception handling. 
+The program should prompt the user to enter the fully qualified name of a class and attempt to dynamically load the class using Class.forName(). 
+If the class does not exist, the application must handle the resulting ClassNotFoundException gracefully.
+
+Instructions:
+-------------
+
+-> Create a class named ClassNotFoundExpDemo:
+
+-> Implement a constructor that takes a String parameter representing the class name.
+   Access Modifier : public
+   parameter : String
+
+-> Inside the constructor, declare a variable of type Class<?>.
+   Use a try block to attempt to load the class using Class.forName(className).
+   Catch ClassNotFoundException and print an appropriate message along with the stack trace.
+
+-> Create a main method:
+   Inside the main method, create a Scanner object to read input from the user.
+   Prompt the user to enter a class name.
+   Read the user's input and pass it to the ClassNotFoundExpDemo constructor.
+   Close the Scanner object.
+
+
+TEST CASE 1 :
+-------------
+Input:
+Enter the class name to load: java.lang.String
+
+Output:
+Class loaded successfully: java.lang.String
+
+
+TEST CASE 2 :
+--------------
+Input:
+Enter the class name to load: com.nareshit.Faculty
+
+Output:
+Error: Class 'com.nareshit.Faculty' not found.
+java.lang.ClassNotFoundException: com.nareshit.Faculty
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:375)
+	at com.testing.ClassNotFoundExpDemo.<init>(ClassNotFoundExpDemo.java:10)
+	at com.testing.ClassNotFoundExpDemo.main(ClassNotFoundExpDemo.java:27)
+Displaying Batch_51_Assignment.txt.
