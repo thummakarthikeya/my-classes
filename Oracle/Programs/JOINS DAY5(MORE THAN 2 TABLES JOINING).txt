@@ -1,0 +1,354 @@
+                            JOINS TASK
+                          =============
+
+Joining more than 2 tables:-
+===========================
+
+NON ANSI style (or) ORACLE joins style (or) 8i joins style:-
+=========================================================
+
+Syntax:-
+=======
+select *
+from table1,table2,table3
+where table1.key=table2.key
+           AND
+      table2.key=table3.key;
+          
+
+ANSI style (or) 9i joins style:-
+===============================
+
+syntax:-
+=======
+select *
+from table1 join table2 
+on table1.key=table2.key
+       join table3
+on table2.key=table3.key
+
+
+------------------------------------------------------------------------------------------------------
+1.Write an SQL query to fetch student names and course names,
+ order by student ID,returning only the first 6 records.
+ Use the following tables[HCL FACE TO FACE INTERVIEW QUESTION]
+
+SQL> SELECT * FROM STUDENT;
+
+    STUDENT_ID      STUDENT_NAME
+    ----------    ---------------
+         1           SURYA
+         2           GOWTHAM
+         3           ANUSHKA
+         4           KIRAN
+         5           KAVYA PAPA
+         6           SHREYAS
+         7           RADHIKA
+         8           PREETHI
+         9           NITISH
+        10           ABHISHEK
+
+10 rows selected.
+
+SQL> SELECT * FROM FEE;
+
+     STUDENT_ID     COURSE_FEE
+     ----------     ----------
+         1            5000
+         2            4000
+         3            5000
+         4            3000
+         5            4000
+         6            7000
+         7            6000
+         8            4000
+         9            7000
+        10            5000
+
+10 rows selected.
+
+SQL> SELECT * FROM COURSE;
+
+   COURSE_FEE       COURSE_NAME
+   ----------     ---------------
+      3000          SQLSERVER
+      4000          ORACLE
+      5000          JAVA
+      6000          PHYTHON
+      7000          .NET
+
+
+2.Write a query to display SEAT_NUMBER(use alias SEATNO),
+  CATEGORY_NAME(use alias CATEGORYNAME) of seat in stadium
+  EDEN GARDENS and display the output in order of 
+  descending order of seat number[COGNIZANT INTERVIEW QUESTION]
+
+your output should have 2 columns as given below
+
+  SEATNO      CATEGORYNAME
+
+
+
+SQL>select * from seats;
+
+
+	STADIUM_ID	SEAT_NUMBER	CATEGORY_ID
+        ----------     ------------    -------------
+	    1	           A105	            2
+	    1	           A110        	    3
+	    1	           A120	            1
+	    2	           B101     	    2
+
+
+
+SQL>SELECT * FROM SEATCATEGORIES;
+
+CATEGORY_ID	CATEGORY_NAME         PRICE
+-----------     -------------       ----------
+   1	            VIP               5000
+   2	          PREMIUM             3000
+   3	          GENERAL             1500
+
+
+
+
+SQL>SELECT * FROM STADIUM;
+
+STADIUM_ID	STADIUM_NAME       LOCATION          CAPACITY
+----------     -------------      ----------       ------------ 
+1	        EDEN GARDENS       KOLKATA            66000
+2	         UPPAL             HYDERABAD          55000
+
+
+
+3.Find the courses that currently have no students enrolled.[Innominds solutions Pvt.Ltd]
+
+
+SQL> select * from students111;
+
+STUDENT_ID NAME              AGE  COURSE_ID      MARKS
+---------- ---------- ---------- ---------- ----------
+         1 Arjun              21        101         85
+         2 Bhavna             22        101         78
+         3 Chirag             20        102         91
+         4 Divya              21        103         67
+         5 Esha               22        102         88
+         6 Farhan             23        104         72
+
+6 rows selected.
+
+SQL> SELECT * FROM COURSES111;
+
+ COURSE_ID COURSE_NAME          INSTRUCTOR    CREDITS
+---------- -------------------- ---------- ----------
+       101 Database Systems     Dr.Mehta            4
+       102 Data Structures      Dr.Rao              3
+       103 Operating Systems    Dr.Kumar            4
+       104 Computer Networks    Dr.Singh            3
+       105 Oracle               Mr Murali           3
+
+
+
+4.Find courses that have more than one student scoring above 80 marks[Innominds Software Pvt.Ltd]
+
+
+5.Table A contains student data.Table B contains Recruiting companies.Which type of join
+  needs to fetch list of students who are selected by companies[Innominds Software Pvt.Ltd]
+
+a) Ineer Join
+
+b) Right Join
+
+c) Left Join
+
+d) Full Outer Join
+
+Answer:
+
+
+
+6.Write an SQL query to find all users from Master_Users who never raised 
+  a help request-i.e their ID does not appear in the
+  Help_Requests table[Accenture Interview Question]
+
+
+SQL> SELECT * FROM MASTER_USERS;
+
+        ID      FIRST_NAME    LAST_NAME
+     --------   ----------    ----------
+         1        Ravi          Kumar
+         2        Sneha         Latha
+         3        Arjun         Das
+         4        Priya         Nair
+
+
+SQL> SELECT * FROM HELP_REQUESTS;
+
+    REQUEST_ID      USER_ID             ISSUE
+    ----------     ----------      ------------------
+         1            2              Login Issue
+         2            4              Payment Failed
+
+
+------------------------------------------------------------------------------------------------------
+DROP TABLE FEE;
+DROP TABLE STUDENT;
+DROP TABLE COURSE;
+
+
+DROP TABLE SEATS;
+DROP TABLE SEATCATEGORIES;
+DROP TABLE STADIUM;
+
+
+DROP TABLE STUDENTS111;
+DROP TABLE COURSES111;
+
+
+
+CREATE TABLE STUDENT (
+    STUDENT_ID NUMBER(10) PRIMARY KEY,
+    STUDENT_NAME VARCHAR2(20)
+);
+
+
+INSERT INTO STUDENT VALUES (1, 'SURYA');
+INSERT INTO STUDENT VALUES (2, 'GOWTHAM');
+INSERT INTO STUDENT VALUES (3, 'ANUSHKA');
+INSERT INTO STUDENT VALUES (4, 'KIRAN');
+INSERT INTO STUDENT VALUES (5, 'KAVYA PAPA');
+INSERT INTO STUDENT VALUES (6, 'SHREYAS');
+INSERT INTO STUDENT VALUES (7, 'RADHIKA');
+INSERT INTO STUDENT VALUES (8, 'PREETHI');
+INSERT INTO STUDENT VALUES (9, 'NITISH');
+INSERT INTO STUDENT VALUES (10, 'ABHISHEK');
+
+
+CREATE TABLE COURSE (
+    COURSE_FEE NUMBER(10) PRIMARY KEY,
+    COURSE_NAME VARCHAR2(20)
+);
+
+
+INSERT INTO COURSE VALUES (3000, 'SQLSERVER');
+INSERT INTO COURSE VALUES (4000, 'ORACLE');
+INSERT INTO COURSE VALUES (5000, 'JAVA');
+INSERT INTO COURSE VALUES (6000, 'PHYTHON');
+INSERT INTO COURSE VALUES (7000, '.NET');
+ 
+
+CREATE TABLE FEE(
+    STUDENT_ID NUMBER(10),
+    COURSE_FEE NUMBER(10) ,
+    FOREIGN KEY (STUDENT_ID) REFERENCES student(STUDENT_ID),
+   FOREIGN KEY(COURSE_FEE) REFERENCES COURSE(COURSE_FEE)
+);
+
+
+INSERT INTO FEE VALUES (1, 5000);  
+INSERT INTO FEE VALUES (2, 4000);  
+INSERT INTO FEE VALUES (3, 5000);  
+INSERT INTO FEE VALUES (4, 3000);  
+INSERT INTO FEE VALUES (5, 4000);  
+INSERT INTO FEE VALUES (6, 7000);  
+INSERT INTO FEE VALUES (7, 6000);  
+INSERT INTO FEE VALUES (8, 4000); 
+INSERT INTO FEE VALUES (9, 7000);  
+INSERT INTO FEE VALUES (10, 5000); 
+
+
+CREATE TABLE STADIUM (
+    STADIUM_ID     NUMBER(10) PRIMARY KEY,
+    STADIUM_NAME   VARCHAR2(20),
+    LOCATION       VARCHAR2(20),
+    CAPACITY      NUMBER(10)
+);
+
+
+CREATE TABLE SEATCATEGORIES (
+    CATEGORY_ID    NUMBER(10) PRIMARY KEY,
+    CATEGORY_NAME  VARCHAR2(20),
+    PRICE          NUMBER(10)
+);
+
+
+CREATE TABLE SEATS (
+    STADIUM_ID    NUMBER(10) REFERENCES stadium(STADIUM_ID),
+    SEAT_NUMBER   VARCHAR2(10),
+    CATEGORY_ID    NUMBER(10) REFERENCES SEATCATEGORIES(CATEGORY_ID) 
+);
+
+
+INSERT INTO STADIUM VALUES (1, 'EDEN GARDENS', 'KOLKATA', 66000);
+INSERT INTO STADIUM VALUES (2, 'UPPAL', 'HYDERABAD', 55000);
+
+
+INSERT INTO SEATCATEGORIES VALUES (1, 'VIP', 5000);
+INSERT INTO SEATCATEGORIES VALUES (2, 'PREMIUM', 3000);
+INSERT INTO SEATCATEGORIES VALUES (3, 'GENERAL', 1500);
+
+
+INSERT INTO SEATS VALUES (1, 'A105', 2);
+INSERT INTO SEATS VALUES (1, 'A110', 3);
+INSERT INTO SEATS VALUES (1, 'A120', 1);
+INSERT INTO SEATS VALUES (2, 'B101', 2);
+
+CREATE TABLE COURSES111 (
+    COURSE_ID NUMBER(4) PRIMARY KEY,
+    COURSE_NAME VARCHAR2(20),
+    INSTRUCTOR VARCHAR2(10),
+    CREDITS NUMBER(2)
+);
+
+
+INSERT INTO COURSES111 VALUES (101, 'Database Systems', 'Dr.Mehta', 4);
+INSERT INTO COURSES111 VALUES (102, 'Data Structures',  'Dr.Rao', 3);
+INSERT INTO COURSES111 VALUES (103, 'Operating Systems','Dr.Kumar', 4);
+INSERT INTO COURSES111 VALUES (104, 'Computer Networks','Dr.Singh', 3);
+INSERT INTO COURSES111 VALUES (105, 'Oracle','Mr Murali',3);
+  
+
+CREATE TABLE STUDENTS111(
+    STUDENT_ID NUMBER(4) PRIMARY KEY,
+    NAME VARCHAR2(10),
+    AGE NUMBER(3),
+    COURSE_ID NUMBER(4) REFERENCES COURSES111(COURSE_ID),
+    MARKS NUMBER(3)
+);
+
+INSERT INTO STUDENTS111 VALUES (1, 'Arjun', 21, 101, 85);
+INSERT INTO STUDENTS111 VALUES (2, 'Bhavna', 22, 101, 78);
+INSERT INTO STUDENTS111 VALUES (3, 'Chirag', 20, 102, 91);
+INSERT INTO STUDENTS111 VALUES (4, 'Divya', 21, 103, 67);
+INSERT INTO STUDENTS111 VALUES (5, 'Esha', 22, 102, 88);
+INSERT INTO STUDENTS111 VALUES (6, 'Farhan', 23, 104,72);
+
+
+CREATE TABLE MASTER_USERS
+(
+ID NUMBER(10),
+FIRST_NAME VARCHAR2(10),
+LAST_NAME VARCHAR2(10)
+);
+
+INSERT INTO MASTER_USERS VALUES(1,'Ravi','Kumar');
+INSERT INTO MASTER_USERS VALUES(2,'Sneha','Latha');
+INSERT INTO MASTER_USERS VALUES(3,'Arjun','Das');
+INSERT INTO MASTER_USERS VALUES(4,'Priya','Nair');
+
+
+
+CREATE TABLE HELP_REQUESTS
+(
+REQUEST_ID NUMBER(10),
+USER_ID NUMBER(10),
+ISSUE VARCHAR2(20)
+);
+
+INSERT INTO HELP_REQUESTS VALUES(1,2,'Login Issue');     
+INSERT INTO HELP_REQUESTS VALUES(2,4,'Payment Failed');      
+
+
+COMMIT;
+
+
