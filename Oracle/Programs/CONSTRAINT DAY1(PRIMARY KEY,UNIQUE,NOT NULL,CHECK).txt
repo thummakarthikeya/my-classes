@@ -62,6 +62,10 @@ MARKS        Marks must be between 0 and 100
 
 MAILID       Must be unique
 
+
+
+SQL>  create table student123 (SID number(3) not null unique, sname varchar2 (20) not null, marks number(5) check(marks between 0 and 100), MailId varchar(30) unique);
+
 ------------------------------------------------------------------------------------------------------
 2.Create a emp3 table with constraints based on the following
   conditions.
@@ -136,4 +140,5 @@ SNO        should not accept NULL values and duplicate values
 SNAME      should contain only capital letters
 
 SAL        more than 9000
+
 
