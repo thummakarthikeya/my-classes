@@ -11,6 +11,32 @@ Input as: 1 4 3 5 2 6
 Enter searching element: 7
 Output: Element not found
 
+
+
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int arr[] = {9,3,8,1,0};
+        System.out.println("Enter an ");
+        int search = sc.nextInt();
+        
+        for(int i=0; i < arr.length; i++){
+            if(search == arr[i]){
+                System.out.println("Element found at index : "+ i);
+                System.exit(0);
+            }
+        }
+        
+        System.out.println("Element not found ");
+
+    }
+}
+
+
+
 Que 2:
 =======
 Print all elements in reverse order of an Array.
@@ -172,6 +198,7 @@ Enter Product Price: 78908
 Enter Product ID to search: 4
 
 Product with ID 4 not found.
+
 
 
 
