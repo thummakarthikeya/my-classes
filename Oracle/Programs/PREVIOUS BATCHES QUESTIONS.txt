@@ -3,9 +3,49 @@
 
 1.Write a query to display the average salary of employees grouped by department.
 
+
+SQL> select deptno,avg(sal) from emp group by deptno;
+
+    DEPTNO   AVG(SAL)
+---------- ----------
+        20       2175
+        30 1566.66667
+        10 2916.66667
+
+
+
+
 2.Display department number where the average salary of employees is more than 2000
 
+SQL> select deptno , avg(sal) from emp group by deptno having avg(sal) > 2000 ;
+
+    DEPTNO   AVG(SAL)
+---------- ----------
+        20       2175
+        10 2916.66667
+
+
 3.Write a query to list all employees ordered by their joining date in descending order.
+
+SQL> select hiredate from emp order by hiredate desc;
+
+HIREDATE
+---------
+12-JAN-83
+09-DEC-82
+23-JAN-82
+03-DEC-81
+03-DEC-81
+17-NOV-81
+28-SEP-81
+08-SEP-81
+09-JUN-81
+01-MAY-81
+02-APR-81
+22-FEB-81
+20-FEB-81
+17-DEC-80
+
 
 4.Find the number of employees in each department, but only display departments
   having more than 5 employees.
@@ -57,6 +97,7 @@
 13.Display all employees and all departments, even if no match exists between them
 
 14.Write a query to display employee names along with their manager names 
+
 
 
 
