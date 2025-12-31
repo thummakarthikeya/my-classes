@@ -1,0 +1,63 @@
+                               BATCH-49 EXAM PAPER
+                             ======================
+
+1.Write a query to display the average salary of employees grouped by department.
+
+2.Display department number where the average salary of employees is more than 2000
+
+3.Write a query to list all employees ordered by their joining date in descending order.
+
+4.Find the number of employees in each department, but only display departments
+  having more than 5 employees.
+
+5.Write a query to display the maximum, minimum, and average salary for each department.
+
+6.Write a query to list employees along with their department names from emp table
+
+7.Retrieve all employees and their department names, including employees who are
+  not assigned to any department 
+
+8.List all departments and their employees.Include departments that have no employees
+
+
+-----------------------------------------------------------------------------------------------------
+                                   BATCH-48 EXAM PAPER
+                                 ======================
+
+1.Write a query to display the employee name in uppercase from the EMPLOYEES table.
+
+2.Write a query to display the first 3 characters of each employee’s first name.
+
+3.Display the current system date in the format ‘DD-MON-YYYY’.
+
+4.Convert the string '2025-09-18' into DATE format using TO_DATE.
+
+5.Write a query to display the employee names and their salaries, 
+  rounded to the nearest 100.
+
+6.Display the maximum, minimum, and average salary from the EMPLOYEES table.
+
+7.Write a query to count the number of employees working in each department.
+
+8.From the EMPLOYEES table, display departments having more than 5 employees 
+  using GROUP BY and HAVING.
+
+9.Display employee names in ascending order of salary. If two employees have 
+  the same salary, sort them by name.
+
+10.Write a query to retrieve employees who work in departments 10 and 20,
+   using INNER JOIN with the DEPARTMENTS table.
+
+11.Display all employees and their department names, ensuring that employees
+   without departments are also displayed
+
+12.Display all departments and the employees in them, including departments
+   without employees 
+
+13.Display all employees and all departments, even if no match exists between them
+
+14.Write a query to display employee names along with their manager names 
+
+
+
+
