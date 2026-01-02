@@ -99,14 +99,58 @@ Output:
 
 Array after deletion: [10, 20, 40, 50]
 
+
+import java.util.*;
+
+public class CommonElement {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int[] arr1 = {1, 3, 4, 7, 9, 10};
+        int []arr2 = new int[arr1.length - 1];
+        int num = sc.nextInt();
+        int count = 0;
+        for(int i=0;i<arr1.length;i++)
+        {
+            if(i != num){
+                arr2[count++] = arr1[i];
+            }	
+        }
+        
+         for(int i=0;i<arr2.length;i++)
+        {
+            System.out.println(arr2[i]);	
+        }
+	}
+
+}
+
+
+
+================================
+
 Q2) Reverse an Array Without Using Another Array
 int[] arr = {10, 20, 30, 40, 50};
-
-
 Output:
 
 Reversed Array: [50, 40, 30, 20, 10]
+import java.util.*;
 
+public class CommonElement {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int[] arr = {1, 3, 4, 7, 9, 10};
+
+         for(int i=arr.length-1; i>=0; i--)
+        {
+            System.out.println(arr[i]);	
+        }
+	}
+
+}
+
+============================================
 Q3) Check Whether Two Arrays Are Equal
 
 Two arrays are equal if:
