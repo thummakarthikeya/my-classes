@@ -65,10 +65,12 @@ SQL>select * from emp
 1.Write a query to display the employee records whose job title is 
             same as SMITH,BLAKE from emp table?
 
+SQL> select * from emp where job in (select job from emp where ename in('SMITH','BLAKE'));
 
 
 2.Write a query to display the male employees who are getting more
    salary than the all the salaries of female employees?
+SQL> select * from emp666 where gender ='M' and sal >   (select avg(sal) from emp666 where gender = 'F' );
 
 SQL> select * from emp666;
 
@@ -103,6 +105,7 @@ COMMIT;
 
 NOTE:-if sal> all list of values then condition is true
 
+SQL> select * from emp where sal >all(select max(sal) from emp where job = 'MANAGER');
 
 
 4.Write a query to display the employees records who are getting more 
@@ -110,15 +113,19 @@ NOTE:-if sal> all list of values then condition is true
 
 NOTE:-if sal>any one of the list of values.
 
+SQL> select * from emp where sal>any (select sal from emp where job = 'MANAGER');
 
 
 5.Write a query to display the employees who are getting more salary
   than the any salary of 10th department from emp table ?
 
+SQL> select * from emp where sal >any (select sal from emp where deptno = 10 );
+
+
 
 6.Write a query to display the employees who are working in either sales or research
   department from emp,dept?
-
+SQL> select * from emp where deptno in(select deptno from dept where dname in('SALES' ,'RESEARCH') );
 ------------------------------------------------------------------------------------------------------
 
 
