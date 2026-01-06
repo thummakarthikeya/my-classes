@@ -244,6 +244,9 @@ public class Test
        }
 }
 
+in this we get error because we cannot modify the size of the list when we use asList 
+
+
 15. What is the output of the following code
 import java.util.*;
 
@@ -259,6 +262,11 @@ public class Test
             System.out.println(index);
         }
 }
+
+
+in this Number is the super class of the the numeric classes and we are using it as the data type now and index is the variable and in that we are storing the 
+data and in this we get error outbound exception because get method will get based on the index only and value of will give the 7 to the get method so we 
+get error 
 
 16. What is the output of the following code
 import java.util.*;
@@ -293,6 +301,8 @@ public class Test
     }
 
 }
+
+we cannot store the list object into the string buffer 
 
 18. What is the output of the following code
 import java.util.LinkedList;
@@ -379,3 +389,4 @@ public class Test8
 		System.out.println("Original hashCode of Emp is :"+originalHashCode);
 	}
 }
+
