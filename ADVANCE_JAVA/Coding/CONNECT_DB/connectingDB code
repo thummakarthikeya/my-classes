@@ -1,0 +1,36 @@
+
+
+
+package com.pack1;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class JDBCPro1 {
+	String driver = "oracle.jdbc.OracleDriver";
+	String dbUrl = "jdbc:oracle:thin:@localhost:1521:orcl";  //xe
+	String dbUname = "nareshIT";
+	String dbPwd = "root";
+	
+	void connect() {
+		IO.println("Connecting to the database");
+		try {
+			Class.forName(driver);
+			Connection con = DriverManager.getConnection(dbUrl, dbUname, dbPwd);
+			IO.println("Connection Success");
+			con.close();
+			
+		}catch(Exception e) {
+			IO.println("Connection not success");
+			
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		JDBCPro1 obj  =  new JDBCPro1();
+		obj.connect();
+	}
+	
+
+}
