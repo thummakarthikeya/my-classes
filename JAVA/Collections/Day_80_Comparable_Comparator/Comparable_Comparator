@@ -1,0 +1,213 @@
+1️⃣ LIST INTERFACE (VERY IMPORTANT)
+🔹 What is List?
+
+List is a child interface of Collection
+
+Allows duplicate values
+
+Maintains insertion order
+
+Index-based access
+
+List<Integer> list = new ArrayList<>();
+
+🔹 List Implementations
+Class	특징
+ArrayList	Fast random access
+LinkedList	Fast insertion & deletion
+Vector	Thread-safe (legacy)
+Stack	LIFO
+🔹 Common List Methods
+add()
+add(index, element)
+get(index)
+set(index, element)
+remove(index)
+size()
+contains()
+isEmpty()
+
+🔹 Example
+List<String> names = new ArrayList<>();
+names.add("Java");
+names.add("Python");
+names.add("Java");
+
+System.out.println(names); // [Java, Python, Java]
+
+🔹 ArrayList vs LinkedList (MCQ favorite)
+Feature	ArrayList	LinkedList
+Data structure	Dynamic Array	Doubly Linked List
+Access	Fast	Slow
+Insertion	Slow	Fast
+Memory	Less	More
+🔸 MCQs – List Interface
+
+Q1. Which interface allows duplicate elements?
+a) Set
+b) Map
+c) List ✅
+d) Queue
+
+Q2. Which List implementation is best for frequent insertions?
+a) ArrayList
+b) Vector
+c) Stack
+d) LinkedList ✅
+
+Q3. Which method retrieves an element by index?
+a) fetch()
+b) get() ✅
+c) retrieve()
+d) read()
+
+2️⃣ COMPARABLE INTERFACE
+🔹 What is Comparable?
+
+Used for natural sorting
+
+Located in java.lang
+
+Contains only one method
+
+int compareTo(Object o)
+
+🔹 How it works
+
+Returns:
+
+0 → equal
+
++ve → greater
+
+-ve → smaller
+
+🔹 Example (Sorting by ID)
+class Student implements Comparable<Student> {
+    int id;
+    String name;
+
+    public int compareTo(Student s) {
+        return this.id - s.id;
+    }
+}
+
+Collections.sort(studentList);
+
+🔹 Key Points (MCQ)
+
+Affects original class
+
+Only one sorting logic
+
+Used with Collections.sort()
+
+🔸 MCQs – Comparable
+
+Q4. Comparable belongs to which package?
+a) java.util
+b) java.io
+c) java.lang ✅
+d) java.sql
+
+Q5. Comparable contains how many methods?
+a) 0
+b) 1 ✅
+c) 2
+d) 3
+
+3️⃣ COMPARATOR INTERFACE
+🔹 What is Comparator?
+
+Used for custom sorting
+
+Located in java.util
+
+Can define multiple sorting logics
+
+int compare(Object o1, Object o2)
+
+🔹 Example (Sort by Name)
+class NameComparator implements Comparator<Student> {
+    public int compare(Student s1, Student s2) {
+        return s1.name.compareTo(s2.name);
+    }
+}
+
+Collections.sort(studentList, new NameComparator());
+
+🔹 Advantages
+
+Does NOT modify original class
+
+Multiple sorting options
+
+Used when class has no Comparable
+
+🔸 MCQs – Comparator
+
+Q6. Comparator belongs to which package?
+a) java.lang
+b) java.util ✅
+c) java.io
+d) java.sql
+
+Q7. Which method is used in Comparator?
+a) compareTo()
+b) compare() ✅
+c) equals()
+d) sort()
+
+4️⃣ COMPARABLE vs COMPARATOR (VERY IMPORTANT)
+Feature	Comparable	Comparator
+Package	java.lang	java.util
+Method	compareTo()	compare()
+Sorting logic	One	Multiple
+Modifies class	Yes	No
+🔸 MCQ
+
+Q8. Which supports multiple sorting logic?
+a) Comparable
+b) Comparator ✅
+c) List
+d) Set
+
+5️⃣ CODING QUESTIONS (HIGH CHANCE)
+✅ Coding 1: Sort ArrayList using Comparable
+Collections.sort(list);
+
+✅ Coding 2: Sort objects using Comparator
+Collections.sort(list, new NameComparator());
+
+✅ Coding 3: List Example Program
+List<Integer> list = new ArrayList<>();
+list.add(10);
+list.add(5);
+list.add(20);
+
+Collections.sort(list);
+System.out.println(list);
+
+6️⃣ QUICK REVISION (READ BEFORE EXAM)
+
+✔ List allows duplicates
+✔ ArrayList → fast access
+✔ LinkedList → fast insertion
+✔ Comparable → natural order
+✔ Comparator → custom order
+✔ Collections.sort() used for sorting
+
+🎯 FINAL EXAM STRATEGY
+
+MCQs: Focus on differences & packages
+
+Coding: Practice sorting programs
+
+Revise tables once before exam
+
+If you want, I can also:
+✅ Give only MCQ practice (20 questions mock)
+✅ Give 3 full coding questions with output
+✅ Give last-minute one-page revision sheet
+
+Just tell me 👍
