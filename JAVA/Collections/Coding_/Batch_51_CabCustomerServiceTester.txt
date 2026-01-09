@@ -1,0 +1,251 @@
+﻿Assignment 01 :
+----------------
+Develop a scenario based program by using ArrayList class for online cab booking system.
+
+Coding Requirements :
+-----------------------
+Create one record called Customer.
+
+Add the following components in the record.
+             int custId,
+             String customerName,
+             String pickupLocation,
+             String dropLocation,
+             int distance,
+             String phone
+
+Perform the Validation of each component by using compact constructor, throw IllegalArgumentException for each wrong Input.
+
+Take another BLC class called CustomerService.
+
+Non static field [Must be private]
+customers  ArrayList<Customer>;
+
+Take one no argument constructor to initialize the non static field using composition.
+
+Write the following non static methods 
+
+1) Method Name     : addCustomer()
+Parameter          : 1 parameter of type Customer [Customer customer]
+Return Type        : void
+Access modifier    : public
+In this method add the Customer object to ArrayList object.
+
+
+2) Method Name     : isFirstCustomer()
+Parameter          : 1 parameter of type Customer [Customer customer]
+Return Type        : boolean
+Access modifier    : private
+In this helper method based on the Customer phone number verify whether the customer is a new customer OR pre-existing customer.
+
+
+3) Method Name     : calculateBill()
+Parameter          : 1 parameter of type Customer [Customer customer]
+Return Type        : double
+Access modifier    : public
+In this method calculate the bill of the customer based on the following criteria :
+
+       1) if the customer is new customer return 0. [Free Ride for first time]
+
+       2) if the customer's travel distance is below or equal    
+          to 4 kms then return 80 RS [Fixed bill]
+
+       3) if the customer travel distance is above 4 kms calculate bill 80 + 6 RS per km.
+		 Example: 
+		     Any distance for new customer return 0;
+		     distance 4KM return 80
+                     distance 6KM return 80 + 2 * 6;
+printBill() which should return the bill of the customer object parameter in the following format:
+
+            output : JOHN Please pay your bill of Rs.0.0
+	             SMITH Please pay your bill of Rs.180.0
+
+	Note : 
+	   Assume one customer books only one cab at a time.
+	   No charge for customer booking the cab for the first time.
+	   Customer's phone number is primary key to test whether a customer is new customer or old customer.
+	   Distance should be treated as kilometers 				 
+
+Create an ELC class called CabCustomerServiceTester with main method
+to pass the following Test Cases.
+
+Test Cases for Output :
+------------------------
+Test Case 1 :
+-------------
+JOHN Please pay your bill of Rs.0.0
+
+Test Case 2 :
+-------------
+SMITH Please pay your bill of Rs.0.0
+
+Test Case 3 :
+-------------
+JOHN Please pay your bill of Rs.140.0
+
+Test Cases for Input Validation :
+---------------------------------
+Test Cases 1:
+-------------
+Validation Error: Customer ID must be positive.   
+  
+Test Cases 2:
+-------------
+Validation Error: Customer name cannot be null or blank.
+
+Test Cases 3:
+-------------
+Validation Error: Pickup location cannot be null or blank.
+
+Test Cases 4:
+-------------
+Validation Error: Drop location cannot be null or blank.
+
+Test Cases 5:
+-------------
+Validation Error: Distance cannot be negative.
+
+Test Cases 6:
+-------------
+
+Validation Error: Phone number must be 10 digits only.
+
+
+
+
+
+
+
+
+
+
+
+package Blc;
+
+public record Customer(int custId,String customerName,
+							        String pickupLocation,
+							        String dropLocation,
+							        int distance,
+							        String phone) {
+	
+	 public Customer {
+		// TODO Auto-generated constructor stub
+		 try {
+	            if (custId <= 0) {
+	                throw new Exception("Customer ID should be greater than 0");
+	            }
+	            if (customerName == null) {
+	                throw new Exception("Customer name should not be null");
+	            }
+	            if (pickupLocation == null) {
+	                throw new Exception("Pickup location should not be null");
+	            }
+	            if (dropLocation == null) {
+	                throw new Exception("Drop location should not be null");
+	            }
+	            if (distance <= 0) {
+	                throw new Exception("Distance should be greater than 0");
+	            }
+	            if (phone == null) {
+	                throw new Exception("Phone number should not be null");
+	            }
+
+	        } catch (Exception e) {
+	            System.out.println(e.getMessage());
+	        }
+		
+	}
+
+}
+
+
+
+
+package Blc;
+
+import java.util.ArrayList;
+
+public class CustomerService {
+	private ArrayList<Customer> customers;
+	public CustomerService(ArrayList<Customer> customers) {
+		super();
+		this.customers = customers;
+	}
+	
+	public void addCustomer(Customer customer) {
+		customers.add(customer);
+	}
+	
+	public boolean isFirstCustomer(Customer customer) {
+		for(Customer c:customers) {
+			if(c.phone().contains(customer.phone()))
+			{
+				return false;//old customer
+			}
+		}
+		return true;//new customer
+	}
+	
+	
+	public double calculateBill(Customer customer) {
+		double bill = 0.0;
+		if(isFirstCustomer(customer)) {
+			addCustomer(customer);
+			return bill;
+		}
+		
+		else if(customer.distance() <= 4) {
+			bill=80;
+			return bill;
+		}else{
+			bill=80+40;
+			return bill; 
+		}
+		
+		
+		
+			
+		
+	}
+}
+
+
+
+package Elc;
+
+import java.util.ArrayList;
+
+import Blc.Customer;
+import Blc.CustomerService;
+
+public class CabCustomerServiceTester {
+	public static void main(String[] args) {
+		ArrayList<Customer> alc = new ArrayList<>();
+		alc.add(new Customer(101, "Karthikeya", "Hyd", "Musheerabad", 20, "7981737055"));
+		alc.add(new Customer(102, "ajay", "Hyd", "ram nagar", 30, "7981737123"));
+		alc.add(new Customer(103, "mahesh", "Hyd", "narayana guda", 40, "7981737321"));
+		alc.add(new Customer(104, "tharun", "Hyd", "malak page", 50, "7981737098"));
+		alc.add(new Customer(105, "pavan", "Hyd", "secundrabad", 60, "7981737543"));
+
+		
+		CustomerService cs = new CustomerService(alc);
+		
+		int id = Integer.parseInt(IO.readln("Enter id : "));
+		String name = IO.readln("Enter customerName : ");
+		String plocation = IO.readln("Enter pickupLocation : ");
+		String dlocation = IO.readln("Enter dropLocation : ");
+		int distance = Integer.parseInt(IO.readln("Enter distance : "));
+		String number = IO.readln("Enter phone number : ");
+
+		Customer newc=  new Customer(id,name, plocation,dlocation,distance,number);
+	
+ 
+		IO.println(cs.calculateBill(newc));	
+		
+		
+		
+		
+		
+	}
+
+}
