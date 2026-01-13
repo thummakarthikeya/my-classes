@@ -1,0 +1,75 @@
+package com.pack1;
+
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Statement;
+
+public class JDBCPro3 {
+	String driver = "oracle.jdbc.OracleDriver";
+	String DUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String Uname = "nareshit";
+	String UPwt = "root";
+	String qry = "Select * from employee";
+	String qry2 = "insert into employee values('20','Vin', 'kar',7890,'hyd')";
+	String qry3 = "delete from employee where eid = '20'";
+	String qry4 = "update employee set esal ='55000' where eid = 101";
+
+	
+	void getData() {
+		IO.println("Connecting to the database");
+		
+		try {
+			Class.forName(driver);
+			Connection con =  DriverManager.getConnection(DUrl, Uname,UPwt);
+			IO.println("Database connected");
+			
+			Statement stmt = con.createStatement();
+			 ResultSet rs = stmt.executeQuery(qry);
+			
+			 while(rs.next()) {
+				 IO.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getInt(4)+" "+rs.getString(5));
+			 }
+			
+			con.close();
+			
+			
+		}catch(Exception e) {
+			IO.println("Not connected");
+		}
+		
+	}
+	
+	void insertData(){
+		try {
+			Class.forName(driver);
+			Connection con =DriverManager.getConnection(DUrl, Uname, UPwt);
+			IO.println("DB connected");
+			Statement stmt = con.createStatement();
+			int rowCount = stmt.executeUpdate(qry2);
+			if(rowCount == 0) {
+				IO.print("Data not inserted");
+			}else {
+				IO.println(rowCount +"Row inserted");
+				IO.println("----------------------");
+				getData();
+			}	
+		}catch(SQLIntegrityConstraintViolationException e) {
+			IO.println("Dublicate insertion in the table... please insert data with new values");
+		}catch(Exception e) {
+			IO.println("Check the code "+e);
+		}
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		JDBCPro3 jdbc = new JDBCPro3();
+		//jdbc.getData();
+		jdbc.insertData();
+		
+	}
+
+}
