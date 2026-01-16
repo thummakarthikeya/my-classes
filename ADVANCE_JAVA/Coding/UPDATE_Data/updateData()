@@ -1,0 +1,138 @@
+package com.pack1;
+
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Statement;
+
+public class JDBCPro2 {
+	String driver = "oracle.jdbc.OracleDriver";
+	String DUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String Uname = "nareshit";
+	String UPwt = "root";
+	String qry = "Select * from employee";
+	String qry2 = "insert into employee values('20','Vin', 'kar',7890,'hyd')";
+	String qry3 = "delete from employee where eid = '20'";
+	String qry4 = "update employee set esal ='55000' where eid = 101";
+	Connection connect() {
+		
+		Connection con  =null;
+		try {
+			
+			Class.forName(driver);
+			con  = DriverManager.getConnection(DUrl, Uname ,UPwt);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return con;
+		
+		
+	}
+	
+	void getData() {
+		IO.println("Connecting to the database");
+		
+		try {
+			Class.forName(driver);
+			Connection con =  DriverManager.getConnection(DUrl, Uname,UPwt);
+			IO.println("Database connected");
+			
+			Statement stmt = con.createStatement();
+			 ResultSet rs = stmt.executeQuery(qry);
+			
+			 while(rs.next()) {
+				 IO.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getInt(4)+" "+rs.getString(5));
+			 }
+			
+			con.close();
+			
+			
+		}catch(Exception e) {
+			IO.println("Not connected");
+		}
+		
+	}
+	
+	void insertData(){
+		try {
+			Class.forName(driver);
+			Connection con =DriverManager.getConnection(DUrl, Uname, UPwt);
+			IO.println("DB connected");
+			Statement stmt = con.createStatement();
+			int rowCount = stmt.executeUpdate(qry2);
+			if(rowCount == 0) {
+				IO.print("Data not inserted");
+			}else {
+				IO.println(rowCount +"Row inserted");
+				IO.println("----------------------");
+				getData();
+			}
+			
+			
+			
+		}catch(SQLIntegrityConstraintViolationException e) {
+			IO.println("Dublicate insertion in the table... please insert data with new values");
+		}catch(Exception e) {
+			IO.println("Check the code "+e);
+		}
+		
+	}
+	
+	void deleteData() {
+		try {
+			Connection con  = connect();
+			Statement stmt = con.createStatement();
+			int rowCount = stmt.executeUpdate(qry3);
+			if(rowCount == 0) {
+				IO.print("there is not data with that id ");
+			}else {
+				IO.println("the data is deleted ");
+				IO.println("do u want to view the data");
+				char choice = IO.readln().charAt(0);
+				
+				switch(choice) {
+				case 'y','Y' ->{
+					getData();
+				}
+				case 'n','N' ->{
+					System.exit(0);
+				}
+				
+				}
+			}
+		}catch(Exception e) {
+			
+		}
+		
+	}
+	
+	void updateData() {
+		try {
+			Connection con = connect();
+			Statement stmt = con.createStatement();
+			int rowCount =stmt.executeUpdate(qry4);
+			
+			if(rowCount==0) {
+				IO.println("the id u are trying to update is not available");
+			}else {
+				IO.println("update Completed");
+				getData();
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		JDBCPro2 jdbc = new JDBCPro2();
+		//jdbc.getData();
+		//jdbc.insertData();
+		//jdbc.deleteData();
+		jdbc.updateData();
+	}
+
+}
