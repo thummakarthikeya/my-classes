@@ -1,0 +1,374 @@
+✅ REACT NOTES (Corrected + Expanded Version)
+1) Data Binding in React
+✅ Definition
+
+Data Binding means connecting data (JS values/state/props) with UI elements so that UI displays the data properly.
+
+✅ React Data Binding Syntax
+
+In JSX, React binds data using:
+
+{ }
+
+
+📌 Because: JSX is like HTML + JavaScript, so React uses { } to embed JS expressions inside HTML-like code.
+
+////////////////////////////////////////////////
+
+
+2) Data for Component using State
+✅ Definition
+
+State is a memory of a component used to store dynamic/changing data.
+
+✅ Example dynamic values:
+
+user input
+
+API response
+
+count
+
+product stock status
+
+📌 Because: If data changes after rendering, React needs state to trigger UI re-render.
+
+
+/////////////////////////////////////////////////////////////////
+
+
+
+3) useState() Hook
+✅ Definition
+
+useState() is a React Hook used to:
+✅ Create state variable and ✅ change it using setter function
+
+✅ Syntax
+const [state, setState] = useState(initialValue);
+
+
+Example:
+
+const [count, setCount] = useState(0);
+
+
+📌 Because: React UI updates only when state changes via setter function.
+
+
+//////////////////////////////////////////////////////////////////////////
+
+
+
+✅ FAQ (Sir Style)
+
+
+✅ FAQ 1: When to set state?
+
+✅ Answer:
+State can be configured with new values:
+
+on Mount phase
+
+on any specific Event
+
+❌ You can’t set values into state while creating the component.
+
+📌 Because: Component creation phase runs before UI is ready. State updates should happen after component is mounted or by events.
+
+✅ FAQ 2: How to configure the Mount phase for component?
+
+✅ Answer:
+Mount and Unmount phases are handled by using useEffect() hook.
+
+4) useEffect() Hook
+✅ Definition
+
+useEffect() is used to perform side effects in React like:
+
+fetching data
+
+setting values on mount
+
+updating title
+
+subscriptions/timers
+
+cleanup on unmount
+
+✅ Syntax (Sir format)
+useEffect(() => {
+  // actions on mount
+}, [dependencies]);
+
+✅ Notes
+
+Every component mounts on the first request
+
+If you want a component to mount / re-run again:
+✅ define dependencies
+
+📌 Because: React runs the effect again when any dependency value changes.
+
+✅ Binding Various Data Types in React
+1) Number Type
+✅ Definition
+
+A number in JavaScript can be:
+
+signed integer: -10
+
+unsigned integer: 10
+
+float: 3.4
+
+double: 23.33
+
+decimal: 235.8321
+
+exponent: 2e3
+
+hexadecimal: 0x9001
+
+binary: 0b1010
+
+octal: 0o456
+
+bigint: 9838286462n
+
+📌 Because: JavaScript uses a flexible number system, so React can display all these formats.
+
+✅ Formatting Numbers
+
+Numbers are presented using methods:
+
+a) toFixed()
+
+Fix decimal places.
+
+(12.345).toFixed(2); // "12.35"
+
+b) toPrecision()
+
+Keeps total significant digits.
+
+(123.456).toPrecision(4); // "123.5"
+
+c) toLocaleString()
+
+Formats number based on locale.
+
+✅ Example currency:
+
+const [price] = useState(500000);
+
+<p>
+  {price.toLocaleString("en-IN", { style: "currency", currency: "INR" })}
+</p>
+
+
+✅ Extra knowledge:
+
+style: "currency" | "decimal" | "percent" | "unit"
+
+notation: "compact" | "scientific"
+
+📌 Because: Users understand formatted values better (ex: ₹5,00,000 instead of 500000).
+
+✅ Number Parsing (same as JS)
+
+parseInt()
+
+parseFloat()
+
+📌 Because: user inputs usually come as strings.
+
+✅ Checking a Number
+
+Use:
+
+isNaN(value)
+
+
+✅ returns true if value is NOT a number
+
+Example:
+
+isNaN("abc") // true
+isNaN("10")  // false
+
+2) Boolean Type
+✅ Definition
+
+Boolean values are configured using:
+
+true
+
+false
+
+✅ Important Notes (Sir points)
+
+React can’t display boolean directly in UI, it can only use it in conditions.
+
+React can’t treat boolean as number 0 & 1
+(like old JS logic: 0=false, 1=true)
+
+JSX can’t use statements
+✅ only expressions
+
+📌 Because: JSX expects expressions that return a value, not full JS blocks like if, for.
+
+✅ Syntax
+const [stock] = useState(true);
+
+<p>
+  {(stock === true) ? "True" : "False"}
+</p>
+
+
+✅ Better short version:
+
+<p>{stock ? "In Stock" : "Out of Stock"}</p>
+
+3) String Type
+✅ Definition
+
+React supports all JS string formats:
+
+Single quote ' '
+
+Double quote " "
+
+Backtick `
+
+✅ Special Point
+
+Backtick allows binding expressions using:
+
+${ }
+
+
+So:
+
+${ } → JavaScript Data Binding
+
+{ } → React Data Binding
+
+📌 Because: backticks create template literals which allow inserting expressions.
+
+✅ Example
+const [styleClass] = useState("bg-danger text-white");
+
+<p className={`border border-2 p-2 border-warning ${styleClass}`}>
+  Hello
+</p>
+
+
+✅ Using concatenation:
+
+<p className={"border border-2 p-2 border-warning " + styleClass}>
+  Hello
+</p>
+
+✅ String methods/properties (same as JS)
+
+length
+
+startsWith()
+
+endsWith()
+
+charAt()
+
+charCodeAt()
+
+includes()
+
+indexOf()
+
+lastIndexOf()
+
+match()
+
+slice()
+
+split()
+
+trim()
+
+toUpperCase()
+
+toLowerCase() etc.
+
+4) Null & Undefined
+✅ Definition
+
+null and undefined are same as JavaScript.
+
+undefined → value is not assigned
+
+null → value is assigned intentionally as empty
+
+📌 Because: In forms, prompt() can return null when cancel is pressed.
+
+✅ Example
+const [name, setName] = useState();
+
+setName(prompt("Enter Name")); // string | null
+
+<p>
+  {(name === null) ? "Name is required" : name}
+</p>
+
+
+✅ Best improvement:
+
+{name ? name : "Name is required"}
+
+5) Symbol
+✅ Definition
+
+Symbol is a JavaScript primitive type.
+
+✅ It is used to create unique hidden fields inside objects.
+
+📌 Because: Symbol properties won’t be easily accessed in loops, so they help in encapsulation.
+
+✅ Example (Corrected formatting)
+<script>
+  var id = Symbol();
+  var product = {
+    [id]: 1,
+    name: "TV",
+    price: 45000
+  };
+
+  for (var property in product) {
+    document.write(property + "<br>");
+  }
+
+  document.write(product[id]);
+</script>
+
+
+✅ Output:
+
+for loop prints: name, price
+
+symbol field doesn’t print
+
+but can be accessed using: product[id]
+
+✅ Summary (Quick Revision)
+
+{ } → React data binding
+
+${ } → JavaScript string template binding
+
+useState() → create + update state
+
+useEffect() → mount/unmount + side effects
+
+booleans can’t display directly (must use condition)
+
+toLocaleString() best for currency display in React
