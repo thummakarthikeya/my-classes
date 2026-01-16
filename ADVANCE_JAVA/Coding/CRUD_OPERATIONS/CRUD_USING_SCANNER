@@ -1,0 +1,146 @@
+package com.pack1;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Statement;
+
+public class JDBCPro4 {
+	Connection conn;
+	Statement stmt;
+	String driver = "oracle.jdbc.OracleDriver";
+	String dbUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String dbName = "sainit";
+	String dbPwd = "sainit";
+	String sqlQuery = null;
+	
+	public Connection connect() {
+		IO.println("Trying to connect with database");
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(dbUrl, dbName, dbPwd);
+			IO.println("Database connected successfully...\n");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return conn;
+	}
+	public void getEmpData() {
+		IO.println("------- Employee Deatils ---------\n");
+		sqlQuery = "select * from employee";
+		try {
+			conn = connect();
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sqlQuery);
+			while(rs.next()) {
+				IO.println(rs.getString(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.getInt(4)+"\t"+rs.getString(5));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void insertEmpData() {
+		String id = IO.readln("Enter emp id : ");
+		String fname = IO.readln("Enter emp first name :");
+		String lname = IO.readln("Enter emp last name : ");
+		int sal = Integer.parseInt(IO.readln("Enter emp salary : "));
+		String address = IO.readln("Enter emp adress : ");
+		sqlQuery = "insert into employee values('"+id+"','"+fname+"','"+lname+"',"+sal+",'"+address+"')"; 
+		try {
+			conn = connect();
+			stmt = conn.createStatement();
+			int rowCount = stmt.executeUpdate(sqlQuery);
+			if(rowCount==0) {
+				IO.println("Data is not inserted");
+			}else {
+				IO.println(rowCount+" row is inserted");
+				getEmpData();
+			}
+		}catch(SQLIntegrityConstraintViolationException e) {
+			IO.println("Duplicate eid's are not allowed \n");
+		}catch(Exception e) {
+			e.printStackTrace();		
+		}
+	}
+	public void getSpecificEmpData() {
+		int count = 0;
+		String id = IO.readln("Enter emp id to search : ");
+		sqlQuery = "select * from employee where eid="+id;
+		try {
+			conn = connect();
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sqlQuery);
+			while(rs.next()) {
+				IO.println(rs.getString(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.getInt(4)+"\t"+rs.getString(5));
+				count++;
+			}
+			if(count==0) {
+				IO.println("No employee is present in the table with eid = "+id);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void deleteEmpData() {
+		String id = IO.readln("Enter emp id to delete : ");
+		sqlQuery = "delete from employee where eid="+id;
+		try {
+			conn = connect();
+			stmt = conn.createStatement();
+			int rowCount = stmt.executeUpdate(sqlQuery);
+			if(rowCount == 0) {
+				IO.println("No employee is present in the table with eid = "+id);
+			}else {
+				IO.println("Employee deleted successfully...\n");
+				getEmpData();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void updateEmpData() {
+		String id = IO.readln("Enter emp id to update : ");
+		int sal = Integer.parseInt(IO.readln("Enter new salary to update : "));
+		sqlQuery = "update employee set esal="+sal+" where eid="+id;
+		try {
+			conn = connect();
+			stmt = conn.createStatement();
+			int rowCount = stmt.executeUpdate(sqlQuery);
+			if(rowCount==0) {
+				IO.println("No employee is present in the table with eid = "+id);
+			}else {
+				IO.println("Employee updated successfully...\n");
+				getEmpData();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) {
+		JDBCPro4 obj = new JDBCPro4();
+		while(true) {
+			IO.println("\nSelect Operation from below : ");
+			IO.println("1) Dsiplay all Employees Details"
+					+"\n2) Insert an employee into table"
+					+"\n3) Display specific employee details"
+					+"\n4) Delete an employee from table"
+					+"\n5) Update an employee salary"
+					+"\n6) Exit the App");
+			int choice =  Integer.parseInt(IO.readln("\nChoose your operation : "));
+			switch(choice) {
+				case 1-> obj.getEmpData();
+				case 2-> obj.insertEmpData();
+				case 3-> obj.getSpecificEmpData();
+				case 4-> obj.deleteEmpData();
+				case 5-> obj.updateEmpData();
+				case 6-> {
+					IO.println("Thank you, Visit Again!");
+					System.exit(0);
+				}
+				default -> IO.println("\nWrong selection! Plese select correct operation...");
+			}
+		}
+	}
+
+}
