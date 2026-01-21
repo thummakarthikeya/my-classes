@@ -1,0 +1,41 @@
+Program: 1
+----------------
+Write a Program in Java to Perform Serialization and De-serialization
+operation on ArrayList Object.
+Take a BLC class Student
+Instance variables
+studentId – private – Integer
+studentName – private – String
+studentFees – private – Double
+dateOfAdmission – private – LocalDate (java.time)
+Take a parameterized constructor to initialize the instance variables
+Take a Method getStudentObject()
+Method Name - getStudentObject()
+Parameter - No Parameter
+Access Modifier - public and static
+Return type - Student
+This method should take the Student data from client, create and 
+return Student object from this method.
+
+Override toString() method to print Student class properties or 
+variables.
+Take an ELC class StoreObject
+Inside the main method create a for loop which will read the Student 
+object with user choice and Store the Student object to a file called 
+Student.txt
+Take another ELC class RetrieveObject
+This class will retrieve the Student Object from file and print the 
+Student information data.
+
+Program: 2
+----------------
+Write a Java program to convert Array to List.
+A BLC class called ArrayToList is given to you.
+Add a static method: convertToList(String[] inputArray) : This method 
+takes an array of strings as an argument. It should convert the given 
+array to a list of Strings and return this list. 
+Note that the length of the list must be the same as that of the array. 
+Return null for errors a null array or an empty list for an empty 
+array.
+An ELC Class called Tester with the main method is given to you. Use 
+this class to test your solution
