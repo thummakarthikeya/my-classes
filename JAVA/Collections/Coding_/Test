@@ -1,0 +1,176 @@
+1. HashMapIterateandSearchKey
+Easy
+100 points
+• 130 min suggested
+Problem Description
+1) Write a program to iterate keys & values of HashMap and also check given key exist or not? if exist then display the value of given key.
+
+Examples
+Example 1
+Input:
+Enter key to search:
+102
+Output:
+HashMap Elements:
+Key: 101, Value: Java
+Key: 102, Value: Python
+Key: 103, Value: C++
+
+Key found!
+Value of key 102 is: Python
+Explanation:
+HashMap stores data in the form of key–value pairs. entrySet() is used to iterate both keys and values together. containsKey() checks whether a specific key exists in the HashMap. If the key is found, get(key) is used to retrieve the value of that key.
+
+
+
+import java.util.*;
+
+public class Test{
+    public static void main(String args[]){
+        
+        HashMap <Integer,String> map = new HashMap<>();
+
+        map.put(101,"Java");
+        map.put(102,"Python");
+        map.put(103,"C++");
+
+        int num = Integer.parseInt(IO.readln());
+        IO.println("HashMap Elements:");
+        map.forEach((k,v) -> IO.println("Key: "+ k+", Value: "+v));
+
+        IO.println(" ");
+        map.forEach((k,v) ->{
+            if(num == k){
+                IO.println("Key found!"); 
+                IO.println("Value of key "+k+ " is: "+v);  
+            }
+
+        } 
+        );
+
+
+    }
+}
+
+
+
+
+==========================================================================================================================================================
+
+
+
+2. FindingMiddleElementInALinkedList
+Easy
+100 points
+• 130 min suggested
+Problem Description
+Scenario:
+A retail company maintains its product catalog using a linked list data structure. The management needs a system to quickly identify the "middle product" in their catalog for various business operations such as:
+
+Inventory balancing - Middle product helps in stock distribution planning
+
+Promotional campaigns - Middle product can be featured in marketing
+
+Pricing analysis - Middle position products often represent average-priced items
+
+Catalog reorganization - Understanding the center point for restructuring
+
+Examples
+Example 1
+Input:
+How many products would you like to add? 1
+
+--- Product 1 ---
+Enter Product ID: S001
+Enter Product Name: Tablet
+Enter Price: 599.99
+Output:
+=== YOUR PRODUCT CATALOG ===
+Middle Product:
+Product [id=S001, name=Tablet, price=500.0]
+Explanation:
+Given a linked list containing product information (ID, Name, Price), write a program to find and display the middle product. The program should: Accept product details from the user Store them in a singly linked list Display all products Find the middle product efficiently Handle edge cases (empty list, single product, etc.)
+
+
+
+
+import java.util.*;
+
+public class Test{
+    public static void main(String args[]){
+        int num = Integer.parseInt(IO.readln());
+        if(num == 0){
+            IO.println("X Catalog is empty");
+            System.exit(0);
+        }
+        LinkedList<Inventory> list = new LinkedList<>();
+        for(int i=0; i<num; i++){
+            String id =IO.readln();
+            String name  = IO.readln();
+            double price = Double.parseDouble(IO.readln());
+            //float price = Float.parseFloat(IO.readln());
+            list.add(new Inventory(id,name,price));
+
+        }
+        IO.println("=== YOUR PRODUCT CATALOG ===");
+        
+        
+        
+       
+            IO.println(list.get(num/2));
+        
+        
+
+    }
+}
+
+
+ record Inventory(String id, String name, double price){
+
+}
+
+
+==========================================================================================================================================================
+
+
+3. EmployeeSortAndArrayConvert
+Easy
+100 points
+• 130 min suggested
+Problem Description
+You are required to create an Employee Management System in Java that performs the following operations:
+
+Read employee details from user input (ID, Name, Salary)
+
+Store employees in an ArrayList
+
+Sort the employees in ascending order based on Employee ID(By using Comparable<Employee>)
+
+Convert the sorted ArrayList to an Object Array
+
+Display the original list, sorted list, and converted array
+
+Examples
+Example 1
+Input:
+Enter number of employees: 1
+
+Enter details for Employee 1:
+Enter ID: 999
+Enter Name: Sarah
+Enter Salary: 99999.99
+Output:
+=== Original Employee List ===
+ID: 999, Name: Sarah, Salary: $99999.99
+
+=== Sorted Employee List (by ID) ===
+ID: 999, Name: Sarah, Salary: $99999.99
+
+=== Converted Object Array ===
+ID: 999, Name: Sarah, Salary: $99999.99
+Explanation:
+Requirements: Create an Employee class with: Private fields: id (int), name (String), salary (double) A constructor to initialize these fields Getter methods for all fields Implement Comparable<Employee> interface to enable sorting by ID Override toString() method for proper display Sort using Collections.sort() Convert to Object array using toArray()
+
+
+
+
