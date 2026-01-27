@@ -1,0 +1,443 @@
+Q1) Find the output
+
+public class HashMapInternals 
+{
+	public static void main(String[] args)
+	{
+		Map<String,String> map = new HashMap<>();
+		map.put("Ravi","Ampt");
+		map.put(new String("Ravi"),"Hyd");
+
+		System.out.println(map);
+        }
+}
+
+
+Q2) Find the output
+
+        public class BufferTest
+	{
+	   public static void main(String [] args)
+	   {
+	        Integer i1 = 128;
+		Integer i2 = 128;		
+		System.out.println(i1==i2);
+		System.out.println(i1.equals(i2));
+	    }
+	 }
+
+Q3) Find the output
+
+        public class BufferTest
+	{
+	   public static void main(String [] args)
+	   {
+	        Map<Integer,String> map = new HashMap<>();
+		map.put(128,"Ampt");
+		map.put(new Integer(128),"Hyd");
+		System.out.println(map.size());
+	    }
+	 }
+
+
+Q4) Find the output
+
+public class CollectionExample 
+{
+   public static void main(String[] args) 
+     {
+	HashMap hash = new HashMap<>();
+	hash.put("nit", 500);
+	hash.put("info", 644);
+	hash.put("tech", "google");
+	System.out.println(hash.get("tech"));
+	System.out.println(hash.get("google"));
+	System.out.println(hash.getOrDefault("nit", "Technology"));
+	System.out.println(hash.get("info"));
+     }
+}
+
+Q5) Find the output
+
+public class CollectionExample 
+{
+   public static void main(String[] args) 
+     {
+	HashMap hash = new HashMap<>();
+	hash.put("nit", 500);
+	hash.put("info", 644);
+	hash.put("tech", "google");
+	System.out.println(hash.get("tech"));
+	System.out.println(hash.get("google"));
+	System.out.println(hash.getOrDefault("nit", "Technology"));
+	System.out.println(hash.get("info"));
+     }
+}
+
+Q6) Find the output
+
+public class HashMapExample 
+{
+   public static void main(String[] args) 
+     {
+	
+        Map<String, Integer> map = new HashMap<>();
+	map.put("apple", 1);
+	map.put("banana", 2);
+	map.put("orange", 3);
+
+	map.replaceAll((k, v) -> v * 2);
+
+	System.out.println(map);
+     }
+}
+
+Q7) Find the output
+
+public class Participate 
+{
+  public static void main(String args[]) {
+	        HashMap participant = new HashMap();
+	        participant.put(1 + 1, "Dhoni");
+	        participant.put(1 + 1, "Kohli");
+	        participant.put(2 + 1, "Rohit");
+	        Set set = participant.entrySet();
+	        Iterator itr = set.iterator();
+	        while (itr.hasNext()) {
+	            Map.Entry m = (Entry) itr.next();
+	            System.out.print(m.getKey() + " " + m.getValue()+" ");
+	        }
+}
+
+Q8) Find the output
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Test
+{
+      public static void main(String[] args) 
+      {
+           Map<ToDos, String> m = new HashMap<ToDos, String>();
+           ToDos t1 = new ToDos("Monday");
+           ToDos t2 = new ToDos("Monday");
+           ToDos t3 = new ToDos("Tuesday");
+           m.put(t1, "doLaundry");
+           m.put(t2, "payBills");
+           m.put(t3, "cleanAttic");
+           System.out.println(m.size());
+     }
+}
+
+class ToDos 
+{
+      String day;
+
+      ToDos(String d) 
+      {
+           day = d;
+      }
+
+      public boolean equals(Object o) 
+      {
+            return ((ToDos) o).day == this.day;
+      }
+
+	  //Comment hashcode method and see and analyse the result 
+      public int hashCode() { return 9; }
+}
+
+
+Q9) Find the output
+
+public class Test
+{
+      public static void main(String[] args)
+      {
+           NavigableMap<Integer, String> map = new TreeMap<Integer, String>();
+           map.firstKey();
+           System.out.println(map.size());
+      }
+}
+
+10) Find the output
+
+public class Test
+{
+      public static void main(String[] args) 
+      {
+           Map<String, Integer> map = new HashMap<String, Integer>();
+           map.put("T", 1);
+           map.put("M", 2);
+           map.keySet().add("A",3);
+           System.out.println(map.size());
+     }
+}
+
+11) Find the output
+
+import java.util.*;
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        Map<String, String> map = new HashMap<>();
+        map.put(null, "A");
+        map.put("One", "B");
+        map.put(null, "C");
+        System.out.println(map.get(null));
+    }
+}
+
+12) Find the output
+import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("Java", 1);
+        map.put("Java", 2);
+        map.put("Java", 3);
+        System.out.println(map.size());
+    }
+}
+
+
+13) Find the output 
+import java.util.*;
+
+public class KeyTest 
+{
+    public static void main(String[] args) 
+    {
+        Map<String, String> map = new HashMap<>();
+        String a = new String("Test");
+        String b = new String("Test");
+        map.put(a, "Value1");
+        map.put(b, "Value2");
+        System.out.println(map.size());
+    }
+}
+
+
+14) Find the output
+import java.util.*;
+
+public class KeyEquality 
+{
+    public static void main(String[] args) 
+    {
+        HashMap<Employee, String> map = new HashMap<>();
+        map.put(new Employee(101), "Scott");
+        map.put(new Employee(101), "Smith");
+        System.out.println(map.size());
+    }
+}
+
+class Employee 
+{
+    int id;
+
+    Employee(int id) 
+    {
+        this.id = id;
+    }
+}
+
+15) Find the output
+import java.util.*;
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        Map<String, String> map = null;
+        map.put("A", "Apple");
+        System.out.println(map.size());
+    }
+}
+
+
+16) What does computeIfAbsent() do? 
+A) Computes a new value for a key only if the key is already present.
+B) Computes and inserts a value only if the key is absent in the map.
+C) Removes the key if it is absent.
+D) Throws an exception if the key is absent.
+
+Answer: B) Computes and inserts a value only if the key is absent in the map.  [ default V computeIfAbsent(K key, Function<T,R> mapper) ]
+
+
+
+17) Find the output
+import java.util.*;
+
+public class TestCompute 
+{
+    public static void main(String[] args) 
+    {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("A", 1);
+        map.computeIfAbsent("A", k -> 5);
+        map.computeIfAbsent("B", k -> 10);
+        System.out.println(map);
+    }
+}
+
+18) Find the output
+import java.util.*;
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        Map<String, String> map = new HashMap<>();
+        map.put("key1", "value1");
+        map.computeIfAbsent("key1", k -> "newValue");
+        System.out.println(map.get("key1"));
+    }
+}
+
+
+19) Find the output
+import java.util.*;
+
+public class Test 
+{
+    public static void main(String[] args)
+    {
+        Map<String, Integer> map = new HashMap<>();
+        System.out.println(map.computeIfAbsent("a", k -> 1));
+        System.out.println(map.computeIfAbsent("a", k -> 2));
+    }
+}
+
+20) Find the output
+
+import java.util.*;
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        Map<Integer, String> map = new HashMap<>();
+        map.computeIfAbsent(1, k -> null);
+        System.out.println(map.containsKey(1));
+    }
+}
+
+21) Find the output
+package com.ravi.basic;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Test50 
+{ 
+	public static void main(String[] args) 
+	{ 
+	Map<String, List<String>> map = new HashMap<>();
+        map.computeIfAbsent("fruits", k -> new ArrayList<>()).add("apple");
+        map.computeIfAbsent("fruits", k -> new ArrayList<>()).add("banana");
+        System.out.println(map.get("fruits"));
+	} 
+	
+}
+
+22) Find the output
+
+package com.ravi.basic;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Test51
+{ 
+	public static void main(String[] args) 
+	{ 
+		 Map<Character, List<String>> map = new HashMap<>();
+
+	        String[] cities = {"Hyderabad", "Ajmer", "Haryana", "Ahmedabad", "Haridwar"};
+
+	        for (String city : cities) 
+	        {
+	            char firstChar = city.charAt(0);
+	            map.computeIfAbsent(firstChar, k -> new ArrayList<>()).add(city);
+	        }
+
+	        System.out.println(map);
+	} 
+	
+}
+
+23) Find the output
+package com.ravi.basic;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Test52 
+{ 
+	public static void main(String[] args) 
+	{ 
+		
+		        Map<Integer, List<String>> map = new HashMap<>();
+
+		        String[] words = {"cat", "dog", "bird", "fish", "ant"};
+
+		        for (String word : words) {
+		            int len = word.length();
+		            map.computeIfAbsent(len, k -> new ArrayList<>()).add(word);
+		        }
+
+		        System.out.println(map);
+		
+	} 
+	
+}
+
+24) Find the output
+
+package com.ravi.basic;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Test50 
+{ 
+	public static void main(String[] args) 
+	{ 
+		
+		Map<Integer, List<String>> map = new HashMap<>();
+        String[] words = {"hi", "yes", "no", "tree"};
+
+        for (String word : words) {
+            map.computeIfAbsent(word.length(), k -> new ArrayList<>()).add(word);
+        }
+
+        System.out.println(map.get(2));
+		
+	} 
+	
+}
+
+
+25) Find the Output
+import java.util.*;
+
+public class Test5 
+{
+    public static void main(String[] args) 
+    {
+        Map<String, List<String>> map = new HashMap<>();
+        map.computeIfAbsent("items", k -> null).add("value");
+    }
+}
