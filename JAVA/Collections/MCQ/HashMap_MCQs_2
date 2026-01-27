@@ -12,6 +12,8 @@ public class HashMapInternals
         }
 }
 
+{Ravi=Hyd}
+
 
 Q2) Find the output
 
@@ -26,6 +28,10 @@ Q2) Find the output
 	    }
 	 }
 
+
+false
+true
+
 Q3) Find the output
 
         public class BufferTest
@@ -38,6 +44,8 @@ Q3) Find the output
 		System.out.println(map.size());
 	    }
 	 }
+warning
+1
 
 
 Q4) Find the output
@@ -56,6 +64,12 @@ public class CollectionExample
 	System.out.println(hash.get("info"));
      }
 }
+
+4 warnings
+google
+null
+500
+644
 
 Q5) Find the output
 
