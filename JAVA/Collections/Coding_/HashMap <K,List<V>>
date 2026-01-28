@@ -1,0 +1,67 @@
+Create a Scenario based program on Course Registration System using HashMap where multiple students can be added in a particular course.
+[See the Test cases].
+
+In the HashMap, Course Name will be the HashMap key, where as List<String>
+will become HashMap value.
+
+Coding Requirements :
+---------------------
+Take an ELC class CourseRegistration with main method.
+
+In this main method create one HashMap object which takes Course name(String) as a key and Students name (List<String>) as a value.
+
+Create Scanner class object to perform various operation on CourseRegistration system by using switch case.
+
+
+--- Course Registration Menu ---
+1. Register student to course [use V computeIfAbsent(key, Function<T,R>)]
+2. Remove student from course [use V computeIfPresent(key, BiFunction<T,U,R>)]
+3. View course-wise student list
+4. Exit
+Enter your choice:  
+
+
+Test Cases for Output :
+-----------------------
+Test Case 1 :
+-------------
+--- Course Registration Menu ---
+1. Register student to course
+2. Remove student from course
+3. View course-wise student list
+4. Exit
+Enter your choice: 1
+Enter course name: Java
+Enter student name: Raj
+Raj registered to Java
+
+--- Course Registration Menu ---
+1. Register student to course
+2. View course-wise student list
+3. Remove student from course
+4. Exit
+Enter your choice: 2
+
+ Course → Students List:
+Java → [Ravi, Ankita, Sneha]
+HTML → [Raj, Rohit]
+Python → [Scott, Smith]
+
+--- Course Registration Menu ---
+1. Register student to course
+2. View course-wise student list
+3. Remove student from course
+4. Exit
+Enter your choice: 3
+Enter course name: HTML
+Enter student name to remove: Raj
+Raj : has removed from HTML
+
+
+--- Course Registration Menu ---
+1. Register student to course
+2. View course-wise student list
+3. Remove student from course
+4. Exit
+Enter your choice: 4
+Exiting Course Registration System.
