@@ -1,0 +1,161 @@
+1. EmployeeListSorter
+Easy
+100 points
+• 125 min suggested
+Problem Description
+2) Write a java program to create an object of ArrayList<Emp> class, add five employees details(employee numbers, names & salaries)
+& display employees details based on employees names in alphabetical order.
+Note: Use Comparator interface or Comparable interface to sort employees names.
+
+Examples
+Example 1
+Input:
+101 Ravi 45000
+102 Anu 30000
+103 Kiran 38000
+104 Bala 50000
+105 Chitra 41000
+Output:
+Employees in Alphabetical Order of Names:
+102  Anu  30000.0
+104  Bala  50000.0
+105  Chitra  41000.0
+103  Kiran  38000.0
+101  Ravi  45000.0
+
+
+import java.util.*;
+import java.util.Collections;
+
+public class Test{
+    public static void main(String args[]){
+        List<Employee> emp = new ArrayList<>();
+        for(int i=0; i<5; i++){
+            int num = Integer.parseInt(IO.readln());
+            String names = IO.readln();
+            double sal = Double.parseDouble(IO.readln());
+            emp.add(new Employee(num,names, sal));
+        }
+        // emp.add(new Employee(102,"Anu", 30000));
+        // emp.add(new Employee(103,"Kiran", 38000));
+        // emp.add(new Employee(104,"Bala", 50000));
+        // emp.add(new Employee(105,"Chitra", 41000)); 
+        IO.println("Employees in Alphabetical Order of Names:");
+
+        Collections.sort(emp,((f1,f2)-> f1.name().compareTo(f2.name())));
+
+        emp.forEach(n -> IO.println(n.id()+"  "+n.name()+"  "+n.salary()));
+    }
+}
+
+record Employee(int id, String name, double salary){}
+
+
+
+
+
+==========================================================================================================================================================
+
+
+
+
+
+2. TreeMapEmployeeSalaryUpdate
+Easy
+100 points
+• 125 min suggested
+Problem Description
+1) Write a java program to create an object of TreeMap<String, Float> class, add five employees details(names & salaries),
+iterate employees details by using ListIterator interface to add 5000.00 bonus salary to every employee & display latest data. 
+Note: Use Map.Entry to extract the data while iterating.
+
+Examples
+Example 1
+Input:
+John 30000
+Ravi 28000
+Meera 35000
+Asha 27000
+Kiran 40000
+Output:
+Updated Employee Details (After Bonus):
+Name: Asha, Salary: 32000.0
+Name: John, Salary: 35000.0
+Name: Kiran, Salary: 45000.0
+Name: Meera, Salary: 40000.0
+Name: Ravi, Salary: 33000.0
+
+
+
+import java.util.*;
+public class Test{
+    public static void main(String args[]){
+        TreeMap<String,Double> emp = new TreeMap<>();
+/*
+        emp.put("John",30000f);
+        emp.put("Ravi",28000f);
+        emp.put("Meera",35000f);
+        emp.put("Asha",27000f);
+        emp.put("Kiran",40000f);
+
+        */
+
+        for(int i=0; i<5; i++){
+            String name = IO.readln();
+            double salary = Double.parseDouble(IO.readln());
+            emp.put(name,salary);
+        }
+
+        IO.println("Updated Employee Details (After Bonus):");
+        emp.forEach((k,v) -> IO.println("Name: "+k+", Salary: "+(v+5000)));
+
+    }
+}
+
+
+
+==========================================================================================================================================================
+
+
+3. IntegerEvenFilterUsingStreams
+Easy
+100 points
+• 125 min suggested
+Problem Description
+3) Write a java program to create an object of ArrayList<Integer> class, add 10 integers, filter the even numbers by using filter() method
+of stream api & create another ArrayList<Integer> object which contains only even numbers.
+Note: Use collect() method of stream api to create another ArrayList<Integer> object.
+
+Examples
+Example 1
+Input:
+1 2 3 4 5 6 7 8 9 10
+Output:
+Original Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Even Numbers: [2, 4, 6, 8, 10]
+
+
+import java.util.*;
+import java.util.Collections;
+
+public class Test{
+    public static void main(String args[]){
+        List<Integer> emp = new ArrayList<>();
+        for(int i=0; i<10; i++){
+            int num = Integer.parseInt(IO.readln());
+            
+            emp.add(num);
+        }
+        IO.print("Original Numbers: "+emp);
+        
+IO.println();
+        IO.print("Even Numbers: ");
+        
+        
+         IO.println(emp.stream().filter(n -> n%2==0).toList());
+                
+      
+    }
+}
+
+
