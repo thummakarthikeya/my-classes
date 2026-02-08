@@ -1,6 +1,6 @@
 
 
-this is naresh-it platforms------
+this is naresh-it platforms-------
 
 https://classroom.coderide.in/student/practice/1
 
