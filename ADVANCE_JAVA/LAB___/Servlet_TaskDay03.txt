@@ -1,0 +1,138 @@
+TASK 1: Multiplication Table Using Servlet
+
+A web application allows the user to enter a number in an HTML form.
+The servlet receives the number and displays its multiplication table.
+
+Accept user input from HTML form
+
+Apply looping logic
+
+Display repeated output
+
+Create an HTML form with a number input field
+
+Submit the form to a servlet
+
+Read the number in servlet
+
+Use a loop to generate table
+
+Display result in browser
+
+📤 Expected Output
+Multiplication Table of 5
+5 x 1 = 5
+5 x 2 = 10
+...
+5 x 10 = 50
+
+TASK 2: Even or Odd Check Using Servlet
+Scenario
+
+The user enters a number in a form.
+The servlet checks whether the number is even or odd and displays the result.
+
+Read input value
+
+Apply conditional logic
+
+Display result
+
+Task Steps
+
+Create HTML form to accept a number
+
+Send input to servlet
+
+Servlet checks divisibility by 2
+
+Display whether number is Even or Odd
+
+📤 Expected Output
+The number 8 is Even
+
+TASK 3: Sum of Two Numbers Using Servlet
+📘 Scenario
+
+User enters two numbers using an HTML form.
+The servlet calculates and displays their sum.
+
+🎯 Objective
+
+Accept multiple inputs
+
+Perform arithmetic operation
+
+Display calculated result
+
+📝 Task Steps
+
+Create HTML form with two input fields
+
+Submit form to servlet
+
+Read both numbers
+
+Add the values
+
+Display sum
+
+📤 Expected Output
+Sum of 10 and 20 is 30
+
+🟢 TASK 4: Factorial of a Number Using Servlet
+📘 Scenario
+
+User enters a number in a form.
+Servlet calculates factorial using loop logic.
+
+🎯 Objective
+
+Apply loop logic
+
+Perform multiplication operation
+
+📝 Task Steps
+
+Accept number from user
+
+Servlet calculates factorial
+
+Display factorial result
+
+📤 Expected Output
+Factorial of 5 is 120
+
+🟢 TASK 5: Login Validation Using Servlet
+📘 Scenario
+
+A login form accepts username and password.
+Servlet validates credentials and displays success or failure message.
+
+🎯 Objective
+
+Read form data
+
+Validate input
+
+Display appropriate message
+
+📝 Task Steps
+
+Create login HTML form
+
+Submit form to servlet
+
+Compare input with predefined values like
+username =Admin
+password =Admin@123
+
+Display login status
+
+📤 Expected Output
+Login Successful
+
+
+or
+
+Login Failed
