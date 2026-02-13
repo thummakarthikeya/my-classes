@@ -1,0 +1,282 @@
+                           COLLECTION FRAMEWORK
+                           ====================
+
+Collection
+
+Interview Questions:
+1. What is Collection Framework? advantages of the Collection Framework in Java
+2. Describe the Collection hierarchy in Java.
+3. List down the primary interfaces provided by Java Collections Framework?
+4. Why Collection doesn’t extend the Cloneable and Serializable interfaces?
+5. what is Generic Collection?
+6. what is the difference between Collection and Array?
+
+List Interface
+
+Interview Questions:
+1.what is the use of the List interface What are the key characteristics of a List in Java?
+2.Can a List contain duplicate elements?
+3.What are the main classes that implement the List interface?
+4. How does List maintain insertion order?
+
+ArrayList
+
+Interview Questions:
+1. What is ArrayList in Java? what are the various methods provided by it?
+2. How would you convert an ArrayList to Array and an Array to ArrayList?
+3. How does ArrayList work internally in Java, and how does it grow dynamically when elements are
+added?
+4. what is The Intial capacity of the ArrayList and default capacity of the ArrayList?
+5. Can you store null values in an ArrayList?
+6. How can you make an ArrayList immutable?
+7. Is ArrayList synchronized in Java? If not, how can you make an ArrayList synchronized?
+8. What are the real-time use cases of ArrayList in Java, and when should it be used?
+9. What are the advantages and disadvantages of Arraylist?
+10. How many constructors are present in ArrayList?
+
+LinkedList
+
+Interview Questions:
+1. What is a LinkedList in Java, and how many types of linked lists does Java support? Explain with
+examples.
+2.How does LinkedList work internally?
+3. What data structure is used to implement LinkedList?
+4.What are the advantages and disadvantages of using LinkedList?
+5.please example the when use in real time LinkedList examples?
+6. Is LinkedList synchronized in Java? If not, how can you make an LinkedList synchronized?
+7. How many constructors are present in LinkedList?
+
+Vectors
+
+Interview Questions:
+1. what is a Vector in Java?
+2. How does vector work internally ?
+3. Why is Vector considered legacy?
+4. Vector is a synchronized are not?
+5. what is The Intial capacity of the Vector and default capacity of the Vector?
+6. Can you store null values in an Vector?
+7. How many constructors are present in Vector?
+
+Stack
+
+Interview Questions:
+1. What is the Stack class in Java?
+2. How is Stack implemented internally?
+3. What are the methods of the Stack class (push, pop, peek, etc.)?
+4. How many constructors are present in Vector?
+
+Set Interface
+
+Interview Questions:
+1.What is the Set interface in Java Collections Framework?
+2.Why does Set not allow duplicate elements?
+3.How does set work internally?
+4.What are the advantages and disadvantages of using set?
+5.What are the main classes that implement the set interface?
+6.Can you store null values in a set?
+
+HashSet
+
+Interview Questions:
+1. What is HashSet in Java?
+2. How does HashSet ensure uniqueness of elements?
+3. Does HashSet maintain insertion order?
+4. What is the internal data structure used by HashSet?
+5. Can HashSet store null values? If yes, how many?
+6. Can HashSet store duplicate values? If not, what happens if we try?
+7. Why does HashSet use hashCode() and equals() methods?
+
+LinkedHashset
+
+Interview Questions:
+1. What is LinkedHashSet in Java?
+2. How does LinkedHashSet differ from HashSet?
+3. What internal data structure does LinkedHashSet use?
+4. Does LinkedHashSet maintain insertion order?
+5. Can LinkedHashSet store null values?
+
+SortedSet
+
+Interview Questions:
+1. What is SortedSet in Java?
+2. Which class commonly implements SortedSet?
+3. Can SortedSet store null values? Why or why not?
+4. What methods are introduced in SortedSet that are not in Set?
+
+Treeset
+
+Interview Questions:
+1. What is TreeSet in Java?
+2. Does TreeSet maintain any specific order? Which order?
+3. Which data structure is used internally by TreeSet?
+4. Can TreeSet store null values? Why or why not?
+5. What is the default sorting mechanism used by TreeSet?
+
+Queue Interface
+
+Interview Questions:
+1. What is the Queue interface in Java?
+2. Does Queue allow null elements? Explain.
+3. What are the common Queue implementations?
+4. On which principle does a Queue work in Java?
+
+PriorityQueue
+
+Interview Questions:
+1. What is PriorityQueue in Java?
+2. Which data structure is used internally by PriorityQueue?
+3. Does PriorityQueue maintain insertion order?
+4. What is the default order used in PriorityQueue?
+5. Does PriorityQueue allow null,duplicate elements?
+6. How does PriorityQueue differ from Queue?
+
+Deque
+
+Interview Questions:
+1. What is a Deque in Java and what does it stand for?
+2. How is Deque different from a Queue?
+3. What type of data structure behavior does Deque support?
+4. Can Deque be used as both a stack and a queue?
+5. Does Deque allow duplicate elements?
+6. Does Deque allow null values? If not, why?
+
+ArrayDeque
+
+Interview Questions:
+1. What is ArrayDeque in Java?
+2. Which interfaces are implemented by ArrayDeque?
+3. How does ArrayDeque differ from a standard Queue?
+4. Can ArrayDeque be used as both a Queue and a Stack?
+5. Does ArrayDeque allow null, duplicate values? Why or why not?
+6. Which underlying data structure does ArrayDeque use?
+
+Map Interface
+
+Interview Questions:
+1. What is the Map interface in Java?
+2. How is Map different from List,Set and Queue ?
+3. What are the main implementations of Map?
+4. Can Map store duplicate keys or values?
+5. What are the commonly used Map methods (put, get, remove, containsKey, containsValue)?
+6. Can a Map store null keys and null values? Which implementations allow it?
+7. What is the difference between keySet(), values(), and entrySet() methods?
+
+HashMap
+
+Interview Questions:
+1. What is HashMap in Java?
+2. Which interfaces does HashMap implement?
+3. Can HashMap store null keys and null values? How many?
+4. Does HashMap allow duplicate keys or duplicate values?
+6. Does HashMap maintain insertion order?
+7. How do you iterate over a HashMap?
+8. How does HashMap store key-value pairs internally?
+9. How does HashMap handle collisions?
+10. What is the role of hashCode() and equals() in HashMap?
+
+LinkedHashmap
+
+Interview Questions:
+1. What is LinkedHashMap in Java?
+2. Which interfaces does LinkedHashMap implement?
+3. Can LinkedHashMap store null keys and null values? How many?
+4. Does LinkedHashMap maintain insertion order or sorted order?
+5. How do you iterate through a LinkedHashMap?
+6. How does LinkedHashMap handle collisions?
+
+SortedMapInterface
+
+Interview Questions:
+1. What is the SortedMap interface in Java?
+2. How is SortedMap different from Map?
+3. Which class commonly implements SortedMap?
+4. Does SortedMap allow null keys or null values?
+5. Does SortedMap maintain keys in natural order or insertion order?
+6. Can SortedMap store duplicate keys or values?
+7. What are the key methods of SortedMap?
+8. How does SortedMap maintain keys in sorted order?
+
+
+TreeMap
+Interview Questions:
+1. What is TreeMap in Java?
+2. Which interfaces does TreeMap implement?
+3. Does TreeMap allow null keys or null values?
+4. Does TreeMap allow duplicate keys or values?
+5. What is the natural ordering used by TreeMap?
+6. How do you iterate through a TreeMap?
+7. How does TreeMap maintain keys in sorted order internally?
+
+Concurrent Collections
+
+Interview Questions:
+1. What are Concurrent Collections in Java?
+2. Why do we need concurrent collections when we already have synchronized collections?
+3. What is the difference between HashMap and ConcurrentHashMap?
+4. What is the difference between Collections.synchronizedMap() and ConcurrentHashMap?
+5. What is the use of CopyOnWriteArrayList in Java?
+6. When should we prefer CopyOnWriteArrayList over ArrayList?
+7. How does CopyOnWriteArrayList achieve thread-safety internally
+
+Differences
+Interview Questions:
+1. Differentiate between Collection and Collections?
+2. Differentiate between Iterable and Iterator?
+3. Differentiate between an Array and an ArrayList?
+4. Differentiate between ArrayList and LinkedList?
+5. Differentiate between Comparable and Comparator?
+6. Differentiate between Set and Map?
+7.Differentiate between List and Set?
+8. Differentiate between List and Map?
+9. Differentiate between Queue and Stack?
+10.Differentiate between PriorityQueue and TreeSet?
+11.Differentiate between the Singly Linked List and Doubly Linked List?
+12.Differentiate between Iterator and Enumeration?
+13.Differentiate between HashMap and HashTable?
+14.Differentiate between HashSet and HashMap?
+15.Differentiate between Iterator and ListIterator?
+16.Differentiate between HashSet and TreeSet?
+17.Differentiate between Queue and Deque?
+18. Differentiate between HashMap and TreeMap?
+19. Differentiate between ArrayList and Vector?
+20. Differentiate between Fail-Fast Iterator and Fail-safe iterator?
+21. Differentiate between Iterator and Spliterator?
+22. Difference between WeakHashMap and IdentityHashMap?
+
+Programs :
+1) Write a Java program to remove duplicate elements from a List.
+2) Write a program to iterate a List using for loop, Iterator, and forEach.
+3) Write a program to find the maximum and minimum elements in a list of integers.
+4) Write a program to sort a list in ascending and descending order.
+5) Write a program to reverse a list using Collections.reverse() and manually without using it.
+6) Write a program to add, remove, and retrieve elements from both ends of a LinkedList.
+7) Write a program to compare insertion and retrieval performance between ArrayList and LinkedList.
+8) Write a program to demonstrate synchronization in a Vector.
+9) Write a program to iterate through a Vector using Enumeration.
+10) Write a program to check if a string has balanced parentheses using a Stack.
+11) Write a program to reverse a string using a Stack.
+12) Write a program to evaluate a postfix expression using a Stack.
+13) Implement a Queue using LinkedList and perform enqueue and dequeue operations.
+14) Write a program to find the first non-repeating character in a string using a Queue.
+15) Write a program to print elements of a PriorityQueue in natural order.
+16) Write a program to use a PriorityQueue with a custom comparator for descending order.
+17) Write a program to find the k largest elements in an array using a PriorityQueue.
+18) Demonstrate addFirst(), addLast(), removeFirst(), and removeLast() operations in a Deque.
+19) Implement a palindrome checker using a Deque.
+20) Write a program to remove duplicate elements from a list using a HashSet.
+21) Write a program to find union and intersection of two sets.
+22) Write a program to maintain insertion order while removing duplicates using a LinkedHashSet.
+23) Write a program to store and retrieve elements in sorted order using a TreeSet.
+24) Write a program to count the frequency of characters in a string using a HashMap.
+25) Write a program to find duplicate elements in an array using a HashMap.
+26) Write a program to iterate through a HashMap using entrySet(), keySet(), and values().
+27) Write a program to sort a HashMap by keys.
+28) Write a program to sort a HashMap by values.
+29) Write a program to store elements in sorted key order using a TreeMap.
+30) Write a program to use a custom comparator in a TreeMap for descending key order.
+31) Write a program to demonstrate thread-safe operations using a Hashtable.
+32) Write a program to check how null key and value behave in a Hashtable.
+33) Write a program to perform thread-safe operations using a ConcurrentHashMap.
+34) Write a program to sort a list of custom objects (like Employee) by name or salary using Comparator.
+35) Write a program to find the most frequently occurring element in a list using a Map.
+36) Write a program to convert one type of collection to another (e.g., List → Set, Set → Map, etc.).
