@@ -1,0 +1,55 @@
+=======java Mock Questions==========
+Note1:-**Know The Execution Flow Of Program/Code!
+Note2:-**Try to Learn Atleast one realTime Example[In realTimeProjects Where to use/When to yo use]!
+Note3:-**Learn Meathod Signatures[try to swapping the Keywords in]
+
+1)Is java A pure Object or Not?
+2)Is jvm platform InDependent or Dependant?If It yes/not[why]?
+3)What is heap Ans Static memory in java[how its working]?
+4)Scope of AcessModifiers in java?
+5)What is consrtuctor[rules/defination]?       
+      ->Differenc between Constructor And (concreate)Method?
+      ->Constructor Chaining?
+      ->What is Copy Consrtuctor in java?
+6)What is IS-A_relation And Has-A-relation And Their Types And explain Each Of them?
+7)did you know About GarbageCollector[Why,When,How,Where]?
+8)what are the dataTypes in java?
+9)What are the variables in java?
+10)did you about jvm Arechitecture?
+11)What is static Keyword in Java?[when,where,why]?
+        ->static block?
+        ->static method?
+12)can you override and Overloaded a static method/main method ?if not why/if yes [how,why]
+13)What is Encapsulation?
+14)What is Abstraction?
+15)Differnces between Interface And Abstract class?
+16)What JIT Complier[how JIT complier Boost up the Exuction of Program]?
+17)What Are Features of java And OOp's?
+18)How many ways to create objects?
+19)Advatanges OOp's?
+20)How to Achive Abstraction?
+21)What is Data Hiding?
+22)Wrapper Classes in java?
+        ->Boxing.
+        ->AutoBoxing.
+        ->UnBoxing.
+23)When the Objects are elegible for Gc[Garbage Collector]?
+24)How can you say A fully Encapusulated class?
+25)What is final keyWORD IN JAVA[where,when,why]?
+26)What is Polymorphisim
+      ->Static ploymorphisim
+      ->Dynamic polymorphisim
+27)Concepts:-
+     ->Coverient?
+     ->Sealed Class?[rules]
+28)Is Java Platform Independent or Dependent ?why
+
+====Techinical Coading=====
+1)Find First Three PrimeNumbers?
+2)Reverse of A number?
+3)sum of Digits of a Number?[4535]=>[4+5+3+5=17]
+==========second day mock=====
+1)controlStatements,gc,jvm ,methods And types-ways,complier And Jit compiler,method areas And diffrences
+
+
+=====Sql Questions=======
