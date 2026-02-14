@@ -1,7 +1,7 @@
 Encapsulation → Data Hiding <br>
-Abstraction → Hide Implementation
-Inheritance → Code Reuse (IS-A)
-Polymorphism → Many Forms
+Abstraction → Hide Implementation<br>
+Inheritance → Code Reuse (IS-A)<br>
+Polymorphism → Many Forms<br>
 
 ==================================================================================================================================================================
 Local variables & method calls → Stack Area
