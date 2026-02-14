@@ -1,4 +1,4 @@
-Encapsulation → Data Hiding
+Encapsulation → Data Hiding <br>
 Abstraction → Hide Implementation
 Inheritance → Code Reuse (IS-A)
 Polymorphism → Many Forms
