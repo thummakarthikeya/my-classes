@@ -1,3 +1,9 @@
+Encapsulation → Data Hiding
+Abstraction → Hide Implementation
+Inheritance → Code Reuse (IS-A)
+Polymorphism → Many Forms
+
+==================================================================================================================================================================
 Local variables & method calls → Stack Area
 
 Objects & instance variables → Heap Area
