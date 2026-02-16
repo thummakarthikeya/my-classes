@@ -1,0 +1,38 @@
+output ::: ******keya@gmail.com , ******7055 , ********1203
+
+
+
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        String email = "thummakarthikeya@gmail.com";
+        String phone = "7981737055";
+        String aadhaar = "356709401203";
+        
+        List <String> s = Arrays.asList("thummakarthikeya@gmail.com","7981737055","356709401203");
+        Main m = new Main();
+        s.forEach(n -> System.out.println(m.mask(n)));
+
+    }
+    
+    public String mask(String n){
+        if(n.contains("@")){
+            
+        String emailArr[] = n.split("@");
+        String username = emailArr[0];
+        String maskedEmail = "*******" +
+                username.substring(username.length()-4) +emailArr[1];
+        return(maskedEmail);
+        
+        
+        }else{
+            String pnum ="******" + n.substring(n.length()-4);
+            return(pnum);
+            
+        }
+    }
+}
