@@ -10,3 +10,5 @@ Day-5 https://youtu.be/6jhUCParfvQ
 Day-6 https://youtu.be/1GaDGy93FSE
 Day-7 https://youtu.be/Ce9bwLWZrx8
 Day-8 https://youtu.be/SVcXwWwWhP8
+
+https://us06web.zoom.us/w/84876324030?tk=noRUhaikJaSW7CZaWbAcAFevpDVuLasMrPA0Jl67snU.DQkAAAATwwXsvhZOcncxRVRZcVRkaUp1X3Y5Qnp2NGZRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&pwd=LqFjGML1MsKDrsabsiCDWGETqUkHvG.1#success
