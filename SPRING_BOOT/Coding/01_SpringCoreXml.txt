@@ -1,0 +1,61 @@
+Question 1: Weekend Planner – Spring Core (XML Configuration)
+===============================================================
+It's Saturday, and your app should print whether it's a weekend or a weekday. You have a DateService class with a method getDayOfWeek() that returns the current day.
+
+
+How would you configure a Spring Core application using XML, where the DateService bean automatically detects the day, and:
+
+Prints "It's the Weekend!" if it's Saturday or Sunday.
+
+Prints "It's a Weekday." otherwise.
+=========================================================================================================================================================================
+
+Question 2: Month-End Reminder – Spring Core (XML Configuration)
+====================================================================
+You’ve built a bean CalendarService with a method getDate() that returns the current day of the month.
+
+Using Spring Core (XML), write a scenario where:
+
+If it’s the 30th or 31st, print "Month is ending, please submit reports."
+
+Otherwise, print "Continue working as usual."
+==============================================================================================================
+Question 3: New Year Alert – Spring Core (XML Configuration)
+A YearService bean contains a method getMonth() that returns the current month name.
+
+Using Spring XML configuration:
+
+If the month is "January", print "Happy New Year!"
+
+If the month is "December", print "Get ready for the new year!"
+
+For all other months, print "Regular month."
+=========================================================================================================================
+Question 4: Daily Greeting Scheduler – Spring Core (XML Configuration)
+==================================================================
+A bean TimeService returns the current hour using getHour().
+
+Based on the system time:
+
+5 AM–11 AM → "Good Morning"
+
+12 PM–4 PM → "Good Afternoon"
+
+5 PM–8 PM → "Good Evening"
+
+Others → "Good Night"
+
+How would you implement this using Spring XML configuration and Java logic without custom input?
+------------------------------------------------------------------------------------------------------------
+
+Question 5: Weekend Email Scheduler – Spring Core (XML Configuration)
+=============================================================================
+You have a SchedulerService bean with a method getDay() returning the current day of the week.
+
+How would you configure your application so that:
+
+If it’s "Friday", print "Schedule weekly report email."
+
+If it’s "Monday", print "Check weekend system logs."
+
+Otherwise, print "Normal weekday operations."
