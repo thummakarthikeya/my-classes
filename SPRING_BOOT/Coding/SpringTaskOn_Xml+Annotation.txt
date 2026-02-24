@@ -1,0 +1,246 @@
+Task 1 — Vehicle Manufacturing & Service Management System
+==========================================================
+(Hybrid Injection — XML + Annotation + @ComponentScan)
+
+Objective
+Demonstrate hybrid dependency injection using constructor and setter injection, combining XML bean definitions and annotation-based wiring with @ComponentScan.
+Class-wise Design
+1️.Engine
+
+Fields: engineType, horsePower
+
+Constructor: accepts both fields for constructor injection
+
+Method: showEngineDetails()
+
+Injection Type: Constructor Injection via XML
+
+2️.Tyre
+
+Fields: brand, size
+
+Setter methods for each field
+
+Method: showTyreDetails()
+
+Annotations: @Component
+
+Injection Type: Setter Injection via XML properties
+
+3️. Vehicle
+
+Fields: vehicleName, engine, tyre
+
+Constructor: accepts Engine
+
+Setter: setTyre() annotated with @Autowired
+
+Method: displayVehicleInfo()
+
+Injection Type:
+
+Engine → via XML constructor
+
+Tyre → via @Autowired setter
+
+vehicleName → via XML <property>
+
+4️.ServiceCenter
+
+Fields: vehicle, serviceType
+
+@Autowired on Vehicle
+
+Method: performService()
+
+Injection Type:
+
+Vehicle → Annotation (@Autowired)
+
+serviceType → XML property
+
+5️.SpringConfig.xml
+
+<context:component-scan base-package="com.example.vehicle"/>
+
+Beans defined for Engine, Vehicle, Tyre, and ServiceCenter
+
+Enable <context:annotation-config/>
+
+6️.MainApp
+
+Load context → ClassPathXmlApplicationContext("SpringConfig.xml")
+
+Get ServiceCenter bean
+
+Call performService()
+
+Expected Output
+----------------
+=== Vehicle Manufacturing & Service System ===
+Engine Details: Type = Diesel, HorsePower = 180
+Tyre Details: Brand = MRF, Size = 18
+Vehicle: Toyota Fortuner
+Service Type: Full Engine Checkup
+
+
+Task 2 — Library Information & Management System
+Objective
+Demonstrate hybrid Spring dependency injection between multiple beans (Book, Author, Library, and Librarian) using both constructor and setter injection, configured via XML and annotations.
+Class-wise Design
+1️.Author
+
+Fields: authorId, authorName
+
+Constructor for both fields (constructor injection)
+
+Method: displayAuthorInfo()
+
+Injection: Constructor (XML)
+
+2️. Book
+
+Fields: bookId, bookTitle, author
+
+Constructor: accepts bookId, bookTitle
+
+Setter: setAuthor() annotated with @Autowired
+
+Method: displayBookDetails()
+
+Injection:
+
+Author → via @Autowired
+
+bookId, bookTitle → via XML properties
+
+3️.Library
+
+Fields: libraryName, books (List<Book>)
+
+Constructor for both fields (constructor injection)
+
+Method: showLibraryData()
+
+Injection: Constructor Injection (XML with <list> of books)
+
+4️.Librarian
+
+Fields: library, employeeName
+
+Setter: setLibrary() annotated with @Autowired
+
+Method: manageLibrary()
+
+Injection:
+
+Library → Annotation
+
+employeeName → XML property
+
+5️.SpringConfig.xml
+
+Component scan → <context:component-scan base-package="com.example.library"/>
+
+Beans for Author, Book, Library, Librarian
+
+<list> used for book collection injection
+
+<context:annotation-config/>
+
+6. MainApp
+
+Load XML context
+
+Retrieve Librarian bean
+
+Call manageLibrary()
+
+Expected Output
+---------------
+=== Library Information System ===
+Library: City Central Library
+Managed By: Mr. John
+Books Available:
+  - Book: Spring Framework Essentials | Author: Martin Fowler
+  - Book: Clean Code | Author: Robert C. Martin
+
+
+Task 3 — Employee Project Management System
+
+Objective
+
+Showcase a hybrid Spring Core setup with both Constructor and Setter Injection, managing employee-project relations using XML + annotation configuration.
+Class-wise Design
+1️. Project
+
+Fields: projectId, projectName, duration
+
+Constructor to inject all fields
+
+Method: showProjectDetails()
+
+Injection Type: Constructor (XML)
+
+2️.Employee
+
+Fields: employeeId, employeeName, project
+
+Constructor: accepts employeeId, employeeName
+
+Setter: setProject() with @Autowired
+
+Method: showEmployeeDetails()
+
+Injection Type:
+
+Project → via @Autowired
+
+Employee ID/Name → XML property
+
+3️.Department
+
+Fields: departmentName, employees (List<Employee>)
+
+Constructor Injection: both fields
+
+Method: showDepartmentInfo()
+
+Injection Type: Constructor (XML with <list>)
+
+4. Company
+
+Fields: companyName, departments (Map<String, Department>)
+
+Constructor Injection: all fields injected via XML <map>
+
+Method: showCompanyInfo()
+
+Injection Type: Constructor (XML map injection)
+
+5️.SpringConfig.xml
+
+<context:component-scan base-package="com.example.company"/>
+
+Beans for Project, Employee, Department, and Company
+
+Use <list> for departments → <map> for multiple departments
+
+<context:annotation-config/> enabled
+
+6️.MainApp
+
+Load SpringConfig.xml
+
+Get Company bean
+
+Call showCompanyInfo()
+
+Expected Output
+---------------
+=== Company Structure ===
+Company: TechWave Solutions
+Department: IT
+  Employee: Alice | Project: Web Application (6 Months)
+Department: HR
+  Employee: Bob | Project: Recruitment System (3 Months)
