@@ -1,0 +1,161 @@
+Task 1 — Discount Calculation System
+
+Objective:
+Use the Strategy Design Pattern in Spring Core to apply different discount strategies based on customer type.
+
+Class-wise Design:
+
+DiscountStrategy (Interface)
+
+Method: double calculateDiscount(double amount)
+
+RegularCustomerDiscount (Concrete Strategy)
+
+Implements: DiscountStrategy
+
+Provides 5% discount.
+
+PremiumCustomerDiscount (Concrete Strategy)
+
+Implements: DiscountStrategy
+
+Provides 10% discount.
+
+EliteCustomerDiscount (Concrete Strategy)
+
+Implements: DiscountStrategy
+
+Provides 15% discount.
+
+BillingService (Context Class)
+
+Has a reference to DiscountStrategy.
+
+Method: generateBill(double amount)
+
+AppConfig (Configuration Class)
+
+Declares beans for all discount types.
+
+MainApp (Client Class)
+
+User chooses customer type (Regular, Premium, Elite).
+
+Spring injects correct strategy and displays final bill.
+
+🧾 Expected Console Output:
+Enter purchase amount: 1000
+Enter customer type (regular/premium/elite): premium
+
+Original Amount: ₹1000.0  
+Discount Applied: ₹100.0  
+Final Payable Amount: ₹900.0
+=========================================================================================
+Task 2 — Electricity Bill Calculation System
+Objective:
+
+Demonstrate how Strategy Pattern helps to calculate electricity bills for different consumer types — Residential, Commercial, and Industrial.
+
+Class-wise Design:
+1. BillingStrategy (Interface)
+
+Method:
+
+double calculateBill(double units);
+
+2. ResidentialBilling (Concrete Strategy)
+
+Implements: BillingStrategy
+
+Rate: ₹5 per unit.
+
+3. CommercialBilling (Concrete Strategy)
+
+Implements: BillingStrategy
+
+Rate: ₹8 per unit.
+
+4. IndustrialBilling (Concrete Strategy)
+
+Implements: BillingStrategy
+
+Rate: ₹10 per unit.
+
+5. ElectricityBillingSystem (Context Class)
+
+Holds reference to BillingStrategy.
+
+Method:
+
+void showBill(double units);
+
+6. AppConfig (Configuration Class)
+
+Declares beans for all billing strategies.
+
+7. MainApp (Client Class)
+
+Takes user input (customer type + units consumed).
+
+Injects correct strategy and displays final bill.
+
+🧾 Expected Console Output:
+Enter customer type (residential/commercial/industrial): industrial
+Enter total units consumed: 250
+
+Customer Type: Industrial
+Units Consumed: 250
+Rate per Unit: ₹10
+Total Bill Amount: ₹2500.0
+=================================================================================================
+🎯 Task 3 — Notification Sending System
+Objective:
+
+Showcase use of Strategy Pattern to send notifications using Email, SMS, or WhatsApp dynamically in a Spring Core application.
+
+Class-wise Design:
+
+NotificationStrategy (Interface)
+
+Method: void send(String message)
+
+EmailNotification (Concrete Strategy)
+
+Implements: NotificationStrategy
+
+Sends message via Email.
+
+SMSNotification (Concrete Strategy)
+
+Implements: NotificationStrategy
+
+Sends message via SMS.
+
+WhatsAppNotification (Concrete Strategy)
+
+Implements: NotificationStrategy
+
+Sends message via WhatsApp.
+
+NotificationService (Context Class)
+
+Holds a reference to NotificationStrategy.
+
+Method: notifyUser(String message)
+
+AppConfig (Configuration Class)
+
+Declares beans for all notification types.
+
+NotificationApp (Main Class)
+
+User chooses channel (email/sms/whatsapp).
+
+Spring injects appropriate strategy and executes it.
+
+🧾 Expected Console Output:
+Enter notification type (email/sms/whatsapp): whatsapp
+Enter message: "Your order has been shipped!"
+
+Notification sent successfully via WhatsApp:
+Your order has been shipped!
