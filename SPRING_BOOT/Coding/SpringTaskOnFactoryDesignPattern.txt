@@ -1,0 +1,199 @@
+Spring Task — Factory Design Pattern
+ 
+Task Name:Appliance Manufacturing System
+
+
+Objective:
+
+Implement the Factory Design Pattern using Spring Core, where Spring manages object creation and dependency injection, 
+eliminating the need for manual new operations.
+
+Class-wise Design
+🔹 Appliance (Interface)
+
+Acts as the Product interface in the Factory Pattern.
+
+Defines a single method:
+
+void manufacture();
+
+🔹 WashingMachine (Implementation Class)
+
+Implements the Appliance interface.
+
+Provides its own manufacturing logic.
+
+Displays:
+
+Manufacturing Washing Machine with smart sensors.
+
+🔹 Refrigerator (Implementation Class)
+
+Implements the Appliance interface.
+
+Provides its own manufacturing logic.
+
+Displays:
+
+Manufacturing Refrigerator with inverter technology.
+
+🔹 ApplianceFactory (Factory Class)
+
+Responsible for returning the correct Appliance object.
+
+Contains a factory method:
+
+getAppliance(String type)
+
+
+Instead of if-else or manual creation, uses Spring’s @Autowired Map-based injection to dynamically resolve the appropriate bean.
+
+🔹 AppConfig (Configuration Class)
+
+Annotated with @Configuration and @ComponentScan.
+
+Manages all component scanning and bean registration through annotations, avoiding XML configuration.
+
+🔹 Client (Main Class)
+
+Uses AnnotationConfigApplicationContext to load the Spring container.
+
+Reads user input (for example: washingMachine or refrigerator).
+
+Requests the ApplianceFactory bean to fetch the correct Appliance implementation.
+
+Invokes the manufacture() method to execute the selected appliance’s production logic.
+
+⚙️ Workflow Overview
+
+The user inputs the appliance name.
+
+The factory class fetches the corresponding Spring bean.
+
+The manufacture() method executes, displaying the product creation message.
+==================================================================================================
+Task 2 — Vehicle Manufacturing System
+🎯 Objective:
+
+Demonstrate the Factory Design Pattern where Spring Core decides which type of vehicle to create (Car, Truck, or Bike) based on user input.
+
+🧱 Class-wise Design
+🔹 Vehicle (Interface)
+
+Acts as the product interface.
+
+void assemble();
+
+🔹 Car (Implementation Class)
+
+Implements Vehicle and prints:
+
+Assembling a Car with automatic transmission.
+
+🔹 Truck (Implementation Class)
+
+Implements Vehicle and prints:
+
+Assembling a Truck with heavy-duty engine.
+
+🔹 Bike (Implementation Class)
+
+Implements Vehicle and prints:
+
+Assembling a Bike with lightweight alloy frame.
+
+🔹 VehicleFactory (Factory Class)
+
+Contains method getVehicle(String type) that returns the correct Vehicle bean using Spring’s Map-based autowiring.
+
+🔹 AppConfig (Configuration Class)
+
+Uses @Configuration and @ComponentScan.
+
+🔹 Client (Main Class)
+
+Reads input (e.g., car, truck, bike), retrieves the appropriate vehicle from the factory, and calls assemble().
+=================================================================================================================
+🧩 Task 3 — Payment Gateway System
+🎯 Objective:
+
+Use Factory Design Pattern to dynamically select a payment processor (Credit Card, PayPal, or UPI) in a Spring Core environment.
+
+🧱 Class-wise Design
+🔹 PaymentProcessor (Interface)
+
+Defines:
+
+void processPayment(double amount);
+
+🔹 CreditCardProcessor (Implementation)
+
+Prints:
+
+Processing payment via Credit Card. Amount: ₹5000
+
+🔹 PayPalProcessor (Implementation)
+
+Prints:
+
+Processing payment via PayPal. Amount: ₹5000
+
+🔹 UpiProcessor (Implementation)
+
+Prints:
+
+Processing payment via UPI. Amount: ₹5000
+
+🔹 PaymentFactory (Factory Class)
+
+Uses getPaymentProcessor(String method) to return the correct payment processor bean.
+
+🔹 AppConfig (Configuration Class)
+
+Annotated with @Configuration and @ComponentScan.
+
+🔹 Client (Main Class)
+
+Accepts user input like creditCard, paypal, or upi, and executes the corresponding payment logic through the factory.
+======================================================================================================================
+🧩 Task 4 — Notification Service System
+🎯 Objective:
+
+Illustrate the Factory Design Pattern in Spring Core by dynamically selecting a notification channel (Email, SMS, or Push Notification).
+
+🧱 Class-wise Design
+🔹 Notifier (Interface)
+
+Defines:
+
+void sendNotification(String message);
+
+🔹 EmailNotifier (Implementation)
+
+Prints:
+
+Sending Email Notification: Your order has been shipped!
+
+🔹 SmsNotifier (Implementation)
+
+Prints:
+
+Sending SMS Notification: Your OTP is 4321.
+
+🔹 PushNotifier (Implementation)
+
+Prints:
+
+Sending Push Notification: New offer available in your app!
+
+🔹 NotificationFactory (Factory Class)
+
+Contains getNotifier(String type) and uses Spring’s Map injection to get the right notifier bean.
+
+🔹 AppConfig (Configuration Class)
+
+Uses annotation-based configuration and component scanning.
+
+🔹 Client (Main Class)
+
+Takes input (email/sms/push), retrieves the appropriate notifier from the factory, and calls sendNotification().
