@@ -1,0 +1,253 @@
+Example Question
+
+If
+
+@ means +
+# means –
+$ means ×
+% means ÷
+
+Find the value of:
+
+8 $ 3 @ 6 # 4
+Solution
+
+Replace symbols:
+
+8 × 3 + 6 − 4
+
+Use BODMAS
+
+8 × 3 = 24
+24 + 6 = 30
+30 − 4 = 26
+
+✅ Answer = 26
+
+
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void main(String[] args) {
+        
+        
+        // @ means +
+        // # means –
+        // $ means ×
+        // % means ÷
+        
+        String str = "8$3@6#4";
+        String str2 = "8 $ 3 @ 6 # 4";
+        str = str.replace("@","+");
+        str = str.replace("#","-");
+        str = str.replace("$","*");
+        str = str.replace("%","/");
+       
+       int num = str.charAt(0) - '0' ;
+       
+       
+        for(int i=1; i<str.length(); i+=2){
+            int next = str.charAt(i+1) - '0' ;
+            char op = str.charAt(i);
+            if(op == '+'){
+                // System.out.println("+");
+                num = num+next;
+            }else if(op == '-'){
+                num = num-next;
+                // System.out.println("+");
+            }else if(op == '*'){
+                num = num*next;
+                // System.out.println("+");
+            }else if(op == '/'){
+                num = num/next;
+                // System.out.println("+");
+            }
+            
+        }
+        
+        System.out.println(num);
+       
+        
+    }
+}
+
+
+
+==============================================================================================================================================
+
+
+
+
+2️⃣ Type 2 – Cryptic Digit Pattern
+
+Digits are hidden using rules.
+
+Example
+
+If
+
+3 → 18
+5 → 50
+7 → 98
+
+Then
+
+9 → ?
+Solution
+
+Observe pattern
+
+3 × 3 × 2 = 18
+5 × 5 × 2 = 50
+7 × 7 × 2 = 98
+
+So
+
+9 × 9 × 2 = 162
+
+✅ Answer = 162
+
+
+
+
+
+==========================================================================================================================================
+
+
+3️⃣ Type 3 – Coding Numbers
+
+Numbers coded with different numbers.
+
+Example
+
+If
+
+123 = 36
+234 = 72
+345 = 120
+
+Find
+
+456 = ?
+Solution
+
+Pattern:
+
+123 → (1+2+3) × 6 = 6×6 = 36
+234 → (2+3+4) × 8 = 9×8 = 72
+345 → (3+4+5) × 10 = 12×10 = 120
+
+Next
+
+456 → (4+5+6) × 12
+= 15 × 12
+= 180
+
+✅ Answer = 180
+
+
+
+
+==============================================================================================================================================
+
+
+
+4️⃣ Type 4 – Hidden Operation Cryptic
+
+Example:
+
+A = 5
+B = 9
+C = 13
+D = 17
+
+Find the rule.
+
+Pattern:
+
++4 each time
+
+So
+
+E = 21
+
+
+
+==================================================================================================================================================
+
+
+
+
+If
+
+72 → 511
+53 → 412
+64 → 410
+
+Find
+
+81 → ?
+Solution
+
+Break digits:
+
+72 → (7−2)(7+2)(7×2)
+7−2 = 5
+7+2 = 9
+7×2 = 14
+
+But pattern uses first two results sometimes.
+
+Better approach used in TCS:
+
+7-2 = 5
+7+2 = 9
+
+So
+
+81
+
+8-1 = 7
+8+1 = 9
+
+Answer becomes
+
+79
+
+
+===================================================================================================================================================
+
+
+
+6️⃣ One Real TCS Practice Question
+
+If
+
+23 = 8
+34 = 15
+45 = 24
+
+Find
+
+56 = ?
+Solution
+
+Pattern:
+
+2×3 + 2 = 8
+3×4 + 3 = 15
+4×5 + 4 = 24
+
+So
+
+5×6 + 5 = 35
+
+✅ Answer = 35
+
+
+
+==============================================================================================================================================
+
+
