@@ -20,6 +20,6 @@ Day-3 https://youtu.be/VOMCgFO-qus
 Day-4 https://youtu.be/E-X6m5Mgb3s
 Day-5 https://youtu.be/varHzIlw6V8
 Day-6 https://youtu.be/wX6k03wIoao
-
+Day-7 https://youtu.be/wNazW24PFgY
 If you are facing any issue with class notes contact me 
 Admin Kavya +91 91333 43355
