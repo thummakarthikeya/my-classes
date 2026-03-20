@@ -1,5 +1,5 @@
 Program: 1
-----------
+-----------
 class Hospital is given to you. Implement the following features in the class.
 Variables : 
 private : hospitalCode int, hospitalName String,
