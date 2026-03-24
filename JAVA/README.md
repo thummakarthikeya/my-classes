@@ -23,7 +23,7 @@ platform or extension = loads all the third party files ;
 application or system = loads all the .class files 
 
 
--------------------------------------------
+--------------------------------------------
 
 class to class or interface to interface = extends   
 interface to class = implements
