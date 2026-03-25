@@ -15,9 +15,7 @@ link 10  https://youtu.be/Yq8OaGpKgW0
 <br>
 link 11   https://youtu.be/1SYcdLHBAXg
 <br>
-link 12  https://youtu.be/x2pCxaJgZj0
 <br>
-link 13   https://youtu.be/FjMP3CwlDQ4
 <br>
 
 <br>
