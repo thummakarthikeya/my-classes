@@ -1,0 +1,11 @@
+1) What are the key differences between C and Java?
+-->The key differences between C and Java relate to their programming paradigm, memory management, and platform dependence.
+    C is a procedural, low-level, and platform-dependent language, while Java is an object-oriented, high-level, and platform-independent language.
+
+2) What are the key differences between C++ and Java?
+-->The key differences between C++ and Java lie in their core design philosophies: C++ provides low-level control for maximum performance in system-level
+    programming, while Java prioritizes portability and automatic memory management for enterprise and web applications.
+
+3) Is Java fully object-oriented? Explain.
+-->No, Java is not a fully or purely object-oriented language. While it is primarily an object-oriented programming (OOP) language that
+    supports core OOP principles, it deviates from strict object-oriented purity for reasons of performance and practicality. 
