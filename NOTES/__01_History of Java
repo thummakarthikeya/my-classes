@@ -1,0 +1,50 @@
+1) Who developed Java, and in which year?
+-->The Java programming language was developed by James Gosling and his team (known as the "Green Team") at Sun Microsystems in the early 1990s. 
+It was first publicly released in 1995
+
+
+2) What was Java originally called, and why was it renamed?
+-->Java was originally named Oak (and briefly GreenTalk) in 1991, created by James Gosling at Sun Microsystems. It was renamed to Java in 1994–1995
+    after finding that "Oak" was already trademarked by Oak Technologies, necessitating a change.
+
+3) Why was Java developed?
+-->Java was developed to create a platform-independent language for embedded devices and interactive television, as existing languages like C++ were
+    too complex and platform-dependent for this purpose. The goal was a "write once, run anywhere" (WORA) capability.
+
+4) Which company currently owns Java?
+-->Oracle Corporation currently owns Java. Oracle acquired the rights to the Java platform,
+    brand, and technologies when they purchased Sun Microsystems in January 2010. 
+
+5) In which year was Java first released publicly?
+-->Java was first released publicly in 1995. The initial public alpha and beta 
+    versions were available in May 1995, as a core component of Sun Microsystems' Java platform.
+
+6) What is the significance of the Java 1.0 release?
+-->Released in January 1996, Java 1.0 (JDK 1.0) was significant as the first official release of the Java programming language by Sun Microsystems.
+
+7) How has Java evolved from JDK 1.0 to the latest version?
+-->Java has evolved from a basic, platform-independent language in JDK 1.0 to a robust, high-performance platform 
+    supporting modern paradigms like functional programming and lightweight concurrency. 
+
+8) What is the difference between Java SE, EE, and ME in terms of release history?
+-->The primary difference in release history for Java SE, EE, and ME is that Java SE is the foundational platform with a consistent,
+    independent versioning and release cycle, while Java EE and Java ME are extensions built on top of Java SE and have release cycles 
+    that have historically been tied to, but often lag behind, the relevant Java SE version
+    Java SE (Standard Edition):
+    Java EE (Enterprise Edition):
+    Java ME (Micro Edition):
+
+
+9) Why is Java called a platform-independent language?
+-->Java is called a platform-independent language because of its "Write Once, Run Anywhere" (WORA) capability,
+    which allows compiled Java code (bytecode) to run on any operating system (Windows, Linux, macOS) without modification. 
+    This is achieved by compiling source code into intermediate bytecode rather than platform-specific native code. 
+    Key elements enabling this feature include:
+    Bytecode: The Java compiler translates code into a universal intermediate form (a .class file) instead of machine-specific code.
+    Java Virtual Machine (JVM): The JVM is installed on different operating systems to interpret this bytecode, translating it into machine
+    instructions specific to the current platform
+
+
+10) What made Java more popular than other languages during its early release?
+-->Java gained rapid popularity upon its 1995 release due to its revolutionary "Write Once, Run Anywhere" (WORA) capability.
+
