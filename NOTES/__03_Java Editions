@@ -1,0 +1,39 @@
+1) What are the different editions of Java?
+-->The four main editions of Java, designed for specific development needs, are Java SE (Standard Edition), 
+    Java EE (Enterprise Edition), Java ME (Micro Edition), and JavaFX. They cover everything from basic desktop applications 
+    and complex, large-scale enterprise server systems to mobile, embedded devices, and rich internet applications.
+
+2) What is Java SE used for?
+-->Java Platform, Standard Edition (Oracle) (Java SE) is the foundational platform for developing and deploying 
+    general-purpose applications across various environments, including desktops, servers, and cloud environments. 
+
+3) What is Java EE (Jakarta EE), and what does it include?
+-->Jakarta EE (formerly Java EE) is a set of specifications, APIs, and runtime environments built on Java SE for creating enterprise-grade, cloud-native, and server-side applications. 
+
+4) What is Java ME used for?
+-->Java ME (Micro Edition) is a computing platform for developing and deploying applications on mobile and embedded devices with limited resources, such as memory and processing power.
+
+
+5) What is JavaFX, and when is it used?
+-->JavaFX is a modern, open-source Java library (often called OpenJFX) used to create rich graphical user interfaces (GUIs) and desktop applications
+
+6) What is the difference between Java SE and Java EE?
+-->Java SE (Standard Edition) is the core Java platform for developing desktop and general-purpose applications, while Java EE (Enterprise Edition - now Jakarta EE) 
+    is built on top of SE to provide APIs and a runtime environment for large-scale, multi-tiered, and secure network applications.
+
+7) Can you build web applications with Java SE?
+-->Yes, it is possible to build web applications using Java SE, but it typically requires additional libraries, a web server (like Apache Tomcat or Jetty),
+    or a web framework, as Java SE itself is primarily for standalone applications. 
+
+8) Which edition would you choose for enterprise-level applications, and why?
+-->For enterprise-level applications, I would choose Java Enterprise Edition (Java EE), now known as Jakarta EE, because it is designed specifically for building large-scale,
+    secure, and distributed applications. It provides built-in support for high-volume transactions, scalability, and robust security that standard editions
+
+9) What tools or APIs are included in Java EE?
+-->Java EE (Enterprise Edition) includes a comprehensive set of APIs and specifications designed for developing large-scale, distributed enterprise applications.
+    These technologies have since been transitioned to the Jakarta EE project under the Eclipse Foundation, where the APIs use the jakarta.* namespace instead of javax.*.
+
+
+10) What happened to Java EE when Oracle handed it over to Eclipse Foundation?
+-->When Oracle handed Java EE over to the Eclipse Foundation, it was renamed Jakarta EE and transitioned to an open,
+    community-driven development model to foster faster innovation, particularly for cloud-native applications
