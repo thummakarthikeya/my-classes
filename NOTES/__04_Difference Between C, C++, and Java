@@ -9,3 +9,59 @@
 3) Is Java fully object-oriented? Explain.
 -->No, Java is not a fully or purely object-oriented language. While it is primarily an object-oriented programming (OOP) language that
     supports core OOP principles, it deviates from strict object-oriented purity for reasons of performance and practicality. 
+
+4) How does Java handle memory differently from C++?
+-->The primary difference is that Java provides automatic memory management through a built-in garbage collector, while C++ requires manual memory management by the programmer. 
+
+5) Why doesn’t Java support pointers?
+-->Java does not support explicit pointers (like those in C/C++) primarily to provide a safer, more robust, and simpler programming environment.
+    Instead, Java uses references, which function similarly to managed pointers but without exposing direct memory access or pointer arithmetic to the developer. 
+
+6) How is exception handling different in C++ and Java?
+-->Exception handling in C++ and Java differs significantly in their approach to checked exceptions, resource management mechanisms, and the types of data that can be thrown
+    Java has both checked and unchecked exceptions. Checked exceptions must be explicitly handled by the programmer at compile time
+    (using a try-catch block or the throws keyword in the method signature), ensuring all potential errors are addressed.
+
+    C++ treats all exceptions as unchecked (runtime) exceptions. The compiler does not enforce exception handling, offering the programmer more flexibility,
+    but potentially resulting in uncaught runtime errors if not managed properly.
+
+7) What is the difference between compiler behavior in C++ and Java?
+-->The primary difference in compiler behavior is that a C++ compiler generates platform-specific machine code, while a Java compiler generates platform-independent bytecode that runs on a virtual machine.
+
+
+8) How does Java achieve platform independence while C/C++ do not?
+-->Java achieves platform independence through an intermediate bytecode format and the use of the Java Virtual Machine (JVM),
+    C/C++: Platform-Dependent:
+        Direct Compilation to Machine Code: 
+        No Intermediate Layer: 
+        Recompilation Required:
+        Hardware Interaction: 
+
+9) What are destructors in C++? How is it handled in Java?
+-->In C++, a destructor is a special member function used to perform cleanup operations and deallocate resources when an object is destroyed.
+        Java, by contrast, uses automatic garbage collection for memory management and does not have an explicit destructor function like C++
+
+10) How is multiple inheritance handled in Java?
+-->Java does not support multiple inheritance of classes directly. This design choice was made to avoid complexity and ambiguity issues, most notably the "diamond problem".
+    However, multiple inheritance of behavior can be achieved in two primary ways: through interfaces and composition.
+
+
+11) What is the difference between structures in C and classes in Java?
+-->Structures in C are purely used for grouping data, while classes in Java are the fundamental building blocks of object-oriented programming (OOP),
+    combining both data and behavior into a single blueprint
+
+12) Why does Java not support operator overloading?
+-->Java does not support user-defined operator overloading as a deliberate design decision to prioritize simplicity, readability, and consistency in the language. 
+
+13) Compare access specifiers in C++ and Java.
+-->Core Differences
+    Number of Specifiers/Modifiers: C++ has three primary access specifiers (public, private, protected). 
+    Java has four access modifiers: public, private, protected, and a default (package-private) modifier which uses no keyword.
+
+14) What is the difference in memory management between C++ and Java?
+-->The primary difference is that C++ uses manual memory management, requiring the programmer to explicitly allocate and deallocate memory,\
+    while Java uses automatic memory management through a garbage collector
+
+15) Can you directly manage memory in Java like in C/C++?
+-->No, you cannot directly manage memory in Java.
+
