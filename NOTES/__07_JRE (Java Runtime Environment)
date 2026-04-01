@@ -1,0 +1,41 @@
+1) What is JRE?
+-->The Java Runtime Environment (JRE) is a software package that provides the necessary tools and libraries to run Java applications on a computer. 
+
+2) What is included in JRE?
+-->The Java Runtime Environment (JRE) comprises a Java Virtual Machine (JVM), Java class libraries (including rt.jar), and a Class Loader.
+    It provides the minimum requirements—libraries, API, and Java Virtual Machine—necessary to run compiled Java applications. 
+
+
+3) Can you run Java code without JRE?
+-->No, Java bytecode cannot run without a Java Runtime Environment (JRE) 
+
+4) How is JRE different from JDK?
+-->The primary difference is that the JRE is for running Java programs, while the JDK is for developing, compiling, and running Java programs.
+
+5) What happens if your JRE version doesn’t match your JDK version?
+-->A mismatch between JRE and JDK versions can lead to various runtime errors and application instability 
+
+6) What are the components of JRE?
+-->The Java Runtime Environment (JRE) is a software package that provides the necessary environment to run Java applications. 
+    Its primary components include the Java Virtual Machine (JVM) (which executes bytecode), core class libraries (like java.lang,
+    util, io), class loaders, and deployment tools (like Java Web Start). It acts as a layer over the operating system, facilitating software execution
+
+7) Does JRE contain compiler tools?
+-->No, the Java Runtime Environment (JRE) does not contain compiler tools. The JRE is specifically designed to provide
+    the necessary environment and libraries to run compiled Java applications, not to develop or compile them. 
+
+
+8) How does JRE interact with JVM?
+-->The JRE (Java Runtime Environment) acts as the complete environment
+    for running a Java program, within which the JVM (Java Virtual Machine) acts as the execution engine. 
+
+9) Can you have JRE without JDK?
+-->Yes, you can have the Java Runtime Environment (JRE) without the Java Development Kit (JDK)
+
+10) Why is JRE required for end users?
+-->The Java Runtime Environment (JRE) is required for end users primarily to run Java-based 
+    applications on their computers without needing to develop or compile code. 
+
+
+
+
