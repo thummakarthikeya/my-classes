@@ -1,0 +1,100 @@
+1) What is the JVM?
+-->A Virtual Machine is a software implementation of a physical machine.
+    Java was developed with the concept of WORA (Write Once Run Anywhere), which runs on a VM.
+    The compiler compiles the Java file into a Java .class file, then that .class file is input into the JVM,
+    which Loads and executes the class file. Below is a diagram of the Architecture of the JVM.
+
+2) What is the role of JVM in Java execution?
+-->The Java Virtual Machine (JVM) acts as a runtime engine that loads, verifies, and executes Java bytecode,
+    enabling the "Write Once, Run Anywhere" (WORA) capability.
+
+3) Explain the lifecycle of a Java program in terms of JVM.
+-->The lifecycle of a Java program within the JVM involves several distinct stages: Loading, Linking (Verification, Preparation, Resolution),
+    Initialization, Execution, and (eventually) Unloading.
+
+4) What are the main components of JVM?
+-->The main components of the Java Virtual Machine (JVM) include the ClassLoader Subsystem (loads, links, and initializes code),
+    Runtime Data Areas (manages memory like Heap and Stacks), 
+    and
+    the Execution Engine (interprets/compiles bytecode).
+
+5) What is the role of the Class Loader in JVM?
+-->The Class Loader is a critical subsystem of the JVM that dynamically loads Java class files (.class) into memory only when they are 
+    required at runtime, rather than all at once.
+    It is responsible for locating, loading, linking, and initializing classes, ensuring they are available for the Java application to 
+    create objects or use static methods
+
+6) What is the role of the Execution Engine?
+-->responsible for running the Java bytecode that has been loaded into the memory.
+
+7) How does the JVM perform memory management?
+-->The JVM manages memory automatically by allocating space for objects on the Heap and storing method calls/local variables on the Stack. 
+
+8) What are the different memory areas in JVM?
+-->The JVM defines several runtime data areas for program execution, primarily divided into shared areas (Heap, Method Area)
+    and thread-isolated areas (Stack, PC Register, Native Stack).
+
+9) What is method area and heap area?
+-->Method Area (Class Area)
+      Purpose: Stores class structure, metadata, bytecode of methods, static variables, and the runtime constant pool.
+      Lifecycle: Created when the JVM starts and is shared among all threads.
+      Implementation: Often called Metaspace in modern JVMs (Java 8+), which resides in native memory, not the Java heap.
+      Key Characteristic: Holds information necessary to define the class structure. 
+      YouTube
+      YouTube
+       +2
+      Heap Area (Runtime Memory) 
+      Purpose: Stores all objects created using the new keyword.
+      Lifecycle: Created when the JVM starts; objects are stored here until Garbage Collector (GC) removes them.
+      Garbage Collection: Managed automatically by the garbage collector to free up memory.
+      Key Characteristic: It is the largest memory area and shared among all threads. 
+      Medium
+      Medium
+       +2
+
+10) How does JVM perform garbage collection?
+-->The JVM performs garbage collection (GC) using an automatic process based on the generational 
+    hypothesis (most objects die young) and the core mark-and-sweep algorithm to identify and reclaim memory from unused objects.
+
+11) Is JVM platform dependent or independent?
+-->platform-dependent:
+    The JVM (Java Virtual Machine) is platform-dependent, while Java code is platform-independent. 
+
+
+12) How does JVM handle bytecode?
+-->The Java Virtual Machine (JVM) handles bytecode through a multi-stage process involving loading,
+    verification, and execution using a combination of an interpreter and a Just-In-Time (JIT) compiler. 
+
+
+13) What are native methods in JVM?
+-->A native method in Java is a method declared within Java code but whose implementation is written in another programming language, such as C or C++.
+
+14) How does the JVM differ for different operating systems?
+-->The JVM is platform-dependent; a specific version of the JVM is required for each operating system and hardware architecture,
+    which then executes the same, platform-independent Java bytecode. The differences are in how each specific JVM implementation 
+    interacts with the native features of the underlying OS. 
+
+    Key differences and platform-specific aspects include:
+    Native Code Implementation: The JVM itself is a software program written in native code (like C/C++) that must be compiled for a 
+    specific platform (e.g., Windows on x86, Linux on AArch64, macOS on x64/ARM).
+
+
+15) In which order does the JVM load classes (hierarchy of class loaders)?
+-->The JVM loads classes using a parent-first delegation model, where a request to load a class is passed up the hierarchy
+    of classloaders, starting from the application classloader and going up to the bootstrap classloader.
+    The hierarchy of built-in classloaders is as follows:
+    Bootstrap ClassLoader (also known as Primordial ClassLoader): This is the root classloader and is implemented in native code (not Java).
+    It has no parent and is responsible for loading core Java runtime classes (like java.lang.Object) from the standard JDK directory
+    (e.g., JAVA_HOME/lib/rt.jar in older versions or the Java Runtime Image in Java 9+ module systems).
+
+    Platform ClassLoader (formerly Extension ClassLoader): This classloader is a child of the Bootstrap ClassLoader and loads
+    platform-specific extension classes. It loads classes from the extension directories
+    (e.g., JAVA_HOME/lib/ext or other directories specified by the java.ext.dirs property in older Java versions).
+
+    Application ClassLoader (also known as System ClassLoader): This is the default classloader for user-defined classes and is a child of the 
+    Platform ClassLoader. It is responsible for loading classes from the application's classpath, which is specified by the CLASSPATH environment 
+    variable or the -classpath command-line option
+
+
+16) What is the delegation model of class loading?
+-->
