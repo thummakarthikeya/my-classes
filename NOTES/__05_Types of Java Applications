@@ -1,0 +1,36 @@
+1) What are the different types of applications that can be developed using Java?
+-->Java is a versatile, platform-independent language used to develop a wide range of applications, 
+    including robust enterprise systems, secure banking web apps, Android mobile apps, desktop GUI software (like IntelliJ IDEA), and embedded systems.
+
+2) What is a standalone application? Give examples.
+-->A standalone application is a self-contained software program installed directly on a computer or
+    mobile device that runs independently without requiring an internet connection or a web browser to function.
+
+3) What is a web application in Java?
+-->A web application in Java is a software program that runs on a server and is accessed by users through a web browser
+
+4) What technologies are used to create web applications in Java?
+-->Web applications in Java are primarily built using core Java EE (Enterprise Edition) or modern equivalents like Jakarta EE and popular frameworks such as Spring.
+
+5) What is an enterprise application?
+-->An enterprise application is a large-scale, secure, and scalable software system designed to integrate and automate
+    complex business processes across an entire organization, such as finance, human resources, and supply chain management.
+
+6) Give examples of enterprise-level Java technologies.
+-->Spring Framework/Spring Boot: The go-to ecosystem for building modern Java applications, microservices, and cloud-native solutions.
+    Jakarta EE (formerly Java EE): A standard collection of specifications for developing enterprise applications, including components for web services, distributed computing, and transaction management.
+    Quarkus: A modern, fast-growing framework designed for Kubernetes, cloud-native environments, and containerized applications.
+    Play Framework: A reactive framework used for high-performance, real-time, and streaming applications.
+
+
+7) What is a mobile application in Java?
+-->A mobile application in Java is a software program developed using the Java programming language 
+    that runs on a portable, handheld computing device such as a smartphone or tablet.
+
+8) How does Java support cloud or distributed applications?
+-->Java supports cloud and distributed applications through its "Write Once, Run Anywhere" (WORA) philosophy,
+    robust ecosystem, and built-in technologies that enable scalability, security, and networking across dispersed environments.
+
+9) Which Java edition is used for embedded systems?
+-->Both Java Platform, Micro Edition (Java ME) and a specialized version of Java Platform, Standard Edition (Java SE) for Embedded systems have been used.
+
