@@ -1,0 +1,58 @@
+1) What is JDK?
+-->The Java Development Kit (JDK) is a comprehensive software development environment for building Java applications and applets
+
+2) What does JDK contain?
+-->The Java Development Kit (JDK) is a software development environment used to develop Java applications,
+    containing a full Java Runtime Environment (JRE) and command-line development tools.
+
+3) What is the difference between JDK, JRE, and JVM?
+-->The primary difference is that JDK is a full development kit for creating Java applications,
+    JRE is the environment to run them, and JVM is the virtual engine that executes the code. 
+
+4) Which tools are part of JDK?
+-->The Java Development Kit (JDK) includes essential command-line tools for developing, debugging,
+    and monitoring Java applications. Key tools include javac (compiler), java (application launcher), jar (archiver), 
+    javadoc (documentation generator), jdb (debugger), and jshell (interactive REPL
+
+5) Can you run a Java program without JDK?
+-->Yes, you can run a Java program without having the entire Java Development Kit (JDK) installed on the target machine.
+
+6) What are the common JDK commands and their purposes?
+-->The Java Development Kit (JDK) includes several essential command-line tools for developing, running, and managing Java applications. 
+  Oracle Help Center
+  Here are the most common JDK commands and their purposes:
+    javac: The Java Compiler tool reads Java class and interface definitions and compiles them into bytecode (.class) files. This is the primary tool for turning human-readable source code into code the Java Virtual Machine (JVM) can execute.
+    java: The Java Application Launcher (or interpreter) starts a Java application by loading its class files and initiating the main method. It is used to run the compiled bytecode.
+    jar: The Java Archive Tool combines multiple files, classes, and resources into a single compressed Java Archive (.jar) file for efficient storage, manipulation, and distribution. It is similar to a general-purpose archiving tool like zip or tar.
+    javadoc: The Java Documentation Generator parses source files and generates HTML pages of API documentation from the code's documentation comments. This helps developers document and understand the structure and usage of Java classes and methods.
+    jdb: The Java Debugger provides a command-line interface for finding and fixing bugs in Java programs by allowing developers to step through code and inspect the state of variables and threads.
+    jps: The JVM Process Status Tool lists the instrumented HotSpot Java Virtual Machines (JVMs) running on the target system, providing their process IDs (PIDs). This is useful for identifying the specific Java process you want to monitor or debug.
+    jstat: The JVM Statistics Monitoring Tool attaches to a running JVM and collects and logs performance statistics, such as memory usage and garbage collection activity.
+
+
+7) How do you check your JDK version?
+-->To check your installed Java Development Kit (JDK) version, you should use the javac -version
+
+8) What is the difference between Oracle JDK and OpenJDK?
+-->The primary difference between Oracle JDK and OpenJDK lies in their licensing and support models,
+      Licensing: OpenJDK is a free, open-source implementation licensed under the GNU General Public License, version 2,
+      with the Classpath Exception (GPLv2+CPE), which permits free use for all users, including commercial use. Oracle JDK
+      is available under the Oracle No-Fee Terms and Conditions (NFTC) license for recent versions (JDK 17 and later) for a
+      limited time, after which a paid commercial subscription is required for ongoing updates and support.
+
+      Support: OpenJDK has community-driven support, with updates and patches contributed by a wide community including
+      major companies like Red Hat, IBM, and Amazon. Oracle JDK offers dedicated, professional commercial support, regular 
+      updates, and Service Level Agreements (SLAs) to paying enterprise customers.
+      Features: As of Java 11 and later, the functional differences have largely been eliminated, with features like 
+      Java Flight Recorder and Java Mission Control contributed to the OpenJDK project. Previously, Oracle JDK included
+      some proprietary features not available in OpenJDK builds.
+
+
+9) Can multiple JDK versions be installed on the same system?
+-->Yes, multiple JDK versions can be installed on the same system. Each version is typically installed in its own 
+    independent directory, and users manage which version is active through environment variables or specific tools.
+
+10) How does JDK help in development and compilation?
+-->The Java Development Kit (JDK) helps in development and compilation by providing all the necessary tools, libraries,
+    and the runtime environment required to write, compile, debug, and package Java applications
+
