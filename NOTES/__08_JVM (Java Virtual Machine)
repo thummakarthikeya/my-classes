@@ -97,4 +97,115 @@
 
 
 16) What is the delegation model of class loading?
--->
+-->The delegation model of class loading in Java is a hierarchical mechanism where a ClassLoader delegates loading requests 
+    to its parent before attempting to load a class itself. It ensures that core Java classes are prioritized and loaded only
+    once, preventing conflicts and improving security. The process moves from the application loader to the extension loader, and finally
+    the bootstrap loader. 
+
+        Hierarchy: When a ClassLoader receives a request to load a class, it first delegates the task to its parent ClassLoader.
+
+        Parent-First: The request travels up the hierarchy (Application -> Extension -> Bootstrap).
+        Loading Responsibility: A loader only attempts to load the class if its parent and all ancestors fail to find it.
+        Preventing Duplication: This model ensures that core classes (like java.lang.Object) are loaded by the bootstrap class loader,
+                                    preventing application-level loaders from replacing them, which enhances security.
+
+        AI-> response 
+        Bootstrap Class Loader (Top Parent)
+            What it loads: Core Java runtime classes found in rt.jar (e.g., java.lang.*, java.util.*, java.io.*).
+            Your Claim: You were correct that it loads java.util.*, but it is the highest level, not the one that loads "extensions".
+            Extension Class Loader (Middle)
+            What it loads: Classes from the Java extension directory (JRE/lib/ext). These are optional standard extensions to the Java platform.
+            Your Claim: You mentioned it loads "extended classes like 3rd party classes." This is usually incorrect; 3rd party libraries (like Maven dependencies) are typically loaded by the Application Class Loader.
+            Application Class Loader (Bottom/Child)
+            What it loads: Your own application code and external 3rd party libraries found in the system CLASSPATH.
+            Your Claim: You said it loads "first." In reality, it is the first to receive the request, but it immediately delegates it up to the Extension loader, which then delegates to the Bootstrap loader. 
+
+
+17) What kind of errors are detected during verification?
+-->Verification in Java, performed by the Bytecode Verifier during the class loading process, ensures that bytecode adheres to Java language safety rules and does not corrupt the JVM or violate access rules. Errors detected during this phase usually result in a java.lang.VerifyError. 
+
+        The verifier detects the following kinds of errors: 
+        Stack Underflows/Overflows: Ensures that the operand stack never holds fewer items than expected or overflows its maximum capacity.
+
+        Inconsistent Stack Types: Checks that instructions receive arguments of the valid type, such as ensuring an arithmetic operation isn't performed on an object reference, or that "bad type on operand stack" errors are caught.
+
+        Illegal Access Rules: Violations of access modifiers, such as a method trying to access private data/methods of another class illegally.
+
+        Uninitialized Variables: Detects usage of uninitialized local variables.
+
+        Final Class/Method Violations: Ensures that final classes are not subclassed and final methods are not overridden.
+
+        Invalid Branching: Checks that goto or branch instructions do not jump to the middle of another instruction or outside the current method.
+
+        Mismatched Method Signatures: Detects cases where the class loaded at runtime has a different method signature than the one compiled against, or if a class file is corrupted. 
+
+
+18) What is the Prepare phase and what happens during it?
+-->In Java, the Prepare phase is the second step of the Linking process within the Java Virtual Machine (JVM) class loading lifecycle,
+        occurring after loading and before initialization. Its main purpose is to prepare the class for execution by allocating memory 
+        for static fields and assigning them default initial values. 
+
+        What happens during the Prepare phase:
+        Memory Allocation for Static Variables: The JVM allocates memory in the Method Area (or Metaspace in Java 8+) for static fields (class variables) declared within the class or interface.
+        Assignment of Default Initial Values: The static variables are initialized with their default values, not their actual values defined in the code.
+
+        int, long, short, byte: 0
+        boolean: false
+        float, double: 0.0
+        char: \u0000
+        Reference types: null
+
+        Precomputation of Structures: The JVM may precompute additional data structures, such as method tables, to make later operations more efficient.
+        No Code Execution: Crucially, no Java code (static initializers or assignment expressions) is executed during this phase.
+        Constant Preparation: If a field is a static final constant (primitive or String), it is assigned its actual value during preparation, not the default. 
+
+
+19) What is the Resolution step in linking?
+-->In Java, Resolution is the third and final step of the Linking process performed by the Java Virtual Machine (JVM) 
+    when loading a class. It is the process of replacing symbolic references (logical names like java.lang.String or MyMethod())
+    found in a class’s constant pool with direct references (actual memory addresses). 
+    In simple terms, Resolution tells the JVM exactly where a referenced class, method, or variable is located in memory so it can be used. 
+
+
+20) What is the main purpose of the initialization phase?
+-->The main purpose of the initialization phase in the Java Virtual Machine (JVM) is to execute the class initialization method
+    (<clinit>), which assigns the actual, user-defined values to static variables and executes static initializer blocks. 
+    This phase is the final stage of class loading (after Loading and Linking) and ensures that all static members are fully 
+    prepared for use before the class is actively referenced for the first time. 
+
+21) What happens when a StackOverflowError occurs?
+-->A StackOverflowError occurs when a program runs out of memory on the call stack, which is a special area of memory used to manage function calls and local variables. 
+        What happens in simple terms:
+            The Program Crashes: The Java Virtual Machine (JVM) stops the execution of the thread that caused the error.
+            Infinite Loop/Recursion: It is almost always caused by a method calling itself (recursion) endlessly without a base case to stop it.
+            Stack Filled Up: Each method call takes up a small amount of memory. Without an exit condition, these calls stack up until the allocated
+            memory limit is reached, like filling a cup until it overflows. 
+
+
+
+22) What happens when an OutOfMemoryError occurs in the Heap?
+-->When a java.lang.OutOfMemoryError: Java heap space occurs, it signifies that the Java Virtual Machine (JVM)
+    cannot allocate memory for a new object because the heap is full and the Garbage Collector (GC) cannot reclaim enough space. 
+    The following sequence of events and behaviors typically follows:
+    Immediate Effects on the Application
+        Allocation Failure: The specific thread attempting to create the object immediately fails and throws the OutOfMemoryError.
+        Stack Trace Generation: A stack trace is printed to the standard error stream, providing details on the location and circumstances of the failure.
+        Unresponsiveness or Termination: If the error occurs in a critical thread (like the main thread) or remains unhandled, the application may become unresponsive or terminate entirely.
+        Potential Data Loss: If the application halts abruptly without proper management, it can lead to data loss or corruption. 
+
+
+
+23) What is the Native Method Stack, and why is it separate from JVM stack?
+-->The Native Method Stack is a dedicated memory region in the Java Virtual Machine (JVM)
+    used to support the execution of native methods—functions written in languages other than Java, typically C or C++.
+    Every thread has its own private native method stack, created when the thread is initialized.
+
+    Different Calling Conventions: Native languages like C or C++ follow different calling conventions (rules for passing parameters
+    and returning values) than the JVM's stack-based bytecode instructions.
+
+    Direct System Interaction: Native methods often require direct access to operating system resources, hardware, or OS-level
+    memory, which the managed Java stack is not designed to handle.
+
+    Isolation and Protection: Keeping native code execution separate protects the JVM's internal memory model and ensures
+    that issues in unmanaged native code (like memory leaks or pointer errors) do not immediately corrupt the Java thread stacks.
+
