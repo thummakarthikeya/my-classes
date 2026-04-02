@@ -1,0 +1,42 @@
+1) What is JIT compiler in Java?
+-->The Just-In-Time (JIT) compiler is a critical component of the Java Runtime Environment (JRE)
+    that improves performance by converting Java bytecode into native machine code at runtime.
+
+2) Why is JIT compiler used?
+-->A Just-In-Time (JIT) compiler is primarily used to optimize the runtime performance of programs
+  by combining the flexibility of interpretation with the speed of compiled code. It is a core component of modern execution environments like the
+    The JIT compiler is used for the following specific reasons:
+
+    Performance Optimization: Instead of interpreting bytecode line-by-line repeatedly (which is slow), 
+    the JIT compiler translates frequently used code blocks—known as "hotspots"—into native machine code that the CPU can execute directly.
+
+
+3) When does JIT compile code?
+-->Just-In-Time (JIT) compilation occurs during the execution of a program at runtime.
+
+4) How does JIT improve performance?
+-->A Just-In-Time (JIT) compiler improves performance by translating bytecode into native
+    machine code at runtime, rather than interpreting it, allowing frequently executed "hotspot" code to run much faster.
+
+5) What is the difference between interpreter and JIT?
+-->An interpreter translates and executes code line-by-line during runtime, while a JIT (Just-In-Time)
+    compiler translates chunks of code into native machine code before execution to improve performance. 
+
+6) What are the types of JIT optimizations?
+-->Just-In-Time (JIT) optimization techniques are used by virtual machines (like the JVM or .NET CLR)
+  to compile frequently used bytecode into native machine code at runtime, often achieving performance that rivals or exceeds static compilation. 
+  These optimizations can be categorized into several key types based on their scope and approach:
+  1. Fundamental & Code Generation Optimizations
+  Method Inlining: This is considered the "mother of all optimizations," where a method call is replaced directly
+  by the body of the called method, reducing call overhead and enabling further optimizations.
+
+  Dead Code Elimination: Identifying and removing code that does not affect the program's results 
+  (e.g., unreachable code or unused variables).
+
+  2. Loop Optimizations
+  Loop Unrolling: Reducing loop overhead by expanding the body of the loop, reducing the number of times the loop condition is checked.
+
+  3. Dynamic & Profile-Guided Optimizations (JIT-Specific)
+  These techniques rely on information gathered while the program is running ("hot spots"). 
+  Inline Caching/Speculative Optimization: When calling a virtual method, the JIT observes which concrete
+  class is used 99% of the time, speculatively inlines it, and inserts a "guard check" to de-optimize if a different class appears.
