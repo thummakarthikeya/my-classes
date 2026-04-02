@@ -37,7 +37,9 @@
 -->A distributed system is a collection of independent computers (nodes) that work together and appear to users as a single, unified system. 
 
 10) How does Java achieve “Architecture Neutrality”?
--->ava achieves "Architecture Neutrality" through the use of bytecode and the Java Virtual Machine (JVM), which together enable its "Write Once, Run Anywhere" (WORA) principle. 
+--> Java achieves Architecture Neutrality through its two-stage compilation process and the standardization of its execution environment,
+    ensuring that code behaves identically across different hardware and software systems. 
+    java achieves "Architecture Neutrality" through the use of bytecode and the Java Virtual Machine (JVM), which together enable its "Write Once, Run Anywhere" (WORA) principle. 
 
 11) What does “Compiled and Interpreted” mean in Java?
 -->In Java, the phrase "compiled and interpreted" refers to its two-stage execution process, a hybrid approach designed to
