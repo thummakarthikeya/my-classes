@@ -40,3 +40,21 @@
   These techniques rely on information gathered while the program is running ("hot spots"). 
   Inline Caching/Speculative Optimization: When calling a virtual method, the JIT observes which concrete
   class is used 99% of the time, speculatively inlines it, and inserts a "guard check" to de-optimize if a different class appears.
+
+
+7) How does JIT work with bytecode and native code?
+-->A Just-In-Time (JIT) compiler serves as a performance bridge between platform-independent bytecode and the 
+    high-speed native code required by a physical CPU.
+
+8) Is JIT part of JVM or JRE?
+-->The Just-In-Time (JIT) compiler is a component of the Java Virtual Machine (JVM).
+    It is not a separate part of the JRE, but rather resides within the execution engine of the JVM to optimize
+    performance by compiling bytecode into native machine code during runtime.
+
+9) What happens if JIT is disabled?
+-->When the Just-In-Time (JIT) compiler is disabled in Java, the Java Virtual Machine (JVM) 
+    reverts to a pure interpreted-only mode. This has several immediate effects on performance and execution behavior: 
+        Significant Performance Drop: The most noticeable impact is a drastic reduction in execution speed.
+        Without JIT, the JVM must interpret every bytecode instruction one by one into machine code every time it is executed,
+        rather than compiling frequently used "hot" methods into native machine code. Depending on the application, performance can
+        be 10 to 50 times slower.
