@@ -1,0 +1,126 @@
+1) What is Object Class in Java?
+-->In Java, the Object Class (java.lang.Object) is the root of the entire class hierarchy. Every class in Java, whether built-in
+    or user-defined, implicitly or explicitly extends the Object class, making it the ultimate superclass of all objects.
+
+2) What is the superclass of all Java classes?
+-->The superclass of all classes in Java is the Object class, which belongs to the java.lang package.
+    Every class in Java, except for the Object class itself, implicitly inherits from it either directly or indirectly.
+
+3) Is it necessary to extend Object class explicitly?
+-->No, it is not necessary to explicitly extend the Object class. 
+    In Java, every class you create automatically and implicitly inherits from java.lang.Object if you do not specify a different superclass. 
+
+    Key Reasons Why Explicit Extension is Unnecessary:
+    Implicit Inheritance: If you declare a class as public class MyClass {}, the Java compiler automatically treats it
+    as public class MyClass extends Object {}.
+    Indirect Inheritance: If your class extends another class (e.g., class B extends A), it still inherits from Object indirectly
+    because A either extends Object directly or through its own parent hierarchy.
+    Access to Core Methods: Because of this built-in inheritance, all classes automatically have access to essential methods
+    defined in the Object class, such as:
+    toString(): Returns a string representation of the object.
+    equals(Object obj): Indicates whether some other object is "equal to" this one.
+    hashCode(): Returns a hash code value for the object.
+    getClass(): Returns the runtime class of the object.
+    clone(), notify(), notifyAll(), and wait(). 
+
+
+4) How many methods does the Object class have?
+-->In Java, the Object class contains a total of 11 methods. These methods are automatically inherited by every other class in Java. 
+    
+    The methods can be categorized by their primary function: 
+    Object Comparison & Identity
+      equals(Object obj): Checks if another object is "equal to" the current one.
+      hashCode(): Returns a numeric hash code value for the object, primarily used in hash-based collections like HashMap.
+      getClass(): Returns the runtime class of the object. 
+
+    Object Representation & Lifecycle
+      toString(): Returns a string representation of the object.
+      clone(): Creates and returns a copy of the object (requires the class to implement the Cloneable interface).
+      finalize(): (Deprecated) Called by the garbage collector before an object is destroyed. 
+      
+    Thread Synchronization
+    These five methods (including three overloads of wait) are used for inter-thread communication: 
+      notify(): Wakes up a single thread waiting on the object's monitor.
+      notifyAll(): Wakes up all threads waiting on the object's monitor.
+      wait(): Causes the current thread to wait until notified.
+      wait(long timeoutMillis): Wait with a specific timeout in milliseconds.
+      wait(long timeoutMillis, int nanos): Wait with a specific timeout in milliseconds and nanoseconds. 
+
+
+5) Can we override methods of the Object class?
+-->Yes, we can override certain methods of the Object class in Java. Since every class in Java implicitly inherits from java.lang.Object, any non-final, non-static method can be redefined in a subclass to provide specific behavior. 
+
+    Overridable Methods
+    The following methods are commonly overridden to provide meaningful implementations for custom classes:
+    toString(): By default, this returns a string consisting of the class name and the object's hash code. It is often overridden to return a readable representation of the object's state.
+    equals(Object obj): Used to define "logical equality" (comparing values) instead of "reference equality" (comparing memory addresses).
+    hashCode(): If equals() is overridden, hashCode() must also be overridden to maintain the contract that equal objects must have the same hash code.
+    clone(): Overridden (and typically made public) to allow creating a field-for-field copy of an object. The class must also implement the Cloneable interface.
+    finalize(): Used for cleanup before garbage collection, though it is now deprecated and generally discouraged in favor of AutoCloseable. 
+    
+    Non-Overridable (Final) Methods
+    Several methods in the Object class are marked as final and cannot be overridden by any subclass: 
+    getClass()
+    notify()
+    notifyAll()
+    wait() (all versions)
+
+
+6) Which methods are declared as final in the Object class?
+-->The java.lang.Object class declares several methods as final to prevent subclasses from overriding their core behavior,
+    which is critical for the stability of the Java Virtual Machine (JVM). 
+
+    The final methods in the Object class include getClass(), which returns the runtime class of an object, and synchronization methods notify(),
+        notifyAll(), and all three overloaded forms of wait(). These methods cannot be overridden by subclasses. 
+    
+    Conversely, methods such as equals(), hashCode(), toString(), clone(), and finalize() are not final and can be overridden.
+
+
+7) What is the difference between == and equals()?
+-->The main difference is that == is an operator that compares memory references (if two references point to the same object) or primitive values. In contrast, .equals() is a method that compares the actual content or state of two objects for logical equality. == cannot be overridden, whereas equals() can be. 
+   
+    Key Differences:
+    Type: == is a binary operator, while equals() is a method defined in the Object class.
+    Behavior: == checks for reference equality (address in memory). .equals() checks for value equality (content).
+    Usage: == can be used for both primitives (like int, char) and objects. .equals() can only be used for objects.
+    Customization: You cannot change how == works. You can override the .equals() method to define what equality means for your custom objects.
+    Null Safety: == handles null safely (e.g., obj == null). Calling a.equals(b) will throw a NullPointerException if a is null.
+
+8) Why should we override hashCode() when we override equals()?
+-->You must override hashCode() when overriding equals() to ensure objects behave correctly in hash-based collections
+    like HashSet or HashMap. If equals() says two objects are the same, their hashCode() must return the same integer; otherwise, the
+    collection will fail to locate or identify duplicates, leading to bugs. 
+
+Simple Explanation:
+The Problem: equals() determines if two objects are logically equal (e.g., same ID). By default, hashCode() produces a number based on
+          the object's memory address. If you only change equals(), two identical objects will still have different memory-based hash codes.
+    The Consequence: When you put these objects in a HashMap, it uses the hash code to find the object's "bucket." If the hash codes are
+        different, the HashMap puts them in different buckets, meaning equals() is never called to see they are actually the same. Result: You get duplicate objects.
+    The Solution: Overriding hashCode() ensures that equal objects generate the same numerical "key," placing them in the same bucket and allowing equals() to work properly
+
+    You must override hashCode() when overriding equals() to maintain the general contract for hashCode(), which states that equal objects must
+    have equal hash codes. Failing to do so violates this contract, breaking hash-based collections like HashSet, HashMap, and Hashtable. 
+
+    Key Reasons to Override Both:
+    Hash-Based Collection Integrity: HashMap and HashSet use the hashCode() value to determine where to store an object (the bucket).
+    If two objects are equal according to equals(), but have different hashCode() values, a map may store them in different buckets.
+
+    Locating Objects: When retrieving an object from a HashMap, the map first uses the hash code to find the correct bucket.
+      If the hash codes are different, the HashMap will not find the object, even if equals() would return true.
+
+    Contractual Requirement: According to Java documentation, if a.equals(b) is true, then a.hashCode() must equal b.hashCode().
+
+    Performance: While not required, returning distinct hash codes for unequal objects improves the performance of hash tables
+
+
+
+9) What is the default implementation of toString()?
+-->In Java, the default implementation of toString() (defined in the Object class) returns a string consisting of the class name, the '@' sign, and the unsigned hexadecimal representation of the object's hash code. It follows the format: getClass().getName() + '@' + Integer.toHexString(hashCode()). 
+  
+    Key Aspects of Default toString():
+    Purpose: Provides a unique identifier for objects when not overridden.
+    Example Output: com.example.MyClass@1a2b3c4d.
+    Inheritance: Every class in Java inherits this implementation from java.lang.Object.
+    Override: It is standard practice to override this method to provide human-readable, meaningful information about the object's state.
+    Usage: It is automatically invoked when passing an object to System.out.println() or concatenating it with a string.
+
