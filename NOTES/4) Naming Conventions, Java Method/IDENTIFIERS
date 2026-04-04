@@ -1,0 +1,58 @@
+1) What is an identifier in Java? Why do we use identifiers in Java?
+-->In Java, an identifier is a symbolic name used to uniquely identify various programming elements within the code. 
+    
+    What is an Identifier?
+    An identifier is a user-defined name assigned to elements such as: 
+    Variables: int age = 25; (where age is the identifier).
+    Classes: public class Student { ... } (where Student is the identifier).
+    Methods: public void calculateSum() { ... } (where calculateSum is the identifier).
+    Other Elements: These also include names for packages, interfaces, and constants. 
+   
+    Why Do We Use Identifiers?
+    Identifiers are essential building blocks that facilitate both machine execution and human understanding: 
+    Unique Identification: They allow the Java compiler to distinguish between different data structures, methods, and classes within their specific scope.
+    Code Readability: Descriptive names (e.g., totalAmount instead of a) make programs self-explanatory and easier for humans to read.
+
+2) What are the rules for creating identifiers in Java?
+-->In Java, identifiers are the unique names given to programming elements like variables, classes, methods, and interfaces. To be valid, they must strictly follow these rules: 
+   
+    Allowed Characters: Identifiers can only contain letters (A–Z, a–z), digits (0–9), the underscore (_), and the dollar sign ($).
+    Starting Character: An identifier cannot start with a digit. It must begin with a letter, an underscore, or a dollar sign.
+    No Reserved Words: You cannot use Java keywords or reserved words (such as int, class, while, or public) as identifiers.
+    Case Sensitivity: Java is case-sensitive, meaning myVariable and myvariable are treated as two distinct identifiers.
+    No Whitespace: Identifiers must not contain any spaces or other special characters (like @, #, or -).
+    Length: There is no strict limit on the length of an identifier, though it is best practice to keep them concise and meaningful.
+
+3) Are Java identifiers case-sensitive?
+-->Yes, Java identifiers are case-sensitive.
+
+4) Can we use special characters like @, #, $, % in identifiers?
+-->No, we cannot use most special characters in identifiers.
+    Generally, special characters like @, #, $, and % cannot be used in identifiers in most programming languages (C, C++, Java, Python), 
+    as they are reserved for operators or punctuation. Identifiers must start with a letter or underscore, followed by letters, digits, or underscores.
+
+
+5) Can we use keywords as identifiers?
+-->No, you cannot use keywords (reserved words) as identifiers (names for variables, functions, etc.) in most programming languages.
+    Keywords have special predefined meanings to the compiler or interpreter, and using them as identifiers causes syntax errors. 
+    Identifiers must be unique and cannot be reserved words.
+
+6) What are reserved keywords? How are they different from identifiers?
+-->Reserved keywords are predefined words in Java that have special meaning and cannot be used as identifiers. Identifiers are user-defined
+    names given to variables, methods, and classes. Keywords define the structure of the program, whereas identifiers are used to name program elements.
+
+7) Can method name and variable name be the same identifier?
+-->Yes, a method name and a variable name can be the same identifier in Java. 
+    The Java compiler can distinguish between them because they are used in different syntactic contexts. For instance, a method name is always
+  followed by parentheses (),  whereas a variable name is not.
+
+8) What is the difference between an identifier and a literal?
+-->Identifiers are user-defined names given to variables, methods, classes, etc., whereas literals are constant values assigned to these identifiers.
+
+9) What is the difference between identifier and variable?
+-->The main difference between an identifier and a variable is that an identifier is a name or label used to refer to a program element, whereas
+    a variable is a storage location in memory that holds a value. 
+
+10) What are legal and illegal identifier examples?
+-->Legal identifiers are names that follow the rules of Java naming conventions, while illegal identifiers are names that violate these rules.
+
