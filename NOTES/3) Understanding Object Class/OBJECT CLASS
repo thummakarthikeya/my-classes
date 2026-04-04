@@ -124,3 +124,255 @@ The Problem: equals() determines if two objects are logically equal (e.g., same 
     Override: It is standard practice to override this method to provide human-readable, meaningful information about the object's state.
     Usage: It is automatically invoked when passing an object to System.out.println() or concatenating it with a string.
 
+
+10) What is the purpose of clone() method?
+-->The clone() method in Java is used to create an exact copy (clone) of an existing object, creating a new instance with the same field values. 
+    Its primary purpose is to efficiently replicate complex objects without re-executing constructor logic, supporting shallow or deep copies of object states. 
+    
+    Key purposes and advantages include:
+    Efficiency: Faster than using new and copying fields manually, particularly for complex object initialization.
+    Object Copying: Creates a field-for-field copy, enabling the creation of a new object based on the state of an existing one.
+
+
+11) What is shallow copy?
+-->Shallow copy creates a new object but copies references of nested objects. So, changes in primitive fields do not affect the copied object,
+    but changes in nested objects affect both original and copied objects.
+    A shallow copy in Java creates a new object, but it only copies the references to nested objects, not the nested objects themselves.
+    Both the original and copied objects share the same inner data; thus, modifying a nested object in the copy will change the original. 
+    
+    Key Takeaways:
+    Default Behavior: Shallow copy is the default behavior when using Object.clone().
+
+
+12) What is deep copy?
+-->Deep copy creates a new object and also recursively copies all nested objects. Unlike shallow copy, no references are shared,
+    so changes in the original object do not affect the copied object.
+    💡 Super Easy Trick to Remember
+
+    👉 Shallow Copy = "Same inner objects"
+    👉 Deep Copy = "Everything new"
+
+
+13) What is the purpose of finalize() method?
+-->The finalize() method in Java is a protected method defined in the Object class, designed to perform cleanup activities, such as closing 
+    file connections or releasing system resources, just before an object is destroyed by the Garbage Collector. It acts as a safety net for
+    reclaiming resources, but is deprecated due to inefficiency and lack of stability.
+| Feature | `finalize()`                | `final`                     | `finally`           |
+| ------- | --------------------------- | --------------------------- | ------------------- |
+| Type    | Method                      | Keyword                     | Block               |
+| Purpose | Cleanup before GC           | Restrict changes            | Execute code always |
+| Used in | Classes                     | Variables, methods, classes | Try-catch           |
+| Example | `protected void finalize()` | `final int x = 10;`         | `finally {}`        |
+
+
+14) What is the use of getClass()?
+-->The getClass() method in Java, belonging to the java.lang.Object class, is used to obtain the runtime class of an object.
+    It returns a Class object (representing the class/interface) which can be used to inspect metadata about the class at runtime, such as its name,
+    methods, constructors, and modifiers.
+
+15) Why are wait(), notify(), and notifyAll() methods defined in Object class and not in Thread class?
+-->The wait(), notify(), and notifyAll() methods are defined in the Object class because every object has a lock (monitor).
+    Threads use these object locks for communication and synchronization, so these methods are placed in the Object class rather than the Thread class.
+
+🔥 What is the use of a lock (monitor)?
+
+    A lock (monitor) is used to control access to shared resources so that only one thread can use them at a time.
+
+16) What happens if we don’t override toString()?
+-->If we don’t override toString(), then the default implementation from
+        👉 Object class is used.
+        🔹 Default Behavior
+        The default toString() returns: ClassName@HashCode
+
+17) Can we override finalize()?
+-->Yes, the finalize() method can be overridden. because every class inherits  the object class .
+    ⚡ Example
+    class Demo {
+        @Override
+        protected void finalize() {
+            System.out.println("Cleanup before object is destroyed");
+        }
+    }
+    ❗ Important Points (VERY IMPORTANT)
+    Called by garbage collector
+    Used for cleanup (like releasing resources)
+    Not guaranteed to execute ❌
+    Deprecated (Java 9+) ⚠️
+
+18) Can we call clone() without implementing Cloneable?
+-->No, we cannot properly use clone() without implementing the Cloneable interface.
+     and it throws the CloneNotSupportedException.
+
+19) What is the difference between shallow copy and deep copy?
+-->
+| Feature         | Shallow Copy              | Deep Copy                 |
+| --------------- | ------------------------- | ------------------------- |
+| Object creation | New object                | New object                |
+| Nested objects  | Shared (same reference) ❌ | New copies created ✅      |
+| Independence    | Partially independent     | Fully independent         |
+| Changes effect  | Affects both objects      | No effect on other object |
+| Complexity      | Simple                    | More complex              |
+
+
+
+20) Why is finalize() deprecated in Java 9 and later?
+-->The finalize() method was deprecated in Java 9 because it is inherently unpredictable, dangerous, and inefficient
+    Unpredictable Execution: There is no guarantee regarding when or even if a finalizer will run.
+    Performance Impact: Objects with finalizers impose a significant overhead. The GC must perform extra work during both object creation and reclamation.
+    Security Risks: Finalizers are susceptible to "finalizer attacks". A malicious subclass can override finalize() to resurrect partially initialized objects 
+    that failed their constructor, allowing an attacker to bypass security checks and access sensitive data.
+
+
+
+Coding Questions
+1) Write a Java program to display object details using toString() method.
+2) Write a Java program to compare two objects using the equals() method.
+class Student {
+    int id;
+    String name;
+
+    // Constructor
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    // Overriding equals() method
+    @Override
+    public boolean equals(Object obj) {
+        // Check if same reference
+        if (this == obj) {
+            return true;
+        }
+
+        // Check if obj is instance of Student
+        if (!(obj instanceof Student)) {
+            return false;
+        }
+
+        // Type casting
+        Student s = (Student) obj;
+
+        // Compare values
+        return this.id == s.id && this.name.equals(s.name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student(1, "Karthikeya");
+        Student s2 = new Student(1, "Karthikeya");
+
+        if (s1.equals(s2)) {
+            System.out.println("Objects are equal");
+        } else {
+            System.out.println("Objects are not equal");
+        }
+    }
+}
+
+3) Write a program to demonstrate the difference between == operator and equals() method.
+
+4) Write a Java program to find whether two employee objects are equal by overriding equals() and hashCode().
+5) Write a Java program to print the runtime class name using the getClass() method.
+class Student {}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();
+
+        // Print runtime class name
+        System.out.println(s.getClass().getName());
+    }
+}
+✅ Output
+Student
+6) Write a program to clone an object using the clone() method.
+class Student implements Cloneable {
+    int id;
+    String name;
+
+    // Constructor
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    // Overriding clone() method
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws CloneNotSupportedException {
+        Student s1 = new Student(1, "Karthikeya");
+
+        // Cloning object
+        Student s2 = (Student) s1.clone();
+
+        // Printing values
+        System.out.println(s1.id + " " + s1.name);
+        System.out.println(s2.id + " " + s2.name);
+    }
+}
+7) Write a Java program to demonstrate deep cloning using the clone() method.
+class Address implements Cloneable {
+    String city;
+
+    Address(String city) {
+        this.city = city;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+
+class Student implements Cloneable {
+    int id;
+    String name;
+    Address address;
+
+    Student(int id, String name, Address address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        // shallow copy first
+        Student s = (Student) super.clone();
+
+        // deep copy of nested object
+        s.address = (Address) address.clone();
+
+        return s;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws CloneNotSupportedException {
+
+        Address addr = new Address("Hyderabad");
+        Student s1 = new Student(1, "Karthikeya", addr);
+
+        // Deep cloning
+        Student s2 = (Student) s1.clone();
+
+        // Change original object
+        s1.address.city = "Delhi";
+
+        // Print values
+        System.out.println(s1.address.city); // Delhi
+        System.out.println(s2.address.city); // Hyderabad
+    }
+}
+8) Write a Java program to override the hashCode() method.
+9) Write a program to check the hash codes of two equal objects.
+10) Write a Java program to call the finalize() method and see when it executes.
+11) Write a Java program to demonstrate shallow copy?
+12) Write a Java program to demonstrate deep copy?
