@@ -1,0 +1,3 @@
+1) What is a keyword in Java?
+-->In Java, a keyword is a reserved word that has a predefined meaning and function within the language's syntax. Because these words are
+    fundamental to the Java compiler, they cannot be used as identifiers for naming variables, methods, classes, or any other program elements.
