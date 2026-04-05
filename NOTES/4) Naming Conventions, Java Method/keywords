@@ -1,3 +1,279 @@
 1) What is a keyword in Java?
 -->In Java, a keyword is a reserved word that has a predefined meaning and function within the language's syntax. Because these words are
     fundamental to the Java compiler, they cannot be used as identifiers for naming variables, methods, classes, or any other program elements.
+
+2) How many keywords are available in Java?
+-->As of the most recent Java specifications (up to Java 21), there are 53 keywords. These keywords are reserved words with predefined meanings 
+    that cannot be used as identifiers, such as variable or method names.
+
+3) Are Java keywords case-sensitive?
+-->Yes, Java keywords are case-sensitive. All Java Language Keywords are defined in lowercase, and they must be written exactly as specified 
+    for the Java compiler to recognize them. 
+
+4) Why are keywords reserved in Java?
+-->Keywords in Java are reserved words that have predefined meaning to the compiler, so they cannot be used as identifiers (like 
+    variable names, class names, or method names).
+
+5) Can keywords be used as identifiers? Why not?
+-->No, keywords cannot be used as identifiers in Java because they are reserved words with predefined meanings, and using them as
+identifiers would create confusion for the compiler.
+
+6) What is the use of static keyword?
+-->The static keyword in Java is used to create variables, methods, or blocks that belong to the class rather than to any specific object, so they
+    can be accessed without creating an instance of the class.
+
+7) What is the use of final keyword? What happen when we declare a variable, method, class as final?
+-->The final keyword in Java is used to restrict modification.
+
+    Uses:
+    
+    Final Variable:
+    
+    Value cannot be changed once assigned (constant).
+    final int x = 10;
+    x = 20; // ❌ Error
+    Final Method:
+    Cannot be overridden by subclasses.
+    Final Class:
+    Cannot be inherited (no subclass can be created).
+    
+    👉 In short:
+    final = no change / no override / no inheritance 🚫
+
+
+8) What does the super keyword do in Java?
+-->The super keyword in Java is used to refer to the immediate parent (superclass) object.
+
+    Uses:
+    
+    Access parent class variables
+    
+    super.variableName;
+    
+    Call parent class methods
+    
+    super.methodName();
+    
+    Call parent class constructor
+    
+    super();
+    
+    👉 In short:
+    super = access parent class properties and behavior 👨‍👦
+
+
+9) What is the role of this keyword?
+-->The this keyword in Java is used to refer to the current object (current class instance).
+
+    Uses:
+    
+    Access current class variables
+    
+    this.variableName;
+    
+    Call current class methods
+    
+    this.methodName();
+    
+    Call another constructor in same class
+    
+    this();
+    
+    👉 In short:
+    this = refers to current object 🎯
+
+
+10) What is the difference between this and super?
+-->The this and super keywords in Java are both used to refer to objects, but they refer to different things.
+
+    Difference:
+    this
+    Refers to the current class object
+    Used to access current class variables, methods, and constructors
+    super
+    Refers to the parent (superclass) object
+    Used to access parent class variables, methods, and constructors
+    
+    👉 In short:
+    this = current object
+    super = parent object
+
+
+11) What is the purpose of the new keyword?
+-->The new keyword in Java is used to create objects (instances) of a class and allocate memory to them.
+    
+    Example:
+    Student s = new Student();
+    
+    👉 In short:
+    new = object creation + memory allocation
+
+
+12) Why do we use the return keyword?
+-->The return keyword in Java is used to send a value back from a method to the place where it was called and to exit the method.
+
+    Example:
+    int add(int a, int b) {
+        return a + b;
+    }
+    
+    👉 In short:
+    return = gives result back and ends method execution
+
+
+13) What are break and continue keywords?
+-->The break and continue keywords in Java are used to control the flow of loops.
+    
+    1. break
+    Used to exit the loop completely
+    
+    2. continue
+    Used to skip the current iteration and move to next iteration
+
+
+14) What is the use of void keyword?
+-->The void keyword in Java is used to specify that a method does not return any value.
+
+    Example:
+    void display() {
+        System.out.println("Hello");
+    }
+    
+    👉 In short:
+    void = no return value 🚫
+
+
+15) Explain public, private, protected keywords.
+-->public, private, and protected are access modifiers in Java used to control the visibility of variables, methods, and classes.
+
+    public = everywhere 🌍
+    private = same class only 🔒
+    protected = package + subclass 👨‍👦
+
+16) What is the difference between abstract and final keywords?
+-->abstract
+    Used to achieve abstraction
+    Can be extended (inherited)
+    Methods can be declared without implementation
+
+    abstract class A {
+        abstract void display();
+    }
+    
+    final
+    Used to restrict
+    Cannot be extended (no inheritance)
+    Methods cannot be overridden
+    final class A {
+    }
+    
+    👉 Difference:
+    
+    abstract = must be extended and implemented
+    final = cannot be extended or changed
+    
+    👉 In short:
+    abstract → incomplete (needs implementation)
+    final → complete (no changes allowed)
+
+
+17) What is the role of the extends keyword?
+-->The extends keyword in Java is used to inherit properties and methods from one class to another class.
+
+    Example:
+    class Parent {
+        void show() {
+            System.out.println("Parent class");
+        }
+    }
+    
+    class Child extends Parent {
+    }
+    
+    👉 Here, Child gets all properties and methods of Parent.
+    
+    👉 In short:
+    extends = inheritance (parent → child) 👨‍👦
+
+
+18) What is the use of implements keyword?
+-->The implements keyword in Java is used to allow a class to implement (provide implementation for) an interface.
+
+    Example:
+    interface A {
+        void display();
+    }
+    
+    class B implements A {
+        public void display() {
+            System.out.println("Implemented");
+        }
+    }
+    
+    👉 In short:
+    implements = used to achieve interface implementation
+
+
+19) What is the use of package keyword?
+-->In programming languages like Java  the package keyword is used to organize classes, interfaces, and other code components into a logical group or
+    namespace
+
+20) What is the difference between import and package?
+-->The package and import keywords in Java are used for organizing and accessing classes, but they serve different purposes.
+
+    package
+    Used to define the package (folder) where a class belongs
+    Written at the top of the file
+    package com.example.demo;
+    import
+    Used to access classes from another package
+    import java.util.Scanner;
+    👉 Difference:
+    package = defines where the class is stored 📁
+    import = brings other classes into use 📥
+    
+    👉 In short:
+    package → create/organize
+    import → use/access
+
+
+21) What is the purpose of instanceof keyword?
+-->The instanceof keyword in Java is used to check whether an object is an instance of a specific class or interface.
+
+    Example:
+    if(obj instanceof Student) {
+        System.out.println("Object is of type Student");
+    }
+    
+    👉 In short:
+    instanceof = type checking of object 🔍
+    The instanceof keyword is a type comparison operator used to test whether an object is an instance of a specific class, subclass, or interface at runtime
+
+
+22) Explain the use of interface keyword?
+-->The interface keyword in Java is used to declare a blueprint of a class that contains abstract methods (without implementation),
+    which must be implemented by other classes.
+    Achieves abstraction
+    Supports multiple inheritance
+    Ensures common structure (rules) for classes
+
+23) What is the use of throws and throw keywords?
+-->In Java, throw is used to explicitly raise an exception instance within a method body, while throws is used in a method signature
+    to declare that a method may raise specific exceptions, passing responsibility to the caller. throw is used for active exception creation,
+    whereas throws is used for propagation.
+    The throw and throws keywords in Java are used for exception handling, but they have different purposes.
+    
+    1. throw
+    Used to explicitly throw an exception
+    throw new Exception("Error occurred");
+    2. throws
+    Used to declare exceptions that a method can throw
+    void method() throws Exception {
+    }
+    👉 Difference:
+    throw = used to create and throw an exception
+    throws = used to declare exception in method signature
+    
+    👉 In short:
+    throw → actually throw exception 🚨
+    throws → declare possible exception 📢
