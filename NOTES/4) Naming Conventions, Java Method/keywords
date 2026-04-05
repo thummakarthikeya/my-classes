@@ -277,3 +277,118 @@ identifiers would create confusion for the compiler.
     👉 In short:
     throw → actually throw exception 🚨
     throws → declare possible exception 📢
+
+
+
+
+24) What does the try, catch, and finally block mean?
+-->The try, catch, and finally blocks in Java are used for handling exceptions (runtime errors).
+    
+    1. try
+    Contains code that may cause an exception
+    try {
+        int x = 10 / 0;
+    }
+    2. catch
+    Handles the exception thrown in try block
+    catch(Exception e) {
+        System.out.println("Error occurred");
+    }
+    3. finally
+    Always executes whether exception occurs or not
+    finally {
+        System.out.println("Always runs");
+    }
+    👉 In short:
+    try → risky code ⚠️
+    catch → handle error 🛠️
+    finally → always execute 🔄
+
+
+25) What is the use of enum keyword?
+-->The enum keyword in Java is used to define a fixed set of constants (unchangeable values).
+
+    Example:
+    enum Day {
+        MONDAY, TUESDAY, WEDNESDAY
+    }
+    Uses:
+    Represents fixed values like days, months, states
+    Improves code readability and type safety
+
+    No, enum is not the same as static. Although enum values are internally static and final, enum is used to define a group of related constants,
+    while static is used to make members belong to the class instead of objects.
+
+
+26) What does the transient keyword do?
+-->The transient keyword in Java is a field modifier used during serialization to prevent specific member variables from being serialized, 
+    meaning their values are not saved to a persistent stream and are lost. When deserialized, these fields are initialized with default values
+    (e.g., null or 0), securing sensitive data like passwords or reducing payload size for non-essential cache data. 
+    
+    The transient keyword in Java is used to prevent a variable from being serialized (saved) when an object is converted into a byte stream.
+    
+    Example:
+    transient int password;
+    Use:
+    When you don’t want to save sensitive data (like passwords) during serialization
+    
+    👉 In short:
+    transient = skip variable during serialization 🚫
+
+
+27) What is the role of volatile keyword?
+-->The volatile keyword in Java is used to ensure that a variable’s value is always read from main memory, not from thread-local cache, making it visible to all threads.
+    
+    Use:
+    Used in multithreading to avoid inconsistent values
+    Example:
+    volatile int count;
+    
+    👉 In short:
+    volatile = always get latest value across threads 🔄
+
+
+28) What is the use of synchronized keyword?
+-->The synchronized keyword in Java is used to control access to a block of code or method so that only one thread can execute it at a time, ensuring thread safety.
+
+    Example:
+    synchronized void display() {
+        System.out.println("Thread safe method");
+    }
+    Use:
+    Prevents race conditions
+    Ensures data consistency in multithreading
+    
+    👉 In short:
+    synchronized = one thread at a time (thread safety) 🔒
+
+
+29) What is the meaning of strictfp keyword?
+-->The strictfp keyword ensures that all floating-point calculations follow IEEE 754 standards, producing consistent results across different platforms.
+
+30) Where do we use native keyword?
+-->The native keyword is used to declare a method in Java whose implementation is provided in a non-Java language like C or C++ using JNI, allowing
+    Java to call that external code.
+
+    The native keyword in Java is used to declare a method whose implementation is written in another language (like C or C++) using JNI (Java Native Interface).
+
+    In Java, a native method is declared using the native keyword without implementation, and the actual code is written in another language like 
+    C or C++, which is executed when the method is called.
+
+
+
+31) What is the difference between const and final in Java?
+-->In Java, final is used, while const is a reserved keyword but not used.
+
+    🔹 final
+    Used to make variables constant
+    Value cannot be changed once assigned
+    final int x = 10;
+    🔹 const
+    It is a reserved keyword
+    Not used in Java
+    If you try to use it → ❌ error
+    👉 Difference:
+    final → used to create constants ✔️
+    const → reserved but not used ❌
+
