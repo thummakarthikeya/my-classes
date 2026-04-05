@@ -392,3 +392,23 @@ identifiers would create confusion for the compiler.
     final → used to create constants ✔️
     const → reserved but not used ❌
 
+
+32) Is goto keyword supported in Java?
+-->No, the goto keyword is not supported as a functional statement in Java
+
+
+33) Describe real-time uses of transient and volatile?
+-->Both transient and volatile are keywords used in Java to handle specialized scenarios regarding data persistence and concurrency, respectively.
+        They solve entirely different problems. 
+    1. Transient Keyword (Serialization Context)
+    The transient keyword is used with instance variables to exclude them from the Java serialization process. When an object is serialized,
+    transient fields are not saved, and upon deserialization, they are initialized with default values (null, 0, or false). 
+
+    The volatile keyword ensures variable visibility across threads. It informs the Java Virtual Machine (JVM) that a variable is shared and that its 
+    value should be read/written directly from main memory instead of the CPU cache. 
+ 
+    Real-time Uses:
+    Flag Variables for Thread Control: A volatile boolean flag is commonly used to safely stop a worker thread from another thread
+    (e.g., a "shutdown" or "running" signal).
+
+
