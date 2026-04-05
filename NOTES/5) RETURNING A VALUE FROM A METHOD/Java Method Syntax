@@ -1,0 +1,31 @@
+1.What is the syntax of a method in Java, and what are its main components?
+-->A method in Java is a block of code that performs a specific task and can be called when needed.
+
+    ✅ Syntax of a Method:
+    returnType methodName(parameters) {
+        // method body
+    }
+    🔍 Main Components:
+    Return Type
+    Specifies what the method returns
+    Example: int, void, String
+    Method Name
+    Name of the method (identifier)
+    Parameters
+    Inputs passed to the method (optional)
+    Method Body
+    Code that defines what the method does
+    ✅ Example:
+    int add(int a, int b) {
+        return a + b;
+    }
+    
+    👉 In short:
+    Method = return type + name + parameters + body
+
+
+
+
+2.What is the difference between instance methods and static methods in Java?
+-->
+
