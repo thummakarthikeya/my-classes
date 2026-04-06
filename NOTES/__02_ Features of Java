@@ -31,7 +31,8 @@
     utilization and improving responsiveness
 
 8) What is “Dynamic” in Java?
--->In Java, "dynamic" is a term generally used to refer to operations or behaviors that are resolved during runtime, rather than at compile time.
+-->“Dynamic” in Java means that certain decisions (like method execution or memory allocation) are made at runtime instead of compile time.
+    In Java, "dynamic" is a term generally used to refer to operations or behaviors that are resolved during runtime, rather than at compile time.
 
 9) Explain “Distributed” and how Java supports distributed systems.
 -->A distributed system is a collection of independent computers (nodes) that work together and appear to users as a single, unified system. 
