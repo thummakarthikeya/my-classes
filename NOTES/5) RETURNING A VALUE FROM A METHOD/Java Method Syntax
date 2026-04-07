@@ -83,3 +83,9 @@
 
 
 
+Programs
+1) Write a Java method with no parameters that returns an integer value.
+2) Write a static method that takes two numbers as parameters and returns their sum.
+3) Write a public method that returns a string message.
+4) Write a method that prints a message to the console but does not return any value.
+5) Write a method that accepts parameters, performs a calculation, and returns the result.
