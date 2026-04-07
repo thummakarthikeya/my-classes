@@ -1,0 +1,329 @@
+1. What is a datatype in Java, and why do we need it for every variable?
+-->In Java, a datatype is an attribute that specifies the kind of data a variable can hold and the set of operations that can be performed on it.
+
+2. What are the main types of datatypes in Java? Give examples.
+-->Java data types are divided into two main categories: Primitive and Non-Primitive
+
+    1. Primitive Data Types
+    These are the most basic, predefined building blocks of the language that store simple values directly in memory. There are eight primitive types: 
+    Integral Types (Whole numbers):
+    byte: 8-bit signed integer (e.g., byte b = 100;).
+    short: 16-bit signed integer (e.g., short s = 5000;).
+    int: 32-bit signed integer, the default for whole numbers (e.g., int i = 100000;).
+    long: 64-bit signed integer, used for large values (e.g., long l = 15000000000L;).
+    Floating-Point Types (Decimal numbers):
+    float: 32-bit single-precision (e.g., float f = 5.75f;).
+    double: 64-bit double-precision, the default for decimals (e.g., double d = 19.99;).
+    Character Type:
+    char: A single 16-bit Unicode character (e.g., char letter = 'A';).
+    Logical Type:
+    boolean: Stores only true or false (e.g., boolean isJavaFun = true;). 
+
+    2. Non-Primitive (Reference) Data Types
+    These types refer to objects and store memory addresses (references) rather than the data itself. They are typically created by the programmer,
+    though some are predefined by Java. 
+    String: A sequence of characters (e.g., String greeting = "Hello World";).
+    Array: A collection of values of the same type (e.g., int[] numbers = {1, 2, 3};).
+    Class: User-defined blueprints for objects (e.g., class MyClass { ... }).
+    Interface: Abstract types that define a contract for classes (e.g., interface Animal { void sound(); }).
+    Enum: A special class representing a group of constants (e.g., enum Color { RED, GREEN, BLUE };)
+    
+    Non-primitive types (like String, arrays, objects) are stored differently:
+    👉 They use Heap memory
+    📌 How it works:
+    String name = "Karthikeya";
+    The variable name → stored in Stack
+    The actual value "Karthikeya" → stored in Heap
+    name does NOT store the value directly
+    👉 It stores a reference (address) pointing to the Heap
+    🎯 Easy Analogy
+    Think like this:
+    Primitive 👉 You store money in your pocket (direct value) 💰
+    Non-Primitive 👉 You store a locker key (reference), and money is in bank 🏦
+
+
+
+3. What is a primitive datatype? Why do we use primitive datatypes?
+-->A primitive data type in Java is a basic built-in data type that stores simple values directly in memory (not objects).
+
+      👉 Java has 8 primitive data types:
+      
+      byte
+      short
+      int
+      long
+      float
+      double
+      char
+      boolean
+      
+      📌 Example:
+      
+      int number = 10;
+      char grade = 'A';
+      boolean isPassed = true;
+      ✅ Why Do We Use Primitive Data Types?
+      1. ⚡ Fast Performance
+      Stored directly in memory → faster access
+      No object creation overhead
+      2. 💾 Memory Efficient
+      Use less memory compared to objects
+      Example: int takes 4 bytes only
+      3. 🔹 Simplicity
+      Easy to use for basic operations (math, conditions)
+      4. 🔧 Built-in Support
+      Directly supported by Java language
+      No need to import or create anything
+      🎯 Simple Understanding
+      Primitive = Basic value (simple data)
+      Non-primitive = Objects (complex data)
+      
+      👉 Example:
+      
+      int x = 5; → primitive
+      String name = "Karthikeya"; → object (non-primitive)
+
+
+
+4. List all primitive datatypes in Java. What kind of values do they store?
+-->In Java, there are eight primitive data types predefined by the language. These types represent basic values and are stored directly in memory rather
+    than as objects. 
+
+    Integer Types (Whole Numbers)
+    byte: Stores 8-bit signed integers from -128 to 127. It is useful for saving memory in large arrays.
+    short: Stores 16-bit signed integers from -32,768 to 32,767.
+    int: Stores 32-bit signed integers from -2,147,483,648 to 2,147,483,647. This is the most common type for whole numbers.
+    long: Stores 64-bit signed integers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. Use this when int is not large enough. 
+
+    Floating-Point Types (Decimal Numbers) 
+    float: Stores single-precision 32-bit fractional numbers. It is suitable for storing 6 to 7 decimal digits.
+    double: Stores double-precision 64-bit fractional numbers. It is suitable for storing 15 to 16 decimal digits and is the default choice for decimals. 
+
+    Other Basic Types
+    boolean: Stores only two possible values: true or false. It is primarily used for conditional logic and flags.
+    char: Stores a single 16-bit Unicode character. It can represent letters, digits, symbols, or ASCII values.
+
+
+5. What is the size, default value, and range of each primitive datatype?
+-->
+| Data Type | Size    | Default Value | Range             |
+| --------- | ------- | ------------- | ----------------- |
+| `byte`    | 1 byte  | 0             | -128 to 127       |
+| `short`   | 2 bytes | 0             | -32,768 to 32,767 |
+| `int`     | 4 bytes | 0             | -2³¹ to 2³¹-1     |
+| `long`    | 8 bytes | 0L            | -2⁶³ to 2⁶³-1     |
+| `float`   | 4 bytes | 0.0f          | ~ ±3.4 × 10³⁸     |
+| `double`  | 8 bytes | 0.0d          | ~ ±1.7 × 10³⁰⁸    |
+| `char`    | 2 bytes | '\u0000'      | 0 to 65,535       |
+| `boolean` | 1 bit*  | false         | true / false      |
+
+
+6. What is a reference datatype? Give examples?
+-->In Java, a reference data type is a type of variable that stores the address (reference) of an object, not the actual value.
+
+      👉 The actual data is stored in heap memory, and the variable holds a reference pointing to it.
+      
+      📌 Example:
+      String name = "Karthikeya";
+      name → stores reference (address)
+      "Karthikeya" → stored in heap memory
+      ✅ Examples of Reference Data Types
+      Class
+      Student s = new Student();
+      String
+      String str = "Hello";
+      Array
+      int[] arr = {1, 2, 3};
+      Interface
+      Runnable r;
+      🔁 Key Points
+      Store reference (address), not actual data
+      Stored in heap memory
+      Can be null
+      Created using new keyword (mostly)
+      🎯 Simple Understanding
+      
+      👉 Primitive → stores value
+      👉 Reference → stores address of value
+      
+      📝 Short Exam Answer
+      
+      A reference data type in Java stores the memory address of an object rather than the actual value. Examples include String, arrays,
+      classes, and interfaces.
+
+
+7. Can primitive datatypes hold null? Can reference datatypes hold null?
+-->In Java, whether a data type can hold a null value depends on whether it is a primitive or a reference type. 
+    Primitive Data Types: No, primitive data types cannot hold null. According to the Oracle Java Tutorials, the null literal cannot be assigned to
+    variables of primitive types. Primitives such as int, boolean, and double must always hold a concrete value, falling back to predefined default 
+    values (like 0 or false) if they are uninitialized.
+
+    Reference Data Types: Yes, reference data types can hold null. As explained by W3Schools, reference types (such as String, Array, or any class
+    instance) store memory addresses rather than actual data. A value of null indicates that the reference variable does not point to any object 
+    in memory. 
+
+
+8. What is the difference between primitive and reference datatypes?
+-->
+| Feature         | Primitive Data Types              | Reference Data Types                |
+| --------------- | --------------------------------- | ----------------------------------- |
+| Definition      | Store actual value                | Store reference (address) of object |
+| Memory Location | Stack                             | Heap (data) + Stack (reference)     |
+| Data Stored     | Direct value                      | Address of object                   |
+| Examples        | `int`, `float`, `char`, `boolean` | `String`, arrays, classes           |
+| Size            | Fixed                             | Depends on object                   |
+| Default Value   | 0, 0.0, false, '\u0000'           | null                                |
+| Performance     | Faster                            | Slightly slower                     |
+| Null Allowed    | ❌ No                              | ✅ Yes                               |
+| Created Using   | Direct assignment                 | `new` keyword (mostly)              |
+
+
+
+9. Can a variable be declared without assigning a value? What happens if you try to use it?
+-->1. Local Variables (Inside a Method)
+    If you declare a variable inside a method, it is a local variable. 
+    Behavior: Java does not assign default values to local variables.
+    What happens if you use it: If you try to use an uninitialized local variable, the compiler will throw a compile-time error stating that the variable might not have been initialized.
+    Example:
+    java
+    void myMethod() {
+        int x; // Declared but not assigned
+        System.out.println(x); // COMPILE-TIME ERROR: variable x might not have been initialized
+    }
+
+    2. Class-Level Variables (Instance or Static)
+    Variables declared directly within a class (outside methods) are fields. 
+    Behavior: Java automatically assigns a default value to these variables based on their data type.
+    What happens if you use it: You can use them immediately without explicit initialization, and the program will run using the default value.
+    Common Default Values:
+    int, byte, short, long: 0
+    float, double: 0.0
+    boolean: false
+    char: '\u0000' (null character)
+    Object References (e.g., String): null
+
+
+
+
+10. Can primitive datatypes be declared inside constructors, static blocks, instance blocks, or non-static methods? Explain.
+-->Yes — primitive data types can be declared anywhere inside a class, including constructors, static blocks, instance blocks, and methods in Java.
+    
+    👉 Because primitives are just normal variables, they follow the same scope rules.
+    
+    ✅ 1. Inside Constructor
+    
+    ✔️ Allowed — they act as local variables
+    
+    class Demo {
+        Demo() {
+            int x = 10;  // primitive inside constructor
+            System.out.println("Constructor value: " + x);
+        }
+    }
+    ✅ 2. Inside Static Block
+    
+    ✔️ Allowed — used during class loading
+    
+    class Demo {
+        static {
+            int x = 20;  // primitive inside static block
+            System.out.println("Static block value: " + x);
+        }
+    }
+    ✅ 3. Inside Instance Block
+    
+    ✔️ Allowed — runs when object is created
+    
+    class Demo {
+        {
+            int x = 30;  // primitive inside instance block
+            System.out.println("Instance block value: " + x);
+        }
+    }
+    ✅ 4. Inside Non-Static Method
+    
+    ✔️ Allowed — most common usage
+    
+    class Demo {
+        void display() {
+            int x = 40;  // primitive inside method
+            System.out.println("Method value: " + x);
+        }
+    }
+    🔥 Important Note
+    
+    👉 All these variables are local variables, so:
+    
+    Stored in stack memory
+    No default values (must be initialized before use)
+    🎯 Final Answer (Exam Ready)
+    
+    Yes, primitive data types can be declared inside constructors, static blocks, instance blocks, and methods. In all these cases, they behave as
+      local variables and must be initialized before use.
+
+
+
+
+11. If you declare all primitive datatypes inside a method and try to print them without initialization, what happens?
+-->If you declare primitive datatypes inside a method (as local variables) and attempt to print them without initialization, the program will fail to compile. 
+    According to the Java Language Specification, the following happens:
+    Compiler Error: The Java compiler will throw a "variable might not have been initialized" error.
+    No Default Values: Unlike class-level (instance or static) variables, local variables are not automatically assigned default values like 0 or false.
+    Mandatory Initialization: You must explicitly assign a value to a local variable before it is accessed in any operation, including printing
+    with System.out.println().
+    Safe Declaration: Simply declaring the variables without using them is allowed and will not cause an error; the error only triggers when you try
+    to use (read) the uninitialized variable.
+
+
+12. What happens if you declare a primitive variable with a value larger than its range? Give an example.
+-->In Java, if you assign a value larger than the allowed range of a primitive data type, you’ll get a compile-time error (in most direct assignments).
+    
+    🔹 Case 1: Direct Assignment (Compile-Time Error)
+    byte b = 130;   // ❌ Error
+    
+    👉 Why?
+    
+    byte range = -128 to 127
+    130 is outside the range
+    
+    ✔️ Result: Compilation fails
+    
+    🔹 Case 2: With Explicit Casting (Overflow Happens)
+    byte b = (byte)130;
+    System.out.println(b);
+    
+    👉 Output:
+    
+    -126
+    ⚠️ Why this happens?
+    Java cuts extra bits (overflow)
+    It wraps around using 2’s complement
+    🔹 Another Example
+    int x = (int)2147483648L;
+    System.out.println(x);
+    
+    👉 Output:
+    
+    -2147483648
+    🎯 Key Concept
+    
+    👉 If value exceeds range:
+    
+    Without casting → ❌ Compile-time error
+    With casting → ⚠️ Overflow (wrong/rotated value)
+    🧠 Easy Understanding
+    
+    Think like a clock ⏰:
+    
+    Max reached → it starts again from minimum
+    👉 This is called overflow
+    📝 Short Exam Answer
+    
+    If a primitive variable is assigned a value beyond its range, Java gives a compile-time error. If explicitly cast, the value overflows 
+    and produces an incorrect result due to wrap-around.
+
+
+
+
+13. If you declare a variable with a primitive types, what does JVM do internally? How much memory is allocated?
+-->
