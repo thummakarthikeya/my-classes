@@ -25,7 +25,61 @@
 
 
 
-
 2.What is the difference between instance methods and static methods in Java?
--->
+-->Instance Method:
+    Belongs to an object (instance) of a class
+    Requires object creation to call
+    Can access both instance and static variables
+    
+    Static Method:
+    
+    Belongs to the class, not objects
+    Can be called without creating an object
+    Can access only static variables directly
+
+
+3. Difference Between Method Declaration and Method Definition?
+-->Method Declaration:
+
+    Specifies method name, return type, and parameters
+    Does not contain the body
+    Example:
+    int add(int a, int b);
+    
+    Method Definition:
+    
+    Contains the actual implementation (body)
+    Example:
+    int add(int a, int b) {
+        return a + b;
+    }
+
+
+4. Can a Java Method Have Multiple Return Statements?
+-->Yes, a Java method can have multiple return statements, but only one executes based on the condition.
+
+    Example:
+    
+    int checkNumber(int num) {
+        if (num > 0) {
+            return 1;
+        } else if (num < 0) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+
+5. Access Modifiers in Java Methods & Their Visibility
+-->Access modifiers control where a method can be accessed from.
+
+    Types:
+    
+    public → accessible everywhere
+    private → accessible only within the same class
+    protected → accessible within the same package and subclasses
+    default (no modifier) → accessible within the same package only
+
+
 
