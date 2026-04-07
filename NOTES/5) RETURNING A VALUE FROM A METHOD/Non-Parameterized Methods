@@ -1,0 +1,106 @@
+1) Explain the purpose of non-parameterized methods in Java. When would you prefer using them?
+-->A non-parameterized method is a method that does not take any input values (parameters).
+
+    Purpose:
+    
+    Used when no external input is required
+    Performs fixed operations
+    Improves code reusability and readability
+    
+    When to use:
+    
+    When logic does not depend on user input
+    Example: printing a message, displaying menu, fixed calculations
+    void displayMessage() {
+        System.out.println("Welcome to Java");
+    }
+
+
+2) Can a non-parameterized method return different data types? Demonstrate with examples.
+-->Yes, a non-parameterized method can return any data type, but one method returns only one type at a time.
+    
+    Examples:
+    
+    int getNumber() {
+        return 10;
+    }
+    
+    String getMessage() {
+        return "Hello";
+    }
+    
+    boolean isValid() {
+        return true;
+    }
+    
+    👉 Each method has no parameters, but returns different data types
+
+
+
+3) Can a non-parameterized method access instance variables and static variables? Explain.
+-->Yes.
+
+    Explanation:
+    
+    It can access instance variables (if it's an instance method)
+    It can access static variables directly
+    class Demo {
+        int x = 10;           // instance variable
+        static int y = 20;    // static variable
+    
+        void show() {
+            System.out.println(x); // instance variable
+            System.out.println(y); // static variable
+        }
+    }
+
+
+
+4) Can a non-parameterized method call another method that has parameters? Explain with an example.
+-->Yes.
+
+    Explanation:
+    A non-parameterized method can call another method by passing values manually.
+    
+    class Demo {
+        void display() {
+            add(5, 3); // calling parameterized method
+        }
+    
+        void add(int a, int b) {
+            System.out.println(a + b);
+        }
+    }
+
+
+
+5) What happens if you call a non-parameterized instance method before creating an object?
+-->It will cause a compile-time error.
+
+Reason:
+Instance methods belong to objects, so you must create an object before calling them.
+
+class Demo {
+    void show() {
+        System.out.println("Hello");
+    }
+
+    public static void main(String[] args) {
+        show(); // ❌ ERROR
+    }
+}
+
+Correct way:
+
+Demo obj = new Demo();
+obj.show(); // ✅ Correct
+
+If you want, I can convert these into very short 2-mark answers for exams 👍
+
+
+Programs
+1) Write a non-parameterized method that returns your name.
+2) Write a non-parameterized method that returns the current year.
+3) Write a non-parameterized method that calculates and returns the square of 5.
+4) Write a non-parameterized method that prints a welcome message.
+5) Write a non-parameterized method that returns a greeting message based on a predefined variable.
