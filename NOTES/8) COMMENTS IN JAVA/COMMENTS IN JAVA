@@ -1,0 +1,62 @@
+1. What are the types of comments in Java?
+-->🔹 1. Types of Comments in Java
+
+      Java supports 3 types of comments:
+      
+      Single-line comment
+      
+      // This is a single-line comment
+      
+      Multi-line comment
+      
+      /* This is a
+         multi-line comment */
+      
+      Documentation comment (Javadoc)
+      
+      /**
+       * This is a documentation comment
+       */
+
+
+2. Difference between single-line and multi-line comments.
+-->
+| Feature       | Single-line (`//`)             | Multi-line (`/* */`) |
+| ------------- | ------------------------------ | -------------------- |
+| Lines covered | Only one line                  | Multiple lines       |
+| Syntax        | `// comment`                   | `/* comment */`      |
+| Usage         | Short notes                    | Large explanations   |
+| Ending        | Ends automatically at line end | Must close with `*/` |
+
+
+
+3. Can comments be nested?
+-->❌ No, Java does NOT support nested comments
+
+    👉 Example (invalid):
+    
+    /* Outer comment
+       /* Inner comment */
+    */
+    
+    👉 This will cause a compilation error
+
+
+4. Are comments compiled into bytecode?
+-->❌ No
+    
+    👉 Comments are:
+    
+    Ignored by the compiler
+    Not included in .class (bytecode) files
+    
+    ✔ They exist only in source code
+
+
+5. What is the purpose of comments in coding standards or documentation?
+-->Explain code logic
+  Improve readability
+  Help other developers understand code
+  Provide documentation (using Javadoc)
+  Make maintenance easier
+  Describe methods, parameters, and usage
