@@ -1,0 +1,76 @@
+1) What is constructor in java? What is the use of constructors?
+-->A constructor in Java is a special block of code that is automatically called when an instance (object) of a class is created. It has the
+    same name as the class and does not have an explicit return type—not even void
+    👉 A constructor is a special method used to initialize objects
+    
+    Same name as class
+    No return type
+    
+    ✔ Use:
+    
+    Initialize variables
+    Allocate resources
+    Set default values
+
+
+2) What are the different types of constructors?
+-->Default constructor (no parameters)
+    Parameterized constructor
+    Copy constructor (user-defined)
+
+    Default Constructor: If a developer does not define any constructor, the Java compiler automatically inserts a default no-args constructor, setting 
+    fields to default values (e.g., , null, false).
+    No-Argument Constructor (User-Defined): A constructor explicitly written by the developer that takes no parameters. It is used to provide
+    custom initialization values.
+    Parameterized Constructor: A constructor that accepts one or more arguments, allowing the creation of objects with specific, custom values.
+    Constructor Overloading: A class can have multiple constructors, provided their parameter lists differ (different number or types of arguments).
+    Copy Constructor (Concept): Although Java does not have a built-in copy constructor like C++, you can create a parameterized constructor that
+    takes an object of the same class as a parameter to copy its data.
+    Private Constructor: A constructor with the private modifier, commonly used in the Singleton design pattern to restrict object instantiation to
+    within the class itself. 
+
+
+3) When a constructor is executed?
+-->Automatically called when an object is created using new
+
+  Demo d = new Demo();  // constructor called here
+
+
+4) What happens when we did not provide any constructor? How object is created?
+-->When you do not provide any constructor in a Java class, the following happens:
+    Compiler Generates a Default Constructor: The Java compiler automatically inserts a default constructor into your class during the compilation process.
+    No-Argument Structure: This automatically generated constructor is a no-argument constructor, meaning it takes no parameters.
+    Superclass Call: The first task of this default constructor is to call the no-argument constructor of its superclass (e.g., super()).
+    If no explicit superclass is defined, it calls the constructor of java.lang.Object.
+    Variable Initialization: It initializes all instance variables to their default values:
+    Numeric types (int, double, etc.) are set to 0 or 0.0.
+    Boolean types are set to false.
+    Reference types (objects) are set to null. 
+
+    How the Object is Created
+    Object creation follows a specific sequence when the new keyword is used: 
+    Memory Allocation: The Java Virtual Machine (JVM) allocates enough memory on the heap to hold all the instance variables for that object and its
+    parent classes.
+    Implicit Constructor Invocation: The JVM calls the compiler-generated default constructor.
+    Super Constructor Chaining: The default constructor immediately calls its parent's constructor, a process that continues up the chain to java.lang.Object.
+    Field Initialization: After the parent constructors have run, the JVM initializes instance variables to their default values (or any values assigned
+    at the time of declaration).
+    Reference Return: Once the initialization is complete, the new operator returns a reference (the memory address) of the newly created object to the variable. 
+    
+    Important Note: If you define any constructor manually (even a parameterized one), the compiler will not generate the default constructor.
+    You must then explicitly provide a no-argument constructor if you wish to use one
+
+
+5) What is the use of the this() keyword in a constructor?
+6) What is the use of the super() keyword in a constructor?
+7) What is constructor overloading? can we overload a constructor?
+8) Is it possible to override a constructor? What happens when we override a constructor?
+9) What is constructor chaining?
+10) Can a constructor be private? If yes, why do we use it?
+11) Can an abstract class have a constructor?
+12) Can an interface have a constructor?
+13) Can a constructor be static or abstract? Why or why not?
+14) Can a constructor be final?
+15) What is a copy constructor in Java?
+16) What is the difference between a method and a constructor?
+17) Can we use final variables in constructors?
