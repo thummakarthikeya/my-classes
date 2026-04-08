@@ -326,4 +326,158 @@
 
 
 13. If you declare a variable with a primitive types, what does JVM do internally? How much memory is allocated?
--->
+-->When you declare a variable with a primitive type in Java, the JVM performs specific internal actions depending on where that variable is defined. 
+    Internal JVM Actions
+    Local Variables: When declared inside a method, the JVM allocates space on the Stack memory. At runtime, each method call creates a new Stack Frame. 
+    The JVM reserves a slot in this frame for the primitive variable's actual value, not a pointer.
+    Instance Variables: If a primitive is a field within a class, the JVM allocates space for it on the Heap memory as part of the object’s blueprint.
+    Memory is allocated the moment the object is created using the new keyword.
+    Static Variables: For static primitives, the JVM allocates memory in the Method Area (or Metaspace) during the class loading and linking phase. 
+
+
+
+14. Where are primitive variables stored in memory?
+-->Primitive variables are stored in different memory locations depending on where they are declared. Their storage is primarily determined by their
+    scope and the structure they belong to: 
+
+Stack Memory: Primitive values are stored on the stack when they are declared as local variables within a method or function. This includes method
+                parameters. The memory is allocated in a "stack frame" when the method is called and is automatically deallocated once the method
+                finishes execution.
+Heap Memory: Primitive values are stored on the heap when they are declared as instance variables (fields) of a class or as elements within an array.
+                In these cases, the primitive is part of the larger object or array structure that lives on the heap.
+Method Area / Static Area: In languages like Java, static primitive variables are typically stored in a specialized section of the
+                heap (often referred to as the Method Area or Permanent Generation). They persist for the entire lifetime of the application. 
+
+
+
+
+15. Where are reference variables stored in memory?
+-->Reference variables are generally stored in different parts of memory based on their scope and context of declaration: 
+    Stack Memory: Local reference variables (declared within a method or function) are stored on the stack. The variable itself holds a memory
+    address or "handle" that points to the actual object.
+    Heap Memory: Reference variables that are instance fields (member variables of a class) are stored on the heap alongside the object to which
+    they belong.
+    Method Area / Static Data: Reference variables declared as static (class variables) are typically stored in the Method Area or a specific static 
+    data segment within the heap.
+    CPU Registers: In highly optimized code, compilers may store local reference variables directly in CPU registers for faster access, avoiding
+    memory altogether if the variable's address is never taken. 
+    
+    Summary of Storage Locations
+    Variable Type 	Storage Location	Notes
+    Local Variables	Stack	Temporary; exists only during method execution.
+    Instance Variables	Heap	Part of the object instance; exists as long as the object does.
+    Static Variables	Method Area / Heap	Persistent for the duration of the program or JVM lifecycle.
+
+
+
+16. What happens if you assign one reference variable to another?
+-->When you assign one reference variable to another (e.g., obj2 = obj1), the following occurs:
+    Reference Copying: The memory address (reference) stored in the first variable is copied into the second.
+    Shared Object: Both variables now "point" to the same object in memory.
+    No Object Duplication: A new object is not created; only a second reference to the existing object is established.
+    Shared Modifications: Any changes made to the object through one variable will be reflected when accessing it through the other, as they both 
+    refer to the same underlying data.
+    Independence of Variables: While they point to the same object, the variables themselves remain independent. If you later reassign one variable
+    to a new object or null, the other variable continues to point to the original object.
+    Memory Management: The object remains in memory as long as at least one active reference variable points to it. If all references are removed,
+    the object becomes eligible for garbage collection. 
+
+
+17. Explain overflow and underflow with examples using byte, short, int, or long.
+-->Overflow: Occurs when a value exceeds the maximum limit of the data type. It "wraps around" to the minimum value.
+    Underflow: Occurs when a value is smaller than the minimum limit of the data type. It "wraps around" to the maximum value. 
+
+
+18. What happens if you call a method on a null reference variable?
+-->1. Instance Methods
+        If the method is an instance method (non-static), the Java Virtual Machine (JVM) will throw a NullPointerException (NPE). 
+        Why it happens: Instance methods belong to a specific object. When you use a null reference, there is no actual object in memory for the
+                        method to run on.
+        Result: The program stops immediately (crashes) unless you use a try-catch block to handle the error
+        🔴
+        String str = null;
+        str.length();   // method call
+        🔴 Output:
+        Exception in thread "main" java.lang.NullPointerException
+
+
+        2. Static Methods
+        If the method is declared as static, the program will run normally without any exception. 
+        
+        Why it works: Static methods belong to the class itself, not to an instance (object). Java uses the variable's declared type at compile-time
+        to find the method, completely ignoring the fact that the variable's value is null.
+        Note: While this works, it is considered bad practice. You should always call static methods using the class name (e.g., ClassName.methodName())
+        to avoid confusion. 
+            class Test {
+                static void display() {
+                    System.out.println("Hello");
+                }
+            }
+            
+            public class Main {
+                public static void main(String[] args) {
+                    Test t = null;
+                    t.display();   // calling static method using null reference
+                }
+            }
+            ✅ Output:
+            Hello
+
+
+19. Show an example where a local variable has the same name as a class-level variable (variable shadowing).
+-->👉 Variable shadowing happens when a local variable has the same name as a class-level (instance) variable
+
+        class Demo {
+            int value = 100;   // class-level (instance variable)
+        
+            void show() {
+                int value = 50;   // local variable (shadows instance variable)
+        
+                System.out.println("Local value: " + value);
+                System.out.println("Instance value: " + this.value);
+            }
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+                Demo d = new Demo();
+                d.show();
+            }
+        }
+        🔹 Output
+        Local value: 50
+        Instance value: 100
+
+
+
+20. Can primitive and reference datatypes be mixed in expressions, like int + Integer? What happens?
+-->Yes, primitive (e.g., int) and reference/wrapper types (e.g., Integer) can be mixed in expressions in Java. 
+  
+    When you mix them, Java uses autounboxing to automatically convert the reference type (Integer) into its corresponding primitive type (int) so that arithmetic operations can be performed. 
+
+    What Happens? (Example: int + Integer)
+    Expression: int a = 5; Integer b = 10; int sum = a + b;
+    Process: The Java compiler automatically calls the intValue() method on the Integer object (b.intValue()).
+    Operation: The operation becomes 5 + 10.
+    Result: The result is a primitive int (15).
+
+
+21. Can a final primitive or reference variable be changed after initialization? What happens?
+-->A final variable in Java cannot be reassigned after it has been initialized. However, its behavior differs slightly depending on whether it
+    is a primitive or a reference variable. 
+    
+    1. Primitive Variables
+    Can they be changed? No. For primitive types (like int, double, etc.), the variable stores the actual value. Marking it final makes that value a constant.
+    What happens? Any attempt to reassign a new value to the variable (e.g., x = 10;) after its initial assignment will result in a compile-time error. 
+    
+    2. Reference Variables
+    Can they be changed? It depends on what you mean by "change":
+    The Reference: No. You cannot reassign the variable to point to a different object or null.
+    The Object State: Yes. If the object itself is mutable (like an ArrayList or a custom object), you can still modify its internal fields or call methods 
+        that change its state.
+    Variable Type 	Reassignment (of value/address)	Modification (of internal state)	Result of Reassignment Attempt
+    Primitive	Not Allowed	N/A (Primitives have no internal state)	Compile-time error
+    Reference	Not Allowed	Allowed (if the object is mutable)	Compile-time error
+
+
+
