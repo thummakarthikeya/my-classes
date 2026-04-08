@@ -1,0 +1,130 @@
+1. What are the types of variables in Java?
+-->In Java, variables are containers used to store data, classified by their scope and lifetime into three main types: Local (inside methods/blocks),
+    Instance (non-static, inside class), and Static (shared across class instances). They hold either primitive data (int, char, boolean) or reference
+    data (Objects, Arrays). 
+  
+    Here is a detailed breakdown of the types of variables in Java:
+    1. Local Variables
+    Definition: Declared inside a method, constructor, or block.
+    Scope: Limited to the block, method, or constructor in which they are declared.
+    Lifetime: Created upon entering the scope and destroyed upon exit.
+    Initialization: Must be initialized before use, as they have no default values.
+    Example: void myMethod() { int a = 10; } // 'a' is a local variable. 
+
+    2. Instance Variables
+    Definition: Declared inside a class but outside any method, constructor, or block.
+    Scope: Visible to all methods, constructors, or blocks within the class.
+    Lifetime: Created when an instance (object) of the class is created and destroyed when the object is destroyed.
+    Default Values: Have default values (e.g., 0 for int, null for objects).
+    Example: class MyClass { int instanceVar; } // 'instanceVar' belongs to the object. 
+  
+    3. Static (or Class) Variables
+    Definition: Declared with the static keyword inside a class, outside any method.
+    Scope: Global to all instances of the class; only one copy exists regardless of the number of objects created.
+    Lifetime: Created when the program starts and destroyed when the program ends.
+    Usage: Usually declared as public/private, final, and static.
+    Example: class MyClass { static int staticVar; } // 'staticVar' is shared. 
+
+
+
+2. Difference between instance, static, and local variables.
+-->
+| Feature              | Local Variable                       | Instance Variable               | Static Variable                    |
+| -------------------- | ------------------------------------ | ------------------------------- | ---------------------------------- |
+| **Declaration**      | Inside method, constructor, or block | Inside class, outside methods   | Inside class with `static` keyword |
+| **Belongs to**       | Method/Block                         | Object                          | Class                              |
+| **Scope**            | Limited to the block                 | Throughout class (via object)   | Throughout class                   |
+| **Lifetime**         | Exists during method execution       | Exists as long as object exists | Exists as long as class is loaded  |
+| **Memory Location**  | Stack                                | Heap                            | Method Area (Class Area)           |
+| **Copies**           | New copy for each method call        | One per object                  | Single shared copy                 |
+| **Access**           | Within method only                   | Using object                    | Using class or object              |
+| **Default Value**    | ❌ No default (must initialize)       | ✅ Default values assigned       | ✅ Default values assigned          |
+| **Keyword Required** | No                                   | No                              | Yes (`static`)                     |
+
+
+
+
+3. Can we declare variables inside a method as static?
+-->No, not allowed
+    👉 Java does NOT allow:
+    void show() {
+        static int x = 10;  // ❌ Error
+    }
+    ✔ static is only allowed at class level
+
+
+
+4. Scope and lifetime of instance variables, static variable, local variables?
+-->
+| Variable Type | Scope                     | Lifetime                         |
+| ------------- | ------------------------- | -------------------------------- |
+| Instance      | Entire class (via object) | Till object exists               |
+| Static        | Entire class              | Till program ends (class loaded) |
+| Local         | Inside method/block       | Till method execution ends       |
+
+
+
+5. How are static variables shared among objects?
+-->When you declare a variable as static, the Java Virtual Machine (JVM) creates only one copy of that variable in a special memory area called
+    the Method Area or Metaspace.
+    👉 Static variables are created only once
+    
+    class Demo {
+        static int count = 0;
+    }
+    All objects share the same copy
+    If one object changes it → all see updated value
+
+
+
+6. Default values of instance, static, and local variables.?
+-->
+| Variable Type | Default Value                  |
+| ------------- | ------------------------------ |
+| Instance      | Yes (0, null, false, etc.)     |
+| Static        | Yes (0, null, false, etc.)     |
+| Local         | ❌ No default (must initialize) |
+
+
+
+7. Can a variable shadow another variable?
+-->Yes, a variable can shadow another variable in Java. This occurs when a variable declared in a specific scope has the same name as a 
+    variable declared in an outer scope, making the outer variable temporarily inaccessible within that inner scope.
+    class Demo {
+        int x = 100;
+    
+        void show() {
+            int x = 50;  // shadows instance variable
+            System.out.println(x);        // 50
+            System.out.println(this.x);   // 100
+        }
+    }
+
+
+8. How do instance, static variables, differ from local variables in memory allocation?
+-->
+| Variable Type | Memory Location          |
+| ------------- | ------------------------ |
+| Instance      | Heap (inside object)     |
+| Static        | Method Area (Class Area) |
+| Local         | Stack                    |
+
+
+9. What is the difference between class-level and object-level variables?
+-->Class-Level Variables (Static Variables)
+    Definition: Declared with the static keyword inside a class but outside any method.
+    Storage: Only one copy exists for the entire class, regardless of how many objects are created. They are stored in static memory
+    (Metaspace/PermGen) and created when the class is loaded.
+    Accessibility: Can be accessed directly using the class name (e.g., ClassName.variableName) without creating an object.
+    Behavior: If one object modifies a class-level variable, the change is reflected across all other objects. 
+
+    Object-Level Variables (Instance Variables)
+    Definition: Declared without the static keyword inside a class but outside any method.
+    Storage: Each object has its own unique copy of these variables. They are stored on the heap and created when an object is instantiated
+    using the new keyword.
+    Accessibility: Can only be accessed through a specific object reference (e.g., objectName.variableName).
+    Behavior: Changes made to an object-level variable in one instance do not affect the variables in other instances.
+
+
+10. What happens if we try to access a local variable in Java without initializing it?
+-->Attempting to access a local variable in Java without initializing it results in a compile-time error
