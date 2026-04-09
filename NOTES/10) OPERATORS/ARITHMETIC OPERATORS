@@ -1,0 +1,85 @@
+1)What are arithmetic operators in Java?
+-->👉 Arithmetic operators are used to perform mathematical operations.
+  🔹 Operators:
+  + → Addition
+  - → Subtraction
+  * → Multiplication
+  / → Division
+  % → Modulus (remainder)
+  Example:
+  int a = 10, b = 3;
+  
+  System.out.println(a + b); // 13
+  System.out.println(a - b); // 7
+  System.out.println(a * b); // 30
+  System.out.println(a / b); // 3
+  System.out.println(a % b); // 1
+
+
+2)What happens when we divide numbers of different types in Java (int and float)?
+For example:
+int / int
+float / int
+int / float
+float / float
+-->👉 Java follows type promotion (converts to bigger type)
+        🔹 Cases:
+        ✅ int / int
+        int a = 5, b = 2;
+        System.out.println(a / b); // 2
+        👉 Integer division → decimal removed
+        ✅ float / int
+        float a = 5.0f;
+        int b = 2;
+        System.out.println(a / b); // 2.5
+        👉 Result is float
+        ✅ int / float
+        int a = 5;
+        float b = 2.0f;
+        System.out.println(a / b); // 2.5
+        👉 Result is float
+        ✅ float / float
+        float a = 5.0f, b = 2.0f;
+        System.out.println(a / b); // 2.5
+        👉 Result is float
+        🔥 Rule:
+        👉 If any one operand is float/double → result is floating-point
+
+
+
+3)What happens when you divide by zero using integer division?
+-->Division by zero (integer)
+    int a = 10 / 0;
+    👉 ❌ Throws:
+    ArithmeticException: / by zero
+    🔹 But with float:
+    System.out.println(10.0 / 0); // Infinity
+    👉 ✔️ No error → gives Infinity
+
+
+4)What is the difference between / and % operators?
+-->
+| Operator | Meaning             | Example      |
+| -------- | ------------------- | ------------ |
+| `/`      | Division (quotient) | `10 / 3 = 3` |
+| `%`      | Remainder           | `10 % 3 = 1` |
+
+int a = 10, b = 3;
+
+System.out.println(a / b); // 3
+System.out.println(a % b); // 1
+
+
+
+
+5)Can arithmetic operators be overloaded in Java?
+-->👉 ❌ No (for user-defined classes)
+    🔹 Why?
+    Java does not support operator overloading
+    Except one case:
+    👉 ✔️ + operator is overloaded for:
+    Addition
+    String concatenation
+    Example:
+    System.out.println(10 + 20);       // 30
+    System.out.println("Hi " + "Java"); // Hi Java
