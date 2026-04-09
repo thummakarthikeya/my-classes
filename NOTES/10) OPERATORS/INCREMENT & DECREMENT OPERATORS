@@ -1,0 +1,49 @@
+1. What are increment and decrement operators in Java?
+-->Increment (++) and decrement (--) operators are used to increase or decrease a variable’s value by 1.
+
+    ++ → adds 1
+    -- → subtracts 1
+    Example:
+    int a = 5;
+    a++;  // a = 6
+    
+    int b = 5;
+    b--;  // b = 4
+
+
+2. What is the difference between pre-increment and post-increment?
+-->
+| Type               | Syntax | Meaning                         |
+| ------------------ | ------ | ------------------------------- |
+| **Pre-increment**  | `++a`  | First increment, then use value |
+| **Post-increment** | `a++`  | First use value, then increment |
+
+
+
+3. What happens if you use increment operators on a final variable?
+-->👉 ❌ You cannot use increment (++) on a final variable
+    Why?
+    final means constant
+    Increment changes value → not allowed
+    Example:
+    final int x = 10;
+    x++;  // ❌ compile-time error
+
+
+4. Can you use increment operators on boolean values or reference types? Why or why not?
+-->❌ No, we cannot
+  🔹 For boolean:
+  boolean flag = true;
+  flag++;  // ❌ ERROR
+  
+  👉 Because:
+  
+  Boolean is true/false, not numeric
+  🔹 For reference types:
+  String s = "hello";
+  s++;  // ❌ ERROR
+  
+  👉 Because:
+  
+  Increment works only on primitive numeric types
+  Reference variables store addresses, not numbers
