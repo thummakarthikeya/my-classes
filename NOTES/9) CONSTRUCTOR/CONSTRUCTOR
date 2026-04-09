@@ -285,3 +285,34 @@
     You can declare local variables as final inside the body of a constructor just as you would in any other method. 
     These local variables are only accessible within that specific constructor and cannot be reassigned once set. 
 
+
+18) What is the use of exception handling inside constructors?
+-->Exception handling inside constructors is used to manage errors that occur during object initialization, preventing the creation of "zombie objects"
+    (objects that exist but are in a broken or unusable state). Since constructors cannot return error codes, exceptions are the primary way to signal 
+    initialization failures, such as invalid arguments, failed resource allocation (e.g., file handling, network connections), or failures in base class 
+    initialization. 
+    class Student {
+    int age;
+
+        Student(int age) {
+            if (age < 0) {
+                throw new IllegalArgumentException("Age cannot be negative");
+            }
+            this.age = age;
+        }
+    }
+
+
+
+19) Why is super() called automatically if we don’t write any constructor?
+-->👉 In Java, if you don’t write any constructor, the compiler automatically inserts a default constructor, and inside it, it adds:
+    super();
+    🔹 Why does this happen?
+    
+    👉 Because every class in Java inherits from a parent class (directly or indirectly from Object).
+    
+    👉 The parent class must be initialized before the child class.
+    
+    🔹 What does super() do?
+    
+    👉 super() calls the constructor of the parent class
