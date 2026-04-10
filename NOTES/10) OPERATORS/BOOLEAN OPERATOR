@@ -1,0 +1,52 @@
+1. What are boolean operators in Java?
+-->Boolean operators are used to perform operations on boolean values (true / false).
+    👉 Main boolean (logical) operators:
+    && → Logical AND
+    || → Logical OR
+    ! → Logical NOT
+    📌 Example:
+    boolean a = true;
+    boolean b = false;
+    System.out.println(a && b); // false
+    System.out.println(a || b); // true
+    System.out.println(!a);     // false
+
+
+2. What is the default value of a boolean variable?
+-->✔ Depends on where it is declared:
+    Instance variable (class level) → false
+    Static variable → false
+    Local variable (inside method) → ❌ No default value (must initialize)
+    
+    📌 Example:
+    
+    class Test {
+        boolean flag; // default = false
+    
+        public static void main(String[] args) {
+            Test t = new Test();
+            System.out.println(t.flag); // false
+        }
+    }
+
+
+3. Difference between Boolean (wrapper class) and boolean (primitive type)?
+-->
+| Feature | `boolean`         | `Boolean`                                  |
+| ------- | ----------------- | ------------------------------------------ |
+| Type    | Primitive         | Wrapper class                              |
+| Value   | true/false        | Object (can be `true`, `false`, or `null`) |
+| Memory  | Less              | More                                       |
+| Usage   | Simple conditions | Collections, APIs, null handling           |
+
+
+
+
+4. Can boolean be converted to int directly?
+-->❌ No, Java does NOT allow direct conversion
+    👉 You cannot do:
+    int x = true; // ❌ Compile-time error
+    ✔ You must convert manually:
+    boolean flag = true;
+    int x = flag ? 1 : 0;
+    System.out.println(x); // 1
