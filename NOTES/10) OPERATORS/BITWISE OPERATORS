@@ -1,0 +1,68 @@
+1. What are bitwise operators used for?
+-->Bitwise operators are used to perform operations directly on binary (bit-level) representations of numbers.
+
+      👉 Common bitwise operators:
+      
+      & → AND
+      | → OR
+      ^ → XOR
+      ~ → NOT (complement)
+      << → Left shift
+      >> → Right shift
+      >>> → Unsigned right shift
+      
+      📌 Example:
+      
+      int a = 5;   // 0101
+      int b = 3;   // 0011
+      
+      System.out.println(a & b); // 0001 → 1
+      System.out.println(a | b); // 0111 → 7
+      
+      ✔ Used in:
+      
+      Low-level programming
+      Performance optimization
+      Flags and masking
+
+
+
+
+2. What does >> and >>> mean?
+-->👉 Both are right shift operators, but behave differently:
+    
+    >> (Signed Right Shift)
+    Preserves the sign bit
+    Fills leftmost bits with 0 (for +) or 1 (for -)
+    >>> (Unsigned Right Shift)
+    Does NOT preserve sign
+    Always fills leftmost bits with 0
+    📌 Example:
+    int x = -8;
+    System.out.println(x >> 1);  // keeps negative sign
+    System.out.println(x >>> 1); // becomes positive (fills with 0)
+
+
+
+
+3. What is the effect of the ~ operator?
+-->👉 ~ is the bitwise NOT (complement) operator
+    It flips all bits
+    0 → 1
+    1 → 0
+    📌 Example:
+    int x = 5;   // 0000 0101
+    System.out.println(~x); // 1111 1010 → -6
+    ✔ Important formula:
+    👉 ~x = -(x + 1)
+
+
+
+4. Are bitwise operations faster than arithmetic operations?
+-->✔ Yes, generally bitwise operations are faster
+    👉 Reason:
+    They work directly at bit level
+    No complex calculations required
+    📌 Example:
+    x << 1 is faster than x * 2
+    x >> 1 is faster than x / 2
