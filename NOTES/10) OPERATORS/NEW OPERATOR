@@ -1,0 +1,61 @@
+1. What does the new operator do?
+-->The new operator is used to create an object (instance) of a class.   
+    👉 It performs 3 main tasks:
+    
+    Allocates memory in the heap
+    Calls the constructor
+    Returns a reference to the object
+
+
+2. Can an object be created without the new operator?
+-->✔ Yes (but indirectly / rarely used)
+   👉 Ways:  
+    Using reflection → Class.forName().newInstance()
+    Using clone()
+    Using deserialization
+    📌 Example (clone):
+    Student s1 = new Student();
+    Student s2 = (Student) s1.clone();
+    👉 But internally, JVM still handles memory allocation
+    
+
+3. What happens if memory allocation fails?
+-->❌ Java throws:
+    
+    👉 OutOfMemoryError
+    
+    📌 Example scenario:
+    
+    Heap memory is full
+    No space for new object
+    Student s = new Student(); // may throw OutOfMemoryError
+
+
+
+4. Can we overload the new operator in Java?
+-->No, you cannot overload the new operator in Java. 
+
+    Unlike languages like C++, where new can be overloaded to customize memory allocation, Java does not support user-defined operator overloading for any 
+    operator, including 
+    👉 Overloading means:
+    You change how an operator behaves.
+    
+    Example (in simple terms):
+    
+    Normally + adds numbers
+    But in Java:
+    "Hello" + "World" // combines strings
+    
+    👉 Here + is behaving differently → this is operator overloading
+    
+    🔹 Now about new operator
+    Student s = new Student();
+    
+    👉 new does 3 things:
+    
+    Creates memory
+    Calls constructor
+    Gives object reference
+    ❌ Can we change (overload) this behavior?
+    
+    👉 NO — Java does NOT allow it
