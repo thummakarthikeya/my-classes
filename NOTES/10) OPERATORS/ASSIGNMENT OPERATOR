@@ -1,0 +1,44 @@
+1. What is the assignment operator in Java?
+-->The assignment operator is:
+👉 =
+It is used to assign a value to a variable.
+📌 Example:
+int x = 10;   // assigns value 10 to x
+✔ It takes the value on the right-hand side (RHS) and stores it in the left-hand side (LHS) variable.
+
+
+2. What does x += y mean?
+-->👉 x += y is a compound assignment operator
+    It means:
+    x = x + y;
+    📌 Example:
+    int x = 5;
+    int y = 3;
+    x += y;  // x = x + y → 5 + 3 = 8
+    System.out.println(x); // 8
+    ✔ Other similar operators:
+    x -= y → x = x - y
+    x *= y → x = x * y
+    x /= y → x = x / y
+
+
+3. Can you chain assignment operators like a = b = c = 10?
+-->✔ Yes, you can chain assignments in Java
+
+    📌 Example:
+    
+    int a, b, c;
+    
+    a = b = c = 10;
+    
+    System.out.println(a); // 10
+    System.out.println(b); // 10
+    System.out.println(c); // 10
+    
+    👉 How it works:
+    
+    c = 10 → assigns 10 to c
+    b = c → assigns 10 to b
+    a = b → assigns 10 to a
+
+✔ Assignment happens right to left
