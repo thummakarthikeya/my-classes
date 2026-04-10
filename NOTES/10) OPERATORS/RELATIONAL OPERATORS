@@ -64,7 +64,9 @@ System.out.println(a.equals(b));  // true (same content)
 
 
 6) What is the difference between = and == in java?
--->
+-->In Java, = is the assignment operator used to assign a value to a variable, while == is a relational (comparison) operator used to check if
+    two values or object references are equal, returning a boolean. The == operator compares primitive values directly and object references (memory addresses)
+    for objects. 
   | Operator | Meaning             | Use             |
   | -------- | ------------------- | --------------- |
   | `=`      | Assignment operator | Assigns value   |
