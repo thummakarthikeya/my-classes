@@ -1,0 +1,76 @@
+1. What are logical operators in Java?
+-->Logical operators are used to combine or manipulate boolean values (true / false).
+    Main logical operators:
+    && → Logical AND
+    || → Logical OR
+    ! → Logical NOT
+    📌 Example:
+    boolean a = true;
+    boolean b = false;
+    System.out.println(a && b); // false
+    System.out.println(a || b); // true
+    System.out.println(!a);     // false
+
+
+2. What is short-circuit evaluation?
+-->Short-circuit evaluation in Java is a mechanism where logical operators (&& and ||) stop evaluating subsequent conditions in a boolean expression if 
+    the final result is already determined by the first operand. It improves performance and prevents errors (like NullPointerException) by skipping 
+    unnecessary checks if the outcome is guaranteed.
+
+    Short-circuit evaluation means:
+      👉 Java stops evaluating the expression as soon as the result is known. 
+      In && → if first condition is false, second is NOT checked
+      In || → if first condition is true, second is NOT checked
+      📌 Example:
+      int a = 10;
+      if (a > 5 || ++a > 10) {
+          System.out.println(a); // 10 (second condition not executed)
+      }
+
+
+3. What is the difference between & and &&?
+-->
+| Feature    | `&`                                | `&&`                      |
+| ---------- | ---------------------------------- | ------------------------- |
+| Type       | Bitwise / Logical                  | Logical                   |
+| Evaluation | Evaluates **both sides always**    | Uses **short-circuit**    |
+| Use case   | Bit operations / sometimes boolean | Mostly used in conditions |
+
+    
+    int a = 5;
+    
+    if (false & (++a > 0)) {
+        // a will still increment
+    }
+    
+    if (false && (++a > 0)) {
+        // a will NOT increment
+    }
+
+
+
+4. What is the result of combining true/false values using logical operators?
+-->
+| Expression       | Result |        |       |
+| ---------------- | ------ | ------ | ----- |
+| `true && true`   | true   |        |       |
+| `true && false`  | false  |        |       |
+| `false && true`  | false  |        |       |
+| `false && false` | false  |        |       |
+| `true            |        | false` | true  |
+| `false           |        | false` | false |
+| `!true`          | false  |        |       |
+| `!false`         | true   |        |       |
+
+
+
+5. Can logical operators be applied to non-boolean operands?
+-->No, logical operators in Java cannot be applied to non-boolean operands. 
+    Unlike languages such as JavaScript or C++, Java strictly requires operands of logical operators to be of the boolean type or expressions that 
+    resolve to a boolean.
+    boolean a = true;
+    boolean b = false;
+    
+    System.out.println(a && b); // false
+    System.out.println(a || b); // true
+    System.out.println(!a);     // false
