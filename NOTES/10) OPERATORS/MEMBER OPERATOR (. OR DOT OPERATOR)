@@ -1,0 +1,43 @@
+1. What is the dot operator used for?
+-->The dot operator is used to access members of a class or object.
+👉 Members include:
+Variables (fields)
+Methods
+Inner classes
+📌 Example:
+class Student {
+    String name = "Karthikeya";
+
+    void display() {
+        System.out.println(name);
+    }
+}
+Student s = new Student();
+s.display(); // accessing method using dot operator
+
+
+
+2. Can the dot operator be used with static members?
+-->✔ Yes
+👉 Static members are accessed using:
+ClassName.member
+
+
+3. What is the difference between object.method() and ClassName.method()?
+-->
+| Feature          | `object.method()` | `ClassName.method()` |
+| ---------------- | ----------------- | -------------------- |
+| Used for         | Instance methods  | Static methods       |
+| Requires object? | ✔ Yes             | ❌ No                 |
+| Memory           | Object must exist | No object needed     |
+
+
+
+4. What happens when you use a dot operator on a null reference?
+-->❌ It throws:
+    👉 NullPointerException
+    📌 Example:
+    Test t = null;
+    t.instanceMethod(); // ❌ Runtime error
+    👉 Reason:
+    You are trying to access a method using an object that does not exist in memory
