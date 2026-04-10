@@ -1,1 +1,78 @@
+1) What are relational operators used for?
+-->Relational operators are used to compare two values.
+    They check relationships like:
+    Equal → ==
+    Not equal → !=
+    Greater than → >
+    Less than → <
+    Greater or equal → >=
+    Less or equal → <=
+    👉 They are mainly used in:
+    if conditions
+    loops (while, for)
+
+
+2) What is the difference between == and equals()?
+-->
+| Feature   | `==`                                | `equals()`                  |
+| --------- | ----------------------------------- | --------------------------- |
+| Purpose   | Compares **memory/reference**       | Compares **actual content** |
+| Used with | Primitives & Objects                | Mainly Objects              |
+| Behavior  | Checks if both refer to same object | Checks logical equality     |
+String a = new String("hello");
+String b = new String("hello");
+
+System.out.println(a == b);       // false (different objects)
+System.out.println(a.equals(b));  // true (same content)
+
+
+
+3) Can relational operators be used with boolean values?
+-->❌ No, relational operators like >, <, >=, <= cannot be used with boolean. 
+    ✔ Only these are allowed:
+    boolean a = true;
+    boolean b = false;
+    System.out.println(a == b);  // valid
+    System.out.println(a != b);  // valid
+
+
+
+4) What will be the output of 5 == 5.0?
+-->✔ Output: true
+  👉 Why?
+  Java automatically converts int (5) to double (5.0)
+  Then compares → 5.0 == 5.0
+  In Java, the output of the expression 5 == 5.0 is true. 
+
+  The comparison works this way because:
+  Numeric Promotion: When you compare different primitive numeric types (like an int and a double), Java performs implicit widening conversion.
+  Conversion Process: The integer 5 is promoted to a double 5.0 so that both sides of the equality operator (==) have the same type.
+  Value Comparison: Once both values are 5.0, the operator checks their mathematical value, which is identical, resulting in true. 
+
+  Note on Objects: This behavior only applies to primitive values. If you were to compare an Integer object and a Double object using the .equals() method,
+  the result would be false because they are different types. 
+
+
+
+5) What is the return type of a relational expression?
+-->✔ The return type is always:👉 boolean
+    📌 Example:
+    int a = 10;
+    int b = 20;
+    boolean result = (a < b);  // true
+
+
+
+6) What is the difference between = and == in java?
+-->
+  | Operator | Meaning             | Use             |
+  | -------- | ------------------- | --------------- |
+  | `=`      | Assignment operator | Assigns value   |
+  | `==`     | Relational operator | Compares values |
+  
+  int a = 10;   // assignment
+  if (a == 10)  // comparison
+  {
+      System.out.println("Equal");
+  }
 
