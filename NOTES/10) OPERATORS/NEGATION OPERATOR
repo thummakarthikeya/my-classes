@@ -1,0 +1,37 @@
+1. What is the purpose of the negation operator !?
+-->The ! operator (logical NOT) is used to reverse a boolean value.
+    👉 It converts:
+    true → false
+    false → true
+    📌 Example:
+    boolean isLoggedIn = true;
+    System.out.println(!isLoggedIn); // false
+
+
+
+2. Can the negation operator be used with integers?
+-->❌ No, it cannot be used with integers
+    👉 ! works only with boolean values
+    📌 Invalid example:
+    int a = 10;
+    System.out.println(!a); // ❌ Compile-time error
+    ✔ Correct way:
+    int a = 10;
+    System.out.println(!(a > 5)); // false
+
+
+
+3. What is the output of !(true && false)?
+-->Step-by-step:
+    true && false → false
+    !false → true
+    ✔ Final Output: true
+
+
+4. How does negation work with multiple conditions?
+-->In Java, negating multiple conditions involves applying the logical NOT operator (!) while carefully managing operator precedence and parentheses. 
+    1. Precedence and Parentheses
+    The logical NOT operator (!) has a higher precedence than AND (&&) and OR (||). 
+    
+    Negating a whole expression: You must wrap the entire condition in parentheses before applying the ! operator, such as !(condition1 && condition2).
+    Negating individual terms: If you write !a && b, Java only negates a because of its high precedence. 
