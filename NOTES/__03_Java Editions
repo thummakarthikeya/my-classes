@@ -30,7 +30,17 @@
     secure, and distributed applications. It provides built-in support for high-volume transactions, scalability, and robust security that standard editions
 
 9) What tools or APIs are included in Java EE?
--->Java EE (Enterprise Edition) includes a comprehensive set of APIs and specifications designed for developing large-scale, distributed enterprise applications.
+-->“Java EE includes APIs like Servlets, JSP, JPA, EJB, JMS, and JAX-RS to build enterprise and distributed applications
+    🌐 Servlet API → Handles web requests and responses
+    📄 JSP (JavaServer Pages) → Used to create dynamic web pages
+    🧩 EJB (Enterprise JavaBeans) → Business logic for enterprise apps
+    🔗 JPA (Java Persistence API) → Database interaction (ORM)
+    🌍 JAX-RS → Build RESTful web services
+    🧾 JAX-WS → Build SOAP-based web services
+    📬 JMS (Java Message Service) → Messaging between systems
+    🔐 JavaMail API → Send emails
+    🔒 JTA (Java Transaction API) → Manage transactions
+    Java EE (Enterprise Edition) includes a comprehensive set of APIs and specifications designed for developing large-scale, distributed enterprise applications.
     These technologies have since been transitioned to the Jakarta EE project under the Eclipse Foundation, where the APIs use the jakarta.* namespace instead of javax.*.
 
 
