@@ -38,7 +38,8 @@ Java achieves multithreading through built-in language support and a rich set of
     In Java, "dynamic" is a term generally used to refer to operations or behaviors that are resolved during runtime, rather than at compile time.
 
 9) Explain “Distributed” and how Java supports distributed systems.
--->A distributed system is a collection of independent computers (nodes) that work together and appear to users as a single, unified system. 
+-->A distributed system is a system where multiple computers work together over a network to perform tasks as if they are a single system.
+A distributed system is a collection of independent computers (nodes) that work together and appear to users as a single, unified system. 
 
 10) How does Java achieve “Architecture Neutrality”?
 --> Java achieves Architecture Neutrality through its two-stage compilation process and the standardization of its execution environment,
