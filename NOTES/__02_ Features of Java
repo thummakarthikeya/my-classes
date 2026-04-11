@@ -15,7 +15,8 @@
 -->Robustness in Java ensures applications are reliable, stable, and capable of handling unexpected errors without crashing.
 
 5) What makes Java “Secure”?
--->Java is considered a highly secure language due to its design, which incorporates several 
+-->due to use of bytecode verification and absence of pointer and use features like sandbox in java make it secure
+Java is considered a highly secure language due to its design, which incorporates several 
     built-in security mechanisms at both the language and runtime levels.
 
 6) Explain the feature “Portable” in Java.
