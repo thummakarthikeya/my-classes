@@ -27,7 +27,9 @@ Java is considered a highly secure language due to its design, which incorporate
     without needing to recompile the code. This principle is famously summarized by the motto "Write Once, Run Anywhere" (WORA). 
 
 7) How does Java achieve “Multithreading”?
--->Java achieves multithreading through built-in language support and a rich set of APIs that enable the concurrent execution of
+-->Java achieves multithreading by allowing multiple threads (lightweight processes) to run concurrently using the Thread class and
+    Runnable interface.
+Java achieves multithreading through built-in language support and a rich set of APIs that enable the concurrent execution of
     multiple threads within a single program. This allows applications to perform multiple tasks simultaneously, maximizing CPU 
     utilization and improving responsiveness
 
