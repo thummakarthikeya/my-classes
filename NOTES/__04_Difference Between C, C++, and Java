@@ -57,6 +57,11 @@
 -->Core Differences
     Number of Specifiers/Modifiers: C++ has three primary access specifiers (public, private, protected). 
     Java has four access modifiers: public, private, protected, and a default (package-private) modifier which uses no keyword.
+| Access Modifier | Same Class | Same Package | Different Package (Subclass) | Different Package (Non-Subclass) |
+| --------------- | ---------- | ------------ | ---------------------------- | -------------------------------- |
+| **default**     | ✅ Yes      | ✅ Yes        | ❌ No                         | ❌ No                             |
+| **protected**   | ✅ Yes      | ✅ Yes        | ✅ Yes                        | ❌ No                             |
+
 
 14) What is the difference in memory management between C++ and Java?
 -->The primary difference is that C++ uses manual memory management, requiring the programmer to explicitly allocate and deallocate memory,\
