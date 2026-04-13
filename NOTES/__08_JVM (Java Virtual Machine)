@@ -122,12 +122,32 @@
 
 
 17) What kind of errors are detected during verification?
--->Verification in Java, performed by the Bytecode Verifier during the class loading process, ensures that bytecode adheres to Java language safety rules and does not corrupt the JVM or violate access rules. Errors detected during this phase usually result in a java.lang.VerifyError. 
+-->✅ Errors detected during verification:
+        Type Mismatch Errors
+        If a variable is used with the wrong data type
+        Example: treating an int as an object reference
+        Illegal Data Access
+        Accessing private/protected members improperly
+        Violating access modifiers
+        Stack Overflow / Underflow Issues (at bytecode level)
+        Wrong push/pop operations in the operand stack
+        Invalid Casts
+        Casting an object to an incompatible type
+        Missing or Incorrect Method Calls
+        Calling a method that doesn’t exist or wrong parameters
+        Illegal Use of Variables
+        Using uninitialized variables
+        Corrupted or Tampered Bytecode
+        Modified .class files that break JVM rules
+Verification in Java, performed by the Bytecode Verifier during the class loading process, ensures that bytecode adheres to Java language
+    safety rules
+    and does not corrupt the JVM or violate access rules. Errors detected during this phase usually result in a java.lang.VerifyError. 
 
         The verifier detects the following kinds of errors: 
         Stack Underflows/Overflows: Ensures that the operand stack never holds fewer items than expected or overflows its maximum capacity.
 
-        Inconsistent Stack Types: Checks that instructions receive arguments of the valid type, such as ensuring an arithmetic operation isn't performed on an object reference, or that "bad type on operand stack" errors are caught.
+        Inconsistent Stack Types: Checks that instructions receive arguments of the valid type, such as ensuring an arithmetic operation
+        isn't performed on an object reference, or that "bad type on operand stack" errors are caught.
 
         Illegal Access Rules: Violations of access modifiers, such as a method trying to access private data/methods of another class illegally.
 
