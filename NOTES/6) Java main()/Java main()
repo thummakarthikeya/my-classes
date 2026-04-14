@@ -1,0 +1,110 @@
+1. What is the signature of the main() method in Java?
+-->👉 The standard signature is:
+public static void main(String[] args)
+👉 You can also write:
+public static void main(String... args) // varargs
+
+
+
+2. Why is main() declared as public static void ?
+-->public → JVM can access it from anywhere
+static → No object needed to call it
+void → Does not return anything to JVM
+
+
+3. Can we overload the main() method? If yes, how does Java determine which main() to call?
+-->👉 Yes, we can overload it ✅
+
+Example
+public class Test {
+    public static void main(String[] args) {
+        System.out.println("Original main");
+        main(10);
+    }
+
+    public static void main(int x) {
+        System.out.println("Overloaded main: " + x);
+    }
+}
+
+👉 Output:
+
+Original main
+Overloaded main: 10
+🔥 Important:
+
+👉 JVM only calls:
+
+public static void main(String[] args)
+
+
+
+
+
+
+4. Can the main() method be private or protected?
+-->👉 ❌ No
+
+JVM must access it from outside the class
+So it must be public
+
+
+5. Explain what happens when a Java program does not contain a main() method?
+-->👉 Program compiles ✔️
+👉 But runtime error ❌
+
+Example error:
+
+Error: Main method not found
+
+
+
+
+
+6. Explain why main() must be static?Can we change the order of keywords like static, public?
+-->👉 JVM calls main() without creating object
+
+🔹 Keyword order
+
+👉 ✔️ Order can be changed:
+
+static public void main(String[] args)
+
+👉 ❌ But best practice:
+
+public static void main(String[] args)
+
+
+
+7. Can we have multiple main() methods in different classes?
+-->👉 ✅ Yes, allowed
+
+class A {
+    public static void main(String[] args) {
+        System.out.println("Class A");
+    }
+}
+
+class B {
+    public static void main(String[] args) {
+        System.out.println("Class B");
+    }
+}
+👉 You choose which class to run.
+
+
+
+8. Can main() throw exceptions? If yes, which types?
+-->👉 ✅ Yes
+
+Example
+public class Test {
+    public static void main(String[] args) throws Exception {
+        throw new Exception("Error");
+    }
+}
+
+👉 It can throw:
+
+Checked exceptions (Exception, IOException)
+Unchecked exceptions (RuntimeException)
