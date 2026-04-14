@@ -1,0 +1,66 @@
+1) What does the void return type signify in a Java method?
+-->👉 The void return type means:
+
+The method does NOT return any value.
+
+It performs an action only
+No result is sent back to the caller
+✅ Example
+void display() {
+    System.out.println("Hello");
+}
+
+
+
+2) Can a void method include a return statement? Explain with an example.
+-->👉 Yes, but only without a value
+
+return; → allowed (used to exit the method early)
+return value; → ❌ not allowed
+✅ Example
+void check(int x) {
+    if (x < 0) {
+        return; // exits method
+    }
+    System.out.println("Positive number");
+}
+
+
+
+
+3) When should you use a void method instead of a method that returns a value?
+-->👉 Use a void method when:
+
+You only need to perform an action (printing, updating, etc.)
+No result needs to be returned
+✅ Examples:
+Printing output
+Updating object values
+Logging or validation
+
+4) Can a void method call another method that returns a value? Explain how.
+-->👉 Yes, absolutely
+
+    The returned value can be:
+    Stored in a variable
+    Used directly
+    ✅ Example
+    int add(int a, int b) {
+        return a + b;
+    }
+    
+    void displaySum() {
+        int result = add(10, 20); // calling non-void method
+        System.out.println(result);
+    }
+
+
+5) What are the advantages and limitations of using void methods in Java?
+-->✅ Advantages
+    Simple and easy to use
+    Good for actions/operations
+    Improves readability for tasks like printing/logging
+    ❌ Limitations
+    Cannot return results
+    Less reusable in calculations
+    Cannot be used in expressions
