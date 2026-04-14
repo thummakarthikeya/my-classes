@@ -1,0 +1,97 @@
+1) What are parameters in a Java method, and why are they used?
+-->👉 Parameters are variables defined in a method to receive values when the method is called.
+
+    ✅ Why they are used:
+    To pass data to methods
+    To make methods flexible and reusable
+    ✅ Example
+    void add(int a, int b) { // parameters
+        System.out.println(a + b);
+    }
+
+
+2) What is the difference between formal parameters and actual parameters in Java?
+-->
+| Type                  | Definition                              |
+| --------------------- | --------------------------------------- |
+| **Formal Parameters** | Variables defined in method declaration |
+| **Actual Parameters** | Values passed during method call        |
+
+void add(int a, int b) { // a, b → formal parameters
+    System.out.println(a + b);
+}
+
+add(10, 20); // 10, 20 → actual parameters
+
+
+
+
+
+3) Is Java pass-by-value or pass-by-reference? Explain with an example.
+-->👉 Java is always pass-by-value
+
+🔥 Important:
+For primitive types → value is copied
+For objects → reference is copied (but still pass-by-value)
+✅ Example
+class Test {
+    int x = 10;
+
+    void change(Test t) {
+        t.x = 50;
+    }
+
+    public static void main(String[] args) {
+        Test obj = new Test();
+        obj.change(obj);
+
+        System.out.println(obj.x); // 50
+    }
+}
+
+👉 Explanation:
+
+Copy of reference is passed
+Both refer to same object → changes reflect
+
+
+4) Can you pass an array or object as a parameter to a method in Java? Demonstrate with an example.
+-->👉 Yes, both arrays and objects can be passed
+
+✅ Example (Array)
+void printArray(int arr[]) {
+    for (int i : arr) {
+        System.out.println(i);
+    }
+}
+
+public static void main(String[] args) {
+    int[] a = {1, 2, 3};
+    printArray(a);
+}
+✅ Example (Object)
+class Student {
+    int id = 1;
+}
+
+void display(Student s) {
+    System.out.println(s.id);
+}
+
+
+
+
+
+
+5) Can a method have multiple parameters? Explain with an example.
+-->👉 Yes, a method can have multiple parameters
+
+✅ Example
+void display(String name, int age, double marks) {
+    System.out.println(name + " " + age + " " + marks);
+}
+
+public static void main(String[] args) {
+    display("Karthikeya", 22, 85.5);
+}
+
