@@ -1,0 +1,74 @@
+1) What does it mean when a method returns a value in Java? Explain with an example.
+-->When a method returns a value, it sends a result back to the caller using the return statement.
+
+✅ Example
+int add(int a, int b) {
+    return a + b; // returning value
+}
+
+public static void main(String[] args) {
+    int result = add(10, 20);
+    System.out.println(result); // 30
+}
+
+👉 Here, the method calculates and returns 30.
+
+
+
+2) How is the return type of a method declared, and why must it match the returned value?
+-->👉 The return type is declared before the method name.
+
+    int add(int a, int b) // int is return type
+    🔥 Why must it match?
+    The value returned must be compatible with the declared type
+    Otherwise → compile-time error
+    ❌ Example (Error)
+    int getValue() {
+        return "Hello"; // ❌ String cannot be returned as int
+    }
+
+
+
+3) Can a method return different types of values based on conditions? Explain with example.
+-->👉 Yes, but all returned values must be of the same type (or compatible)
+    
+    ✅ Example
+    int check(int x) {
+        if (x > 0)
+            return 1;
+        else
+            return -1;
+    }
+    
+    👉 Different values, but same type (int).
+
+
+
+4) What happens if the return statement in a method is missing or mismatched with the declared return type?
+-->❌ Case 1: Missing return
+    int add(int a, int b) {
+        // no return statement ❌
+    }
+    
+    👉 Compile-time error
+    
+    ❌ Case 2: Mismatched return type
+    int get() {
+        return 10.5; // ❌ double to int
+    }
+    
+    👉 Also compile-time error
+
+
+
+5) What are covariant return types in Java, and how are they used in method overriding?
+-->👉 If a method’s return type is a parent class, you can return an object of its subclass.
+class Animal {}
+
+class Dog extends Animal {}
+
+class Test {
+    Animal getAnimal() {
+        return new Dog(); // returning subclass object
+    }
+}
