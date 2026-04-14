@@ -1,0 +1,121 @@
+1) What is a Factory Method in Java, and how does it use return types to create objects?
+-->👉 Factory Method means: object creation is done inside a method, and we just call that method to get the object.
+    👉 Factory method creates objects inside a method and returns them, instead of creating them directly in main.
+
+
+    👉 A Factory Method is a method used to create and return objects instead of using new directly.
+
+    ✅ How it uses return types:
+    The method usually returns a parent type (interface/class)
+    But internally creates different subclass objects
+    ✅ Example
+    interface Animal {
+        void sound();
+    }
+    
+    class Dog implements Animal {
+        public void sound() {
+            System.out.println("Bark");
+        }
+    }
+    
+    class Cat implements Animal {
+        public void sound() {
+            System.out.println("Meow");
+        }
+    }
+    
+    class AnimalFactory {
+        static Animal getAnimal(String type) {
+            if (type.equals("dog"))
+                return new Dog();
+            else
+                return new Cat();
+        }
+    }
+    
+    👉 Return type = Animal
+    👉 Returns = Dog or Cat (subclasses)
+
+
+
+2) What types of values can a method return in Java, and how are they used in factory methods?
+-->👉 A method in Java can return:
+
+✅ Primitive types (int, double, etc.)
+✅ Objects
+✅ Arrays
+✅ null
+✅ Interface or abstract class types
+🔥 In Factory Methods:
+
+👉 Mostly return:
+
+Interface or parent class type
+
+✔️ This allows flexibility and polymorphism
+
+
+
+3) What happens if a non-void method does not return a value? Explain with an example.
+-->👉 Compile-time error
+
+❌ Example
+int add(int a, int b) {
+    // missing return ❌
+}
+
+👉 Error: missing return statement
+
+
+
+4) What is the difference between returning a primitive type and returning an object in Java?
+-->
+| Primitive Return       | Object Return             |
+| ---------------------- | ------------------------- |
+| Returns value directly | Returns reference         |
+| Example: `int`         | Example: `Student` object |
+| No behavior            | Has methods + properties  |
+
+int getNumber() {
+    return 10; // primitive
+}
+
+Student getStudent() {
+    return new Student(); // object
+}
+
+
+
+5) What are covariant return types in Java, and how are they applied in factory method implementations?
+-->Covariant return type allows a subclass to return a more specific type when overriding a method.
+    Factory method is a method that creates and returns objects instead of directly using new.
+
+👉 Covariant return type = returning subclass instead of parent
+
+✅ Example
+class Animal {}
+
+class Dog extends Animal {}
+
+class Factory {
+    Animal create() {
+        return new Dog();
+    }
+}
+
+👉 Parent type return → subclass object returned ✔️
+
+
+6) How do return types enable polymorphism in Java, particularly in the context of factory methods?
+-->👉 Return types allow one method to return different objects
+
+    ✅ Example
+    Animal a1 = AnimalFactory.getAnimal("dog");
+    Animal a2 = AnimalFactory.getAnimal("cat");
+    
+    a1.sound(); // Bark
+    a2.sound(); // Meow
+    
+    👉 Same return type (Animal)
+    👉 Different behavior (Dog / Cat)
