@@ -171,7 +171,11 @@ The Problem: equals() determines if two objects are logically equal (e.g., same 
     methods, constructors, and modifiers.
 
 15) Why are wait(), notify(), and notifyAll() methods defined in Object class and not in Thread class?
--->The wait(), notify(), and notifyAll() methods are defined in the Object class because every object has a lock (monitor).
+-->wait(), notify(), and notifyAll() are present in the Object class because every object in Java can act as a monitor (lock). When
+    using synchronized, only one thread can access the critical section at a time. To allow threads to communicate with each other while
+    sharing this lock, we use wait(), notify(), and notifyAll() methods.
+
+    The wait(), notify(), and notifyAll() methods are defined in the Object class because every object has a lock (monitor).
     Threads use these object locks for communication and synchronization, so these methods are placed in the Object class rather than the Thread class.
 
 🔥 What is the use of a lock (monitor)?
