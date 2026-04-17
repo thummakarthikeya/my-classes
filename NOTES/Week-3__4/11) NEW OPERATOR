@@ -1,0 +1,46 @@
+1. What does the new operator do?
+-->Allocates memory in the heap
+    Creates an object
+    Initializes instance variables with default values
+    Calls the constructor
+    Returns a reference to the created object
+    Creates Arrays: It is also used to allocate memory for arrays. 
+
+
+2. Can an object be created without the new operator?
+-->Yes, but indirectly. Common ways include:
+
+    Using Reflection API (Class.forName().newInstance())
+
+    Using clone() method  (If a class implements the Cloneable interface, you can use the clone() method
+      to create an exact copy of an existing object without calling a constructor.)
+
+    Using deserialization ( When you deserialize an object using ObjectInputStream.readObject(), Java recreates the 
+      object from a byte stream without invoking any constructor or the new operator.)
+
+    Using factory methods.
+
+
+
+
+3. What happens if memory allocation fails?
+-->If JVM cannot allocate memory, it throws:
+    👉 OutOfMemoryError
+    This is an Error, not an Exception, and usually indicates serious memory issues.
+       the following happens:
+      Garbage Collection (GC) is Triggered: The JVM first attempts to free space by running a Garbage Collection cycle. It identifies
+      and removes objects that are no longer reachable from the application's root set.
+
+      Heap Expansion: If GC does not free enough space, the JVM may attempt to expand the heap up to the maximum limit specified by
+      the -Xmx parameter.
+
+      Fatal Error Thrown: If the heap cannot be expanded further and GC still fails to provide enough contiguous memory for the new 
+      object, the JVM throws a java.lang.OutOfMemoryError. 
+
+
+4. Can we overload the new operator in Java?
+-->❌ No, Java does not support operator overloading.
+
+    new is a keyword, not a method
+    Its behavior is fixed by JVM
+    You cannot override or overload it
