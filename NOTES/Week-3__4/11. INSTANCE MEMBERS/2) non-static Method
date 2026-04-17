@@ -1,0 +1,184 @@
+1) What is a non-static method in Java, and how is it different from a static method?
+-->
+| Feature      | Non-static Method                   | Static Method                   |
+| ------------ | ----------------------------------- | ------------------------------- |
+| Belongs to   | Object                              | Class                           |
+| Invocation   | Object reference                    | Class name                      |
+| Access       | Can access both static & non-static | Can access only static directly |
+| Polymorphism | Supports overriding                 | No overriding (only hiding)     |
+
+
+
+2) When and how can a non-static method be invoked?
+-->👉 It can be invoked only after creating an object
+    class Demo {
+        void show() {
+            System.out.println("Non-static method");
+        }
+    
+        public static void main(String[] args) {
+            Demo obj = new Demo();
+            obj.show(); // ✅ call through object
+        }
+    }
+
+
+3) Can a non-static method access static variables and methods? Why or why not?
+-->✅ Yes
+    
+    👉 Because:
+    
+    Static members belong to the class
+    Object (non-static context) has access to class-level members
+    class Test {
+        static int a = 10;
+    
+        void display() {
+            System.out.println(a); // ✅ allowed
+        }
+    }
+
+
+
+4) Can a static method call a non-static method directly? Explain with reason.
+-->❌ No
+
+    👉 Reason:
+    
+    Static method has no object context
+    Non-static methods require an object
+    ✅ Correct way:
+    class Demo {
+        void show() {
+            System.out.println("Hello");
+        }
+    
+        static void test() {
+            Demo obj = new Demo();
+            obj.show(); // ✅ through object
+        }
+    }
+
+
+5) How does memory allocation differ for static and non-static methods in the JVM?
+-->👉 ALL methods (static + non-static) are stored in the Method Area (class area)
+
+    Only one copy exists
+    Shared by all objects
+    👉 Both methods’ code is stored in the method area
+        
+        🔹 Difference:
+        Static methods
+        Loaded once when class loads
+        Shared across all objects
+
+        Non-static methods
+        Also stored once in method area
+        But executed using object reference (stack uses object context)
+        
+        👉 Key idea:
+        
+        Methods are not duplicated per object
+        Only data (variables) differ per object
+
+
+6) Can we use the this keyword inside a non-static method? Why?
+-->✅ Yes
+    
+    👉 Because:
+    
+    this refers to the current object
+    Non-static methods are always called using an object
+    class Demo {
+        int x = 10;
+    
+        void show() {
+            System.out.println(this.x); // refers to current object
+        }
+    }
+
+
+7) When are non-static methods loaded into memory?
+-->👉 Non-static methods are loaded when the class is loaded into the JVM, not when objects are created.
+    
+    Stored in the Method Area
+    Only one copy exists, shared by all objects
+    ✔ Object creation does not load methods again
+
+
+
+8) Can a non-static method be overridden in a subclass? Explain with an example.
+-->✅ Yes — this is runtime polymorphism
+
+    Example:
+    class Parent {
+        void show() {
+            System.out.println("Parent method");
+        }
+    }
+    
+    class Child extends Parent {
+        @Override
+        void show() {
+            System.out.println("Child method");
+        }
+    }
+    
+    public class Test {
+        public static void main(String[] args) {
+            Parent obj = new Child();
+            obj.show(); // runtime decision
+        }
+    }
+    🔹 Output:
+    Child method
+    
+    👉 JVM decides at runtime based on actual object (Child)
+
+
+
+
+9) What happens if we try to call a non-static method using a null object reference?
+-->❌ It throws NullPointerException   
+    class Demo {
+        void show() {
+            System.out.println("Hello");
+        }
+    }
+    
+    public class Test {
+        public static void main(String[] args) {
+            Demo obj = null;
+            obj.show(); // ❌ Exception
+        }
+    }
+    👉 Because non-static methods need a valid object
+
+
+
+
+10) Can a non-static method be declared as final, abstract, or synchronized? What are the implications?
+-->✅ Yes, all are possible — but with different meanings:
+    
+    🔹 final method
+    final void show() {}
+    
+    👉 Cannot be overridden in subclass
+    
+    🔹 abstract method
+    abstract void show();
+    
+    👉 No body → must be implemented by subclass
+    👉 Class must be declared abstract
+    
+    🔹 synchronized method
+    synchronized void show() {}
+    
+    👉 Only one thread can access at a time (object-level lock)
+| Modifier     | Allowed? | Meaning            |
+| ------------ | -------- | ------------------ |
+| final        | ✅        | Prevent overriding |
+| abstract     | ✅        | No implementation  |
+| synchronized | ✅        | Thread safety      |
+
+
