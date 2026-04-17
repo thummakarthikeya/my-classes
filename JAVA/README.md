@@ -14,6 +14,10 @@ byte code is executed by = (JVM) Interpreter
 
 Just-In-Time (JIT) =  Compiler converts bytecode into native machine code at runtime for faster execution
 
+
+
+👉 “Non-static methods are stored in the method area when the class is loaded, and we use objects (created in heap) to access those methods.”
+
 Loading
 ------
 Bootstrap  = String and all the lang files etc;
