@@ -1,0 +1,241 @@
+Interview Questions
+1) What is a non-static variable in Java?
+-->In Java, a non-static variable (often called an instance variable) is a variable that is declared within a class but 
+    outside of any method, constructor, or block, without using the static keyword.
+
+
+
+2) Where are non-static variables stored in memory?
+-->They are stored in the heap memory, inside the object.
+    Instance Variables (Heap Memory): 
+    Local Variables (Stack Memory):
+
+
+3) When are non-static variables created and destroyed?
+-->Created → when an object is created using new
+    Destroyed → when the object is garbage collected (no references exist)
+
+
+4) Can non-static variables be accessed without creating an object? Why or why not?
+-->❌ No
+    Because they belong to objects, not the class.    
+    👉 You must create an object to access them.
+
+
+5) Can we use ‘this’ keyword with static variables? Why or why not?
+-->❌ No
+    this refers to the current object
+    Static variables belong to the class, not any object
+    👉 So this cannot be used with static context
+
+
+
+6) What is the default value of a non-static variable if not initialized?
+-->
+| Data Type        | Default Value |
+| ---------------- | ------------- |
+| int              | 0             |
+| float/double     | 0.0           |
+| boolean          | false         |
+| object reference | null          |
+| char             | '\u0000'      |
+
+
+
+
+7) If we modify a non-static variable using one object, will that affect another object?
+-->❌ No
+    Each object has its own copy of non-static variables.
+    class Test {
+        int x = 10;
+    }
+    👉 Changing x in one object does not affect another.
+
+
+
+8) What is java.lang.NullPointerException, and how can we handle it?
+-->A NullPointerException occurs when you try to use a null reference like an object.
+
+    String str = null;
+    str.length(); // Exception
+    Handling:
+    Check for null before use
+    Use try-catch
+    if (str != null) {
+        str.length();
+    }
+
+
+
+9) Can we print an object directly? Explain toString() method.
+-->Yes, you can print an object directly in Java by passing it to methods like System.out.println(). When you do this, 
+  the Java compiler internally invokes the object's toString() method to obtain a string representation for display. 
+    System.out.println(obj);
+    
+    👉 Internally calls:
+    
+    obj.toString();
+    
+    The toString() method is an instance method defined in the Object class, which is the root of the inheritance hierarchy in Java.
+    Because every class inherits from Object, every object has a toString() method. 
+    
+    Default Behavior: If you do not override toString() in your class, the default implementation from the Object class is used. 
+    It returns a string consisting of the class name, the @ symbol, and the hexadecimal representation of the object's hash code 
+    (e.g., MyClass@1a2b3c4d).
+    
+    Purpose: Its main goal is to provide a textual representation of an object. This is primarily used for debugging, logging, 
+    and displaying human-readable information about an object's state.
+
+
+
+
+10) Difference between memory locations of static and non-static variables.
+-->
+| Feature         | Static Variables | Non-Static Variables     |
+| --------------- | ---------------- | ------------------------ |
+| Belongs to      | Class            | Object                   |
+| Memory Location | Method Area      | Heap                     |
+| Copies          | One copy         | Separate copy per object |
+| Access          | Class name       | Object reference         |
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Programs :
+1) Can a static method directly access a non-static variable? Explain with an example.
+-->❌ No, because:
+    
+    Static methods belong to the class
+    Non-static variables belong to an object
+    ✅ Example:
+    class Demo {
+        int x = 10;
+    
+        static void show() {
+            // System.out.println(x); ❌ Compile-time error
+    
+            Demo obj = new Demo(); // create object
+            System.out.println(obj.x); // ✅ access through object
+        }
+    
+        public static void main(String[] args) {
+            show();
+        }
+    }
+    
+    👉 Static method needs an object reference to access non-static data.
+
+
+
+
+2) Create a class with one static and one non-static variable. Print their values after creating multiple objects
+to show the difference in behavior.
+-->class Test {
+          static int a = 0;  // static
+          int b = 0;         // non-static
+      
+          void increment() {
+              a++;
+              b++;
+          }
+      }
+      
+      public class Main {
+          public static void main(String[] args) {
+              Test obj1 = new Test();
+              Test obj2 = new Test();
+      
+              obj1.increment();
+              obj2.increment();
+      
+              System.out.println("obj1 -> a: " + obj1.a + ", b: " + obj1.b);
+              System.out.println("obj2 -> a: " + obj2.a + ", b: " + obj2.b);
+          }
+      }
+      🔹 Output:
+      obj1 -> a: 2, b: 1
+      obj2 -> a: 2, b: 1
+      
+      👉 Explanation:
+      
+      a → shared (static) → incremented twice
+      b → separate (non-static) → each object has its own copy
+
+
+
+3) Demonstrate the use of the this keyword to initialize non-static variables through a constructor.
+-->class Student {
+        int id;
+        String name;
+    
+        Student(int id, String name) {
+            this.id = id;       // refers to current object
+            this.name = name;
+        }
+    
+        void display() {
+            System.out.println(id + " " + name);
+        }
+    
+        public static void main(String[] args) {
+            Student s1 = new Student(1, "Karthikeya");
+            s1.display();
+        }
+    }
+
+
+
+4) What happens if you try to use the this keyword inside a static method? Explain with code.
+-->❌ Not allowed → Compile-time error
+    
+    class Demo {
+        int x = 10;
+    
+        static void show() {
+            // System.out.println(this.x); ❌ ERROR
+        }
+    }
+    🔹 Why?
+    this refers to current object
+    Static method has no object context
+    
+    👉 So JVM doesn’t know which object this refers to
+
+
+
+5) Create a program where both static and non-static variables are incremented in a method, and analyze the
+final values.
+-->class Counter {
+        static int staticCount = 0;
+        int instanceCount = 0;
+    
+        void increment() {
+            staticCount++;
+            instanceCount++;
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            Counter c1 = new Counter();
+            Counter c2 = new Counter();
+            Counter c3 = new Counter();
+    
+            c1.increment();
+            c2.increment();
+            c3.increment();
+    
+            System.out.println("Static Count: " + Counter.staticCount);
+    
+            System.out.println("c1 instance: " + c1.instanceCount);
+            System.out.println("c2 instance: " + c2.instanceCount);
+            System.out.println("c3 instance: " + c3.instanceCount);
+        }
+    }
+    🔹 Output:
+    Static Count: 3
+    c1 instance: 1
+    c2 instance: 1
+    c3 instance: 1
+
