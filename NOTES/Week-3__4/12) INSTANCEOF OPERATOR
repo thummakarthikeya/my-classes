@@ -1,0 +1,19 @@
+1. What is the purpose of the instanceof operator?
+-->The instanceof operator is used to determine if an object is an instance of a specific class, a subclass, or implements a
+    particular interface at runtime. It returns a boolean value (true or false), allowing developers to safely check an object's 
+    type before performing type casting or specialized actions.
+
+
+2. What is the return type of instanceof?
+-->The instanceof operator returns a boolean value (true or false). 
+
+
+3. Can instanceof be used with interfaces?
+-->Yes, the instanceof operator can be used with interfaces in Java. It is used to check if a runtime object 
+    belongs to a class that implements a specific interface.
+
+
+4. What happens if you use instanceof with null?
+-->In Java, using the instanceof operator with a null reference always returns false.
+    String str = null;
+    System.out.println(str instanceof String); // false
