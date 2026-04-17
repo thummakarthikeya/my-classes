@@ -1,0 +1,53 @@
+Interview Questions
+1) What is a non-static (instance) block in Java, and when is it executed?
+-->👉 A non-static (instance) block in Java is a block of code within a class surrounded by braces {} that runs every time an
+    object is created. It acts as an instance initializer, executing after the super constructor but before the constructor of
+    the class itself, making it useful for shared initialization logic.
+    {
+        // instance block
+    }
+    
+    ✔ It runs every time an object is created
+    ✔ Executes before the constructor
+
+
+
+2) How is a non-static block different from a static block?
+-->A non-static (instance) block runs every time an object is instantiated, executing before the constructor to initialize
+    instance-specific data. Conversely, a static block runs only once when the class is loaded into memory, initializing 
+    class-level data. Static blocks cannot access non-static members directly.
+
+| Feature   | Static Block         | Non-static Block      |
+| --------- | -------------------- | --------------------- |
+| Keyword   | `static`             | No keyword            |
+| Execution | Once (class loading) | Every object creation |
+| Memory    | Method Area          | Method Area           |
+| Use       | Class-level init     | Object-level init     |
+
+
+3) When is a non-static block executed in relation to the constructor?
+-->A non-static (instance) block is executed every time an object is created, immediately after the constructor's call to super() and before 
+    the constructor's own body logic runs. It acts as an initializer shared among all constructors, running after static blocks
+    but before the constructor executes
+    class Test {
+        {
+            System.out.println("Block");
+        }
+    
+        Test() {
+            System.out.println("Constructor");
+        }
+    }
+
+
+4) Can we have multiple non-static blocks in the same class? If yes, in what order do they execute?
+-->
+
+
+5) Can a non-static block access static and non-static variables? Explain.
+6) Can a non-static block call methods (both static and non-static)?
+7) What happens if both a parent and child class have non-static blocks? In which order are they executed
+during object creation?
+8) Can we use the this keyword inside a non-static block? Why or why not?
+9) Can a non-static block throw exceptions or use try–catch?
+10) What is the real purpose of using non-static blocks in Java programs (practical use cases)?
