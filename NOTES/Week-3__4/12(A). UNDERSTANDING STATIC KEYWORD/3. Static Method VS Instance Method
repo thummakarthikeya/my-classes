@@ -1,0 +1,135 @@
+1. What is the main difference between static and instance methods?
+-->👉 Core difference:
+    
+    Static method
+        Belongs to class
+        No object required
+        Cannot directly access instance data
+    Instance method
+        Belongs to object
+        Object required
+        Can access both static & instance data
+
+
+2. Can a static method call an instance method directly?
+-->❌ No
+    
+    👉 Because:
+    
+    Static method has no object context
+    Instance method needs an object
+    
+    ✔ But possible using object:
+    
+    Demo obj = new Demo();
+    obj.instanceMethod();
+
+
+
+3. Can an instance method call a static method?
+-->✅ Yes (directly)
+
+    👉 Because static members are already available
+    
+    class Demo {
+        static void show() {
+            System.out.println("Static");
+        }
+    
+        void display() {
+            show(); // direct call
+        }
+    }
+
+
+
+4. How does memory allocation differ for static and instance methods?
+-->👉 Static Methods
+    
+    Stored in method area (class area)
+    Only one copy
+    
+    👉 Instance Methods
+    
+    Associated with objects
+    Called via objects stored in heap memory
+
+
+
+5. Give a real-world example where you’d use a static vs an instance method.
+-->👉 Static method
+    
+    Utility functions
+    Example: Math.sqrt()
+    
+    👉 Instance method
+    
+    Object-specific behavior
+    Example: student.displayDetails()
+
+
+
+Programs
+1. Show difference between static and instance methods
+-->class Demo {
+        static void staticMethod() {
+            System.out.println("Static Method");
+        }
+    
+        void instanceMethod() {
+            System.out.println("Instance Method");
+        }
+    
+        public static void main(String[] args) {
+            Demo.staticMethod(); // no object
+    
+            Demo obj = new Demo();
+            obj.instanceMethod(); // object required
+        }
+    }
+
+
+
+2. Demonstrate calling instance method from static method using object
+-->class Demo {
+        void show() {
+            System.out.println("Instance Method Called");
+        }
+    
+        static void display() {
+            Demo obj = new Demo(); // creating object
+            obj.show();            // calling instance method
+        }
+    
+        public static void main(String[] args) {
+            display();
+        }
+    }
+
+
+3. Show that static methods cannot directly access instance variable.
+-->class Demo {
+        int x = 10;
+    
+        static void show() {
+            // System.out.println(x); ❌ Error
+    
+            Demo obj = new Demo();
+            System.out.println(obj.x); // ✅ correct way
+        }
+    
+        public static void main(String[] args) {
+            show();
+        }
+    }
+
+
+
+
+
+🔥 Golden Line for Interview
+
+👉 Say this confidently:
+
+"Static methods belong to the class and do not require an object, whereas instance methods belong to objects and can access
+  both instance and static members."
