@@ -1,0 +1,153 @@
+1. What is a static method in Java?
+-->A static method is a method declared with static that belongs to the class, not objects.
+
+    👉 It can be called without creating an object.
+    
+    class Demo {
+        static void show() {
+            System.out.println("Hello");
+        }
+    }
+
+
+2. Can a static method access instance variables? Why or why not?
+-->❌ No, it cannot directly access instance variables
+    👉 Because:
+    Static methods are class-level
+    Instance variables belong to objects
+    No object = no instance data
+    
+    ✔ But possible using object:
+    
+    class Demo {
+        int x = 10;
+    
+        static void show() {
+            Demo obj = new Demo();
+            System.out.println(obj.x); // allowed
+        }
+    }
+
+
+
+3. Can we call a static method using an object?
+-->✅ Yes (but not recommended)
+    Demo obj = new Demo();
+    obj.show();  // Works, but bad practice
+    👉 Best practice:
+    Demo.show();
+
+
+
+4. What happens if we declare a static method with the same signature in a subclass?
+-->👉 This is called method hiding, NOT overriding.
+    Depends on reference type, not object
+    class Parent {
+        static void show() {
+            System.out.println("Parent");
+        }
+    }
+    
+    class Child extends Parent {
+        static void show() {
+            System.out.println("Child");
+        }
+    }
+    Parent obj = new Child();
+    obj.show();  // Output: Parent
+
+
+
+5. Why can’t we use this keyword inside a static method?
+-->❌ Because:
+    this refers to current object
+    Static methods do not belong to any object
+    
+    👉 No object → no this
+
+
+
+6. Can we overload static methods?
+-->✅ Yes
+    👉 Same method name, different parameters
+    
+    class Demo {
+        static void show() {
+            System.out.println("No args");
+        }
+    
+        static void show(int x) {
+            System.out.println(x);
+        }
+    }
+
+
+
+7. Can we override static methods? Explain with example.
+-->❌ No (true overriding is not possible)
+    
+    👉 Static methods are not polymorphic
+    
+    ✔ It is method hiding
+    
+    class A {
+        static void display() {
+            System.out.println("A");
+        }
+    }
+    
+    class B extends A {
+        static void display() {
+            System.out.println("B");
+        }
+    }
+    
+    public class Test {
+        public static void main(String[] args) {
+            A obj = new B();
+            obj.display(); // A (not B)
+        }
+    }
+
+
+
+8. What is the difference between a static method and an instance method?
+-->
+| Static Method                        | Instance Method       |
+| ------------------------------------ | --------------------- |
+| Belongs to class                     | Belongs to object     |
+| No object needed                     | Object required       |
+| Cannot access instance data directly | Can access everything |
+| No `this` keyword                    | Uses `this`           |
+
+
+
+9. When should you make a method static?
+-->👉 Make it static when:
+    Logic does not depend on object data
+    Utility/helper methods
+    Common functionality
+    ✔ Examples:
+    Math.sqrt()
+    Integer.parseInt()
+
+
+
+10. Can a static method call another static method?
+-->✅ Yes, directly
+    
+    class Demo {
+        static void method1() {
+            System.out.println("Method 1");
+        }
+    
+        static void method2() {
+            method1(); // direct call
+        }
+    }
+
+
+    🔥 Final Interview Tip    
+    👉 Say this:
+    "Static methods belong to the class, not objects, and they cannot access instance members directly because they don’t operate 
+      in an object context."
