@@ -1,0 +1,144 @@
+1. What is a static block in Java?
+-->A static block is a block of code inside a class that is marked with the static keyword.
+static {
+    // code
+}
+👉 It is used to initialize static variables or perform one-time setup.
+
+
+
+2. When is a static block executed?
+-->Static block executes when the class is loaded into memory by JVM, even before main().
+
+
+3. How many times does a static block execute?
+-->👉 Only once per class loading, no matter how many objects you create.
+
+
+4. What is the purpose of a static block?
+-->Initialize static variables
+    Perform one-time setup (like DB connection, config loading)
+    Run code before main()
+
+
+5. Can we have multiple static blocks in one class?
+-->✅ Yes
+    👉 They execute in the order they are written.
+
+
+6. What is the order of execution of static block, constructor, and main method?
+-->👉 Correct order:
+1. Static block
+2. Main method
+3. Constructor (when object is created)
+
+
+7. Can a static block throw an exception?
+-->❌ Yes, but:    
+    If unchecked exception → program crashes
+    If checked exception → must be handled inside block
+    static {
+        try {
+            int x = 10 / 0;
+        } catch (Exception e) {
+            System.out.println("Handled");
+        }
+    }
+
+
+
+8. Can we use return statement inside a static block?
+-->❌ No
+👉 return is not allowed because static block is not a method.
+
+
+9. Can we initialize static variables inside a static block?
+-->✅ Yes (very common use)
+    static int x;
+    static {
+        x = 100;
+    }
+
+
+10. Is it possible to load a class without running its main method?
+-->✅ Yes 👉 Example:
+    Class.forName("Demo");
+    This loads the class → static block executes → but main() is NOT called.
+
+
+
+Programs
+1. Demonstrate order of static block and main method.
+-->class Demo {
+        static {
+            System.out.println("Static Block");
+        }
+    
+        public static void main(String[] args) {
+            System.out.println("Main Method");
+        }
+    }
+    ✔ Output:
+    Static Block
+    Main Method
+
+
+
+2. Initialize static variables inside static block.
+-->class Demo {
+        static int x;
+    
+        static {
+            x = 50;
+            System.out.println("Static Block executed");
+        }
+    
+        public static void main(String[] args) {
+            System.out.println("Value of x: " + x);
+        }
+    }
+    ✔ Output:
+    Static Block executed
+    Value of x: 50
+
+3. Demonstrate multiple static blocks.
+-->class Demo {
+        static {
+            System.out.println("Static Block 1");
+        }
+    
+        static {
+            System.out.println("Static Block 2");
+        }
+    
+        public static void main(String[] args) {
+            System.out.println("Main Method");
+        }
+    }
+    ✔ Output:
+    Static Block 1
+    Static Block 2
+    Main Method
+
+
+
+4. Program showing static block executes even before object creation.
+-->class Demo {
+        static {
+            System.out.println("Static Block");
+        }
+    
+        Demo() {
+            System.out.println("Constructor");
+        }
+    
+        public static void main(String[] args) {
+            System.out.println("Main Method");
+    
+            Demo obj = new Demo();
+        }
+    }
+    ✔ Output:
+    Static Block
+    Main Method
+    Constructor
