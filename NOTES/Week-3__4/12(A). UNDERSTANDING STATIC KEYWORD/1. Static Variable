@@ -1,0 +1,220 @@
+1. What is a static variable?
+-->A static variable is a variable declared using the static keyword inside a class.
+  👉 It belongs to the class, not to individual objects.
+  class Demo {
+      static int count = 0;
+  }
+
+
+
+2. How does a static variable differ from an instance variable?
+-->
+| Static Variable         | Instance Variable                    |
+| ----------------------- | ------------------------------------ |
+| Belongs to **class**    | Belongs to **object**                |
+| Single copy shared      | Separate copy per object             |
+| Loaded once in memory   | Created every time object is created |
+| Access using class name | Access using object                  |
+
+
+
+3. When and why do we use static variables?
+-->👉 Use static variables when:
+    You want to share data across all objects
+    Value should be common for all instances
+    Examples:
+    Counter (number of objects created)
+    Company name (same for all employees)
+
+
+4. How many copies of a static variable exist in memory?
+-->👉 Only ONE copy exists in memory.
+  ✔ Shared by all objects of that class
+
+
+5. Can a static variable be local to a method?
+-->❌ No   
+    👉 static variables:
+    Must be declared inside class
+    Cannot be declared inside a method
+    void test() {
+        // static int x = 10; ❌ Not allowed
+    }
+
+
+6. Can we access static variables without creating an object?
+-->✅ Yes
+    
+    👉 Best practice:
+    
+    ClassName.variableName
+    
+    Example:
+    
+    class Demo {
+        static int x = 10;
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            System.out.println(Demo.x);
+        }
+    }
+
+
+
+7. What are some real-world examples of using static variables?
+-->👉 Common use cases:
+    Counter:
+    class Test {
+        static int count = 0;
+    
+        Test() {
+            count++;
+        }
+    }
+    Configuration values:
+    Company name
+    App version
+    Constants (with final)
+    static final double PI = 3.14;
+
+
+
+8. What happens if two classes have static variables with the same name?
+-->👉 No problem at all.
+    ✔ They are completely independent
+    class A {
+        static int x = 10;
+    }
+    
+    class B {
+        static int x = 20;
+    }
+    
+    👉 Access using:
+    A.x  // 10
+    B.x  // 20
+
+
+9. Can we change the value of a static variable in another class?
+-->✅ Yes (if not final)  
+    👉 You can modify using class name:
+    class A {
+        static int x = 10;
+    }
+    
+    class B {
+        public static void main(String[] args) {
+            A.x = 50;
+            System.out.println(A.x); // 50
+        }
+    }
+
+10. Is it possible to make a static variable final?
+-->✅ Yes
+
+    👉 This creates a constant
+    
+    class Demo {
+        static final int MAX = 100;
+    }
+    
+    ✔ Value cannot be changed
+    ✔ Commonly used for constants like:
+    
+    PI
+    MAX_SIZE
+
+
+
+-->✅ Final Interview Tip
+👉 Say this confidently:
+"Static variables are class-level variables shared across all objects, used to store common data and reduce memory usage."
+
+
+
+
+
+
+Programs
+1. Count the number of objects created using a static variable
+-->👉 Idea: Use a static counter that increments in the constructor.
+    class CounterDemo {
+        static int count = 0;
+    
+        CounterDemo() {
+            count++;
+            System.out.println("Object created. Count = " + count);
+        }
+    
+        public static void main(String[] args) {
+            new CounterDemo();
+            new CounterDemo();
+            new CounterDemo();
+    
+            System.out.println("Total objects created: " + CounterDemo.count);
+        }
+    }
+    ✅ Output:
+    Object created. Count = 1
+    Object created. Count = 2
+    Object created. Count = 3
+    Total objects created: 3
+
+
+
+2. Demonstrate that static variables are shared between all objects.
+-->👉 Idea: Change value from one object and show it reflects in others.
+    class SharedDemo {
+        static int x = 10;
+        public static void main(String[] args) {
+            SharedDemo obj1 = new SharedDemo();
+            SharedDemo obj2 = new SharedDemo();
+    
+            obj1.x = 50;
+    
+            System.out.println("obj1.x = " + obj1.x);
+            System.out.println("obj2.x = " + obj2.x);
+        }
+    }
+    
+    ✅ Output:
+    obj1.x = 50
+    obj2.x = 50
+    
+    👉 Shows: Same memory → shared value
+
+
+
+3. Use a static variable for generating a unique ID for every object.
+-->👉 Idea: Increment static variable and assign it to each object. 
+    class Student {
+        static int counter = 1000;
+        int id;
+    
+        Student() {
+            counter++;
+            id = counter;
+        }
+    
+        void display() {
+            System.out.println("Student ID: " + id);
+        }
+    
+        public static void main(String[] args) {
+            Student s1 = new Student();
+            Student s2 = new Student();
+            Student s3 = new Student();
+    
+            s1.display();
+            s2.display();
+            s3.display();
+        }
+    }
+    
+    ✅ Output:
+    
+    Student ID: 1001
+    Student ID: 1002
+    Student ID: 1003
