@@ -41,13 +41,198 @@ Interview Questions
 
 
 4) Can we have multiple non-static blocks in the same class? If yes, in what order do they execute?
--->
+-->Yes, we can have multiple non-static (instance) blocks in a class.
+    👉 They execute:
+    In the order they are written in the class (top → bottom)
+    Before the constructor
+    Every time an object is created
+    
+    Example:
+    
+    class Test {
+        {
+            System.out.println("Block 1");
+        }
+    
+        {
+            System.out.println("Block 2");
+        }
+    
+        Test() {
+            System.out.println("Constructor");
+        }
+    }
+    
+    Output:
+    
+    Block 1
+    Block 2
+    Constructor
+
 
 
 5) Can a non-static block access static and non-static variables? Explain.
+-->✅ Yes, it can access both.
+    👉 Because:
+    It is executed during object creation
+    At that time, both:
+    static variables (class-level)
+    non-static variables (instance-level)
+    are available
+    
+    Example:
+    
+    class Demo {
+        static int a = 10;
+        int b = 20;
+    
+        {
+            System.out.println(a); // static
+            System.out.println(b); // non-static
+        }
+    }
+
+
+
+
 6) Can a non-static block call methods (both static and non-static)?
+-->✅ Yes, it can call both.
+
+        👉 Reason:
+        
+        It behaves like part of the object initialization process
+        So it has access to everything the object has
+        
+        Example:
+        
+        class Demo {
+            static void show1() {
+                System.out.println("Static method");
+            }
+        
+            void show2() {
+                System.out.println("Non-static method");
+            }
+        
+            {
+                show1();
+                show2();
+            }
+        }
+
+
+
 7) What happens if both a parent and child class have non-static blocks? In which order are they executed
 during object creation?
+-->👉 Execution order during object creation:
+
+    Parent class non-static blocks
+    Parent constructor
+    Child class non-static blocks
+    Child constructor
+    📌 Always remember: Parent → Child
+    Example:
+    class Parent {
+        {
+            System.out.println("Parent Block");
+        }
+        Parent() {
+            System.out.println("Parent Constructor");
+        }
+    }
+    
+    class Child extends Parent {
+        {
+            System.out.println("Child Block");
+        }
+    
+        Child() {
+            System.out.println("Child Constructor");
+        }
+    }
+    
+    Output:
+    Parent Block
+    Parent Constructor
+    Child Block
+    Child Constructor
+
+
+
+
+
 8) Can we use the this keyword inside a non-static block? Why or why not?
+-->✅ Yes, we can use this.
+    
+    👉 Because:
+    
+    Non-static block is executed in instance context
+    this refers to the current object
+    
+    Example:
+    
+    class Demo {
+        int x = 10;
+    
+        {
+            System.out.println(this.x);
+        }
+    }
+
+
+
 9) Can a non-static block throw exceptions or use try–catch?
+-->✅ Yes, it can.
+    👉 You can:
+    Use try–catch
+    Throw exceptions
+    Example:
+    
+    class Demo {
+        {
+            try {
+                int x = 10 / 0;
+            } catch (Exception e) {
+                System.out.println("Exception handled");
+            }
+        }
+    } 
+    ⚠️ If you throw a checked exception, it must be handled inside the block (since constructors don’t declare it automatically).
+
+
+
+
 10) What is the real purpose of using non-static blocks in Java programs (practical use cases)?
+-->👉 In real-world projects, non-static blocks are rarely used, but they exist for:
+        
+        🔹 Common practical uses:
+        Code that must run before every constructor
+        Shared initialization logic across multiple constructors
+        Reducing duplicate code
+        🔹 Example use case:
+        class Student {
+            int id;
+        
+            {
+                System.out.println("Common initialization");
+            }
+        
+            Student() {
+                System.out.println("Default constructor");
+            }
+        
+            Student(int id) {
+                this.id = id;
+                System.out.println("Parameterized constructor");
+            }
+        }
+        
+        👉 Here, the block runs for both constructors, avoiding repetition.
+
+
+
+    ✅ Final Interview Tip
+    👉 If asked in interview:
+    Say:
+    "Non-static blocks are mainly used for common initialization logic, but in modern Java, constructors or helper methods are preferred for
+    better readability."
