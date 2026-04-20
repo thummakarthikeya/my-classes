@@ -1,0 +1,38 @@
+Logical Programs on static
+1. What is the output of the program?
+public class Test1
+{
+    public static void main(String[] args)
+    {
+        int x = 20;
+        System.out.println("Main method: " + x);
+    }
+
+    static
+    {
+        int x = 10;
+        System.out.println("Static block: " + x);
+    }
+}
+
+✅ Output
+Static block: 10
+Main method: 20
+
+
+
+2. What is the output of the program?
+public class Test2
+{
+    Static   // ❌ ERROR here
+    {
+        System.out.println("Test2 class Static Block");
+    }
+
+    public static void main(String[] args)
+    {
+        System.out.println("Test2 class main method");
+    }
+}
+
+
