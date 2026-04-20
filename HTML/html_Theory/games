@@ -34,3 +34,5 @@ wappalyzer ()
 -> build scaler webpage
 
 -> tor browser and onion browser
+
+->spotless(used to check our code is correctly structure it is important for big projects to do correctly)
