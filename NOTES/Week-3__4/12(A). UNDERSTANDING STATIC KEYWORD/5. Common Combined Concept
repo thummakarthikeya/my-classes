@@ -1,0 +1,419 @@
+1. What is static in Java?
+-->static is a keyword used to make a member belong to the class instead of objects.
+  👉 Means: shared by all objects
+
+
+2. Why do we use the static keyword in Java?
+-->Memory saving (shared data)
+  Access without creating object
+  One-time initialization
+
+
+3. Where can we use the static keyword?
+-->👉 We can use it with:
+  Variables
+  Methods
+  Blocks
+  Nested classes
+
+
+4. What is a static variable in Java?
+-->A variable declared with static keyword.
+  static int x = 10;
+  👉 Only one copy exists for entire class (shared among objects)
+
+
+5. What is a static method in Java?
+-->A method declared using static.
+  static void show() {
+      System.out.println("Hello");
+  }
+  
+  👉 Can be called without object
+
+
+6. What is a static block?
+-->A block used to initialize static data.
+  static {
+      System.out.println("Static Block");
+  }
+  👉 Executes when class loads
+
+
+7. Can we override a static method?
+-->❌ No (not real overriding)
+  👉 It is method hiding, not overriding
+
+
+8. Can we overload a static method?
+-->✅ Yes
+  static void add(int a) {}
+  static void add(int a, int b) {}
+
+9. Why is the Java main method static?
+-->public static void main(String[] args)
+👉 Because JVM calls it without creating object
+
+
+10. Can we declare multiple static blocks in our code?
+-->✅ Yes
+  👉 They execute in top-to-bottom order
+
+
+11. Can we call a superclass static method in a subclass?
+-->✅ Yes
+  class A {
+      static void show() {
+          System.out.println("A");
+      }
+  }
+  
+  class B extends A {
+      public static void main(String[] args) {
+          A.show();   // calling parent static method
+      }
+  }
+
+
+12. Can a constructor be static in Java?
+-->❌ No  👉 Constructor is for object → static is for class
+
+13. Can we access non-static data members in a static method in Java?
+-->❌ No (directly)
+    👉 Because static method doesn't have object
+    ✔ Solution:
+    Demo obj = new Demo();
+    obj.x;
+
+
+14. Can we access static data members in a static method?
+-->✅ Yes (directly)
+  static int x = 10;
+  
+  static void show() {
+      System.out.println(x);
+  }
+
+
+15. Can we use this and super in a static context?
+-->❌ No 👉 Because they refer to object, and static has no object
+
+16. Can we write static public void main(String args[])?
+-->✅ Yes 👉 Order of static and public does not matter
+
+
+17. Can an abstract class have a static variable in it?
+-->✅ Yes
+  👉 Static variables belong to class, not object—so perfectly valid in abstract class.
+  abstract class Demo {
+      static int x = 10;
+  }
+
+
+18. Can we execute a Java program without the main() method?
+-->⚠️ Modern Java (Java 7+) → ❌ No
+    👉 Earlier (old versions) → possible using static blocks
+    👉 Now → JVM requires main() as entry point
+
+
+19. Can we apply the static keyword to an outer class?
+-->❌ No 👉 Only nested (inner) classes can be static
+
+
+20. Can we create a static inner class?
+-->✅ Yes
+  class Outer {
+      static class Inner {
+          void show() {
+              System.out.println("Static Inner Class");
+          }
+      }
+  }
+
+
+21. What is the advantage of using a static variable?
+-->Memory efficient (single copy)
+  Shared among all objects
+  Easy global access
+
+
+22. Can we declare a local variable as static?
+-->❌ No 👉 Local variables belong to method stack → static is class-level
+
+
+23. Why is the combination of abstract and static not allowed for methods?
+-->❌ Because:
+  abstract → must be overridden
+  static → cannot be overridden
+  👉 So both contradict each other
+
+
+24. Explain Illegal forward reference error in a static block with an example.
+-->👉 Happens when you use a variable before it is declared
+  ❌ Example:
+  class Demo {
+      static {
+          System.out.println(x); // error
+      }
+      static int x = 10;
+  }
+  
+  👉 Compile-time error: Illegal forward reference
+  
+  ✅ Correct:
+  class Demo {
+      static int x = 10;
+  
+      static {
+          System.out.println(x); // valid
+      }
+  }
+
+
+25. What is the order of execution of static members in a single class?
+-->👉 Order:
+    1. Static variables (in order)
+    2. Static blocks (in order)
+    3. main()
+
+
+26. What is the order of execution of static members in super and subclass?
+-->👉 When subclass is loaded:
+    1. Superclass static variables & blocks
+    2. Subclass static variables & blocks
+    3. main()
+
+
+27. Demonstrate how to declare a static variable.
+-->class Demo {
+      static int x = 100;
+  }
+
+28. How to define a static block and observe when the static block will execute?
+-->class Demo {
+        static {
+            System.out.println("Static Block Executed");
+        }
+    
+        public static void main(String[] args) {
+            System.out.println("Main Method");
+        }
+    }
+    ✔ Output:
+    Static Block Executed
+    Main Method
+
+
+29. How to define a static method and how to invoke it in the same class and different class?
+-->Same class:
+    class Demo {
+        static void show() {
+            System.out.println("Hello");
+        }
+    
+        public static void main(String[] args) {
+            show();
+        }
+    }
+
+    Different class:
+    class A {
+        static void show() {
+            System.out.println("From A");
+        }
+    }
+    
+    class B {
+        public static void main(String[] args) {
+            A.show();
+        }
+    }
+
+
+30. How to differentiate static and non-static members?
+-->
+| Feature    | Static         | Non-static      |
+| ---------- | -------------- | --------------- |
+| Belongs to | Class          | Object          |
+| Memory     | One copy       | Multiple copies |
+| Access     | Without object | Needs object    |
+| Keyword    | static         | none            |
+
+
+31. Draw a memory diagram for static members showing where they get memory in the JVM.
+-->👉 Static members are stored in Method Area (Class Area)
+    👉 Objects are stored in Heap Memory
+        JVM MEMORY
+   ---------------------
+   |   Method Area     |
+   |-------------------|
+   | static variables  |
+   | static methods    |
+   | static blocks     |
+   ---------------------
+
+   |      Heap         |
+   |-------------------|
+   | Objects           |
+   ---------------------
+
+   |      Stack        |
+   |-------------------|
+   | Method calls      |
+   ---------------------
+
+
+👉 Key idea:
+Static → one copy → Method Area
+Non-static → per object → Heap
+⚡ Final Quick Revision
+Static = class level
+Runs once at class loading
+Shared memory
+No this, no super
+Super class static runs first
+
+
+
+
+Programs
+1. Program to show the execution sequence of static block, main method, and constructor
+-->class Demo {
+      static {
+          System.out.println("Static Block");
+      }
+  
+      Demo() {
+          System.out.println("Constructor");
+      }
+  
+      public static void main(String[] args) {
+          System.out.println("Main Method");
+  
+          Demo obj = new Demo();
+      }
+  }
+  ✔ Output
+  Static Block
+  Main Method
+  Constructor
+
+
+2. Create a utility class using only static methods and variables.
+-->👉 Used like Math class
+
+    class Utility {
+    
+        static int add(int a, int b) {
+            return a + b;
+        }
+    
+        static int square(int x) {
+            return x * x;
+        }
+    }
+    
+    class Test {
+        public static void main(String[] args) {
+            System.out.println(Utility.add(5, 3));
+            System.out.println(Utility.square(4));
+        }
+    }
+
+
+3. Static method returning object of its class.
+-->class Demo {
+      int x;
+  
+      Demo(int x) {
+          this.x = x;
+      }
+  
+      static Demo createObject(int val) {
+          return new Demo(val);
+      }
+  
+      void display() {
+          System.out.println("Value: " + x);
+      }
+  
+      public static void main(String[] args) {
+          Demo obj = Demo.createObject(10);
+          obj.display();
+      }
+  }
+
+
+4. Count total login attempts using static variable and method.
+-->class Login {
+
+        static int count = 0;
+    
+        static void login() {
+            count++;
+            System.out.println("Login attempt: " + count);
+        }
+    
+        public static void main(String[] args) {
+            login();
+            login();
+            login();
+        }
+    }
+    ✔ Output
+    Login attempt: 1
+    Login attempt: 2
+    Login attempt: 3
+
+
+5. Program to show static variable shared across objects but instance variable not.
+-->class Demo {
+        static int shared = 0;
+        int individual = 0;
+    
+        void increment() {
+            shared++;
+            individual++;
+        }
+    
+        void display() {
+            System.out.println("Shared: " + shared + ", Individual: " + individual);
+        }
+    
+        public static void main(String[] args) {
+            Demo obj1 = new Demo();
+            Demo obj2 = new Demo();
+    
+            obj1.increment();
+            obj2.increment();
+    
+            obj1.display();
+            obj2.display();
+        }
+    }
+    ✔ Output
+    Shared: 2, Individual: 1
+    Shared: 2, Individual: 1
+    👉 Static is shared, instance is separate
+
+
+6. Program to demonstrate static block execution order in inheritance.
+-->class Parent {
+        static {
+            System.out.println("Parent Static Block");
+        }
+    }
+    
+    class Child extends Parent {
+        static {
+            System.out.println("Child Static Block");
+        }
+    
+        public static void main(String[] args) {
+            System.out.println("Main Method");
+        }
+    }
+    ✔ Output
+    Parent Static Block
+    Child Static Block
+    Main Method
