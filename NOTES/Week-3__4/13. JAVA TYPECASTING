@@ -1,0 +1,17 @@
+Interview Questions
+1. What is typecasting in Java, and why is it used?
+2. Explain the difference between widening (implicit) and narrowing (explicit) typecasting, with examples.
+3. Can a double be stored in an int variable? How? What happens if the value exceeds the int range?
+4. What is type promotion in Java, and how does it work when different data types are used together?
+5. Can an int be cast to a byte? What happens if the value is too large?
+6. What is upcasting in Java? Provide an example with parent and child classes.
+7. What is downcasting in Java? Why is it considered risky? How can it be done safely?
+8. What is a ClassCastException? Give an example scenario.
+9. Can Object references be cast to their actual object type? Show an example.
+10. Can interface references be upcast to their implementation class? Explain.
+11. How does upcasting affect overridden methods in Java?
+12. What happens when you cast a double to a float?
+13. Can null references be safely downcast? Explain.
+14. Can boolean be cast to int? Why or why not?
+15. Can you assign a child class object to a parent class reference? What are the rules?
+16. How does typecasting affect memory allocation and storage for primitives vs reference types?
