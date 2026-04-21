@@ -1,0 +1,166 @@
+Interview Questions
+1) What is a wrapper class in Java, and why do we need it?
+-->A wrapper class converts a primitive data type into an object.
+    👉 Example:
+    int → Integer, char → Character
+
+    Why needed?    
+    Collections (like ArrayList) store only objects
+    Required for object-oriented features (methods, null handling)
+    Used in frameworks, APIs, generics
+
+
+2) List all wrapper classes in Java for each primitive type.
+-->
+| Primitive | Wrapper Class |
+| --------- | ------------- |
+| byte      | Byte          |
+| short     | Short         |
+| int       | Integer       |
+| long      | Long          |
+| float     | Float         |
+| double    | Double        |
+| char      | Character     |
+| boolean   | Boolean       |
+
+
+
+3) How is a wrapper class different from a primitive type? Give examples.
+-->
+| Feature     | Primitive   | Wrapper Class |
+| ----------- | ----------- | ------------- |
+| Type        | Basic value | Object        |
+| Memory      | Less        | More          |
+| Performance | Faster      | Slower        |
+| Null        | Not allowed | Allowed       |
+
+
+
+4) Can a wrapper object store null? Give an example.
+-->✅ Yes  Integer x = null;
+
+
+5) What is autoboxing / unboxing in Java? Diff b/w autoboxing and unboxing?
+-->Autoboxing: primitive → object
+    Unboxing: object → primitive
+    Integer a = 10;   // autoboxing
+    int b = a;        // unboxing
+    
+    Difference:    
+    Autoboxing = automatic conversion to object
+    Unboxing = automatic conversion to primitive
+
+
+
+6) Can we perform arithmetic operations directly on wrapper objects? How does it work?
+-->✅ Yes, Java automatically unboxes
+    Integer a = 10;
+    Integer b = 20;
+    int c = a + b;  // unboxing happens internally
+
+
+7) What is the difference between == and .equals() when comparing wrapper objects?
+-->== → compares reference (memory address)
+    .equals() → compares value
+    Integer a = 100;
+    Integer b = 100;
+    
+    System.out.println(a == b);       // true (cached)
+    System.out.println(a.equals(b));  // true
+
+
+
+8) How does the caching mechanism work for Integer and Boolean?
+-->Integer cache range: -128 to 127
+    Boolean: only true and false
+    Integer a = 127;
+    Integer b = 127;
+    System.out.println(a == b); // true
+    
+    Integer x = 128;
+    Integer y = 128;
+    System.out.println(x == y); // false
+
+
+
+9) What happens if you try to unbox a null wrapper object?
+-->❌ Throws NullPointerException
+    Integer x = null;
+    int y = x;  // Exception
+
+
+10) How does autoboxing affect performance in Java programs?
+-->Autoboxing performance impact    
+    ⚠️ Slower because:
+            Object creation
+            Extra memory usage
+            Garbage collection overhead
+            
+    👉 Avoid in loops: Integer sum = 0; // bad for performance
+
+
+
+11) Can we declare wrapper objects as final? What happens if we try to change their value?
+-->✅ Yes
+    final Integer x = 10;
+
+    ❌ You cannot reassign:
+          x = 20; // error
+    But note:
+      Wrapper objects are immutable
+      Any change creates a new object
+
+
+12) Can autoboxing occur when passing arguments to a method? Give an example.
+-->✅ Yes
+      void display(Integer x) {
+          System.out.println(x);
+      }
+      
+      display(10); // autoboxing happens
+
+
+
+13) What is the difference between Integer.parseInt() and Integer.valueOf()?
+-->
+| Method       | Return Type      |
+| ------------ | ---------------- |
+| `parseInt()` | int (primitive)  |
+| `valueOf()`  | Integer (object) |
+
+int a = Integer.parseInt("10");
+Integer b = Integer.valueOf("10");
+
+
+
+14) What is the behavior of null in wrapper comparisons?
+-->Integer a = null;
+    Integer b = 10;
+    
+    System.out.println(a == b); // false
+    System.out.println(a.equals(b)); // NullPointerException
+    
+    👉 Always check null before .equals()
+
+
+15) Can wrapper objects be synchronized for thread safety?
+-->⚠️ Technically yes, but not recommended
+    
+    Integer x = 10;
+    synchronized(x) {
+        // unsafe due to caching
+    }
+    
+    👉 Reason:  Cached objects may be shared → leads to unexpected behavior
+
+
+
+16) Are wrapper objects immutable? How does Java handle immutability for wrappers?
+-->✅ Yes
+    Integer a = 10;
+    a = a + 5; // new object created
+    
+    👉 Java ensures immutability by:
+            Making class final
+            No setters
+            Value cannot change once created
