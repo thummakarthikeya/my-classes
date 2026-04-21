@@ -1,0 +1,191 @@
+Interview Questions
+1) Write a program to find the greatest of two numbers using if-else.
+-->public class GreatestTwo {
+    public static void main(String[] args) {
+        int a = 10, b = 20;
+
+        if (a > b) {
+            System.out.println("Greatest is: " + a);
+        } else {
+            System.out.println("Greatest is: " + b);
+        }
+    }
+}
+
+
+
+2) Write a program to find the greatest of three numbers using if-else-if.
+-->Greatest of three numbers (if-else-if)
+      public class GreatestThree {
+          public static void main(String[] args) {
+              int a = 10, b = 25, c = 15;
+      
+              if (a > b && a > c) {
+                  System.out.println("Greatest is: " + a);
+              } else if (b > c) {
+                  System.out.println("Greatest is: " + b);
+              } else {
+                  System.out.println("Greatest is: " + c);
+              }
+          }
+      }
+
+
+
+
+3) Check if a number is positive, negative, or zero.
+-->Positive, Negative, or Zero
+    public class CheckNumber {
+        public static void main(String[] args) {
+            int num = -5;
+    
+            if (num > 0) {
+                System.out.println("Positive");
+            } else if (num < 0) {
+                System.out.println("Negative");
+            } else {
+                System.out.println("Zero");
+            }
+        }
+    }
+
+
+
+4) Write a program to check if a given year is a leap year.
+-->Leap Year Check
+      public class LeapYear {
+          public static void main(String[] args) {
+              int year = 2024;
+      
+              if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                  System.out.println("Leap Year");
+              } else {
+                  System.out.println("Not a Leap Year");
+              }
+          }
+      }
+
+
+
+
+5) Check if a character is a vowel or consonant using switch.
+-->Vowel or Consonant (switch)
+      public class VowelCheck {
+          public static void main(String[] args) {
+              char ch = 'a';
+      
+              switch (ch) {
+                  case 'a': case 'e': case 'i': case 'o': case 'u':
+                  case 'A': case 'E': case 'I': case 'O': case 'U':
+                      System.out.println("Vowel");
+                      break;
+                  default:
+                      System.out.println("Consonant");
+              }
+          }
+      }
+
+
+
+6) Check if a number is even or odd using if-else.
+-->Even or Odd
+      public class EvenOdd {
+          public static void main(String[] args) {
+              int num = 7;
+      
+              if (num % 2 == 0) {
+                  System.out.println("Even");
+              } else {
+                  System.out.println("Odd");
+              }
+          }
+      }
+
+
+7) Find the grade of a student using if-else-if (based on marks).
+-->Grade System (if-else-if)
+      public class Grade {
+          public static void main(String[] args) {
+              int marks = 85;
+      
+              if (marks >= 90) {
+                  System.out.println("Grade A");
+              } else if (marks >= 75) {
+                  System.out.println("Grade B");
+              } else if (marks >= 50) {
+                  System.out.println("Grade C");
+              } else {
+                  System.out.println("Fail");
+              }
+          }
+      }
+
+
+
+8) Write a program to find the largest of three numbers using nested if.
+-->Largest of three (Nested if)
+      public class NestedLargest {
+          public static void main(String[] args) {
+              int a = 10, b = 20, c = 15;
+      
+              if (a > b) {
+                  if (a > c) {
+                      System.out.println("Greatest is: " + a);
+                  } else {
+                      System.out.println("Greatest is: " + c);
+                  }
+              } else {
+                  if (b > c) {
+                      System.out.println("Greatest is: " + b);
+                  } else {
+                      System.out.println("Greatest is: " + c);
+                  }
+              }
+          }
+      }
+
+
+
+
+9) Program to check if a number is divisible by both 3 and 5.
+-->public class Divisible {
+        public static void main(String[] args) {
+            int num = 15;
+    
+            if (num % 3 == 0 && num % 5 == 0) {
+                System.out.println("Divisible by both 3 and 5");
+            } else {
+                System.out.println("Not divisible by both");
+            }
+        }
+    }
+
+
+
+10) Write a calculator program using switch (add, sub, mul, div).
+-->public class Calculator {
+        public static void main(String[] args) {
+            int a = 10, b = 5;
+            char op = '+';
+    
+            switch (op) {
+                case '+':
+                    System.out.println("Result: " + (a + b));
+                    break;
+                case '-':
+                    System.out.println("Result: " + (a - b));
+                    break;
+                case '*':
+                    System.out.println("Result: " + (a * b));
+                    break;
+                case '/':
+                    if (b != 0)
+                        System.out.println("Result: " + (a / b));
+                    else
+                        System.out.println("Cannot divide by zero");
+                    break;
+                default:
+                    System.out.println("Invalid operator");
+            }
+        }
+    }
