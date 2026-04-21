@@ -1,0 +1,14 @@
+Interview Questions
+1. What are selection statements in Java?
+2. Difference between if and if-else.
+3. Can we use multiple if statements without else?
+4. What is an if-else-if ladder, and how does it work?
+5. When should you use switch instead of if-else?
+6. What happens if you forget to use a break in a switch case?
+7. Can we use logical operators (&&, ||) in a switch expression?
+8. Difference between switch expression (Java 12+) and old switch statement.
+9. Can we have duplicate case values in a switch?
+10. What happens if no case matches and no default is present?
+11. Can we use a switch with wrapper classes like Integer?
+12. Can a switch statement work on enum types?
+13. What is the fall-through behavior in a switch?
