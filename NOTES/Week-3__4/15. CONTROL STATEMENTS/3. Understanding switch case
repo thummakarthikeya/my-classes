@@ -1,0 +1,117 @@
+Interview Questions
+1) What is a switch statement in Java?
+-->A switch statement is a selection control statement used to execute one block of code among many based on the value of a variable.
+    👉 It is mainly used as an alternative to multiple if-else conditions when comparing one variable with fixed values.
+
+
+
+
+2) What is the syntax of a switch statement?
+-->switch (expression) {
+      case value1:
+          // code
+          break;
+      case value2:
+          // code
+          break;
+      default:
+          // code
+  }
+
+
+
+3) What is the purpose of the break keyword in a switch?
+-->The break statement is used to terminate the switch block after a case is executed.
+    👉 Without break, execution continues to the next cases.
+
+
+
+4) What happens if break is omitted in a switch-case?
+-->👉 It causes fall-through behavior.
+
+      int x = 2;
+      
+      switch(x) {
+          case 1:
+              System.out.println("One");
+          case 2:
+              System.out.println("Two");
+          case 3:
+              System.out.println("Three");
+      }
+      
+      👉 Output:
+      
+      Two
+      Three
+
+
+
+5) Can we use multiple statements inside a case block?
+-->✅ Yes
+    case 1:
+        System.out.println("Hello");
+        System.out.println("World");
+        break;
+
+
+6) What is the purpose of the default case? Is the default case mandatory in a switch?
+-->default executes when no case matches
+    It is optional, not mandatory
+
+
+7) Can default be written anywhere in the switch block?
+-->✅ Yes  👉 But best practice is to place it at the end.
+
+
+
+8) How does Java decide which case to execute?
+-->👉 Java:
+    Evaluates the switch expression
+    Compares it with each case value
+    Executes the matching case
+    
+    👉 Matching is based on exact value (== comparison)
+
+
+9) Can two case labels have the same constant value?
+-->❌ No  👉 It results in a compile-time error (duplicate case label)
+
+
+10) Which primitive data types are supported in switch?
+-->✅ Supported:
+    byte
+    short
+    char
+    int
+    
+    ✅ Also supported:
+    String (since Java 7)
+    enum
+    Wrapper classes like Integer, Character
+    
+    ❌ Not supported:
+    long
+    float
+    double
+    boolean
+
+
+
+
+11) How is a switch expression different from a switch statement?
+-->
+| Feature       | Switch Statement | Switch Expression (Java 12+) |
+| ------------- | ---------------- | ---------------------------- |
+| Syntax        | `case:`          | `case ->`                    |
+| Break needed  | Yes              | No                           |
+| Fall-through  | Yes              | No (by default)              |
+| Returns value | No               | Yes                          |
+| Usage         | Control flow     | Assign values                |
+
+👉 Example:
+      int result = switch(day) {
+          case 1 -> 100;
+          case 2 -> 200;
+          default -> 0;
+      };
