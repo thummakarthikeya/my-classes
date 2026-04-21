@@ -1,14 +1,147 @@
 Interview Questions
 1. What are selection statements in Java?
+-->Selection statements are used to control the flow of execution based on conditions.
+    👉 Types:
+          if
+          if-else
+          if-else-if ladder
+          switch
+          
+          They help the program choose one path among many.
+
+
 2. Difference between if and if-else.
+-->
+| Feature       | if                                   | if-else                                  |
+| ------------- | ------------------------------------ | ---------------------------------------- |
+| Execution     | Runs block only if condition is true | Runs one block if true, another if false |
+| Optional else | No                                   | Yes                                      |
+| Use case      | Single condition check               | Two-way decision                         |
+
+
+
 3. Can we use multiple if statements without else?
+-->Yes ✅
+    This is called independent if statements.
+      if (x > 0) {
+          System.out.println("Positive");
+      }
+      if (x % 2 == 0) {
+          System.out.println("Even");
+      }
+    👉 Both conditions are checked separately.
+
+
 4. What is an if-else-if ladder, and how does it work?
+-->It is used to check multiple conditions sequentially.
+      
+      if (marks >= 90) {
+          System.out.println("A");
+      } else if (marks >= 75) {
+          System.out.println("B");
+      } else {
+          System.out.println("C");
+      }
+      
+      👉 Execution stops after the first true condition.
+
+
+
 5. When should you use switch instead of if-else?
+-->Use switch when:
+    You compare one variable
+    Against multiple constant values
+    Code becomes cleaner than multiple if-else
+    
+    👉 Example: menu selection, days of week
+
+
 6. What happens if you forget to use a break in a switch case?
+-->👉 It causes fall-through  
+        int x = 2;
+        
+        switch(x) {
+            case 1:
+                System.out.println("One");
+            case 2:
+                System.out.println("Two");
+            case 3:
+                System.out.println("Three");
+        }
+        
+        👉 Output:
+                Two
+                Three
+
+
+
 7. Can we use logical operators (&&, ||) in a switch expression?
+-->❌ No
+    Switch works only with: 
+        constants
+        fixed values
+
+    👉 You cannot write conditions like:  case x > 10 && x < 20  // ❌ invalid
+
+
 8. Difference between switch expression (Java 12+) and old switch statement.
+-->
+| Feature       | Old switch | New switch (Java 12+) |
+| ------------- | ---------- | --------------------- |
+| Syntax        | `case:`    | `case ->`             |
+| Break needed  | Yes        | No                    |
+| Fall-through  | Yes        | No (by default)       |
+| Returns value | No         | Yes                   |
+
+👉 Example (new switch):
+      int result = switch(day) {
+          case 1 -> 10;
+          case 2 -> 20;
+          default -> 0;
+      };
+
+
+
 9. Can we have duplicate case values in a switch?
+-->❌ No  👉 It gives compile-time error.
+
+
 10. What happens if no case matches and no default is present?
+-->👉 Nothing happens
+    👉 Control moves outside the switch
+
+
+
 11. Can we use a switch with wrapper classes like Integer?
+-->✅ Yes (since Java 5)
+      Integer x = 10;
+      
+      switch(x) {
+          case 10:
+              System.out.println("Ten");
+      }
+
+
+
 12. Can a switch statement work on enum types?
+-->✅ Yes  
+    enum Day { MON, TUE }
+    
+    Day d = Day.MON;
+    
+    switch(d) {
+        case MON:
+            System.out.println("Monday");
+    }
+
+
+
+
 13. What is the fall-through behavior in a switch?
+-->👉 When break is missing, execution continues to next cases.
+      
+      case 1:
+      case 2:
+          System.out.println("1 or 2");
+      
+      👉 Used intentionally to group cases.
