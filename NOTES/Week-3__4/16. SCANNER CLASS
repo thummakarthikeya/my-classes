@@ -1,0 +1,212 @@
+Interview Questions:
+1. What is the Scanner class in Java and Which package contains the Scanner class?
+-->1) What is Scanner class? Which package?
+      Scanner is used to take input from user (keyboard, file, etc.)
+      It belongs to 👉 java.util package
+      import java.util.Scanner;
+
+2. How do you create a Scanner object for keyboard input?
+-->Scanner sc = new Scanner(System.in);
+
+
+3. How do you read a string using Scanner?
+-->String name = sc.next();
+
+
+4. How do you read a complete line using Scanner?
+-->String line = sc.nextLine();
+
+
+5. Difference between next() and nextLine()?
+-->
+| next()         | nextLine()         |
+| -------------- | ------------------ |
+| Reads one word | Reads full line    |
+| Stops at space | Reads till newline |
+| Skips spaces   | Includes spaces    |
+
+
+
+6. How do you read integers, floats, doubles, and booleans?
+-->int i = sc.nextInt();
+  float f = sc.nextFloat();
+  double d = sc.nextDouble();
+  boolean b = sc.nextBoolean();
+
+7. How do you read a single character using Scanner?
+-->char ch = sc.next().charAt(0);
+
+
+8. What happens if user enters wrong data type?
+-->👉 Program crashes with exception
+
+
+9. What is InputMismatchException? How to avoid InputMismatchException?
+-->Occurs when input type is wrong
+    Example: entering "abc" for nextInt()
+    ✅ Avoid using:
+    if (sc.hasNextInt()) {
+        int x = sc.nextInt();
+    }
+
+
+10. What is the default delimiter of Scanner? How to change the delimiter in Scanner?
+-->Default = space / whitespace
+    Change delimiter:
+    sc.useDelimiter(",");
+
+
+11. Why should Scanner be closed?
+-->Frees resources
+    Prevents memory leaks
+    sc.close();
+
+
+12. Can you reuse Scanner for another input source?
+-->✅ Yes, but for same input source
+    ❌ Not after closing
+
+
+13. What is the purpose of System.in in Scanner?
+-->It represents keyboard input (standard input stream)
+
+
+14. Difference between Scanner and BufferedReader?
+-->The primary difference between Scanner and BufferedReader in Java lies in their performance and parsing capabilities. 
+    While Scanner is more convenient for parsing primitive types, BufferedReader is significantly faster for reading 
+    large amounts of text.
+| Feature           | Scanner                                        | BufferedReader                                          |
+| ----------------- | ---------------------------------------------- | ------------------------------------------------------- |
+| **Package**       | `java.util`                                    | `java.io`                                               |
+| **Parsing**       | Built-in parsing (`nextInt()`, `nextDouble()`) | Reads only text → manual parsing (`Integer.parseInt()`) |
+| **Speed**         | Slower (uses regex + parsing overhead)         | Faster (uses buffering)                                 |
+| **Buffer Size**   | Small (~1 KB)                                  | Large (~8 KB)                                           |
+| **Thread Safety** | Not thread-safe (not synchronized)             | Thread-safe (synchronized)                              |
+| **Exceptions**    | Hides `IOException`                            | Explicitly throws `IOException`                         |
+| **Ease of Use**   | Very easy for beginners                        | Slightly complex                                        |
+| **Best Use Case** | User input, small programs                     | Large input, competitive coding                         |
+
+
+
+15. Why does Scanner skip input after reading numbers?
+-->In Java, a Scanner appears to "skip" input when you call nextLine() immediately after a numeric method like nextInt() or nextDouble(). 
+    Why it Happens
+    The issue is caused by how different Scanner methods handle the input buffer: 
+    
+nextInt() and others: These methods read only the specific data type (the number) and stop. They leave the newline character (\n)—created
+    when you press the "Enter" key—sitting in the buffer.
+    
+nextLine(): This method is designed to read everything until it finds a line separator. Since the \n from your previous numeric
+    input is the very next thing in the buffer, nextLine() consumes it immediately and returns an empty string. To the user, it 
+    looks like the program skipped the prompt entirely. 
+
+
+16. What happens if you try to read from a closed Scanner?
+-->👉 Throws exception : IllegalStateException
+
+17. Can Scanner read binary data?
+-->❌ No  : 👉 It is for text input only
+
+
+
+Programming Questions
+1. Sum of N numbers – Read N integers and print their sum.
+-->import java.util.Scanner;
+
+public class SumN {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int sum = 0;
+
+        for (int i = 1; i <= n; i++) {
+            int num = sc.nextInt();
+            sum += num;
+        }
+
+        System.out.println("Sum = " + sum);
+    }
+}
+
+
+2. Maximum and Minimum number – Read 5 integers and print the max and min.
+-->import java.util.Scanner;
+
+public class MaxMin {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+
+        for (int i = 1; i <= 5; i++) {
+            int num = sc.nextInt();
+
+            if (num > max) max = num;
+            if (num < min) min = num;
+        }
+
+        System.out.println("Max = " + max);
+        System.out.println("Min = " + min);
+    }
+}
+
+
+3. Average of floating-point numbers – Read N doubles in one line and calculate the average.
+-->import java.util.Scanner;
+
+public class Average {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String line = sc.nextLine();
+        String[] arr = line.split(" ");
+
+        double sum = 0;
+
+        for (String s : arr) {
+            sum += Double.parseDouble(s);
+        }
+
+        System.out.println("Average = " + (sum / arr.length));
+    }
+}
+
+
+4. Reverse a string – Read a line of text and print it reversed.
+-->import java.util.Scanner;
+
+public class ReverseString {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String str = sc.nextLine();
+        String rev = "";
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            rev += str.charAt(i);
+        }
+
+        System.out.println("Reversed = " + rev);
+    }
+}
+
+
+5. Count words in a sentence – Read a line and count the number of words.
+-->import java.util.Scanner;
+
+public class WordCount {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String line = sc.nextLine().trim();
+
+        if (line.isEmpty()) {
+            System.out.println("Words = 0");
+        } else {
+            String[] words = line.split("\\s+");
+            System.out.println("Words = " + words.length);
+        }
+    }
+}
