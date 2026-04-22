@@ -1,0 +1,121 @@
+Interview Questions
+1) What is a package in Java, and why do we need it?
+-->In Java, a package is a mechanism used to group related classes, interfaces, and sub-packages into a single unit, 
+    functioning similarly to a folder in a computer's file system.
+    ✅ Why we need it:
+    To organize code properly
+    To avoid class name conflicts
+    To improve maintainability in large projects
+    📌 Example: package com.karthikeya.util;
+
+
+2) Explain the benefits of using packages in Java.
+-->✔ Better code organization
+    ✔ Avoid naming conflicts
+    ✔ Support access control (public, private, protected)
+    ✔ Improve reusability
+    ✔ Easier maintenance
+
+
+3) How do packages help in organizing large projects?
+-->👉 In large projects:
+      
+      Code is divided into modules like:
+      controller
+      service
+      repository
+      Each module is placed in separate packages
+      
+      📌 Example structure:
+      
+      com.project
+         ├── controller
+         ├── service
+         ├── repository
+         ├── model
+      
+      👉 This makes code:
+      
+      Easy to navigate
+      Easy to debug
+      Easy to scale
+
+
+4) Can a class exist without a package? Explain.
+-->✅ Yes
+    👉 If no package is declared → it belongs to default package
+    class Test {
+    }
+
+    ⚠️ But:
+    Not recommended for large projects
+    Cannot be imported by other packages easily
+
+
+
+5) Difference between package and import statements.
+-->Declaring a package statement after an import statement in Java results in a compile-time error. 
+| package                     | import                        |
+| --------------------------- | ----------------------------- |
+| Defines where class belongs | Used to access other packages |
+| Written at top of file      | Written after package         |
+| Example: `package com.app;` | `import java.util.Scanner;`   |
+
+
+6) What is the difference between default package and user-defined packages?
+-->: A default package has no name and no declaration statement. A user-defined package has a specific name chosen by the developer.
+The main difference between a default package and a user-defined package lies in how they are declared and their level of organization. 
+
+Default Package: This is an "unnamed" package. If you create a Java class without using a package statement at the top of the file,
+Java automatically places that class into the default package. It is mainly used for small, simple programs or when you are just beginning 
+a project.
+
+User-Defined Package: These are custom packages created by the programmer using the package keyword (e.g., package com.myapp;
+| Default Package     | User-defined Package  |
+| ------------------- | --------------------- |
+| No package declared | Created by programmer |
+| Small programs      | Large applications    |
+| No structure        | Organized structure   |
+
+
+
+7) How do packages improve code reusability and accessibility?
+-->👉 Reusability:
+
+    Classes can be reused using import
+    
+    👉 Accessibility:
+    
+    Controlled using access modifiers:
+    public
+    protected
+    default
+    private
+    
+    📌 Example:
+    
+    import com.karthikeya.util.Calculator;
+
+
+8) Explain real-time use cases where packages are essential.?
+-->✅ 1. Spring Boot Project (VERY IMPORTANT for you)
+        com.project
+           ├── controller   → handles API
+           ├── service      → business logic
+           ├── repository   → database access
+           ├── entity       → models
+        ✅ 2. E-commerce Application
+        com.shop
+           ├── user
+           ├── product
+           ├── order
+           ├── payment
+        ✅ 3. Banking System
+        com.bank
+           ├── accounts
+           ├── transactions
+           ├── loans
+        ✅ 4. Java Built-in Packages
+        java.util → utilities
+        java.io → input/output
+        java.lang → core classes
