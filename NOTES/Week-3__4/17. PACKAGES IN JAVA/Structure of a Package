@@ -1,0 +1,6 @@
+Interview Questions
+1) What is the structure of a Java package?
+2) Explain the difference between top-level and sub-packages.
+3) What are naming conventions for packages?
+4) How does the JVM locate classes inside a package?
+5) Explain the difference between .class files in default and user-defined packages.
