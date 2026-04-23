@@ -1,7 +1,5 @@
-Spring Boot & MicroServices @ 11:00 AM by Mr. Nataraj : https://us06web.zoom.us/j/85706241695?pwd=JCTD2dh1J27bg0tBk4Nu9Ylyy7MZ4S.1
 
-*Note: This link is valid for 2days (07-04-2026 to 08-04-2026)*.
-
+classes.nareshit.com
 <br>
 
 
