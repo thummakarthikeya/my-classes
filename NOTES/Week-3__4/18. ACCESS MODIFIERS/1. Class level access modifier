@@ -1,0 +1,48 @@
+Interview Questions
+1. What are access modifiers in Java, what are their types, and what is their purpose?
+-->Access modifiers define visibility (who can access a class, method, variable, or constructor).
+    👉 Types:
+    public → accessible everywhere
+    protected → within package + subclasses
+    default (no modifier) → within same package
+    private → within same class only
+    
+    👉 Purpose:
+    Control access
+    Achieve encapsulation
+    Improve security and maintainability
+
+
+
+2. Which access modifiers are allowed for top-level classes, and why can't a top-level class be protected or
+private?
+-->👉 Allowed:
+      
+      public
+      default (no modifier)
+      
+      ❌ Not allowed:
+      
+      private
+      protected
+      
+      👉 Reason:
+      
+      Top-level classes are not members of another class
+      private and protected are meant for members (inside classes)
+      A top-level class must be accessible either:
+      within package (default)
+      everywhere (public)
+
+
+
+3. What does the public modifier mean for a class or interface, and how does it affect accessibility across
+packages?
+4. What does it mean for a class to have default (package-private) access, and can such a class be accessed
+from another package?
+5. How do access modifiers apply to constructors, and what impact do they have on object creation and
+inheritance?
+6. How do access modifiers support encapsulation and data hiding in Java?
+7. How do access modifiers differ between class level and member level?
+8. Can we declare a private constructor inside an abstract class? Or can a class be both abstract and final at
+the same time?
