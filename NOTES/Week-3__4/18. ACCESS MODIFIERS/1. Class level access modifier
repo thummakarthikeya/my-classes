@@ -36,13 +36,128 @@ private?
 
 
 
-3. What does the public modifier mean for a class or interface, and how does it affect accessibility across
-packages?
+3. What does the public modifier mean for a class or interface, and how does it affect accessibility across packages?
+-->A public class or interface is accessible from anywhere, including other packages.
+        It can be imported and used by any other class in any package.    
+        Example: 
+
+        package com.example;        
+        public class MyClass {
+            public void display() {
+                System.out.println("Hello");
+            }
+        }
+        
+        ➡ This class can be accessed from any package using import.
+
+
 4. What does it mean for a class to have default (package-private) access, and can such a class be accessed
 from another package?
+-->When no modifier is specified, it is default (package-private).
+        Accessible only within the same package.
+        Cannot be accessed from another package, even using import.
+        
+        Example:
+        
+        class MyClass {
+            void show() {
+                System.out.println("Default access");
+            }
+        }
+        
+        ➡ Accessible only inside the same package
+
+
 5. How do access modifiers apply to constructors, and what impact do they have on object creation and
 inheritance?
+-->Constructors can have all access modifiers:
+        
+        public constructor → Object can be created from anywhere.
+        protected constructor → Accessible within package + subclasses (even in other packages).
+        default constructor → Accessible only within same package.
+        private constructor → Cannot create object outside the class.
+        
+        Impact:
+        Controls object creation
+        Used in design patterns like Singleton
+        Affects inheritance:
+        If constructor is private → class cannot be extended outside
+
+
 6. How do access modifiers support encapsulation and data hiding in Java?
+-->Encapsulation = wrapping data + methods
+        Achieved using private variables + public getters/setters
+        
+        Example:
+        
+        class Student {
+            private int marks;   // hidden data
+        
+            public void setMarks(int marks) {
+                this.marks = marks;
+            }
+        
+            public int getMarks() {
+                return marks;
+            }
+        }
+        
+        ➡ Benefits:
+        
+        Protects data from unauthorized access
+        Controls how data is modified
+        Improves security and maintainability
+
+
+
 7. How do access modifiers differ between class level and member level?
+-->Class Level:
+
+    Only public and default allowed
+    Cannot use private or protected
+    
+    Member Level (variables, methods, constructors):
+    
+    All modifiers allowed:
+    public
+    protected
+    default
+    private
+    
+    Key Point:
+    
+    Class = controls visibility of class
+    Members = control visibility inside and outside class
+
+
+
 8. Can we declare a private constructor inside an abstract class? Or can a class be both abstract and final at
 the same time?
+-->(a) Private constructor in abstract class
+
+        Yes, you can declare a private constructor in an abstract class, but:
+        
+        Abstract classes cannot be instantiated anyway
+        Private constructor restricts subclassing
+        
+        Example:
+        
+        abstract class Test {
+            private Test() {
+                System.out.println("Constructor");
+            }
+        }
+        
+        ➡ Not useful in most real scenarios because:
+        
+        Subclasses cannot access the constructor → cannot extend
+        (b) Can a class be both abstract and final?
+        
+        ❌ No, not possible
+        
+        Reason:
+        
+        abstract → must be extended
+        final → cannot be extended
+        
+        ➡ These are contradictory, so Java does not allow it.
