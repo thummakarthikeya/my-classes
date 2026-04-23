@@ -1,0 +1,118 @@
+Interview Questions
+1) What are the naming rules for Java packages?
+-->Built-in packages are predefined packages provided by Java that contain commonly used classes and interfaces.
+
+    👉 They are part of the Java Standard Library and help developers avoid writing code from scratch.
+    
+    Examples:
+    java.lang → core classes (String, Math, System)
+    java.util → utilities (ArrayList, Scanner, HashMap)
+    java.io → input/output classes (File, BufferedReader)
+    java.sql → database connectivity
+    java.net → networking
+
+
+
+2) Can a package name start with a number or special character?
+-->
+| Feature        | `java.lang`                  | `java.util`                       |
+| -------------- | ---------------------------- | --------------------------------- |
+| Purpose        | Core language classes        | Utility classes                   |
+| Import         | Automatically imported       | Must be imported manually         |
+| Common Classes | String, System, Math, Object | ArrayList, Scanner, HashMap, Date |
+| Usage          | Basic operations             | Data structures & utilities       |
+
+👉 Example:
+// java.lang (no import needed)
+String name = "Karthikeya";
+
+// java.util (import required)
+import java.util.ArrayList;
+ArrayList<Integer> list = new ArrayList<>();
+
+
+
+3) Why is lowercase recommended for package names?
+-->The java.lang package is automatically imported by default
+    👉 That’s why you can directly use:
+    
+    String
+    System
+    Math
+    Object
+    without writing an import statement.
+
+
+
+4) Explain the use of reverse domain name convention in package naming.
+-->The reverse domain name convention is used to make package names unique globally.
+
+👉 Format:
+
+    com.company.project
+    
+    👉 It is based on your website domain:
+    
+    Website: example.com
+    Package: com.example
+    
+    Why it is used:
+    
+    Avoids naming conflicts between different organizations
+    Provides uniqueness across projects
+    Makes packages more organized and meaningful
+    
+    👉 Example:
+    
+    com.google.util
+    org.apache.commons
+    com.karthikeya.app
+
+
+
+    
+5) Can two packages have the same name in Java? What happens?
+-->✅ Yes, they can have the same name, but only if they are in different classpaths or locations.
+    
+    👉 What happens:
+    
+    JVM identifies classes using fully qualified names
+    If two classes have the same package + class name → conflict occurs
+    
+    👉 Example conflict:
+    com.app.Test   // Package 1
+    com.app.Test   // Package 2
+    
+    ❗ This leads to:
+    Ambiguity error during compilation
+    JVM may load the wrong class depending on classpath order
+    👉 Solution:
+    Use unique package names (reverse domain convention)
+    Avoid duplicate fully qualified names
+
+
+
+    
+6) What are the restrictions on special characters in package names?
+-->Package names must follow Java identifier rules.  
+    ❌ Not allowed:
+    
+    Special characters like @, #, %, &, *
+    Spaces
+    Starting with a number
+    
+    ✅ Allowed:
+    Lowercase letters (a–z)
+    Digits (but not at the start)
+    Underscore _ (rarely used)
+    
+    👉 Examples:
+    
+    ✔ Valid:
+    com.example.project1
+    com.karthikeya_app
+    
+    ❌ Invalid:
+    com.example@project   // special character
+    com.my project        // space
+    123package.name       // starts with number
