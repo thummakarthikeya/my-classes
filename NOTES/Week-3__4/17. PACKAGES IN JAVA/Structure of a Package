@@ -1,6 +1,84 @@
 Interview Questions
 1) What is the structure of a Java package?
+-->A Java package is a hierarchical mechanism used to group related classes, interfaces, and sub-packages into a single unit,
+    serving as both a physical organization tool and a namespace. 
+    Structure:
+    package com.company.project.module;
+    
+    public class MyClass {
+        // class content
+    }
+  
+    Explanation:  
+    package → keyword to declare package
+    com.company.project.module → hierarchical naming (folders inside folders)
+    Each level represents a directory in the file system
+    👉 Example folder structure:
+    
+    com/
+     └── company/
+          └── project/
+               └── module/
+                    └── MyClass.class
+
+
+
 2) Explain the difference between top-level and sub-packages.
+-->
+| Feature      | Top-Level Package | Sub-Package                    |
+| ------------ | ----------------- | ------------------------------ |
+| Definition   | Main package      | Package inside another package |
+| Example      | `com`             | `com.company`                  |
+| Relationship | Independent root  | Child of another package       |
+| Creation     | Created directly  | Created inside another package |
+
+
+
 3) What are naming conventions for packages?
+-->Java follows standard naming rules:
+
+    Use lowercase letters only
+    Use reverse domain name (to avoid conflicts)
+    Avoid special characters and spaces
+    
+    👉 Examples:
+    com.google.util
+    org.apache.commons
+    com.karthikeya.project
+    
+    ❌ Wrong:  
+    MyPackage      // uppercase
+    com@project    // special character
+
+
+
+
 4) How does the JVM locate classes inside a package?
+-->JVM uses the classpath to locate classes.
+
+    Process:
+    
+    Package name is converted into folder structure
+    com.company.app → com/company/app/
+    JVM searches in:
+    Current directory
+    CLASSPATH environment variable
+    JAR files
+    Loads .class file into memory
+    
+    👉 Example:
+    
+    java -cp . com.company.app.MainClass
+
+
+
+
 5) Explain the difference between .class files in default and user-defined packages.
+-->
+| Feature             | Default Package                | User-Defined Package        |
+| ------------------- | ------------------------------ | --------------------------- |
+| Package Declaration | No package statement           | Has `package` statement     |
+| Location            | Current directory              | Inside folder structure     |
+| Access              | Limited (cannot import easily) | Can be imported anywhere    |
+| Organization        | Poor                           | Well-organized              |
+| Example             | `MyClass.class`                | `com/company/MyClass.class` |
