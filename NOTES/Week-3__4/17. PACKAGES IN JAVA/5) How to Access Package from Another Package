@@ -1,0 +1,58 @@
+1) How do you access a class from one package in another package?
+-->You can access a class from another package in three ways:
+
+    ✅ 1. Using import statement
+    import com.app.Test;
+    
+    public class Main {
+        public static void main(String[] args) {
+            Test t = new Test();
+        }
+    }
+    ✅ 2. Using fully qualified name
+    public class Main {
+        public static void main(String[] args) {
+            com.app.Test t = new com.app.Test();
+        }
+    }
+    ✅ 3. Using wildcard import
+    import com.app.*;
+    Test t = new Test();
+    👉 Important condition:
+    The class must be public, otherwise it cannot be accessed outside its package.
+
+
+    
+2) Difference between using import package.* and import package.ClassName.
+-->
+| Feature     | `import package.*`                                 | `import package.ClassName` |
+| ----------- | -------------------------------------------------- | -------------------------- |
+| Import type | Imports all classes                                | Imports only one class     |
+| Performance | No major difference (Java loads only used classes) | Same                       |
+| Readability | Less clear (which class is used?)                  | More clear                 |
+| Recommended | Less preferred in large projects                   | Preferred                  |
+
+👉 Example:
+
+import java.util.*;           // all classes
+import java.util.ArrayList;  // specific class
+
+
+
+3) Can private classes be accessed from another package?
+-->❌ No, private classes cannot be accessed from another package.
+    
+    👉 Key points:  
+    In Java, top-level classes cannot be private
+    Only inner classes can be private
+    Private members/classes are accessible only within the same class
+    
+    👉 Example:
+  
+    class Outer {
+        private class Inner {
+            // cannot be accessed outside Outer
+        }
+    }
+    
+    👉 Even from another package → ❌ Not accessible
