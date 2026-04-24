@@ -1,0 +1,121 @@
+1. What is the default access modifier for a method, and how does it differ from public, private, and
+protected access?
+-->The default access modifier for a method in Java is package-private, which is applied when no explicit access keyword
+    (like public, private, or protected) is specified.
+    Difference:
+    public → accessible everywhere
+    protected → same package + subclasses (even in other packages)
+    default → only within same package
+    private → only within same class
+
+
+2. Can a constructor or a method be declared private or protected? In what scenarios is this useful?
+-->✔ Yes
+    
+    Private constructor:
+    
+    Used in Singleton pattern
+    Prevents object creation outside class
+    
+    Protected constructor:
+    
+    Used in inheritance
+    Allows subclass creation but restricts direct instantiation
+    
+    Private method:
+    
+    Used for internal/helper logic
+
+
+
+3. Why do we use private methods inside a class, and can a private method be accessed or overridden in
+subclasses?
+-->Used for:
+    Internal logic
+    Data hiding
+    Code reusability inside class
+    
+    ❌ Cannot be:
+    
+    Accessed outside class
+    Overridden in subclasses
+    
+    ➡ Because they are not visible to subclasses
+
+
+
+4. Can a protected method be accessed or overridden in another package? How does inheritance affect this?
+-->Yes, a protected method can be accessed and overridden in another package, but only if the accessing class is a subclass of 
+    the class where the method is declared
+    ✔ Can be accessed only through inheritance
+    
+    Cannot access using object reference in another package
+    Must be accessed via subclass
+    
+    ✔ Can be overridden in subclass
+    
+    Example concept:
+    
+    class A {
+        protected void show() {}
+    }
+    
+    class B extends A {
+        void test() {
+            show(); // allowed
+        }
+    }
+
+
+
+
+5. Can you reduce or increase the visibility of an overridden method (e.g., public → protected)? What
+happens if you try to?
+-->In Java, you cannot reduce the visibility of an overridden method, but you can increase it.
+  Summary of Rules:
+  Increasing Visibility: You can make an overridden method more accessible (e.g., changing protected to public).
+  Reducing Visibility: You cannot make an overridden method more restrictive (e.g., changing public to protected or private).
+  What Happens if You Try to Reduce Visibility?
+  If you attempt to reduce visibility, the code will fail to compile. 
+  
+  Compilation Error: The Java compiler will throw an error such as "Cannot reduce the visibility of the inherited method" or 
+  "attempting to assign weaker access privileges".
+
+
+
+6. Can a default/package-private, final, or static method be overridden or hidden in another package?
+Explain the difference.
+-->Overriding / hiding across packages
+    default method → ❌ Not visible outside package → cannot override in another package
+    final method → ❌ Cannot be overridden anywhere
+    static method → ❌ Not overridden → method hiding
+    
+    Difference:
+    
+    Overriding → runtime polymorphism
+    Hiding → compile-time (depends on reference type)
+
+
+
+7. Do access modifiers affect method overloading? Can you overload methods with different access levels?
+-->❌ No
+    
+    ✔ You can overload methods with different access levels
+    
+    Example:
+    
+    class Test {
+        public void add(int a) {}
+        private void add(int a, int b) {}
+    }    
+    ➡ Overloading depends on method signature, not access modifier
+
+
+
+8. Can a private static method be overloaded in the same class? How is it different from overriding?
+-->
+
+
+9. Can an abstract class have a private abstract method? Why or why not? Can you declare a private
+synchronized method?
+10. Can an interface’s default method be private or protected?
