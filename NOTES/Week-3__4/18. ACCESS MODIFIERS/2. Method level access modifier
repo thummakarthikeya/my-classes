@@ -113,9 +113,32 @@ Explain the difference.
 
 
 8. Can a private static method be overloaded in the same class? How is it different from overriding?
--->
+-->✔ Yes, can be overloaded in same class
+
+        Difference from overriding:
+        Overloading → same class, different parameters
+        Overriding → inheritance + runtime polymorphism
+        ❌ Private methods cannot be overridden
+
 
 
 9. Can an abstract class have a private abstract method? Why or why not? Can you declare a private
 synchronized method?
+-->❌ Private abstract method not allowed
+    
+    Abstract method must be implemented in subclass
+    Private methods are not visible → contradiction
+    
+    ✔ Private synchronized method allowed
+    
+    Example:
+    
+    private synchronized void display() {}
+    
+    ➡ Used for thread safety inside class
+
+
+
+
 10. Can an interface’s default method be private or protected?
+-->
