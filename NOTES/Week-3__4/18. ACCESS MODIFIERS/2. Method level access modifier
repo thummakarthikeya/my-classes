@@ -141,4 +141,11 @@ synchronized method?
 
 
 10. Can an interface’s default method be private or protected?
--->
+-->In Java, an interface default method cannot be private or protected. However, interfaces can contain separate private
+    methods (since Java 9). 
+    Here is the breakdown of how access modifiers work with interface methods:
+    Default Methods are always Public: By definition, a default method in an interface is an instance method that is implicitly public. 
+    You cannot use the private or protected modifiers on a method declared with the default keyword.
+
+    No Protected Methods: Interfaces do not support the protected access modifier for any type of method. Interfaces are intended to
+    define public APIs, and protected methods (which are intended for subclass access only) do not fit this model.
