@@ -1,0 +1,34 @@
+Interview Questions
+1. What are the types of variables in Java (local, instance, static)? What access modifiers can be applied to
+each, and what is the default access modifier for instance variables?
+-->Types of Variables in Java
+    🔹 Types:
+    Local Variable
+    Instance Variable
+    Static Variable
+    🔹 Access Modifiers Allowed:
+
+
+
+2. What’s the difference between local, instance, and static variables in terms of scope, lifetime, and
+storage? Can local variables have access modifiers? Why or why not?
+3. What is a final variable? Can it be static or transient? What happens if you try to reassign it?
+4. What is a static variable? How does it differ from an instance variable? Can it be accessed using an
+object reference, and when/where is it initialized and stored?
+5. Can a constructor modify a static variable? Can we use the this keyword with static variables? What
+happens if multiple objects change a static variable?
+6. What is a blank final variable and a static blank final variable? Where should each be initialized?
+7. What is a transient variable? What happens to transient variables during serialization?
+8. What is a volatile variable? When should it be used, how does it differ from?
+
+Programming Questions:
+1. Write code to prove that a default class cannot be accessed outside its package.
+2. Demonstrate that a private constructor restricts object creation outside its class.
+3. Write code to show that final methods cannot be overridden.
+4. Create a program to show visibility changes in method overriding (protected → public).
+5. Demonstrate method hiding using a static method.
+6. Create a Singleton class and test multiple instance creation.
+7. Show that abstract + final combination on a class is invalid.
+8. Write code to access protected members across packages using inheritance.
+9. Show that default methods cannot be accessed outside package even with import.
+10. Prove that private static methods are not accessible through object references
