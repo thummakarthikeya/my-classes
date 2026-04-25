@@ -7,27 +7,261 @@ each, and what is the default access modifier for instance variables?
     Instance Variable
     Static Variable
     🔹 Access Modifiers Allowed:
+    | Variable Type | Allowed Modifiers                   | Default Access                |
+    | ------------- | ----------------------------------- | ----------------------------- |
+    | Local         | ❌ None                              | ❌ Not applicable              |
+    | Instance      | public, private, protected, default | **default (package-private)** |
+    | Static        | public, private, protected, default | **default (package-private)** |
+
+    👉 Important:
+    Local variables cannot have access modifiers
+    Instance variables default → package-private
 
 
 
 2. What’s the difference between local, instance, and static variables in terms of scope, lifetime, and
 storage? Can local variables have access modifiers? Why or why not?
+-->
+| Feature   | Local Variable      | Instance Variable | Static Variable  |
+| --------- | ------------------- | ----------------- | ---------------- |
+| Scope     | Inside method/block | Entire object     | Entire class     |
+| Lifetime  | Method execution    | Object lifetime   | Program lifetime |
+| Storage   | Stack               | Heap              | Method Area      |
+| Modifiers | ❌ Not allowed       | ✅ Allowed         | ✅ Allowed        |
+
+    🔹 Why local variables don’t have access modifiers?
+    Because they exist only inside a method, so access control is meaningless.
+
+
+
 3. What is a final variable? Can it be static or transient? What happens if you try to reassign it?
+-->Final Variable    
+        👉 A final variable = constant
+        
+        final int x = 10;
+        x = 20; // ❌ Compile-time error
+        ✔ Can it be static?
+        Yes → static final (constant for class)
+        
+        ✔ Can it be transient?
+        Yes → but rarely used together
+        
+        ✔ Reassign?
+        ❌ Not allowed → compile-time error
+
+
+
 4. What is a static variable? How does it differ from an instance variable? Can it be accessed using an
 object reference, and when/where is it initialized and stored?
+-->👉 Belongs to class, not object
+
+        class Test {
+            static int count = 0;
+        }
+        🔹 Difference from instance:
+        Instance → each object has copy
+        Static → one shared copy
+        🔹 Access using object?
+        Test t = new Test();
+        t.count; // ✅ Allowed but NOT recommended
+        
+        ✔ Best way:
+        
+        Test.count;
+        🔹 Stored in:
+        
+        👉 Method Area
+        
+        🔹 Initialized:
+        
+        👉 When class is loaded
+
+
+
 5. Can a constructor modify a static variable? Can we use the this keyword with static variables? What
 happens if multiple objects change a static variable?
+-->✔ Constructor can modify static variable:
+
+        class Test {
+            static int x = 0;
+        
+            Test() {
+                x++;
+            }
+        }
+        
+        ✔ this with static?
+        ❌ Not allowed (this = object reference)
+        
+        ✔ Multiple objects modify static?
+        👉 All share same value → changes reflect globally
+
+
+
 6. What is a blank final variable and a static blank final variable? Where should each be initialized?
+-->A blank final variable is a final Java variable declared without an initial value, which must be assigned exactly once within a 
+    constructor. A static blank final variable is a static final field initialized only within a static initializer block. Both allow
+    constants to be set at runtime rather than compile-time. 
+  
+        1. Blank Final Variable
+        Definition: A final field not initialized at declaration.
+        Initialization: Must be initialized inside the class constructor. If multiple constructors exist, it must be initialized in
+        every constructor, or constructor chaining must be used to ensure only one assignment.
+        Usage: Used when a constant value depends on instance-specific data provided during object creation. 
+  
+        2. Static Blank Final Variable
+        Definition: A static final field not initialized at declaration.
+        Initialization: Must be initialized inside a static initializer block.
+        Usage: Used when a constant depends on information available only at runtime, such as loading from a configuration file or
+        calculation, and should be shared across all instances. 
+   
+        Summary of Initialization Locations
+        Blank Final: Constructor
+        Static Blank Final: Static Initializer Block
+
+
+
+
 7. What is a transient variable? What happens to transient variables during serialization?
+-->👉 Used in serialization
+    transient int password;
+    
+    ✔ During serialization:
+    👉 Value is not saved
+
+
+
 8. What is a volatile variable? When should it be used, how does it differ from?
+-->In Java, a volatile variable is a special field modifier that ensures any thread reading the variable always sees the most recent 
+    value written by another thread. 
+    
+    What it is
+    The volatile keyword tells the Java Virtual Machine (JVM) and the CPU to not cache the variable in local thread memory (CPU registers 
+        or caches). Instead, every read and write operation is performed directly on the main memory (RAM). This guarantees visibility—the 
+        certainty that updates made by one thread are immediately seen by others. 
+
+
 
 Programming Questions:
 1. Write code to prove that a default class cannot be accessed outside its package.
+-->Package A
+    package pack1;
+    
+    class Test {
+        void show() {
+            System.out.println("Hello");
+        }
+    }
+    Package B
+    package pack2;
+    
+    import pack1.Test; // ❌ Error
+    
+    class Demo {
+        public static void main(String[] args) {
+            Test t = new Test(); // ❌ Not accessible
+        }
+    }
+
+
+
 2. Demonstrate that a private constructor restricts object creation outside its class.
+-->class Test {
+            private Test() {
+                System.out.println("Private Constructor");
+            }
+        
+            static Test create() {
+                return new Test();
+            }
+        }
+        
+        class Demo {
+            public static void main(String[] args) {
+                // Test t = new Test(); ❌ Error
+                Test t = Test.create(); // ✅ Allowed
+            }
+        }
+
+
+
 3. Write code to show that final methods cannot be overridden.
+-->class A {
+            final void show() {
+                System.out.println("A");
+            }
+        }
+        
+        class B extends A {
+            // void show() {} ❌ Error
+        }
+
+
+
 4. Create a program to show visibility changes in method overriding (protected → public).
+-->class A {
+        protected void show() {
+            System.out.println("A");
+        }
+    }
+    
+    class B extends A {
+        public void show() {
+            System.out.println("B");
+        }
+    }
+    
+    ✔ Allowed: increasing visibility
+    ❌ Not allowed: decreasing visibility
+
+
 5. Demonstrate method hiding using a static method.
+-->class A {
+            static void show() {
+                System.out.println("A");
+            }
+        }
+        
+        class B extends A {
+            static void show() {
+                System.out.println("B");
+            }
+        }
+        
+        class Demo {
+            public static void main(String[] args) {
+                A obj = new B();
+                obj.show(); // Output: A (method hiding)
+            }
+        }
+
+
+
 6. Create a Singleton class and test multiple instance creation.
+-->class Singleton {
+        private static Singleton instance;
+    
+        private Singleton() {}
+    
+        public static Singleton getInstance() {
+            if (instance == null) {
+                instance = new Singleton();
+            }
+            return instance;
+        }
+    }
+    
+    class Demo {
+        public static void main(String[] args) {
+            Singleton s1 = Singleton.getInstance();
+            Singleton s2 = Singleton.getInstance();
+    
+            System.out.println(s1 == s2); // true
+        }
+    }
+
+
+
 7. Show that abstract + final combination on a class is invalid.
 8. Write code to access protected members across packages using inheritance.
 9. Show that default methods cannot be accessed outside package even with import.
