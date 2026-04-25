@@ -149,3 +149,26 @@ synchronized method?
 
     No Protected Methods: Interfaces do not support the protected access modifier for any type of method. Interfaces are intended to
     define public APIs, and protected methods (which are intended for subclass access only) do not fit this model.
+
+
+
+11. In java can an interface has private and protected methods in it ?
+-->In Java, an interface can have private methods (since Java 9), but it cannot have protected methods. 
+
+    Private Methods (Available since Java 9)
+        Starting with Java 9, you can define private methods within an interface to improve code reusability and encapsulation. 
+        Purpose: They are used to extract common logic that is shared between multiple default or static methods within the same interface, 
+            preventing code duplication.
+        Types: You can have both private instance methods (called by default methods) and private static methods (called by other static or 
+            default methods).
+        Visibility: These methods are not visible to implementing classes or sub-interfaces and cannot be overridden. 
+        Protected Methods (Not Allowed)
+        Java does not support protected methods in interfaces. The official JDK-8179193 request for this feature was closed as "Won't Fix". 
+        
+        Reasoning: Interfaces are intended to define public APIs (contracts for external communication). The Java design team decided that 
+        adding protected methods would add significant complexity to the language for very little real-world gain.
+        Inheritance Constraint: The protected modifier is designed for class inheritance (subclasses), whereas interfaces are implemented
+        by classes. In Java, implementing a method is different from inheriting one's internal state or protected logic. 
+
+
+
