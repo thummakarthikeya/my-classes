@@ -1,6 +1,6 @@
 Interview Questions
 1. What are access modifiers in Java, what are their types, and what is their purpose?
--->Access modifiers define visibility (who can access a class, method, variable, or constructor).
+-->Access modifiers define visibility (who can access a class, method, variable, or constructor)..
     👉 Types:
     public → accessible everywhere
     protected → within package + subclasses
