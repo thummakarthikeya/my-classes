@@ -15,3 +15,126 @@ Interview Questions
 14. Can boolean be cast to int? Why or why not?
 15. Can you assign a child class object to a parent class reference? What are the rules?
 16. How does typecasting affect memory allocation and storage for primitives vs reference types?
+1. What is typecasting in Java, and why is it used?
+
+Typecasting in Java is the process of converting one data type into another.
+It is used to:
+
+Ensure compatibility between different data types
+Control how data is handled in expressions
+Access specific methods in object-oriented programming
+2. Difference between widening and narrowing typecasting
+Widening (Implicit): Converting a smaller data type to a larger one automatically.
+Example: int → double
+Narrowing (Explicit): Converting a larger data type to a smaller one manually using casting.
+Example: double → int
+3. Can a double be stored in an int variable?
+
+Yes, but only using explicit casting:
+
+int x = (int) 10.5;
+Decimal part is lost → 10
+If value exceeds int range → overflow occurs, giving incorrect value
+4. What is type promotion in Java?
+
+Type promotion is the automatic conversion of smaller data types into a larger type during expressions.
+Example:
+
+byte a = 10;
+byte b = 20;
+int result = a + b; // promoted to int
+5. Can an int be cast to a byte?
+
+Yes:
+
+int x = 130;
+byte y = (byte) x;
+If value is too large → overflow happens
+Result becomes unexpected (e.g., 130 → -126)
+6. What is upcasting in Java?
+
+Upcasting is converting a child class object to a parent class reference.
+It is done automatically.
+
+Example:
+
+Animal a = new Dog();
+7. What is downcasting in Java?
+
+Downcasting is converting a parent reference back to a child type.
+
+It is risky because the object may not actually be of that child type
+Must be done explicitly
+
+Safe way:
+
+if (a instanceof Dog) {
+    Dog d = (Dog) a;
+}
+8. What is ClassCastException?
+
+A ClassCastException occurs when an invalid type cast is performed at runtime.
+
+Example:
+
+Animal a = new Animal();
+Dog d = (Dog) a; // Exception
+9. Can Object references be cast to their actual object type?
+
+Yes, if the object is originally of that type.
+
+Example:
+
+Object obj = new String("Hello");
+String s = (String) obj;
+10. Can interface references be upcast to implementation class?
+
+No.
+
+You can assign implementation to interface:
+Runnable r = new Thread(); // allowed
+But cannot directly cast interface reference to unrelated class
+11. How does upcasting affect overridden methods?
+
+Upcasting does not affect method overriding.
+
+Method calls are decided at runtime (runtime polymorphism)
+
+Example:
+
+Animal a = new Dog();
+a.sound(); // Dog's method is called
+12. What happens when you cast a double to a float?
+Precision may be lost
+Value is rounded to fit float range
+13. Can null references be safely downcast?
+
+Yes.
+Casting null does not throw an exception:
+
+Animal a = null;
+Dog d = (Dog) a; // valid, d is null
+14. Can boolean be cast to int?
+
+No.
+
+boolean is not compatible with numeric types in Java
+So casting is not allowed
+15. Can you assign a child class object to a parent class reference?
+
+Yes.
+
+This is upcasting
+It is always safe and implicit
+
+Rule:
+
+Parent reference can hold child object
+But can access only parent methods
+16. How does typecasting affect memory (primitives vs reference)?
+Primitives:
+Casting changes the actual stored value
+May cause data loss or overflow
+Reference types:
+Casting does NOT change the object in memory
+Only changes how the reference is viewed/accessed
