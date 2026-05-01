@@ -1,0 +1,9 @@
+Interview Questions
+1. What is the this keyword in java? What is the main purpose of this in a class?
+2. How is this used to refer to current object?
+3. How can this be used to differentiate instance variables from local variables?
+4. How is this used to call another constructor in the same class? (this() constructor chaining)
+5. Can this be used in a static method? Why or why not?
+6. Can this be passed as an argument to a method or constructor? Give an example.
+7. How does this help in method chaining?
+8. Difference between this and current class name for object reference.
