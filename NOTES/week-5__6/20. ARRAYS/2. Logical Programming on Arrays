@@ -1,0 +1,31 @@
+Interview Questions
+1. Find the Largest Element in an Array?
+2. Find the Second Largest Element in an Array without sorting?
+3. Given an array of n integers, return true if the array is sorted in non-decreasing order or else false?
+4. Remove duplicates from sorted array?
+5. Given an array of N integers, left rotate the array by one place.?
+6. Given an array of N integers, left rotate the array by one place. Left rotate an array by D places?
+7. You are given an array of integers, your task is to move all the zeros in the array to the end of the array
+and move non-negative integers to the front by maintaining their order?
+8. Given an array, and an element num the task is to find if num is present in the given array or not. If
+present print the index of the element or print -1?
+9. Given two sorted arrays, arr1, and arr2 of size n and m. Find the union of two sorted arrays?
+10. Given an integer N and an array of size N-1 containing N-1 numbers between 1 to N. Find the
+number(between 1 to N), that is not present in the given array.
+11. Given an array that contains only 1 and 0 return the count of maximum consecutive ones in the array?
+12. Given a non-empty array of integers arr, every element appears twice except for one. Find that single
+one.
+13. Given an array nums of size n and an integer k, find the length of the longest sub-array that sums to k. If
+no such sub-array exists, return 0?
+14. Remove the duplicate elements from the array without taking the help of new array & collections?
+15. Given a matrix if an element in the matrix is 0 then you will have to set its entire column and row to 0
+and then return the matrix?
+16. Given a matrix, your task is to rotate the matrix 90 degrees clockwise &anti-clockwise?
+17. You have been given a 2-D array 'mat' of size 'N x M' where 'N' and 'M' denote the number of rows and
+columns, respectively. The elements of each row are sorted in non-decreasing order. Moreover, the first
+element of a row is greater than the last element of the previous row (if it exists). You are given an
+integer ‘target’, and your task is to find if it exists in the given 'mat' or not?
+18. Find the transpose of a non-square matrix.
+19. Convert a matrix to its lower triangular form.
+20. Convert a matrix to its upper triangular form.
+21. Iterate the 3D array by using loops?
