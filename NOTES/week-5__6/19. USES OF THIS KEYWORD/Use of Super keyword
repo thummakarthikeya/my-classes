@@ -1,0 +1,15 @@
+Interview Questions
+1. What is the super keyword in Java?
+2. How is super used to refer to immediate parent class object?
+3. How can super be used to call parent class methods?
+4. How can super be used to access parent class variables when hidden by subclass?
+5. How is super() used to call parent class constructors?
+6. Can super() and this() be used together in a constructor? Why or why not?
+7. Can super be used in a static context? Why or why not?
+8. Difference between super and this in terms of constructor chaining.
+9. How does super help in method overriding to call parent class version of method?
+Programs
+1. Write a program demonstrating this to resolve variable shadowing?
+2. Write a program using this() to chain constructors?
+3. 3.Write a program using super to call parent constructor.
+4. Write a program using this in inner classes to access outer class instance.
