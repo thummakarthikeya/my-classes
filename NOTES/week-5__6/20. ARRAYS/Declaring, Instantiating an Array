@@ -1,0 +1,119 @@
+Interview Questions
+1) How do you declare an array in Java? What are the three ways to declare an array?
+-->👉 Definition: An array is a collection of similar data types stored in contiguous memory locations.
+
+✅ Ways to declare:
+int[] arr;     // preferred
+int arr[];     
+int []arr;     
+
+
+2) How do you instantiate an array?
+-->👉 Using new keyword:
+int[] arr = new int[5];
+
+
+3) Can you declare and instantiate an array in a single line?
+-->✅ Yes:
+
+    int[] arr = new int[5];
+    
+    Or directly initialize:
+    
+    int[] arr = {1, 2, 3, 4, 5};
+
+
+
+4) Can an array have zero size?
+-->✅ Yes:
+
+int[] arr = new int[0];
+
+👉 Valid but cannot store elements
+
+
+
+
+5) Can you declare an array without specifying size? and is it valid to instantiate an array with a negative
+size in Java?
+-->❓ Without size:
+    
+    ❌ Not allowed unless initialized
+    
+    int[] arr = new int[]; // ❌ ERROR
+    ❓ Negative size:
+    
+    ❌ Runtime error:
+    
+    int[] arr = new int[-5]; // ❌ NegativeArraySizeException
+
+
+
+6) How is an array object stored in memory?
+-->Array object → stored in Heap
+    Reference variable → stored in Stack
+    
+    High-Level Memory SplitStack Memory:
+    Stores the reference variable (the "pointer" to the array). If you declare int[] arr, the identifier arr lives here.
+    Heap Memory: Stores the actual array object and all its elements. This memory is managed by the Java Garbage Collector.
+
+
+
+7) What is the difference between stack and heap in context of arrays?
+-->
+| Stack            | Heap                |
+| ---------------- | ------------------- |
+| Stores reference | Stores actual array |
+| Fast access      | Larger memory       |
+| Method-based     | Object-based        |
+
+
+
+8) Can array size be changed after instantiation?
+-->❌ No
+👉 Arrays are fixed size
+✔️ Alternative: Use ArrayList
+
+
+
+9) Difference between new int[5] and int[]arr= {1,2,3,4,5}
+-->new int[5]
+    int[] arr = new int[5];
+    Size = 5
+    Default values = 0
+    {1,2,3,4,5}
+    int[] arr = {1,2,3,4,5};
+    Pre-initialized
+    Size = 5
+
+
+10) Can you store different data types in an array?
+-->In Java, the direct answer is no, you cannot store different data types in a standard array because Java arrays are homogeneous, 
+    meaning they can only hold elements of a single, specified data type.
+
+    However, there is a common workaround: 
+      you can create an array of the Object class. Since Object is the root superclass for all classes in Java, an Object[] 
+      array can store references to any object, effectively allowing you to mix different types.
+
+
+
+11) Difference between shallow copy and deep copy of arrays
+-->🔹 Shallow Copy
+    int[] a = {1,2,3};
+    int[] b = a;
+    
+    👉 Both refer to same array
+    
+    🔹 Deep Copy
+    int[] a = {1,2,3};
+    int[] b = a.clone();
+    
+    👉 Separate memory
+
+
+
+12) How do you declare a 2D array?
+13) How do you instantiate a 2D array?
+14) How to access elements in a 2D array?
+15) Difference between rectangular and jagged arrays
+16) How to declare and instantiate, & access 3D array?
