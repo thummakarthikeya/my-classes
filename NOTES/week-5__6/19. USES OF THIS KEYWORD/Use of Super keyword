@@ -1,15 +1,175 @@
 Interview Questions
 1. What is the super keyword in Java?
+-->👉 Definition: super is a reference variable in Java that is used to refer to the immediate parent class object.
+    ✅ Main uses:
+    Access parent class variables
+    Call parent class methods
+    Call parent class constructor
+
+
 2. How is super used to refer to immediate parent class object?
+-->class Parent {
+        int x = 10;
+    }
+    
+    class Child extends Parent {
+        int x = 20;
+    
+        void show() {
+            System.out.println(super.x); // refers to Parent's x
+        }
+    }
+
+
 3. How can super be used to call parent class methods?
+-->class Parent {
+      void show() {
+          System.out.println("Parent method");
+      }
+  }
+  
+  class Child extends Parent {
+      void show() {
+          super.show(); // calling parent method
+          System.out.println("Child method");
+      }
+  }
+
+
 4. How can super be used to access parent class variables when hidden by subclass?
+-->class Parent {
+        int value = 100;
+    }
+    
+    class Child extends Parent {
+        int value = 200;
+    
+        void display() {
+            System.out.println(value);       // child
+            System.out.println(super.value); // parent
+        }
+    }
+
+
 5. How is super() used to call parent class constructors?
+-->class Parent {
+        Parent() {
+            System.out.println("Parent constructor");
+        }
+    }
+    
+    class Child extends Parent {
+        Child() {
+            super(); // calls parent constructor
+            System.out.println("Child constructor");
+        }
+    }
+
+
+
 6. Can super() and this() be used together in a constructor? Why or why not?
+-->❌ No
+
+    👉 Reason: Both must be the first statement in constructor
+        Only one can be first
+    Child() {
+        // super();
+        // this(); ❌ not allowed together
+    }
+
+
 7. Can super be used in a static context? Why or why not?
+-->❌ No
+    
+    👉 Reason:
+    
+    super refers to an object (parent instance)
+    Static methods belong to class, not object
+    static void test() {
+        // super.show(); ❌ ERROR
+    }
+
+
+
+
 8. Difference between super and this in terms of constructor chaining.
+-->super vs this (constructor chaining)
+| Feature   | `this()`                               | `super()`               |
+| --------- | -------------------------------------- | ----------------------- |
+| Refers to | Same class                             | Parent class            |
+| Purpose   | Call another constructor in same class | Call parent constructor |
+| Position  | First line only                        | First line only         |
+
+
+
 9. How does super help in method overriding to call parent class version of method?
-Programs
+-->class Parent {
+    void show() {
+        System.out.println("Parent version");
+    }
+}
+
+class Child extends Parent {
+    void show() {
+        super.show(); // calling parent version
+        System.out.println("Child version");
+    }
+}
+
+
+=========================
+🔥 PROGRAMS SECTION
+=========================
 1. Write a program demonstrating this to resolve variable shadowing?
+-->class Student {
+      int id;
+  
+      Student(int id) {
+          this.id = id; // resolves shadowing
+      }
+  
+      void display() {
+          System.out.println(id);
+      }
+  }
+
+
 2. Write a program using this() to chain constructors?
+-->class Demo {
+
+    Demo() {
+        this(10);
+        System.out.println("Default constructor");
+    }
+
+    Demo(int x) {
+        System.out.println("Parameterized: " + x);
+    }
+}
+
+
 3. 3.Write a program using super to call parent constructor.
-4. Write a program using this in inner classes to access outer class instance.
+-->class Parent {
+    Parent(int x) {
+        System.out.println("Parent: " + x);
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        super(100); // calling parent constructor
+        System.out.println("Child constructor");
+    }
+}
+
+
+4. Write a program using this in inner classes to access outer class instance
+.class Outer {
+    int x = 10;
+
+    class Inner {
+        void show() {
+            System.out.println(Outer.this.x); // outer class variable
+        }
+    }
+}
