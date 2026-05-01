@@ -113,7 +113,41 @@ size in Java?
 
 
 12) How do you declare a 2D array?
+-->int[][] arr;
+
+
 13) How do you instantiate a 2D array?
+-->int[][] arr = new int[3][3];
+
+
 14) How to access elements in a 2D array?
+-->Zero-Based Indexing: Both row and column indices start at 0. For example, the first element in the first row is at [0][0].
+    Order: The first index specifies the row, and the second index specifies the column.
+    Boundaries: Valid indices for an array of size \(N\) range from \(0\) to \(N - 1\). Accessing an index outside this range results in\
+    an ArrayIndexOutOfBoundsException.
+
+
 15) Difference between rectangular and jagged arrays
+-->The primary difference between rectangular and jagged arrays in Java is their structure: rectangular arrays have rows of equal length,
+    while jagged arrays (also called ragged arrays) consist of rows that can have different lengths.
+    🔹 Rectangular:
+    int[][] arr = new int[3][3];
+    
+    👉 Equal columns
+    
+    🔹 Jagged:
+    int[][] arr = new int[3][];
+    arr[0] = new int[2];
+    arr[1] = new int[3];
+    
+    👉 Different column sizes
+
+
 16) How to declare and instantiate, & access 3D array?
+-->In Java, a 3D array is an array of arrays of arrays. You can handle it in three main ways:
+        1. Declaration and Instantiation
+        You can declare a 3D array by using three sets of square brackets [][][].
+        Fixed Size: Use the new keyword and specify all dimensions immediately.
+        
+        // Creates a 3x4x2 array (3 layers, 4 rows, 2 columns)
+        int[][][] array = new int[3][4][2]; 
