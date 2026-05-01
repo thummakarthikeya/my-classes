@@ -1,9 +1,155 @@
 Interview Questions
 1. What is the this keyword in java? What is the main purpose of this in a class?
+-->this is a reference variable in Java that refers to the current object (the object whose method or constructor is being executed).
+    
+    👉 Main purpose:
+    To access the current object's properties and methods.
+    
+    class Student {
+        int id;
+    
+        void display() {
+            System.out.println(this.id); // refers to current object
+        }
+    }
+
+
 2. How is this used to refer to current object?
+-->Inside a class method or constructor, this automatically points to the current object.
+    In Java, the this keyword is a reference variable that points to the current object—the specific instance whose method or constructor is
+        currently being executed.
+    Differentiating Instance Variables from Parameters: The most common use is to resolve naming conflicts (shadowing) when a method parameter
+      has the same name as a class field.
+    Example: this.name = name; assigns the local parameter name to the current object's field name.
+    Invoking Current Class Constructors (this()): Used for constructor chaining to call one constructor from another within the same class.
+    Note: The call to this() must be the very first statement in the constructor.
+
+class Test {
+    void show() {
+        System.out.println(this); // prints current object reference
+    }
+
+    public static void main(String[] args) {
+        Test t = new Test();
+        t.show();
+    }
+}
+
+
+
 3. How can this be used to differentiate instance variables from local variables?
-4. How is this used to call another constructor in the same class? (this() constructor chaining)
+-->When local variables and instance variables have the same name, this is used to avoid confusion.
+    
+    class Student {
+        int id;
+    
+        Student(int id) {
+            this.id = id; // instance = local
+        }
+    }
+    👉 Without this, Java gets confused between local variable and instance variable
+
+
+
+4. How is this used to call another constructor in the same class? (this() constructor chaining).
+-->this() is used to call another constructor in the same class.
+
+    class Demo {
+        Demo() {
+            System.out.println("Default constructor");
+        }
+    
+        Demo(int x) {
+            this(); // calling default constructor
+            System.out.println("Parameterized constructor");
+        }
+    }
+    
+    ⚠️ Important rules:
+    
+    Must be first statement in constructor
+    Used for code reuse
+
+
+
 5. Can this be used in a static method? Why or why not?
+-->❌ No
+
+  👉 Reason:
+  this refers to an object, but static methods belong to the class, not objects.
+  
+  static void show() {
+      // System.out.println(this); ❌ ERROR
+  }
+
+
 6. Can this be passed as an argument to a method or constructor? Give an example.
+-->✅ Yes
+
+    👉 You can pass current object as parameter.
+    
+    class Test {
+        void display(Test obj) {
+            System.out.println("Method called");
+        }
+    
+        void show() {
+            display(this); // passing current object
+        }
+    }
+
+
 7. How does this help in method chaining?
+-->Method chaining means calling multiple methods in a single statement.
+
+👉 this returns current object → allows chaining
+
+class Demo {
+    Demo show() {
+        System.out.println("Show");
+        return this;
+    }
+
+    Demo display() {
+        System.out.println("Display");
+        return this;
+    }
+
+    public static void main(String[] args) {
+        new Demo().show().display();
+    }
+}
+✅ Final Output:
+Show
+Display
+
+
 8. Difference between this and current class name for object reference.
+-->
+| Feature         | `this`                  | Class Name            |
+| --------------- | ----------------------- | --------------------- |
+| Refers to       | Current object          | Class itself          |
+| Usage           | Inside instance methods | Static context        |
+| Example         | `this.id`               | `ClassName.staticVar` |
+| Object Required | Yes                     | No                    |
+
+class Demo {
+    int x;
+    static int y;
+
+    void show() {
+        System.out.println(this.x); // instance
+        System.out.println(Demo.y); // static
+    }
+}
+
+
+
+
+If interviewer asks:
+👉 "Why do we need this keyword?"
+
+You can say:
+-->
+"this is used to refer to the current object, resolve variable ambiguity, enable constructor chaining, pass the current object,
+and support method chaining."
