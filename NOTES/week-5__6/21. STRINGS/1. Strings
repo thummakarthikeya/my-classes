@@ -1,0 +1,147 @@
+Interview Questions
+1. What is a String in Java?
+-->A String is an object in Java that represents a sequence of characters. It is immutable (cannot be changed once created).
+
+
+2. How do you create a String object & how many way to create the Strings in java?
+-->Two ways:
+Using String literal
+String s = "Hello";
+
+Using new keyword
+String s = new String("Hello");
+
+
+
+3. Difference between: String s1 = "Hello"; & String s2 = new String("Hello");
+-->"Hello" → stored in String Constant Pool (SCP)
+new String("Hello") → creates object in heap memory, not reused
+
+
+
+4. Why are String objects immutable in Java?
+-->Because their value cannot be changed after creation.
+
+
+5. What is String Constant Pool (SCP)?
+-->A special memory area in heap where unique string literals are stored and reused.
+
+
+6. How does SCP help in memory optimization?
+-->It avoids duplicate objects by reusing existing strings, saving memory.
+
+
+7. What happens when you create two String literals with the same value?
+-->Both refer to same object in SCP.
+
+String a = "Hi";
+String b = "Hi"; // same reference
+
+
+
+8. How does Java store Strings created using new keyword?
+-->Stored in heap memory, not SCP (unless interned).
+
+
+9. How does intern() method work in Strings?
+-->In Java, the String.intern() method is used to manage a special memory area called the String Constant Pool (SCP). 
+    It ensures that all identical strings share the same memory location, which helps reduce memory consumption.
+    How it Works:
+    When you call the intern() method on a String object, the JVM follows these steps:
+    Check the Pool: It checks if a string with the exact same content already exists in the String Constant Pool.
+    Return Existing Reference: If the string is already in the pool, intern() returns the reference to that existing pooled object.
+    Add to Pool: If the string is not found in the pool, the JVM adds the current string object to the pool and returns its reference.
+    ex:
+    String s = new String("Hello").intern();
+
+
+10. Why did Java designers make String immutable? (Security, Caching, Thread-safety, Performance)?
+-->Java designers made String immutable to ensure security (preventing alteration of critical parameters like URLs/paths),
+  facilitate string pooling (saving memory by sharing instances), provide inherent thread-safety (eliminating synchronization),
+  and improve performance by caching hash codes for faster hash-based collection lookups
+  Security (used in passwords, URLs)
+  Caching (hashcode reuse)
+  Thread-safe
+  Performance (SCP reuse)
+
+
+11. What is the advantage of storing Strings in SCP?
+-->Saves memory
+    Improves performance by reusing objects
+
+
+12. What happens internally when you modify a String?
+-->A new object is created, old one remains unchanged.
+
+    String s = "Hi";
+    s = s + "Hello"; // new object
+
+
+
+13. What is the difference between mutable and immutable objects?
+-->Mutable → can change (e.g., StringBuilder)
+    Immutable → cannot change (e.g., String)
+
+
+14. What happens if you concatenate Strings using + operator?
+-->In Java, using the + operator for string concatenation combines two or more strings into a single new String object.
+    Because strings in Java are immutable, the original strings are never modified; instead, memory is allocated for a brand-new
+    string to hold the combined result.
+
+
+15. What is the difference between == and equals() in Strings?
+-->== → compares reference (memory address)
+    equals() → compares content
+
+
+
+16. What is the difference between compareTo() and equals()?
+-->The main difference is that equals() checks if two objects are identical, returning a boolean (true/false), while compareTo()
+    compares object ordering (lexicographical or numeric), returning an integer (\(0\), negative, or positive). equals() checks for 
+    equality, whereas compareTo() defines sorting order.
+class GFG {
+        public static void main(String[] args)
+        {
+            String s1 = "A";
+            String s2 = "A";
+            String s3 = "a";
+            String s4 = new String("A");
+    
+            System.out.println(s1.compareTo(s2));
+            System.out.println(s1.compareTo(s3));
+            System.out.println(s3.compareTo(s2));
+            System.out.println(s1.compareTo(s4));
+        }
+    }
+    Output
+    0
+    -32
+    32
+    0
+
+
+
+17. Can String be extended (inheritance)? Why or why not?
+-->String cannot be extended because it is declared as a final class, preventing inheritance for security and immutability reasons.
+
+
+18. Difference between substring() and subSequence()?
+19. What is StringBuffer class in Java?
+20. Is StringBuffer mutable or immutable? Is StringBuffer thread-safe? Why?
+21. Difference between append() and insert() methods?
+22. What is the default capacity of StringBuffer?
+23. How does the capacity of StringBuffer increase dynamically?
+24. What is StringBuilder in Java?
+25. Difference between StringBuffer and Stringbuilder?
+26. Is Stringbuilder thread-safe? Why or why not?
+27. When should you use Stringbuilder over StringBuffer?
+28. What are common methods in Stringbuilder and StringBuffer?
+29. Which one is best for frequent string modification?
+30. Which one is best for multithreaded environment and singlethread environment?
+31. Difference between length() method and length property of arrays.
+32. Difference between isEmpty() and isBlank().
+33. Difference between trim() and strip() (introduced in Java 11).
+34. Difference between strip(), stripLeading(), and stripTrailing().
+35. Difference between indexOf() and lastIndexOf().
+36. Difference between split() and join() (breaking vs combining).
+37. Difference between valueOf() and toString().
