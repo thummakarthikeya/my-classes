@@ -147,6 +147,14 @@ subSequence() → returns CharSequence
 -->Mutable → Yes (can change content)
     Thread-safe → Yes
     👉 Because all its methods are synchronized, meaning only one thread can access it at a time.
+    
+    It achieves this because all of its public methods that modify the character sequence (such as append(), insert(), delete(), 
+        and replace()) are synchronized.
+        Why is StringBuffer Thread-Safe?
+        Synchronized Methods: When a method is synchronized, it means that if multiple threads try to access the same StringBuffer instance, 
+        only one thread can execute a method at a time.
+        Object Locking: The synchronized keyword uses an implicit lock (monitor) on the StringBuffer instance. The first thread to access the
+        object locks it, forcing other threads to wait until the first thread finishes its operation.
 
 
 
