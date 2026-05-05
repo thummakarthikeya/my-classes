@@ -126,22 +126,172 @@ class GFG {
 
 
 18. Difference between substring() and subSequence()?
+-->substring() → returns String
+subSequence() → returns CharSequence
+
+
 19. What is StringBuffer class in Java?
+-->StringBuffer is a mutable (modifiable) class used to create and manipulate strings dynamically.
+
+    Unlike String, it does not create new objects when modified.
+    It is thread-safe (synchronized).
+    
+    👉 Example:
+    StringBuffer sb = new StringBuffer("Hello");
+    sb.append(" World");
+    System.out.println(sb); // Hello World
+
+
+
 20. Is StringBuffer mutable or immutable? Is StringBuffer thread-safe? Why?
+-->Mutable → Yes (can change content)
+    Thread-safe → Yes
+    👉 Because all its methods are synchronized, meaning only one thread can access it at a time.
+
+
+
 21. Difference between append() and insert() methods?
+-->
+| Method     | Purpose                       |
+| ---------- | ----------------------------- |
+| `append()` | Adds data at the end          |
+| `insert()` | Adds data at a specific index |
+sb.append("Java");       // end
+sb.insert(0, "Hi ");     // at index 0
+
+
+
 22. What is the default capacity of StringBuffer?
+-->Default capacity = 16 characters
+
+
 23. How does the capacity of StringBuffer increase dynamically?
+-->Formula: newCapacity = (oldCapacity * 2) + 2
+
+👉 Example:
+Old = 16 → New = 34 → Next = 70
+
+
 24. What is StringBuilder in Java?
+-->StringBuilder is also a mutable string class, similar to StringBuffer, but:
+    Not thread-safe
+    Faster than StringBuffer
+
+
+
+
 25. Difference between StringBuffer and Stringbuilder?
+-->
+| Feature         | StringBuffer   | StringBuilder |
+| --------------- | -------------- | ------------- |
+| Thread-safe     | Yes            | No            |
+| Performance     | Slower         | Faster        |
+| Synchronization | Yes            | No            |
+| Use case        | Multithreading | Single thread |
+
+
+
 26. Is Stringbuilder thread-safe? Why or why not?
+-->❌ No
+    👉 Because its methods are not synchronized, so multiple threads can modify it simultaneously.
+
+
 27. When should you use Stringbuilder over StringBuffer?
+-->Use StringBuilder when:
+        You are working in a single-threaded environment
+        You need better performance
+
+
+
 28. What are common methods in Stringbuilder and StringBuffer?
+-->append()
+    insert()
+    delete()
+    reverse()
+    length()
+    capacity()
+    charAt()
+    setCharAt()
+
+
 29. Which one is best for frequent string modification?
+-->StringBuilder (faster, no synchronization overhead)
+
+
+
 30. Which one is best for multithreaded environment and singlethread environment?
+-->Multithreaded → StringBuffer
+Single-threaded → StringBuilder
+
+
+
 31. Difference between length() method and length property of arrays.
+-->
+| Feature  | length()       | length       |
+| -------- | -------------- | ------------ |
+| Used for | String         | Array        |
+| Type     | Method         | Variable     |
+| Example  | `str.length()` | `arr.length` |
+
+
+
 32. Difference between isEmpty() and isBlank().
+-->
+| Method      | Meaning                                      |
+| ----------- | -------------------------------------------- |
+| `isEmpty()` | Checks if string length = 0                  |
+| `isBlank()` | Checks if string is empty or only whitespace |
+👉 Example:
+
+" ".isEmpty(); // false
+" ".isBlank(); // true
+
+
+
 33. Difference between trim() and strip() (introduced in Java 11).
+-->
+| Method    | Behavior                       |
+| --------- | ------------------------------ |
+| `trim()`  | Removes only ASCII spaces      |
+| `strip()` | Removes all Unicode whitespace |
+
+
+
+
 34. Difference between strip(), stripLeading(), and stripTrailing().
+-->
+| Method            | Function                      |
+| ----------------- | ----------------------------- |
+| `strip()`         | Removes spaces from both ends |
+| `stripLeading()`  | Removes from start            |
+| `stripTrailing()` | Removes from end              |
+
+
+
 35. Difference between indexOf() and lastIndexOf().
+-->
+| Method          | Direction        |
+| --------------- | ---------------- |
+| `indexOf()`     | First occurrence |
+| `lastIndexOf()` | Last occurrence  |
+
+
+
 36. Difference between split() and join() (breaking vs combining).
+-->
+| Method    | Purpose                      |
+| --------- | ---------------------------- |
+| `split()` | Break string into array      |
+| `join()`  | Combine elements into string |
+"Java,Python".split(",");  
+String.join("-", "A", "B");
+
+
 37. Difference between valueOf() and toString().
+-->
+| Feature       | valueOf()                             | toString()                     |
+| ------------- | ------------------------------------- | ------------------------------ |
+| Type          | Static method                         | Instance method                |
+| Usage         | Converts primitives/objects to String | Converts object to String      |
+| Null handling | Returns "null"                        | May throw NullPointerException |
+
