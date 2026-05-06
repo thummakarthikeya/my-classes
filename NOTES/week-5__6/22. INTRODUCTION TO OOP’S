@@ -1,0 +1,279 @@
+Interview Questions
+1) What is Object-Oriented Programming (OOP)?
+-->Object-Oriented Programming (OOP) is a programming paradigm that organizes software using objects and classes.
+    It focuses on modeling real-world entities with data (fields/variables) and behavior (methods/functions).
+    Example:
+    Car → object
+    Speed, color → data
+    Start(), stop() → behavior
+
+
+2) What are the main principles/features of OOP? Explain each briefly?
+-->The four main principles of OOP are:
+    1. Encapsulation
+    
+    Binding data and methods together into a single unit (class) and restricting direct access to data.
+    
+    Example:
+    class Student {
+        private int marks;
+    
+        public void setMarks(int marks) {
+            this.marks = marks;
+        }
+    
+        public int getMarks() {
+            return marks;
+        }
+    }
+    Advantage:
+    Provides data security
+    Prevents unauthorized access
+    
+    
+    2. Inheritance
+    
+    One class acquires properties and behaviors of another class.
+    
+    Example:
+    class Animal {
+        void sound() {
+            System.out.println("Animal makes sound");
+        }
+    }
+    
+    class Dog extends Animal {
+        void bark() {
+            System.out.println("Dog barks");
+        }
+    }
+    Advantage:
+    Code reusability
+    Reduces duplication
+    
+    
+    3. Polymorphism
+    
+    One action can behave differently in different situations.
+    
+    Types:
+    
+    Method Overloading → Compile-time polymorphism
+    Method Overriding → Runtime polymorphism
+    Example:
+    class A {
+        void show() {
+            System.out.println("Class A");
+        }
+    }
+    
+    class B extends A {
+        void show() {
+            System.out.println("Class B");
+        }
+    }
+    
+    
+    4. Abstraction
+    
+    Hiding implementation details and showing only essential features.
+    
+    Example:
+    abstract class Vehicle {
+        abstract void start();
+    }
+    Advantage:
+    Reduces complexity
+    Improves maintainability
+    
+
+
+
+3) What is an Object in Java?
+-->An object is an instance of a class that contains data (state) and behavior (methods). In Java, objects are created in heap memory.
+    It is an instance of a class.
+    
+    Example:
+    Car c1 = new Car();
+    
+    Here:
+    
+    Car → class
+    c1 → object
+
+
+4) What is a Class in Java? How is it different from an Object?
+-->A class is a blueprint/template for creating objects.
+                            (OR)
+    "A class is a template or blueprint that defines the data and methods that its objects will have. It is the foundation of OOP 
+    because it describes the structure and behavior of the objects created from it."
+    A class is loaded into the Method Area, which is a logical part of the JVM memory that stores class-level information.
+| Class               | Object           |
+| ------------------- | ---------------- |
+| Blueprint           | Instance         |
+| Logical entity      | Physical entity  |
+| No memory allocated | Memory allocated |
+| Declared once       | Can create many  |
+
+
+5) What is the difference between Procedural (functional) Programming and Object-Oriented Programming?
+-->
+| Procedural Programming                   | OOP                       |
+| ---------------------------------------- | ------------------------- |
+| Based on functions                       | Based on objects          |
+| Data and functions separate              | Data and methods together |
+| Less security                            | More security             |
+| Difficult to maintain large applications | Easier maintenance        |
+| Example: C                               | Example: Java             |
+
+
+6) Why is OOP better for real-world applications?
+-->OOP is better because:
+    
+    Models real-world entities naturally
+    Provides code reusability
+    Easier maintenance
+    Better security using encapsulation
+    Easy debugging and testing
+    Supports modular programming
+    Example:
+    Banking systems, e-commerce apps, hospital management systems.
+
+
+
+7) Why is Java considered a pure Object-Oriented language? Is it fully true?
+-->Java is called mostly object-oriented because:
+    
+    Everything is organized into classes and objects.
+    Supports major OOP principles.
+    
+    But Java is not fully pure OOP because:
+    
+    Primitive data types exist (int, char, boolean, etc.)
+    Static methods and variables exist
+    
+    So Java is:      
+    Not 100% pure object-oriented language
+
+
+
+8) How does OOP support security in applications
+-->OOP provides security mainly through:  
+    Encapsulation:
+    Access modifiers (private, protected, public)
+    Example:
+    private int salary;
+    
+    Direct access is restricted, so data is protected.
+    
+    Benefits:
+    Prevents unauthorized access
+    Data hiding
+    Controlled modification using getters/setter
+
+
+
+9) What happens in memory when an object is created?
+-->Example:
+    
+    Student s = new Student();
+    Memory Allocation:
+    new Student() creates object in Heap Memory
+    Reference variable s stored in Stack Memory
+    Constructor initializes object
+    Diagram:
+    Stack Memory          Heap Memory
+    -------------         ----------------
+    s  ----------->       Student Object
+
+
+
+10) Can a class exist without objects? Explain with example?
+-->Yes, a class can exist without creating objects.    
+    Example:
+    class Test {
+        static void display() {
+            System.out.println("Hello");
+        }
+    }
+    We can call:
+    Test.display();
+    
+    without creating object:
+    // No object created
+    Because static members belong to the class.
+
+
+11) What is an immutable object? How to create one in Java?
+-->An immutable object is an object whose state cannot be changed after creation.
+    
+    Example:
+    Java String class.
+    
+    Steps to create immutable class:
+    Declare class as final
+    Make fields private final
+    No setters
+    Initialize values using constructor
+    Provide only getters
+    Example:
+    final class Employee {
+    
+        private final int id;
+    
+        Employee(int id) {
+            this.id = id;
+        }
+    
+        public int getId() {
+            return id;
+        }
+    }
+
+
+
+12) What are the advantages of using OOP?
+-->Advantages:
+    Code reusability
+    Modularity
+    Easy maintenance
+    Data security
+    Scalability
+    Flexibility
+    Better code organization
+    Easier debugging and testing
+
+
+
+13) What is the SOLID principle in OOP?
+-->
+| Principle | Meaning                         |
+| --------- | ------------------------------- |
+| S         | Single Responsibility Principle |
+| O         | Open/Closed Principle           |
+| L         | Liskov Substitution Principle   |
+| I         | Interface Segregation Principle |
+| D         | Dependency Inversion Principle  |
+    
+    
+    1. Single Responsibility Principle (SRP)
+    
+    A class should have only one responsibility.
+    
+    2. Open/Closed Principle (OCP)
+    
+    Classes should be:
+    
+    Open for extension
+    Closed for modification
+    3. Liskov Substitution Principle (LSP)
+    
+    Child classes should properly replace parent classes.
+    
+    4. Interface Segregation Principle (ISP)
+    
+    Do not force classes to implement unnecessary methods.
+    
+    5. Dependency Inversion Principle (DIP)
+    
+    Depend on abstractions, not concrete classes.
