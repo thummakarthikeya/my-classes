@@ -1,13 +1,138 @@
 Interview Questions
 1. What is encapsulation in Java?
+-->Encapsulation is the process of wrapping data (variables) and methods (behavior) together into a single unit called a class,
+    and restricting direct access to the data using access modifiers.
+    It is mainly achieved by:
+    Declaring variables as private
+    Providing public getter and setter methods
+    
+    Example:
+    class Student {
+        private String name;
+    
+        public void setName(String name) {
+            this.name = name;
+        }
+    
+        public String getName() {
+            return name;
+        }
+    }
+
+
+
 2. How is encapsulation different from abstraction?
+-->
+| Encapsulation                                        | Abstraction                                    |
+| ---------------------------------------------------- | ---------------------------------------------- |
+| Hides internal data                                  | Hides implementation details                   |
+| Focuses on data security                             | Focuses on simplicity                          |
+| Achieved using private variables and getters/setters | Achieved using abstract classes and interfaces |
+| “How data is protected”                              | “What to show to user”                         |
+
+Example:
+Encapsulation → ATM protects account balance internally.
+Abstraction → User only sees withdraw/deposit options.
+
+
+
 3. Why is encapsulation important in object-oriented programming?
+-->Encapsulation is important because it:
+    Protects data from unauthorized access
+    Improves security
+    Increases maintainability
+    Makes code reusable
+    Allows controlled access to variables
+    Reduces dependency between classes
+
+
+
 4. How do you achieve encapsulation in Java?
+-->Encapsulation is achieved by:
+
+    Declaring class variables as private
+    Providing public getter and setter methods
+    
+    Example:
+    
+    class Employee {
+        private int salary;
+    
+        public int getSalary() {
+            return salary;
+        }
+    
+        public void setSalary(int salary) {
+            if(salary > 0) {
+                this.salary = salary;
+            }
+        }
+    }
+
+
+
 5. What are the benefits of using private variables in a class?
+-->Benefits:
+    Prevents direct modification
+    Provides data security
+    Allows validation before updating values
+    Makes class behavior controlled
+    Improves maintainability
+
+
 6. Can you give a real time example of encapsulation in Java?
+-->A bank account is a real-time example.
+    
+    Balance is hidden (private)
+    Users access it through methods like:
+    deposit()
+    withdraw()
+    getBalance()
+    
+    Example:
+    
+    class BankAccount {
+        private double balance;
+    
+        public void deposit(double amount) {
+            balance += amount;
+        }
+    
+        public double getBalance() {
+            return balance;
+        }
+    }
+
+
+
+
 7. What is the role of getters and setters in encapsulation?
+-->Getter → Used to read/access data
+    Setter → Used to modify/update data
+    
+    They provide controlled access to private variables.
+    
+    Example:
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
 8. Is encapsulation possible without access modifiers?
+-->No.
+    Access modifiers are important for proper encapsulation.
+    
+    Without private, variables can be accessed directly from outside the class, which breaks data hiding.
+
+
+
 9. What happens if you make all fields public? Is it still encapsulation?
+-->
 10. How does encapsulation improve code maintainability?
 11. Can you explain how encapsulation helps in securing data?
 12. Why should we avoid exposing too many getters and setters?
