@@ -132,20 +132,206 @@ Abstraction → User only sees withdraw/deposit options.
 
 
 9. What happens if you make all fields public? Is it still encapsulation?
--->
-10. How does encapsulation improve code maintainability?
-11. Can you explain how encapsulation helps in securing data?
-12. Why should we avoid exposing too many getters and setters?
-13. How does encapsulation relate to the concept of immutability?
-14. Can you encapsulate a class that has static fields?
-15. What is the difference between encapsulation and information hiding?
-16. Can you achieve encapsulation without using setter methods?
-17. How does encapsulation interact with inheritance and polymorphism?
-18. Can encapsulation be broken using reflection? How would you prevent it?
-19. How would you design a class that exposes only read-only access to its internal state?
-20. What are some anti-patterns that violate encapsulation?
-21. Demonstrate encapsulation using interfaces and abstract classes.
+-->No.
+    If all variables are public:
+        Any class can directly modify data
+        No control or validation exists
+        Data security is lost
+        
+    Example:
+        class Student {
+            public int marks;
+        }
+        
+        This is not proper encapsulation.
 
+
+
+10. How does encapsulation improve code maintainability?
+-->Encapsulation improves maintainability because:
+    
+    Internal implementation can change without affecting external code
+    Bugs become easier to manage
+    Code becomes modular and organized
+    
+    Example:
+        You can change internal logic inside setter methods without changing external code.
+
+
+
+11. Can you explain how encapsulation helps in securing data?
+-->Encapsulation protects data by:
+        
+        Restricting direct access using private
+        Allowing controlled access through methods
+        Performing validation before updating data
+        
+        Example:
+        
+        public void setAge(int age) {
+            if(age > 0) {
+                this.age = age;
+            }
+        }
+        Invalid values are prevented.
+
+
+
+12. Why should we avoid exposing too many getters and setters?
+-->Exposing too many getters and setters is often considered a "code smell" because it fundamentally undermines the core principle 
+    of encapsulation. While they provide a controlled way to access private fields, overusing them effectively makes your private data
+    public, just with a different syntax.
+
+        Too many getters/setters:
+            Reduce security
+            Expose internal structure
+            Increase tight coupling
+            Allow unnecessary modification
+            
+        Good encapsulation exposes only required methods.
+
+
+
+13. How does encapsulation relate to the concept of immutability?
+-->Immutable classes are strongly encapsulated.
+        
+        In immutable classes:
+            Variables are private
+            No setters are provided
+            Values cannot change after object creation
+            
+            Example:
+            
+            final class Person {
+                private final String name;
+            
+                public Person(String name) {
+                    this.name = name;
+                }
+            
+                public String getName() {
+                    return name;
+                }
+            }
+
+
+
+14. Can you encapsulate a class that has static fields?
+-->Yes.
+    Static fields can also be private and accessed through static getter/setter methods.
+    Example:
+    class Company {
+        private static String companyName;
+    
+        public static String getCompanyName() {
+            return companyName;
+        }
+    }
+
+
+
+15. What is the difference between encapsulation and information hiding?
+-->
+| Encapsulation                     | Information Hiding                     |
+| --------------------------------- | -------------------------------------- |
+| Binding data and methods together | Restricting access to internal details |
+| OOP concept                       | Security concept                       |
+| Achieved using classes            | Achieved using access modifiers        |
+Encapsulation supports information hiding.
+
+
+
+16. Can you achieve encapsulation without using setter methods?
+-->Yes.
+    You can provide:
+        Only getter methods (read-only)
+        Constructor initialization
+        
+        Example:
+        
+        class Student {
+            private final int id;
+        
+            public Student(int id) {
+                this.id = id;
+            }
+        
+            public int getId() {
+                return id;
+            }
+        }
+
+
+17. How does encapsulation interact with inheritance and polymorphism?
+-->Encapsulation protects parent class data
+    Child classes access data through protected/public methods
+    Polymorphism works with encapsulated methods safely
+    
+    Example:
+    
+    class Animal {
+        private String name;
+    
+        public String getName() {
+            return name;
+        }
+    }
+    Child classes cannot directly access name.
+    
+
+18. Can encapsulation be broken using reflection? How would you prevent it?
+-->Yes.
+    Reflection can access private fields using:
+        field.setAccessible(true);
+
+    Prevention:
+        Use SecurityManager (older Java)
+        Use modules (Java 9+)
+        Avoid unnecessary reflection
+        Use immutable classes where possible
+
+
+
+19. How would you design a class that exposes only read-only access to its internal state?(This question is a common Object-Oriented
+    Programming (OOP) design interview question focusing on encapsulation and immutability.It asks how to create a class whose internal
+    data (state) can be viewed by other parts of a program, but cannot be changed (modified) after the object is created.)
+-->Steps:
+        Make variables private
+        Initialize through constructor
+        Provide only getters
+        Avoid setters
+        
+        Example:
+            class Employee {
+                private final int id;
+            
+                public Employee(int id) {
+                    this.id = id;
+                }
+            
+                public int getId() {
+                    return id;
+                }
+            }
+
+
+
+20. What are some anti-patterns that violate encapsulation?
+-->Anti-patterns:
+    
+    Public variables
+    Excessive getters/setters
+    Returning mutable internal objects directly
+    Exposing internal implementation details    
+    Bad Example:
+        public List<String> items;
+    
+    Better:
+        private List<String> items;
+
+
+21. Demonstrate encapsulation using interfaces and abstract classes.
+-->
 
 
 ------------------------------------Encapsulation Programming Problems--------------------------------------
