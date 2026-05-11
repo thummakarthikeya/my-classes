@@ -331,8 +331,86 @@ Encapsulation supports information hiding.
 
 
 21. Demonstrate encapsulation using interfaces and abstract classes.
--->
+-->Encapsulation means hiding internal implementation details and allowing access only through controlled methods.
+In Java, we can demonstrate encapsulation using:
 
+Interfaces → define what operations can be performed.
+Abstract classes → provide partial implementation and protect data using private fields.
+Example: Bank Account System
+// Interface
+interface AccountOperations {
+    void deposit(double amount);
+    void withdraw(double amount);
+    void displayBalance();
+}
+
+// Abstract Class
+abstract class BankAccount implements AccountOperations {
+
+    // Encapsulated data (hidden)
+    private double balance;
+
+    // Constructor
+    public BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    // Protected method to access balance safely
+    protected double getBalance() {
+        return balance;
+    }
+
+    // Protected method to update balance safely
+    protected void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    // Common implementation
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        }
+    }
+
+    // Abstract method
+    public abstract void withdraw(double amount);
+}
+
+// Concrete Class
+class SavingsAccount extends BankAccount {
+
+    public SavingsAccount(double balance) {
+        super(balance);
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        if (amount <= getBalance()) {
+            setBalance(getBalance() - amount);
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Insufficient Balance");
+        }
+    }
+
+    @Override
+    public void displayBalance() {
+        System.out.println("Current Balance: " + getBalance());
+    }
+}
+
+// Main Class
+public class Main {
+    public static void main(String[] args) {
+
+        SavingsAccount acc = new SavingsAccount(5000);
+
+        acc.deposit(2000);
+        acc.withdraw(1500);
+        acc.displayBalance();
+    }
+}
 
 ------------------------------------Encapsulation Programming Problems--------------------------------------
 
