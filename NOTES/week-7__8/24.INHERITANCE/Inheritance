@@ -1,0 +1,69 @@
+
+
+What is inheritance in Java? Why do we use inheritance?
+-->Inheritance is an OOP feature in Java where one class acquires the properties and behaviors of another class using the extends keyword.
+  The existing class is called the parent/superclass
+  The new class is called the child/subclass
+  
+  Why do we use inheritance?
+    Code reusability
+    Method overriding
+    Reduces code duplication
+    Supports runtime polymorphism
+    Creates IS-A relationship
+
+
+
+
+Explain the concept of parent (super) class and child (sub) class in Java. How does inheritance establish a relationship between them?
+
+
+What is single inheritance in Java? Explain with an example.
+
+
+What is multilevel inheritance in Java? Explain with an example.
+
+
+Why is multiple inheritance not supported in Java?
+
+
+What is hierarchical inheritance in Java? Provide an example.
+
+
+What is hybrid inheritance in Java? Explain with an example.
+
+
+What is the purpose of the extends and implements keywords in Java inheritance, and what are the key differences between them?
+
+
+How does constructor chaining work in inheritance?
+
+
+Can a subclass access private members of the superclass?
+
+
+Can we override static methods? Why or why not?
+
+
+What is HAS-A relationship and IS-A relationship in OOP?
+
+
+What happens when a method is declared final in a superclass?
+
+
+Can we override a private method? Why?
+
+
+What is the role of access modifiers in inheritance?
+
+
+What is the order of execution: static block, instance block, constructor in inheritance?
+
+
+Can final classes be inherited?
+
+
+How does multiple inheritance get achieved through interfaces?
+
+
+What is the difference between composition and aggregation?
