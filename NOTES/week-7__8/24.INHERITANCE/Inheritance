@@ -1,6 +1,6 @@
 
 
-What is inheritance in Java? Why do we use inheritance?
+1. What is inheritance in Java? Why do we use inheritance?
 -->Inheritance is an OOP feature in Java where one class acquires the properties and behaviors of another class using the extends keyword.
   The existing class is called the parent/superclass
   The new class is called the child/subclass
@@ -15,55 +15,382 @@ What is inheritance in Java? Why do we use inheritance?
 
 
 
-Explain the concept of parent (super) class and child (sub) class in Java. How does inheritance establish a relationship between them?
+2.Explain the concept of parent (super) class and child (sub) class in Java. How does inheritance establish a relationship between them?
+-->Parent/Superclass → Class whose properties are inherited.
+    Child/Subclass → Class that inherits properties from parent.
+    
+    Inheritance creates an IS-A relationship.
+    
+    Example:
+    
+    class Vehicle {
+        void start() {
+            System.out.println("Vehicle starts");
+        }
+    }
+    
+    class Car extends Vehicle {
+        void drive() {
+            System.out.println("Car drives");
+        }
+    }
+    
+    Here:
+    
+    Vehicle → Parent class
+    Car → Child class
+    Car IS-A Vehicle
 
 
-What is single inheritance in Java? Explain with an example.
 
 
-What is multilevel inheritance in Java? Explain with an example.
+3.What is single inheritance in Java? Explain with an example.
+-->When one child class inherits from one parent class.
+  Example
+  class A {
+      void display() {
+          System.out.println("Class A");
+      }
+  }
+  
+  class B extends A {
+      void show() {
+          System.out.println("Class B");
+      }
+  }
+  B inherits from A.
 
 
-Why is multiple inheritance not supported in Java?
+
+4.What is multilevel inheritance in Java? Explain with an example.
+-->When a class inherits from another inherited class.
+    Example
+    class A {
+        void methodA() {
+            System.out.println("A");
+        }
+    }
+    
+    class B extends A {
+        void methodB() {
+            System.out.println("B");
+        }
+    }
+    
+    class C extends B {
+        void methodC() {
+            System.out.println("C");
+        }
+    }
+    Here:  
+      C inherits B
+      B inherits A
 
 
-What is hierarchical inheritance in Java? Provide an example.
+
+5.Why is multiple inheritance not supported in Java?
+-->Java does not support multiple inheritance with classes to avoid ambiguity problems (Diamond Problem).
+    Example Problem
+    class A {
+        void show() {}
+    }
+    
+    class B {
+        void show() {}
+    }
+    
+    // class C extends A, B  // Not allowed
+    
+    Java cannot decide which show() method to inherit.
+    
+    Java achieves multiple inheritance using interfaces.
 
 
-What is hybrid inheritance in Java? Explain with an example.
 
 
-What is the purpose of the extends and implements keywords in Java inheritance, and what are the key differences between them?
+6.What is hierarchical inheritance in Java? Provide an example.
+-->When multiple child classes inherit from one parent class.
+    Example
+    class Animal {
+        void eat() {
+            System.out.println("Eating");
+        }
+    }
+    
+    class Dog extends Animal {
+        void bark() {
+            System.out.println("Barking");
+        }
+    }
+    
+    class Cat extends Animal {
+        void meow() {
+            System.out.println("Meowing");
+        }
+    }
+    Both Dog and Cat inherit Animal.
 
 
-How does constructor chaining work in inheritance?
+
+7.What is hybrid inheritance in Java? Explain with an example.
+-->Hybrid inheritance is a combination of more than one type of inheritance. 
+    Java does not support hybrid inheritance with classes directly, but it can be achieved using interfaces.
+    
+    Example
+    interface A {
+        void show();
+    }
+    
+    class B {
+        void display() {
+            System.out.println("Display");
+        }
+    }
+    
+    class C extends B implements A {
+        public void show() {
+            System.out.println("Show");
+        }
+    }
 
 
-Can a subclass access private members of the superclass?
 
 
-Can we override static methods? Why or why not?
+8.What is the purpose of the extends and implements keywords in Java inheritance, and what are the key differences between them?
+-->
+| extends                     | implements                     |
+| --------------------------- | ------------------------------ |
+| Used for class inheritance  | Used for interface inheritance |
+| Class extends another class | Class implements interface     |
+| Supports single inheritance | Multiple interfaces allowed    |
+class A {}
+
+class B extends A {}
+
+interface Test {}
+
+class C implements Test {}
 
 
-What is HAS-A relationship and IS-A relationship in OOP?
+
+9.How does constructor chaining work in inheritance?
+-->Constructor chaining means calling parent constructor from child constructor using super().
+    Example
+    class A {
+        A() {
+            System.out.println("Parent Constructor");
+        }
+    }
+    
+    class B extends A {
+        B() {
+            super();
+            System.out.println("Child Constructor");
+        }
+    }
+      Output:
+        Parent Constructor
+        Child Constructo
+    
 
 
-What happens when a method is declared final in a superclass?
+10.Can a subclass access private members of the superclass?
+-->No, private members cannot be accessed directly outside the class.
+    
+    But they can be accessed indirectly using:
+    
+    Public methods
+    Protected getters/setters
+    Example
+    class A {
+        private int x = 10;
+    
+        public int getX() {
+            return x;
+        }
+    }
 
 
-Can we override a private method? Why?
+
+11.Can we override static methods? Why or why not?
+-->No, static methods cannot be overridden because they belong to the class, not objects.
+    
+    They are only method hidden.
+    
+    Example
+    class A {
+        static void show() {
+            System.out.println("A");
+        }
+    }
+    
+    class B extends A {
+        static void show() {
+            System.out.println("B");
+        }
+    }
 
 
-What is the role of access modifiers in inheritance?
 
 
-What is the order of execution: static block, instance block, constructor in inheritance?
+12.What is HAS-A relationship and IS-A relationship in OOP?
+-->In Java, IS-A and HAS-A are the two primary ways classes relate to one another to achieve code reusability and modularity
+    1. IS-A Relationship (Inheritance):
+          An IS-A relationship is based on inheritance. It represents a specialized version of a general class where a "child" class
+          inherits all the properties and behaviors of a "parent" class
+          
+          Implementation: Achieved using the extends keyword (for classes) or the implements keyword (for interfaces).
+          
+          Key Characteristic: It is unidirectional; for example, a Dog "is-an" Animal, but an Animal is not necessarily a Dog.
+          Example:
+              class Animal { }
+              class Dog extends Animal { } // Dog IS-A Animal
+              
+            Purpose: Primarily used for polymorphism and to avoid code redundancy by inheriting fields and methods.
+    
+    2. HAS-A Relationship (Composition/Aggregation)
+    
+          A HAS-A relationship is based on association. It occurs when one class contains a reference to an instance of another 
+          class as a member field.
+          
+          Implementation: Achieved by declaring an object of one class as an instance variable in another class.
+    
+    Two Forms:
+        Composition: A strong relationship where the contained object cannot exist without the parent (e.g., a Car has an Engine).
+        
+        Aggregation: A weak relationship where both objects can exist independently (e.g., a Library has Books).
+        
+        class Engine { }
+        class Car {
+            private Engine engine = new Engine(); // Car HAS-A Engine
+        }
+        
+        Purpose: Promotes loose coupling and flexibility, as the implementation of the contained object can be changed without affecting
+        the parent class.
+        
 
 
-Can final classes be inherited?
 
 
-How does multiple inheritance get achieved through interfaces?
 
 
-What is the difference between composition and aggregation?
+13.What happens when a method is declared final in a superclass?
+-->A final method cannot be overridden by subclasses.
+    Example
+    class A {
+        final void display() {
+            System.out.println("Final Method");
+        }
+    }
+
+
+
+14.Can we override a private method? Why?
+-->No.
+  Because private methods are not visible to subclasses, so they are not inherited.
+
+
+
+15.What is the role of access modifiers in inheritance?
+-->
+| Modifier  | Same Class | Subclass          | Other Package             |
+| --------- | ---------- | ----------------- | ------------------------- |
+| private   | Yes        | No                | No                        |
+| default   | Yes        | Only same package | No                        |
+| protected | Yes        | Yes               | Yes (through inheritance) |
+| public    | Yes        | Yes               | Yes                       |
+
+
+
+16.What is the order of execution: static block, instance block, constructor in inheritance?
+-->Order:
+    Static block
+    Instance block
+    Constructor
+    Parent executes first, then child.
+    Example
+class A {
+    static {
+        System.out.println("Parent Static");
+    }
+
+    {
+        System.out.println("Parent Instance");
+    }
+
+    A() {
+        System.out.println("Parent Constructor");
+    }
+}
+
+class B extends A {
+    static {
+        System.out.println("Child Static");
+    }
+
+    {
+        System.out.println("Child Instance");
+    }
+
+    B() {
+        System.out.println("Child Constructor");
+    }
+}
+
+
+
+17.Can final classes be inherited?
+-->No.
+    A final class cannot be extended.
+    
+    Example
+    final class A {}
+    
+    // class B extends A {} // Error
+
+
+
+
+18.How does multiple inheritance get achieved through interfaces?
+-->A class can implement multiple interfaces.
+Example
+interface A {
+    void show();
+}
+
+interface B {
+    void display();
+}
+
+class C implements A, B {
+
+    public void show() {
+        System.out.println("Show");
+    }
+
+    public void display() {
+        System.out.println("Display");
+    }
+}
+
+
+19.What is the difference between composition and aggregation?
+-->
+| Composition                      | Aggregation                   |
+| -------------------------------- | ----------------------------- |
+| Strong relationship              | Weak relationship             |
+| Child cannot exist independently | Child can exist independently |
+| Example: House-Room              | Example: College-Student      |
+
+  Composition Example
+      class Engine {}
+      
+      class Car {
+          private Engine e = new Engine();
+      }
+  Aggregation Example
+      class Student {}
+      
+      class College {
+          Student s;
+      }
