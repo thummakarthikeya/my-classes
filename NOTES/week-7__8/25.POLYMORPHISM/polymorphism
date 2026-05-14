@@ -1,0 +1,33 @@
+1. What is polymorphism in Java?
+
+2. What is the difference between compile-time/early binding/static polymorphism and runtime/late binding/dynamic polymorphism?
+
+3. How does method overloading achieve compile-time polymorphism?
+
+4. How does method overriding achieve runtime polymorphism?
+
+5. What is dynamic method dispatch in Java, and how does the JVM resolve method calls at runtime?
+
+6. What is method hiding in Java? Why static methods cannot participate in runtime polymorphism?
+
+7. What is the role of @Override annotation?
+
+8. What are the rules to override a method?
+
+9. What is covariant return type?
+
+10. Rules for method overloading in Java?
+
+11. What is upcasting and downcasting? Why is downcasting risky?
+
+12. Can final, static, or private methods be overridden in Java?
+
+13. Can main() be overridden?
+
+14. Why constructors cannot be overridden?
+
+15. Can we override default methods in an interface?
+
+16. Can overloading be based on access modifiers?
+
+17. Can a subclass use a different access modifier when overriding a superclass method? Explain with an example.
