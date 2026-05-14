@@ -1,33 +1,254 @@
 1. What is polymorphism in Java?
+-->Polymorphism means “many forms.”
+    In Java, one method or object can behave differently in different situations.
+    
+    Types:
+    Compile-time polymorphism → Method Overloading
+    Runtime polymorphism → Method Overriding
+    Example
+    class Animal {
+        void sound() {
+            System.out.println("Animal sound");
+        }
+    }
+    
+    class Dog extends Animal {
+        void sound() {
+            System.out.println("Dog barks");
+        }
+    }
+
+
 
 2. What is the difference between compile-time/early binding/static polymorphism and runtime/late binding/dynamic polymorphism?
+-->
+| Compile-time Polymorphism            | Runtime Polymorphism             |
+| ------------------------------------ | -------------------------------- |
+| Achieved using method overloading    | Achieved using method overriding |
+| Method call resolved at compile time | Method call resolved at runtime  |
+| Also called static binding           | Also called dynamic binding      |
+| Faster                               | Slightly slower                  |
+
+
 
 3. How does method overloading achieve compile-time polymorphism?
+-->Method overloading means multiple methods with the same name but different parameters.
+
+Compiler decides which method to call during compilation.
+
+Example
+class MathOperation {
+
+    void add(int a, int b) {
+        System.out.println(a + b);
+    }
+
+    void add(double a, double b) {
+        System.out.println(a + b);
+    }
+}
+
+
+
 
 4. How does method overriding achieve runtime polymorphism?
+-->Method overriding occurs when subclass provides its own implementation of superclass method.
+    
+    Method call is decided at runtime based on object type.
+    
+    Example
+    class Animal {
+        void sound() {
+            System.out.println("Animal sound");
+        }
+    }
+    
+    class Dog extends Animal {
+        void sound() {
+            System.out.println("Dog barks");
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            Animal a = new Dog();
+            a.sound();
+        }
+    }
+    Output
+    Dog barks
+
+
 
 5. What is dynamic method dispatch in Java, and how does the JVM resolve method calls at runtime?
+-->Dynamic method dispatch in Java is the process by which a call to an overridden method is resolved at runtime rather than compile
+    time, also known as Runtime Polymorphism. Using a superclass reference to hold a subclass object, the JVM decides which method version 
+    to execute based on the actual object type, not the reference type.
+   Example:
+      Animal a = new Dog();
+      a.sound();
+
 
 6. What is method hiding in Java? Why static methods cannot participate in runtime polymorphism?
+-->When subclass defines a static method with same name as superclass static method, it is called method hiding.
+    Static methods belong to class, not objects.
+    Therefore they are resolved at compile time.
+    
+    Example
+    class A {
+        static void show() {
+            System.out.println("A");
+        }
+    }
+    
+    class B extends A {
+        static void show() {
+            System.out.println("B");
+        }
+    }
+
 
 7. What is the role of @Override annotation?
+-->@Override tells compiler that method is intended to override superclass method.
+    If method does not actually override, compiler gives error.
+    Example:
+      @Override
+      void display() {
+      }
+      
+      Benefits:
+        Improves readability
+        Prevents mistakes
+
 
 8. What are the rules to override a method?
+-->Method name must be same
+    Parameters must be same
+    Return type should be same or covariant
+    Access modifier cannot be more restrictive
+    Final methods cannot be overridden
+    Static methods cannot be overridden
+    Private methods cannot be overridden
+
+
 
 9. What is covariant return type?
+-->Covariant return type in Java means that when a subclass overrides a method of the superclass, the overridden method can return a 
+    subclass type instead of the superclass return type.
+
+    parent method returns parent type
+    
+    child overridden method returns child type
+    Example:
+    class Animal { }
+    
+    class Dog extends Animal { }
+    
+    class A {
+        Animal get() {
+            return new Animal();
+        }
+    }
+    
+    class B extends A {
+        Dog get() {
+            return new Dog();
+        }
+    }
+
+
 
 10. Rules for method overloading in Java?
+-->Method name must be same
+    Parameters must differ
+    Return type alone cannot overload method
+    Can change number/type/order of parameters
+    Valid Example
+    void add(int a)
+    void add(int a, int b)
+    void add(double a, double b)
+
+
 
 11. What is upcasting and downcasting? Why is downcasting risky?
+-->Upcasting   
+    Converting child object into parent reference.
+    
+    Animal a = new Dog();
+    Downcasting
+    
+    Converting parent reference back to child reference.
+    
+    Dog d = (Dog) a;
+    Why risky?
+    
+    Wrong downcasting causes ClassCastException.
+
+
 
 12. Can final, static, or private methods be overridden in Java?
+-->
+| Method Type | Can Override?           |
+| ----------- | ----------------------- |
+| final       | No                      |
+| static      | No (method hiding only) |
+| private     | No                      |
+
 
 13. Can main() be overridden?
+-->No, because main() is static.
+    Static methods cannot participate in runtime polymorphism.
+
 
 14. Why constructors cannot be overridden?
+-->Constructors cannot be overridden because they are not inherited by subclasses, and overriding requires inheritance. 
+    Additionally, constructors run during object creation before polymorphism is active, whereas overriding depends on runtime
+    polymorphism. A subclass can only use super()` to chain constructors, not redefine them.
+
 
 15. Can we override default methods in an interface?
+-->Yes.
+    Classes implementing interface can override default methods.
+    
+    Example
+    interface A {
+        default void show() {
+            System.out.println("A");
+        }
+    }
+    
+    class B implements A {
+        public void show() {
+            System.out.println("B");
+        }
+    }
+
+
 
 16. Can overloading be based on access modifiers?
+-->No.....overloaded methods do not need to have the same access modifiers.
 
 17. Can a subclass use a different access modifier when overriding a superclass method? Explain with an example.
+-->Yes, but visibility can only be increased, not reduced.
+    
+    Example:
+        class A {
+            protected void show() {
+                System.out.println("A");
+            }
+        }
+        
+        class B extends A {
+            public void show() {
+                System.out.println("B");
+            }
+        }
+
+    Invalid Example:
+        class A {
+            public void show() {}
+        }
+        
+        class B extends A {
+            protected void show() {} // Error
+        }
