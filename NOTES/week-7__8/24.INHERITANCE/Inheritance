@@ -394,3 +394,43 @@ class C implements A, B {
       class College {
           Student s;
       }
+
+
+
+
+
+
+
+
+
+
+
+coding
+-------
+
+Write Java programs to demonstrate single, multilevel, hierarchical, and hybrid inheritance.
+
+
+Write a program to access parent class members using super?
+
+
+Write a program to show constructor execution order in inheritance?
+
+
+Write a program showing why multiple inheritance is not supported with classes?
+
+
+Write a program using final class in inheritance?
+
+
+Write a program demonstrating diamond problem using interfaces and show how Java resolves it?
+
+
+Write a program demonstrating composition vs inheritance with a real-life example (e.g., Car HAS-A Engine vs Car IS-A Vehicle).
+
+
+Write a program to show that final methods cannot be overridden by a subclass. Try to override and show compiler behavior.
+
+
+Create an abstract class with both abstract and non-abstract methods. Extend it and implement the abstract methods in the subclass.
+
