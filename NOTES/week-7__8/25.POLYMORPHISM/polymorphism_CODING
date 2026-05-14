@@ -1,0 +1,55 @@
+Programs
+
+1) Create a class to calculate the area of different shapes using method overloading:
+
+area(double radius) → Circle
+area(double length, double width) → Rectangle
+area(double side) → Square
+
+Explain how overloading allows using the same method name for different shapes.
+
+
+2) Demonstrate an ambiguity problem with overloaded methods:
+
+test(int a, double b)
+test(double a, int b)
+
+Call with (10, 10) and resolve ambiguity using type casting.
+
+Explain why the compiler throws an error and how explicit casting fixes it.
+
+
+3) Create classes Animal and Dog. Override sound() in Dog to print “Bark”.
+
+Use Animal a = new Dog() and call sound().
+
+Explain how runtime polymorphism works here.
+
+
+4) Create an abstract class Shape with method draw().
+
+Implement Circle, Triangle, and Rectangle classes overriding draw().
+
+Use a Shape[] array to call draw() for all objects.
+
+Explain dynamic method dispatch.
+
+
+5) Create a class Bank with method rateOfInterest().
+
+Subclasses: SBI, HDFC, ICICI → override the method with different rates.
+
+Use a parent reference to call the method for each bank.
+
+Explain runtime polymorphism in real-world context.
+
+
+6) Online Order Example:
+
+Parent class OnlineStore with placeOrder()
+
+Child classes: Flipkart, Amazon, Ajio override placeOrder()
+
+Use parent reference to call method.
+
+Explain polymorphic behavior in online shopping.
