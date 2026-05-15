@@ -1,1 +1,285 @@
 
+1) Build an ATM abstraction:
+Abstract class ATM with method process()
+Withdraw and Deposit must override process()
+Call using parent reference.
+-->abstract class ATM {
+
+    abstract void process();
+}
+
+class Withdraw extends ATM {
+
+    void process() {
+        System.out.println("Processing Withdraw");
+    }
+}
+
+class Deposit extends ATM {
+
+    void process() {
+        System.out.println("Processing Deposit");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        ATM a;
+
+        a = new Withdraw();
+        a.process();
+
+        a = new Deposit();
+        a.process();
+    }
+}
+
+
+2) Create an interface Payment with pay().
+Implement UPI, CreditCard, NetBanking and test.
+-->interface Payment {
+
+    void pay();
+}
+
+class UPI implements Payment {
+
+    public void pay() {
+        System.out.println("Payment using UPI");
+    }
+}
+
+class CreditCard implements Payment {
+
+    public void pay() {
+        System.out.println("Payment using Credit Card");
+    }
+}
+
+class NetBanking implements Payment {
+
+    public void pay() {
+        System.out.println("Payment using Net Banking");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Payment p;
+
+        p = new UPI();
+        p.pay();
+
+        p = new CreditCard();
+        p.pay();
+
+        p = new NetBanking();
+        p.pay();
+    }
+}
+
+
+
+3) Create an abstract class Employee:
+Properties:
+name
+id
+Abstract method:
+calculateSalary()
+
+Create PermanentEmployee and ContractEmployee with different salary formulas.
+-->abstract class Employee {
+
+    String name;
+    int id;
+
+    Employee(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    abstract double calculateSalary();
+}
+
+class PermanentEmployee extends Employee {
+
+    double salary;
+
+    PermanentEmployee(String name, int id, double salary) {
+        super(name, id);
+        this.salary = salary;
+    }
+
+    double calculateSalary() {
+        return salary + 5000;
+    }
+}
+
+class ContractEmployee extends Employee {
+
+    int hours;
+    double rate;
+
+    ContractEmployee(String name, int id, int hours, double rate) {
+        super(name, id);
+        this.hours = hours;
+        this.rate = rate;
+    }
+
+    double calculateSalary() {
+        return hours * rate;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Employee e1 = new PermanentEmployee("Karthikeya", 101, 30000);
+        Employee e2 = new ContractEmployee("Ravi", 102, 20, 500);
+
+        System.out.println(e1.calculateSalary());
+        System.out.println(e2.calculateSalary());
+    }
+}
+
+
+
+4) Create an abstract class Order:
+Properties:
+orderId
+customerName
+Abstract method:
+calculateBill()
+
+Create subclasses OnlineOrder, CashOnDeliveryOrder with different bill logics.
+-->
+abstract class Order {
+
+    int orderId;
+    String customerName;
+
+    Order(int orderId, String customerName) {
+        this.orderId = orderId;
+        this.customerName = customerName;
+    }
+
+    abstract double calculateBill();
+}
+
+class OnlineOrder extends Order {
+
+    double amount;
+
+    OnlineOrder(int orderId, String customerName, double amount) {
+        super(orderId, customerName);
+        this.amount = amount;
+    }
+
+    double calculateBill() {
+        return amount + 50;
+    }
+}
+
+class CashOnDeliveryOrder extends Order {
+
+    double amount;
+
+    CashOnDeliveryOrder(int orderId, String customerName, double amount) {
+        super(orderId, customerName);
+        this.amount = amount;
+    }
+
+    double calculateBill() {
+        return amount + 100;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Order o1 = new OnlineOrder(1, "Karthikeya", 1000);
+        Order o2 = new CashOnDeliveryOrder(2, "Ravi", 1000);
+
+        System.out.println(o1.calculateBill());
+        System.out.println(o2.calculateBill());
+    }
+}
+
+
+
+
+
+5) Try changing the access modifier of the abstract method:
+public
+private
+protected
+default
+final abstract
+static abstract
+
+Write down which are allowed and which cause compile errors.
+-->
+| Modifier           | Allowed or Error | Reason                                                  |
+| ------------------ | ---------------- | ------------------------------------------------------- |
+| public abstract    | Allowed          | Accessible everywhere                                   |
+| protected abstract | Allowed          | Accessible within package and subclass                  |
+| default abstract   | Allowed          | Package-level access                                    |
+| private abstract   | Compile Error    | Private methods cannot be overridden                    |
+| final abstract     | Compile Error    | final prevents overriding, abstract requires overriding |
+| static abstract    | Compile Error    | static methods belong to class and cannot be overridden |
+
+
+
+6) Write a Java program to demonstrate how interfaces help achieve loose coupling.
+-->interface Engine {
+
+    void start();
+}
+
+class PetrolEngine implements Engine {
+
+    public void start() {
+        System.out.println("Petrol Engine Started");
+    }
+}
+
+class DieselEngine implements Engine {
+
+    public void start() {
+        System.out.println("Diesel Engine Started");
+    }
+}
+
+class Car {
+
+    Engine e;
+
+    Car(Engine e) {
+        this.e = e;
+    }
+
+    void drive() {
+        e.start();
+        System.out.println("Car is Running");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Engine e1 = new PetrolEngine();
+        Car c1 = new Car(e1);
+        c1.drive();
+
+        Engine e2 = new DieselEngine();
+        Car c2 = new Car(e2);
+        c2.drive();
+    }
+}
