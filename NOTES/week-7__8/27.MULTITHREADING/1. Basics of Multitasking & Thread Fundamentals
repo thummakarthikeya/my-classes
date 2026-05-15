@@ -1,0 +1,11 @@
+1. Basics of Multitasking & Thread Fundamentals
+-->Multitasking is the process of executing multiple tasks simultaneously within a system. In Java, multitasking helps improve CPU
+    utilization and application performance. It can be achieved using processes or threads.
+1) What is multitasking in Java?
+2) What is the difference between process-based and thread-based multitasking?
+3) What is a thread in Java?
+4) What is multithreading, and why is it needed & advantages of multithreading?
+5) What is the main thread in Java & how is the main thread created automatically by the JVM?
+6) What happens if the main thread terminates before child threads?
+7) How many ways can you create a thread in Java?
+8) What is the difference between extending Thread class and implementing Runnable interface?
