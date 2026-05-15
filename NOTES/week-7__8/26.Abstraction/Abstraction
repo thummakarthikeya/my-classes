@@ -2,33 +2,376 @@
 Interview Questions
 
 1) What is abstraction in Java? Explain with a real-world example.
+-->Abstraction means hiding internal implementation details and showing only essential functionality to the user.
+    
+    Real-world example:
+    
+    When you drive a car, you use:
+    
+    steering
+    brake
+    accelerator
+    
+    You don’t know the complete internal engine mechanism.
+    You only use the required features.
+    
+    In Java:
+    
+    Abstract class and interface are used to achieve abstraction.
+    abstract class Vehicle {
+        abstract void start();
+    }
+    
+    class Car extends Vehicle {
+        void start() {
+            System.out.println("Car starts with key");
+        }
+    }
+    
 
 2) How is abstraction different from encapsulation?
+-->
+    | Abstraction                             | Encapsulation                                        |
+    | --------------------------------------- | ---------------------------------------------------- |
+    | Hides implementation details            | Hides data                                           |
+    | Focuses on “what to do”                 | Focuses on “how to protect data”                     |
+    | Achieved using abstract class/interface | Achieved using private variables and getters/setters |
+    | Example: ATM machine operations         | Example: Bank account balance hidden                 |
+    Simple line:
+    Abstraction → Hiding complexity
+    Encapsulation → Hiding data
+
+
 
 3) How can you achieve abstraction in Java?
+-->Java achieves abstraction using:
+    
+    1. Abstract Class
+    Can contain:
+    abstract methods
+    normal methods
+    abstract class Animal {
+        abstract void sound();
+    }
+    2. Interface
+    Used for complete abstraction (before Java 8)
+    interface Animal {
+        void sound();
+    }
+    
 
 4) What is the difference between an interface and an abstract class (before Java 8 vs after Java 8)?
+-->
+| Feature              | Abstract Class    | Interface Before Java 8  | Interface After Java 8      |
+| -------------------- | ----------------- | ------------------------ | --------------------------- |
+| Methods              | Abstract + normal | Only abstract methods    | Abstract + default + static |
+| Variables            | Any type          | public static final only | Same                        |
+| Constructor          | Yes               | No                       | No                          |
+| Multiple inheritance | No                | Yes                      | Yes                         |
+| Access modifiers     | Any               | public only              | public only                 |
+    Before Java 8:
+        Interfaces only had abstract methods.
+    
+    After Java 8:
+      Interfaces support:
+          default methods
+          static methods
+    This was introduced to support backward compatibility.
+
+
 
 5) Can an abstract class implement an interface?
+-->Yes.
+    An abstract class can implement an interface without providing implementation for all methods.
+
+    When a normal (concrete) class implements an interface, it is mandatory to override and provide implementation for all abstract
+    methods of that interface, otherwise the class must be declared abstract. However, overriding default methods is not mandatory 
+    because they already contain implementation inside the interface. If an abstract class implements an interface, it is not compulsory 
+    to override the interface methods because an abstract class is allowed to remain incomplete. Similarly, when one interface extends
+    another interface, it is also not mandatory to implement or override the inherited methods, because interfaces only define method 
+    declarations, and the responsibility of implementation is passed to the final concrete class.
+
+    interface Test {
+        void display();
+    }
+    
+    abstract class Demo implements Test {
+    }
+    
+    The subclass must implement the remaining methods.
+
+
 
 6) What is abstract method?
+-->An abstract method:
+    
+    has only declaration
+    does not contain a body
+    must be implemented by subclass
+    abstract void show();
+    
+    Example:
+    
+    abstract class Shape {
+        abstract void draw();
+    }
+
 
 7) If an abstract class contains a constructor, why are we still unable to create objects of an abstract class? Explain the reason behind having a constructor there?
+-->Why object creation is not allowed:
+    
+    Abstract classes are incomplete because they may contain abstract methods without implementation.
+    
+    So Java prevents object creation.
+    
+    abstract class A {
+        abstract void show();
+    }
+    A obj = new A(); // ERROR
+    Then why constructor?
+    
+    Constructor is used for:
+    
+    initializing common variables
+    constructor chaining
+    
+    When subclass object is created, parent abstract class constructor executes first.
+    
+    abstract class Animal {
+        Animal() {
+            System.out.println("Animal constructor");
+        }
+    }
+
+
 
 8) Can we use default and static methods in an interface? Why were they introduced?
+-->Yes.
+    Default methods
+    
+    Allow method body inside interface.
+    
+    default void show() {
+        System.out.println("Hello");
+    }
+    Static methods
+    static void display() {
+        System.out.println("Static");
+    }
+    Why introduced?
+    
+    To maintain backward compatibility.
+    
+    Suppose an old interface is used by 100 classes.
+    If a new method is added:
+    
+    all 100 classes would break.
+    
+    Default methods solve this problem.
+
+
 
 9) What is marker interface? Name two examples?
+-->A marker interface is an interface with no methods or variables.
+    
+    Used to provide special information to JVM.
+    
+    Examples:
+    
+    Serializable
+    Cloneable
+    
+    Example:
+    
+    interface Test {
+    }
+
 
 10) Can an interface contain variables? What is their default nature?
+-->Yes.
+    All variables in an interface are automatically:
+    
+    public
+    static
+    final
+    
+    Example:
+    
+    interface Demo {
+        int x = 10;
+    }
+    
+    Actually Java treats it as:
+    
+    public static final int x = 10;
+
 
 11) Explain Dynamic Method Dispatch in relation to abstraction?
+-->Dynamic Method Dispatch means:
+    
+    method call is decided at runtime
+    based on object type
+    
+    Example:
+    
+    abstract class Animal {
+        abstract void sound();
+    }
+    
+    class Dog extends Animal {
+        void sound() {
+            System.out.println("Bark");
+        }
+    }
+    
+    class Cat extends Animal {
+        void sound() {
+            System.out.println("Meow");
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            Animal a;
+    
+            a = new Dog();
+            a.sound();
+    
+            a = new Cat();
+            a.sound();
+        }
+    }
+    
+    This supports:
+    
+    runtime polymorphism
+    abstraction
+
 
 12) If Java does not support multiple inheritance, how can a class implement multiple interfaces?
+-->Java does not support multiple inheritance with classes because of the diamond problem.
+
+    But interfaces only contain method declarations (before Java 8), so ambiguity does not occur.
+    
+    Example:
+    
+    interface A {
+        void show();
+    }
+    
+    interface B {
+        void display();
+    }
+    
+    class Test implements A, B {
+    
+        public void show() {
+            System.out.println("Show");
+        }
+    
+        public void display() {
+            System.out.println("Display");
+        }
+    }
+
+==> what is an concrete class in java?
+-->A concrete class in Java is a standard class that has a complete implementation for all of its methods. Unlike abstract classes or 
+    interfaces, a concrete class contains no unimplemented (abstract) methods, making it a fully functional blueprint that can be used 
+    to create objects.
+    Key CharacteristicsInstantiation: You can create instances (objects) of a concrete class using the new keyword.
+    Method Implementation: Every method in the class must have a body (logic defined between {}).
+    Inheritance: It can extend an abstract class or implement multiple interfaces, provided it gives a concrete implementation for every
+    inherited abstract method.
+    Modality: It is never declared with the abstract keyword. However, it can be declared as final if you want to prevent other classes 
+    from extending it.
+
 
 13) What happens when a subclass does not implement all abstract methods of its abstract parent class? Why does Java force this?
+-->Then the subclass must also be declared abstract.
+    
+    abstract class A {
+        abstract void show();
+    }
+    
+    abstract class B extends A {
+    }
+    
+    Otherwise compile-time error occurs.
+    
+    Why Java forces this?
+    
+    Because incomplete classes should not create objects.
+    
+    Java ensures:  every concrete class gives complete implementation.
+
+
+
 
 14) Why do interfaces in Java (before Java 8) allow only public abstract methods? Explain logically.
+-->Interfaces are used for:
+    
+    achieving complete abstraction
+    defining a contract
+    
+    Methods must be:
+    
+    public → accessible everywhere
+    abstract → implementation provided by subclass
+    
+    If methods were private/protected:
+    
+    implementing classes could not access them properly.
+    
+    So Java kept interface methods:
+    
+    public
+    abstract
+    
+    by default.
+
+
 
 15) Is it mandatory for an abstract class to contain abstract methods?
+-->No.
+    
+    An abstract class may contain:
+    
+    only normal methods
+    no abstract methods
+    
+    Example:
+    
+    abstract class Demo {
+    
+        void show() {
+            System.out.println("Hello");
+        }
+    }
+    
+    Still object creation is not allowed because class is declared abstract.
+
+
 
 16) Why can’t a method in Java be declared as both abstract and synchronized at the same time? Explain logically.
+-->Abstract method:
+    has no body
+    Synchronized method:
+    requires method body for thread locking mechanism
+    
+    Example:
+    
+    synchronized void show() {
+    }
+    
+    Since abstract methods do not have implementation, synchronization cannot be applied.
+    
+    So this is invalid:
+    
+    abstract synchronized void show(); // ERROR
+    
+    Because:
+    
+    abstract → no body
+    synchronized → needs body
+    
+    Both contradict each other.
