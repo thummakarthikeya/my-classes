@@ -1,0 +1,278 @@
+Thread Lifecycle and Methods
+
+Interview Questions
+1) Explain the lifecycle (states) of a thread in Java?
+-->The thread lifecycle represents the different stages a thread goes through from creation to termination.
+    
+    A thread in Java moves through several states during its execution.
+    
+    Lifecycle Flow
+    NEW → RUNNABLE → RUNNING → WAITING/BLOCKED/TIMED_WAITING → TERMINATED
+    Explanation
+    1.NEW
+        Thread object is created but not started.
+    2.RUNNABLE
+        Thread is ready to run and waiting for CPU.
+    3.RUNNING
+        Thread is currently executing.
+    4.WAITING / BLOCKED / TIMED_WAITING
+        Thread is temporarily inactive due to waiting, sleeping, joining, or lock access.
+    5.TERMINATED (DEAD)
+        Thread execution is completed.
+
+2) What are the different states in a thread’s lifecycle?
+-->Java provides the following thread states through:
+    
+    Thread.State
+    States of a Thread
+    State	Description
+        NEW	-->Thread created but not started
+        RUNNABLE-->	Ready for execution
+        BLOCKED	-->Waiting to acquire lock
+        WAITING	-->Waiting indefinitely
+        TIMED_WAITING-->	Waiting for specified time
+        TERMINATED-->	Thread execution completed
+
+
+
+3) What is the difference between start() and run() method?
+-->
+| `start()`                           | `run()`                    |
+| ----------------------------------- | -------------------------- |
+| Creates a new thread                | Normal method call         |
+| JVM internally calls `run()`        | Executes in current thread |
+| Executes concurrently               | No multithreading          |
+| Thread scheduler controls execution | Runs sequentially          |
+
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Child Thread");
+    }
+}
+
+class Demo {
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+
+        t.start(); // Creates new thread
+    }
+}
+
+
+
+4) What happens if we call run() directly instead of start()?
+-->If run() is called directly:
+      
+      No new thread is created
+      It behaves like a normal method call
+      Execution happens inside the main thread only
+      Example
+      class MyThread extends Thread {
+          public void run() {
+              System.out.println(Thread.currentThread().getName());
+          }
+      }
+      
+      class Demo {
+          public static void main(String[] args) {
+              MyThread t = new MyThread();
+      
+              t.run(); // Direct method call
+          }
+      }
+      Output
+      main
+      Important Point
+      start()
+      
+      creates a new thread.
+      
+      run()
+      
+      does not create a new thread.
+
+
+5) What does the join() method do?
+-->The join() method is used to make one thread wait until another thread completes execution.
+      
+      Syntax
+      t.join();
+      Example
+      class MyThread extends Thread {
+          public void run() {
+              for(int i=1; i<=5; i++) {
+                  System.out.println(i);
+              }
+          }
+      }
+      
+      class Demo {
+          public static void main(String[] args) throws Exception {
+              MyThread t = new MyThread();
+      
+              t.start();
+      
+              t.join();
+      
+              System.out.println("Main Thread Ends");
+          }
+      }
+      Output
+      1
+      2
+      3
+      4
+      5
+      Main Thread Ends
+      
+      Main thread waits until child thread finishes.
+      
+
+6) What is the sleep() method?
+-->The sleep() method temporarily pauses the execution of the current thread for a specified time.
+
+    Syntax
+    Thread.sleep(milliseconds);
+    Example
+    class Demo {
+        public static void main(String[] args) throws Exception {
+    
+            for(int i=1; i<=5; i++) {
+    
+                System.out.println(i);
+    
+                Thread.sleep(1000);
+            }
+        }
+    }
+    Output
+    
+    Numbers print every 1 second.
+    
+    Important Points
+    sleep() is a static method
+    Causes TIMED_WAITING state
+    Does not release locks
+
+
+
+7) What does yield() do?
+-->The yield() method pauses the currently executing thread temporarily and gives a chance to other threads of same priority to execute.
+    
+    Syntax
+      Thread.yield();
+      Important Points
+      It is a static method
+      It is only a suggestion to the thread scheduler
+      Scheduler may ignore it
+      Example
+        Thread.yield();
+
+
+8) What is interrupt(), and how does it work?
+-->The interrupt() method is used to interrupt a thread that is in sleeping or waiting state.
+    
+    Syntax
+    t.interrupt();
+    Example
+    class MyThread extends Thread {
+    
+        public void run() {
+    
+            try {
+                Thread.sleep(5000);
+            }
+            catch(InterruptedException e) {
+                System.out.println("Thread Interrupted");
+            }
+        }
+    }
+    
+    class Demo {
+    
+        public static void main(String[] args) {
+    
+            MyThread t = new MyThread();
+    
+            t.start();
+    
+            t.interrupt();
+        }
+    }
+    Output
+    Thread Interrupted
+
+
+
+9) What is the isAlive() method used for?
+-->The isAlive() method checks whether a thread is currently running or not.
+      
+      Syntax
+      t.isAlive();
+      Return Type
+      true → thread is running
+      false → thread is not running
+      Example
+      class MyThread extends Thread {
+      
+          public void run() {
+              System.out.println("Running");
+          }
+      }
+      
+      class Demo {
+      
+          public static void main(String[] args) {
+      
+              MyThread t = new MyThread();
+      
+              System.out.println(t.isAlive());
+      
+              t.start();
+      
+              System.out.println(t.isAlive());
+          }
+      }
+
+
+
+10) What is the difference among sleep(), join() and yield()?
+-->
+| Method    | Purpose                           | Affects Which Thread | Releases Lock           | Waiting Type   |
+| --------- | --------------------------------- | -------------------- | ----------------------- | -------------- |
+| `sleep()` | Pause current thread              | Current thread       | No                      | Timed waiting  |
+| `join()`  | Wait for another thread to finish | Calling thread       | Yes (generally waiting) | Waiting        |
+| `yield()` | Give chance to other threads      | Current thread       | No                      | Runnable state |
+
+
+
+11) Can we restart a dead thread in Java?
+-->No, we cannot restart a dead thread in Java.
+    
+    Once a thread completes execution:
+    
+    It enters TERMINATED state
+    Calling start() again throws:
+    IllegalThreadStateException
+    Example
+    class MyThread extends Thread {
+    
+        public void run() {
+            System.out.println("Running");
+        }
+    }
+    
+    class Demo {
+    
+        public static void main(String[] args) {
+    
+            MyThread t = new MyThread();
+    
+            t.start();
+    
+            t.start(); // Exception
+        }
+    }
+    Output
+    Exception in thread "main"
+    java.lang.IllegalThreadStateException
