@@ -1,0 +1,129 @@
+Thread Priorities & Naming
+
+Interview Questions
+1) What are thread priorities, and how are they assigned?
+-->Thread priority is a number assigned to a thread that indicates the importance of the thread to the thread scheduler.
+    
+    Higher-priority threads usually get more CPU time compared to lower-priority threads.
+    
+    Java thread priorities range from:
+    
+    1 to 10
+    Assigning Priority
+    
+    Priority can be assigned using:
+    
+    setPriority(int priority)
+    Example
+    class MyThread extends Thread {
+    
+        public void run() {
+            System.out.println("Running");
+        }
+    }
+    
+    class Demo {
+    
+        public static void main(String[] args) {
+    
+            MyThread t = new MyThread();
+    
+            t.setPriority(8);
+    
+            t.start();
+        }
+    }
+
+
+
+2) What is the default thread priority?
+-->The default priority of every thread in Java is:
+    
+    5
+    
+    This is represented by:
+        Thread.NORM_PRIORITY
+        Important Point
+        
+        Child threads inherit the priority of their parent thread.
+    
+
+3) What are the constant values used for priorities (MIN_PRIORITY, NORM_PRIORITY, MAX_PRIORITY)?
+-->Java provides predefined constants in the Thread class.
+    
+    Constant	Value
+    Thread.MIN_PRIORITY	1
+    Thread.NORM_PRIORITY	5
+    Thread.MAX_PRIORITY	10
+    Example
+    System.out.println(Thread.MIN_PRIORITY);
+    System.out.println(Thread.NORM_PRIORITY);
+    System.out.println(Thread.MAX_PRIORITY);
+    Output
+    1
+    5
+    10
+
+
+
+4) Does thread priority guarantee order of execution?
+-->No, thread priority does NOT guarantee execution order.
+      
+      It is only a suggestion to the thread scheduler.
+      
+      Important Points
+      Higher priority threads usually get preference
+      Scheduler behavior depends on JVM and operating system
+      Lower priority threads may still execute first
+      Example
+      
+      Even if:
+        t1.setPriority(10);
+        t2.setPriority(1);
+      
+      t2 may execute before t1.
+
+
+
+5) How to set the name of a thread & How to get the name of a thread?
+-->
+    
+    Setting Thread Name
+    
+    Use:
+    
+    setName(String name)
+    Getting Thread Name
+    
+    Use:
+    
+    getName()
+    Example
+    class MyThread extends Thread {
+    
+        public void run() {
+    
+            System.out.println(Thread.currentThread().getName());
+        }
+    }
+    
+    class Demo {
+    
+        public static void main(String[] args) {
+    
+            MyThread t = new MyThread();
+    
+            t.setName("Child Thread");
+    
+            t.start();
+    
+            System.out.println(Thread.currentThread().getName());
+        }
+    }
+    Possible Output
+    main
+    Child Thread
+6) What happens if two threads have the same priority?
+7) Can we change thread name and priority after it starts?
+8) What is the difference between Thread.currentThread() and this?
+9) Can we call start() method twice on the same thread?
