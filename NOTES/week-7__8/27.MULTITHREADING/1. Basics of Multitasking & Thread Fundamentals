@@ -1,11 +1,214 @@
 1. Basics of Multitasking & Thread Fundamentals
+        
+
+1) What is multitasking in Java?
 -->Multitasking is the process of executing multiple tasks simultaneously within a system. In Java, multitasking helps improve CPU
     utilization and application performance. It can be achieved using processes or threads.
-1) What is multitasking in Java?
+        
+        Multitasking is the process of executing multiple tasks simultaneously in a system.
+        
+        In Java, multitasking allows a program to perform more than one activity at the same time, which improves:
+        
+        CPU utilization
+        Performance
+        Responsiveness of applications
+        Example:
+        Listening to music while downloading files
+        A web server handling multiple users at the same time
+        
+        Java supports two types of multitasking:
+        
+        Process-based multitasking
+        Thread-based multitasking
+
+
 2) What is the difference between process-based and thread-based multitasking?
+-->
+| Feature           | Process-Based Multitasking                        | Thread-Based Multitasking            |
+| ----------------- | ------------------------------------------------- | ------------------------------------ |
+| Unit of execution | Process                                           | Thread                               |
+| Memory            | Separate memory for each process                  | Shared memory within same process    |
+| Communication     | Difficult and slower                              | Easy and faster                      |
+| Creation cost     | High                                              | Low                                  |
+| Context switching | Heavy                                             | Lightweight                          |
+| Failure impact    | One process failure usually doesn’t affect others | One thread may affect entire process |
+| Example           | Opening Chrome + VS Code                          | Multiple tabs/tasks inside browser   |
+    Real-Time Example
+    Process = Entire WhatsApp application
+    Thread = Sending messages, receiving messages, notifications simultaneously
+
+
 3) What is a thread in Java?
+-->A thread is the smallest unit of execution inside a process.
+        
+        It is also called:
+        
+        Lightweight process
+        Independent path of execution
+        
+        Threads allow multiple tasks to run concurrently within a single program.
+        
+        Example:
+            In a video player:
+                One thread plays video
+                Another thread plays audio
+                Another thread loads subtitles
+
+
+
 4) What is multithreading, and why is it needed & advantages of multithreading?
+-->Multithreading
+        
+        Multithreading is the process of executing multiple threads simultaneously within a single program.
+        
+        Java provides built-in support for multithreading.
+        
+        Why is Multithreading Needed?
+        
+        Without multithreading:
+        
+        Programs become slow
+        UI freezes
+        CPU resources are wasted
+        
+        With multithreading:
+        
+        Multiple tasks run concurrently
+        Applications become faster and more responsive
+        Advantages of Multithreading
+        1. Better CPU Utilization
+        
+        CPU remains busy by executing multiple tasks.
+        
+        2. Faster Execution
+        
+        Multiple tasks execute simultaneously.
+        
+        3. Responsive Applications
+        
+        UI remains active even during heavy operations.
+        
+        Example:
+        
+        While downloading a file, you can still click buttons.
+        
+        4. Resource Sharing
+        
+        Threads share the same memory area.
+        
+        5. Economical
+        
+        Creating threads is cheaper than creating processes.
+        
+        6. Real-Time Processing
+        
+        Useful in:
+            Gaming
+            Web servers
+            Banking systems
+            Chat applications
 5) What is the main thread in Java & how is the main thread created automatically by the JVM?
+-->Main Thread  
+        The main thread is the first thread created automatically by the JVM when a Java program starts.
+        
+        Every Java program starts execution from:
+        
+        public static void main(String[] args)
+                This main() method runs inside the main thread.
+                How JVM Creates Main Thread Automatically
+                
+        When JVM starts execution:    
+                JVM loads the class
+                JVM creates the main thread automatically
+                Main thread executes the main() method
+        Example
+        class Demo {
+            public static void main(String[] args) {
+                System.out.println(Thread.currentThread().getName());
+            }
+        }
+        Output:
+            main  
+        Here:
+            Thread.currentThread()
+            returns the currently executing thread.
+
+
+
 6) What happens if the main thread terminates before child threads?
+-->If the main thread terminates:  
+        Child threads continue execution independently
+        JVM terminates only when all non-daemon threads finish execution
+        Example
+        class MyThread extends Thread {
+            public void run() {
+                for(int i=1; i<=5; i++) {
+                    System.out.println(i);
+                }
+            }
+        }
+        
+        class Demo {
+            public static void main(String[] args) {
+                MyThread t = new MyThread();
+                t.start();
+        
+                System.out.println("Main thread ended");
+            }
+        }
+        Possible Output
+        Main thread ended
+        1
+        2
+        3
+        4
+        5
+        
+        Even after main thread ends, child thread continues.
+
+
+
+
 7) How many ways can you create a thread in Java?
+-->There are mainly 2 ways:        
+        1. Extending Thread Class
+                class MyThread extends Thread {
+                    public void run() {
+                        System.out.println("Thread is running");
+                    }
+                }
+                class Demo {
+                    public static void main(String[] args) {
+                        MyThread t = new MyThread();
+                        t.start();
+                    }
+                }
+
+
+        2. Implementing Runnable Interface
+                class MyRunnable implements Runnable {
+                    public void run() {
+                        System.out.println("Thread is running");
+                    }
+                }
+                class Demo {
+                    public static void main(String[] args) {
+                        MyRunnable r = new MyRunnable();
+                
+                        Thread t = new Thread(r);
+                
+                        t.start();
+                    }
+                }
+
+
 8) What is the difference between extending Thread class and implementing Runnable interface?
+-->
+| Feature              | Extending Thread     | Implementing Runnable         |
+| -------------------- | -------------------- | ----------------------------- |
+| Inheritance          | Extends Thread class | Implements Runnable interface |
+| Multiple inheritance | Not possible         | Possible                      |
+| Flexibility          | Less flexible        | More flexible                 |
+| Resource sharing     | Difficult            | Easier                        |
+| Recommended          | Less preferred       | Most preferred                |
+| Method to override   | `run()`              | `run()`                       |
