@@ -124,6 +124,122 @@ Interview Questions
     main
     Child Thread
 6) What happens if two threads have the same priority?
+-->If two threads have the same priority:
+        
+        Their execution order depends on the thread scheduler
+        Usually executed using time slicing
+        Important Point
+        
+        Execution order is unpredictable.
+        
+        Both threads get equal chance for CPU execution.
+        When two or more threads have the same priority in Java, the Thread Scheduler (part of the JVM or the underlying OS) decides which one to
+        execute first. Since Java does not guarantee a strict execution order for equal-priority threads, their behavior depends on the specific
+        scheduling policy used by the platform.Common outcomes for same-priority threads include:
+                Round-Robin Scheduling: The scheduler may rotate through the ready threads, giving each a fair share of CPU time.
+        
+                Time-Slicing: Each thread is assigned a small "time slice" or quantum. Once its time expires, the scheduler preempts it to
+                                let the next thread run.
+                
+                First-In-First-Out (FIFO): In some implementations, the thread that entered the "Runnable" state first is executed first
+                
+                Arbitrary Selection: The scheduler may simply pick one thread arbitrarily to start processing.
+
+
+
 7) Can we change thread name and priority after it starts?
+-->Yes, thread name and priority can be changed even after the thread starts.
+
+Example
+class MyThread extends Thread {
+
+    public void run() {
+
+        System.out.println(getName());
+
+        System.out.println(getPriority());
+    }
+}
+
+class Demo {
+
+    public static void main(String[] args) {
+
+        MyThread t = new MyThread();
+
+        t.start();
+
+        t.setName("New Thread");
+
+        t.setPriority(8);
+    }
+}
+
+
+
 8) What is the difference between Thread.currentThread() and this?
+-->
+| `Thread.currentThread()`                  | `this`                              |
+| ----------------------------------------- | ----------------------------------- |
+| Returns currently executing thread object | Refers to current object            |
+| Static method                             | Reference variable                  |
+| Can return any executing thread           | Refers only to current class object |
+| Belongs to `Thread` class                 | Belongs to current instance         |
+    
+Example
+    class MyThread extends Thread {
+    
+        public void run() {
+    
+            System.out.println(Thread.currentThread());
+    
+            System.out.println(this);
+        }
+    }
+    
+    If current thread is same object, both may print same result.
+
+
+
+
 9) Can we call start() method twice on the same thread?
+-->No, we cannot call start() twice on the same thread.
+        
+        If we call it again:
+        
+        IllegalThreadStateException
+        
+        is thrown.
+        
+        Reason
+        
+        A thread can be started only once.
+        
+        After completion:
+        
+        Thread enters TERMINATED state
+        Dead thread cannot restart
+        Example
+        class MyThread extends Thread {
+        
+            public void run() {
+        
+                System.out.println("Running");
+            }
+        }
+        
+        class Demo {
+        
+            public static void main(String[] args) {
+        
+                MyThread t = new MyThread();
+        
+                t.start();
+        
+                t.start(); // Exception
+            }
+        }
+        Output
+        Running
+        Exception in thread "main"
+        java.lang.IllegalThreadStateException
