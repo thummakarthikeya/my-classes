@@ -1,0 +1,174 @@
+Interview Questions
+1) How to perform multiple tasks by multiple threads?
+-->Multiple tasks can be performed simultaneously by creating multiple threads.
+
+Each thread executes its own run() method independently.
+
+Example
+class Task1 extends Thread {
+
+    public void run() {
+
+        for(int i=1; i<=5; i++) {
+
+            System.out.println("Task 1");
+        }
+    }
+}
+
+class Task2 extends Thread {
+
+    public void run() {
+
+        for(int i=1; i<=5; i++) {
+
+            System.out.println("Task 2");
+        }
+    }
+}
+
+class Demo {
+
+    public static void main(String[] args) {
+
+        Task1 t1 = new Task1();
+
+        Task2 t2 = new Task2();
+
+        t1.start();
+
+        t2.start();
+    }
+  }
+  Explanation
+    t1 executes Task1
+    t2 executes Task2
+    Both tasks run concurrently
+
+
+
+2) How to perform multiple tasks by a single thread?
+-->
+    Multiple tasks can be performed by a single thread by calling multiple methods inside the same run() method.
+    
+    Example
+    class MyThread extends Thread {
+    
+        public void task1() {
+    
+            System.out.println("Task 1");
+        }
+    
+        public void task2() {
+    
+            System.out.println("Task 2");
+        }
+    
+        public void run() {
+    
+            task1();
+    
+            task2();
+        }
+    }
+    
+    class Demo {
+    
+        public static void main(String[] args) {
+    
+            MyThread t = new MyThread();
+    
+            t.start();
+        }
+    }
+    Explanation
+        
+        Single thread executes:
+        
+        task1()
+        task2()
+        
+        one after another sequentially.
+
+
+
+3) Can a thread execute multiple run() methods?
+-->No, a thread cannot execute multiple run() methods simultaneously.
+
+A thread can have only one active run() method.
+
+However, inside one run() method, we can call multiple methods.
+
+Example
+class MyThread extends Thread {
+
+    public void task1() {
+
+        System.out.println("Task 1");
+    }
+
+    public void task2() {
+
+        System.out.println("Task 2");
+    }
+
+    public void run() {
+
+        task1();
+
+        task2();
+    }
+}
+Important Point
+
+Java does not allow:
+
+public void run()
+public void run(int x)
+
+for thread execution separately.
+
+Only:
+
+public void run()
+
+is treated as thread execution method.
+
+
+
+4) What is a single-threaded model vs multi-threaded model?
+-->
+| Single-Threaded Model                  | Multi-Threaded Model             |
+| -------------------------------------- | -------------------------------- |
+| Only one thread executes tasks         | Multiple threads execute tasks   |
+| Tasks execute sequentially             | Tasks execute concurrently       |
+| Slow performance                       | Better performance               |
+| CPU utilization is low                 | Better CPU utilization           |
+| If one task waits, whole program waits | Other threads continue execution |
+| Simple to design                       | More complex                     |
+
+5) How can anonymous inner classes or lambda expressions be used to create and run threads in Java? Explain with an example.
+-->Using Anonymous Inner Class
+We can create a thread without creating a separate class.
+Example
+class Demo {    public static void main(String[] args) {        Thread t = new Thread() {            public void run() {                System.out.println("Thread Running");            }        };        t.start();    }}
+
+Using Lambda Expression
+Since Runnable is a functional interface, lambda expressions can be used.
+Example
+class Demo {    public static void main(String[] args) {        Runnable r = () -> {            System.out.println("Thread Running");        };        Thread t = new Thread(r);        t.start();    }}
+
+Advantages of Lambda Threads
+
+
+Less code
+
+
+Cleaner syntax
+
+
+Easy readability
+
+
+Commonly used in modern Java applications
+
