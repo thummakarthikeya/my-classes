@@ -1,0 +1,223 @@
+1) Implement a simple thread-safe Singleton class?
+class Singleton {
+
+    private static Singleton obj;
+
+    private Singleton() {
+    }
+
+    synchronized static Singleton getInstance() {
+
+        if(obj == null) {
+
+            obj = new Singleton();
+        }
+
+        return obj;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Singleton s1 =
+                Singleton.getInstance();
+
+        Singleton s2 =
+                Singleton.getInstance();
+
+        System.out.println(s1 == s2);
+    }
+}
+
+
+
+2) Producer-Consumer problem using wait/notify?
+class Company {
+
+    int item;
+    boolean produced = false;
+
+    synchronized void produce(int item)
+            throws Exception {
+
+        if(produced) {
+
+            wait();
+        }
+
+        this.item = item;
+
+        System.out.println("Produced: " + item);
+
+        produced = true;
+
+        notify();
+    }
+
+    synchronized void consume()
+            throws Exception {
+
+        if(!produced) {
+
+            wait();
+        }
+
+        System.out.println("Consumed: " + item);
+
+        produced = false;
+
+        notify();
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+    }
+}
+
+
+
+3) Print even and odd numbers using two threads?
+class Number {
+
+    int n = 1;
+
+    synchronized void printOdd() {
+
+        while(n <= 10) {
+
+            if(n % 2 == 1) {
+
+                System.out.println(n);
+
+                n++;
+            }
+        }
+    }
+
+    synchronized void printEven() {
+
+        while(n <= 10) {
+
+            if(n % 2 == 0) {
+
+                System.out.println(n);
+
+                n++;
+            }
+        }
+    }
+}
+
+
+
+4) Print numbers 1–10 sequentially using 3 threads?
+class Test implements Runnable {
+
+    static int num = 1;
+
+    public void run() {
+
+        while(num <= 10) {
+
+            synchronized(this) {
+
+                System.out.println(
+                        Thread.currentThread().getName()
+                                + " : " + num);
+
+                num++;
+            }
+        }
+    }
+}
+
+
+
+5) Write a program to implement deadlock?
+class Deadlock {
+
+    public static void main(String[] args) {
+
+        String A = "Java";
+        String B = "Python";
+
+        Thread t1 = new Thread() {
+
+            public void run() {
+
+                synchronized(A) {
+
+                    synchronized(B) {
+
+                        System.out.println("Thread1");
+                    }
+                }
+            }
+        };
+
+        Thread t2 = new Thread() {
+
+            public void run() {
+
+                synchronized(B) {
+
+                    synchronized(A) {
+
+                        System.out.println("Thread2");
+                    }
+                }
+            }
+        };
+
+        t1.start();
+        t2.start();
+    }
+}
+
+
+
+6) Create custom ThreadPoolExecutor with core and max threads?
+import java.util.concurrent.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        ThreadPoolExecutor ex =
+                new ThreadPoolExecutor(
+                        2,
+                        4,
+                        10,
+                        TimeUnit.SECONDS,
+                        new LinkedBlockingQueue<>());
+
+        ex.execute(() -> {
+
+            System.out.println(
+                    Thread.currentThread().getName());
+        });
+
+        ex.shutdown();
+    }
+}
+
+
+
+7) Write a program to implement object level locking and class level locking?
+class Demo {
+
+    synchronized void objectLock() {
+
+        System.out.println("Object Level Lock");
+    }
+
+    static synchronized void classLock() {
+
+        System.out.println("Class Level Lock");
+    }
+}
