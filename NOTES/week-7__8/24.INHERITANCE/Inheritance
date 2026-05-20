@@ -277,11 +277,22 @@ class C implements Test {}
 13.What happens when a method is declared final in a superclass?
 -->A final method cannot be overridden by subclasses.
     Example
-    class A {
-        final void display() {
-            System.out.println("Final Method");
-        }
-    }
+        class Superclass {
+          // This is a final method
+          final void display() {
+              System.out.println("This is a final method.");
+          }
+      }
+      
+      class Subclass extends Superclass {
+          // COMPILE-TIME ERROR: Cannot override the final method from Superclass
+          /*
+          void display() {
+              System.out.println("Trying to override.");
+          }
+          */
+      }
+
 
 
 
