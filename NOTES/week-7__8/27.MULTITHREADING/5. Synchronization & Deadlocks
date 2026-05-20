@@ -1,0 +1,122 @@
+Synchronization & Deadlocks
+
+1) What is synchronization in Java & why is synchronization needed?
+-->Synchronization is the process of allowing only one thread at a time to access a shared resource or critical section.
+    
+    Need for synchronization:
+        Prevents data inconsistency
+        Avoids race conditions
+        Maintains thread safety
+        Ensures proper execution of shared resources
+
+
+2) What is the difference between synchronized method and synchronized block?
+-->
+| Synchronized Method           | Synchronized Block                  |
+| ----------------------------- | ----------------------------------- |
+| Entire method is synchronized | Only specific block is synchronized |
+| Locks complete method         | Locks only selected code            |
+| Lower performance             | Better performance                  |
+| Simple to use                 | More flexible                       |
+
+  Example:
+    Synchronized Method
+    synchronized void display() {
+        System.out.println("Method");
+    }
+    Synchronized Block
+    void display() {
+    
+        synchronized(this) {
+            System.out.println("Block");
+        }
+    }
+
+
+3) What is the lock object in synchronization?
+-->A lock object is the object whose monitor lock is used by a thread to enter a synchronized method or block.
+
+    Only one thread can hold the lock at a time.
+    
+    Example:
+        synchronized(this) {
+        
+        }
+        
+        Here:
+          this is the lock object.
+
+
+
+4) What is static synchronization? Difference between object level synchronization & class level synchronization? How to implement both?
+-->Static Synchronization:
+      Static synchronization locks the class object instead of individual objects.
+      
+      Used when static data is shared among all objects.
+
+| Object Level Synchronization                 | Class Level Synchronization      |
+| -------------------------------------------- | -------------------------------- |
+| Locks object                                 | Locks class                      |
+| Different objects can execute simultaneously | Only one thread for entire class |
+| Uses non-static synchronized methods         | Uses static synchronized methods |
+
+
+Object Level Synchronization:
+      synchronized void show() {
+      
+      }
+Class Level Synchronization:
+      static synchronized void show() {
+      
+      }
+
+
+
+5) What is a deadlock, how to implement it & how can you avoid it?
+-->Deadlock is a situation where two or more threads wait forever for each other’s resources.
+
+Deadlock Example
+class Test {
+
+    public static void main(String[] args) {
+
+        String resource1 = "Java";
+        String resource2 = "Python";
+
+        Thread t1 = new Thread() {
+
+            public void run() {
+
+                synchronized(resource1) {
+
+                    synchronized(resource2) {
+
+                        System.out.println("Thread 1");
+                    }
+                }
+            }
+        };
+
+        Thread t2 = new Thread() {
+
+            public void run() {
+
+                synchronized(resource2) {
+
+                    synchronized(resource1) {
+
+                        System.out.println("Thread 2");
+                    }
+                }
+            }
+        };
+
+        t1.start();
+        t2.start();
+    }
+}
+    How to avoid deadlock:
+        Maintain proper lock order
+        Avoid nested locks
+        Use timeout mechanisms
+        Minimize synchronized blocks
