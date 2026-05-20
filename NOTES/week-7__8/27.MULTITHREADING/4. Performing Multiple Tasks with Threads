@@ -156,7 +156,17 @@ class Demo {    public static void main(String[] args) {        Thread t = new T
 Using Lambda Expression
 Since Runnable is a functional interface, lambda expressions can be used.
 Example
-class Demo {    public static void main(String[] args) {        Runnable r = () -> {            System.out.println("Thread Running");        };        Thread t = new Thread(r);        t.start();    }}
+class Demo {  
+    public static void main(String[] args) {  
+        Runnable r = () -> {           
+                System.out.println("Thread Running");        
+    };      
+
+    Thread t = new Thread(r);     
+    t.start(); 
+    
+    }
+}
 
 Advantages of Lambda Threads
 
