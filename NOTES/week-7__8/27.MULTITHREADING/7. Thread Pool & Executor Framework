@@ -1,0 +1,72 @@
+1) What is a Thread Pool in Java?
+-->A Thread Pool is a collection of pre-created worker threads used to execute multiple tasks efficiently without creating new threads every time.
+  Advantages:
+      Better performance
+      Reuses existing threads
+      Reduces thread creation overhead
+      Improves resource management
+
+    A thread pool in Java is a collection of pre-initialized, reusable worker threads managed by the java.util.concurrent framework.
+    Instead of creating a new thread for every task—which is a costly operation for the CPU and memory—tasks are submitted to a shared
+    queue and executed by the available threads in the pool.
+    
+    How It Works:
+    Initialization: A specific number of threads are created and kept in an idle state.
+    
+    Task Submission: When a new task (Runnable or Callable) is submitted, the pool manager checks for an available thread.
+    
+    Execution:
+      If a thread is free, it immediately picks up and executes the task.
+      If all threads are busy, the task is placed in an internal blocking queue to wait.
+    
+    Reuse: Once a thread finishes its task, it does not "die." It returns to the pool to wait for the next task from the queue.
+
+
+
+
+2) What is the Executor Framework? How to implement thread creation, management, and scheduling by using thread pools?
+
+The Executor Framework is a framework in Java used for:
+
+thread creation
+thread management
+task scheduling
+
+It simplifies multithreading using thread pools.
+
+Example:
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+class Test implements Runnable {
+
+    public void run() {
+
+        System.out.println(Thread.currentThread().getName());
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        ExecutorService ex =
+                Executors.newFixedThreadPool(3);
+
+        ex.execute(new Test());
+        ex.execute(new Test());
+        ex.execute(new Test());
+
+        ex.shutdown();
+    }
+}
+
+
+
+3) What is the difference between Executor, ExecutorService, and Executors class?
+-->
+| Executor           | ExecutorService               | Executors                |
+| ------------------ | ----------------------------- | ------------------------ |
+| Parent interface   | Child interface of Executor   | Utility class            |
+| Executes tasks     | Executes + manages lifecycle  | Creates thread pools     |
+| Contains execute() | Contains submit(), shutdown() | Contains factory methods |
