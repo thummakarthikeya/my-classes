@@ -1,0 +1,49 @@
+1) What is inter-thread communication? How to implement by using wait(), notify(), and notifyAll() methods?
+-->Inter-thread communication is the process where threads communicate with each other to coordinate execution.
+Methods used:
+  wait()
+  notify()
+  notifyAll()
+
+These methods belong to the Object class.
+wait():
+  Makes thread wait until another thread notifies it.
+
+notify()
+  Wakes up one waiting thread.
+
+notifyAll():
+  Wakes up all waiting threads.
+
+
+
+2) Why can these (wait(), notify(), and notifyAll()) methods be called only inside synchronized blocks?
+-->Because the thread must own the object's monitor lock before calling these methods.
+    Without synchronization:
+        IllegalMonitorStateException occurs.
+
+
+
+3) What is the difference between sleep() and wait()?
+-->
+| sleep()                          | wait()                              |
+| -------------------------------- | ----------------------------------- |
+| Belongs to Thread class          | Belongs to Object class             |
+| Used for delay                   | Used for inter-thread communication |
+| Does not release lock            | Releases lock                       |
+| Automatically resumes after time | Resumes after notify()              |
+
+
+
+4) What is a daemon thread? How do you create and identify a daemon thread?
+-->A daemon thread is a background thread that provides services to user threads.
+    Example:
+    
+    Garbage Collector
+    Create daemon thread
+    Thread t = new Thread();
+    
+    t.setDaemon(true);
+    Identify daemon thread
+    System.out.println(t.isDaemon());
+
