@@ -151,7 +151,17 @@ is treated as thread execution method.
 -->Using Anonymous Inner Class
 We can create a thread without creating a separate class.
 Example
-class Demo {    public static void main(String[] args) {        Thread t = new Thread() {            public void run() {                System.out.println("Thread Running");            }        };        t.start();    }}
+class Demo {
+    public static void main(String[] args) { 
+            Thread t = new Thread() {    
+                public void run() {     
+                System.out.println("Thread Running");     
+        }  
+}; 
+t.start(); 
+    
+    }
+}
 
 Using Lambda Expression
 Since Runnable is a functional interface, lambda expressions can be used.
