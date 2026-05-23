@@ -1,0 +1,25 @@
+1. What is an exception in Java? How is it different from an error?
+
+2. Explain the difference between checked and unchecked (runtime) exceptions with examples. How do they affect program flow?
+
+3. What is the difference between throw and throws in Java?
+
+4. What happens if a checked exception is not handled or declared? Explain exception propagation in Java?
+
+5. Can a method override another method that throws exceptions? What are the rules regarding checked exceptions?
+
+6. What is the role of a try block, catch block, and finally block? Does a finally block always execute?
+
+7. When will the finally block not execute?
+
+8. Can a try block exist without a catch block? If yes, under what conditions?
+
+9. What are the rules for catching exceptions in hierarchical order in Java, and how does the multi-catch feature introduced in Java 7 help
+simplify exception handling?
+
+10. What happens if an exception occurs inside a catch block?
+
+11. Can constructors throw exceptions? How should they be handled?
+
+12. A single try block can throw multiple exceptions like ArithmeticException and ArrayIndexOutOfBoundsException. How should they be handled 
+with a single catch block?
