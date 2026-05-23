@@ -23,3 +23,42 @@ simplify exception handling?
 
 12. A single try block can throw multiple exceptions like ArithmeticException and ArrayIndexOutOfBoundsException. How should they be handled 
 with a single catch block?
+
+13. Explain best practices for writing exception-safe code, including the impact of overusing try-catch blocks on performance and maintainability.
+
+14. Consider a situation where a try block executes a return statement, but a finally block is also present that modifies a variable. Which value 
+is returned? Explain how the finally block affects execution.
+
+15. What is the use of printStackTrace(), getMessage(), and toString()?
+
+16. What is the main advantage of using try-with-resources over a normal try-catch-finally block?
+
+17. What is a custom exception in Java? When should we create a custom exception in real-time applications?
+
+18. If both the catch block and the finally block throw exceptions, which one will be propagated to the caller, and why?
+
+19. What is the difference between ClassNotFoundException and NoClassDefFoundError in Java? When does each of them occur? Explain with suitable
+examples.
+
+20. What is a ClassCastException in Java? Write a program that demonstrates how this exception occurs and explain how to prevent it.
+
+
+Programming Questions
+
+1. Write a program that throws a custom exception if a user enters a negative number for age.
+
+2. Write a program to demonstrate multiple exceptions in a single try block, such as ArithmeticException and ArrayIndexOutOfBoundsException.
+Handle them using separate catch blocks.
+
+3. Write a program to demonstrate nested try-catch blocks. Include at least one inner try that throws an exception and show how it is handled.
+
+4. Write a program using a finally block. Include a return statement in the try block and show what value is returned when the finally block modifies
+a variable.
+
+5. Write a program to demonstrate the difference between throw and throws. Include a method that throws an exception and another method that declares 
+it using throws.
+
+6. Write a program to demonstrate try-with-resources using a File or Scanner. Show how resources are automatically closed.
+
+7. Write a program to demonstrate exception chaining. Create one exception that is caused by another and show how the original exception can be
+retrieved using getCause().
