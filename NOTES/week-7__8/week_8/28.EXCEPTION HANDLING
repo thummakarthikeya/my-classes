@@ -1,12 +1,129 @@
 1. What is an exception in Java? How is it different from an error?
+-->Answer:
+      An exception in Java is an unwanted or unexpected event that occurs during program execution and disrupts the normal flow of the program.
+      
+      Example:
+      - ArithmeticException
+      - NullPointerException
+      - IOException
+      
+      Error:
+      An Error represents serious problems that are generally caused by the system or JVM and are not usually handled by programmers.
+      
+      Example:
+      - OutOfMemoryError
+      - StackOverflowError
+      
+      Difference:
+      Exception:
+      - Can be handled using try-catch
+      - Occurs due to application issues
+      - Recoverable
+      
+      Error:
+      - Cannot usually be handled
+      - Occurs due to JVM/system failure
+      - Not recoverable
+
+
+
 
 2. Explain the difference between checked and unchecked (runtime) exceptions with examples. How do they affect program flow?
+-->Answer:
+    
+    Checked Exceptions:
+    - Checked at compile time
+    - Must be handled using try-catch or throws
+    - Compiler gives error if not handled
+    
+    Examples:
+    - IOException
+    - SQLException
+    - FileNotFoundException
+    
+    Unchecked Exceptions:
+    - Occur at runtime
+    - Not checked by compiler
+    - Handling is optional
+    
+    Examples:
+    - ArithmeticException
+    - NullPointerException
+    - ArrayIndexOutOfBoundsException
+    
+    Effect on Program Flow:
+    If an exception occurs and is not handled, the program terminates abnormally. If handled properly, program execution continues normally after
+    the catch block.
+
+
 
 3. What is the difference between throw and throws in Java?
+-->Answer:     
+      throw:
+      - Used to explicitly throw an exception
+      - Used inside method body
+      - Followed by an exception object
+      
+      Example:
+      throw new ArithmeticException("Error");
+      
+      throws:
+      - Used to declare exceptions
+      - Written in method signature
+      - Indicates that method may throw exceptions
+      
+      Example:
+      void readFile() throws IOException
+      
+      Difference:
+      throw:
+      - Actually throws exception
+      - Followed by object
+      
+      throws:
+      - Declares exception
+      - Followed by class names
+      
+
+
 
 4. What happens if a checked exception is not handled or declared? Explain exception propagation in Java?
+-->Answer:
+    If a checked exception is not handled using try-catch or not declared using throws, the compiler gives a compile-time error.
+    
+    Exception Propagation:
+    When an exception occurs inside a method, it is passed to the calling method. This process continues until the exception is handled.
+    
+    Example:
+    method3() → method2() → method1() → main()
+    
+    If no method handles the exception, JVM terminates the program.
+
+
+
 
 5. Can a method override another method that throws exceptions? What are the rules regarding checked exceptions?
+-->Answer:
+        Yes, a method can override another method that throws exceptions, but there are rules.
+        
+        Rules:
+        1. Child class method cannot throw broader checked exceptions than parent method.
+        2. Child class method can throw:
+           - Same exception
+           - Subclass exception
+           - No exception
+        3. For unchecked exceptions, there are no restrictions.
+        
+        Example:
+          Parent:
+          void show() throws IOException
+          
+          Child:
+          void show() throws FileNotFoundException
+
+
+
+
 
 6. What is the role of a try block, catch block, and finally block? Does a finally block always execute?
 
