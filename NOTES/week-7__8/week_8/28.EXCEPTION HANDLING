@@ -122,15 +122,61 @@
           void show() throws FileNotFoundException
 
 
+Throwable
+ ├── Error
+ │
+ └── Exception
+      ├── RuntimeException
+      │
+      ├── IOException
+      │     └── FileNotFoundException
+      │
+      ├── SQLException
+      ├── InterruptedException
+      └── ClassNotFoundException
+
 
 
 
 6. What is the role of a try block, catch block, and finally block? Does a finally block always execute?
+-->Answer:
+      
+      try block:
+      - Contains risky code that may throw exception
+      
+      catch block:
+      - Handles the exception
+      
+      finally block:
+      - Contains cleanup code
+      - Executes whether exception occurs or not
+      
+      Example Uses:
+      - Closing files
+      - Closing database connections
+      
+      Does finally always execute?
+      Yes, finally block usually executes whether exception occurs or not.
+
+
+
 
 7. When will the finally block not execute?
+-->
+      Answer:
+      finally block may not execute in rare situations such as:
+      
+      1. JVM shutdown using:
+      System.exit(0);
+      
+      2. System crash
+      3. Power failure
+      4. Infinite loop before finally block
+
+
 
 8. Can a try block exist without a catch block? If yes, under what conditions?
-
+-->
 9. What are the rules for catching exceptions in hierarchical order in Java, and how does the multi-catch feature introduced in Java 7 help
 simplify exception handling?
 
