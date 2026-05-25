@@ -413,11 +413,100 @@ with a single catch block?
 
 14. Consider a situation where a try block executes a return statement, but a finally block is also present that modifies a variable. Which value 
 is returned? Explain how the finally block affects execution.
--->
+-->Answer:
+      finally block executes even if return statement exists in try block.
+      
+      The return value is calculated and stored before finally executes.
+      
+      Example:
+      
+      class Main {
+      
+          static int test() {
+      
+              int x = 10;
+      
+              try {
+                  return x;
+              }
+      
+              finally {
+                  x = 20;
+                  System.out.println("Finally executed");
+              }
+          }
+      
+          public static void main(String[] args) {
+      
+              System.out.println(test());
+          }
+      }
+      
+      Output:
+      Finally executed
+      10
+      
+      Explanation:
+      - return x stores value 10 first
+      - then finally block executes
+      - x becomes 20
+      - but stored return value remains 10
+      
+      Important:
+      If finally itself contains return statement, then finally return overrides previous return.
+
+
+
+
+
+
 
 15. What is the use of printStackTrace(), getMessage(), and toString()?
+-->Answer:
+      
+      1. printStackTrace()
+      - Prints complete exception details
+      - Includes:
+        - Exception type
+        - Message
+        - Line number
+        - Method call stack
+      
+      Example:
+      e.printStackTrace();
+      
+      2. getMessage()
+      - Returns only exception message
+      
+      Example:
+      e.getMessage();
+      
+      3. toString()
+      - Returns:
+        Exception class name + message
+      
+      Example:
+      e.toString();
+      
+      
+      Difference:
+      
+      printStackTrace()
+      - Full detailed error information
+      
+      getMessage()
+      - Only message
+      
+      toString()
+      - Exception name + message
+
+
+
+
 
 16. What is the main advantage of using try-with-resources over a normal try-catch-finally block?
+-->
+
 
 17. What is a custom exception in Java? When should we create a custom exception in real-time applications?
 
