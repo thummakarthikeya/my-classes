@@ -83,8 +83,30 @@
       throws:
       - Declares exception
       - Followed by class names
-      
 
+
+// example for throw
+class Main {
+    public static void main(String[] args) {
+        int a = 10; int b=0;
+        num(a,b);
+    }
+    
+    
+    public static void num(int a,int b){
+        try
+        {
+        if(b==0)
+        {
+            throw new ArithmeticException("Number must not equal to Zero");
+        }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
 
 
 4. What happens if a checked exception is not handled or declared? Explain exception propagation in Java?
@@ -176,21 +198,222 @@ Throwable
 
 
 8. Can a try block exist without a catch block? If yes, under what conditions?
--->
+-->Answer:
+      Yes, a try block can exist without a catch block only when it is followed by a finally block.
+      
+      Valid:
+      try {
+         // code
+      }
+      finally {
+         // cleanup code
+      }
+      
+      Invalid:
+      try {
+         // code
+      }
+      
+      A try block must be followed by either:
+      - catch block
+      OR
+      - finally block
+      OR
+      - both
+      
+
 9. What are the rules for catching exceptions in hierarchical order in Java, and how does the multi-catch feature introduced in Java 7 help
 simplify exception handling?
+-->Answer:
+      
+      Rules for Catch Blocks:
+      - Child exception must come before parent exception.
+      - Otherwise compile-time error occurs.
+      
+      Correct:
+      catch(ArithmeticException e)
+      catch(Exception e)
+      
+      Incorrect:
+      catch(Exception e)
+      catch(ArithmeticException e)
+      
+      Multi-catch in Java 7:
+      Java 7 introduced the ability to handle multiple exceptions in a single catch block using | operator.
+      
+      Example:
+      catch(IOException | SQLException e)
+      
+      Advantages:
+      - Reduces code duplication
+      - Improves readability
+      - Easier maintenance
+
+      
+      // Online Java Compiler
+      // Use this editor to write, compile and run your Java code online
+      
+      class Main {
+          public static void main(String[] args) {
+              try
+              {
+                  throw new IndexOutOfBoundsException("H");
+              }
+              catch(IndexOutOfBoundsException e)
+              {
+                  e.printStackTrace();
+              }
+              catch(Exception e)
+              {
+                  e.printStackTrace();
+              }
+          }
+      }
+
+
+
 
 10. What happens if an exception occurs inside a catch block?
+-->Answer:
+If an exception occurs inside a catch block and it is not handled, the exception propagates to the calling method or JVM.
+
+Example:
+try {
+   int a = 10/0;
+}
+catch(Exception e) {
+   int b = 10/0;
+}
+
+Here:
+- First exception is handled
+- Second exception occurs inside catch block
+- JVM terminates program if second exception is not handled
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void main(String[] args) {
+        int a =10, b=0;
+        try
+        {
+        if(b==0)
+        {
+            throw new ArithmeticException("Number must not equal to Zero");
+        }
+        }
+        catch(Exception e)
+        {
+            System.out.println(10/0);
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
 
 11. Can constructors throw exceptions? How should they be handled?
+-->Answer:
+            Yes, constructors can throw exceptions.
+            
+            If a constructor throws a checked exception, it must be:
+            - handled using try-catch
+            OR
+            - declared using throws
+            
+            example:
+            
+            public class Main {
+                public static void main(String[] args) {
+                    try {
+                        Test t = new Test();
+                    }
+                    catch(Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            }
+            class Test {
+                Test()  {
+                    throw new ArithmeticException("Constructor Exception");
+                }
+            }
+            
+            
+            example_2:
+            
+            public class Main {
+                public static void main(String[] args) {
+                    try {
+                        Test t = new Test();
+                    }
+                    catch(Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            }
+            class Test {
+                Test() throws Exception {
+                    throw new Exception("Constructor Exception");
+                }
+            }
+
+
+
 
 12. A single try block can throw multiple exceptions like ArithmeticException and ArrayIndexOutOfBoundsException. How should they be handled 
 with a single catch block?
+-->Answer:
+      They can be handled using:
+      - separate catch blocks
+      OR
+      - multi-catch block (Java 7)
+      
+      Example using single catch:
+      
+      try {
+          int a = 10 / 0;
+          int arr[] = {1,2};
+          System.out.println(arr[5]);
+      }
+      catch(ArithmeticException | ArrayIndexOutOfBoundsException e) {
+          System.out.println(e);
+      }
+      
+      Advantages:
+      - Reduces duplicate code
+      - Improves readability
+
+
+
+
+
 
 13. Explain best practices for writing exception-safe code, including the impact of overusing try-catch blocks on performance and maintainability.
+-->Answer:
+      
+      Best Practices:
+      1. Catch only specific exceptions
+      2. Do not use empty catch blocks
+      3. Use finally or try-with-resources for cleanup
+      4. Provide meaningful exception messages
+      5. Avoid unnecessary exception handling
+      6. Use custom exceptions when needed
+      
+      Impact of Overusing try-catch:
+      - Reduces readability
+      - Makes code difficult to maintain
+      - Slightly affects performance
+      - Hides actual bugs if overused
+
+
 
 14. Consider a situation where a try block executes a return statement, but a finally block is also present that modifies a variable. Which value 
 is returned? Explain how the finally block affects execution.
+-->
 
 15. What is the use of printStackTrace(), getMessage(), and toString()?
 
