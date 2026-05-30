@@ -193,9 +193,139 @@ public class Test {
 
 Programs
 1) Write a Java program to demonstrate that a final variable cannot be reassigned after initialization.
+-->1) Final variable cannot be reassigned
+        public class FinalVariableDemo {
+            public static void main(String[] args) {
+                final int x = 10;
+        
+                System.out.println("x = " + x);
+        
+                // x = 20; // Compile-time Error
+            }
+        }
+        Output
+        x = 10
+
+
+
 2) Create a program showing how a blank final variable can be initialized inside a constructor.
+-->2) Blank final variable initialized in constructor
+class Student {
+    final int rollNo;
+
+    Student(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    void display() {
+        System.out.println("Roll No: " + rollNo);
+    }
+}
+
+public class BlankFinalDemo {
+    public static void main(String[] args) {
+        Student s = new Student(101);
+        s.display();
+    }
+}
+Output
+Roll No: 101
+
+
 3) Write a Java program that defines a static final variable and initializes it using a static block.
+-->3) Static final variable initialized using static block
+public class StaticFinalDemo {
+
+    static final int MAX;
+
+    static {
+        MAX = 100;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("MAX = " + MAX);
+    }
+}
+Output
+MAX = 100
+
+
+
 4) Write a Java program where a final method is declared in a parent class and show that it cannot be overridden in the subclass.
+-->4) Final method cannot be overridden
+class Parent {
+    final void show() {
+        System.out.println("Parent final method");
+    }
+}
+
+class Child extends Parent {
+
+    // void show() {
+    //     System.out.println("Child method");
+    // }
+}
+
+public class FinalMethodDemo {
+    public static void main(String[] args) {
+        Child c = new Child();
+        c.show();
+    }
+}
+Output
+Parent final method
+
+
 5) Write a Java program where a final reference variable refers to a mutable object (like an ArrayList). Modify the contents and observe the behavior.
+-->5) Final reference variable referring to a mutable object
+import java.util.ArrayList;
+
+public class FinalReferenceDemo {
+    public static void main(String[] args) {
+
+        final ArrayList<String> list = new ArrayList<>();
+
+        list.add("Java");
+        list.add("Spring Boot");
+
+        System.out.println(list);
+
+        list.remove("Java");
+
+        System.out.println(list);
+
+        // list = new ArrayList<>(); // Compile-time Error
+    }
+}
+Output
+[Java, Spring Boot]
+[Spring Boot]
+
+
 
 6) Create a Java program that defines a final variable in a parent class and accesses it through inheritance. Show that it cannot be changed by the subclass.
+-->6) Final variable in parent class accessed through inheritance
+class Parent {
+    final int x = 100;
+}
+
+class Child extends Parent {
+
+    void display() {
+        System.out.println("Value of x = " + x);
+
+        // x = 200; // Compile-time Error
+    }
+}
+
+public class InheritanceFinalDemo {
+    public static void main(String[] args) {
+        Child c = new Child();
+        c.display();
+    }
+}
+Output
+Value of x = 100
+Key Point
+
+The child class can access the final variable inherited from the parent class, but it cannot modify it because final variables can be assigned only once.
