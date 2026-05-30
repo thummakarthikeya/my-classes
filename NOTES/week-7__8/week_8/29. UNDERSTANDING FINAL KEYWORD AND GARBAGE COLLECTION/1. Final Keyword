@@ -1,0 +1,18 @@
+Interview Questions
+1) What is the difference between final, finally, and finalize() in Java?
+2) Can we declare a class as final? What does it mean, and what happens if we try to inherit it?
+3) Can a final variable be reinitialized? Explain with an example.
+4) What is a blank final variable? How can we initialize it (including static ones)?
+5) Can we declare a method as final? What does it prevent, and can it be overloaded or overridden?
+6) Can you have a final reference variable pointing to a mutable object? What happens if you modify the contents of that object?
+7) How can you make a class immutable using the final keyword?
+8) Can a final local variable be used inside an anonymous inner class? Why?
+
+Programs
+1) Write a Java program to demonstrate that a final variable cannot be reassigned after initialization.
+2) Create a program showing how a blank final variable can be initialized inside a constructor.
+3) Write a Java program that defines a static final variable and initializes it using a static block.
+4) Write a Java program where a final method is declared in a parent class and show that it cannot be overridden in the subclass.
+5) Write a Java program where a final reference variable refers to a mutable object (like an ArrayList). Modify the contents and observe the behavior.
+
+6) Create a Java program that defines a final variable in a parent class and accesses it through inheritance. Show that it cannot be changed by the subclass.
