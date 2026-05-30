@@ -1,12 +1,195 @@
 Interview Questions
 1) What is the difference between final, finally, and finalize() in Java?
+-->
+| Keyword/Method | Purpose                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------- |
+| `final`        | Used to restrict modification. Can be applied to variables, methods, and classes.                 |
+| `finally`      | A block used with `try-catch` that always executes whether an exception occurs or not.            |
+| `finalize()`   | A method called by the Garbage Collector before destroying an object (deprecated in modern Java). |
+
+
+
+
 2) Can we declare a class as final? What does it mean, and what happens if we try to inherit it?
+-->Yes. A final class cannot be inherited.
+
+final class Animal {
+}
+
+Invalid:
+
+class Dog extends Animal { } // Compile-time Error
+
+Examples: String, Integer, Math are final classes.
+
+
+
+
+
+
 3) Can a final variable be reinitialized? Explain with an example.
+-->No. Once a final variable is assigned a value, it cannot be reassigned.
+
+final int x = 10;
+x = 20; // Compile-time Error
+
+
+
 4) What is a blank final variable? How can we initialize it (including static ones)?
+-->A final variable declared without initialization is called a blank final variable.
+
+Instance blank final variable:
+
+class Test {
+    final int id;
+
+    Test(int id) {
+        this.id = id;
+    }
+}
+
+Static blank final variable:
+
+class Test {
+    static final int VALUE;
+
+    static {
+        VALUE = 100;
+    }
+}
+
+
+
+You are mostly correct, but you missed one important alternative for both instance and static variables. In Java, final variables require "definite assignment". This means the compiler must guarantee they are assigned exactly once before they can be read.Your logic is largely solid, but you should factor in these additional rules:1. Instance Blank Final VariablesYou are correct that if you have multiple constructors, a blank final instance variable must be initialized by the end of each constructor. However, constructors are not the only way to initialize them.Instance Initializer Blocks: You can also initialize a blank final variable inside an instance initializer block (a simple { ... } block inside the class). If you use this block, you do not have to initialize it in your constructors.Constructor Chaining (this()): If one constructor calls another constructor using this(), it does not need to initialize the final variable. Only the target constructor that actually finishes the job must perform the initialization.javaclass Example {
+    final int x; // Blank final instance variable
+
+    // Option A: Initialized in an instance block instead of constructors
+    /*
+    {
+        x = 10; 
+    }
+    */
+
+    // Option B: Initialized via constructor chaining
+    Example() {
+        this(5); // Does not need to initialize 'x' directly because it chains
+    }
+
+    Example(int value) {
+        this.x = value; // Must initialize 'x' here
+    }
+}
+Use code with caution.2. Static Blank Final VariablesYou are correct that a static blank final variable cannot be initialized inside a constructor. However, a static block is not the only way to initialize it.Inline Declaration: It can simply be initialized inline at the moment of declaration (e.g., static final int x = 10;).Static Blocks: If left blank at declaration, it must be initialized inside a static initialization block (static { ... }).javaclass StaticExample {
+    // Option A: Inline declaration
+    static final int Y = 20; 
+
+    // Option B: Static blank final variable
+    static final int Z; 
+
+    static {
+        Z = 30; // Initialized using static block
+    }
+}
+
+
+
+
+
+
+
+
 5) Can we declare a method as final? What does it prevent, and can it be overloaded or overridden?
+-->Yes.
+
+A final method:
+
+Can be inherited.
+Cannot be overridden.
+Can be overloaded.
+class Parent {
+    final void show() {
+        System.out.println("Parent");
+    }
+}
+
+Invalid:
+
+class Child extends Parent {
+    void show() { } // Error
+}
+
+
+
 6) Can you have a final reference variable pointing to a mutable object? What happens if you modify the contents of that object?
+-->Yes.
+
+The reference cannot change, but the object's contents can.
+
+final ArrayList<String> list = new ArrayList<>();
+
+list.add("Java");
+list.add("Spring");
+
+System.out.println(list);
+
+Valid because the object is modified, not the reference.
+
+Invalid:
+
+list = new ArrayList<>(); // Error
+
+
+
+
 7) How can you make a class immutable using the final keyword?
+-->Steps:
+
+Declare the class as final.
+Make all fields private final.
+Initialize fields through constructor.
+Provide only getter methods.
+Do not provide setters.
+final class Employee {
+    private final int id;
+    private final String name;
+
+    Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+
+
+
 8) Can a final local variable be used inside an anonymous inner class? Why?
+-->Yes.
+
+Because anonymous inner classes can access only final or effectively final local variables.
+
+public class Test {
+    public static void main(String[] args) {
+        final int num = 10;
+
+        Runnable r = new Runnable() {
+            public void run() {
+                System.out.println(num);
+            }
+        };
+
+        r.run();
+    }
+}
+
+
 
 Programs
 1) Write a Java program to demonstrate that a final variable cannot be reassigned after initialization.
