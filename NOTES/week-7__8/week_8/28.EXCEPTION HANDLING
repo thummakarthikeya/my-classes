@@ -505,35 +505,391 @@ is returned? Explain how the finally block affects execution.
 
 
 16. What is the main advantage of using try-with-resources over a normal try-catch-finally block?
--->
+-->Answer:
+            The main advantage of try-with-resources is that it automatically closes resources (such as files, database connections, scanners, streams, etc.) when the block 
+            finishes execution.
+            Yes, it is strictly mandatory that any object declared within a Java try-with-resources statement implements the java.lang.AutoCloseable interface (or its subinterface,
+            java.io.Closeable). If you attempt to pass an object that does not implement either interface, your code will fail to compile.
+            Normal try-catch-finally
+            Scanner sc = null;
+            try {
+                sc = new Scanner(System.in);
+                System.out.println(sc.nextLine());
+            } finally {
+                if (sc != null) {
+                    sc.close();
+                }
+            }
+            Try-with-resources
+            try (Scanner sc = new Scanner(System.in)) {
+                System.out.println(sc.nextLine());
+            }
+            Advantages
+            Less code.
+            Automatic resource management.
+            Prevents resource leaks.
+            More readable and maintainable.
+            
+            
+
 
 
 17. What is a custom exception in Java? When should we create a custom exception in real-time applications?
+-->Answer:
+
+A custom exception is a user-defined exception created by extending either Exception or RuntimeException.
+
+Example
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String msg) {
+        super(msg);
+    }
+}
+When to create custom exceptions?
+
+When built-in exceptions do not clearly represent business logic errors.
+
+Real-Time Examples
+InvalidAgeException
+InsufficientBalanceException
+InvalidEmployeeIdException
+ProductOutOfStockException
+Benefits
+Improves readability.
+Makes error handling meaningful.
+Represents business-specific problems.
+
+
 
 18. If both the catch block and the finally block throw exceptions, which one will be propagated to the caller, and why?
+-->Answer:   
+      The exception thrown by the finally block is propagated to the caller because the finally block executes after the catch block.
+      
+      Example
+      public class Test {
+          public static void main(String[] args) {
+              try {
+                  int a = 10 / 0;
+              }
+              catch (Exception e) {
+                  throw new RuntimeException("Exception from catch");
+              }
+              finally {
+                  throw new RuntimeException("Exception from finally");
+              }
+          }
+      }
+      Output
+      Exception in thread "main"
+      java.lang.RuntimeException: Exception from finally
+      Explanation
+      
+      Execution order:
+      
+            try throws ArithmeticException.
+            catch handles it and throws RuntimeException.
+            finally executes and throws another RuntimeException.
+            Exception from finally overrides the catch exception.
+
+
+
 
 19. What is the difference between ClassNotFoundException and NoClassDefFoundError in Java? When does each of them occur? Explain with suitable
 examples.
+-->
+| ClassNotFoundException                                                 | NoClassDefFoundError                                                   |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Checked Exception                                                      | Error                                                                  |
+| Occurs when JVM cannot find a class at runtime using `Class.forName()` | Occurs when class was available at compile time but missing at runtime |
+| Can be handled using try-catch                                         | Usually indicates deployment/configuration issue                       |
+| Subclass of Exception                                                  | Subclass of Error                                                      |
+
+
+ClassNotFoundException Example
+public class Test {
+    public static void main(String[] args) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found");
+        }
+    }
+}
+
+If the JDBC driver is absent:
+
+
+
+Class not found
+NoClassDefFoundError Example
+class Employee {
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Employee e = new Employee();
+    }
+}
+
+If Employee.class is deleted after compilation:
+
+Exception in thread "main"
+java.lang.NoClassDefFoundError: Employee
+
+
+
+
 
 20. What is a ClassCastException in Java? Write a program that demonstrates how this exception occurs and explain how to prevent it.
+-->Answer
+            
+            A ClassCastException occurs when an object is cast to a type that it is not actually an instance of.
+            
+            Example
+            class Animal {
+            }
+            
+            class Dog extends Animal {
+            }
+            
+            public class Test {
+                public static void main(String[] args) {
+            
+                    Animal a = new Animal();
+            
+                    Dog d = (Dog) a; // Invalid cast
+                }
+            }
+            Output
+            Exception in thread "main"
+            java.lang.ClassCastException
+            Prevention
+            
+            Use instanceof before casting.
+            
+            if(a instanceof Dog) {
+                Dog d = (Dog) a;
+            }
+            else {
+                System.out.println("Cannot cast");
+            }
+
+
+
+
 
 
 Programming Questions
 
 1. Write a program that throws a custom exception if a user enters a negative number for age.
+-->1. Custom Exception for Negative Age
+import java.util.Scanner;
+
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String msg) {
+        super(msg);
+    }
+}
+
+public class AgeDemo {
+
+    static void validateAge(int age) throws InvalidAgeException {
+        if(age < 0) {
+            throw new InvalidAgeException("Age cannot be negative");
+        }
+        System.out.println("Valid Age");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Age: ");
+        int age = sc.nextInt();
+
+        try {
+            validateAge(age);
+        }
+        catch(InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        }
+
+        sc.close();
+    }
+}
+
+
+
 
 2. Write a program to demonstrate multiple exceptions in a single try block, such as ArithmeticException and ArrayIndexOutOfBoundsException.
 Handle them using separate catch blocks.
+-->2. Multiple Exceptions in Single Try Block
+public class MultipleExceptionDemo {
+
+    public static void main(String[] args) {
+
+        try {
+            int a = 10 / 0;
+
+            int arr[] = {1,2,3};
+            System.out.println(arr[5]);
+        }
+        catch(ArithmeticException e) {
+            System.out.println("Arithmetic Exception");
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Index Out Of Bounds");
+        }
+    }
+}
+
+
+
 
 3. Write a program to demonstrate nested try-catch blocks. Include at least one inner try that throws an exception and show how it is handled.
+-->3. Nested Try-Catch Example
+public class NestedTryDemo {
+
+    public static void main(String[] args) {
+
+        try {
+            System.out.println("Outer Try");
+
+            try {
+                int x = 10 / 0;
+            }
+            catch(ArithmeticException e) {
+                System.out.println("Inner Catch: " + e);
+            }
+
+            System.out.println("After Inner Try");
+        }
+        catch(Exception e) {
+            System.out.println("Outer Catch");
+        }
+    }
+}
+
+
 
 4. Write a program using a finally block. Include a return statement in the try block and show what value is returned when the finally block modifies
 a variable.
+-->4. Finally Block with Return Statement
+public class FinallyReturnDemo {
+
+    static int test() {
+
+        int x = 10;
+
+        try {
+            return x;
+        }
+        finally {
+            x = 20;
+            System.out.println("Finally Executed");
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(test());
+    }
+}
+Output
+Finally Executed
+10
+Explanation
+
+The return value is determined before the finally block executes. Therefore, 10 is returned.
+
+
+
+
 
 5. Write a program to demonstrate the difference between throw and throws. Include a method that throws an exception and another method that declares 
 it using throws.
+-->5. Difference Between throw and throws
+public class ThrowThrowsDemo {
+
+    static void checkAge(int age) throws Exception {
+
+        if(age < 18) {
+            throw new Exception("Not Eligible");
+        }
+
+        System.out.println("Eligible");
+    }
+
+    public static void main(String[] args) {
+
+        try {
+            checkAge(15);
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+| throw                                 | throws                          |
+| ------------------------------------- | ------------------------------- |
+| Used to explicitly throw an exception | Used to declare exceptions      |
+| Inside method body                    | In method signature             |
+| Throws one exception object           | Can declare multiple exceptions |
+
+
+
 
 6. Write a program to demonstrate try-with-resources using a File or Scanner. Show how resources are automatically closed.
+-->import java.util.Scanner;
+
+public class TryWithResourcesDemo {
+
+    public static void main(String[] args) {
+
+        try (Scanner sc = new Scanner(System.in)) {
+
+            System.out.print("Enter Name: ");
+            String name = sc.nextLine();
+
+            System.out.println("Name: " + name);
+        }
+    }
+}
+Output
+
+Resource (Scanner) is automatically closed after execution.
+
+
 
 7. Write a program to demonstrate exception chaining. Create one exception that is caused by another and show how the original exception can be
 retrieved using getCause().
+-->7. Exception Chaining Example
+public class ExceptionChainingDemo {
+
+    public static void main(String[] args) {
+
+        try {
+
+            try {
+                int a = 10 / 0;
+            }
+            catch(ArithmeticException e) {
+
+                Exception ex =
+                        new Exception("New Exception", e);
+
+                throw ex;
+            }
+
+        }
+        catch(Exception e) {
+
+            System.out.println("Current Exception: "
+                    + e.getMessage());
+
+            System.out.println("Original Cause: "
+                    + e.getCause());
+        }
+    }
+}
+Output
+Current Exception: New Exception
+Original Cause: java.lang.ArithmeticException: / by zero
