@@ -1,0 +1,39 @@
+
+Interview Questions
+
+1) What is a Garbage Collector in Java?
+
+2) When does an object become eligible for Garbage Collection?
+
+3) Can we force Garbage Collection in Java?
+
+4) What is the difference between Garbage Collector and Garbage Collection?
+
+5) What does System.gc() do?
+
+6) What is the purpose of the finalize() method?
+
+7) How does automatic Garbage Collector work in Java?
+
+8) Explain the Mark and Sweep algorithm used by JVM.
+
+Programs
+
+1) Write a Java program to demonstrate when an object becomes eligible for Garbage Collection.
+
+2) In the below code, identify how many objects are eligible for Garbage Collection after both references are set to null:
+
+GCExample obj1 = new GCExample();
+GCExample obj2 = new GCExample();
+
+obj1.ref = obj2;
+obj2.ref = obj1;
+
+obj1 = null;
+obj2 = null;
+
+System.gc();
+
+3) Write a program to override the finalize() method and show when it gets called during Garbage Collection.
+
+4) Write a program to compare System.gc() and Runtime.getRuntime().gc() and observe their behavior.
