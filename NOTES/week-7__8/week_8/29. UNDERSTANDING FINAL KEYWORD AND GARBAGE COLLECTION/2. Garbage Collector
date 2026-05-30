@@ -2,17 +2,76 @@
 Interview Questions
 
 1) What is a Garbage Collector in Java?
+-->The Garbage Collector (GC) is a JVM component that automatically frees memory by removing objects that are no longer reachable or used by the program.
+
+Advantages:
+
+Automatic memory management.
+Prevents memory leaks.
+Reduces programmer effort.
+
+
 
 2) When does an object become eligible for Garbage Collection?
+-->An object becomes eligible for Garbage Collection when it is no longer reachable from any live reference.
+      
+      Examples:
+      1. Nullifying Reference
+      
+          Employee e = new Employee();
+          e = null;
+          
+      2. Reassigning Reference
+          Employee e1 = new Employee();
+          e1 = new Employee();
+      
+      The first object becomes eligible for GC.
+      
+      3. Anonymous Object
+      
+          new Employee();
+          
+          No reference is assigned.
+      
+      4. Island of Isolation
+          Objects reference each other but are unreachable from outside references.
+
+
+
 
 3) Can we force Garbage Collection in Java?
+-->No.
+
+We can only request the JVM to perform Garbage Collection.
+
+System.gc();
+
+or
+
+Runtime.getRuntime().gc();
+
+The JVM may ignore the request.
+
+
+
 
 4) What is the difference between Garbage Collector and Garbage Collection?
+-->Garbage Collection is the overall, high-level process or concept of automatically managing memory by identifying and cleaning up unused objects from the heap.
+    Garbage Collector is the specific background program or algorithm (like a worker/mechanism) that actually executes that cleaning process behind the scenes
+    It is basically the difference between what is happening and how it gets done.
+
 
 5) What does System.gc() do?
+-->System.gc() requests the JVM to run Garbage Collection.
+    System.gc();
+        Important:
+          It is only a request.
+          JVM decides whether to execute GC immediately or later.
+
+
 
 6) What is the purpose of the finalize() method?
-
+-->
 7) How does automatic Garbage Collector work in Java?
 
 8) Explain the Mark and Sweep algorithm used by JVM.
