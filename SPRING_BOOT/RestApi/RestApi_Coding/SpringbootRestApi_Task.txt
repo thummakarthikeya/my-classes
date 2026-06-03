@@ -1,0 +1,95 @@
+1. 📚 Online Book Store API
+Scenario
+
+You are building a simple REST API for an online bookstore. The system should handle basic operations without using any database.
+
+Requirements
+Create a controller for /books
+Implement the following APIs:
+GET /books → Return message: “All books fetched”
+POST /books → Accept book details in request body and return “Book added”
+PUT /books → Accept updated book data and return “Book updated”
+RequestBody Example
+{
+  "id": 101,
+  "title": "Java Basics",
+  "author": "John",
+  "price": 500
+}
+-----------------------------------------------------------------
+🧪 2. 🎓 Student Registration System
+Scenario
+
+A college wants a REST API to simulate student registration and updates.
+
+Requirements
+Base URL: /students
+APIs:
+GET /students → “Student list fetched”
+POST /students/register → Accept student data → “Student registered successfully”
+PUT /students/update → Accept updated student info → “Student updated successfully”
+RequestBody Example
+{
+  "id": 1,
+  "name": "Ramesh",
+  "course": "B.Tech",
+  "email": "ramesh@gmail.com"
+}
+------------------------------------------------------------------------------------
+🧪 3. 🛒 Shopping Cart API
+Scenario
+
+Design a REST API for a shopping cart system where users can add and update items.
+
+Requirements
+Base URL: /cart
+APIs:
+GET /cart → “Cart items fetched”
+POST /cart/add → Accept item details → “Item added to cart”
+PUT /cart/update → Accept updated item → “Cart updated”
+RequestBody Example
+{
+  "productId": 201,
+  "productName": "Laptop",
+  "quantity": 1,
+  "price": 60000
+}
+----------------------------------------------------------------------------
+🧪 4. 🏥 Hospital Appointment API
+Scenario
+
+A hospital wants a simple API to manage patient appointments (no DB, just messages).
+
+Requirements
+Base URL: /appointments
+APIs:
+GET /appointments → “Appointments fetched”
+POST /appointments/book → Accept appointment details → “Appointment booked”
+PUT /appointments/update → Accept updated appointment → “Appointment updated”
+RequestBody Example
+{
+  "patientName": "Amit",
+  "doctorName": "Dr. Rao",
+  "date": "2026-04-25",
+  "time": "10:30 AM"
+}
+--------------------------------------------------------------------------------
+🧪 5. 🍔 Food Delivery Order API
+Scenario
+
+Create a REST API for a food delivery app to place and update orders.
+
+Requirements
+Base URL: /orders
+APIs:
+GET /orders → “Orders fetched”
+POST /orders/place → Accept order details → “Order placed successfully”
+PUT /orders/update → Accept updated order → “Order updated successfully”
+RequestBody Example
+{
+  "orderId": 501,
+  "customerName": "Sita",
+  "item": "Pizza",
+  "quantity": 2,
+  "address": "Hyderabad"
+}

@@ -1,0 +1,406 @@
+1. 🏫 Employee Management API
+Scenario
+A company wants a REST API to manage employee details.
+
+Requirements
+Base URL: /employees
+
+APIs:
+
+GET /employees → “Employee list fetched”
+
+POST /employees/add → Accept employee details → “Employee added successfully”
+
+PUT /employees/update → Accept updated employee details → “Employee updated successfully”
+
+DELETE /employees/delete → Accept employee id details → “Employee deleted successfully”
+
+
+Model Fields:
+
+employeeId
+
+employeeName
+
+department
+
+salary
+
+
+RequestBody Example
+
+{
+  "employeeId": 101,
+  "employeeName": "Arun",
+  "department": "IT",
+  "salary": 45000
+}
+
+
+----------------------------------------------------------
+
+2. ✈️ Flight Booking API
+Scenario
+An airline company wants APIs to manage flight bookings.
+
+Requirements
+Base URL: /flights
+
+APIs:
+
+GET /flights → “Flight details fetched”
+
+POST /flights/book → “Flight booked successfully”
+
+PUT /flights/update → “Flight booking updated successfully”
+
+DELETE /flights/delete → “Flight booking deleted successfully”
+
+
+Model Fields:
+
+bookingId
+
+passengerName
+
+flightName
+
+ticketPrice
+
+
+RequestBody Example
+
+{
+  "bookingId": 201,
+  "passengerName": "Rahul",
+  "flightName": "IndiGo",
+  "ticketPrice": 6500
+}
+
+
+----------------------------------------------------------
+
+3. 🏦 Banking Transaction API
+Scenario
+A bank wants APIs for customer transactions.
+
+Requirements
+Base URL: /transactions
+
+APIs:
+
+GET /transactions → “Transactions fetched”
+
+POST /transactions/add → “Transaction added successfully”
+
+PUT /transactions/update → “Transaction updated successfully”
+
+DELETE /transactions/delete → “Transaction deleted successfully”
+
+
+Model Fields:
+
+transactionId
+
+accountHolderName
+
+transactionType
+
+amount
+
+
+RequestBody Example
+
+{
+  "transactionId": 301,
+  "accountHolderName": "Suresh",
+  "transactionType": "Deposit",
+  "amount": 10000
+}
+
+
+-----------------------------------------------------------------
+
+4. 📱 Mobile Store API
+Scenario
+A mobile store wants APIs to manage mobile products.
+
+Requirements
+Base URL: /mobiles
+
+APIs:
+
+GET /mobiles → “Mobile list fetched”
+
+POST /mobiles/add → “Mobile added successfully”
+
+PUT /mobiles/update → “Mobile updated successfully”
+
+DELETE /mobiles/delete → “Mobile deleted successfully”
+
+
+Model Fields:
+
+mobileId
+
+brand
+
+model
+
+price
+
+
+RequestBody Example
+
+{
+  "mobileId": 401,
+  "brand": "Samsung",
+  "model": "Galaxy S24",
+  "price": 85000
+}
+
+
+---
+
+5. 🎓 Course Enrollment API
+Scenario
+An institute wants APIs to manage student course enrollments.
+
+Requirements
+Base URL: /courses
+
+APIs:
+
+GET /courses → “Courses fetched”
+
+POST /courses/enroll → “Course enrolled successfully”
+
+PUT /courses/update → “Course enrollment updated successfully”
+
+DELETE /courses/delete → “Course enrollment deleted successfully”
+
+
+Model Fields:
+
+enrollmentId
+
+studentName
+
+courseName
+
+fee
+
+
+RequestBody Example
+
+{
+  "enrollmentId": 501,
+  "studentName": "Priya",
+  "courseName": "Spring Boot",
+  "fee": 12000
+}
+
+
+------------------------------------------------------------------
+
+6. 🚕 Cab Booking API
+Scenario
+A cab service company wants APIs to handle ride bookings.
+
+Requirements
+Base URL: /cabs
+
+APIs:
+
+GET /cabs → “Cab bookings fetched”
+
+POST /cabs/book → “Cab booked successfully”
+
+PUT /cabs/update → “Cab booking updated successfully”
+
+DELETE /cabs/delete → “Cab booking deleted successfully”
+
+
+Model Fields:
+
+bookingId
+
+customerName
+
+pickupLocation
+
+fare
+
+
+RequestBody Example
+
+{
+  "bookingId": 601,
+  "customerName": "Ravi",
+  "pickupLocation": "Hyderabad",
+  "fare": 450
+}
+
+
+---
+
+7. 🏥 Pharmacy Management API
+Scenario
+A pharmacy wants APIs to manage medicines.
+
+Requirements
+Base URL: /medicines
+
+APIs:
+
+GET /medicines → “Medicine list fetched”
+
+POST /medicines/add → “Medicine added successfully”
+
+PUT /medicines/update → “Medicine updated successfully”
+
+DELETE /medicines/delete → “Medicine deleted successfully”
+
+
+Model Fields:
+
+medicineId
+
+medicineName
+
+company
+
+price
+
+
+RequestBody Example
+
+{
+  "medicineId": 701,
+  "medicineName": "Paracetamol",
+  "company": "Cipla",
+  "price": 50
+}
+
+
+---------------------------------------------------
+
+8. 📦 Warehouse Inventory API
+Scenario
+A warehouse wants APIs to manage inventory items.
+
+Requirements
+Base URL: /inventory
+
+APIs:
+
+GET /inventory → “Inventory fetched”
+
+POST /inventory/add → “Item added successfully”
+
+PUT /inventory/update → “Inventory updated successfully”
+
+DELETE /inventory/delete → “Inventory deleted successfully”
+
+
+Model Fields:
+
+itemId
+
+itemName
+
+quantity
+
+location
+
+
+RequestBody Example
+
+{
+  "itemId": 801,
+  "itemName": "Keyboard",
+  "quantity": 25,
+  "location": "Block A"
+}
+
+
+------------------------------------------------------------
+
+9. 🎮 Gaming Profile API
+Scenario
+A gaming platform wants APIs to manage player profiles.
+
+Requirements
+Base URL: /players
+
+APIs:
+
+GET /players → “Player profiles fetched”
+
+POST /players/add → “Player added successfully”
+
+PUT /players/update → “Player profile updated successfully”
+
+DELETE /players/delete → “Player profile deleted successfully”
+
+
+Model Fields:
+
+playerId
+
+playerName
+
+gameName
+
+score
+
+
+RequestBody Example
+
+{
+  "playerId": 901,
+  "playerName": "Kiran",
+  "gameName": "BGMI",
+  "score": 4500
+}
+
+
+---------------------------------------------------------------------
+
+10. 🏠 Property Rental API
+Scenario
+A real estate company wants APIs to manage rental properties.
+
+Requirements
+Base URL: /properties
+
+APIs:
+
+GET /properties → “Properties fetched”
+
+POST /properties/add → “Property added successfully”
+
+PUT /properties/update → “Property updated successfully”
+
+DELETE /properties/delete → “Property deleted successfully”
+
+
+Model Fields:
+
+propertyId
+
+ownerName
+
+propertyType
+
+rent
+
+
+RequestBody Example
+
+{
+  "propertyId": 1001,
+  "ownerName": "Mahesh",
+  "propertyType": "Apartment",
+  "rent": 15000
+}

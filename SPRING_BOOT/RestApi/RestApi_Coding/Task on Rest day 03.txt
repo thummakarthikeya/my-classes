@@ -1,0 +1,415 @@
+1. 📚 Online Library Management API
+
+## Scenario
+
+A library wants a REST API to manage books using a database.
+
+## Requirements
+
+Database Table: `books`
+
+Base URL: `/books`
+
+### APIs
+
+* `POST /books/add` → Add a new book
+* `GET /books` → Fetch all books
+* `GET /books/{id}` → Fetch book by ID
+* `PUT /books/update/{id}` → Update complete book details
+* `PATCH /books/price/{id}` → Update only book price
+* `DELETE /books/delete/{id}` → Delete book
+
+## Model Fields
+
+* id
+* title
+* author
+* genre
+* price
+
+## Sample RequestBody
+
+{
+  "id": 101,
+  "title": "Spring Boot",
+  "author": "John",
+  "genre": "Programming",
+  "price": 550
+}
+
+
+------------------------------------------------------------------
+
+2. 🎓 Student Management System API
+
+## Scenario
+
+A college wants APIs to manage student records in a database.
+
+## Requirements
+
+Database Table: `students`
+
+Base URL: `/students`
+
+### APIs
+
+* `POST /students/register`
+* `GET /students`
+* `GET /students/{id}`
+* `PUT /students/update/{id}`
+* `PATCH /students/email/{id}`
+* `DELETE /students/delete/{id}`
+
+## Model Fields
+
+* id
+* name
+* course
+* email
+* mobile
+
+## Sample RequestBody
+
+{
+  "id": 1,
+  "name": "Ramesh",
+  "course": "B.Tech",
+  "email": "ramesh@gmail.com",
+  "mobile": "9876543210"
+}
+
+------------------------------------------------------------------
+
+3. 🛒 Shopping Cart API
+
+## Scenario
+
+An e-commerce company wants APIs to manage cart items.
+
+## Requirements
+
+Database Table: `cart_items`
+
+Base URL: `/cart`
+
+### APIs
+
+* `POST /cart/add`
+* `GET /cart`
+* `GET /cart/{id}`
+* `PUT /cart/update/{id}`
+* `PATCH /cart/quantity/{id}`
+* `DELETE /cart/delete/{id}`
+
+## Model Fields
+
+* productId
+* productName
+* quantity
+* price
+* category
+
+## Sample RequestBody
+
+{
+  "productId": 201,
+  "productName": "Laptop",
+  "quantity": 1,
+  "price": 60000,
+  "category": "Electronics"
+}
+
+
+--------------------------------------------------------------------
+
+4. 🏥 Hospital Appointment API
+
+## Scenario
+
+A hospital wants APIs to manage patient appointments.
+
+## Requirements
+
+Database Table: `appointments`
+
+Base URL: `/appointments`
+
+### APIs
+
+* `POST /appointments/book`
+* `GET /appointments`
+* `GET /appointments/{id}`
+* `PUT /appointments/update/{id}`
+* `PATCH /appointments/time/{id}`
+* `DELETE /appointments/delete/{id}`
+
+## Model Fields
+
+* appointmentId
+* patientName
+* doctorName
+* appointmentDate
+* appointmentTime
+
+## Sample RequestBody
+
+{
+  "appointmentId": 301,
+  "patientName": "Amit",
+  "doctorName": "Dr Rao",
+  "appointmentDate": "2026-06-01",
+  "appointmentTime": "10:30 AM"
+}
+
+
+-----------------------------------------------------------
+
+5. 🍔 Food Delivery Order API
+
+## Scenario
+
+A food delivery company wants APIs to manage customer orders.
+
+## Requirements
+
+Database Table: `orders`
+
+Base URL: `/orders`
+
+### APIs
+
+* `POST /orders/place`
+* `GET /orders`
+* `GET /orders/{id}`
+* `PUT /orders/update/{id}`
+* `PATCH /orders/address/{id}`
+* `DELETE /orders/delete/{id}`
+
+## Model Fields
+
+* orderId
+* customerName
+* itemName
+* quantity
+* address
+
+## Sample RequestBody
+
+{
+  "orderId": 501,
+  "customerName": "Sita",
+  "itemName": "Pizza",
+  "quantity": 2,
+  "address": "Hyderabad"
+}
+
+
+--------------------------------------------------------------------
+
+ 6. 🚗 Vehicle Rental API
+
+## Scenario
+
+A rental company wants APIs to manage vehicles.
+
+## Requirements
+
+Database Table: `vehicles`
+
+Base URL: `/vehicles`
+
+### APIs
+
+* `POST /vehicles/add`
+* `GET /vehicles`
+* `GET /vehicles/{id}`
+* `PUT /vehicles/update/{id}`
+* `PATCH /vehicles/price/{id}`
+* `DELETE /vehicles/delete/{id}`
+
+## Model Fields
+
+* vehicleId
+* vehicleName
+* type
+* rentPerDay
+* status
+
+## Sample RequestBody
+
+{
+  "vehicleId": 401,
+  "vehicleName": "Honda City",
+  "type": "Car",
+  "rentPerDay": 2500,
+  "status": "Available"
+}
+
+---------------------------------------------------------------------
+
+7. 🏨 Hotel Booking API
+
+## Scenario
+
+A hotel management system wants APIs to manage room bookings.
+
+## Requirements
+
+Database Table: `hotel_bookings`
+
+Base URL: `/hotels`
+
+### APIs
+
+* `POST /hotels/book`
+* `GET /hotels`
+* `GET /hotels/{id}`
+* `PUT /hotels/update/{id}`
+* `PATCH /hotels/days/{id}`
+* `DELETE /hotels/delete/{id}`
+
+## Model Fields
+
+* bookingId
+* customerName
+* roomType
+* days
+* amount
+
+## Sample RequestBody
+
+{
+  "bookingId": 601,
+  "customerName": "Rahul",
+  "roomType": "Deluxe",
+  "days": 3,
+  "amount": 9000
+}
+
+----------------------------------------------------------------
+
+ 8. ✈️ Flight Booking API
+
+## Scenario
+
+An airline company wants APIs to manage flight bookings.
+
+## Requirements
+
+Database Table: `flight_bookings`
+
+Base URL: `/flights`
+
+### APIs
+
+* `POST /flights/book`
+* `GET /flights`
+* `GET /flights/{id}`
+* `PUT /flights/update/{id}`
+* `PATCH /flights/price/{id}`
+* `DELETE /flights/delete/{id}`
+
+## Model Fields
+
+* bookingId
+* passengerName
+* flightName
+* source
+* destination
+* ticketPrice
+
+## Sample RequestBody
+
+{
+  "bookingId": 701,
+  "passengerName": "Kiran",
+  "flightName": "IndiGo",
+  "source": "Hyderabad",
+  "destination": "Delhi",
+  "ticketPrice": 6500
+}
+
+
+---------------------------------------------------------------
+
+9. 🏦 Banking Transaction API
+
+## Scenario
+
+A bank wants APIs to manage customer accounts and transactions.
+
+## Requirements
+
+Database Table: `accounts`
+
+Base URL: `/accounts`
+
+### APIs
+
+* `POST /accounts/create`
+* `GET /accounts`
+* `GET /accounts/{id}`
+* `PUT /accounts/update/{id}`
+* `PATCH /accounts/balance/{id}`
+* `DELETE /accounts/delete/{id}`
+
+## Model Fields
+
+* accountNumber
+* holderName
+* accountType
+* balance
+* branch
+
+## Sample RequestBody
+
+{
+  "accountNumber": 801,
+  "holderName": "Anjali",
+  "accountType": "Savings",
+  "balance": 50000,
+  "branch": "Hyderabad"
+}
+
+----------------------------------------------------------------
+
+10. 📦 Courier Service API
+
+## Scenario
+
+A courier company wants APIs to manage parcel deliveries.
+
+## Requirements
+
+Database Table: `couriers`
+
+Base URL: `/couriers`
+
+### APIs
+
+* `POST /couriers/send`
+* `GET /couriers`
+* `GET /couriers/{id}`
+* `PUT /couriers/update/{id}`
+* `PATCH /couriers/status/{id}`
+* `DELETE /couriers/delete/{id}`
+
+## Model Fields
+
+* courierId
+* senderName
+* receiverName
+* city
+* deliveryStatus
+
+## Sample RequestBody
+
+{
+  "courierId": 901,
+  "senderName": "Ravi",
+  "receiverName": "Mohan",
+  "city": "Hyderabad",
+  "deliveryStatus": "Shipped"
+}
+
