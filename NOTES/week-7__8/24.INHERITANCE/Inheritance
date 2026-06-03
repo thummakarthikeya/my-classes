@@ -105,6 +105,20 @@
     
     Java achieves multiple inheritance using interfaces.
 
+      [ Class A ]          <-- Superclass with a method: execute()
+       /       \
+ [ Class B ]   [ Class C ] <-- Both override execute() differently
+       \       /
+      [ Class D ]          <-- Tries to inherit from both B and C
+
+Class A defines a method called execute().
+Class B and Class C both extend Class A and override execute() with their own unique behaviors.
+Class D attempts to inherit from both Class B and Class C via multiple inheritance.
+When you instantiate Class D and call d.execute(), the compiler cannot determine whether to run Class B's version or Class C's version.
+
+Because of this severe ambiguity, Java designers blocked class-level multiple inheritance entirely.
+
+
 
 
 
