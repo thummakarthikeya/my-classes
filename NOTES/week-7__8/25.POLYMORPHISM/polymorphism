@@ -29,6 +29,29 @@
 | Also called static binding           | Also called dynamic binding      |
 | Faster                               | Slightly slower                  |
 
+2B. why compile time polymorphism is called early binding and runtime polymorphism is called late binding ?explainin in simple
+-->To understand these terms simply, think of "binding" as matching a specific question (a line of code calling a function) to its exact 
+    answer (the actual code block that runs)
+    The difference between early and late binding comes down entirely to when this matching happens.
+    ⏳ Compile-Time Polymorphism (Early Binding)
+        Early binding is called "early" because the compiler matches the function call to its definition early in the process
+            How it works: This happens during Method Overloading—when you have multiple functions with the exact same name but different input 
+                parameters (e.g., add(int a, int b) vs add(double a, double b)).
+            The Reason: Because the input types are written directly in the code, the compiler can look at your line of code, count the arguments, and 
+                know exactly which function you want immediately. It permanently "binds" the connection right then and there.
+            Real-world Analogy: Imagine ordering a meal from a fixed menu. You point directly to "Combo #1" while placing your order. The cashier
+                knows exactly what to prepare before you even take a seat.
+    
+    🚀 Runtime Polymorphism (Late Binding)Late binding is called "late" because the matching is delayed until the very last moment, which is while the
+        program is actively running.
+            How it works: This happens during Method Overriding and inheritance—when a child class rewrites a method belonging to a parent class 
+                    (e.g., a parent Animal class has a makeSound() method, and a child Dog class overrides it to bark).
+            The Reason: In your code, you might use a generic parent reference variable to hold a child object (like Animal myPet = getAnimalFromUser();).
+                    The compiler has no way of knowing what the user will choose ahead of time. The computer must wait until runtime to see what actual 
+                    object is sitting in memory before it can decide which method to trigger.
+            Real-world Analogy: Imagine going to a buffet. You ask the chef for the "Daily Special." The chef cannot prepare it until you show up and 
+                    choose whether you want the vegetarian or meat option that day.
+
 
 
 3. How does method overloading achieve compile-time polymorphism?
