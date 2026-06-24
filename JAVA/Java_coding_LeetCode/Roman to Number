@@ -1,0 +1,56 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+
+class Main {
+    
+    
+    public static int converting(String str){
+        HashMap <Character, Integer> map = new HashMap<>();
+        
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+        
+        int result = 0;
+        
+    
+        for(int i=0; i<str.length(); i++){
+            int current  = map.get(str.charAt(i));
+            
+            if(i < str.length()-1 ){
+                int next = map.get(str.charAt(i+1));
+                
+                if(current < next){
+                     result -= current;
+                }else{
+                    result += current;
+                }
+                
+            }else{
+                result += current;
+                }
+        }
+        return result; 
+    }
+    
+    
+    
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Enter the roman num : ");
+    String str = sc.nextLine();
+    
+    System.out.println(converting(str));
+    
+   
+        
+       
+        
+        
+    }
+}
