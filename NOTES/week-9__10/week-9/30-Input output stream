@@ -1,0 +1,191 @@
+Interview Questions
+
+
+java
+│
+└── io (package)
+    │
+    ├── Object (java.lang package)
+    │      │
+    │      ├── InputStream (abstract class)
+    │      │      ├── FileInputStream
+    │      │      ├── BufferedInputStream
+    │      │      ├── DataInputStream
+    │      │      ├── ObjectInputStream
+    │      │      ├── ByteArrayInputStream
+    │      │      └── PipedInputStream
+    │      │
+    │      ├── OutputStream (abstract class)
+    │      │      ├── FileOutputStream
+    │      │      ├── BufferedOutputStream
+    │      │      ├── DataOutputStream
+    │      │      ├── ObjectOutputStream
+    │      │      ├── PrintStream
+    │      │      ├── ByteArrayOutputStream
+    │      │      └── PipedOutputStream
+    │      │
+    │      ├── Reader (abstract class)
+    │      │      ├── FileReader
+    │      │      ├── BufferedReader
+    │      │      ├── InputStreamReader
+    │      │      └── CharArrayReader
+    │      │
+    │      └── Writer (abstract class)
+    │             ├── FileWriter
+    │             ├── BufferedWriter
+    │             ├── OutputStreamWriter
+    │             ├── PrintWriter
+    │             └── CharArrayWriter
+
+
+    
+Q1. What is the hierarchy of the InputStream and OutputStream classes?
+-->InputStream and OutputStream are the two root abstract classes in Java's byte stream hierarchy. They are part of the java.io package and 
+    are used to read and write binary data (such as images, audio, videos, PDFs, etc.).
+    
+    InputStream → Used to read bytes from a source.
+    OutputStream → Used to write bytes to a destination.
+    
+    Since they are abstract classes, we cannot create their objects directly. Instead, we use their subclasses.
+
+    Hierarchy of InputStream:
+    -------------------------
+                        Object
+                       │
+                InputStream (abstract)
+                       │
+ ┌─────────────────────┼─────────────────────────────┐
+ │                     │                             │
+FileInputStream   ByteArrayInputStream      PipedInputStream
+ │
+BufferedInputStream
+ │
+DataInputStream
+ │
+ObjectInputStream
+
+
+    Important subclasses
+    --------------------
+    FileInputStream → Reads data from a file.
+    BufferedInputStream → Improves reading performance using a buffer.
+    DataInputStream → Reads primitive data types (int, double, boolean, etc.).
+    ObjectInputStream → Reads serialized Java objects.
+    ByteArrayInputStream → Reads data from a byte array.
+    PipedInputStream → Reads data sent from another thread.
+
+
+
+    Hierarchy of OutputStream
+    -------------------------
+                        Object
+                       │
+               OutputStream (abstract)
+                       │
+ ┌─────────────────────┼─────────────────────────────┐
+ │                     │                             │
+FileOutputStream  ByteArrayOutputStream     PipedOutputStream
+ │
+BufferedOutputStream
+ │
+DataOutputStream
+ │
+ObjectOutputStream
+ │
+PrintStream
+
+
+Important subclasses
+FileOutputStream → Writes data to a file.
+BufferedOutputStream → Improves writing performance using a buffer.
+DataOutputStream → Writes primitive data types.
+ObjectOutputStream → Writes serialized Java objects.
+PrintStream → Prints formatted data (e.g., System.out).
+
+
+Interview Points (Very Important)
+---------------------------------
+InputStream and OutputStream belong to the java.io package.
+They are abstract classes.
+They work with byte streams (8-bit data).
+Used for binary files like images, PDFs, audio, videos, etc.
+InputStream is for reading data.
+OutputStream is for writing data.
+They provide common methods like:
+read()
+write()
+close()
+flush() (only in OutputStream)
+
+
+Example:
+--------
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class ReadAndWriteFile{
+    public static void main(String[] args) {
+
+        try{
+            InputStream in = new FileInputStream("data.txt");
+            OutputStream outV = new FileOutputStream("vowels.txt");
+            OutputStream outC = new FileOutputStream("consonents.txt");
+            OutputStream outD = new FileOutputStream("digits.txt");
+            OutputStream outS = new FileOutputStream("special.txt");
+
+            int data;
+            while((data = in.read()) != -1){
+                // char ch = (char) data;
+                if((char)data == 'A' || (char)data == 'E' || (char)data == 'I'|| (char)data == 'O'|| (char)data == 'U' || (char)data == 'a' || (char)data == 'e' || (char)data == 'i'|| (char)data == 'o'|| (char)data == 'u' ){
+                    outV.write((char)data);
+
+                }else  if(Character.isDigit((char)data)){
+                    outD.write((char)data);
+
+                }else  if(  !Character.isDigit((char)data)  && !Character.isLetter((char)data) && !Character.isWhitespace((char)data)){
+                    outS.write((char)data);
+
+                }else{
+                    outC.write((char)data);
+                }
+            }
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+
+        }
+
+
+    }
+}
+
+
+
+
+
+Q2. What do you understand by an I/O stream in Java?
+-->
+
+Q3. What are FileInputStream and FileOutputStream in Java?
+
+
+Q4. What are the different ways to take input from the console in Java?
+
+
+Q5. What is the difference between DataInputStream and BufferedInputStream?
+
+
+Q6. Why are InputStream and OutputStream abstract classes, not interfaces?
+
+
+Q7. What is the difference between flush() and close()?
+
+
+Q8. What does ObjectOutputStream do? (Used for serialization.)
+
+
+Q9. What is the difference between FileWriter and PrintWriter?
+
