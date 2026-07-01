@@ -1,10 +1,83 @@
 Interview Questions
 
+
+java.io
+│
+├── InputStream
+├── OutputStream
+├── Reader
+├── Writer
+├── Serializable (marker interface)  ← just another tool
+
+
+Student implements Serializable
+            │
+            ▼
+ObjectOutputStream.writeObject(student)
+            │
+            ▼
+Checks: student instanceof Serializable ?
+            │
+     Yes ─────────► Serialize
+     No  ─────────► NotSerializableException
+
+
+
+
 Q1. What is serialization in Java?
+-->Serialization is the process of converting a Java object into a byte stream so that it can be:
+
+    Stored in a file.
+    Sent over a network.
+    Saved in a database.
+    Transferred between applications.
+    
+    Java performs serialization using the ObjectOutputStream class.
+    
+    The class whose objects are to be serialized must implement the Serializable interface.
+    
+    Example
+    class Student implements Serializable {
+        int id = 101;
+        String name = "John";
+    }
+    ObjectOutputStream oos =
+        new ObjectOutputStream(new FileOutputStream("student.dat"));
+    
+    oos.writeObject(student);
+    Interview One-Liner
+    
+    Serialization is the process of converting a Java object into a byte stream so it can be stored, transferred, or transmitted. 
+    It is performed using ObjectOutputStream, and the class must implement the Serializable interface.
+
+
+
 
 Q2. How can you make a class serializable in Java?
+-->To make a class serializable, simply implement the Serializable interface.
+
+    Since Serializable is a marker interface, you don't need to implement any methods.
+    
+    Example
+    import java.io.Serializable;
+    
+    class Student implements Serializable {
+        int id;
+        String name;
+    }
+    
+    Now objects of the Student class can be serialized using ObjectOutputStream.
+    
+    Interview One-Liner
+    
+    A class can be made serializable by implementing the java.io.Serializable marker interface. Since it contains no methods, no implementation
+    is required.
+
+
+
 
 Q3. How can you prevent serialization in a subclass when the parent class implements the Serializable interface?
+-->
 
 Q4. Can a serialized object be transferred over a network?
 
