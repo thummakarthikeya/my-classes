@@ -167,25 +167,257 @@ public class ReadAndWriteFile{
 
 
 Q2. What do you understand by an I/O stream in Java?
--->
+-->An I/O (Input/Output) Stream in Java is a sequence of data used to read input from a source or write output to a destination.
+    It provides a way for Java programs to communicate with files, the keyboard, memory, networks, and other devices.
+        
+        Input Stream → Reads data into a Java program.
+        Output Stream → Writes data from a Java program to a destination.
+        Types of I/O Streams
+        Byte Streams
+        Used for reading and writing binary data (images, videos, PDFs, etc.).
+        Base classes:
+        InputStream
+        OutputStream
+        Character Streams
+        Used for reading and writing text data.
+        Base classes:
+        Reader
+        Writer
+        Example
+        import java.io.*;
+        
+        public class Main {
+            public static void main(String[] args) throws IOException {
+                FileInputStream fis = new FileInputStream("input.txt");
+                int data;
+        
+                while ((data = fis.read()) != -1) {
+                    System.out.print((char) data);
+                }
+        
+                fis.close();
+            }
+        }
+        Interview Definition (2–3 lines)
+        
+        An I/O stream in Java is a flow of data between a Java program and an external source or destination. It is used to read input and write output.
+        Java provides byte streams (InputStream/OutputStream) for binary data and character streams (Reader/Writer) for text data.
+
+
+
+
+
 
 Q3. What are FileInputStream and FileOutputStream in Java?
+-->FileInputStream and FileOutputStream are classes in the java.io package used to perform file operations using byte streams.
+
+        FileInputStream → Reads bytes from a file.
+        FileOutputStream → Writes bytes to a file.
+        
+        They are subclasses of InputStream and OutputStream, respectively.
+        
+        Example
+        FileInputStream fis = new FileInputStream("input.txt");
+        FileOutputStream fos = new FileOutputStream("output.txt");
+        Use Cases
+        Images
+        Audio
+        Videos
+        PDFs
+        Text files (although FileReader/FileWriter are preferred for text)
+        Interview One-Liner
+        
+        FileInputStream is used to read bytes from a file, while FileOutputStream is used to write bytes to a file. Both are subclasses 
+        of InputStream and OutputStream and belong to the java.io package.
+
+
 
 
 Q4. What are the different ways to take input from the console in Java?
+-->Java provides several ways to take input from the console.
+        
+        Scanner (Most commonly used)
+        BufferedReader
+        Console
+        DataInputStream (Old, rarely used)
+        1. Scanner
+        Easy to use.
+        Can read different data types.
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        String name = sc.next();
+        2. BufferedReader
+        Faster than Scanner.
+        Reads input as text (String).
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        String s = br.readLine();
+        3. Console
+        Used mainly for password input.
+        Available only when running from a real console.
+        Console c = System.console();
+        
+        String name = c.readLine();
+        char[] pwd = c.readPassword();
+        4. DataInputStream (Legacy)
+        Older approach.
+        Rarely used in modern Java.
+        DataInputStream dis = new DataInputStream(System.in);
+        
+        String s = dis.readLine();   // Deprecated
+        Interview One-Liner
+        
+        The common ways to take console input in Java are Scanner, BufferedReader, Console, and DataInputStream (legacy). Among these, 
+        Scanner is the most commonly used, while BufferedReader offers better performance.
+
+
 
 
 Q5. What is the difference between DataInputStream and BufferedInputStream?
+-->
+| `DataInputStream`                                                         | `BufferedInputStream`                                      |
+| ------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Used to read **primitive data types** (`int`, `double`, `boolean`, etc.). | Used to **improve reading performance** by buffering data. |
+| Reads data in Java's binary format.                                       | Reads raw bytes efficiently.                               |
+| Provides methods like `readInt()`, `readDouble()`, `readBoolean()`.       | Provides methods like `read()`, `available()`.             |
+| Used when data was written using `DataOutputStream`.                      | Used to reduce the number of disk I/O operations.          |
+| Focuses on **data format**.                                               | Focuses on **performance**.                                |
+
+    DataInputStream
+    
+    DataInputStream dis = new DataInputStream(new FileInputStream("data.dat"));
+    
+    int n = dis.readInt();
+    double d = dis.readDouble();
+    
+    BufferedInputStream
+    
+    BufferedInputStream bis = new BufferedInputStream(new FileInputStream("data.txt"));
+    
+    int ch = bis.read();
+    Interview One-Liner
+    
+    DataInputStream is used to read Java primitive data types from a stream, whereas BufferedInputStream is used to improve input performance 
+    by reading data through an internal buffer.
+
+
 
 
 Q6. Why are InputStream and OutputStream abstract classes, not interfaces?
+-->InputStream and OutputStream are abstract classes because they provide both method declarations and common implementations that
+    all subclasses can reuse.
+        
+        If they were interfaces, every subclass would have to implement all the methods from scratch (before Java 8).
+        
+        Examples of implemented methods
+        
+        InputStream provides methods like:
+        
+        read(byte[] b)
+        read(byte[] b, int off, int len)
+        close()
+        
+        These methods already have implementations.
+        
+        Subclasses like FileInputStream only need to implement the core method:
+        
+        read()
+        
+        Similarly, OutputStream provides implementations for methods like:
+        
+        write(byte[] b)
+        write(byte[] b, int off, int len)
+        close()
+        flush()
+        
+        while subclasses mainly implement:
+        
+        write(int b)
+        Interview One-Liner
+        
+        InputStream and OutputStream are abstract classes because they provide common implementations of methods that can be shared by
+        all subclasses, reducing code duplication while still forcing subclasses to implement the core read/write operations.
+
+
 
 
 Q7. What is the difference between flush() and close()?
+-->
+| `flush()`                                                                            | `close()`                                                      |
+| ------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
+| Writes any buffered data to the destination.                                         | Writes any remaining buffered data and then closes the stream. |
+| The stream **remains open**.                                                         | The stream is **closed** and cannot be used again.             |
+| You can continue writing after calling `flush()`.                                    | You cannot read/write after calling `close()`.                 |
+| Used when you want to ensure data is written immediately without closing the stream. | Used when you are completely done with the stream.             |
+
+    Example:
+    FileOutputStream fos = new FileOutputStream("data.txt");
+    
+    fos.write("Hello".getBytes());
+    
+    fos.flush();   // Data is written, stream is still open
+    
+    fos.write(" World".getBytes());
+    
+    fos.close();   // Writes remaining data and closes the stream
+    Interview One-Liner
+    
+    flush() forces buffered data to be written while keeping the stream open, whereas close() flushes any remaining data and then closes
+    the stream permanently.
+
 
 
 Q8. What does ObjectOutputStream do? (Used for serialization.)
+-->ObjectOutputStream is a class in the java.io package used to serialize Java objects.
+
+        Serialization is the process of converting an object into a byte stream so that it can be:
+        
+        Stored in a file.
+        Sent over a network.
+        Saved in a database (as binary data).
+        
+        The object must implement the Serializable interface.
+        
+        Example
+        import java.io.*;
+        
+        class Student implements Serializable {
+            int id = 101;
+            String name = "John";
+        }
+        
+        public class Main {
+            public static void main(String[] args) throws Exception {
+        
+                ObjectOutputStream oos =
+                        new ObjectOutputStream(new FileOutputStream("student.dat"));
+        
+                Student s = new Student();
+        
+                oos.writeObject(s);
+        
+                oos.close();
+            }
+        }
+        Key Method
+        oos.writeObject(object);
+        
+        This method serializes the object and writes it to the file.
+        
+        Interview One-Liner
+        
+        ObjectOutputStream is used to serialize Java objects by converting them into a byte stream, allowing them to be stored in a file or
+        transmitted over a network. The object's class must implement the Serializable interface.
+
 
 
 Q9. What is the difference between FileWriter and PrintWriter?
+-->
+| `FileWriter`                                        | `PrintWriter`                                                       |
+| --------------------------------------------------- | ------------------------------------------------------------------- |
+| Used to write **characters** to a file.             | Used to write **formatted text** to a file or other output streams. |
+| Mainly writes raw character data.                   | Can write text, numbers, booleans, objects, etc.                    |
+| Does not provide `print()` and `println()` methods. | Provides `print()`, `println()`, and `printf()` methods.            |
+| Best for simple file writing.                       | Best for formatted and user-friendly output.                        |
 
