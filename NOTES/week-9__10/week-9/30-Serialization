@@ -1,0 +1,25 @@
+Interview Questions
+
+Q1. What is serialization in Java?
+
+Q2. How can you make a class serializable in Java?
+
+Q3. How can you prevent serialization in a subclass when the parent class implements the Serializable interface?
+
+Q4. Can a serialized object be transferred over a network?
+
+Q5. What is deserialization in Java?
+
+Q6. What is the purpose of the transient keyword in serialization?
+
+Q7. What is the difference between the Serializable and Externalizable interfaces?
+
+Coding Questions
+
+Q1. Write a Java program to serialize an object of a class and save it to a file.
+
+Q2. Write a Java program to deserialize an object from a file and print its field values.
+
+Q3. Write a Java program to demonstrate the effect of the transient keyword—serialize and deserialize an object, showing that transient fields are not saved.
+
+Q4. Write a Java program where a parent class is serializable but the subclass is prevented from being serialized.
