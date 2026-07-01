@@ -1,4 +1,4 @@
-Interview Questions
+ Interview Questions
 
 
 java.io
@@ -77,7 +77,32 @@ Q2. How can you make a class serializable in Java?
 
 
 Q3. How can you prevent serialization in a subclass when the parent class implements the Serializable interface?
--->
+-->Normally, if a parent class implements Serializable, then all its subclasses are automatically serializable.
+
+            There is no way to "unimplement" Serializable in the subclass.
+            
+            To prevent serialization of the subclass, you can override the serialization process and throw a NotSerializableException.
+            
+            Example
+            import java.io.*;
+            
+            class Parent implements Serializable { }
+            
+            class Child extends Parent {
+            
+                private void writeObject(ObjectOutputStream out) throws IOException {
+                    throw new NotSerializableException("Child cannot be serialized");
+                }
+            }
+            Interview One-Liner
+            
+            A subclass of a serializable parent is automatically serializable. It cannot remove Serializable, but it can prevent serialization by overriding writeObject() and throwing NotSerializableException.
+
+
+
+
+
+
 
 Q4. Can a serialized object be transferred over a network?
 
