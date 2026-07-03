@@ -105,13 +105,105 @@ Q3. How can you prevent serialization in a subclass when the parent class implem
 
 
 Q4. Can a serialized object be transferred over a network?
+-->Yes.
+    
+    A serialized object is converted into a byte stream, which can be transmitted over a network using streams such as Socket, ObjectOutputStream,
+    and ObjectInputStream.
+    
+    The sender serializes the object, and the receiver deserializes it back into the original object.
+    
+    Example
+    
+    Sender
+    
+    ObjectOutputStream oos =
+        new ObjectOutputStream(socket.getOutputStream());
+    
+    oos.writeObject(student);
+    
+    Receiver
+    
+    ObjectInputStream ois =
+        new ObjectInputStream(socket.getInputStream());
+    
+    Student s = (Student) ois.readObject();
+    Interview One-Liner
+    
+    Yes. A serialized object can be transferred over a network because serialization converts the object into a byte stream,
+    which can be sent through a socket and reconstructed on the receiving side using deserialization.
+
+
+
 
 Q5. What is deserialization in Java?
+-->Deserialization is the process of converting a byte stream back into a Java object.
+
+    It is the reverse process of serialization.
+    
+    Java performs deserialization using the ObjectInputStream class.
+    
+    The class must implement the Serializable interface.
+    
+    Example
+    import java.io.*;
+    
+    ObjectInputStream ois =
+        new ObjectInputStream(new FileInputStream("student.dat"));
+    
+    Student s = (Student) ois.readObject();
+    
+    ois.close();
+    Key Method
+    readObject();
+    
+    This method reads the serialized object from the file and reconstructs the original object.
+    
+    Interview One-Liner
+    
+    Deserialization is the process of converting a byte stream back into a Java object. It is performed using ObjectInputStream and the readObject()
+    method.
+
+
+
 
 Q6. What is the purpose of the transient keyword in serialization?
+-->The transient keyword is used to prevent a field from being serialized.
+    
+    When an object is serialized, all non-transient fields are saved. A transient field is skipped, and after deserialization, it gets its default value.
+    
+    Example
+    import java.io.Serializable;
+    
+    class Student implements Serializable {
+    
+        int id = 101;
+        String name = "Karthikeya";
+    
+        transient String password = "admin123";
+    }
+    
+    If the Student object is serialized and then deserialized:
+    
+    id → 101 ✅
+    name → "Karthikeya" ✅
+    password → null ❌ (not serialized)
+    Why use transient?
+    
+    To avoid serializing sensitive or unnecessary data, such as:
+    
+    Passwords
+    OTPs
+    Temporary data
+    Cache values
+    Interview One-Liner
+    
+    The transient keyword is used to exclude a field from serialization. After deserialization, the transient field is restored to its default
+    value instead of its original value.
+
+
 
 Q7. What is the difference between the Serializable and Externalizable interfaces?
-
+-->
 Coding Questions
 
 Q1. Write a Java program to serialize an object of a class and save it to a file.
