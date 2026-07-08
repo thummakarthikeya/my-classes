@@ -204,6 +204,55 @@ Q6. What is the purpose of the transient keyword in serialization?
 
 Q7. What is the difference between the Serializable and Externalizable interfaces?
 -->
+| `Serializable`                             | `Externalizable`                                       |
+| ------------------------------------------ | ------------------------------------------------------ |
+| Marker interface (no methods).             | Not a marker interface.                                |
+| Java performs serialization automatically. | Programmer controls serialization manually.            |
+| Easy to use.                               | More flexible but requires more code.                  |
+| Uses default serialization process.        | Must implement `writeExternal()` and `readExternal()`. |
+| Better for most applications.              | Used when custom serialization is needed.              |
+
+
+       
+       Example
+       
+       Serializable
+       
+       class Student implements Serializable {
+           int id;
+           String name;
+       }
+       
+       Externalizable
+       
+       class Student implements Externalizable {
+       
+           public Student() { }
+       
+           @Override
+           public void writeExternal(ObjectOutput out) throws IOException {
+               out.writeInt(id);
+               out.writeObject(name);
+           }
+       
+           @Override
+           public void readExternal(ObjectInput in)
+                   throws IOException, ClassNotFoundException {
+       
+               id = in.readInt();
+               name = (String) in.readObject();
+           }
+       }
+       Interview One-Liner
+       
+       Serializable is a marker interface that provides automatic serialization, whereas Externalizable gives the programmer complete control
+       over serialization by requiring the implementation of writeExternal() and readExternal() methods.
+
+
+
+
+
+
 Coding Questions
 
 Q1. Write a Java program to serialize an object of a class and save it to a file.
