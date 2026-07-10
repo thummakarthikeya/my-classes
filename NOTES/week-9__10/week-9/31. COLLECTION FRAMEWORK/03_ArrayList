@@ -1,0 +1,269 @@
+Interview Questions
+
+Q1. What is ArrayList in Java? What are the various methods provided by it?
+-->What is ArrayList?
+
+    ArrayList is a resizable (dynamic) array implementation of the List interface in the Java Collections Framework. It maintains insertion order, allows duplicate and null elements, and provides fast random access using indexes.
+    
+    Syntax:
+    
+    ArrayList<String> list = new ArrayList<>();
+
+Common Methods of ArrayList :
+    | Method                  | Description                                  |
+    | ----------------------- | -------------------------------------------- |
+    | `add(E e)`              | Adds an element to the end.                  |
+    | `add(int index, E e)`   | Inserts an element at a specific index.      |
+    | `get(int index)`        | Returns the element at the specified index.  |
+    | `set(int index, E e)`   | Replaces the element at the specified index. |
+    | `remove(int index)`     | Removes an element by index.                 |
+    | `remove(Object o)`      | Removes the specified object.                |
+    | `size()`                | Returns the number of elements.              |
+    | `isEmpty()`             | Checks whether the list is empty.            |
+    | `contains(Object o)`    | Checks if an element exists.                 |
+    | `clear()`               | Removes all elements.                        |
+    | `indexOf(Object o)`     | Returns the first occurrence index.          |
+    | `lastIndexOf(Object o)` | Returns the last occurrence index.           |
+    | `toArray()`             | Converts the list into an array.             |
+    | `iterator()`            | Returns an iterator to traverse the list.    |
+
+
+Example:
+
+import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add("Java");
+        list.add("Python");
+        list.add("Java");
+
+        System.out.println(list.get(1));
+        System.out.println(list.size());
+    }
+}
+
+
+
+
+Q2. How would you convert an ArrayList to an Array and an Array to an ArrayList?
+-->1. ArrayList to Array
+
+    Use the toArray() method.
+    
+    import java.util.*;
+    
+    public class Demo {
+        public static void main(String[] args) {
+            ArrayList<String> list = new ArrayList<>();
+    
+            list.add("A");
+            list.add("B");
+    
+            String[] arr = list.toArray(new String[0]);
+    
+            System.out.println(Arrays.toString(arr));
+        }
+    }
+
+
+
+2. Array to ArrayList
+
+Use Arrays.asList().
+
+import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+        String[] arr = {"Java", "Python", "C"};
+
+        ArrayList<String> list = new ArrayList<>(Arrays.asList(arr));
+
+        System.out.println(list);
+    }
+}
+
+
+
+
+Q3. How does ArrayList work internally in Java, and how does it grow dynamically when elements are added?
+-->Internal Working
+      ArrayList internally uses an array (Object[]) to store elements.
+      Initially, the internal array is empty.
+      When elements are added and the array becomes full, a new larger array is created.
+      Existing elements are copied into the new array, and the old array is discarded.
+      Growth Process
+      
+      Suppose the capacity is 10.
+      
+      When the 11th element is added:
+      
+      Old Capacity = 10
+      
+      New Capacity = 10 + (10 / 2)
+                   = 15
+      
+      Formula:
+      
+      New Capacity = Old Capacity + (Old Capacity / 2)
+      
+      So the capacity increases by 50%.
+      
+      
+
+Q4. What is the initial capacity of the ArrayList and the default capacity of the ArrayList?
+-->There are two commonly discussed capacities:
+| Type             | Capacity                                     |
+| ---------------- | -------------------------------------------- |
+| Initial Capacity | 0 (empty internal array)                     |
+| Default Capacity | 10 (created when the first element is added) |
+
+Example:
+
+ArrayList<Integer> list = new ArrayList<>();
+
+Initially, no memory for 10 elements is allocated.
+
+When the first element is added, Java creates an internal array with a capacity of 10.
+
+
+
+
+
+
+Q5. Can you store null values in an ArrayList?
+-->Yes.
+
+ArrayList allows multiple null values.
+
+Example:
+
+import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add(null);
+        list.add("Java");
+        list.add(null);
+
+        System.out.println(list);
+    }
+}
+
+Output : 
+
+[null, Java, null]
+
+
+
+
+
+Q6. How can you make an ArrayList immutable?
+-->An immutable ArrayList cannot be modified after creation.
+
+    Method 1 (Recommended)
+    List<String> list = List.of("Java", "Python", "C");
+    
+    Trying to add elements throws : UnsupportedOperationException
+
+
+    Method 2
+    List<String> list =  Collections.unmodifiableList(new ArrayList<>());
+    
+    This creates a read-only view of the list.
+
+
+
+
+Q7. Is ArrayList synchronized in Java? If not, how can you make an ArrayList synchronized?
+-->No.
+    
+    ArrayList is not synchronized, so it is not thread-safe.
+    
+    Method 1
+    
+    Use:
+    
+    List<String> list = Collections.synchronizedList(new ArrayList<>());
+    Method 2
+    
+    Use Vector, which is synchronized by default.
+
+
+
+
+
+Q8. What are the real-time use cases of ArrayList in Java, and when should it be used?
+-->Real-Time Use Cases
+      Student records
+      Employee management systems
+      Product lists in e-commerce applications
+      Shopping cart items
+      Search results
+      Movie or music playlists
+      Customer details
+      Attendance management
+      Online booking systems
+      When Should You Use ArrayList?
+      
+      Use ArrayList when:
+      
+      Frequent searching or retrieval is required.
+      Random access using indexes is needed.
+      The collection size changes dynamically.
+      Insertions and deletions mostly happen at the end.
+      Duplicate elements are allowed.
+
+
+
+Q9. What are the advantages and disadvantages of ArrayList?
+-->Advantages
+      Dynamic size.
+      Fast random access (O(1)).
+      Maintains insertion order.
+      Allows duplicate elements.
+      Allows null values.
+      Easy to use with built-in methods.
+  Disadvantages
+      Slow insertion/deletion in the middle (O(n)).
+      Not synchronized.
+      Uses more memory due to dynamic resizing.
+      Stores objects only (primitives require wrapper classes).
+
+
+
+Q10. How many constructors are present in ArrayList?
+-->ArrayList provides three constructors.
+        
+        1. Default Constructor
+              ArrayList<String> list = new ArrayList<>();
+              
+              Creates an empty ArrayList with default capacity allocated when the first element is added.
+        
+        2. Constructor with Initial Capacity
+              ArrayList<String> list = new ArrayList<>(20);
+              
+              Creates an ArrayList with an initial capacity of 20.
+        
+        3. Constructor with Collection
+              List<String> names = List.of("Java", "Python");
+              
+              ArrayList<String> list =
+              new ArrayList<>(names);
+              
+              Creates an ArrayList containing all elements from the specified collection.
+              
+              Interview Tip
+              
+              A common interview question is:
+              
+              Why is ArrayList faster than LinkedList for retrieving elements?
+              
+              Answer: Because ArrayList stores elements in a contiguous array, it provides O(1) random access using indexes, 
+              whereas LinkedList must traverse nodes sequentially, resulting in O(n) access time.
