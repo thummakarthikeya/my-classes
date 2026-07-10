@@ -1,0 +1,132 @@
+Interview Questions
+
+Q1. What is the use of the List interface? What are the key characteristics of a List in Java?
+-->Use of the List Interface
+
+The List interface in Java is used to store an ordered collection of elements. It allows duplicate elements and preserves the insertion order. Elements can be accessed and modified using their index.
+
+Key Characteristics of List
+Maintains insertion order – Elements are stored in the order they are added.
+Allows duplicate elements – The same element can appear multiple times.
+Supports index-based access – Elements can be accessed using their index (0, 1, 2, ...).
+Allows null values – Most List implementations allow multiple null values.
+Dynamic size – The list grows and shrinks automatically.
+Provides various methods – Such as add(), remove(), get(), set(), contains(), and size().
+
+Example:
+
+import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+        List<String> fruits = new ArrayList<>();
+
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Apple");
+
+        System.out.println(fruits);
+    }
+}
+
+Output:
+
+[Apple, Banana, Apple]
+
+
+
+
+
+Q2. Can a List contain duplicate elements?
+-->Yes. A List can contain duplicate elements.
+      
+      Unlike a Set, which stores only unique elements, a List allows the same element to be stored multiple times while maintaining the insertion order.
+      
+      Example:
+      
+      import java.util.*;
+      
+      public class Demo {
+          public static void main(String[] args) {
+              List<Integer> numbers = new ArrayList<>();
+      
+              numbers.add(10);
+              numbers.add(20);
+              numbers.add(10);
+      
+              System.out.println(numbers);
+          }
+      }
+      
+      Output:
+      
+      [10, 20, 10]
+
+
+
+
+
+Q3. What are the main classes that implement the List interface?
+-->The main classes implementing the List interface are:
+    
+    1. ArrayList
+    Uses a dynamic array.
+    Fast random access.
+    Slower insertion/deletion in the middle.
+    Not synchronized.
+
+    2. LinkedList
+    Uses a doubly linked list.
+    Fast insertion and deletion.
+    Slower random access.
+    Can also be used as a Queue and Deque.
+
+    3. Vector
+    Similar to ArrayList.
+    Synchronized (thread-safe).
+    Slower due to synchronization.
+
+    4. Stack
+    Extends Vector.
+    Follows LIFO (Last In, First Out).
+    Provides methods like push(), pop(), and peek().
+
+| Class      | Data Structure     | Thread Safe | Best Use                      |
+| ---------- | ------------------ | ----------- | ----------------------------- |
+| ArrayList  | Dynamic Array      | No          | Fast retrieval                |
+| LinkedList | Doubly Linked List | No          | Frequent insertions/deletions |
+| Vector     | Dynamic Array      | Yes         | Thread-safe applications      |
+| Stack      | Vector             | Yes         | LIFO operations               |
+
+
+
+Q4. How does a List maintain insertion order?
+-->A List maintains insertion order by storing elements in the same sequence in which they are inserted. When you iterate through the list, elements are returned in the order they were added.
+
+    Example:
+    
+    import java.util.*;
+    
+    public class Demo {
+        public static void main(String[] args) {
+            List<String> colors = new ArrayList<>();
+    
+            colors.add("Red");
+            colors.add("Green");
+            colors.add("Blue");
+    
+            System.out.println(colors);
+        }
+    }
+    
+    Output:
+    
+    [Red, Green, Blue]
+    
+    The output matches the insertion order.
+    
+    Interview Tip:
+    
+    List → Ordered, allows duplicates.
+    Set → Unordered (except LinkedHashSet), does not allow duplicates.
+    Map → Stores key-value pairs (not part of the Collection interface).
