@@ -1,0 +1,15 @@
+Interview Questions
+
+Q1. What is Collection Framework? What are the advantages of the Collection Framework in Java?
+-->
+
+
+Q2. Describe the Collection hierarchy in Java.
+
+Q3. List down the primary interfaces provided by the Java Collections Framework.
+
+Q4. Why doesn't the Collection interface extend the Cloneable and Serializable interfaces?
+
+Q5. What is Generic Collection?
+
+Q6. What is the difference between Collection and Array?
