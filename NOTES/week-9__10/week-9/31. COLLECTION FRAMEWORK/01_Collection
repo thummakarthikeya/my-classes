@@ -1,0 +1,161 @@
+Interview Questions
+
+Q1. What is Collection Framework? What are the advantages of the Collection Framework in Java?
+-->
+
+
+Collection Framework
+
+The Java Collection Framework (JCF) is a set of interfaces, classes, and algorithms provided by the java.util package to store, manage, and manipulate groups of objects efficiently.
+
+Examples: ArrayList, LinkedList, HashSet, TreeSet, HashMap, etc.
+
+Advantages
+Reusable Data Structures – Ready-made classes like ArrayList, HashSet, and HashMap.
+Dynamic Size – Collections can grow or shrink automatically.
+Improved Performance – Optimized implementations for searching, sorting, and storing data.
+Code Reusability – No need to implement data structures from scratch.
+Type Safety – Generics ensure only specific types of objects are stored.
+Standard API – Provides a common way to access and manipulate data.
+Utility Methods – Collections class provides sorting, searching, reversing, shuffling, etc.
+Easy Data Manipulation – Supports insertion, deletion, iteration, and modification.
+
+
+
+Q2. Describe the Collection hierarchy in Java.
+-->The Java Collection Framework hierarchy is as follows:
+                 Iterable
+                     |
+               Collection (Interface)
+          ___________|____________
+         |           |            |
+       List         Set        Queue
+        |            |            |
+  ArrayList      HashSet     PriorityQueue
+  LinkedList     LinkedHashSet
+  Vector         TreeSet
+  Stack
+
+                Map (Separate Interface)
+                     |
+        ______________________________
+       |              |               |
+    HashMap     LinkedHashMap      TreeMap
+                                   Hashtable
+
+
+Hierarchy Explanation
+
+Iterable → Root interface for iteration using Iterator.
+Collection → Parent interface of List, Set, and Queue.
+List → Ordered collection, allows duplicates.
+Set → Does not allow duplicate elements.
+Queue → Stores elements for processing, usually in FIFO order.
+Map → Stores key-value pairs. It is not part of the Collection interface hierarchy.
+
+
+
+
+
+Q3. List down the primary interfaces provided by the Java Collections Framework.
+-->The primary interfaces are:
+
+Iterable – Root interface for iteration.
+Collection – Root interface for all collections.
+List – Ordered collection with duplicates allowed.
+Set – Collection of unique elements.
+SortedSet – Set whose elements are sorted.
+NavigableSet – Extends SortedSet with navigation methods.
+Queue – FIFO data structure.
+Deque – Double-ended queue.
+Map – Stores key-value pairs.
+SortedMap – Keys are maintained in sorted order.
+NavigableMap – Extends SortedMap with navigation methods.
+
+
+
+Q4. Why doesn't the Collection interface extend the Cloneable and Serializable interfaces?
+-->The Collection interface does not extend Cloneable and Serializable because:
+
+Not all collections need cloning or serialization.
+Cloning behavior differs among implementations, so a common implementation is not possible.
+Serialization is optional because some collections may contain non-serializable objects.
+These are implementation-specific features, so classes like ArrayList, HashSet, and HashMap implement them individually when required.
+
+Example:
+
+ArrayList implements both Cloneable and Serializable.
+The Collection interface itself does not.
+
+
+
+
+Q5. What is Generic Collection?
+-->A Generic Collection is a collection that specifies the type of objects it can store using Generics (<T>).
+
+Syntax:
+
+Collection<Type> collectionName = new CollectionImplementation<>();
+
+Example:
+
+import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+        List<String> names = new ArrayList<>();
+
+        names.add("Karthik");
+        names.add("Rahul");
+
+        // names.add(100); // Compile-time Error
+
+        for (String name : names) {
+            System.out.println(name);
+        }
+    }
+}
+
+Advantages
+
+Type safety
+No explicit type casting
+Compile-time error checking
+Cleaner and more readable code
+
+
+
+
+Q6. What is the difference between Collection and Array?
+-->
+| **Collection**                                            | **Array**                             |
+| --------------------------------------------------------- | ------------------------------------- |
+| Dynamic size                                              | Fixed size                            |
+| Stores objects only (Generics support)                    | Can store primitive types and objects |
+| Located in `java.util` package                            | Built into Java language              |
+| Many built-in methods (`add()`, `remove()`, `contains()`) | Limited operations                    |
+| Memory allocated dynamically                              | Memory allocated at creation          |
+| Can use Generics                                          | Cannot use Generics                   |
+| Slower than arrays in some cases                          | Faster due to direct memory access    |
+| Example: `ArrayList`, `HashSet`                           | Example: `int[]`, `String[]`          |
+
+
+
+Example (Array):
+
+int[] arr = {10, 20, 30};
+
+Example (Collection):
+
+List<Integer> list = new ArrayList<>();
+list.add(10);
+list.add(20);
+list.add(30);
+Interview Tip
+
+A common interview question is:
+
+Why use Collections instead of Arrays?
+
+Answer: Collections are preferred because they are dynamic, provide built-in methods, support Generics, and offer better flexibility,
+whereas arrays have a fixed size and fewer utility methods.
