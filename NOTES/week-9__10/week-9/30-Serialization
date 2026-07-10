@@ -256,9 +256,147 @@ Q7. What is the difference between the Serializable and Externalizable interface
 Coding Questions
 
 Q1. Write a Java program to serialize an object of a class and save it to a file.
+-->import java.io.*;
+
+class Student implements Serializable {
+
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        try {
+
+            Student s = new Student(101, "Karthikeya");
+
+            ObjectOutputStream oos =
+                    new ObjectOutputStream(new FileOutputStream("student.dat"));
+
+            oos.writeObject(s);
+
+            oos.close();
+
+            System.out.println("Object Serialized Successfully");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
 
 Q2. Write a Java program to deserialize an object from a file and print its field values.
+-->import java.io.*;
+
+class Student implements Serializable {
+
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        try {
+
+            ObjectInputStream ois =
+                    new ObjectInputStream(new FileInputStream("student.dat"));
+
+            Student s = (Student) ois.readObject();
+
+            System.out.println("ID : " + s.id);
+            System.out.println("Name : " + s.name);
+
+            ois.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
 
 Q3. Write a Java program to demonstrate the effect of the transient keyword—serialize and deserialize an object, showing that transient fields are not saved.
+-->import java.io.*;
+
+class Student implements Serializable {
+
+    int id = 101;
+    String name = "Karthikeya";
+    transient String password = "admin123";
+}
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+
+        Student s = new Student();
+
+        ObjectOutputStream oos =
+                new ObjectOutputStream(new FileOutputStream("student.dat"));
+
+        oos.writeObject(s);
+        oos.close();
+
+        ObjectInputStream ois =
+                new ObjectInputStream(new FileInputStream("student.dat"));
+
+        Student obj = (Student) ois.readObject();
+
+        System.out.println(obj.id);
+        System.out.println(obj.name);
+        System.out.println(obj.password);
+
+        ois.close();
+    }
+}
 
 Q4. Write a Java program where a parent class is serializable but the subclass is prevented from being serialized.
+-->import java.io.*;
+
+class Parent implements Serializable {
+
+    int id = 101;
+}
+
+class Child extends Parent {
+
+    String name = "Karthikeya";
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        throw new NotSerializableException("Child cannot be serialized");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Child c = new Child();
+
+        try {
+
+            ObjectOutputStream oos =
+                    new ObjectOutputStream(new FileOutputStream("student.dat"));
+
+            oos.writeObject(c);
+
+            oos.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
