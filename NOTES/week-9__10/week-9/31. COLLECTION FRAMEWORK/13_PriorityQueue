@@ -1,0 +1,165 @@
+Q1. What is PriorityQueue in Java?
+What is PriorityQueue?
+-->PriorityQueue is a class in the Java Collections Framework that implements the Queue interface. Unlike a normal queue, 
+    it orders elements based on their priority rather than the order in which they are inserted.
+    
+    By default, elements are arranged in natural (ascending) order, but a custom order can be specified using a Comparator.
+    
+    Characteristics
+    Stores elements according to priority.
+    Allows duplicate elements.
+    Does not allow null values.
+    Does not maintain insertion order.
+    Not synchronized.
+    Internally implemented using a Binary Heap.
+    
+    Example:
+    
+    import java.util.*;
+    
+    public class Demo {
+        public static void main(String[] args) {
+    
+            PriorityQueue<Integer> pq = new PriorityQueue<>();
+    
+            pq.offer(30);
+            pq.offer(10);
+            pq.offer(20);
+    
+            System.out.println(pq);
+        }
+    }
+
+
+
+Q2. Which data structure is used internally by PriorityQueue?
+-->PriorityQueue is internally implemented using a Binary Heap (Min-Heap).
+    
+    Working
+    The smallest (highest-priority) element is always at the root.
+    Insertion (offer) and deletion (poll) maintain the heap property.
+    
+    Internal Structure
+    
+            10
+           /  \
+         20    30
+    Time Complexity
+    offer() → O(log n)
+    poll() → O(log n)
+    peek() → O(1)
+
+
+    Possible Output
+    
+    [10, 30, 20]
+
+
+
+
+
+Q3. Does PriorityQueue maintain insertion order?
+-->No.
+
+PriorityQueue does not maintain insertion order.
+
+Elements are arranged according to their priority (sorting order).
+
+Example:
+
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+pq.offer(50);
+pq.offer(10);
+pq.offer(30);
+
+System.out.println(pq);
+
+Possible Output
+
+[10, 50, 30]
+
+Although 50 was inserted first, 10 appears first because it has the highest priority (smallest value).
+
+
+
+
+
+Q4. What is the default order used in PriorityQueue?
+
+-->By default, PriorityQueue uses natural ordering (ascending order).
+    
+    For custom ordering, a Comparator can be provided.
+    
+    Example (Descending Order):
+    
+    PriorityQueue<Integer> pq =
+    new PriorityQueue<>(Collections.reverseOrder());
+    
+    pq.offer(10);
+    pq.offer(30);
+    pq.offer(20);
+    
+    System.out.println(pq);
+    
+    Possible Output
+    
+    [30, 10, 20]
+
+
+
+
+
+
+
+
+
+Q5. Does PriorityQueue allow null and duplicate elements?
+-->Duplicate Elements
+        
+        Yes.
+        
+        PriorityQueue allows duplicate elements.
+        
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        
+        pq.offer(10);
+        pq.offer(10);
+        
+        System.out.println(pq);
+        
+        Output
+        
+        [10, 10]
+        Null Values
+        
+        No.
+        
+        PriorityQueue does not allow null values.
+        
+        Adding null throws a NullPointerException.
+        
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        
+        pq.offer(null);
+        
+        Output
+        
+        Exception in thread "main"
+        java.lang.NullPointerException
+
+
+
+
+
+Q6. How does PriorityQueue differ from Queue?
+-->
+| Feature            | Queue                     | PriorityQueue  |
+| ------------------ | ------------------------- | -------------- |
+| Order              | FIFO                      | Priority-based |
+| Insertion Order    | Yes (generally)           | No             |
+| Sorting            | No                        | Yes            |
+| Duplicate Elements | Depends on implementation | Allowed        |
+| Null Values        | Usually not allowed       | Not allowed    |
+
+
