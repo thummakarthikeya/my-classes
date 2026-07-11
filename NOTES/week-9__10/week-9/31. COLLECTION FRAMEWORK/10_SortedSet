@@ -1,9 +1,77 @@
 Interview Questions
 
 Q1. What is SortedSet in Java?
+-->SortedSet is an interface that extends the Set interface and stores unique elements in sorted (ascending) order.
+
+      The elements are sorted:
+      
+      By their natural ordering, or
+      By a Comparator provided during creation.
+      
+      The most common implementation is TreeSet.
+
+
+
 
 Q2. Which class commonly implements SortedSet?
+-->The most commonly used implementation of SortedSet is TreeSet.
+      
+      Characteristics of TreeSet
+      Maintains sorted order.
+      Does not allow duplicate elements.
+      Does not allow null values.
+      Internally uses a Red-Black Tree.
+      
+      Example:
+      
+      SortedSet<Integer> set = new TreeSet<>();
+      
+      set.add(30);
+      set.add(10);
+      set.add(20);
+      
+      System.out.println(set);
+      
+      Output
+      
+      [10, 20, 30]
+
+
 
 Q3. Can SortedSet store null values? Why or why not?
+-->No.
+
+      A SortedSet (typically implemented by TreeSet) does not allow null values.
+      
+      Reason
+      
+      TreeSet compares elements to maintain sorted order. Comparing null with other elements causes a NullPointerException.
+      
+      Example:
+      
+      SortedSet<String> set = new TreeSet<>();
+      
+      set.add(null);
+      
+      Output
+      
+      Exception in thread "main"
+      java.lang.NullPointerException
+
+
 
 Q4. What methods are introduced in SortedSet that are not in Set?
+-->SortedSet introduces several methods for working with sorted elements.
+| Method                               | Description                                                                     |
+| ------------------------------------ | ------------------------------------------------------------------------------- |
+| `first()`                            | Returns the first (lowest) element.                                             |
+| `last()`                             | Returns the last (highest) element.                                             |
+| `headSet(E toElement)`               | Returns elements less than the given element.                                   |
+| `tailSet(E fromElement)`             | Returns elements greater than or equal to the given element.                    |
+| `subSet(E fromElement, E toElement)` | Returns elements within the specified range.                                    |
+| `comparator()`                       | Returns the comparator used for sorting, or `null` if natural ordering is used. |
+
+Interview Tip
+HashSet → Unique elements, no insertion order, backed by HashMap.
+LinkedHashSet → Unique elements, maintains insertion order, backed by LinkedHashMap.
+SortedSet (TreeSet) → Unique elements, sorted order, backed by a Red-Black Tree, does not allow null values.
