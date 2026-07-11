@@ -1,9 +1,107 @@
 Interview Questions
 
 Q1. What is the Stack class in Java?
+-->Stack is a legacy class in the Java Collections Framework that extends the Vector class. It represents a LIFO (Last In, First Out) data structure, where the last element added is the first one to be removed.
+      
+      Since Stack extends Vector, it is synchronized (thread-safe) and allows duplicate and null elements.
+      
+      Example:
+      
+      import java.util.*;
+      
+      public class Demo {
+          public static void main(String[] args) {
+      
+              Stack<Integer> stack = new Stack<>();
+      
+              stack.push(10);
+              stack.push(20);
+              stack.push(30);
+      
+              System.out.println(stack);
+          }
+      }
+      
+      Output
+      
+      [10, 20, 30]
+
+
+
+
 
 Q2. How is Stack implemented internally?
+-->Stack is implemented by extending the Vector class.
+
+Internally:
+
+It uses a dynamic array (Object[]) inherited from Vector.
+Elements are added and removed only from the top of the stack.
+Since it extends Vector, all methods are synchronized.
+
+Example:
+
+      Top
+       ↓
+      30
+      20
+      10
+
+After pop():
+
+      Top
+       ↓
+      20
+      10
+
+
+
 
 Q3. What are the methods of the Stack class (push(), pop(), peek(), etc.)?
+-->
+| Method             | Description                                              |
+| ------------------ | -------------------------------------------------------- |
+| `push(E item)`     | Adds an element to the top of the stack.                 |
+| `pop()`            | Removes and returns the top element.                     |
+| `peek()`           | Returns the top element without removing it.             |
+| `empty()`          | Checks whether the stack is empty.                       |
+| `search(Object o)` | Returns the 1-based position of an element from the top. |
+
+import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+
+        Stack<String> stack = new Stack<>();
+
+        stack.push("Java");
+        stack.push("Python");
+        stack.push("C");
+
+        System.out.println(stack.peek());
+        System.out.println(stack.pop());
+        System.out.println(stack.empty());
+        System.out.println(stack.search("Java"));
+    }
+}
+
+Output :
+    C
+    C
+    false
+    2
+
+
+
 
 Q4. How many constructors are present in Stack?
+-->Stack has one constructor.
+      
+      Default Constructor
+      Stack<String> stack = new Stack<>();
+      
+      It creates an empty stack.
+      
+      Since Stack extends Vector, it inherits the dynamic resizing behavior of Vector.
+
+
