@@ -1,15 +1,151 @@
 Interview Questions
 
 Q1. What is HashSet in Java?
+-->HashSet is a class in the Java Collections Framework that implements the Set interface. It stores unique elements, does not maintain insertion order, and allows one null value. It is internally backed by a HashMap.
+
+      Characteristics
+      Stores unique elements only.
+      Does not maintain insertion order.
+      Allows one null element.
+      Not synchronized.
+      Provides fast insertion, deletion, and searching (average O(1)).
+      
+      Example:
+      
+      import java.util.*;
+      
+      public class Demo {
+          public static void main(String[] args) {
+      
+              HashSet<String> set = new HashSet<>();
+      
+              set.add("Java");
+              set.add("Python");
+              set.add("Java");
+      
+              System.out.println(set);
+          }
+      }
+      
+      Possible Output
+      
+      [Java, Python]
+
+
 
 Q2. How does HashSet ensure uniqueness of elements?
+-->HashSet ensures uniqueness by using the hashCode() and equals() methods.
+
+      Working Process
+            Calls hashCode() to determine the bucket.
+            If the bucket is empty, the element is added.
+            If another element already exists in that bucket, equals() is used.
+            If equals() returns true, the new element is considered a duplicate and is not added.
+            If equals() returns false, the element is added.
+            
+            This guarantees that duplicate elements are not stored.
+
+
 
 Q3. Does HashSet maintain insertion order?
+-->No.
+
+    HashSet does not maintain insertion order.
+    
+    The order of elements depends on their hash codes and internal hashing mechanism, so the output order may change.
+    
+    Example:
+    
+    HashSet<String> set = new HashSet<>();
+    
+    set.add("C");
+    set.add("A");
+    set.add("B");
+    
+    System.out.println(set);
+    
+    Possible Output
+    [A, C, B]
+    The order is not guaranteed.
+
+
 
 Q4. What is the internal data structure used by HashSet?
+-->HashSet is internally implemented using a HashMap.
+
+      The elements of the HashSet are stored as keys in the HashMap.
+      A dummy object (PRESENT) is used as the value.
+      
+      Internally:
+      
+      HashSet
+      
+      ↓
+      
+      HashMap
+      
+      ↓
+      
+      Bucket → Node → Node
+      
+      This design provides average O(1) performance for add, remove, and contains operations.
+
+
+
 
 Q5. Can HashSet store null values? If yes, how many?
+-->Yes.
+
+      HashSet allows only one null value.
+      
+      Example:
+      
+      HashSet<String> set = new HashSet<>();
+      
+      set.add(null);
+      set.add(null);
+      
+      System.out.println(set);
+      
+      Output
+      
+      [null]
+      
+      The second null is ignored because duplicates are not allowed.
+
+
 
 Q6. Can HashSet store duplicate values? If not, what happens if we try?
+-->No.
+
+      HashSet does not allow duplicate values.
+      
+      If a duplicate element is added:
+      
+      The add() method returns false.
+      The duplicate element is ignored.
+      No exception is thrown.
+      
+      Example:
+      
+      HashSet<Integer> set = new HashSet<>();
+      
+      System.out.println(set.add(10));
+      System.out.println(set.add(10));
+      
+      Output
+      
+      true
+      false
+
+
 
 Q7. Why does HashSet use hashCode() and equals() methods?
+-->HashSet uses these methods to efficiently store and identify unique elements.
+
+    hashCode()
+    Determines the bucket where the element should be stored.
+    equals()
+    Compares two objects to determine whether they are equal.
+    
+    Without properly overriding these methods in custom classes, HashSet may incorrectly allow duplicate objects.
