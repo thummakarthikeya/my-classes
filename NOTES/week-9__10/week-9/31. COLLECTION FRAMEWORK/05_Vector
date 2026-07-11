@@ -1,15 +1,130 @@
 Interview Questions
 
 Q1. What is a Vector in Java?
+-->Vector is a legacy class in the Java Collections Framework that implements the List interface. It is similar to ArrayList but is synchronized, making it thread-safe. It maintains insertion order, allows duplicate elements, and permits null values.
+
+Example:
+
+import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+        Vector<String> vector = new Vector<>();
+
+        vector.add("Java");
+        vector.add("Python");
+
+        System.out.println(vector);
+    }
+}
+
+
+
 
 Q2. How does Vector work internally?
+-->Vector internally uses a dynamic array (Object[]) to store elements.
+
+      When the array becomes full, it automatically increases its capacity.
+      By default, the capacity doubles when more space is needed (unless a custom capacity increment is specified).
+      
+      Example:
+      
+      Capacity = 10
+      
+      After full →
+      
+      New Capacity = 20
+      
+      It supports random access because elements are stored in contiguous memory.
+
+
 
 Q3. Why is Vector considered a legacy class?
+-->Vector is considered a legacy class because:
+
+      It was introduced in Java 1.0, before the Collections Framework.
+      It was later integrated into the Collections Framework in Java 1.2.
+      It is synchronized by default, which reduces performance in single-threaded applications.
+      ArrayList is generally preferred because it is faster when thread safety is not required.
+
+
+
 
 Q4. Is Vector synchronized or not?
+-->Yes.
+
+Vector is synchronized, which makes it thread-safe.
+
+Every public method is synchronized, allowing multiple threads to use it safely. However, synchronization adds overhead,
+ making Vector slower than ArrayList in single-threaded environments.
+
+
 
 Q5. What is the initial capacity and default capacity of a Vector?
+-->
+| Type             | Capacity                 |
+| ---------------- | ------------------------ |
+| Initial Capacity | 10 (default constructor) |
+| Default Capacity | 10                       |
+
+When the capacity is exhausted, it typically doubles (unless a custom capacity increment is specified).
+
+
+
 
 Q6. Can you store null values in a Vector?
+-->Yes.
+      
+      Vector allows null values and duplicate elements.
+      
+      Example:
+      
+      import java.util.*;
+      
+      public class Demo {
+          public static void main(String[] args) {
+              Vector<String> vector = new Vector<>();
+      
+              vector.add(null);
+              vector.add("Java");
+              vector.add(null);
+      
+              System.out.println(vector);
+          }
+      }
+      
+      Output:
+      
+      [null, Java, null]
+      
+      
 
 Q7. How many constructors are present in Vector?
+-->Vector provides four constructors.
+
+      1. Default Constructor
+            Vector<String> vector = new Vector<>();
+            
+            Creates a Vector with an initial capacity of 10.
+      
+      2. Constructor with Initial Capacity
+            Vector<String> vector = new Vector<>(20);
+            
+            Creates a Vector with an initial capacity of 20.
+      
+      3. Constructor with Initial Capacity and Capacity Increment
+            Vector<String> vector = new Vector<>(10, 5);
+            Initial capacity = 10
+            Capacity increment = 5
+      4. Constructor with Collection
+            List<String> list = List.of("Java", "Python");
+            
+            Vector<String> vector = new Vector<>(list);
+            
+            Creates a Vector containing all elements from the specified collection.
+      
+      Interview Tip
+            ArrayList → Faster, not synchronized, best for single-threaded applications.
+            LinkedList → Best for frequent insertions and deletions.
+            Vector → Synchronized, thread-safe, but slower due to synchronization overhead.
+
