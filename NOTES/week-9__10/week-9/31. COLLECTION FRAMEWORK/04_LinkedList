@@ -1,0 +1,15 @@
+Interview Questions
+
+Q1. What is a LinkedList in Java, and how many types of linked lists does Java support? Explain with examples.
+
+Q2. How does LinkedList work internally?
+
+Q3. What data structure is used to implement LinkedList?
+
+Q4. What are the advantages and disadvantages of using LinkedList?
+
+Q5. Please explain when to use LinkedList with real-time examples.
+
+Q6. Is LinkedList synchronized in Java? If not, how can you make a LinkedList synchronized?
+
+Q7. How many constructors are present in LinkedList?
