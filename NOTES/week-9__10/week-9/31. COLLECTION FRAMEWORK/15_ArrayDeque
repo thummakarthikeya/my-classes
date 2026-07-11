@@ -1,0 +1,206 @@
+ArrayDeque
+Interview Questions
+
+Q1. What is ArrayDeque in Java?
+-->ArrayDeque is a class in the Java Collections Framework that implements the Deque interface. It is a resizable array-based
+implementation of a double-ended queue, allowing insertion and deletion of elements from both the front and the rear.
+      
+      It can be used as both:
+      
+      Queue (FIFO)
+      Stack (LIFO)
+      Characteristics
+      Implements Deque and Queue.
+      Dynamic (resizable) array implementation.
+      Allows duplicate elements.
+      Does not allow null values.
+      Not synchronized.
+      Faster than Stack and LinkedList for stack and queue operations.
+      
+      Example:
+      
+      import java.util.*;
+      
+      public class Demo {
+          public static void main(String[] args) {
+      
+              ArrayDeque<String> deque = new ArrayDeque<>();
+      
+              deque.add("Java");
+              deque.add("Python");
+              deque.addFirst("C");
+      
+              System.out.println(deque);
+          }
+      }
+      
+      Output
+      
+      [C, Java, Python]
+
+
+
+Q2. Which interfaces are implemented by ArrayDeque?
+-->ArrayDeque implements the following interfaces:
+      
+      Deque
+      Queue
+      Collection
+      Iterable
+      Hierarchy
+      Iterable
+          │
+      Collection
+          │
+      Queue
+          │
+      Deque
+          │
+      ArrayDeque
+
+
+
+
+Q3. How does ArrayDeque differ from a standard Queue?
+-->
+| Feature        | Queue                     | ArrayDeque                                    |
+| -------------- | ------------------------- | --------------------------------------------- |
+| Type           | Interface                 | Class                                         |
+| Data Structure | Depends on implementation | Dynamic Circular Array                        |
+| Insert/Delete  | Usually one end           | Both front and rear                           |
+| Stack Support  | No                        | Yes                                           |
+| Null Values    | Usually not allowed       | Not allowed                                   |
+| Performance    | Depends on implementation | Very fast for both stack and queue operations |
+
+
+
+
+
+Q4. Can ArrayDeque be used as both a Queue and a Stack?
+-->Yes.
+
+      ArrayDeque supports both FIFO and LIFO operations.
+      
+      As a Queue (FIFO)
+      import java.util.*;
+      
+      public class Demo {
+          public static void main(String[] args) {
+      
+              ArrayDeque<Integer> deque = new ArrayDeque<>();
+      
+              deque.offer(10);
+              deque.offer(20);
+              deque.offer(30);
+      
+              System.out.println(deque.poll());
+          }
+      }
+      
+      Output
+      
+      10
+      As a Stack (LIFO)
+      import java.util.*;
+      
+      public class Demo {
+          public static void main(String[] args) {
+      
+              ArrayDeque<Integer> deque = new ArrayDeque<>();
+      
+              deque.push(10);
+              deque.push(20);
+              deque.push(30);
+      
+              System.out.println(deque.pop());
+          }
+      }
+      
+      Output
+      
+      30
+
+
+
+      
+Q5. Does ArrayDeque allow null and duplicate values? Why or why not?
+-->Duplicate Elements
+      
+      Yes.
+      
+      ArrayDeque allows duplicate elements.
+      
+      ArrayDeque<String> deque = new ArrayDeque<>();
+      
+      deque.add("Java");
+      deque.add("Java");
+      
+      System.out.println(deque);
+      
+      Output
+      
+      [Java, Java]
+      Null Values
+      
+      No.
+      
+      ArrayDeque does not allow null values.
+      
+      Reason
+      
+      Methods such as poll(), peek(), and remove() return null when the deque is empty. Allowing null elements would make it 
+      impossible to distinguish between an actual null element and an empty deque.
+      
+      Example:
+      
+      ArrayDeque<String> deque = new ArrayDeque<>();
+      
+      deque.add(null);
+      
+      Output
+      
+      Exception in thread "main"
+      java.lang.NullPointerException
+
+
+
+
+Q6. Which underlying data structure does ArrayDeque use?
+-->ArrayDeque is internally implemented using a Resizable Circular Array.
+
+    Working
+        Elements are stored in a circular array.
+        Two pointers (head and tail) track the front and rear.
+        When the array becomes full, its capacity is automatically increased.
+        
+        Internal Structure
+        
+               Head
+                 ↓
+        +----+----+----+----+----+
+        | 10 | 20 | 30 |    |    |
+        +----+----+----+----+----+
+                      ↑
+                     Tail
+        Advantages of Circular Array
+        Fast insertion and deletion at both ends.
+        Better memory utilization.
+        No shifting of elements is required.
+        Dynamic resizing when the array becomes full.
+        
+| Operation       | Time Complexity |
+| --------------- | --------------- |
+| `addFirst()`    | O(1)            |
+| `addLast()`     | O(1)            |
+| `removeFirst()` | O(1)            |
+| `removeLast()`  | O(1)            |
+| `peekFirst()`   | O(1)            |
+| `peekLast()`    | O(1)            |
+
+
+Interview Tip
+ArrayDeque → Dynamic circular array, implements Deque.
+Supports both Queue (FIFO) and Stack (LIFO) operations.
+Allows duplicate elements but does not allow null values.
+Generally faster than Stack and LinkedList for stack and queue operations because it avoids synchronization overhead and uses
+an efficient circular array internally.
