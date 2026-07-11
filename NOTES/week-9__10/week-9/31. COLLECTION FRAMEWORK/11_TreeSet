@@ -1,11 +1,125 @@
 Interview Questions
 
 Q1. What is TreeSet in Java?
+-->TreeSet is a class in the Java Collections Framework that implements the NavigableSet interface (which extends SortedSet). It stores unique elements in sorted order. It does not allow duplicate elements or null values and is internally implemented using a Red-Black Tree.
+
+    Characteristics
+        Stores unique elements.
+        Maintains elements in sorted (ascending) order by default.
+        Does not allow duplicate elements.
+        Does not allow null values.
+        Not synchronized.
+        Provides O(log n) time complexity for add, remove, and search operations.
+        
+        Example:
+        
+        import java.util.*;
+        
+        public class Demo {
+            public static void main(String[] args) {
+        
+                TreeSet<Integer> set = new TreeSet<>();
+        
+                set.add(30);
+                set.add(10);
+                set.add(20);
+        
+                System.out.println(set);
+            }
+        }
+        
+        Output
+        
+        [10, 20, 30]
+
+
+
+
 
 Q2. Does TreeSet maintain any specific order? Which order?
+-->Yes.
+      
+      TreeSet maintains elements in sorted order.
+      
+      By default, it uses the natural ordering of elements (ascending order).
+      
+      It can also use a Comparator to define a custom sorting order.
+      
+      Example (Natural Order):
+      
+      TreeSet<Integer> set = new TreeSet<>();
+      
+      set.add(50);
+      set.add(20);
+      set.add(40);
+      set.add(10);
+      
+      System.out.println(set);
+      
+      Output
+      
+      [10, 20, 40, 50]
+
+
+
 
 Q3. Which data structure is used internally by TreeSet?
+-->TreeSet is internally implemented using a TreeMap, and TreeMap uses a Red-Black Tree (a self-balancing binary search tree).
+
+      Advantages of Red-Black Tree
+      Automatically keeps elements sorted.
+      Guarantees O(log n) time complexity for insertion, deletion, and searching.
+      Maintains balanced tree height.
+      
+      Internal Structure
+      
+      TreeSet
+          ↓
+       TreeMap
+          ↓
+      Red-Black Tree
+
+
 
 Q4. Can TreeSet store null values? Why or why not?
+-->No.
+
+    TreeSet does not allow null values.
+    
+    Reason
+    
+    TreeSet compares elements to maintain sorted order. Since null cannot be compared with other elements, adding null results in a NullPointerException.
+    
+    Example:
+    
+    TreeSet<String> set = new TreeSet<>();
+    
+    set.add(null);
+    
+    Output
+    
+    Exception in thread "main"
+    java.lang.NullPointerException
+
+
 
 Q5. What is the default sorting mechanism used by TreeSet?
+-->By default, TreeSet uses the natural ordering of elements.
+
+      Natural ordering is determined by the Comparable interface and its compareTo() method.
+      
+      If a custom order is required, a Comparator can be provided while creating the TreeSet.
+      
+      Example (Descending Order):
+      
+      TreeSet<Integer> set = new TreeSet<>(Collections.reverseOrder());
+      
+      set.add(10);
+      set.add(30);
+      set.add(20);
+      
+      System.out.println(set);
+      
+      Output
+      
+      [30, 20, 10]
