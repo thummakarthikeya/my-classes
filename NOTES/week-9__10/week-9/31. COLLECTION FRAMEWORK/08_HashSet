@@ -1,0 +1,15 @@
+Interview Questions
+
+Q1. What is HashSet in Java?
+
+Q2. How does HashSet ensure uniqueness of elements?
+
+Q3. Does HashSet maintain insertion order?
+
+Q4. What is the internal data structure used by HashSet?
+
+Q5. Can HashSet store null values? If yes, how many?
+
+Q6. Can HashSet store duplicate values? If not, what happens if we try?
+
+Q7. Why does HashSet use hashCode() and equals() methods?
