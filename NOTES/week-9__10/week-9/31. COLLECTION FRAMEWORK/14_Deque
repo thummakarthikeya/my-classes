@@ -1,0 +1,154 @@
+Interview Questions
+Q1. What is a Deque in Java and what does it stand for?
+-->What is Deque?
+      
+      Deque stands for Double Ended Queue.
+      
+      It is an interface that extends the Queue interface and allows insertion and deletion of elements from both the front and the rear.
+      
+      It can behave as both:
+      
+      Queue (FIFO)
+      Stack (LIFO)
+      
+      Common implementations:
+      
+      ArrayDeque
+      LinkedList
+      
+      Example:
+      
+      import java.util.*;
+      
+      public class Demo {
+          public static void main(String[] args) {
+      
+              Deque<Integer> deque = new ArrayDeque<>();
+      
+              deque.addFirst(10);
+              deque.addLast(20);
+      
+              System.out.println(deque);
+          }
+      }
+      
+      Output
+      
+      [10, 20]
+
+
+
+
+
+
+Q2. How is Deque different from a Queue?
+-->
+| Queue                        | Deque                          |
+| ---------------------------- | ------------------------------ |
+| Insertion/removal at one end | Insertion/removal at both ends |
+| Follows FIFO                 | Supports FIFO and LIFO         |
+| Less flexible                | More flexible                  |
+| Single-ended                 | Double-ended                   |
+
+
+
+
+
+
+Q3. What type of data structure behavior does Deque support?
+-->Deque supports both:
+
+    1. FIFO (First In, First Out)
+          Front → 10 20 30 ← Rear
+    2. LIFO (Last In, First Out)
+          Top
+          30
+          20
+          10
+          
+        Thus, a Deque can work as either a Queue or a Stack.
+
+
+
+
+Q4. Can Deque be used as both a Stack and a Queue?
+-->Yes.
+    
+    As a Queue (FIFO)
+    Deque<Integer> deque = new ArrayDeque<>();
+    
+    deque.offer(10);
+    deque.offer(20);
+    
+    System.out.println(deque.poll());
+    
+    Output :
+      10
+
+    
+    As a Stack (LIFO)
+        Deque<Integer> deque = new ArrayDeque<>();
+        
+        deque.push(10);
+        deque.push(20);
+        
+        System.out.println(deque.pop());
+        
+        Output
+        
+        20
+
+
+
+
+
+Q5. Does Deque allow duplicate elements?
+-->Yes.
+    
+    Deque allows duplicate elements.
+    
+    Example:
+    
+    Deque<String> deque = new ArrayDeque<>();
+    
+    deque.add("Java");
+    deque.add("Java");
+    
+    System.out.println(deque);
+    
+    Output
+    
+    [Java, Java]
+
+
+
+
+
+Q6. Does Deque allow null values? If not, why?
+-->No.
+      
+      Most Deque implementations, such as ArrayDeque, do not allow null values.
+      
+      Reason
+      
+      Methods like poll(), peek(), and remove() use null to indicate that the deque is empty. Allowing null elements would create ambiguity.
+      
+      Example:
+      
+      Deque<String> deque = new ArrayDeque<>();
+      
+      deque.add(null);
+      
+      Output
+      
+      Exception in thread "main"
+      java.lang.NullPointerException
+      Interview Tip
+      PriorityQueue → Orders elements by priority, internally uses a Binary Heap (Min-Heap), allows duplicates, does not allow null.
+      Deque → Stands for Double Ended Queue, supports both FIFO and LIFO, implemented by ArrayDeque and LinkedList, and generally does not
+      allow null values.
+
+
+
+
+      
