@@ -1,0 +1,13 @@
+Interview Questions
+
+Q1. What is the Set interface in the Java Collections Framework?
+
+Q2. Why does Set not allow duplicate elements?
+
+Q3. How does Set work internally?
+
+Q4. What are the advantages and disadvantages of using Set?
+
+Q5. What are the main classes that implement the Set interface?
+
+Q6. Can you store null values in a Set?
