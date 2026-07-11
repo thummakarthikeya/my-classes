@@ -1,0 +1,11 @@
+Interview Questions
+
+Q1. What is LinkedHashSet in Java?
+
+Q2. How does LinkedHashSet differ from HashSet?
+
+Q3. What internal data structure does LinkedHashSet use?
+
+Q4. Does LinkedHashSet maintain insertion order?
+
+Q5. Can LinkedHashSet store null values?
