@@ -1,13 +1,143 @@
 Interview Questions
 
 Q1. What is the Set interface in the Java Collections Framework?
+-->Set is an interface in the Java Collections Framework that stores unique elements. It does not allow duplicate elements and is mainly used when uniqueness of data is required.
+
+    Characteristics
+    
+          Does not allow duplicates.
+          Can contain at most one null element (depending on implementation).
+          Does not support index-based access.
+          HashSet does not maintain insertion order.
+          LinkedHashSet maintains insertion order.
+          TreeSet stores elements in sorted order.
+    
+    Example:
+        
+        import java.util.*;
+        
+        public class Demo {
+            public static void main(String[] args) {
+        
+                Set<String> set = new HashSet<>();
+        
+                set.add("Java");
+                set.add("Python");
+                set.add("Java");
+        
+                System.out.println(set);
+            }
+        }
+        
+        Possible Output
+        
+        [Java, Python]
+
+
+
+
+
+
 
 Q2. Why does Set not allow duplicate elements?
+-->A Set is designed to store only unique elements.
+
+      For implementations like HashSet:
+      
+      It uses hashCode() to determine the storage location.
+      It uses equals() to compare elements.
+      If an element already exists, the duplicate is not added.
+      
+      This ensures uniqueness and prevents duplicate data.
+
+
+
 
 Q3. How does Set work internally?
+-->The internal implementation depends on the specific Set class.
+      
+      HashSet
+          Uses a HashMap internally.
+          Elements are stored as keys in the HashMap.
+          Values are dummy objects.
+      LinkedHashSet
+          Uses a LinkedHashMap internally.
+          Maintains insertion order.
+      TreeSet
+          Uses a TreeMap internally.
+          Stores elements in sorted order using a Red-Black Tree.
+
+
+
 
 Q4. What are the advantages and disadvantages of using Set?
+-->Advantages
+      Prevents duplicate elements.
+      Fast searching (HashSet average O(1)).
+      Dynamic size.
+      Useful for storing unique data.
+      Supports different implementations (HashSet, LinkedHashSet, TreeSet).
+   Disadvantages
+          No index-based access.
+          HashSet does not maintain insertion order.
+          TreeSet operations are slower than HashSet (O(log n)).
+          Only one null element is allowed in HashSet and LinkedHashSet; TreeSet does not allow null.
+
+
 
 Q5. What are the main classes that implement the Set interface?
+-->The main implementations are:
+
+    1. HashSet
+        Uses a hash table.
+        No insertion order.
+        Fastest for basic operations.
+    2. LinkedHashSet
+        Maintains insertion order.
+        Slightly slower than HashSet.
+    3. TreeSet
+        Stores elements in sorted order.
+        Uses a Red-Black Tree.
+        Does not allow null.
+
+| Class         | Ordering        | Duplicate | Null        | Performance                    |
+| ------------- | --------------- | --------- | ----------- | ------------------------------ |
+| HashSet       | No              | No        | One `null`  | Fast (`O(1)` average)          |
+| LinkedHashSet | Insertion Order | No        | One `null`  | Slightly slower than `HashSet` |
+| TreeSet       | Sorted Order    | No        | Not allowed | `O(log n)`                     |
+
+
 
 Q6. Can you store null values in a Set?
+-->Yes, but it depends on the implementation.
+
+HashSet → Allows one null element.
+LinkedHashSet → Allows one null element.
+TreeSet → Does not allow null because it compares elements for sorting.
+
+Example:
+
+import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+
+        Set<String> set = new HashSet<>();
+
+        set.add(null);
+        set.add("Java");
+        set.add(null);
+
+        System.out.println(set);
+    }
+}
+
+Output
+
+[null, Java]
+Interview Tip
+Stack → LIFO, extends Vector, synchronized.
+Set → Stores unique elements.
+HashSet → Fastest, no ordering.
+LinkedHashSet → Maintains insertion order.
+TreeSet → Maintains sorted order using a Red-Black Tree.
