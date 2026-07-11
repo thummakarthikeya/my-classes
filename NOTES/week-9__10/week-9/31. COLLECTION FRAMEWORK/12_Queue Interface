@@ -1,9 +1,110 @@
 Interview Questions
 
 Q1. What is the Queue interface in Java?
+-->Queue is an interface in the Java Collections Framework that represents a collection designed to hold elements before processing them.
+It generally follows the FIFO (First In, First Out) principle, where the first element inserted is the first one removed.
+      
+      Characteristics
+      Follows FIFO order (except PriorityQueue).
+      Does not support index-based access.
+      Generally does not allow null elements.
+      Supports insertion, deletion, and retrieval from both ends depending on the implementation.
+      
+      Example:
+      
+      import java.util.*;
+      
+      public class Demo {
+          public static void main(String[] args) {
+      
+              Queue<String> queue = new LinkedList<>();
+      
+              queue.offer("A");
+              queue.offer("B");
+              queue.offer("C");
+      
+              System.out.println(queue);
+          }
+      }
+      
+      Output
+      
+      [A, B, C]
+
+
+
 
 Q2. Does Queue allow null elements? Explain.
+-->Generally, No.
+
+      Most Queue implementations, such as PriorityQueue and ArrayDeque, do not allow null elements.
+      
+      This is because methods like poll() return null to indicate that the queue is empty. Allowing null elements would make it impossible 
+      to distinguish between an actual null element and an empty queue.
+      
+      Note: LinkedList (when used as a Queue) technically allows null, but it is discouraged because it can lead to ambiguity.
+
+
 
 Q3. What are the common Queue implementations?
+-->The commonly used Queue implementations are:
+
+      1. LinkedList
+            Implements Queue and Deque.
+                Follows FIFO order.
+                Suitable for general-purpose queue operations.
+      2. PriorityQueue
+            Elements are processed based on priority.
+            Maintains natural ordering or uses a custom Comparator.
+            Does not follow FIFO.
+      3. ArrayDeque
+            Implements Deque.
+              Faster than Stack and LinkedList for queue and stack operations.
+              Does not allow null elements.
+| Implementation | Order               | Null Allowed      |
+| -------------- | ------------------- | ----------------- |
+| LinkedList     | FIFO                | Yes (discouraged) |
+| PriorityQueue  | Priority-based      | No                |
+| ArrayDeque     | FIFO / Double-ended | No                |
+
+
+
 
 Q4. On which principle does a Queue work in Java?
+-->A Queue generally works on the FIFO (First In, First Out) principle.
+
+The first element inserted into the queue is the first one removed.
+
+Example:
+
+import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.offer(10);
+        queue.offer(20);
+        queue.offer(30);
+
+        System.out.println(queue.poll());
+        System.out.println(queue.poll());
+    }
+}
+
+Output
+
+10
+20
+
+      The element 10 was inserted first, so it is removed first.
+
+
+
+      Interview Tip
+          TreeSet → Sorted order, unique elements, backed by a Red-Black Tree, no null values.
+          Queue → Generally follows FIFO, used for processing elements in insertion order.
+          LinkedList → FIFO queue implementation.
+          PriorityQueue → Processes elements based on priority, not insertion order.
+          ArrayDeque → Efficient implementation of both Queue and Stack operations.
