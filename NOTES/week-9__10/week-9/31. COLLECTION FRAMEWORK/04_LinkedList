@@ -1,15 +1,153 @@
 Interview Questions
 
 Q1. What is a LinkedList in Java, and how many types of linked lists does Java support? Explain with examples.
+-->What is LinkedList?
+      
+      LinkedList is a class in the Java Collections Framework that implements the List and Deque interfaces. It stores elements as nodes, where each node contains the data and references (links) to the previous and next nodes. It maintains insertion order, allows duplicate and null elements, and is efficient for frequent insertions and deletions.
+      
+      Types of Linked Lists
+      
+      Java primarily uses a Doubly Linked List for its LinkedList class. In general, there are three types of linked lists:
+      
+      1. Singly Linked List
+      Each node contains:
+      Data
+      Reference to the next node
+      10 → 20 → 30 → null
+      2. Doubly Linked List (Used by Java LinkedList)
+      Each node contains:
+      Previous reference
+      Data
+      Next reference
+      null ← 10 ⇄ 20 ⇄ 30 → null
+      3. Circular Linked List
+      The last node points back to the first node.
+      10 → 20 → 30
+      ↑           ↓
+      └───────────┘
+      
+      Example:
+      
+      import java.util.*;
+      
+      public class Demo {
+          public static void main(String[] args) {
+              LinkedList<String> list = new LinkedList<>();
+      
+              list.add("Java");
+              list.add("Python");
+              list.add("Java");
+      
+              System.out.println(list);
+          }
+      }
+
+
+
 
 Q2. How does LinkedList work internally?
+-->LinkedList internally uses a Doubly Linked List.
+        
+        Each node stores:
+        
+        Previous node reference
+        Data
+        Next node reference
+        
+        When a new element is added:
+        
+        A new node is created.
+        The previous and next references are updated.
+        No shifting of existing elements is required.
+        Head
+        
+        null ← A ⇄ B ⇄ C → null
+        
+        Tail
+        
+        Advantages of this implementation:
+        
+        Fast insertion and deletion.
+        No resizing like ArrayList.
+
+
 
 Q3. What data structure is used to implement LinkedList?
+-->Java's LinkedList is implemented using a Doubly Linked List.
+
+Each node contains:
+
+class Node<E> {
+    E item;
+    Node<E> next;
+    Node<E> prev;
+}
+
+This structure allows traversal in both forward and backward directions.
+
+
+
 
 Q4. What are the advantages and disadvantages of using LinkedList?
+-->Advantages
+    Fast insertion (O(1) at known position).
+    Fast deletion (O(1) at known position).
+    Dynamic size.
+    No memory wastage due to fixed-size arrays.
+    Can be used as a Queue, Deque, and Stack.
+    Disadvantages
+    Slow random access (O(n)).
+    More memory usage because each node stores extra references.
+    Slower searching than ArrayList.
+    Not synchronized.
+
+
+
 
 Q5. Please explain when to use LinkedList with real-time examples.
+-->Use LinkedList when:
+      Frequent insertions and deletions are required.
+      Random access is not the main requirement.
+      Data size changes frequently.
+      Real-Time Examples
+      Browser Back/Forward navigation
+      Music playlist management
+      Undo/Redo functionality
+      Train coach management
+      Queue management
+      Task scheduling
+      Call history
+      Navigation systems
+
+
 
 Q6. Is LinkedList synchronized in Java? If not, how can you make a LinkedList synchronized?
+-->No.
+
+LinkedList is not synchronized, so it is not thread-safe.
+
+Method 1
+List<String> list =
+Collections.synchronizedList(new LinkedList<>());
+Method 2
+
+Use CopyOnWriteArrayList (for read-heavy concurrent applications) or external synchronization when appropriate.
+
+
+
+
 
 Q7. How many constructors are present in LinkedList?
+-->LinkedList provides two constructors.
+    
+    1. Default Constructor
+            LinkedList<String> list = new LinkedList<>();
+            
+            Creates an empty LinkedList.
+          
+    2. Constructor with Collection
+            List<String> names = List.of("Java", "Python");
+            
+            LinkedList<String> list = new LinkedList<>(names);
+            
+            Creates a LinkedList containing all elements from the specified collection.
