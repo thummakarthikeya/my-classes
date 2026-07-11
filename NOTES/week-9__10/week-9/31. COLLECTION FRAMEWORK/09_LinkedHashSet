@@ -1,8 +1,39 @@
 Interview Questions
 
 Q1. What is LinkedHashSet in Java?
+-->LinkedHashSet is a class that implements the Set interface and extends the behavior of HashSet by maintaining the insertion order of elements.
+
+    Characteristics
+        Stores unique elements.
+        Maintains insertion order.
+        Allows one null value.
+        Not synchronized.
+        Slightly slower than HashSet.
+        
+        Example:
+        
+        import java.util.*;
+        
+        public class Demo {
+            public static void main(String[] args) {
+        
+                LinkedHashSet<String> set = new LinkedHashSet<>();
+        
+                set.add("Java");
+                set.add("Python");
+                set.add("Java");
+        
+                System.out.println(set);
+            }
+        }  
+        Output : [Java, Python]
+
+
 
 Q2. How does LinkedHashSet differ from HashSet?
+-->
+
+
 
 Q3. What internal data structure does LinkedHashSet use?
 
