@@ -1,0 +1,15 @@
+Interview Questions
+
+Q1. What is a Vector in Java?
+
+Q2. How does Vector work internally?
+
+Q3. Why is Vector considered a legacy class?
+
+Q4. Is Vector synchronized or not?
+
+Q5. What is the initial capacity and default capacity of a Vector?
+
+Q6. Can you store null values in a Vector?
+
+Q7. How many constructors are present in Vector?
