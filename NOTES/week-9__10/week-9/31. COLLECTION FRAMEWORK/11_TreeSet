@@ -1,0 +1,11 @@
+Interview Questions
+
+Q1. What is TreeSet in Java?
+
+Q2. Does TreeSet maintain any specific order? Which order?
+
+Q3. Which data structure is used internally by TreeSet?
+
+Q4. Can TreeSet store null values? Why or why not?
+
+Q5. What is the default sorting mechanism used by TreeSet?
