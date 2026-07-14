@@ -1,0 +1,83 @@
+enum in Java :
+--------------
+enum is a keyword in java which is introduced from JDK 1.5V onwards.
+
+enum is similar to a class because for enum also .class file will be created internally.
+
+If we want to declare Universal constants then we should use enum 
+concept, all the Universal constants must be separated by comma and 
+at the end ; is optional.
+
+Example :
+---------
+Color.java
+------------
+public enum Color 
+{
+  RED, BLUE, PINK  //public + static + final (enum constants)
+}
+
+All the enum constants are by default public static and final
+
+Compiler will automatically generate .class file as shown below :
+
+Color.class
+------------
+public final class Color extends java.lang.Enum
+{
+  public static final Color RED = new Color();
+  public static final Color BLUE = new Color();
+  public static final Color PINK = new Color();
+
+  public static Color[] values()
+  {
+     //return enum array;
+  }
+}
+
+An enum we can define inside a class, Outside of the class and inside a 
+method as well. If we define inside a class then we can declare an enum with private, protected, public, static modifiers. We can't declare final and abstract.
+
+Whenever compiler generates .class file then compiler will automatically add a static method called values() to fetch the enum object, the return type of this method is enum array.
+
+    public enum[] values()
+
+
+Every enum constant constains order position which starts from number 0, we can retrieve the order position by using ordinal() method of Enum class.
+               public final int ordinal()
+
+
+Every enum impliciltly extends from java.lang.Enum class so enum can't extend any other class but it can implement an interface.
+
+Every enum is impliciltly final so any class can't extends an enum.
+
+Every enum first line is reserved for enum constants so we can't write anything in the first line and that is the reason static block is always executed after constructor.
+
+As we know, an enum is implicitly  a class so we can write static, non static variable, static and non static block, static and non static method.
+
+A constructor defined inside an enum must be either private OR default.
+
+Every enum constants are Object of type enum.
+
+At the time of loading enum class, static variable will be executed so appropriate constructor will be executed.
+
+An enum represents Universal constant so, We can pass enum constants in switch case statement.
+
+In Enum class name() and ordinal() both are final methods so we can't override hence we can't change the name and order position.
+
+We can compare two enum constants by using == operator OR final equals(Object obj) method given by Enum class.
+-----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
