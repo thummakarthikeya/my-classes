@@ -1,10 +1,210 @@
 Interview Questions:
-What is HashMap in Java?
-Which interfaces does HashMap implement?
-Can HashMap store null keys and null values? How many?
-Does HashMap allow duplicate keys or duplicate values?
-Does HashMap maintain insertion order?
-How do you iterate over a HashMap?
-How does HashMap store key-value pairs internally?
-How does HashMap handle collisions?
-What is the role of hashCode() and equals() in HashMap?
+1)What is HashMap in Java?
+-->Answer:
+
+      HashMap is a class in the java.util package.
+      It implements the Map interface.
+      Stores data as key-value pairs.
+      Keys are unique.
+      Values can be duplicated.
+      Does not maintain insertion order.
+      Not synchronized (not thread-safe).
+      
+      Syntax:
+      
+          HashMap<Integer, String> map = new HashMap<>();
+
+
+
+
+2)Which interfaces does HashMap implement?
+-->Answer:
+      HashMap implements:
+      
+      Map
+      
+      It also inherits from:
+      
+      AbstractMap
+      
+      Hierarchy:
+      
+      Object
+         ↓
+      AbstractMap
+         ↓
+      HashMap
+             implements Map
+
+
+
+
+3)Can HashMap store null keys and null values? How many?
+-->Answer:
+      Yes.
+      
+      One null key ✅
+      Multiple null values ✅
+      
+      Example:
+            HashMap<Integer, String> map = new HashMap<>();
+            
+            map.put(null, "Java");
+            map.put(1, null);
+            map.put(2, null);
+            
+            System.out.println(map);
+      
+      Output:
+            {null=Java, 1=null, 2=null}
+
+
+
+
+
+4)Does HashMap allow duplicate keys or duplicate values?
+-->Answer:
+
+      Duplicate keys ❌ Not allowed (new value replaces the old one).
+      Duplicate values ✅ Allowed.
+      
+      Example:
+      
+      map.put(1, "Java");
+      map.put(1, "Python"); // Replaces Java
+      
+      map.put(2, "Python"); // Duplicate value
+
+
+
+
+5)Does HashMap maintain insertion order?
+-->Answer:
+      No.
+      
+      HashMap does not maintain insertion order because it stores entries based on the hash value of the keys.
+      
+      Example:
+      
+      HashMap<Integer, String> map = new HashMap<>();
+      
+      map.put(3, "C");
+      map.put(1, "Java");
+      map.put(2, "Python");
+      
+      System.out.println(map);
+      
+      The output order is not guaranteed.
+
+
+
+6)How do you iterate over a HashMap?
+-->Using entrySet() (Recommended)
+        for(Map.Entry<Integer, String> entry : map.entrySet()){
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+
+        
+        
+        Using keySet()
+              for(Integer key : map.keySet()){
+                  System.out.println(key + " " + map.get(key));
+              }
+        
+        
+        
+        Using values()
+              for(String value : map.values()){
+                  System.out.println(value);
+              }
+        
+        
+        
+        Using forEach()
+            map.forEach((key, value) ->
+                System.out.println(key + " " + value));
+        
+        
+        
+        Using Iterator
+              Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
+              
+              while(it.hasNext()){
+                  Map.Entry<Integer, String> entry = it.next();
+                  System.out.println(entry.getKey() + " " + entry.getValue());
+              }
+        
+
+
+
+
+7)How does HashMap store key-value pairs internally?
+-->Answer:
+
+    HashMap uses:
+    
+          A hash table (array of buckets).
+          Each bucket stores a Node (key, value, hash, next reference).
+          
+          Working:
+          
+              Compute the key's hashCode().
+              Convert it into an array index.
+              Store the entry in the corresponding bucket.
+              If multiple keys map to the same bucket, a collision occurs.
+              Collisions are handled using a linked list, which is converted to a red-black tree when the number of nodes
+                  in a bucket exceeds a threshold (8) and the table capacity is at least 64.
+              Array
+               |
+               |--> Bucket 0
+               |
+               |--> Bucket 1
+               |
+               |--> Bucket 2 --> (K1,V1) --> (K2,V2)
+               |
+               |--> Bucket 3
+
+
+
+8)How does HashMap handle collisions?
+-->Answer:
+      
+      A collision occurs when two different keys produce the same bucket index.
+      
+      Java 7 and earlier:
+      
+      Uses a Linked List.
+      
+      Java 8 and later:
+      
+      Uses a Linked List initially.
+      Converts the bucket to a Red-Black Tree when:
+      Bucket size > 8
+      Table capacity ≥ 64
+      If the bucket size falls below 6, it converts back to a linked list.
+      
+      This improves lookup performance from O(n) to O(log n) in heavily populated buckets.
+
+
+
+9)What is the role of hashCode() and equals() in HashMap?
+-->Answer:
+
+        HashMap uses both methods to store and retrieve objects correctly.
+        
+        hashCode()
+        Determines the bucket where the key should be stored.
+        Equal objects must have the same hash code.
+        equals()
+        Compares keys within the same bucket to determine if they are logically equal.
+        
+        Insertion Process:
+        
+        Calculate hashCode().
+        Find the bucket index.
+        If the bucket is empty, insert the entry.
+        If the bucket contains entries with the same hash, use equals() to compare keys.
+        If equals() returns true, update the value; otherwise, add a new entry.
+        
+        Interview Tip: Always override hashCode() and equals() together when using custom objects as keys in a HashMap. 
+        This ensures correct behavior for insertion, lookup, and retrieval.
