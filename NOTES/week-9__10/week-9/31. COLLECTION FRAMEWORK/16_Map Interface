@@ -1,8 +1,142 @@
 Interview Questions:
-What is the Map interface in Java?
-How is Map different from List, Set, and Queue?
-What are the main implementations of Map?
-Can Map store duplicate keys or values?
-What are the commonly used Map methods (put(), get(), remove(), containsKey(), containsValue())?
-Can a Map store null keys and null values? Which implementations allow it?
-What is the difference between keySet(), values(), and entrySet() methods?
+1)What is the Map interface in Java?
+-->Answer:  
+      Map is an interface in the java.util package.
+      It stores data as key-value pairs.
+      Each key maps to exactly one value.
+      Keys are unique, but values can be duplicated.
+      Map is not a part of the Collection interface.
+      
+      Syntax:
+          Map<Integer, String> map = new HashMap<>();
+      
+      Example:   
+          Map<Integer, String> map = new HashMap<>();
+          
+          map.put(101, "John");
+          map.put(102, "Alice");
+          
+          System.out.println(map);
+          // {101=John, 102=Alice}
+
+
+
+
+
+
+2)How is Map different from List, Set, and Queue?
+-->
+| Feature           | List     | Set                       | Queue         | Map                                  |
+| ----------------- | -------- | ------------------------- | ------------- | ------------------------------------ |
+| Stores            | Elements | Unique Elements           | Elements      | Key-Value Pairs                      |
+| Duplicate Allowed | Yes      | No                        | Yes           | Duplicate Keys ❌, Duplicate Values ✅ |
+| Ordering          | Yes      | Depends on implementation | FIFO/Priority | Depends on implementation            |
+| Index-based       | Yes      | No                        | No            | No                                   |
+
+
+
+
+3)What are the main implementations of Map?
+-->
+| Implementation        | Features                                |
+| --------------------- | --------------------------------------- |
+| **HashMap**           | Fastest, unordered                      |
+| **LinkedHashMap**     | Maintains insertion order               |
+| **TreeMap**           | Sorted by keys                          |
+| **Hashtable**         | Thread-safe, legacy class               |
+| **ConcurrentHashMap** | Thread-safe for concurrent applications |
+
+
+
+
+4)Can Map store duplicate keys or values?
+-->Answer:
+
+    Duplicate keys ❌ Not allowed.
+    Duplicate values ✅ Allowed.
+    
+    Example:
+    
+          Map<Integer, String> map = new HashMap<>();
+          
+          map.put(1, "Apple");
+          map.put(2, "Apple");   // Duplicate value
+          
+          map.put(1, "Orange");  // Replaces Apple
+          
+          System.out.println(map);
+    
+    Output:
+    
+          {1=Orange, 2=Apple}
+
+
+
+5)What are the commonly used Map methods (put(), get(), remove(), containsKey(), containsValue())?
+-->put()
+      Adds or updates a key-value pair.
+      map.put(1, "Java");
+
+
+
+    get()    
+      Returns the value for a key.
+      System.out.println(map.get(1));
+
+
+    remove()    
+      Removes a key-value pair.
+      map.remove(1);
+
+
+    containsKey()
+      System.out.println(map.containsKey(2));
+
+    containsValue()
+      System.out.println(map.containsValue("Java"));
+
+
+
+
+
+6)Can a Map store null keys and null values? Which implementations allow it?
+-->
+| Map               | Null Key                | Null Values |
+| ----------------- | ----------------------- | ----------- |
+| HashMap           | 1                       | Multiple    |
+| LinkedHashMap     | 1                       | Multiple    |
+| TreeMap           | No (default comparator) | Yes         |
+| Hashtable         | No                      | No          |
+| ConcurrentHashMap | No                      | No          |
+
+
+
+
+7)What is the difference between keySet(), values(), and entrySet() methods?
+-->keySet()
+        Returns all keys.
+        
+        for(Integer key : map.keySet()){
+            System.out.println(key);
+        }
+   
+
+    values()
+        Returns all values.
+        
+        for(String value : map.values()){
+            System.out.println(value);
+        }
+    
+
+    entrySet()
+        Returns both key and value.
+        
+        for(Map.Entry<Integer,String> entry : map.entrySet()){
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+
+
+
+
+        Best Practice: Use entrySet() when both key and value are needed because it is more efficient than iterating over keySet() and calling get().
