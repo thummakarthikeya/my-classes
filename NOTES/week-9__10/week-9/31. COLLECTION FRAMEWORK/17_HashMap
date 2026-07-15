@@ -1,0 +1,10 @@
+Interview Questions:
+What is HashMap in Java?
+Which interfaces does HashMap implement?
+Can HashMap store null keys and null values? How many?
+Does HashMap allow duplicate keys or duplicate values?
+Does HashMap maintain insertion order?
+How do you iterate over a HashMap?
+How does HashMap store key-value pairs internally?
+How does HashMap handle collisions?
+What is the role of hashCode() and equals() in HashMap?
