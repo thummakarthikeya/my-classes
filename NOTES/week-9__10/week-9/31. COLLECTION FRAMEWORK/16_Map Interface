@@ -1,0 +1,8 @@
+Interview Questions:
+What is the Map interface in Java?
+How is Map different from List, Set, and Queue?
+What are the main implementations of Map?
+Can Map store duplicate keys or values?
+What are the commonly used Map methods (put(), get(), remove(), containsKey(), containsValue())?
+Can a Map store null keys and null values? Which implementations allow it?
+What is the difference between keySet(), values(), and entrySet() methods?
