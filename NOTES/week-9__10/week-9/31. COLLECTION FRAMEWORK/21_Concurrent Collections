@@ -1,0 +1,128 @@
+Concurrent Collections
+
+Interview Questions:
+
+1. What are Concurrent Collections in Java?
+-->Answer:
+      
+      Concurrent Collections are thread-safe collection classes provided in the java.util.concurrent package.
+      They are designed for multi-threaded environments.
+      Unlike synchronized collections, they allow multiple threads to access the collection efficiently with better performance.
+      They reduce contention by using advanced locking techniques or lock-free algorithms.
+      
+      Common Concurrent Collections:
+      
+            ConcurrentHashMap
+            CopyOnWriteArrayList
+            ConcurrentLinkedQueue
+            ConcurrentLinkedDeque
+            BlockingQueue
+            ConcurrentSkipListMap
+            ConcurrentSkipListSet
+
+
+            
+2. Why do we need concurrent collections when we already have synchronized collections?
+-->Answer:
+
+      Synchronized collections (Vector, Hashtable, Collections.synchronizedList()) lock the entire collection, allowing only one thread to access it at a time.
+      
+      Concurrent collections:
+      
+      Allow multiple threads to read simultaneously.
+      Lock only the required portion (or use lock-free techniques).
+      Provide much better performance in multi-threaded applications.
+      
+| Synchronized Collections     | Concurrent Collections           |
+| ---------------------------- | -------------------------------- |
+| Entire collection is locked  | Fine-grained locking / Lock-free |
+| Lower performance            | Better performance               |
+| Less scalable                | Highly scalable                  |
+| Suitable for low concurrency | Suitable for high concurrency    |
+
+
+      
+3. What is the difference between HashMap and ConcurrentHashMap?
+-->
+| Feature         | HashMap                              | ConcurrentHashMap                         |
+| --------------- | ------------------------------------ | ----------------------------------------- |
+| Thread-safe     | ❌ No                                 | ✅ Yes                                     |
+| Synchronization | None                                 | Fine-grained locking (Java 8+)            |
+| Performance     | Fast in single-threaded applications | Optimized for multi-threaded applications |
+| Null Keys       | One allowed                          | Not allowed                               |
+| Null Values     | Multiple allowed                     | Not allowed                               |
+| Package         | `java.util`                          | `java.util.concurrent`                    |
+
+
+ConcurrentHashMap<Integer, String> map = new ConcurrentHashMap<>();
+
+map.put(1, "Java");
+map.put(2, "Python");
+
+
+
+4. What is the difference between Collections.synchronizedMap() and ConcurrentHashMap?
+-->
+| Feature     | synchronizedMap()         | ConcurrentHashMap          |
+| ----------- | ------------------------- | -------------------------- |
+| Locking     | Entire map                | Fine-grained locking       |
+| Performance | Lower                     | Higher                     |
+| Iterator    | Must synchronize manually | Weakly consistent iterator |
+| Null Keys   | Depends on underlying map | Not allowed                |
+| Null Values | Depends on underlying map | Not allowed                |
+
+Example:
+
+Map<Integer, String> map = Collections.synchronizedMap(new HashMap<>());
+ConcurrentHashMap<Integer, String> map = new ConcurrentHashMap<>();
+
+Interview Tip:
+Prefer ConcurrentHashMap for multi-threaded applications because it provides better scalability and performance.
+
+
+
+5. What is the use of CopyOnWriteArrayList in Java?
+-->Answer:
+
+      CopyOnWriteArrayList is a thread-safe implementation of List.
+      It belongs to the java.util.concurrent package.
+      Whenever an element is added, updated, or removed, a new copy of the underlying array is created.
+      Read operations do not require locking and are very fast.
+      
+      Example:
+      
+      CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+      
+      list.add("Java");
+      list.add("Python");
+      
+      System.out.println(list);
+
+
+
+6. When should we prefer CopyOnWriteArrayList over ArrayList?
+-->Answer:
+      
+      Use CopyOnWriteArrayList when:
+      
+      Read operations are much more frequent than write operations.
+      Multiple threads access the list concurrently.
+      Iteration should not throw ConcurrentModificationException.
+      
+      Use ArrayList when:
+      
+      The application is single-threaded.
+      Write operations (add/remove/update) are frequent.
+      Maximum performance and low memory usage are required.
+
+| Feature                         | ArrayList | CopyOnWriteArrayList       |
+| ------------------------------- | --------- | -------------------------- |
+| Thread-safe                     | ❌ No      | ✅ Yes                      |
+| Read Performance                | Fast      | Very Fast                  |
+| Write Performance               | Fast      | Slower (creates new array) |
+| ConcurrentModificationException | Yes       | No                         |
+
+
+
+
+7. How does CopyOnWriteArrayList achieve thread-safety internally?
