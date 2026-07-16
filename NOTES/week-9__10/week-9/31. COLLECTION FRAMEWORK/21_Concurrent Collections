@@ -126,3 +126,49 @@ Prefer ConcurrentHashMap for multi-threaded applications because it provides bet
 
 
 7. How does CopyOnWriteArrayList achieve thread-safety internally?
+-->Answer:
+
+      CopyOnWriteArrayList achieves thread safety by using the Copy-On-Write mechanism.
+            
+            Working:
+                  Read operations access the existing array without locking.
+                  When a write operation (add(), remove(), set()) occurs:
+                  A new copy of the array is created.
+                  The modification is applied to the new array.
+                  The reference is updated to point to the new array.
+                  Existing readers continue using the old array until they finish.
+                        Example:
+                        
+                              Initial array:
+                              
+                                    [Java, Python]
+                              
+                              After:
+                              
+                                    list.add("Spring");
+                                    
+                                    A new array is created:
+                                    
+                                    Old Array → [Java, Python]
+                                    
+                                    New Array → [Java, Python, Spring]
+                                    
+                                    Then the reference is switched to the new array.
+                              
+                              Advantages :
+                                    No ConcurrentModificationException.
+                                    Excellent for read-heavy applications.
+                                    Safe iteration without synchronization.
+                              
+                              Disadvantages :
+                                    Higher memory usage due to array copying.
+                                    Slower write operations.
+
+
+
+Interview Tips:
+      Concurrent Collections are located in the java.util.concurrent package.
+      ConcurrentHashMap is the preferred thread-safe alternative to HashMap.
+      ConcurrentHashMap does not allow null keys or null values.
+      CopyOnWriteArrayList is ideal for read-heavy and write-light scenarios.
+      Concurrent Collections provide better scalability and performance than synchronized collections in multi-threaded environments.
