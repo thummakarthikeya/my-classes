@@ -1,0 +1,190 @@
+LinkedHashMap
+--------------
+Interview Questions
+
+
+1)What is LinkedHashMap in Java?
+-->Answer:
+        
+        LinkedHashMap is a class in the java.util package.
+        It extends HashMap and implements the Map interface.
+        It stores data as key-value pairs.
+        It maintains the insertion order of elements.
+        It uses a combination of a Hash Table and a Doubly Linked List.
+        It is not synchronized (not thread-safe).
+        
+        Syntax:
+        
+        LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+        
+        Example:
+        
+        LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+        
+        map.put(3, "C");
+        map.put(1, "Java");
+        map.put(2, "Python");
+        
+        System.out.println(map);
+        
+        Output:
+        
+        {3=C, 1=Java, 2=Python}
+        
+        Notice that the output follows the insertion order.
+
+
+
+
+
+2)Which interfaces does LinkedHashMap implement?
+-->Answer:
+
+      LinkedHashMap implements:
+          
+          Map
+          
+              It inherits from:
+                  
+                  HashMap
+                  AbstractMap
+                  
+                      Hierarchy:
+                            
+                            Object
+                               ↓
+                            AbstractMap
+                               ↓
+                            HashMap
+                               ↓
+                            LinkedHashMap
+                                    implements Map
+
+
+
+        
+3)Can LinkedHashMap store null keys and null values? How many?
+-->Answer:
+        
+        Yes.
+        
+        One null key ✅
+        Multiple null values ✅
+        
+              Example:
+              
+                    LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+                    
+                    map.put(null, "Java");
+                    map.put(1, null);
+                    map.put(2, null);
+                    
+                    System.out.println(map);
+                    
+                Output: 
+                    {null=Java, 1=null, 2=null}
+
+
+
+                    
+4)Does LinkedHashMap maintain insertion order or sorted order?
+-->Answer:
+
+      LinkedHashMap maintains the insertion order of elements.
+      
+      It does not sort the keys.
+            
+            Example:
+            
+                LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+                
+                map.put(20, "Twenty");
+                map.put(5, "Five");
+                map.put(10, "Ten");
+                
+                System.out.println(map);
+            
+            Output:
+            
+                {20=Twenty, 5=Five, 10=Ten}
+                
+                If you need keys in sorted order, use TreeMap instead.
+
+
+
+
+5)How do you iterate through a LinkedHashMap?
+-->1. Using entrySet() (Recommended)
+      for (Map.Entry<Integer, String> entry : map.entrySet()) {
+          System.out.println(entry.getKey() + " : " + entry.getValue());
+      }
+    
+    2. Using keySet()
+      for (Integer key : map.keySet()) {
+          System.out.println(key + " : " + map.get(key));
+      }
+    
+    3. Using values()
+      for (String value : map.values()) {
+          System.out.println(value);
+      }
+    
+    4. Using forEach()
+      map.forEach((key, value) ->
+          System.out.println(key + " : " + value)
+      );
+        
+    5. Using Iterator
+      Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
+      
+      while (it.hasNext()) {
+          Map.Entry<Integer, String> entry = it.next();
+          System.out.println(entry.getKey() + " : " + entry.getValue());
+      }
+
+
+
+6)How does LinkedHashMap handle collisions?
+-->Answer:
+      
+      LinkedHashMap handles collisions in the same way as HashMap.
+      
+      Working:
+      It calculates the key's hashCode().
+      Determines the bucket index.
+      If another key maps to the same bucket, a collision occurs.
+      The entries are stored using a Linked List.
+      In Java 8 and later, if a bucket contains more than 8 nodes and the table capacity is at least 64, the linked list is converted into a Red-Black Tree for faster lookups.
+      Besides the bucket structure, LinkedHashMap also maintains a Doubly Linked List connecting all entries, which preserves the insertion order.
+      
+      Internal Structure:
+      
+      Bucket Array
+            |
+            |--> Bucket 0
+            |
+            |--> Bucket 1
+            |
+            |--> Bucket 2
+                     |
+                     V
+                (K1,V1) -> (K2,V2)
+      
+      Insertion Order:
+      (K3,V3) ⇄ (K1,V1) ⇄ (K2,V2)
+
+    
+    | Operation           | Time Complexity                             |
+    | ------------------- | ------------------------------------------- |
+    | put()               | O(1) Average                                |
+    | get()               | O(1) Average                                |
+    | remove()            | O(1) Average                                |
+    | Search (Worst Case) | O(log n) *(after treeification in Java 8+)* |
+    
+    Interview Tips
+        LinkedHashMap extends HashMap.
+        Maintains insertion order (or access order if configured with the special constructor).
+        Stores one null key and multiple null values.
+        Uses a Hash Table + Doubly Linked List internally.
+        Faster than TreeMap but slightly slower than HashMap due to maintaining the linked list.
+        Ideal when you need fast lookups while preserving the order of insertion.
