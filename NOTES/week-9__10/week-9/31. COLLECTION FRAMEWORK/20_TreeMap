@@ -1,0 +1,17 @@
+TreeMap
+
+Interview Questions:
+
+1. What is TreeMap in Java?
+
+2. Which interfaces does TreeMap implement?
+
+3. Does TreeMap allow null keys or null values?
+
+4. Does TreeMap allow duplicate keys or values?
+
+5. What is the natural ordering used by TreeMap?
+
+6. How do you iterate through a TreeMap?
+
+7. How does TreeMap maintain keys in sorted order internally?
