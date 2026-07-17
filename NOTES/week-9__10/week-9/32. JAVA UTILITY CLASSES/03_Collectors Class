@@ -1,0 +1,245 @@
+Collectors Class
+
+1. What is Collectors in Java? Is Collectors part of the Collections Framework?
+-->Answer:
+
+    Collectors is a utility class in java.util.stream.
+    Used with the Stream API to collect stream elements into collections or perform aggregation.
+    Introduced in Java 8.
+    No, it is not part of the Collections Framework; it is part of the Stream API.
+    
+    Example:
+    
+    List<String> list = Stream.of("A","B","C").collect(Collectors.toList());
+    
+    System.out.println(list);
+
+
+
+
+2. What are the most commonly used methods of Collectors?
+-->Answer:
+
+      toList()
+      toSet()
+      toMap()
+      joining()
+      groupingBy()
+      partitioningBy()
+      counting()
+      summingInt()
+      averagingInt()
+      mapping()
+      reducing()
+      
+      Example:
+      
+      List<Integer> list = Stream.of(1,2,3).collect(Collectors.toList());
+
+
+
+
+3. What is the difference between Collections and Collectors?
+-->
+| Collections                           | Collectors                                     |
+| ------------------------------------- | ---------------------------------------------- |
+| Utility class                         | Utility class                                  |
+| Works on Collections                  | Works on Streams                               |
+| Used for sort(), reverse(), shuffle() | Used for collect(), grouping, joining, mapping |
+| Package: `java.util`                  | Package: `java.util.stream`                    |
+
+
+
+
+
+4. What do Collectors.toList(), Collectors.toSet(), and Collectors.toMap() do?
+-->toList() → Collects stream elements into a List.
+        toSet() → Collects into a Set (removes duplicates).
+        toMap() → Collects into a Map using key-value mapping.
+        
+        Example:
+        
+        List<String> list = Stream.of("A","B").collect(Collectors.toList());
+        
+        Set<String> set = Stream.of("A","A","B").collect(Collectors.toSet());
+        
+        Map<Integer,String> map = Stream.of("Java","Python").collect(Collectors.toMap(String::length, s -> s));
+
+
+
+
+
+
+5. What happens if duplicate keys occur in Collectors.toMap()?
+-->Answer:
+
+      Throws IllegalStateException if duplicate keys exist.
+      Use a merge function to handle duplicates.
+      
+      Example:
+      
+      Map<Integer,String> map =
+      Stream.of("Java","C")
+      .collect(Collectors.toMap(
+              String::length,
+              s -> s,
+              (a,b) -> a));
+
+
+
+
+
+6. What is the difference between toMap() and toConcurrentMap()?
+-->
+| toMap()            | toConcurrentMap()         |
+| ------------------ | ------------------------- |
+| Returns HashMap    | Returns ConcurrentHashMap |
+| Not thread-safe    | Thread-safe               |
+| Sequential Streams | Parallel Streams          |
+
+
+
+
+7. What is the purpose of Collectors.counting()? Can Collectors.counting() be replaced with Stream.count()? Which one is preferred?
+-->Collectors.counting()
+
+Used inside groupingBy().
+
+Stream.count()
+
+Counts all elements in a stream.
+
+Example:
+
+long count = list.stream().count();
+
+Map<String,Long> result =
+list.stream()
+.collect(Collectors.groupingBy(
+        String::toString,
+        Collectors.counting()));
+
+Interview Tip:
+
+Stream.count() → Count total elements.
+Collectors.counting() → Count elements inside groups.
+
+
+
+
+8. What are summingInt(), summingDouble(), and summingLong() used for?
+-->Answer:
+Used to calculate the sum of numeric values.
+
+Example:
+
+int sum = employees.stream()
+.collect(Collectors.summingInt(Employee::getSalary));
+
+
+
+
+
+9. What is averagingInt(), and how is it different from summingInt()?
+-->
+| averagingInt()        | summingInt()       |
+| --------------------- | ------------------ |
+| Returns average       | Returns total sum  |
+| Return type is double | Return type is int |
+
+
+
+
+
+10. What is Collectors.joining() used for?
+-->Answer:
+      Combines multiple Strings into one String.
+      
+      Example:
+      
+      String result = Stream.of("Java","Python","SQL")
+      .collect(Collectors.joining(", "));
+      
+      System.out.println(result);
+      
+      Output
+      
+      Java, Python, SQL
+
+
+
+
+11. What is groupingBy() in Java Streams?
+-->Answer:
+      Groups elements based on a condition or property.
+      
+      Example:
+      
+      Map<Integer,List<String>> map =
+      Stream.of("Java","SQL","Python")
+      .collect(Collectors.groupingBy(String::length));
+
+
+
+
+
+12. What is the difference between groupingBy() and partitioningBy()?
+-->
+| groupingBy()           | partitioningBy()             |
+| ---------------------- | ---------------------------- |
+| Multiple groups        | Only two groups              |
+| Returns Map<K,List<T>> | Returns Map<Boolean,List<T>> |
+| Uses classifier        | Uses Predicate               |
+
+Example:
+
+Map<Boolean,List<Integer>> map =
+Stream.of(1,2,3,4,5)
+.collect(Collectors.partitioningBy(n -> n%2==0));
+
+
+
+
+13. What is nested grouping, and how can you achieve it using Collectors?
+-->Answer:
+        Grouping inside another grouping.
+        
+        Example:
+        
+        employees.stream()
+        .collect(Collectors.groupingBy(
+        Employee::getDepartment,
+        Collectors.groupingBy(Employee::getGender)
+        ));
+
+
+
+14. Where can we use Collectors.reducing() method?
+-->Answer:
+Used to reduce stream elements into a single value (sum, max, concatenation, etc.).
+
+Example:
+
+int sum = Stream.of(1,2,3,4)
+.collect(Collectors.reducing(
+0,
+Integer::intValue,
+Integer::sum));
+
+System.out.println(sum);
+
+
+Interview Tips (1 Minute Revision)
+      Collectors belongs to java.util.stream, not the Collections Framework.
+      Used with Stream.collect().
+      toList(), toSet(), toMap() → Convert stream to collections.
+      joining() → Concatenate strings.
+      groupingBy() → Multiple groups.
+      partitioningBy() → Two groups (true/false).
+      counting() → Count elements in groups.
+      summingInt() → Sum values.
+      averagingInt() → Average values.
+      toConcurrentMap() → Thread-safe map.
+      reducing() → Reduce to a single result.
+
+ 
