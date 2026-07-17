@@ -1,0 +1,127 @@
+Note: Private methods in interfaces were introduced in Java 9.
+
+1. What is a private method in an interface?
+
+Answer:
+
+A private method is a method declared with the private keyword inside an interface.
+Introduced in Java 9.
+Used to share common code between default and static methods.
+It cannot be accessed outside the interface.
+
+Example:
+
+interface Demo {
+
+    private void show() {
+        System.out.println("Private Method");
+    }
+
+    default void display() {
+        show();
+    }
+}
+2. Why were private methods added to interfaces in Java 9?
+
+Answer:
+
+To reduce code duplication.
+To reuse common logic inside default and static methods.
+To improve code maintainability.
+To hide implementation details.
+3. Can we call private methods from outside the interface?
+
+Answer:
+
+No.
+They can only be called from default, static, or other private methods within the same interface.
+4. Can a private method be static or non-static?
+
+Answer:
+
+Yes.
+Interface private methods can be:
+private
+private static
+
+Example:
+
+interface Demo {
+
+    private void show() { }
+
+    private static void display() { }
+}
+5. How do private methods help in code reusability inside interfaces?
+
+Answer:
+
+Common logic is written once.
+Default and static methods can reuse it.
+Avoids duplicate code.
+Makes the interface easier to maintain.
+Programs
+1. Write an interface with one private static method and one default method calling it.
+interface Demo {
+
+    private static void message() {
+        System.out.println("Hello");
+    }
+
+    default void show() {
+        message();
+    }
+}
+
+class Test implements Demo { }
+
+public class Main {
+    public static void main(String[] args) {
+
+        Test t = new Test();
+        t.show();
+    }
+}
+
+Output:
+
+Hello
+2. Demonstrate how private methods reduce code duplication in interfaces.
+interface Demo {
+
+    private void print() {
+        System.out.println("Common Logic");
+    }
+
+    default void show() {
+        print();
+    }
+
+    default void display() {
+        print();
+    }
+}
+
+class Test implements Demo { }
+
+public class Main {
+    public static void main(String[] args) {
+
+        Test t = new Test();
+
+        t.show();
+        t.display();
+    }
+}
+
+Output:
+
+Common Logic
+Common Logic
+Interview Tips (Quick Revision)
+Private methods in interfaces were introduced in Java 9.
+Declared using the private keyword.
+Can be private or private static.
+Cannot be accessed outside the interface.
+Used only inside the interface by default, static, or other private methods.
+Main purpose: Reduce code duplication and improve code reusability.
