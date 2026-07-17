@@ -366,3 +366,198 @@ These are among the most frequently asked Java Stream API interview questions fo
 
 
 
+
+
+
+
+Programs
+
+1. Find even numbers from a list using Stream.
+-->Program
+                import java.util.Arrays;
+                import java.util.List;
+                
+                public class EvenNumbers {
+                    public static void main(String[] args) {
+                
+                        List<Integer> list = Arrays.asList(10, 15, 20, 25, 30, 35);
+                
+                        list.stream()
+                                .filter(n -> n % 2 == 0)
+                                .forEach(System.out::println);
+                    }
+                }
+                Output
+                10
+                20
+                30
+
+
+
+2. Convert a list of strings to uppercase using Stream.
+-->Program
+import java.util.Arrays;
+import java.util.List;
+
+public class UpperCaseExample {
+    public static void main(String[] args) {
+
+        List<String> names = Arrays.asList("java", "python", "spring");
+
+        names.stream()
+                .map(String::toUpperCase)
+                .forEach(System.out::println);
+    }
+}
+Output
+JAVA
+PYTHON
+SPRING
+
+
+
+
+3. Count how many names start with "A" using Stream.
+-->Program
+import java.util.Arrays;
+import java.util.List;
+
+public class CountNames {
+    public static void main(String[] args) {
+
+        List<String> names = Arrays.asList(
+                "Anil", "Ajay", "Ravi", "Asha", "Rahul");
+
+        long count = names.stream()
+                .filter(name -> name.startsWith("A"))
+                .count();
+
+        System.out.println("Count = " + count);
+    }
+}
+Output
+Count = 3
+
+
+
+4. Find the maximum and minimum element using Stream.
+-->Program
+import java.util.Arrays;
+import java.util.List;
+
+public class MaxMinExample {
+    public static void main(String[] args) {
+
+        List<Integer> numbers = Arrays.asList(20, 5, 40, 10, 60);
+
+        int max = numbers.stream()
+                .max(Integer::compare)
+                .get();
+
+        int min = numbers.stream()
+                .min(Integer::compare)
+                .get();
+
+        System.out.println("Maximum = " + max);
+        System.out.println("Minimum = " + min);
+    }
+}
+Output
+Maximum = 60
+Minimum = 5
+
+
+
+
+
+5. Sort a list of integers using Stream.
+-->Program
+        import java.util.Arrays;
+        import java.util.List;
+        
+        public class SortExample {
+            public static void main(String[] args) {
+        
+                List<Integer> numbers = Arrays.asList(50, 10, 40, 20, 30);
+        
+                numbers.stream()
+                        .sorted()
+                        .forEach(System.out::println);
+            }
+        }
+        Output
+        10
+        20
+        30
+        40
+        50
+        Descending Order
+        numbers.stream()
+               .sorted((a, b) -> b - a)
+               .forEach(System.out::println);
+
+
+
+
+
+6. Flatten a list of lists using flatMap().
+-->Program
+                import java.util.Arrays;
+                import java.util.List;
+                
+                public class FlatMapExample {
+                    public static void main(String[] args) {
+                
+                        List<List<String>> list = Arrays.asList(
+                                Arrays.asList("Java", "Python"),
+                                Arrays.asList("Spring", "React"),
+                                Arrays.asList("SQL", "MongoDB")
+                        );
+                
+                        list.stream()
+                                .flatMap(List::stream)
+                                .forEach(System.out::println);
+                    }
+                }
+                Output
+                Java
+                Python
+                Spring
+                React
+                SQL
+                MongoDB
+
+
+
+
+7. Find the average of numbers using Stream.
+-->Program
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalDouble;
+
+public class AverageExample {
+    public static void main(String[] args) {
+
+        List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50);
+
+        OptionalDouble average = numbers.stream()
+                .mapToInt(Integer::intValue)
+                .average();
+
+        System.out.println("Average = " + average.getAsDouble());
+    }
+}
+Output
+Average = 30.0
+⭐ Interview Tip
+        Question	Stream Methods Used
+        Find even numbers	filter(), forEach()
+        Convert to uppercase	map(), forEach()
+        Count names	filter(), count()
+        Maximum & Minimum	max(), min()
+        Sort integers	sorted()
+        Flatten list	flatMap()
+        Average	mapToInt(), average()
+        
+        These seven programs are among the most common Java Stream API coding questions asked in interviews for freshers and Java 8 developers.
