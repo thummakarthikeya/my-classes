@@ -1,0 +1,188 @@
+3. flatMap()
+      Concept :
+          flatMap() is an intermediate operation used to flatten nested structures (such as a list of lists) into a single stream. It first converts each element into a stream and then combines all those streams into one.
+          
+          Syntax:
+          
+          stream.flatMap(element -> element.stream())
+
+
+
+
+1. Given a list of lists of integers, flatten it into a single list of integers.
+--> Program
+        import java.util.Arrays;
+        import java.util.List;
+        
+        public class FlatMapNumbers {
+            public static void main(String[] args) {
+        
+                List<List<Integer>> numbers = Arrays.asList(
+                        Arrays.asList(1, 2, 3),
+                        Arrays.asList(4, 5),
+                        Arrays.asList(6, 7, 8)
+                );
+        
+                numbers.stream()
+                        .flatMap(List::stream)
+                        .forEach(System.out::println);
+            }
+        }
+        Output
+        1
+        2
+        3
+        4
+        5
+        6
+        7
+        8
+
+
+
+
+2. Given a list of sentences, return a list of all unique words.
+-->Program
+    import java.util.Arrays;
+    import java.util.List;
+    public class UniqueWords {
+        public static void main(String[] args) {
+    
+            List<String> sentences = Arrays.asList(
+                    "Java is powerful",
+                    "Java is easy",
+                    "Streams are powerful"
+            );
+    
+            sentences.stream()
+                    .flatMap(sentence -> Arrays.stream(sentence.split(" ")))
+                    .distinct()
+                    .forEach(System.out::println);
+        }
+    }
+    Output
+    Java
+    is
+    powerful
+    easy
+    Streams
+    are
+    
+    Note: split(" ") converts each sentence into an array of words, flatMap() combines them into one stream, and distinct() removes duplicates.
+
+
+
+
+
+
+
+3. Convert a list of departments, where each department has a list of employees, into a list of all employees.
+Program
+import java.util.Arrays;
+import java.util.List;
+
+class Employee {
+    String name;
+
+    Employee(String name) {
+        this.name = name;
+    }
+}
+
+class Department {
+    String name;
+    List<Employee> employees;
+
+    Department(String name, List<Employee> employees) {
+        this.name = name;
+        this.employees = employees;
+    }
+}
+
+public class DepartmentExample {
+    public static void main(String[] args) {
+
+        Department d1 = new Department(
+                "IT",
+                Arrays.asList(
+                        new Employee("Ravi"),
+                        new Employee("Anil")
+                )
+        );
+
+        Department d2 = new Department(
+                "HR",
+                Arrays.asList(
+                        new Employee("Priya"),
+                        new Employee("Kiran")
+                )
+        );
+
+        List<Department> departments = Arrays.asList(d1, d2);
+
+        departments.stream()
+                .flatMap(dept -> dept.employees.stream())
+                .map(emp -> emp.name)
+                .forEach(System.out::println);
+    }
+}
+Output
+Ravi
+Anil
+Priya
+Kiran
+
+
+
+| Question                 | Stream Methods Used        | Transformation                                         |
+| ------------------------ | -------------------------- | ------------------------------------------------------ |
+| Flatten list of integers | `flatMap(List::stream)`    | `List<List<Integer>> → Stream<Integer>`                |
+| Find unique words        | `flatMap()` + `distinct()` | `List<String> → Stream<String>`                        |
+| Get all employees        | `flatMap()` + `map()`      | `List<Department> → Stream<Employee> → Stream<String>` |
+
+
+
+
+
+Interview Tip
+map() vs flatMap()
+
+Suppose you have:
+
+List<List<Integer>> list = Arrays.asList(
+    Arrays.asList(1, 2),
+    Arrays.asList(3, 4)
+);
+Using map()
+list.stream()
+    .map(List::stream)
+    .forEach(System.out::println);
+
+Output
+
+java.util.stream.ReferencePipeline$Head@...
+java.util.stream.ReferencePipeline$Head@...
+
+Here, each list is converted into a separate Stream, resulting in a Stream<Stream<Integer>>.
+
+Using flatMap()
+list.stream()
+    .flatMap(List::stream)
+    .forEach(System.out::println);
+
+Output
+
+1
+2
+3
+4
+
+Here, flatMap() combines all inner streams into a single Stream<Integer>.
+
+Quick Difference
+----------------
+| `map()`                                      | `flatMap()`                             |
+| -------------------------------------------- | --------------------------------------- |
+| One-to-one transformation                    | One-to-many transformation + flattening |
+| Produces `Stream<Stream<T>>` for nested data | Produces `Stream<T>`                    |
+| Used for simple transformations              | Used for nested collections             |
