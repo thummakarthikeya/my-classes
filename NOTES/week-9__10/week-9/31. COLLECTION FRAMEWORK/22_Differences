@@ -1,0 +1,792 @@
+Differences
+
+Interview Questions:
+
+1. Differentiate between Collection and Collections?
+-->
+| Collection                                            | Collections                               |
+| ----------------------------------------------------- | ----------------------------------------- |
+| `Collection` is an interface.                         | `Collections` is a utility class.         |
+| It is the root interface of the Collection Framework. | Provides utility methods for collections. |
+| Implemented by List, Set, Queue, etc.                 | Contains only static methods.             |
+| Package: `java.util`                                  | Package: `java.util`                      |
+
+Example :
+
+    Collection :
+        Collection<String> c = new ArrayList<>();
+        c.add("Java");
+
+    
+    Collections :
+        Collections.sort(list);
+        Collections.reverse(list);
+        Collections.shuffle(list);
+        Interview Tip
+        Collection → Interface
+        Collections → Utility Class
+
+
+
+2. Differentiate between Iterable and Iterator?
+-->
+| Iterable                                                     | Iterator                                     |
+| ------------------------------------------------------------ | -------------------------------------------- |
+| Interface that represents a collection that can be iterated. | Interface used to iterate over a collection. |
+| Contains `iterator()` method.                                | Contains `hasNext()`, `next()`, `remove()`.  |
+| Used in enhanced for-loop.                                   | Used to access elements one by one.          |
+| Implemented by Collection classes.                           | Returned by `iterator()` method.             |
+
+Example :
+    List<String> list = List.of("A","B","C");
+    
+    Iterator<String> it = list.iterator();
+    
+    while(it.hasNext()){
+        System.out.println(it.next());
+    }
+
+
+  Interview Tip :
+      Iterable → Gives an Iterator
+      Iterator → Traverses elements
+
+
+
+3. Differentiate between an Array and an ArrayList?
+-->
+| Array                            | ArrayList                                            |
+| -------------------------------- | ---------------------------------------------------- |
+| Fixed size                       | Dynamic size                                         |
+| Can store primitives and objects | Stores only objects (wrapper classes for primitives) |
+| Faster                           | Slightly slower                                      |
+| No built-in methods              | Rich API (`add()`, `remove()`, `contains()`)         |
+| Part of Java language            | Part of Collection Framework                         |
+    
+    Example :
+    
+        Array
+        
+        int arr[] = {10,20,30};
+        
+        ArrayList
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        list.add(10);
+        list.add(20);
+        Interview Tip
+            
+            Use:
+              Array → Fixed-size data.
+              ArrayList → Dynamic data.
+
+
+
+
+4. Differentiate between ArrayList and LinkedList?
+-->
+    | ArrayList                         | LinkedList                |
+    | --------------------------------- | ------------------------- |
+    | Uses Dynamic Array                | Uses Doubly Linked List   |
+    | Fast random access                | Slow random access        |
+    | Slow insertion/deletion in middle | Fast insertion/deletion   |
+    | Less memory                       | More memory               |
+    | Implements List                   | Implements List and Deque |
+    
+    Complexity :
+      | Operation      | ArrayList | LinkedList                 |
+      | -------------- | --------- | -------------------------- |
+      | get()          | O(1)      | O(n)                       |
+      | add(end)       | O(1)      | O(1)                       |
+      | insert(middle) | O(n)      | O(1) (after reaching node) |
+      | remove(middle) | O(n)      | O(1) (after reaching node) |
+    
+    Interview Tip :
+        More searching → ArrayList
+        More insert/delete → LinkedList
+
+
+
+
+5. Differentiate between Comparable and Comparator?
+-->
+| Comparable           | Comparator              |
+| -------------------- | ----------------------- |
+| Interface            | Interface               |
+| Package: `java.lang` | Package: `java.util`    |
+| Natural ordering     | Custom ordering         |
+| `compareTo()` method | `compare()` method      |
+| One sorting logic    | Multiple sorting logics |
+ 
+
+Comparable :
+    class Student implements Comparable<Student>{
+    
+        public int compareTo(Student s){
+            return this.id - s.id;
+        }
+    }
+Comparator :
+    Comparator<Student> byName =
+    (a,b) -> a.name.compareTo(b.name);
+    Interview Tip
+    Comparable → Natural Sorting
+    Comparator → Custom Sorting
+
+
+
+6. Differentiate between Set and Map?
+-->
+| Set                        | Map                                         |
+| -------------------------- | ------------------------------------------- |
+| Stores elements            | Stores key-value pairs                      |
+| No duplicate elements      | No duplicate keys                           |
+| Values only                | Key and Value                               |
+| Extends Collection         | Separate interface (not part of Collection) |
+| Examples: HashSet, TreeSet | Examples: HashMap, TreeMap                  |
+
+  Example
+    
+    Set
+    
+        Set<String> set = new HashSet<>();
+        
+        set.add("Java");
+        set.add("Python");
+        
+      Map  
+            Map<Integer,String> map = new HashMap<>();
+            
+            map.put(1,"Java");
+            map.put(2,"Python");
+            Interview Tip
+            Set → Unique elements
+            Map → Unique keys with associated values
+
+Quick Revision :
+| Question                  | One-Line Answer                         |
+| ------------------------- | --------------------------------------- |
+| Collection vs Collections | Interface vs Utility Class              |
+| Iterable vs Iterator      | Provides iterator vs Traverses elements |
+| Array vs ArrayList        | Fixed size vs Dynamic size              |
+| ArrayList vs LinkedList   | Dynamic array vs Doubly linked list     |
+| Comparable vs Comparator  | Natural sorting vs Custom sorting       |
+| Set vs Map                | Unique elements vs Key-Value pairs      |
+
+
+
+
+
+7. Differentiate between List and Set?
+-->
+| List                                    | Set                                                            |
+| --------------------------------------- | -------------------------------------------------------------- |
+| Stores elements in insertion order      | Does not guarantee insertion order (depends on implementation) |
+| Allows duplicate elements               | Does not allow duplicate elements                              |
+| Index-based access                      | No index-based access                                          |
+| Can contain multiple null values        | Usually allows one null (implementation-dependent)             |
+| Examples: ArrayList, LinkedList, Vector | Examples: HashSet, LinkedHashSet, TreeSet                      |
+
+Example :
+  
+  List
+      List<String> list = new ArrayList<>();
+      
+      list.add("Java");
+      list.add("Java");
+      
+      System.out.println(list);
+      
+  Output :
+      [Java, Java]
+  
+  Set :
+  
+      Set<String> set = new HashSet<>();
+      
+      set.add("Java");
+      set.add("Java");
+      
+      System.out.println(set);
+
+  Output :
+      
+      [Java]
+      Interview Tip
+      List → Ordered + Duplicates
+      Set → Unique Elements
+
+
+
+
+
+
+8. Differentiate between List and Map?
+-->
+| List                            | Map                        |
+| ------------------------------- | -------------------------- |
+| Stores only elements            | Stores key-value pairs     |
+| Duplicate elements allowed      | Duplicate keys not allowed |
+| Access by index                 | Access by key              |
+| Extends Collection              | Separate interface         |
+| Examples: ArrayList, LinkedList | Examples: HashMap, TreeMap |
+
+
+Example
+
+    List
+      
+      List<String> list = new ArrayList<>();
+      
+      list.add("Java");
+      list.add("Python");
+      
+    Map
+      
+      Map<Integer,String> map = new HashMap<>();
+      
+      map.put(101,"Java");
+      map.put(102,"Python");
+      
+    Interview Tip :
+      List → Index
+      Map → Key
+
+
+
+9. Differentiate between Queue and Stack?
+-->
+| Queue                              | Stack                            |
+| ---------------------------------- | -------------------------------- |
+| FIFO (First In First Out)          | LIFO (Last In First Out)         |
+| Insertion at rear                  | Insertion at top                 |
+| Deletion from front                | Deletion from top                |
+| Uses `offer()`, `poll()`, `peek()` | Uses `push()`, `pop()`, `peek()` |
+| Example: LinkedList, PriorityQueue | Example: Stack, ArrayDeque       |
+
+      Queue Example :
+          Queue<Integer> queue = new LinkedList<>();
+          
+          queue.offer(10);
+          queue.offer(20);
+          
+          System.out.println(queue.poll());
+      
+      Output :
+          10
+      
+      Stack Example
+          Stack<Integer> stack = new Stack<>();
+          
+          stack.push(10);
+          stack.push(20);
+          
+          System.out.println(stack.pop());
+      
+      Output :
+          20
+      
+      Interview Tip :
+          Queue → FIFO
+          Stack → LIFO
+
+
+10. Differentiate between PriorityQueue and TreeSet?
+-->
+| PriorityQueue                   | TreeSet                                         |
+| ------------------------------- | ----------------------------------------------- |
+| Queue implementation            | Set implementation                              |
+| Allows duplicate elements       | Does not allow duplicates                       |
+| Sorted according to priority    | Sorted according to natural order or Comparator |
+| Only head element is guaranteed | Entire collection remains sorted                |
+| Implements Queue                | Implements NavigableSet                         |
+
+    Example :
+    
+    PriorityQueue :
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        
+        pq.add(30);
+        pq.add(10);
+        pq.add(20);
+        
+        System.out.println(pq.poll());
+    
+    Output :
+        10
+    
+    TreeSet :
+        TreeSet<Integer> set = new TreeSet<>();
+        
+        set.add(30);
+        set.add(10);
+        set.add(20);
+        
+        System.out.println(set);
+    
+    Output :
+        [10, 20, 30]
+    
+    
+    Interview Tip :
+        PriorityQueue → Priority-based processing
+        TreeSet → Sorted unique elements
+    
+
+
+
+11. Differentiate between the Singly Linked List and Doubly Linked List?
+-->
+| Singly Linked List            | Doubly Linked List                               |
+| ----------------------------- | ------------------------------------------------ |
+| One pointer (`next`)          | Two pointers (`prev`, `next`)                    |
+| Forward traversal only        | Forward and backward traversal                   |
+| Less memory                   | More memory                                      |
+| Simpler implementation        | More complex implementation                      |
+| Faster insertion at beginning | Easier deletion when node reference is available |
+
+    Structure
+      Singly Linked List :
+          10 → 20 → 30 → null  
+    
+    Doubly Linked List :
+          null ← 10 ⇄ 20 ⇄ 30 → null
+          
+    Interview Tip :
+          Singly → One Direction
+          Doubly → Two Directions
+
+
+      
+12. Differentiate between Iterator and Enumeration?
+-->
+| Iterator                                   | Enumeration                                   |
+| ------------------------------------------ | --------------------------------------------- |
+| Introduced in Collection Framework         | Legacy interface                              |
+| Works with all collections                 | Mainly used with Vector and Hashtable         |
+| Can remove elements                        | Cannot remove elements                        |
+| Methods: `hasNext()`, `next()`, `remove()` | Methods: `hasMoreElements()`, `nextElement()` |
+| Preferred in modern Java                   | Rarely used today                             |
+
+
+      
+      Iterator Example
+            Iterator<String> it = list.iterator();
+            
+            while(it.hasNext()){
+                System.out.println(it.next());
+            }
+      Enumeration Example
+            Vector<String> vector = new Vector<>();
+            
+            Enumeration<String> e = vector.elements();
+            
+            while(e.hasMoreElements()){
+                System.out.println(e.nextElement());
+            }
+      Interview Tip
+            Iterator → Modern + Remove Supported
+            Enumeration → Legacy + Read-only
+
+
+
+Quick Revision
+
+| Question                     | One-Line Answer                            |
+| ---------------------------- | ------------------------------------------ |
+| List vs Set                  | Ordered with duplicates vs Unique elements |
+| List vs Map                  | Index-based vs Key-value pairs             |
+| Queue vs Stack               | FIFO vs LIFO                               |
+| PriorityQueue vs TreeSet     | Priority queue vs Sorted unique set        |
+| Singly vs Doubly Linked List | One pointer vs Two pointers                |
+| Iterator vs Enumeration      | Modern iterator vs Legacy iterator         |
+
+
+
+13. Differentiate between HashMap and Hashtable?
+-->
+| HashMap                     | Hashtable                     |
+| --------------------------- | ----------------------------- |
+| Not synchronized            | Synchronized (Thread-safe)    |
+| Faster                      | Slower due to synchronization |
+| Allows one null key         | Does not allow null keys      |
+| Allows multiple null values | Does not allow null values    |
+| Introduced in Java 1.2      | Legacy class (Java 1.0)       |
+| Package: `java.util`        | Package: `java.util`          |
+
+  Example :
+  
+      HashMap :
+          HashMap<Integer, String> map = new HashMap<>();
+          map.put(null, "Java");
+          map.put(1, null);
+      
+      Hashtable :
+          Hashtable<Integer, String> table = new Hashtable<>();
+          table.put(1, "Java");
+          // table.put(null, "Python"); // Throws NullPointerException
+          
+      Interview Tip
+          HashMap → Faster, Not Thread-safe
+          Hashtable → Thread-safe, Legacy
+
+
+
+
+
+14. Differentiate between HashSet and HashMap?
+-->
+| HashSet                 | HashMap                         |
+| ----------------------- | ------------------------------- |
+| Stores only objects     | Stores key-value pairs          |
+| No duplicate elements   | No duplicate keys               |
+| Implements Set          | Implements Map                  |
+| Internally uses HashMap | Stores entries directly         |
+| Value is not required   | Both key and value are required |
+
+    Example :
+    
+        HashSet :
+            HashSet<String> set = new HashSet<>();
+            set.add("Java");
+            set.add("Python");
+        
+        HashMap :
+            HashMap<Integer, String> map = new HashMap<>();
+            map.put(101, "Java");
+            map.put(102, "Python");
+
+Interview Tip :
+
+      Internally, HashSet stores elements as keys in a HashMap and uses a dummy object as the value.
+
+
+
+
+
+
+15. Differentiate between Iterator and ListIterator?
+-->
+| Iterator                       | ListIterator                                         |
+| ------------------------------ | ---------------------------------------------------- |
+| Works with all collections     | Works only with List implementations                 |
+| Forward traversal only         | Forward and backward traversal                       |
+| Can remove elements            | Can add, remove, and replace elements                |
+| Methods: `hasNext()`, `next()` | Adds `hasPrevious()`, `previous()`, `add()`, `set()` |
+| Obtained using `iterator()`    | Obtained using `listIterator()`                      |
+
+    Iterator Example :
+        Iterator<String> it = list.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+    
+    ListIterator Example :
+        ListIterator<String> it = list.listIterator();
+        
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+        
+        while(it.hasPrevious()){
+            System.out.println(it.previous());
+        }
+
+
+
+Interview Tip :
+      Iterator → One-way traversal
+      ListIterator → Two-way traversal (Lists only)
+
+
+
+
+
+
+16. Differentiate between HashSet and TreeSet?
+-->
+| HashSet                 | TreeSet                                |
+| ----------------------- | -------------------------------------- |
+| Unordered               | Sorted                                 |
+| Uses Hash Table         | Uses Red-Black Tree                    |
+| Faster (`O(1)` average) | Slower (`O(log n)`)                    |
+| Allows one null         | Does not allow null (natural ordering) |
+| Implements Set          | Implements NavigableSet                |
+
+Example :
+
+    HashSet :
+        HashSet<Integer> set = new HashSet<>();
+        set.add(30);
+        set.add(10);
+        set.add(20);
+        System.out.println(set);
+    
+    Possible Output :
+        [20, 10, 30]
+    
+    TreeSet :
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(30);
+        set.add(10);
+        set.add(20);
+        System.out.println(set);
+    
+    Output :
+        [10, 20, 30]
+
+
+Interview Tip :
+    HashSet → Fast lookups
+    TreeSet → Sorted elements
+
+
+
+
+17. Differentiate between Queue and Deque?
+-->
+| Queue                     | Deque                           |
+| ------------------------- | ------------------------------- |
+| FIFO (First In First Out) | Double-ended queue              |
+| Insert at rear            | Insert at both front and rear   |
+| Remove from front         | Remove from both front and rear |
+| Limited operations        | More flexible operations        |
+| Interface: Queue          | Interface: Deque                |
+
+    Queue Example :
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(10);
+        queue.offer(20);
+        System.out.println(queue.poll());
+    
+    Output :
+    10
+    
+    Deque Example :
+        Deque<Integer> deque = new ArrayDeque<>();
+        deque.addFirst(10);
+        deque.addLast(20);
+        System.out.println(deque);
+    
+    Output :
+        [10, 20]
+    
+    Interview Tip :
+        Queue → One end for insertion, one end for deletion
+        Deque → Both ends for insertion and deletion
+
+
+
+| Question                 | One-Line Answer                          |
+| ------------------------ | ---------------------------------------- |
+| HashMap vs Hashtable     | Modern & faster vs Legacy & synchronized |
+| HashSet vs HashMap       | Unique elements vs Key-value pairs       |
+| Iterator vs ListIterator | One-way vs Two-way traversal             |
+| HashSet vs TreeSet       | Unordered vs Sorted                      |
+| Queue vs Deque           | FIFO vs Double-ended queue               |
+
+
+
+
+18. Differentiate between HashMap and TreeMap?
+-->
+| HashMap                           | TreeMap                                           |
+| --------------------------------- | ------------------------------------------------- |
+| Implements `Map`                  | Implements `NavigableMap`, `SortedMap`, and `Map` |
+| Does not maintain any order       | Maintains keys in sorted order                    |
+| Uses Hash Table                   | Uses Red-Black Tree                               |
+| Average Time Complexity: **O(1)** | Time Complexity: **O(log n)**                     |
+| Allows one null key               | Does not allow null keys (natural ordering)       |
+| Allows multiple null values       | Allows multiple null values                       |
+
+Example
+
+HashMap
+
+HashMap<Integer, String> map = new HashMap<>();
+
+map.put(30, "C");
+map.put(10, "A");
+map.put(20, "B");
+
+System.out.println(map);
+
+Possible Output
+
+{20=B, 10=A, 30=C}
+
+TreeMap
+
+TreeMap<Integer, String> map = new TreeMap<>();
+
+map.put(30, "C");
+map.put(10, "A");
+map.put(20, "B");
+
+System.out.println(map);
+
+Output
+
+{10=A, 20=B, 30=C}
+Interview Tip
+HashMap → Fast access
+TreeMap → Sorted keys
+
+
+
+19. Differentiate between ArrayList and Vector?
+-->
+| ArrayList                        | Vector                              |
+| -------------------------------- | ----------------------------------- |
+| Not synchronized                 | Synchronized                        |
+| Faster                           | Slower                              |
+| Introduced in Java 1.2           | Legacy class (Java 1.0)             |
+| Capacity increases by **50%**    | Capacity doubles (if not specified) |
+| Preferred in modern applications | Rarely used                         |
+
+Example
+
+ArrayList
+
+ArrayList<String> list = new ArrayList<>();
+
+list.add("Java");
+list.add("Python");
+
+Vector
+
+Vector<String> vector = new Vector<>();
+
+vector.add("Java");
+vector.add("Python");
+Interview Tip
+ArrayList → Faster
+Vector → Thread-safe but slower
+
+
+
+
+
+20. Differentiate between Fail-Fast Iterator and Fail-Safe Iterator?
+-->. A fail-fast iterator does not allow you to change (add or remove) elements of a list directly while iterating over it. If you do,
+it will immediately throw a ConcurrentModificationException to prevent unpredictable errors.
+
+| Fail-Fast Iterator                       | Fail-Safe Iterator                                   |
+| ---------------------------------------- | ---------------------------------------------------- |
+| Throws `ConcurrentModificationException` | Does not throw `ConcurrentModificationException`     |
+| Iterates over the original collection    | Iterates over a copy of the collection               |
+| Faster                                   | Slightly slower                                      |
+| Used by most collection classes          | Used by concurrent collections                       |
+| Example: `ArrayList`, `HashMap`          | Example: `CopyOnWriteArrayList`, `ConcurrentHashMap` |
+
+Fail-Fast Example
+ArrayList<String> list = new ArrayList<>();
+
+list.add("Java");
+list.add("Python");
+
+for(String s : list){
+    list.add("Spring");   // ConcurrentModificationException
+}
+Fail-Safe Example
+CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+
+list.add("Java");
+
+for(String s : list){
+    list.add("Spring");   // No Exception
+}
+Interview Tip
+Fail-Fast → Detects modification
+Fail-Safe → Works on a copied collection
+
+
+
+21. Differentiate between Iterator and Spliterator?
+-->
+| Iterator                       | Spliterator                            |
+| ------------------------------ | -------------------------------------- |
+| Introduced in Java 1.2         | Introduced in Java 8                   |
+| Sequential traversal           | Sequential and parallel traversal      |
+| One element at a time          | Can split elements into multiple parts |
+| Used in Collections            | Used mainly in Streams                 |
+| Methods: `hasNext()`, `next()` | Methods: `tryAdvance()`, `trySplit()`  |
+
+Iterator Example
+Iterator<Integer> it = list.iterator();
+
+while(it.hasNext()){
+    System.out.println(it.next());
+}
+Spliterator Example
+Spliterator<Integer> sp = list.spliterator();
+
+sp.forEachRemaining(System.out::println);
+Interview Tip
+Iterator → Sequential traversal
+Spliterator → Parallel processing (Java 8 Streams)
+
+
+
+22. Difference between WeakHashMap and IdentityHashMap?
+-->
+| WeakHashMap                                                   | IdentityHashMap                             |
+| ------------------------------------------------------------- | ------------------------------------------- |
+| Uses **weak references** for keys                             | Uses **reference equality (`==`)** for keys |
+| Entries can be removed automatically by the Garbage Collector | Entries remain until explicitly removed     |
+| Uses `equals()` for comparison                                | Uses `==` (reference comparison)            |
+| Useful for caches and memory-sensitive applications           | Useful when object identity matters         |
+| Implements `Map`                                              | Implements `Map`                            |
+
+
+WeakHashMap Example
+WeakHashMap<String, String> map = new WeakHashMap<>();
+
+String key = new String("Java");
+
+map.put(key, "Programming");
+
+key = null;
+
+System.gc();
+
+The entry may be removed after garbage collection if no strong reference to the key exists.
+
+IdentityHashMap Example
+IdentityHashMap<String, Integer> map = new IdentityHashMap<>();
+
+String s1 = new String("Java");
+String s2 = new String("Java");
+
+map.put(s1, 1);
+map.put(s2, 2);
+
+System.out.println(map.size());
+
+Output
+
+2
+
+Although s1.equals(s2) is true, they are different objects (s1 != s2), so IdentityHashMap treats them as different keys.
+
+Interview Tip
+WeakHashMap → Keys can be garbage collected
+IdentityHashMap → Compares keys using ==, not equals()
+
+
+
+Final Quick Revision :
+
+| Question                       | One-Line Answer                                           |
+| ------------------------------ | --------------------------------------------------------- |
+| HashMap vs TreeMap             | Unordered & O(1) vs Sorted & O(log n)                     |
+| ArrayList vs Vector            | Faster vs Thread-safe                                     |
+| Fail-Fast vs Fail-Safe         | Throws `ConcurrentModificationException` vs Doesn't throw |
+| Iterator vs Spliterator        | Sequential traversal vs Parallel-capable traversal        |
+| WeakHashMap vs IdentityHashMap | Weak keys vs Reference (`==`) comparison                  |
+
+
+
+
+
