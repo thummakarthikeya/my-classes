@@ -1,0 +1,388 @@
+32. JAVA UTILITY CLASSES
+
+Arrays Class
+
+1. What is the Arrays class in Java?
+-->Arrays is a utility class in the java.util package that provides static methods to perform operations on arrays such as
+      sorting, searching, comparing, filling, copying, converting to lists, and creating streams.
+      
+      Example:
+      
+      import java.util.Arrays;
+      
+      int[] arr = {5, 2, 4, 1};
+      Arrays.sort(arr);
+      
+      System.out.println(Arrays.toString(arr));
+      
+      Output:
+      
+      [1, 2, 4, 5]
+
+
+
+
+
+2. What are the key methods of the Arrays class?
+-->
+| Method                | Purpose                               |
+| --------------------- | ------------------------------------- |
+| Arrays.sort()         | Sorts an array                        |
+| Arrays.binarySearch() | Searches an element in a sorted array |
+| Arrays.equals()       | Compares two arrays                   |
+| Arrays.deepEquals()   | Compares multidimensional arrays      |
+| Arrays.copyOf()       | Copies an array                       |
+| Arrays.fill()         | Fills array with a value              |
+| Arrays.asList()       | Converts array to List                |
+| Arrays.toString()     | Converts array to String              |
+| Arrays.deepToString() | Converts nested arrays to String      |
+| Arrays.stream()       | Creates Stream from array             |
+| Arrays.compare()      | Lexicographical comparison            |
+| Arrays.spliterator()  | Creates Spliterator                   |
+
+3. What is the difference between Arrays.equals(), == operator, and Arrays.deepEquals()?
+-->
+
+| Feature   | ==             | Arrays.equals() | Arrays.deepEquals() |
+| --------- | -------------- | --------------- | ------------------- |
+| Compares  | Memory address | Elements        | Nested elements     |
+| 1D Arrays | ❌              | ✅               | ✅                   |
+| 2D Arrays | ❌              | ❌               | ✅                   |
+
+
+Example
+
+int[] a = {1,2,3};
+int[] b = {1,2,3};
+
+System.out.println(a == b);                  // false
+System.out.println(Arrays.equals(a,b));      // true
+
+For 2D arrays:
+
+int[][] x = {{1,2},{3,4}};
+int[][] y = {{1,2},{3,4}};
+
+System.out.println(Arrays.equals(x,y));      // false
+System.out.println(Arrays.deepEquals(x,y));  // true
+
+
+
+
+4. How do you copy an array in Java using Arrays.copyOf()?
+-->Creates a new array by copying elements.
+
+Syntax
+
+Arrays.copyOf(originalArray, newLength);
+
+Example
+
+int[] arr = {10,20,30};
+
+int[] copy = Arrays.copyOf(arr, arr.length);
+
+System.out.println(Arrays.toString(copy));
+
+Output
+
+[10, 20, 30]
+
+If the new length is larger:
+
+int[] copy = Arrays.copyOf(arr,5);
+
+Output:
+
+[10, 20, 30, 0, 0]
+
+
+
+
+
+
+
+
+
+5. What does Arrays.fill() do?
+-->It fills the entire array (or a specified range) with the given value.
+
+Example
+
+int[] arr = new int[5];
+
+Arrays.fill(arr,100);
+
+System.out.println(Arrays.toString(arr));
+
+Output:
+
+[100, 100, 100, 100, 100]
+
+Range:
+
+Arrays.fill(arr,1,4,50);
+
+Output:
+
+[100, 50, 50, 50, 100]
+
+
+
+
+
+6. How do you convert an array to a list using Arrays.asList()?
+-->Example
+
+      String[] names = {"Ram","Sam","Tom"};
+      
+      List<String> list = Arrays.asList(names);
+      
+      System.out.println(list);
+      
+      Output
+      
+      [Ram, Sam, Tom]
+      
+      Note
+      
+      Size is fixed.
+      Cannot add/remove elements.
+
+
+
+
+
+
+
+
+
+
+7. What is Arrays.compare() used for?
+-->It compares two arrays lexicographically.
+
+Returns
+
+0 → Equal
+Negative → First array is smaller
+Positive → First array is greater
+
+Example
+
+int[] a = {1,2,3};
+int[] b = {1,2,4};
+
+System.out.println(Arrays.compare(a,b));
+
+Output
+
+-1
+
+
+
+
+
+8. How do you convert an array to a Stream using Arrays.stream()?
+-->Example
+
+int[] arr = {1,2,3,4,5};
+
+Arrays.stream(arr)
+      .forEach(System.out::println);
+
+Output
+
+1
+2
+3
+4
+5
+
+You can perform Stream operations:
+
+int sum = Arrays.stream(arr).sum();
+
+
+
+
+9. How does Arrays.sort() work internally? Can we sort in descending order using Arrays.sort()? What is its time complexity?
+-->Internal Working
+
+For primitive arrays:
+
+Uses Dual-Pivot QuickSort
+
+For Object arrays:
+
+Uses TimSort
+Time Complexity
+Best: O(n log n)
+Average: O(n log n)
+Worst (Dual-Pivot QuickSort): O(n²)
+Descending Order
+
+For Object arrays:
+
+Integer[] arr = {5,2,9,1};
+
+Arrays.sort(arr, Collections.reverseOrder());
+
+System.out.println(Arrays.toString(arr));
+
+Output
+
+[9, 5, 2, 1]
+
+For primitive arrays:
+
+Arrays.sort(arr);
+
+// Reverse manually
+
+
+
+
+
+
+10. What is the difference between Arrays.toString() and Arrays.deepToString()?
+-->
+| Method                | Works For     |
+| --------------------- | ------------- |
+| Arrays.toString()     | 1D Arrays     |
+| Arrays.deepToString() | Nested Arrays |
+
+Example
+
+int[][] arr = {{1,2},{3,4}};
+
+System.out.println(Arrays.toString(arr));
+
+Output
+
+[[I@36baf30c, [I@7a81197d]
+
+Using
+
+System.out.println(Arrays.deepToString(arr));
+
+Output
+
+[[1, 2], [3, 4]]
+
+
+
+11. How does Arrays.binarySearch() work? What does Arrays.binarySearch() return if the element is not found?
+-->It performs Binary Search on a sorted array.
+
+Time Complexity:
+
+O(log n)
+
+Example
+
+int[] arr = {10,20,30,40,50};
+
+int index = Arrays.binarySearch(arr,30);
+
+System.out.println(index);
+
+Output
+
+2
+
+If not found:
+
+System.out.println(Arrays.binarySearch(arr,35));
+
+Output
+
+-4
+
+Formula:
+
+-(Insertion Point) - 1
+
+
+
+
+
+
+12. What happens if you pass a primitive int[] array to Arrays.asList()?
+-->Example
+
+int[] arr = {1,2,3};
+
+List<int[]> list = Arrays.asList(arr);
+
+System.out.println(list.size());
+
+Output
+
+1
+
+Reason:
+
+Primitive array is treated as one object, not individual elements.
+
+Correct way:
+
+Integer[] arr = {1,2,3};
+
+List<Integer> list = Arrays.asList(arr);
+
+Or
+
+int[] arr = {1,2,3};
+
+List<Integer> list =
+Arrays.stream(arr)
+      .boxed()
+      .toList();
+
+
+
+
+
+
+
+13. What is Arrays.spliterator() in Java? How do you use it, and where is it used?
+-->A Spliterator is an advanced iterator introduced in Java 8. It can split data into multiple parts for parallel processing.
+
+It is mainly used by the Stream API.
+
+Example
+
+int[] arr = {10,20,30,40};
+
+Spliterator.OfInt sp = Arrays.spliterator(arr);
+
+sp.forEachRemaining(System.out::println);
+
+Output
+
+10
+20
+30
+40
+
+Uses
+
+Parallel Streams
+Stream API
+Efficient traversal of arrays
+Large data processing
+
+
+
+
+
+Interview Tips :
+
+Arrays is a utility class (all methods are static).
+Arrays.sort() → Dual-Pivot QuickSort (primitive), TimSort (objects).
+Arrays.binarySearch() works only on sorted arrays.
+Arrays.asList() returns a fixed-size list.
+Arrays.deepEquals() and Arrays.deepToString() are used for multidimensional arrays.
+Arrays.stream() is available from Java 8 and is commonly used with the Stream API.
+Arrays.compare() performs lexicographical comparison.
+Arrays.spliterator() is mainly used internally by the Stream API for parallel processing.
