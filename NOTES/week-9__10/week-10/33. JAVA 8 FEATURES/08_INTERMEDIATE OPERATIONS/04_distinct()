@@ -1,0 +1,157 @@
+4. distinct()
+      Concept
+          
+          distinct() is an intermediate operation used to remove duplicate elements from a Stream. It returns a Stream containing only unique elements.
+          
+          Syntax:
+          
+          stream.distinct()
+
+
+
+1. Remove duplicate numbers from a list.
+      Program
+          import java.util.Arrays;
+          import java.util.List;
+          
+          public class DistinctNumbers {
+              public static void main(String[] args) {
+          
+                  List<Integer> numbers = Arrays.asList(
+                          10, 20, 30, 20, 40, 10, 50, 30);
+          
+                  numbers.stream()
+                          .distinct()
+                          .forEach(System.out::println);
+              }
+          }
+          Output
+          10
+          20
+          30
+          40
+          50
+
+
+
+2. Given a list of strings, print only unique strings.
+Program
+import java.util.Arrays;
+import java.util.List;
+
+public class DistinctStrings {
+    public static void main(String[] args) {
+
+        List<String> names = Arrays.asList(
+                "Java", "Python", "Java",
+                "Spring", "Python", "React");
+
+        names.stream()
+                .distinct()
+                .forEach(System.out::println);
+    }
+}
+Output
+Java
+Python
+Spring
+React
+
+
+
+
+
+
+3. From a list of employees, print unique department names.
+    Program
+        import java.util.Arrays;
+        import java.util.List;
+        
+        class Employee {
+        
+            int id;
+            String name;
+            String department;
+        
+            Employee(int id, String name, String department) {
+                this.id = id;
+                this.name = name;
+                this.department = department;
+            }
+        }
+        
+        public class UniqueDepartments {
+            public static void main(String[] args) {
+        
+                List<Employee> employees = Arrays.asList(
+                        new Employee(101, "Ravi", "IT"),
+                        new Employee(102, "Anil", "HR"),
+                        new Employee(103, "Priya", "IT"),
+                        new Employee(104, "Kiran", "Finance"),
+                        new Employee(105, "Rahul", "HR")
+                );
+        
+                employees.stream()
+                        .map(emp -> emp.department)
+                        .distinct()
+                        .forEach(System.out::println);
+            }
+        }
+        Output
+            IT
+            HR
+            Finance
+        
+        Note: First, map() extracts the department from each Employee object. Then distinct() removes duplicate department names.
+
+
+
+
+Summary :
+| Question                 | Stream Methods Used    | Purpose                                    |
+| ------------------------ | ---------------------- | ------------------------------------------ |
+| Remove duplicate numbers | `distinct()`           | Removes duplicate integers                 |
+| Print unique strings     | `distinct()`           | Removes duplicate strings                  |
+| Print unique departments | `map()` + `distinct()` | Extracts and removes duplicate departments |
+
+
+
+
+Interview Tip
+Before distinct()
+[10, 20, 10, 30, 20, 40]
+After distinct()
+[10, 20, 30, 40]
+Using distinct() with Objects
+
+distinct() uses the equals() and hashCode() methods to determine whether two objects are duplicates.
+
+For primitive wrapper classes like Integer and String, it works automatically.
+
+For custom classes such as Employee, if you want to remove duplicate Employee objects directly, you should override equals() and hashCode().
+
+Interview Question
+
+Q. Does distinct() modify the original collection?
+
+Answer: No. It returns a new Stream containing unique elements. The original collection remains unchanged.
+
+Example:
+
+List<Integer> numbers = Arrays.asList(10, 20, 10, 30);
+
+numbers.stream()
+       .distinct()
+       .forEach(System.out::println);
+
+System.out.println(numbers);
+
+Output:
+
+10
+20
+30
+
+[10, 20, 10, 30]
+
+The original list is not modified.
