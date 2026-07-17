@@ -1,0 +1,134 @@
+1. What is a Method Reference in Java 8?
+Answer:
+
+A Method Reference is a shorthand notation for a lambda expression.
+Introduced in Java 8.
+Used to refer to an existing method by its name.
+Improves code readability.
+
+Syntax:
+
+ClassName::methodName
+
+Example:
+
+List<String> list = Arrays.asList("Java", "Python");
+
+list.forEach(System.out::println);
+
+
+
+
+2. What are the different types of Method References?
+-->
+| Lambda Expression                     | Method Reference                             |
+| ------------------------------------- | -------------------------------------------- |
+| Anonymous function                    | Reference to an existing method              |
+| More code                             | Less code                                    |
+| Used for custom logic                 | Used when an existing method already matches |
+| Example: `x -> System.out.println(x)` | `System.out::println`                        |
+
+
+
+
+4. What is the syntax for Method Reference?
+
+Syntax:
+
+ClassName::methodName
+
+Examples:
+
+System.out::println
+
+Math::sqrt
+
+String::length
+
+Student::new
+
+
+
+5. Can we use Method References with constructors?
+Answer:
+
+Yes.
+Constructor references use the new keyword.
+
+Syntax:
+
+ClassName::new
+
+Example:
+
+Supplier<String> s = String::new;
+
+System.out.println(s.get());
+
+
+
+
+6. Can Method References refer to overloaded methods?
+
+Answer:
+
+Yes.
+The compiler selects the correct overloaded method based on the target functional interface.
+Programs
+1. Use a Method Reference to print a list of names.
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        List<String> list = Arrays.asList("Java", "Python", "SQL");
+
+        list.forEach(System.out::println);
+    }
+}
+2. Use a Constructor Reference to create objects.
+import java.util.function.Supplier;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Supplier<String> s = String::new;
+
+        System.out.println(s.get());
+    }
+}
+3. Use a Static Method Reference for mathematical operations.
+import java.util.function.Function;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Function<Double, Double> sqrt = Math::sqrt;
+
+        System.out.println(sqrt.apply(25.0));
+    }
+}
+
+Output:
+
+5.0
+4. Replace a Lambda with a Method Reference in a Stream operation.
+
+Using Lambda
+
+list.forEach(name -> System.out.println(name));
+
+Using Method Reference
+
+list.forEach(System.out::println);
+Interview Tips (Quick Revision)
+Method References were introduced in Java 8.
+They are a shorthand for Lambda Expressions.
+Syntax: ClassName::methodName
+Used only when an existing method matches the functional interface.
+4 Types:
+Static Method Reference
+Instance Method Reference of a Particular Object
+Instance Method Reference of an Arbitrary Object
+Constructor Reference (ClassName::new)
+Improves readability and reduces boilerplate code.
