@@ -1,0 +1,334 @@
+Collections Class
+
+1. What is the Collections class in Java?
+-->The Collections class is a utility class present in the java.util package. It provides static methods to perform various operations 
+    on Collection objects such as sorting, searching, reversing, shuffling, finding minimum/maximum elements, creating synchronized collections,
+    and creating unmodifiable collections.
+
+Example:
+
+import java.util.*;
+
+List<Integer> list = Arrays.asList(5, 2, 8, 1);
+
+Collections.sort(list);
+
+System.out.println(list);
+
+Output
+
+[1, 2, 5, 8]
+
+
+
+
+2. What is the difference between Collection and Collections?
+-->
+| Collection                      | Collections                               |
+| ------------------------------- | ----------------------------------------- |
+| Interface                       | Utility Class                             |
+| Present in `java.util`          | Present in `java.util`                    |
+| Used to store groups of objects | Used to perform operations on collections |
+| Implemented by List, Set, Queue | Contains only static methods              |
+| Example: ArrayList, HashSet     | Example: sort(), reverse(), shuffle()     |
+
+Interview Tip:
+
+Collection → Interface
+Collections → Utility class
+
+
+
+3. What are some important methods of the Collections class?
+-->Some commonly used methods are:
+| Method                         | Purpose                      |
+| ------------------------------ | ---------------------------- |
+| Collections.sort()             | Sorts a list                 |
+| Collections.reverse()          | Reverses list                |
+| Collections.shuffle()          | Randomly shuffles elements   |
+| Collections.binarySearch()     | Searches an element          |
+| Collections.min()              | Finds minimum element        |
+| Collections.max()              | Finds maximum element        |
+| Collections.frequency()        | Counts occurrences           |
+| Collections.copy()             | Copies one list into another |
+| Collections.disjoint()         | Checks common elements       |
+| Collections.swap()             | Swaps two elements           |
+| Collections.fill()             | Replaces all elements        |
+| Collections.synchronizedList() | Thread-safe list             |
+| Collections.unmodifiableList() | Read-only list               |
+
+
+
+
+4. What does Collections.sort() do? How is Collections.sort() different from List.sort()?
+-->Collections.sort()
+
+Sorts a list in ascending order.
+
+List<Integer> list = Arrays.asList(5,1,3);
+
+Collections.sort(list);
+
+System.out.println(list);
+
+Output
+
+[1,3,5]
+
+Difference :
+| Collections.sort()         | List.sort()             |
+| -------------------------- | ----------------------- |
+| Static method              | Default method (Java 8) |
+| Utility class              | List interface          |
+| Uses Comparable/Comparator | Uses Comparator         |
+| Available before Java 8    | Introduced in Java 8    |
+
+Example:
+
+list.sort(Comparator.reverseOrder());
+
+
+
+5. How does Collections.reverse() work?
+-->It reverses the order of elements in a list.
+
+Example:
+
+List<Integer> list = Arrays.asList(1,2,3,4);
+
+Collections.reverse(list);
+
+System.out.println(list);
+
+Output
+
+[4,3,2,1]
+
+Time Complexity: O(n)
+
+
+
+
+6. How to find min() and max() using Collections?
+-->Example:
+
+        List<Integer> list = Arrays.asList(4,8,2,6);
+        
+        System.out.println(Collections.min(list));
+        System.out.println(Collections.max(list));
+        
+        Output
+        
+        2
+        8
+        
+        Works with:
+        
+        Comparable
+        Comparator
+        
+        Example:
+        
+        Collections.max(list, Comparator.naturalOrder());
+
+
+
+
+
+
+7. What does Collections.binarySearch() do?
+-->Performs Binary Search on a sorted list.
+
+Time Complexity
+
+O(log n)
+
+Example:
+
+List<Integer> list = Arrays.asList(10,20,30,40);
+
+int index = Collections.binarySearch(list,30);
+
+System.out.println(index);
+
+Output
+
+2
+
+If not found:
+
+Collections.binarySearch(list,25);
+
+Returns
+
+-(Insertion Point)-1
+
+Example output
+
+-3
+
+
+
+
+8. What does Collections.frequency() do?
+-->Returns the number of occurrences of an element.
+
+Example:
+
+List<String> list = Arrays.asList("A","B","A","C","A");
+
+System.out.println(Collections.frequency(list,"A"));
+
+Output
+
+3
+
+
+
+
+
+9. What is the purpose of Collections.copy()?
+-->Copies all elements from one list to another.
+
+Destination list must already have enough size.
+
+Example:
+
+List<String> src = Arrays.asList("A","B","C");
+
+List<String> dest = new ArrayList<>(Arrays.asList("X","Y","Z"));
+
+Collections.copy(dest,src);
+
+System.out.println(dest);
+
+Output
+
+[A, B, C]
+
+
+
+
+
+
+
+10. How do you make a collection thread-safe? By using Collections.synchronizedList(), Collections.synchronizedSet(), 
+and Collections.synchronizedMap()?
+-->Collections provides synchronized wrappers.
+
+List
+List<Integer> list =
+Collections.synchronizedList(new ArrayList<>());
+Set
+Set<Integer> set =
+Collections.synchronizedSet(new HashSet<>());
+Map
+Map<Integer,String> map =
+Collections.synchronizedMap(new HashMap<>());
+
+These wrappers make collections thread-safe for concurrent access.
+
+
+
+11. How do you make a collection read-only (unmodifiable)?
+-->Using unmodifiable methods.
+
+Example:
+
+List<Integer> list = Arrays.asList(1,2,3);
+
+List<Integer> readOnly =
+Collections.unmodifiableList(list);
+
+Trying to modify:
+
+readOnly.add(10);
+
+Throws
+
+UnsupportedOperationException
+
+Similarly:
+
+Collections.unmodifiableSet()
+Collections.unmodifiableMap()
+
+
+
+
+
+
+12. What does Collections.disjoint() do?
+-->Checks whether two collections have no common elements.
+
+Returns:
+
+true → No common elements
+false → Common elements exist
+
+Example:
+
+List<Integer> a = Arrays.asList(1,2,3);
+
+List<Integer> b = Arrays.asList(4,5,6);
+
+System.out.println(Collections.disjoint(a,b));
+
+Output
+
+true
+
+Another example:
+
+List<Integer> c = Arrays.asList(3,4,5);
+
+System.out.println(Collections.disjoint(a,c));
+
+Output
+
+false
+
+
+
+
+
+13. What's the difference between Collections.emptyList() and Collections.singletonList()?
+-->
+| Collections.emptyList()         | Collections.singletonList()                |
+| ------------------------------- | ------------------------------------------ |
+| Returns an immutable empty list | Returns an immutable list with one element |
+| Size = 0                        | Size = 1                                   |
+| Cannot modify                   | Cannot modify                              |
+
+
+Example:
+
+List<String> list1 = Collections.emptyList();
+
+List<String> list2 = Collections.singletonList("Java");
+
+System.out.println(list1);
+System.out.println(list2);
+
+Output
+
+[]
+[Java]
+
+
+Interview Tips :
+
+    Collections is a utility class with only static methods.
+    Collection is an interface.
+    Collections.sort() sorts lists in ascending order.
+    Collections.binarySearch() works only on sorted lists.
+    Collections.reverse() reverses the order of elements.
+    Collections.frequency() counts occurrences of an element.
+    Collections.copy() requires the destination list to be pre-sized.
+    Collections.disjoint() checks if two collections have no common elements.
+    Collections.synchronizedList(), synchronizedSet(), and synchronizedMap() provide thread-safe wrappers.
+    Collections.unmodifiableList() creates a read-only view of a collection.
+    Collections.emptyList() returns an immutable empty list, while Collections.singletonList() returns an immutable list containing exactly one element.
+
+
+
