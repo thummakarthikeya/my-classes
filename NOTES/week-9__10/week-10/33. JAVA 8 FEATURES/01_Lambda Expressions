@@ -5,33 +5,269 @@ Lambda Expressions
 Interview Questions
 
 1. What is a lambda expression in Java 8?
+-->Answer:
+      
+      A lambda expression is an anonymous function.
+      Introduced in Java 8.
+      Used to implement Functional Interfaces.
+      Makes code shorter and more readable.
+      
+      Syntax:
+      
+      (parameters) -> expression
+      
+      Example:
+      
+      Runnable r = () -> System.out.println("Hello");
+      r.run();
+
+
+
 
 2. Why were lambda expressions introduced?
+-->Answer:
+      
+      Reduce boilerplate code.
+      Improve code readability.
+      Enable Functional Programming.
+      Simplify implementation of Functional Interfaces.
+      Widely used with the Stream API.
+      
+      Example:
+          list.forEach(n -> System.out.println(n));
+
+
 
 3. What is the syntax of a lambda expression?
+-->Syntax:
+
+      (parameters) -> expression
+      
+      or
+      
+      (parameters) -> {
+          // statements
+      }
+      
+      Example:
+      
+      (a, b) -> a + b
+
+
 
 4. How do lambda expressions improve code readability?
+-->Answer:
+
+      Eliminates anonymous inner classes.
+      Less code to write.
+      Easy to understand.
+      Better for collections and streams.
+      
+      Example:
+      
+      Before Java 8:
+      
+      Runnable r = new Runnable() {
+          public void run() {
+              System.out.println("Hello");
+          }
+      };
+      
+      Java 8:
+      
+      Runnable r = () -> System.out.println("Hello");
+
+
+
+
 
 5. Can a lambda expression have multiple parameters?
+-->Answer:
+
+Yes, a lambda can have zero, one, or multiple parameters.
+
+Example:
+
+(a, b) -> a + b
+
+
 
 6. Can we use the this keyword inside a lambda expression?
+-->Answer:
+
+      Yes.
+      In a lambda, this refers to the current enclosing object, not a new anonymous object.
+      
+      Example:
+      
+      Runnable r = () -> {
+          System.out.println(this);
+      };
+
+
 
 7. How is a lambda expression different from an anonymous inner class?
+-->
+| Lambda Expression                | Anonymous Inner Class                      |
+| -------------------------------- | ------------------------------------------ |
+| Less code                        | More code                                  |
+| No separate object               | Creates a new anonymous class              |
+| `this` refers to enclosing class | `this` refers to anonymous class           |
+| Used with Functional Interfaces  | Can extend classes or implement interfaces |
+
+
+
 
 8. What is the functional interface requirement for a lambda?
+-->Answer:
+
+      Lambda works only with Functional Interfaces.
+      A Functional Interface contains exactly one abstract method.
+      Can have multiple default and static methods.
+      
+      Example:
+      
+      @FunctionalInterface
+      interface Demo {
+          void show();
+      }
+
+
+
 
 9. Can a lambda expression throw exceptions?
+-->Answer:
+
+      Yes.
+      It can throw checked or unchecked exceptions if the functional interface method allows it.
+      
+      Example:
+      
+      Runnable r = () -> {
+          throw new RuntimeException("Error");
+      };
+
+
 
 10. Can we return values from a lambda expression?
+-->Answer:
+
+      Yes.
+      If there is one statement, return is optional.
+      For multiple statements, use the return keyword.
+      
+      Example:
+      
+      (a, b) -> a + b
+      
+      or
+      
+      (a, b) -> {
+          return a + b;
+      };
+
+
+
+
 
 Programs
 
 1. Write a lambda expression to print all elements of a list.
+-->import java.util.*;
+
+      public class Demo {
+          public static void main(String[] args) {
+      
+              List<Integer> list = Arrays.asList(10,20,30,40);
+      
+              list.forEach(n -> System.out.println(n));
+          }
+      }
+
+
+
 
 2. Write a lambda expression to find even numbers from a list.
+-->import java.util.*;
+
+      public class Demo {
+          public static void main(String[] args) {
+      
+              List<Integer> list = Arrays.asList(1,2,3,4,5,6);
+      
+              list.stream()
+                  .filter(n -> n % 2 == 0)
+                  .forEach(System.out::println);
+          }
+      }
+
+
+
+
 
 3. Write a lambda expression to sort a list of strings alphabetically.
+-->import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+
+        List<String> list = Arrays.asList("Java","Python","C","SQL");
+
+        list.sort((a,b) -> a.compareTo(b));
+
+        System.out.println(list);
+    }
+}
+
+
+
+
 
 4. Create a thread using a lambda expression.
+-->public class Demo {
+    public static void main(String[] args) {
+
+        Thread t = new Thread(() ->
+            System.out.println("Thread Running"));
+
+        t.start();
+    }
+}
+
+
+
 
 5. Write a program to calculate the sum of all numbers in a list using lambda.
+-->import java.util.*;
+
+public class Demo {
+    public static void main(String[] args) {
+
+        List<Integer> list =
+        Arrays.asList(10,20,30,40);
+
+        int sum = list.stream()
+                      .reduce(0, (a,b) -> a + b);
+
+        System.out.println(sum);
+    }
+}
+
+Output:
+
+100
+
+
+
+
+
+Interview Tips (Quick Revision)
+      Lambda = Anonymous Function.
+      Introduced in Java 8.
+      Works only with Functional Interfaces.
+      Syntax: (parameters) -> expression
+      Reduces boilerplate code.
+      Used with Streams, Collections, and Threads.
+      Can have 0, 1, or multiple parameters.
+      this refers to the enclosing class.
+      Can return values and throw exceptions (if permitted by the functional interface).
