@@ -1,0 +1,368 @@
+STREAM API
+Core Java Interview Questions
+Interview Questions
+
+1)What is the Stream API in Java 8?
+-->Answer:
+        Stream API is a feature introduced in Java 8 to process collections of data in a functional and declarative way.
+        It allows operations like filtering, mapping, sorting, and reducing without modifying the original data.
+        
+        Key Points:
+        
+        Introduced in Java 8.
+        Processes data from collections.
+        Supports functional programming using lambda expressions.
+        Can execute operations sequentially or in parallel.
+        Does not store data; it only processes it.
+        
+        Example:
+        
+        List<Integer> list = Arrays.asList(10, 20, 30, 40);
+        
+        list.stream()
+            .filter(n -> n > 20)
+            .forEach(System.out::println);
+        
+        Output:
+        
+        30
+        40
+
+
+
+
+2)How is Stream different from Collection?
+-->
+| Collection                      | Stream                     |
+| ------------------------------- | -------------------------- |
+| Stores data                     | Processes data             |
+| Can add/remove elements         | Cannot modify elements     |
+| Can be traversed multiple times | Can be traversed only once |
+| Eager evaluation                | Lazy evaluation            |
+| Available since Java 1.2        | Introduced in Java 8       |
+
+
+
+
+
+3)What are intermediate and terminal operations?
+-->Intermediate Operations
+Return another Stream.
+Lazy (not executed until a terminal operation is called).
+Can be chained.
+
+Examples:
+
+filter()
+map()
+flatMap()
+sorted()
+distinct()
+peek()
+limit()
+skip()
+
+Example:
+
+list.stream()
+    .filter(n -> n > 10)
+    .map(n -> n * 2);
+
+No output because no terminal operation is used.
+
+Terminal Operations
+Produce the final result.
+Trigger execution of the stream pipeline.
+
+Examples:
+
+forEach()
+collect()
+count()
+reduce()
+findFirst()
+findAny()
+min()
+max()
+anyMatch()
+allMatch()
+
+Example:
+
+list.stream()
+    .filter(n -> n > 10)
+    .forEach(System.out::println);
+
+
+
+
+
+4)What is the difference between map() and flatMap()?
+-->map()
+Transforms each element into another element.
+Returns one output for each input.
+
+Example:
+
+List<String> names = Arrays.asList("java", "python");
+
+names.stream()
+     .map(String::toUpperCase)
+     .forEach(System.out::println);
+
+Output:
+
+JAVA
+PYTHON
+flatMap()
+Converts each element into a stream.
+Flattens multiple streams into one.
+
+Example:
+
+List<List<String>> list = Arrays.asList(
+        Arrays.asList("A", "B"),
+        Arrays.asList("C", "D"));
+
+list.stream()
+    .flatMap(Collection::stream)
+    .forEach(System.out::println);
+
+Output:
+
+A
+B
+C
+D
+
+| map()                              | flatMap()                   |
+| ---------------------------------- | --------------------------- |
+| One-to-one mapping                 | One-to-many mapping         |
+| Returns Stream of objects          | Returns flattened Stream    |
+| Doesn't flatten nested collections | Flattens nested collections |
+
+
+
+
+
+5)Can a Stream be reused?
+-->Answer:
+      No.
+      
+      A Stream can be consumed only once. After a terminal operation is executed, the Stream is closed.
+      
+      Example:
+      
+      Stream<Integer> stream = Stream.of(1,2,3);
+      
+      stream.forEach(System.out::println);
+      
+      // Exception
+      stream.forEach(System.out::println);
+      
+      Output:
+      
+      java.lang.IllegalStateException:
+      stream has already been operated upon or closed
+      
+      Create a new Stream if you want to process the data again.
+
+
+
+
+6)How do you create a Stream in Java?
+-->From a Collection
+      List<Integer> list = Arrays.asList(1,2,3);
+      
+      Stream<Integer> stream = list.stream();
+      From an Array
+      int[] arr = {1,2,3};
+      
+      IntStream stream = Arrays.stream(arr);
+      Using Stream.of()
+      Stream<String> stream =
+          Stream.of("Java", "Python", "C++");
+      Using Stream.generate()
+      Stream.generate(() -> "Hello")
+            .limit(3)
+            .forEach(System.out::println);
+      Using Stream.iterate()
+      Stream.iterate(1, n -> n + 1)
+            .limit(5)
+            .forEach(System.out::println);
+      
+      Output
+      
+      1
+      2
+      3
+      4
+      5
+
+
+
+
+7)What are short-circuiting operations in Stream?
+-->Answer:
+      Short-circuiting operations stop processing as soon as the required result is found, improving performance.
+      
+      Intermediate
+      limit()
+      Terminal
+      findFirst()
+      findAny()
+      anyMatch()
+      allMatch()
+      noneMatch()
+      
+      Example
+      
+      list.stream()
+          .filter(n -> n > 10)
+          .findFirst();
+      
+      Only processes elements until the first matching element is found.
+
+
+
+
+
+8)What is lazy evaluation in Stream?
+-->Answer:
+      Intermediate operations are not executed immediately. They execute only when a terminal operation is called.
+      
+      Example
+      
+      list.stream()
+          .filter(n -> {
+              System.out.println(n);
+              return n > 2;
+          });
+      
+      No output.
+      
+      Now:
+      
+      list.stream()
+          .filter(n -> {
+              System.out.println(n);
+              return n > 2;
+          })
+          .count();
+      
+      The filter executes because count() is a terminal operation.
+      
+      Benefits
+      
+      Better performance.
+      Avoids unnecessary computation.
+      Optimizes execution internally.
+
+
+
+
+9)Difference between findFirst() and findAny().
+-->
+| `findFirst()`                     | `findAny()`                     |
+| --------------------------------- | ------------------------------- |
+| Returns the first element         | Returns any matching element    |
+| Maintains encounter order         | Order not guaranteed            |
+| Mostly used in sequential streams | Mostly used in parallel streams |
+| Slightly slower                   | Faster in parallel streams      |
+
+Example
+list.stream()
+    .findFirst();
+
+Output:
+
+Optional[10]
+list.parallelStream()
+    .findAny();
+
+Output may be:
+
+Optional[30]
+
+or
+
+Optional[20]
+
+
+
+10)What are parallel streams?
+-->Answer:
+      A parallel stream processes elements using multiple threads from the Fork/Join Framework, which can improve performance
+      for large datasets on multi-core processors.
+      
+      Creating a Parallel Stream
+      
+      list.parallelStream()
+          .forEach(System.out::println);
+      
+      or
+      
+      list.stream()
+          .parallel()
+          .forEach(System.out::println);
+      Advantages
+      Faster for large datasets.
+      Utilizes multiple CPU cores.
+      Easy to implement.
+      Disadvantages
+      Overhead for small datasets.
+      Order is not guaranteed.
+      Not suitable for stateful operations.
+      Example
+      List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8);
+      
+      list.parallelStream()
+          .map(n -> n * 2)
+          .forEach(System.out::println);
+      
+      Output (order may vary):
+      
+      8
+      2
+      16
+      10
+      4
+      14
+      6
+      12
+
+
+
+
+
+
+
+
+Frequently Asked Stream Interview Methods
+Intermediate Operations
+filter()
+map()
+flatMap()
+distinct()
+sorted()
+peek()
+limit()
+skip()
+Terminal Operations
+forEach()
+collect()
+count()
+reduce()
+min()
+max()
+findFirst()
+findAny()
+anyMatch()
+allMatch()
+noneMatch()
+toArray()
+
+These are among the most frequently asked Java Stream API interview questions for Java 8+ developers and freshers.
+
+
+
