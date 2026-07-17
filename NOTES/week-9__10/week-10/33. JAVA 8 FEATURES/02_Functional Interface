@@ -1,0 +1,259 @@
+Functional Interface
+
+Interview Questions
+
+1. What is a functional interface?
+-->Answer:
+      
+      A Functional Interface is an interface that contains exactly one abstract method.
+      Introduced in Java 8.
+      Used to implement Lambda Expressions and Method References.
+      It can have any number of default and static methods.
+      
+      Example:
+      
+      @FunctionalInterface
+      interface Demo {
+          void display();
+      }
+      
+
+
+2. What annotation is used to define a functional interface?
+-->Answer:
+
+      @FunctionalInterface
+      
+      Benefits:
+      
+      Ensures the interface has only one abstract method.
+      Gives a compile-time error if another abstract method is added.
+      
+      Example:
+      
+      @FunctionalInterface
+      interface Test {
+          void show();
+      }
+
+
+
+3. Can a functional interface have multiple abstract methods?
+-->
+Answer:
+
+No.
+It must have exactly one abstract method.
+It can have multiple default, static, and private methods (Java 9+).
+
+Invalid Example:
+
+@FunctionalInterface
+interface Demo {
+    void show();
+    void print();   // Compile-time Error
+}
+
+
+
+
+
+
+4. Name some predefined functional interfaces in the java.util.function package.
+-->
+| Interface         | Purpose                            |
+| ----------------- | ---------------------------------- |
+| Predicate<T>      | Tests a condition                  |
+| Function<T,R>     | Converts one object to another     |
+| Consumer<T>       | Consumes data (no return value)    |
+| Supplier<T>       | Supplies data (no input)           |
+| UnaryOperator<T>  | Same input and output type         |
+| BinaryOperator<T> | Operates on two same-type operands |
+
+
+
+
+
+5. What is the difference between Function, Predicate, and Consumer?
+-->
+| Interface     | Input | Output    | Method     |
+| ------------- | ----- | --------- | ---------- |
+| Predicate<T>  | One   | boolean   | `test()`   |
+| Function<T,R> | One   | Any Type  | `apply()`  |
+| Consumer<T>   | One   | No Return | `accept()` |
+
+Examples:
+
+Predicate
+
+Predicate<Integer> p = n -> n % 2 == 0;
+
+System.out.println(p.test(10));
+
+Output
+
+true
+
+Function
+
+Function<String, String> f = s -> s.toUpperCase();
+
+System.out.println(f.apply("java"));
+
+Output
+
+JAVA
+
+Consumer
+
+Consumer<String> c = s -> System.out.println(s);
+
+c.accept("Hello");
+
+
+
+
+
+6. Can a functional interface have default or static methods?
+-->Answer:
+
+      Yes.
+      A Functional Interface can have any number of default and static methods.
+      Only one abstract method is allowed.
+      
+      Example:
+      
+      @FunctionalInterface
+      interface Demo {
+      
+          void show();
+      
+          default void display() {
+              System.out.println("Default Method");
+          }
+      
+          static void print() {
+              System.out.println("Static Method");
+          }
+      }
+
+
+
+
+7. What happens if you remove @FunctionalInterface annotation?
+-->Answer:
+
+The interface still works as a Functional Interface if it has only one abstract method.
+The annotation is optional.
+Without it, the compiler won't check whether the interface remains functional.
+
+
+
+
+
+Programs
+
+1. Create a custom functional interface and implement it using a lambda.
+-->
+@FunctionalInterface
+interface Demo {
+    void show();
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Demo d = () -> System.out.println("Hello");
+
+        d.show();
+    }
+}
+
+
+
+
+2. Use a predefined Predicate to check if a number is even.
+-->
+import java.util.function.Predicate;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Predicate<Integer> even = n -> n % 2 == 0;
+
+        System.out.println(even.test(8));
+    }
+}
+Output
+
+true
+
+
+
+
+3. Use a Function to convert a string to uppercase.
+-->
+import java.util.function.Function;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Function<String, String> upper = s -> s.toUpperCase();
+
+        System.out.println(upper.apply("java"));
+    }
+}
+
+Output
+
+JAVA
+
+
+
+
+4. Use a Consumer to print all items in a list.
+-->import java.util.*;
+import java.util.function.Consumer;
+
+public class Main {
+    public static void main(String[] args) {
+
+        List<String> list = Arrays.asList("Java", "Python", "SQL");
+
+        Consumer<String> print = s -> System.out.println(s);
+
+        list.forEach(print);
+    }
+}
+
+
+
+
+
+5. Use a Supplier to return a random number.
+-->import java.util.Random;
+import java.util.function.Supplier;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Supplier<Integer> random = () -> new Random().nextInt(100);
+
+        System.out.println(random.get());
+    }
+}
+
+
+
+
+
+Interview Tips (Quick Revision)
+A Functional Interface has exactly one abstract method.
+Annotation: @FunctionalInterface (optional but recommended).
+Can have multiple default and static methods.
+Used mainly with Lambda Expressions and Method References.
+Common predefined functional interfaces:
+Predicate → test() → Returns boolean
+Function → apply() → Returns transformed value
+Consumer → accept() → No return value
+Supplier → get() → No input, returns a value
