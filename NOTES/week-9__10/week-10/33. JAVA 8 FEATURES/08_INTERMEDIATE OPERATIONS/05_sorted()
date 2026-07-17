@@ -1,0 +1,223 @@
+Concept
+
+sorted() is an intermediate operation used to sort elements in a Stream. By default, it sorts elements in natural (ascending) order,
+but you can also provide a custom comparator for custom sorting.
+
+Syntax (Natural Order):
+
+        stream.sorted()
+        
+        Syntax (Custom Order):
+        
+        stream.sorted((a, b) -> ...)
+
+
+
+1. Sort a list of integers in ascending and descending order.
+-->  Ascending Order
+      import java.util.Arrays;
+      import java.util.List;
+      
+      public class SortAscending {
+          public static void main(String[] args) {
+      
+              List<Integer> numbers = Arrays.asList(40, 10, 60, 20, 30);
+      
+              numbers.stream()
+                      .sorted()
+                      .forEach(System.out::println);
+          }
+      }
+      Output
+      10
+      20
+      30
+      40
+      60
+
+
+
+Descending Order
+      import java.util.Arrays;
+      import java.util.List;
+      import java.util.Comparator;
+      
+      public class SortDescending {
+          public static void main(String[] args) {
+      
+              List<Integer> numbers = Arrays.asList(40, 10, 60, 20, 30);
+      
+              numbers.stream()
+                      .sorted(Comparator.reverseOrder())
+                      .forEach(System.out::println);
+          }
+      }
+      Output
+      60
+      40
+      30
+      20
+      10
+
+
+
+
+2. Sort a list of employees by salary.
+-->  Program
+          import java.util.Arrays;
+          import java.util.Comparator;
+          import java.util.List;
+          
+          class Employee {
+          
+              int id;
+              String name;
+              double salary;
+          
+              Employee(int id, String name, double salary) {
+                  this.id = id;
+                  this.name = name;
+                  this.salary = salary;
+              }
+          }
+          
+          public class EmployeeSort {
+              public static void main(String[] args) {
+          
+                  List<Employee> employees = Arrays.asList(
+                          new Employee(101, "Ravi", 50000),
+                          new Employee(102, "Anil", 70000),
+                          new Employee(103, "Priya", 45000),
+                          new Employee(104, "Kiran", 65000)
+                  );
+          
+                  employees.stream()
+                          .sorted(Comparator.comparingDouble(emp -> emp.salary))
+                          .forEach(emp ->
+                                  System.out.println(emp.name + " : " + emp.salary));
+              }
+          }
+          Output :
+            Priya : 45000.0
+            Ravi : 50000.0
+            Kiran : 65000.0
+            Anil : 70000.0
+
+
+
+
+3. Sort strings by their length.
+-->Program
+        import java.util.Arrays;
+        import java.util.Comparator;
+        import java.util.List;
+        
+        public class SortByLength {
+            public static void main(String[] args) {
+        
+                List<String> names = Arrays.asList(
+                        "Java", "SpringBoot", "C", "Python");
+        
+                names.stream()
+                        .sorted(Comparator.comparingInt(String::length))
+                        .forEach(System.out::println);
+            }
+        }
+        Output
+        C
+        Java
+        Python
+        SpringBoot
+
+
+
+
+
+4. Sort names alphabetically ignoring case.
+Program
+import java.util.Arrays;
+import java.util.List;
+
+public class IgnoreCaseSorting {
+    public static void main(String[] args) {
+
+        List<String> names = Arrays.asList(
+                "java", "Anil", "python", "Ravi", "apple");
+
+        names.stream()
+                .sorted(String.CASE_INSENSITIVE_ORDER)
+                .forEach(System.out::println);
+    }
+}
+Output
+Anil
+apple
+java
+python
+Ravi
+
+
+
+
+Summary :
+
+| Question                   | Stream Methods Used                     | Sorting Type |
+| -------------------------- | --------------------------------------- | ------------ |
+| Sort integers              | `sorted()`                              | Ascending    |
+| Sort integers (descending) | `sorted(Comparator.reverseOrder())`     | Descending   |
+| Sort employees by salary   | `sorted(Comparator.comparingDouble())`  | Custom       |
+| Sort strings by length     | `sorted(Comparator.comparingInt())`     | Custom       |
+| Sort names ignoring case   | `sorted(String.CASE_INSENSITIVE_ORDER)` | Alphabetical |
+
+
+
+
+Interview Tip
+Natural Sorting
+numbers.stream()
+       .sorted()
+
+Result
+
+10
+20
+30
+40
+50
+Reverse Sorting
+numbers.stream()
+       .sorted(Comparator.reverseOrder())
+
+Result
+
+50
+40
+30
+20
+10
+Custom Sorting (Salary)
+employees.stream()
+         .sorted(Comparator.comparingDouble(emp -> emp.salary))
+
+Sorts employees based on the salary field.
+
+Frequently Used Comparators
+// Ascending
+.sorted()
+
+// Descending
+.sorted(Comparator.reverseOrder())
+
+// By String length
+.sorted(Comparator.comparingInt(String::length))
+
+// By employee salary
+.sorted(Comparator.comparingDouble(emp -> emp.salary))
+
+// By employee name
+.sorted(Comparator.comparing(emp -> emp.name))
+
+// Ignore case
+.sorted(String.CASE_INSENSITIVE_ORDER)
+
+These are the most commonly asked sorted() Stream API interview programs for Java 8 developers and freshers.
