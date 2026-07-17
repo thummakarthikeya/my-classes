@@ -1,0 +1,153 @@
+2. map()
+
+Concept :
+      map() is an intermediate operation used to transform each element of a stream into another form. It returns a new Stream containing the 
+      transformed elements.
+      
+      Syntax:
+      
+      stream.map(element -> transformedElement)
+
+
+
+
+1. Convert a list of strings into uppercase.
+--> Program
+          import java.util.Arrays;
+          import java.util.List;
+          
+          public class UpperCaseExample {
+              public static void main(String[] args) {
+          
+                  List<String> names = Arrays.asList(
+                          "java", "spring", "react", "python");
+          
+                  names.stream()
+                          .map(String::toUpperCase)
+                          .forEach(System.out::println);
+              }
+          }
+          Output
+          JAVA
+          SPRING
+          REACT
+          PYTHON
+
+
+
+
+
+2. Given a list of integers, return a list of their squares.
+--> Program :
+        import java.util.Arrays;
+        import java.util.List;
+        
+        public class SquareNumbers {
+            public static void main(String[] args) {
+        
+                List<Integer> numbers = Arrays.asList(2, 3, 4, 5, 6);
+        
+                numbers.stream()
+                        .map(n -> n * n)
+                        .forEach(System.out::println);
+            }
+        }
+        Output
+        4
+        9
+        16
+        25
+        36
+
+
+
+
+Program
+    import java.util.Arrays;
+    import java.util.List;
+    
+    class Employee {
+    
+        int id;
+        String name;
+        double salary;
+    
+        Employee(int id, String name, double salary) {
+            this.id = id;
+            this.name = name;
+            this.salary = salary;
+        }
+    }
+    
+    public class EmployeeNames {
+        public static void main(String[] args) {
+    
+            List<Employee> employees = Arrays.asList(
+                    new Employee(101, "Ravi", 45000),
+                    new Employee(102, "Anil", 60000),
+                    new Employee(103, "Priya", 70000)
+            );
+    
+            employees.stream()
+                    .map(emp -> emp.name)
+                    .forEach(System.out::println);
+        }
+    }
+    Output
+        Ravi
+        Anil
+        Priya
+        
+        Note: map() converts each Employee object into its name.
+
+
+
+
+4. Convert a list of numbers into their string representation.
+-->Program
+      import java.util.Arrays;
+      import java.util.List;
+      
+      public class NumberToString {
+          public static void main(String[] args) {
+      
+              List<Integer> numbers = Arrays.asList(10, 20, 30, 40);
+      
+              numbers.stream()
+                      .map(String::valueOf)
+                      .forEach(System.out::println);
+          }
+      }
+      Output
+      10
+      20
+      30
+      40
+      
+      Here, each Integer is converted into a String.
+
+
+
+
+Summary :
+| Question                     | Stream Method Used         | Transformation      |
+| ---------------------------- | -------------------------- | ------------------- |
+| Convert strings to uppercase | `map(String::toUpperCase)` | `String → String`   |
+| Find squares of numbers      | `map(n -> n * n)`          | `Integer → Integer` |
+| Extract employee names       | `map(emp -> emp.name)`     | `Employee → String` |
+| Convert numbers to strings   | `map(String::valueOf)`     | `Integer → String`  |
+
+
+
+Interview Tip :
+    map() performs one-to-one transformation:
+    
+    Before map():
+        [1, 2, 3, 4]
+        
+        map(n -> n * n)
+    
+    After map():
+        [1, 4, 9, 16]
+        
+        Unlike filter(), which removes elements based on a condition, map() transforms every element into a new value.
