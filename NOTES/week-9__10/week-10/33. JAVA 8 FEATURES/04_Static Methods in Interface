@@ -1,0 +1,158 @@
+Static Methods in Interface
+
+Interview Questions
+
+1. Can an interface have static methods in Java 8?
+-->Answer:
+
+Yes.
+Java 8 introduced static methods in interfaces.
+They belong to the interface, not to its implementing classes.
+Used to provide utility/helper methods.
+
+Example:
+
+interface Demo {
+
+    static void show() {
+        System.out.println("Static Method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Demo.show();
+    }
+}
+
+
+
+
+
+
+
+2. How do we call a static method of an interface?
+-->Answer:
+      
+      Call it using the interface name.
+      Syntax:
+      InterfaceName.methodName();
+      
+      Example:
+      
+      interface Demo {
+      
+          static void display() {
+              System.out.println("Hello");
+          }
+      }
+      
+      public class Main {
+          public static void main(String[] args) {
+              Demo.display();
+          }
+      }
+
+
+
+
+
+
+
+3. Can static methods be inherited by implementing classes?
+-->Answer:
+
+      No.
+      Static methods are not inherited.
+      They can only be accessed using the interface name.
+      
+      Example:
+      
+      interface Demo {
+      
+          static void show() {
+              System.out.println("Hello");
+          }
+      }
+      
+      class Test implements Demo { }
+      
+      public class Main {
+          public static void main(String[] args) {
+              Demo.show();      // Correct
+              // Test.show();   // Compile-time Error
+          }
+      }
+
+
+
+4. What is the purpose of static methods inside an interface?
+-->
+Provide utility/helper methods related to the interface.
+Avoid creating separate utility classes.
+Can be called without creating an object.
+
+
+
+
+
+Programs
+
+1. Create an interface with a static method and call it from the main method.
+        interface Demo {
+        
+            static void greet() {
+                System.out.println("Welcome");
+            }
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+        
+                Demo.greet();
+            }
+        }
+        
+        Output:
+        Welcome
+
+
+
+
+2. Show what happens if a class defines the same static method name.
+-->interface Demo {
+
+    static void show() {
+        System.out.println("Interface");
+    }
+}
+
+class Test implements Demo {
+
+    static void show() {
+        System.out.println("Class");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Demo.show();
+        Test.show();
+    }
+}
+
+Output:
+
+Interface
+Class
+
+Note: The class method does not override the interface's static method. Both methods are independent.
+
+Interview Tips (Quick Revision)
+Static methods in interfaces were introduced in Java 8.
+Declared using the static keyword.
+Called using the interface name (InterfaceName.method()).
+Cannot be inherited or overridden by implementing classes.
+Used for utility/helper methods related to the interface.
+No object creation is required to call a static interface method.
