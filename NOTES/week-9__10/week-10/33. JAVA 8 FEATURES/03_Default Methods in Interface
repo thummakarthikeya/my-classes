@@ -1,0 +1,202 @@
+1. What is a default method in an interface?
+
+Answer:
+
+A default method is a method in an interface with a body.
+Introduced in Java 8.
+Declared using the default keyword.
+Implementing classes can use it directly or override it.
+
+Example:
+
+interface Demo {
+    default void show() {
+        System.out.println("Default Method");
+    }
+}
+
+class Test implements Demo {}
+
+public class Main {
+    public static void main(String[] args) {
+        Test t = new Test();
+        t.show();
+    }
+}
+
+
+
+2. Why were default methods introduced in Java 8?
+Answer:
+
+To add new methods to existing interfaces without breaking existing implementations.
+Maintain backward compatibility.
+Support Lambda Expressions and Stream API enhancements.
+
+
+
+
+
+
+3. How are default methods different from abstract methods?
+-->
+| Default Method         | Abstract Method          |
+| ---------------------- | ------------------------ |
+| Has implementation     | No implementation        |
+| Uses `default` keyword | No keyword               |
+| Override is optional   | Override is mandatory    |
+| Introduced in Java 8   | Available since Java 1.0 |
+
+
+
+
+4. Can we override a default method in an implementing class?
+-->Answer:
+
+      Yes.
+          An implementing class can override the default method.
+          
+          Example:
+          
+          interface Demo {
+              default void show() {
+                  System.out.println("Default");
+              }
+          }
+          
+          class Test implements Demo {
+              @Override
+              public void show() {
+                  System.out.println("Overridden");
+              }
+          }
+
+
+
+
+
+5. What if two interfaces have the same default method name?
+Answer:
+
+The implementing class must override the method to resolve the conflict.
+You can call a specific interface's default method using InterfaceName.super.methodName().
+
+Example:
+
+interface A {
+    default void show() {
+        System.out.println("A");
+    }
+}
+
+interface B {
+    default void show() {
+        System.out.println("B");
+    }
+}
+
+class Test implements A, B {
+
+    @Override
+    public void show() {
+        A.super.show();
+        B.super.show();
+    }
+}
+
+
+
+
+6. Can we call a default method from another default method?
+-->Answer:
+
+      Yes.
+      A default method can call another default method in the same interface.
+      
+      Example:
+      
+      interface Demo {
+      
+          default void show() {
+              display();
+          }
+      
+          default void display() {
+              System.out.println("Display");
+          }
+      }
+
+
+
+
+Programs
+1. Create an interface with a default method and implement it in a class.
+interface Demo {
+
+    default void show() {
+        System.out.println("Hello");
+    }
+}
+
+class Test implements Demo {}
+
+public class Main {
+    public static void main(String[] args) {
+        Test t = new Test();
+        t.show();
+    }
+}
+
+Output:
+
+Hello
+2. Demonstrate method conflict resolution when two interfaces have the same default method.
+interface A {
+    default void show() {
+        System.out.println("A");
+    }
+}
+
+interface B {
+    default void show() {
+        System.out.println("B");
+    }
+}
+
+class Test implements A, B {
+
+    @Override
+    public void show() {
+        A.super.show();
+        B.super.show();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Test t = new Test();
+        t.show();
+    }
+}
+
+Output:
+
+A
+B
+Interview Tips (Quick Revision)
+Default methods were introduced in Java 8.
+Declared using the default keyword.
+They have a method body.
+Used for backward compatibility.
+Implementing classes may override them.
+If two interfaces have the same default method, the implementing class must override it.
+Call a specific interface's default method using InterfaceName.super.methodName().
+
+**Answer:** * To add new methods to existing interfaces without breaking existing implementations. * Maintain backward compatibility. * Support Lambda Expressions and Stream API enhancements.
+
+Start writing
+Answer:
+
+- To add new methods to existing interfaces without breaking existing implementations.
+- Maintain backward compatibility.
+- Support Lambda Expressions and Stream API enhancements.
