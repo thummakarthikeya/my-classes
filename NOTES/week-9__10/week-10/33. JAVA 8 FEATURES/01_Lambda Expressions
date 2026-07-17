@@ -1,0 +1,37 @@
+33. JAVA 8 FEATURES
+
+Lambda Expressions
+
+Interview Questions
+
+1. What is a lambda expression in Java 8?
+
+2. Why were lambda expressions introduced?
+
+3. What is the syntax of a lambda expression?
+
+4. How do lambda expressions improve code readability?
+
+5. Can a lambda expression have multiple parameters?
+
+6. Can we use the this keyword inside a lambda expression?
+
+7. How is a lambda expression different from an anonymous inner class?
+
+8. What is the functional interface requirement for a lambda?
+
+9. Can a lambda expression throw exceptions?
+
+10. Can we return values from a lambda expression?
+
+Programs
+
+1. Write a lambda expression to print all elements of a list.
+
+2. Write a lambda expression to find even numbers from a list.
+
+3. Write a lambda expression to sort a list of strings alphabetically.
+
+4. Create a thread using a lambda expression.
+
+5. Write a program to calculate the sum of all numbers in a list using lambda.
