@@ -1,0 +1,228 @@
+6. limit() and skip()
+Concept
+    limit(n): Returns a stream containing only the first n elements.
+    skip(n): Returns a stream after skipping the first n elements.
+    
+    Both are intermediate operations.
+    
+    Syntax
+    // First n elements
+    stream.limit(n);
+    
+    // Skip first n elements
+    stream.skip(n);
+
+
+
+
+
+1. Print the first 5 elements from a list of numbers.
+Program
+import java.util.Arrays;
+import java.util.List;
+
+public class LimitExample {
+    public static void main(String[] args) {
+
+        List<Integer> numbers = Arrays.asList(
+                10,20,30,40,50,60,70,80);
+
+        numbers.stream()
+                .limit(5)
+                .forEach(System.out::println);
+    }
+}
+Output
+10
+20
+30
+40
+50
+
+
+
+
+
+2. Skip the first 3 elements and print the rest.
+-->Program
+        import java.util.Arrays;
+        import java.util.List;
+        
+        public class SkipExample {
+            public static void main(String[] args) {
+        
+                List<Integer> numbers = Arrays.asList(
+                        10,20,30,40,50,60,70,80);
+        
+                numbers.stream()
+                        .skip(3)
+                        .forEach(System.out::println);
+            }
+        }
+        Output
+        40
+        50
+        60
+        70
+        80
+
+
+
+
+
+
+3. Given a list of students sorted by marks, print the top 3 scorers.
+-->Program
+        import java.util.Arrays;
+        import java.util.Comparator;
+        import java.util.List;
+        
+        class Student {
+        
+            int id;
+            String name;
+            int marks;
+        
+            Student(int id, String name, int marks) {
+                this.id = id;
+                this.name = name;
+                this.marks = marks;
+            }
+        }
+        
+        public class TopStudents {
+            public static void main(String[] args) {
+        
+                List<Student> students = Arrays.asList(
+                        new Student(101, "Ravi", 75),
+                        new Student(102, "Anil", 95),
+                        new Student(103, "Priya", 88),
+                        new Student(104, "Rahul", 91),
+                        new Student(105, "Kiran", 82)
+                );
+        
+                students.stream()
+                        .sorted(Comparator.comparingInt((Student s) -> s.marks).reversed())
+                        .limit(3)
+                        .forEach(s ->
+                                System.out.println(s.name + " : " + s.marks));
+            }
+        }
+        Output
+            Anil : 95
+            Rahul : 91
+            Priya : 88
+
+
+
+
+
+
+4. Find the second-highest salary using skip() and limit().
+-->Program
+        import java.util.Arrays;
+        import java.util.Comparator;
+        import java.util.List;
+        
+        class Employee {
+        
+            int id;
+            String name;
+            double salary;
+        
+            Employee(int id, String name, double salary) {
+                this.id = id;
+                this.name = name;
+                this.salary = salary;
+            }
+        }
+        
+        public class SecondHighestSalary {
+            public static void main(String[] args) {
+        
+                List<Employee> employees = Arrays.asList(
+                        new Employee(101, "Ravi", 50000),
+                        new Employee(102, "Anil", 75000),
+                        new Employee(103, "Priya", 65000),
+                        new Employee(104, "Rahul", 90000)
+                );
+        
+                employees.stream()
+                        .sorted(Comparator.comparingDouble((Employee e) -> e.salary).reversed())
+                        .skip(1)
+                        .limit(1)
+                        .forEach(e ->
+                                System.out.println(e.name + " : " + e.salary));
+            }
+        }
+        Output
+            Anil : 75000.0
+
+
+
+
+
+Summary :
+| Question              | Stream Methods Used                 | Purpose                        |
+| --------------------- | ----------------------------------- | ------------------------------ |
+| First 5 elements      | `limit(5)`                          | Returns first 5 elements       |
+| Skip first 3 elements | `skip(3)`                           | Ignores first 3 elements       |
+| Top 3 students        | `sorted()` + `limit(3)`             | Highest 3 marks                |
+| Second-highest salary | `sorted()` + `skip(1)` + `limit(1)` | Gets the second highest salary |
+
+
+
+Interview Tip
+    limit()
+    numbers.stream()
+           .limit(3)
+           .forEach(System.out::println);
+    
+    Output
+    
+    10
+    20
+    30
+    skip()
+    numbers.stream()
+           .skip(3)
+           .forEach(System.out::println);
+    
+    Output
+    
+    40
+    50
+    60
+    70
+    Using Both Together
+    numbers.stream()
+           .skip(2)
+           .limit(3)
+           .forEach(System.out::println);
+    
+    Input
+    
+    [10,20,30,40,50,60,70]
+    
+    Output
+    
+    30
+    40
+    50
+    Frequently Asked Interview Examples
+    // First 5 records
+    stream.limit(5);
+    
+    // Skip first 10 records (pagination)
+    stream.skip(10);
+    
+    // Get records 11 to 20
+    stream.skip(10)
+          .limit(10);
+    
+    // Second highest salary
+    stream.sorted(Comparator.reverseOrder())
+          .skip(1)
+          .findFirst();
+    
+    limit() and skip() are commonly used for pagination, top-N queries, and ranking-related interview questions.
