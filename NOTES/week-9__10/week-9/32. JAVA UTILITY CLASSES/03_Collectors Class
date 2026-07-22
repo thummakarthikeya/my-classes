@@ -78,12 +78,8 @@ Collectors Class
       
       Example:
       
-      Map<Integer,String> map =
-      Stream.of("Java","C")
-      .collect(Collectors.toMap(
-              String::length,
-              s -> s,
-              (a,b) -> a));
+      Map<Integer,String> map = Stream.of("Java","C")
+                                  .collect(Collectors.toMap(String::length,s -> s,(a,b) -> a));
 
 
 
