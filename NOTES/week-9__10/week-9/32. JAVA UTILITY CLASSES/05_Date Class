@@ -1,0 +1,14 @@
+
+Date Class
+
+1. What is java.util.Date?
+
+2. How to get the current date and time?
+
+3. Difference between Date and Calendar.
+
+4. How to convert Date to LocalDate or LocalDateTime?
+
+5. How do you format a Date using SimpleDateFormat with a custom pattern?
+
+6. Why is the Date class considered legacy?
