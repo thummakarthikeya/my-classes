@@ -1,5 +1,123 @@
 1. What is Random class in Java?
+-->Random is a class available in the java.util package that is used to generate pseudo-random numbers such as integers, doubles, floats, booleans, and longs.
+
+        Package:
+        
+        import java.util.Random;
+        
+        Example:
+        
+        import java.util.Random;
+        
+        public class Demo {
+            public static void main(String[] args) {
+                Random random = new Random();
+        
+                System.out.println(random.nextInt());      // Random integer
+                System.out.println(random.nextDouble());   // Random double (0.0 - 1.0)
+                System.out.println(random.nextBoolean());  // true or false
+            }
+        }
+
+Interview Points 
+      Belongs to java.util package.
+      Generates pseudo-random numbers.
+      Can generate different data types.
+      Seed-based random number generation.
+
+
+
 
 2. How to generate random numbers using Random? Difference between Math.random() and Random class?
+-->Using Random
+        import java.util.Random;
+        
+        public class Demo {
+            public static void main(String[] args) {
+        
+                Random random = new Random();
+        
+                System.out.println(random.nextInt());      // Any integer
+                System.out.println(random.nextInt(100));   // 0-99
+                System.out.println(random.nextLong());
+                System.out.println(random.nextFloat());
+                System.out.println(random.nextDouble());
+                System.out.println(random.nextBoolean());
+            }
+        }
+        Generate number between 1 and 100
+        Random random = new Random();
+        
+        int num = random.nextInt(100) + 1;
+        
+        System.out.println(num);
+        Using Math.random()
+        double value = Math.random();
+        
+        System.out.println(value);
+        
+        Range:   
+            0.0 <= value < 1.0
+            
+            Generate 1 to 100
+            
+            int num = (int)(Math.random() * 100) + 1;
+            
+            System.out.println(num);
+
+
+
+
+Difference between Math.random() and Random class
+| Math.random()                             | Random class                                     |
+| ----------------------------------------- | ------------------------------------------------ |
+| Static method                             | Object creation required                         |
+| Returns only double                       | Returns int, long, float, double, boolean        |
+| Less flexible                             | More flexible                                    |
+| Cannot directly generate bounded integers | Can generate bounded values using nextInt(limit) |
+| Internally uses Random                    | Separate Random object                           |
+
+
+Interview Answer:
+
+Use Math.random() when you only need a random double. Use Random when you need different data types or bounded random values.
+
+
+  
+
 
 3. How does the Random class generate pseudo-random numbers internally?
+-->Random does not generate truly random numbers.
+
+It uses a mathematical algorithm called a Pseudo Random Number Generator (PRNG).
+
+Java's Random class uses a 48-bit seed.
+
+Every generated number is calculated from the previous seed.
+
+Simplified formula:
+
+newSeed = (oldSeed × multiplier + addend) mod 2^48
+
+The generated seed is then converted into integers, doubles, floats, etc.
+
+If two Random objects use the same seed, they produce the same sequence.
+
+Example:
+
+Random r1 = new Random(10);
+Random r2 = new Random(10);
+
+System.out.println(r1.nextInt());
+System.out.println(r2.nextInt());
+
+Output
+    Same numbers
+    
+    Because both objects have the same seed.
+
+Interview Points
+    Uses PRNG.
+    Seed-based generation.
+    Same seed → Same sequence.
+    Default seed is current system time.
