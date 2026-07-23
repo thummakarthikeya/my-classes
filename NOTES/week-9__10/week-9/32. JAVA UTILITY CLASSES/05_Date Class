@@ -2,13 +2,237 @@
 Date Class
 
 1. What is java.util.Date?
+-->java.util.Date is a class used to represent date and time.
+    It stores:
+    Date
+    Time
+    Milliseconds since January 1, 1970 (Epoch time)
+    
+    Package
+    
+    import java.util.Date;
+    
+    Example
+    
+    import java.util.Date;
+    
+    public class Demo {
+    
+        public static void main(String[] args) {
+    
+            Date date = new Date();
+    
+            System.out.println(date);
+        }
+    }
+
+Output :
+    Tue Jul 22 10:45:20 IST 2026
+
+Interview Points :
+      Represents date and time.
+      Legacy class.
+      Stores milliseconds from Epoch.
+
+
+
+
 
 2. How to get the current date and time?
+-->Using Date
+      import java.util.Date;
+      
+      public class Demo {
+      
+          public static void main(String[] args) {
+      
+              Date current = new Date();
+      
+              System.out.println(current);
+          }
+      }
+Using LocalDate :
+      import java.time.LocalDate;
+      
+      public class Demo {
+      
+          public static void main(String[] args) {
+      
+              LocalDate date = LocalDate.now();
+      
+              System.out.println(date);
+          }
+      }
+Using LocalTime :
+      import java.time.LocalTime;
+      
+      public class Demo {
+      
+          public static void main(String[] args) {
+      
+              LocalTime time = LocalTime.now();
+      
+              System.out.println(time);
+          }
+      }
+Using LocalDateTime :
+        import java.time.LocalDateTime;
+        
+        public class Demo {
+        
+            public static void main(String[] args) {
+        
+                LocalDateTime dt = LocalDateTime.now();
+        
+                System.out.println(dt);
+            }
+        }
+
+
+
+
+
+
 
 3. Difference between Date and Calendar.
+-->
+| Date                             | Calendar                  |
+| -------------------------------- | ------------------------- |
+| Represents date and time         | Manipulates date and time |
+| Mostly immutable in practice     | Mutable                   |
+| Few methods                      | Many methods              |
+| Cannot easily add/subtract dates | Can add/subtract dates    |
+| Legacy class                     | Improved legacy API       |
+
+Example  
+      Calendar cal = Calendar.getInstance();
+      
+      cal.add(Calendar.DATE, 5);
+      
+      System.out.println(cal.getTime());
+
+
+
+
+
+
 
 4. How to convert Date to LocalDate or LocalDateTime?
+-->Date → LocalDate
+            import java.util.Date;
+            import java.time.LocalDate;
+            import java.time.ZoneId;
+            
+            public class Demo {
+            
+                public static void main(String[] args) {
+            
+                    Date date = new Date();
+            
+                    LocalDate localDate = date.toInstant()
+                                              .atZone(ZoneId.systemDefault())
+                                              .toLocalDate();
+            
+                    System.out.println(localDate);
+                }
+            }
+Date → LocalDateTime
+          import java.util.Date;
+          import java.time.LocalDateTime;
+          import java.time.ZoneId;
+          
+          public class Demo {
+          
+              public static void main(String[] args) {
+          
+                  Date date = new Date();
+          
+                  LocalDateTime ldt = date.toInstant()
+                                          .atZone(ZoneId.systemDefault())
+                                          .toLocalDateTime();
+          
+                  System.out.println(ldt);
+              }
+          }
+
+
+
+
 
 5. How do you format a Date using SimpleDateFormat with a custom pattern?
+-->SimpleDateFormat formats dates into a desired string format.
+
+Example
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+public class Demo {
+
+    public static void main(String[] args) {
+
+        Date date = new Date();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
+        System.out.println(sdf.format(date));
+    }
+}
+
+Output
+
+22-07-2026
+
+
+| Pattern | Meaning | Example |
+| ------- | ------- | ------- |
+| dd      | Day     | 22      |
+| MM      | Month   | 07      |
+| yyyy    | Year    | 2026    |
+| HH      | 24-hour | 16      |
+| hh      | 12-hour | 04      |
+| mm      | Minutes | 45      |
+| ss      | Seconds | 20      |
+| a       | AM/PM   | PM      |
+
+
+
+Example
+
+SimpleDateFormat sdf =
+new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+System.out.println(sdf.format(new Date()));
+
+Output
+
+22/07/2026 16:45:20
+
+
+
+
 
 6. Why is the Date class considered legacy?
+-->Date is considered a legacy class because Java introduced the modern java.time API in Java 8, which is more powerful and easier to use.
+
+Limitations of Date
+Many methods are deprecated.
+Mutable (can be modified).
+Not thread-safe.
+Poor API design.
+Difficult date calculations.
+Time zone handling is limited.
+Modern Alternative
+
+Use the java.time package:
+
+LocalDate
+LocalTime
+LocalDateTime
+ZonedDateTime
+Instant
+Interview Answer
+
+java.util.Date is considered a legacy class because it has deprecated methods, is mutable, not thread-safe, and provides 
+limited functionality. Since Java 8, the java.time package is the recommended API for handling dates and times due to its 
+immutability, thread safety, and rich set of features.
