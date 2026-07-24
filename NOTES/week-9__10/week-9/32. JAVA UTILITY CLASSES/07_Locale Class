@@ -1,7 +1,73 @@
 Locale Class
 
 1. What is Locale class in Java? Why is it important in internationalization? Important methods of Locale class?
+-->The Locale class (java.util.Locale) represents a specific language and country/region.
+
+It is mainly used for Internationalization (i18n), allowing applications to display language, currency, dates, and numbers according to the user's region.
+
+Import
+
+import java.util.Locale;
+
+Example
+
+Locale locale = new Locale("en", "US");
+System.out.println(locale);
+
+
+
+Important Methods :
+| Method                  | Description            |
+| ----------------------- | ---------------------- |
+| `getDefault()`          | Returns default locale |
+| `getLanguage()`         | Returns language code  |
+| `getCountry()`          | Returns country code   |
+| `getDisplayLanguage()`  | Returns language name  |
+| `getDisplayCountry()`   | Returns country name   |
+| `getAvailableLocales()` | Returns all locales    |
+
+
+
+
+
+
+
 
 2. What are the predefined Locale constants in Java? (Locale.US, Locale.UK, etc.)
+-->Answer:
+Some predefined constants are:
+      Locale.US
+      Locale.UK
+      Locale.CANADA
+      Locale.CANADA_FRENCH
+      Locale.FRANCE
+      Locale.GERMANY
+      Locale.ITALY
+      Locale.JAPAN
+      Locale.CHINA
+      Locale.KOREA
+      Locale.ROOT
+
+Example:
+    System.out.println(Locale.US);
+    System.out.println(Locale.UK);
+
+Output:
+    en_US
+    en_GB
+
+
 
 3. How to get all available locales?
+-->Answer:
+      import java.util.Locale;
+      
+      public class Main {
+          public static void main(String[] args) {
+              Locale[] locales = Locale.getAvailableLocales();
+      
+              for (Locale l : locales) {
+                  System.out.println(l);
+              }
+          }
+      }
