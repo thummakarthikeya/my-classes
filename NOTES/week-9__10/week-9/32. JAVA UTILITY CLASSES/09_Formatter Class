@@ -1,0 +1,9 @@
+Formatter Class
+
+1. What is Formatter class in Java? Important methods of Formatter?
+
+2. Name some common format specifiers (%d, %f, %s, %c)?
+
+3. Difference between Formatter and String.format()?
+
+4. What is IllegalFormatException and when is it thrown?
