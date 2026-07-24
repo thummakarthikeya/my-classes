@@ -1,9 +1,126 @@
 Calender Class
 
 1. What is Calendar class in Java? Important Methods of Calendar?
--->
+-->Answer:
+
+The Calendar class (java.util.Calendar) is a legacy class used to manipulate dates and times. It allows you to get, set, add, and compare dates.
+
+Import:
+    import java.util.Calendar;
+    
+    Create a Calendar object:
+    
+    Calendar cal = Calendar.getInstance();
+
+
+    Important Methods :
+| Method                        | Description                                   |
+| ----------------------------- | --------------------------------------------- |
+| `getInstance()`               | Returns current date and time                 |
+| `get(int field)`              | Gets a field value (year, month, day)         |
+| `set(int field, int value)`   | Sets a field value                            |
+| `add(int field, int amount)`  | Adds/subtracts time                           |
+| `roll(int field, boolean up)` | Changes field without affecting larger fields |
+| `getTime()`                   | Returns a Date object                         |
+| `before()`                    | Checks if date is before another date         |
+| `after()`                     | Checks if date is after another date          |
+
+
+
+
+
 2. How to convert Calendar to LocalDateTime (Java 8+)?
+-->Answer:
+    
+    Use toInstant() and ZoneId.
+    
+    import java.util.Calendar;
+    import java.time.LocalDateTime;
+    import java.time.ZoneId;
+    
+    public class Main {
+        public static void main(String[] args) {
+            Calendar cal = Calendar.getInstance();
+    
+            LocalDateTime ldt = LocalDateTime.ofInstant(
+                    cal.toInstant(),
+                    ZoneId.systemDefault());
+    
+            System.out.println(ldt);
+        }
+    }
+
+
+
+
 
 3. How to get the current year, month, and day using Calendar?
+-->Answer:
+
+      Use the get() method.
+      
+      import java.util.Calendar;
+      
+      public class Main {
+          public static void main(String[] args) {
+              Calendar cal = Calendar.getInstance();
+      
+              int year = cal.get(Calendar.YEAR);
+              int month = cal.get(Calendar.MONTH) + 1;
+              int day = cal.get(Calendar.DAY_OF_MONTH);
+      
+              System.out.println("Year : " + year);
+              System.out.println("Month: " + month);
+              System.out.println("Day  : " + day);
+          }
+      }
+
+Output (Example):
+
+      Year : 2026
+      Month: 7
+      Day  : 24
+      
+      Note: Months start from 0, so add 1.
+
+
+
+
 
 4. How do you roll a date forward or backward using Calendar?
+-->Answer:
+
+Use the roll() method.
+
+Roll Forward
+import java.util.Calendar;
+
+public class Main {
+    public static void main(String[] args) {
+        Calendar cal = Calendar.getInstance();
+
+        cal.roll(Calendar.DATE, true);
+
+        System.out.println(cal.getTime());
+    }
+}
+Roll Backward :
+      import java.util.Calendar;
+      
+      public class Main {
+          public static void main(String[] args) {
+              Calendar cal = Calendar.getInstance();
+      
+              cal.roll(Calendar.DATE, false);
+      
+              System.out.println(cal.getTime());
+          }
+      }
+
+Difference :
+      add() changes higher fields if needed.
+      roll() changes only the specified field.
+
+Example:
+      31 Jan + add(1 day)  -> 1 Feb
+      31 Jan + roll(1 day) -> 1 Jan
