@@ -1,0 +1,7 @@
+Locale Class
+
+1. What is Locale class in Java? Why is it important in internationalization? Important methods of Locale class?
+
+2. What are the predefined Locale constants in Java? (Locale.US, Locale.UK, etc.)
+
+3. How to get all available locales?
