@@ -1,0 +1,231 @@
+Date and Time
+
+1) What are the main classes in the java.time package?
+-->Answer:
+
+The java.time package (introduced in Java 8) provides modern, immutable, and thread-safe classes for handling dates and times.
+
+Common Classes :
+| Class               | Purpose                                   |
+| ------------------- | ----------------------------------------- |
+| `LocalDate`         | Stores date only (yyyy-MM-dd)             |
+| `LocalTime`         | Stores time only (HH:mm:ss)               |
+| `LocalDateTime`     | Stores both date and time                 |
+| `ZonedDateTime`     | Date and time with time zone              |
+| `Instant`           | Represents a timestamp                    |
+| `Duration`          | Time difference (hours, minutes, seconds) |
+| `Period`            | Date difference (years, months, days)     |
+| `DateTimeFormatter` | Formats and parses dates                  |
+
+Example :
+    import java.time.*;
+    
+    public class Main {
+        public static void main(String[] args) {
+    
+            System.out.println(LocalDate.now());
+            System.out.println(LocalTime.now());
+            System.out.println(LocalDateTime.now());
+            System.out.println(ZonedDateTime.now());
+        }
+    }
+
+Output (Example) :
+    2026-07-24
+    14:30:15
+    2026-07-24T14:30:15
+    2026-07-24T14:30:15+05:30[Asia/Kolkata]
+
+
+
+
+
+2) How do you format a Date object in Java?
+-->Answer:
+There are two ways.
+
+(A) Using SimpleDateFormat (Legacy)
+          import java.util.Date;
+          import java.text.SimpleDateFormat;
+          
+          public class Main {
+              public static void main(String[] args) {
+          
+                  Date date = new Date();
+          
+                  SimpleDateFormat sdf =
+                          new SimpleDateFormat("dd-MM-yyyy");
+          
+                  System.out.println(sdf.format(date));
+              }
+          }
+          
+          Output :
+              24-07-2026
+(B) Using DateTimeFormatter (Java 8+)
+        import java.time.LocalDate;
+        import java.time.format.DateTimeFormatter;
+        
+        public class Main {
+        
+            public static void main(String[] args) {
+        
+                LocalDate date = LocalDate.now();
+        
+                DateTimeFormatter formatter =
+                        DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        
+                System.out.println(date.format(formatter));
+            }
+        }
+        
+        Output :
+            24-07-2026
+
+Interview Tip: Use DateTimeFormatter for Java 8+ because it is thread-safe.
+
+
+
+
+
+3) How do you parse a string into a date?
+-->Answer:
+
+Use the parse() method.
+
+Example
+import java.time.LocalDate;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        LocalDate date =
+                LocalDate.parse("2026-07-24");
+
+        System.out.println(date);
+    }
+}
+
+Output
+
+2026-07-24
+Parsing Custom Format
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        String s = "24-07-2026";
+
+        DateTimeFormatter formatter =
+                DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        LocalDate date =
+                LocalDate.parse(s, formatter);
+
+        System.out.println(date);
+    }
+}
+
+Output
+
+2026-07-24
+
+
+
+
+
+4) How to format LocalDate, LocalTime, LocalDateTime, and ZonedDateTime?
+-->Answer:
+
+Use the DateTimeFormatter class.
+
+Example
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        DateTimeFormatter formatter =
+                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        System.out.println(LocalDate.now());
+
+        System.out.println(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+
+        System.out.println(LocalDateTime.now().format(formatter));
+
+        System.out.println(ZonedDateTime.now().format(formatter));
+    }
+}
+
+Sample Output
+
+2026-07-24
+14:35:21
+24-07-2026 14:35:21
+24-07-2026 14:35:21
+
+
+
+
+
+5) What are common format patterns (dd, MM, yyyy, HH, mm, ss, a)?
+-->
+| Pattern | Meaning         | Example |
+| ------- | --------------- | ------- |
+| `dd`    | Day             | 24      |
+| `MM`    | Month           | 07      |
+| `yyyy`  | Four-digit year | 2026    |
+| `yy`    | Two-digit year  | 26      |
+| `HH`    | Hour (24-hour)  | 14      |
+| `hh`    | Hour (12-hour)  | 02      |
+| `mm`    | Minutes         | 35      |
+| `ss`    | Seconds         | 21      |
+| `a`     | AM/PM           | PM      |
+| `MMM`   | Short month     | Jul     |
+| `MMMM`  | Full month      | July    |
+| `E`     | Day name        | Fri     |
+
+Example :
+    DateTimeFormatter formatter =
+            DateTimeFormatter.ofPattern(
+                    "dd/MM/yyyy HH:mm:ss a");
+    
+    System.out.println(
+            LocalDateTime.now().format(formatter));
+
+Output :
+    24/07/2026 02:35:21 PM
+
+
+
+
+
+6) Why is SimpleDateFormat not thread-safe?
+-->Answer:
+
+SimpleDateFormat is not thread-safe because it maintains internal mutable state while formatting and parsing dates.
+
+If multiple threads use the same SimpleDateFormat object simultaneously, it may produce incorrect results or exceptions.
+
+Unsafe Example :
+      SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+      
+      If many threads use the same sdf, unexpected results may occur.
+
+Solution :
+      Create a separate SimpleDateFormat object for each thread, or
+      Use DateTimeFormatter (Java 8+), which is immutable and thread-safe.
+
+
+
+
+Interview Answer (One Line) :
+-->SimpleDateFormat is not thread-safe because it uses mutable internal state. DateTimeFormatter is thread-safe
+    because it is immutable.
