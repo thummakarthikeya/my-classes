@@ -2,7 +2,64 @@
 StringTokenizer Class
 
 1. What is StringTokenizer in Java? How do you create a StringTokenizer object?
+-->Answer:
+      StringTokenizer (java.util.StringTokenizer) is a legacy class used to split a string into tokens using a delimiter.
+      
+      Import
+      
+      import java.util.StringTokenizer;
+      
+      Example
+      
+      import java.util.StringTokenizer;
+      
+      public class Main {
+          public static void main(String[] args) {
+      
+              StringTokenizer st = new StringTokenizer("Java Python C++");
+      
+              while(st.hasMoreTokens()) {
+                  System.out.println(st.nextToken());
+              }
+          }
+      }
+
+Output :
+    Java
+    Python
+    C++
+
+
+
+
 
 2. Important methods of StringTokenizer?
+-->
+| Method              | Description                   |
+| ------------------- | ----------------------------- |
+| `hasMoreTokens()`   | Checks if more tokens exist   |
+| `nextToken()`       | Returns next token            |
+| `countTokens()`     | Returns remaining token count |
+| `hasMoreElements()` | Same as hasMoreTokens()       |
+| `nextElement()`     | Returns next token as Object  |
+
+Example :
+    StringTokenizer st = new StringTokenizer("Java Python C");
+    
+    System.out.println(st.countTokens());
+    
+    while(st.hasMoreTokens()) {
+        System.out.println(st.nextToken());
+    }
+
+
+
 
 3. Difference between StringTokenizer, split(), and Scanner?
+-->
+| StringTokenizer   | split()       | Scanner                  |
+| ----------------- | ------------- | ------------------------ |
+| Legacy class      | String method | Input class              |
+| Faster            | Uses Regex    | Reads user input         |
+| Doesn't use Regex | Uses Regex    | Reads from keyboard/file |
+| Less flexible     | Flexible      | Best for input           |
