@@ -1,9 +1,113 @@
 Formatter Class
 
 1. What is Formatter class in Java? Important methods of Formatter?
+-->Answer:
+    Formatter (java.util.Formatter) formats text, numbers, dates, and strings similar to C's printf().
+
+Import :
+      import java.util.Formatter;
+      
+      Example
+      
+      Formatter f = new Formatter();
+      
+      f.format("Name: %s Age: %d", "John", 25);
+      
+      System.out.println(f);
+      
+      f.close();
+
+Output :
+      Name: John Age: 25
+      Important Methods
+
+
+| Method     | Description                |
+| ---------- | -------------------------- |
+| `format()` | Formats data               |
+| `flush()`  | Flushes output             |
+| `close()`  | Closes formatter           |
+| `locale()` | Returns locale             |
+| `out()`    | Returns output destination |
+
+
+
 
 2. Name some common format specifiers (%d, %f, %s, %c)?
+-->
+| Specifier | Description    |
+| --------- | -------------- |
+| `%d`      | Integer        |
+| `%f`      | Floating-point |
+| `%s`      | String         |
+| `%c`      | Character      |
+| `%b`      | Boolean        |
+| `%x`      | Hexadecimal    |
+| `%o`      | Octal          |
+| `%n`      | New line       |
+
+
+Example :
+    System.out.printf("%d%n", 10);
+    System.out.printf("%.2f%n", 10.5678);
+    System.out.printf("%s%n", "Java");
+    System.out.printf("%c%n", 'A');
+
+Output :
+    10
+    10.57
+    Java
+    A
+
+
+
 
 3. Difference between Formatter and String.format()?
+-->
+| Formatter                     | String.format()                |
+| ----------------------------- | ------------------------------ |
+| Creates a Formatter object    | Static method of String        |
+| Can write to files or streams | Returns formatted String       |
+| More flexible                 | Simpler for formatting strings |
+
+Example :
+      Formatter f = new Formatter();
+      f.format("%d", 100);
+      System.out.println(f);
+      
+      String s = String.format("%d", 100);
+      System.out.println(s);
+
+      f.close();
+
+
+
 
 4. What is IllegalFormatException and when is it thrown?
+-->Answer:
+
+IllegalFormatException is thrown when an invalid format specifier or wrong argument type is used with Formatter or printf().
+
+Example
+
+public class Main {
+    public static void main(String[] args) {
+
+        System.out.printf("%d", "Java");
+    }
+}
+
+Output :
+      Exception in thread "main"
+      java.util.IllegalFormatConversionException
+      
+      Reason: %d expects an integer, but a String is provided.
+      
+      Correct Code
+      
+      System.out.printf("%s", "Java");
+
+Output :
+    Java
+    
+    These answers are interview-friendly, simple, and include definitions, syntax, examples, outputs, and important points.
