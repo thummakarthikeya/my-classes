@@ -1,0 +1,15 @@
+Member Inner Class
+
+Interview Questions
+
+1. What is a member inner class?
+
+2. Can a member inner class have constructors?
+
+3. How do you create an object of a member inner class?
+
+4. Can a member inner class have private/protected access modifiers?
+
+5. Can we declare static methods inside a member inner class?
+
+6. Can a member inner class extend a class and implement an interface?
