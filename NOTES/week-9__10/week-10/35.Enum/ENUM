@@ -1,0 +1,828 @@
+35. ENUM
+
+Questions
+
+1. What is an enum in Java, and why is it used?
+-->An enum (Enumeration) in Java is a special data type used to define a fixed set of constant values.
+
+    It is used when a variable should have only a limited number of predefined values, making the code more readable, type-safe,
+    and easier to maintain.
+
+  Syntax:
+      enum Day {
+          MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+      }
+
+
+
+
+
+Example:
+      enum Color {
+          RED, GREEN, BLUE
+      }
+      
+      public class Main {
+          public static void main(String[] args) {
+              Color c = Color.RED;
+              System.out.println(c);
+          }
+      }
+      
+      Output:   RED
+
+
+Why is enum used?
+      Defines a fixed set of constants.
+      Improves code readability.
+      Provides type safety (prevents invalid values).
+      Can have constructors, methods, and fields.
+
+Real-life examples:
+      Days of the week (MONDAY, TUESDAY, ...)
+      Months (JANUARY, FEBRUARY, ...)
+      Traffic signals (RED, YELLOW, GREEN)
+      Order status (PENDING, SHIPPED, DELIVERED)
+
+
+Interview One-Line Answer:
+      An enum in Java is a special data type used to represent a fixed set of constants. It improves code readability,
+      type safety, and maintainability.
+
+
+
+
+2. Can an enum implement an interface or extend a class?
+-->Yes, an enum can implement an interface, but it cannot extend a class.
+    Reason:
+        Every enum in Java automatically extends java.lang.Enum.
+        Since Java does not support multiple inheritance, an enum cannot extend any other class.
+        However, an enum can implement one or more interfaces.
+          emum is already extending the Enum class so we cannot extend another class if we extend it will
+              become multiple inheritance and in java with classes we cannot perform multiple inheritance.
+Example: Enum Implementing an Interface
+
+              interface Animal {
+                  void sound();
+              }
+              
+              enum Dog implements Animal {
+                  LABRADOR, GERMAN_SHEPHERD;
+              
+                  public void sound() {
+                      System.out.println("Bark");
+                  }
+              }
+              
+              public class Main {
+                  public static void main(String[] args) {
+                      Dog.LABRADOR.sound();
+                  }
+              }
+
+Output : Bark
+
+
+Key Points :
+        ✅ Enum can implement interfaces.
+        ❌ Enum cannot extend any class.
+        ✅ Every enum implicitly extends java.lang.Enum.
+
+Interview One-Line Answer:
+        An enum can implement one or more interfaces, but it cannot extend another class because it already extends java.lang.Enum implicitly.
+
+
+
+
+
+
+
+3. Can an enum declared inside a class have constructors and methods?
+-->Yes, an enum declared inside a class can have constructors, methods, and fields, just like a normal class.
+
+        Constructors are used to initialize enum constants.
+        Enum constructors are always private (or package-private). You cannot create enum objects using the new keyword.
+        Methods can be used to perform operations on enum constants.
+
+Example:
+        public class Main {
+        
+            enum Day {
+                MONDAY("Start of the week"),
+                FRIDAY("Weekend is near");
+        
+                private String message;
+        
+                // Constructor
+                Day(String message) {
+                    this.message = message;
+                }
+        
+                // Method
+                public void display() {
+                    System.out.println(message);
+                }
+            }
+        
+            public static void main(String[] args) {
+                Day.MONDAY.display();
+                Day.FRIDAY.display();
+            }
+        }
+
+Output:
+      Start of the week
+      Weekend is near
+
+
+Key Points
+      ✅ An enum can have constructors.
+      ✅ An enum can have methods.
+      ✅ An enum can have fields (variables).
+      ❌ Enum constructors cannot be public; they are implicitly private.
+      ❌ You cannot create enum objects using new.
+
+
+Interview One-Line Answer:
+      Yes. An enum declared inside a class can have constructors, fields, and methods. Its constructor is used to initialize
+            enum constants and cannot be called using the new keyword.
+
+
+
+
+
+
+4. Is an enum inside a class implicitly static? Explain.
+-->Yes. A nested enum (an enum declared inside a class) is implicitly static.
+
+This means:
+
+You do not need to write the static keyword.
+The enum belongs to the class, not to an object (instance) of the class.
+You can access it using the class name.
+Example:
+class Test {
+
+    enum Color {
+        RED, GREEN, BLUE
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Test.Color c = Test.Color.RED;
+        System.out.println(c);
+    }
+}
+
+Output:
+
+RED
+Explanation:
+Color is declared inside the Test class.
+Even though static is not written, Java treats it as static.
+So, you can access it as Test.Color.RED without creating a Test object.
+No Need to Create an Object
+Test t = new Test();      // ❌ Not required
+Test.Color c = Test.Color.RED;   // ✅ Correct
+Key Points
+✅ A nested enum is implicitly static.
+✅ It can be accessed using the outer class name.
+✅ No object of the outer class is needed.
+❌ Writing static before an enum is unnecessary because Java adds it automatically.
+Interview One-Line Answer:
+
+    Yes. An enum declared inside a class is implicitly static, so it belongs to the class rather than its objects and can be accessed 
+    using the class name without creating an object.
+
+
+
+
+
+5. How can we access a nested enum from another class?
+-->A nested enum (an enum declared inside a class) is accessed using the outer class name, followed by the enum name and the enum constant.
+
+Syntax:
+
+OuterClass.EnumName.CONSTANT
+Example:
+        class Vehicle {
+        
+            enum Type {
+                CAR, BIKE, BUS
+            }
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+        
+                Vehicle.Type t = Vehicle.Type.CAR;
+        
+                System.out.println(t);
+            }
+        }
+        
+        Output: CAR
+
+Explanation:
+    Type is an enum inside the Vehicle class.
+    Since a nested enum is implicitly static, you don't need to create a Vehicle object.
+
+You can directly access it using:  
+      Vehicle.Type.CAR
+      Incorrect Way
+      Vehicle v = new Vehicle();
+      Vehicle.Type t = v.Type.CAR;   // ❌ Compilation Error
+      Correct Way
+      Vehicle.Type t = Vehicle.Type.CAR;   // ✅ Correct
+
+Key Points :
+      ✅ Access a nested enum using OuterClass.EnumName.CONSTANT.
+      ✅ No object of the outer class is required.
+      ✅ Nested enums are implicitly static.
+
+
+Interview One-Line Answer:
+        A nested enum is accessed using the outer class name followed by the enum name and constant, such as OuterClass.EnumName.CONSTANT, because
+        nested enums are implicitly static.
+
+
+
+
+
+6. From which Java version can we use enum in a switch statement?
+-->You can use enum in a switch statement starting from Java 5 (JDK 1.5).
+
+Java 5 introduced both:
+
+Enums
+Support for using enums in switch statements
+Example:
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Day day = Day.TUESDAY;
+
+        switch (day) {
+            case MONDAY:
+                System.out.println("Start of the week");
+                break;
+
+            case TUESDAY:
+                System.out.println("Second day");
+                break;
+
+            case WEDNESDAY:
+                System.out.println("Midweek");
+                break;
+        }
+    }
+}
+
+Output: Second day
+
+    Explanation:
+          The switch statement compares the enum value (day) with the enum constants.
+          You write only the constant name (MONDAY, TUESDAY, etc.), not Day.MONDAY.
+    
+    Key Points :
+          ✅ Enum support was introduced in Java 5 (JDK 1.5).
+          ✅ Enums can be used directly in a switch statement.
+          ✅ Inside the case labels, use only the enum constant names.
+    
+
+Interview One-Line Answer:
+      Enums can be used in a switch statement starting from Java 5 (JDK 1.5), when enums were first introduced.
+
+
+
+
+
+7. What happens if the enum variable in a switch is null?
+-->If the enum variable is null, the switch statement throws a NullPointerException (NPE) at runtime.
+
+This happens because the switch tries to determine the enum constant, but the variable does not refer to any enum object.
+
+Example:
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Day day = null;
+
+        switch (day) {
+            case MONDAY:
+                System.out.println("Monday");
+                break;
+
+            case TUESDAY:
+                System.out.println("Tuesday");
+                break;
+        }
+    }
+}
+
+Output : Exception in thread "main" java.lang.NullPointerException
+
+
+How to Avoid It : Always check whether the enum variable is null before using it in a switch.
+
+if (day != null) {
+    switch (day) {
+        case MONDAY:
+            System.out.println("Monday");
+            break;
+        case TUESDAY:
+            System.out.println("Tuesday");
+            break;
+    }
+} else {
+    System.out.println("Day is null");
+}
+
+Output : Day is null
+
+Key Points :
+      ✅ If the enum variable is null, switch throws a NullPointerException.
+      ✅ This is a runtime exception.
+      ✅ Check for null before using an enum in a switch.
+
+Interview One-Line Answer:
+      If the enum variable in a switch statement is null, Java throws a NullPointerException at runtime.
+      To avoid this, check for null before the switch.
+
+
+
+
+
+
+
+
+8. What method is used to iterate through enum constants?
+-->Answer (Simple Interview Style):
+      
+      The values() method is used to iterate through all enum constants.
+      
+      values() is a built-in method provided for every enum.
+      It returns an array of all enum constants in the order they are declared.
+
+      Example:
+            enum Day {
+                MONDAY, TUESDAY, WEDNESDAY
+            }
+            
+            public class Main {
+                public static void main(String[] args) {
+            
+                    for (Day day : Day.values()) {
+                        System.out.println(day);
+                    }
+                }
+            }
+      
+      Output:
+            MONDAY
+            TUESDAY
+            WEDNESDAY
+
+Explanation:
+      Day.values() returns:
+      
+      Day[] days = {MONDAY, TUESDAY, WEDNESDAY};
+      The enhanced for loop iterates through each enum constant.
+
+Key Points
+      ✅ values() returns an array of all enum constants.
+      ✅ Constants are returned in the order they are declared.
+      ✅ It is commonly used with a for-each loop.
+
+Interview One-Line Answer:
+      The values() method is used to iterate through enum constants. It returns an array containing all enum constants 
+      in the order they are declared.
+
+
+
+
+9. What does the ordinal() method return for enum constants?
+-->The ordinal() method returns the position (index) of an enum constant, starting from 0.
+
+    The first enum constant has an ordinal value of 0.
+    The second has 1.
+    The third has 2, and so on.
+
+Example:
+      enum Day {
+          MONDAY, TUESDAY, WEDNESDAY
+      }
+      
+      public class Main {
+          public static void main(String[] args) {
+      
+              System.out.println(Day.MONDAY.ordinal());
+              System.out.println(Day.TUESDAY.ordinal());
+              System.out.println(Day.WEDNESDAY.ordinal());
+          }
+      }
+
+Output:
+      0
+      1
+      2
+
+Example Using values() and ordinal()  :
+        enum Day {
+            MONDAY, TUESDAY, WEDNESDAY
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+        
+                for (Day day : Day.values()) {
+                    System.out.println(day + " : " + day.ordinal());
+                }
+            }
+        }
+        
+        Output:
+            MONDAY : 0
+            TUESDAY : 1
+            WEDNESDAY : 2
+
+Key Points :
+      ✅ ordinal() returns the index of an enum constant.
+      ✅ Indexing starts from 0.
+      ✅ The value depends on the order in which the constants are declared.
+      ⚠️ Avoid using ordinal() for business logic because changing the order of enum constants changes their ordinal values.
+
+
+Interview One-Line Answer:
+      The ordinal() method returns the zero-based position (index) of an enum constant in the order it is declared.
+
+
+
+
+
+
+
+10. What is EnumSet and EnumMap? Why are they preferred for enum iteration?
+-->1. EnumSet
+
+EnumSet is a special Set implementation designed only for enum types.
+
+It stores unique enum constants.
+It is very fast and memory-efficient compared to HashSet.
+
+Example:
+
+import java.util.EnumSet;
+
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        EnumSet<Day> days = EnumSet.of(Day.MONDAY, Day.WEDNESDAY);
+
+        for (Day day : days) {
+            System.out.println(day);
+        }
+    }
+}
+
+Output:
+
+MONDAY
+WEDNESDAY
+2. EnumMap
+
+EnumMap is a special Map implementation where the keys are enum constants.
+
+It is faster and uses less memory than HashMap.
+Keys must be of the same enum type.
+
+Example:
+
+import java.util.EnumMap;
+
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        EnumMap<Day, String> map = new EnumMap<>(Day.class);
+
+        map.put(Day.MONDAY, "Start");
+        map.put(Day.TUESDAY, "Work");
+        map.put(Day.WEDNESDAY, "Middle");
+
+        for (Day day : map.keySet()) {
+            System.out.println(day + " : " + map.get(day));
+        }
+    }
+}
+
+Output:
+    MONDAY : Start
+    TUESDAY : Work
+    WEDNESDAY : Middle
+
+Why are EnumSet and EnumMap preferred?
+      ✅ Optimized specifically for enum types.
+      ✅ Faster than HashSet and HashMap.
+      ✅ Use less memory.
+      ✅ Maintain the natural order of enum constants.
+      ✅ Provide better performance when working with enums.
+Key Points
+      ✅ EnumSet is a Set for enum values.
+      ✅ EnumMap is a Map with enum keys.
+      ✅ Both are optimized for speed and memory.
+      ✅ They are preferred over HashSet and HashMap when working with enums.
+
+
+
+Interview One-Line Answer:
+      EnumSet is a specialized Set for enum constants, and EnumMap is a specialized Map with enum keys. They are preferred because 
+      they are faster, memory-efficient, and optimized specifically for enum types.
+
+
+
+
+Programs
+
+1. Write a Java program that defines an enum inside a class and prints its constants.
+-->Program:
+public class Main {
+
+    // Nested enum
+    enum Day {
+        MONDAY,
+        TUESDAY,
+        WEDNESDAY,
+        THURSDAY,
+        FRIDAY,
+        SATURDAY,
+        SUNDAY
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println("Days of the week:");
+
+        // Print all enum constants
+        for (Day day : Day.values()) {
+            System.out.println(day);
+        }
+    }
+}
+Output:
+Days of the week:
+MONDAY
+TUESDAY
+WEDNESDAY
+THURSDAY
+FRIDAY
+SATURDAY
+SUNDAY
+Explanation:
+enum Day is declared inside the Main class.
+Day.values() returns all enum constants as an array.
+The enhanced for loop prints each constant.
+Interview One-Line Answer:
+
+This program defines a nested enum inside a class and uses the values() method with a for-each loop to print all enum constants.
+
+
+
+
+
+2. Write a program that defines an enum inside a class with a constructor and a custom method.
+-->public class Main {
+
+    // Nested enum
+    enum Day {
+        MONDAY("Start of the week"),
+        TUESDAY("Second day"),
+        WEDNESDAY("Midweek");
+
+        private String message;
+
+        // Constructor
+        Day(String message) {
+            this.message = message;
+        }
+
+        // Custom method
+        public void display() {
+            System.out.println(this + " : " + message);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        // Calling the custom method
+        Day.MONDAY.display();
+        Day.TUESDAY.display();
+        Day.WEDNESDAY.display();
+    }
+}
+Output:
+MONDAY : Start of the week
+TUESDAY : Second day
+WEDNESDAY : Midweek
+Explanation:
+Day is a nested enum inside the Main class.
+Each enum constant (MONDAY, TUESDAY, WEDNESDAY) passes a value to the constructor.
+The constructor initializes the message field.
+The display() method is a custom method that prints the enum constant and its message.
+Key Points:
+✅ An enum can have fields (variables).
+✅ An enum can have a constructor.
+✅ An enum can have custom methods.
+❌ Enum constructors cannot be called using new.
+Interview One-Line Answer:
+
+This program defines a nested enum with a constructor to initialize data and a custom method to display information for each enum constant.
+
+
+
+
+
+
+3. Write code to print enum constants along with their ordinal() values.
+-->public class Main {
+
+    // Nested enum
+    enum Day {
+        MONDAY,
+        TUESDAY,
+        WEDNESDAY,
+        THURSDAY,
+        FRIDAY
+    }
+
+    public static void main(String[] args) {
+
+        // Print enum constants with their ordinal values
+        for (Day day : Day.values()) {
+            System.out.println(day + " : " + day.ordinal());
+        }
+    }
+}
+Output:
+MONDAY : 0
+TUESDAY : 1
+WEDNESDAY : 2
+THURSDAY : 3
+FRIDAY : 4
+Explanation:
+Day.values() returns all enum constants.
+The for-each loop iterates through each constant.
+day.ordinal() returns the index (position) of the enum constant.
+The first constant starts with 0.
+Key Points:
+✅ values() returns all enum constants.
+✅ ordinal() returns the zero-based position of the enum constant.
+✅ The ordinal value depends on the order in which the constants are declared.
+Interview One-Line Answer:
+
+This program uses the values() method to iterate through all enum constants and the ordinal() method to print the zero-based index of each constant.
+
+
+
+
+
+4. Write code where each enum constant has a custom method, and you call it during iteration.
+-->public class Main {
+
+    // Nested enum
+    enum Day {
+        MONDAY,
+        TUESDAY,
+        WEDNESDAY;
+
+        // Custom method
+        public void display() {
+            System.out.println("Today is " + this);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        // Iterate through all enum constants
+        for (Day day : Day.values()) {
+            day.display();   // Call the custom method
+        }
+    }
+}
+Output:
+Today is MONDAY
+Today is TUESDAY
+Today is WEDNESDAY
+Explanation:
+display() is a custom method defined inside the enum.
+Day.values() returns all enum constants.
+The for-each loop iterates through each constant.
+day.display() calls the custom method for every enum constant.
+Flow:
+Day.values()
+
+Returns:
+
+{MONDAY, TUESDAY, WEDNESDAY}
+
+Loop execution:
+
+MONDAY.display();      // Today is MONDAY
+TUESDAY.display();     // Today is TUESDAY
+WEDNESDAY.display();   // Today is WEDNESDAY
+Key Points:
+✅ Each enum can have its own custom methods.
+✅ Use values() to iterate through enum constants.
+✅ Call the method using the current enum object (day.display()).
+Interview One-Line Answer:
+
+This program defines a custom method inside an enum and uses the values() method with a for-each loop to call the method for each enum constant.
+
+
+
+
+
+
+5. Write a code example where enum iteration triggers specific logic (method calls) for each constant.
+-->Program:
+public class Main {
+
+    // Nested enum
+    enum TrafficSignal {
+        RED,
+        YELLOW,
+        GREEN;
+
+        // Custom method with specific logic
+        public void action() {
+            switch (this) {
+                case RED:
+                    System.out.println("Stop");
+                    break;
+
+                case YELLOW:
+                    System.out.println("Get Ready");
+                    break;
+
+                case GREEN:
+                    System.out.println("Go");
+                    break;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        // Iterate through enum constants
+        for (TrafficSignal signal : TrafficSignal.values()) {
+
+            System.out.print(signal + " : ");
+            signal.action();   // Calls different logic for each constant
+        }
+    }
+}
+Output:
+RED : Stop
+YELLOW : Get Ready
+GREEN : Go
+Explanation:
+TrafficSignal is an enum with three constants.
+The action() method contains different logic for each constant using a switch.
+TrafficSignal.values() returns all enum constants.
+During iteration, signal.action() executes the corresponding logic for each constant.
+Flow:
+TrafficSignal.values()
+
+Returns:
+
+{RED, YELLOW, GREEN}
+
+Loop execution:
+
+RED.action();      // Stop
+YELLOW.action();   // Get Ready
+GREEN.action();    // Go
+Key Points:
+✅ An enum can contain custom methods.
+✅ Each enum constant can trigger different logic.
+✅ values() is used to iterate over all enum constants.
+✅ switch(this) identifies the current enum constant.
+Interview One-Line Answer:
+
+This program iterates through enum constants using values() and calls a custom method that executes different logic for each enum constant.
