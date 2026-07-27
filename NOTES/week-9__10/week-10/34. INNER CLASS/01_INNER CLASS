@@ -3,22 +3,292 @@
 Interview Questions
 
 1. What is inner class?
+-->An inner class is a class declared inside another class or interface. It helps group related classes together and can directly
+   access the members (including private members) of the outer class.
+
+    Syntax:
+    
+    class Outer {
+        class Inner {
+            void display() {
+                System.out.println("Inside Inner Class");
+            }
+        }
+    }
+
+
+
+
+
 
 2. Can we declare an inner class inside an interface?
+-->Yes.
+
+          An interface can contain an inner class. Such a class is public and static by default.
+          
+          Example:
+          
+          interface Test {
+              class Demo {
+                  void show() {
+                      System.out.println("Inner class inside interface");
+                  }
+              }
+          }
+          
+          public class Main {
+              public static void main(String[] args) {
+                  Test.Demo obj = new Test.Demo();
+                  obj.show();
+              }
+          }
+          
+          Output:
+          
+          Inner class inside interface
+
+
 
 3. Can an interface be declared inside a class?
+-->Yes.
+      
+      A class can contain an interface.
+      
+      Example:
+      
+      class Outer {
+      
+          interface MyInterface {
+              void display();
+          }
+      }
+      
+      class Demo implements Outer.MyInterface {
+          public void display() {
+              System.out.println("Interface inside class");
+          }
+      
+          public static void main(String[] args) {
+              Demo obj = new Demo();
+              obj.display();
+          }
+      }
+      
+      Output:
+      
+      Interface inside class
+
+
+
+
 
 4. How can you access the outer class object inside an inner class?
+-->Use:
+     
+     OuterClass.this
+     
+     Example:
+     
+     class Outer {
+         int x = 100;
+     
+         class Inner {
+             void show() {
+                 System.out.println(Outer.this.x);
+             }
+         }
+     
+         public static void main(String[] args) {
+             Outer o = new Outer();
+             Outer.Inner i = o.new Inner();
+             i.show();
+         }
+     }
+     
+     Output:
+     
+     100
+
+
+
 
 5. What is the fully qualified name of an inner class?
+-->The fully qualified name is:
+
+      OuterClass.InnerClass
+      
+      Example:
+      
+      class Outer {
+          class Inner {
+          }
+      }
+      
+      Object creation:
+      
+      Outer.Inner obj;
+
+
 
 6. Can an inner class be abstract, final, or static?
+-->Yes.
+        
+        abstract → Yes
+        final → Yes
+        static → Yes (only if it is a static nested class, not a regular member inner class)
+        
+        Example:
+        
+        class Outer {
+        
+            abstract class A {
+                abstract void show();
+            }
+        
+            final class B {
+            }
+        
+            static class C {
+            }
+        }
+
+
 
 7. Can an inner class override methods of its outer class?
+-->Yes.
+
+       If the inner class extends the outer class, it can override inherited methods.
+       
+       Example:
+       
+       class Outer {
+       
+           void show() {
+               System.out.println("Outer");
+           }
+       
+           class Inner extends Outer {
+               @Override
+               void show() {
+                   System.out.println("Inner");
+               }
+           }
+       
+           public static void main(String[] args) {
+               Outer o = new Outer();
+               Outer.Inner i = o.new Inner();
+               i.show();
+           }
+       }
+       
+       Output:
+       
+       Inner
+
+
+
+
+
 
 8. How do you access a private inner class from another class?
+-->You cannot directly access a private inner class from another class.
+      It can only be accessed through public methods of the outer class.
+      
+      Example:
+      
+      class Outer {
+      
+          private class Inner {
+              void show() {
+                  System.out.println("Private Inner");
+              }
+          }
+      
+          void display() {
+              Inner obj = new Inner();
+              obj.show();
+          }
+      }
+      
+      public class Main {
+          public static void main(String[] args) {
+              Outer obj = new Outer();
+              obj.display();
+          }
+      }
+      
+      Output:
+      
+      Private Inner
+
+
+
+
 
 9. Can an inner class shadow a variable name from its outer class?
+-->Yes.
+       An inner class can declare a variable with the same name as the outer class variable.
+       
+       Use:
+           x → Inner class variable
+           Outer.this.x → Outer class variable
+
+Example:      
+      class Outer {
+      
+          int x = 10;
+      
+          class Inner {
+              int x = 20;
+      
+              void display() {
+                  System.out.println(x);
+                  System.out.println(Outer.this.x);
+              }
+          }
+      
+          public static void main(String[] args) {
+              Outer o = new Outer();
+              Outer.Inner i = o.new Inner();
+              i.display();
+          }
+      }
+
+Output:
+   20
+   10
+
+
+
+
+
 
 10. How can we resolve naming conflicts between outer and inner class members?
+-->Use:
+      this.member → Inner class member
+      OuterClass.this.member → Outer class member
 
+Example:
+       class Outer {
+       
+           int value = 100;
+       
+           class Inner {
+               int value = 200;
+       
+               void show() {
+                   System.out.println(this.value);
+                   System.out.println(Outer.this.value);
+               }
+           }
+       
+           public static void main(String[] args) {
+               Outer o = new Outer();
+               Outer.Inner i = o.new Inner();
+               i.show();
+           }
+       }
+
+Output:
+    200
+    100
