@@ -1,0 +1,24 @@
+ INNER CLASS
+
+Interview Questions
+
+1. What is inner class?
+
+2. Can we declare an inner class inside an interface?
+
+3. Can an interface be declared inside a class?
+
+4. How can you access the outer class object inside an inner class?
+
+5. What is the fully qualified name of an inner class?
+
+6. Can an inner class be abstract, final, or static?
+
+7. Can an inner class override methods of its outer class?
+
+8. How do you access a private inner class from another class?
+
+9. Can an inner class shadow a variable name from its outer class?
+
+10. How can we resolve naming conflicts between outer and inner class members?
+
