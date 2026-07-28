@@ -1,0 +1,17 @@
+LOCAL INNER CLASS
+
+Interview Questions
+
+1. What is a Local Inner Class?
+
+2. Can we declare static methods inside a Local Inner Class?
+
+3. Why can a Local Inner Class only access effectively final variables?
+
+4. Where can you use Local Inner Classes?
+
+5. Can a Local Inner Class be marked public or private?
+
+6. How do you access a Local Inner Class outside the method?
+
+7. Give a real-time use case of a Local Inner Class (Security, event handling).
