@@ -1,0 +1,21 @@
+STATIC NESTED CLASS
+
+Interview Questions
+
+1. What is a static nested class?
+-->
+
+
+
+
+2. Difference between static nested class and member inner class?
+
+3. Can a static nested class access this of the outer class?
+
+4. How do you create an instance of a static nested class?
+
+5. Can a static nested class have static methods?
+
+6. Why do we prefer a static nested class?
+
+7. Can a static nested class access outer class private variables?
