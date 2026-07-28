@@ -3,15 +3,130 @@ LOCAL INNER CLASS
 Interview Questions
 
 1. What is a Local Inner Class?
+-->A Local Inner Class is a class declared inside a method, constructor, or block.
+
+      It can only be used within that method.
+      
+      class Test {
+          void display() {
+              class Local {
+                  void show() {
+                      System.out.println("Hello");
+                  }
+              }
+      
+              Local obj = new Local();
+              obj.show();
+          }
+      }
+
+
+
+
 
 2. Can we declare static methods inside a Local Inner Class?
+-->No.
+    A Local Inner Class cannot have static methods or static variables, except static final constants.
+    
+    class Local {
+        static final int A = 10;   // Allowed
+    }
+
+
+
+
 
 3. Why can a Local Inner Class only access effectively final variables?
+-->Because local variables are stored on the stack and disappear after the method finishes.
+
+    Java copies the value into the Local Inner Class, so the variable must not change (must be final or effectively final).
+    
+    void test() {
+        int x = 10;      // effectively final
+    
+        class Local {
+            void show() {
+                System.out.println(x);
+            }
+        }
+    }
+
+
+
+
+
 
 4. Where can you use Local Inner Classes?
+-->You can declare them inside:
+        Methods
+        Constructors
+        Initialization blocks
+
+They are commonly used for:
+        Event handling
+        Validation
+        Helper classes used only inside one method
+
+
+
+
 
 5. Can a Local Inner Class be marked public or private?
+-->No.
+        A Local Inner Class cannot use access modifiers like:
+        
+        public
+        private
+        protected
+        static
+        
+        It is visible only inside the method where it is declared.
+
+
+
 
 6. How do you access a Local Inner Class outside the method?
+-->You cannot.
+
+A Local Inner Class exists only inside the method where it is declared.
+
+void display() {
+    class Local {
+    }
+
+    Local obj = new Local();   // Allowed
+}
+
+// Outside display(), Local cannot be accessed.
+
+
+
+
+
+
 
 7. Give a real-time use case of a Local Inner Class (Security, event handling).
+-->Example: Event Handling
+
+class Button {
+    void click() {
+
+        class ClickHandler {
+            void handle() {
+                System.out.println("Button Clicked");
+            }
+        }
+
+        ClickHandler obj = new ClickHandler();
+        obj.handle();
+    }
+}
+
+Other real-time uses:
+        Security checks
+        Form validation
+        Event handling
+        Temporary helper classes
+        Database query processing within a method
+
+
