@@ -1,0 +1,18 @@
+Anonymous Inner Class
+
+Interview Questions
+
+1. What is an Anonymous Inner Class?
+
+2. Why does it not need a name?
+
+3. Can we create a constructor inside an anonymous class?
+
+4. Can an anonymous inner class implement multiple interfaces?
+
+5. Is an anonymous inner class compiled? If yes, what is the file name?
+
+6. What is the disadvantage of an anonymous inner class?
+
+7. What is the difference between a lambda expression and an anonymous inner class?
+
