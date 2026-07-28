@@ -3,19 +3,90 @@ STATIC NESTED CLASS
 Interview Questions
 
 1. What is a static nested class?
--->
+-->A static nested class is a class declared with the static keyword inside another class. It does not need an object of the outer 
+    class to be created.
+
+      Syntax:
+      
+      class Outer {
+          static class Inner {
+          }
+      }
 
 
 
 
 2. Difference between static nested class and member inner class?
+-->
+| Static Nested Class                     | Member Inner Class                            |
+| --------------------------------------- | --------------------------------------------- |
+| Declared with `static`                  | Declared without `static`                     |
+| Doesn't need outer class object         | Needs outer class object                      |
+| Can access only static members directly | Can access both static and non-static members |
+| More memory efficient                   | Less memory efficient                         |
+
+
+
+
 
 3. Can a static nested class access this of the outer class?
+-->No.
+
+      A static nested class has no reference to the outer class object, so it cannot use Outer.this.
+
+
+
 
 4. How do you create an instance of a static nested class?
+-->class Outer {
+        static class Inner {
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            Outer.Inner obj = new Outer.Inner();
+        }
+    }
+
+
+
 
 5. Can a static nested class have static methods?
+-->Yes.
+
+      Since it is a static class, it can contain static methods and static variables.
+      
+      class Outer {
+          static class Inner {
+              static void display() {
+                  System.out.println("Hello");
+              }
+          }
+      }
+
+
 
 6. Why do we prefer a static nested class?
+-->Saves memory.
+    Doesn't require an outer class object.
+    Used when the nested class doesn't need to access outer object members.
+    Makes code more organized.
+
+
+
 
 7. Can a static nested class access outer class private variables?
+-->Yes, but only static private variables directly.
+
+      To access non-static private variables, it needs an outer class object.
+      
+      class Outer {
+          private static int x = 10;
+      
+          static class Inner {
+              void show() {
+                  System.out.println(x);
+              }
+          }
+      }
