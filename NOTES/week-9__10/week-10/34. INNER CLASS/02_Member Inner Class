@@ -3,13 +3,189 @@ Member Inner Class
 Interview Questions
 
 1. What is a member inner class?
+-->A member inner class is a non-static class declared directly inside another class.
+        
+        It can access all members (including private members) of the outer class.
+        
+        Example:
+        
+        class Outer {
+        
+            class Inner {
+                void show() {
+                    System.out.println("Member Inner Class");
+                }
+            }
+        
+            public static void main(String[] args) {
+                Outer o = new Outer();
+                Outer.Inner i = o.new Inner();
+                i.show();
+            }
+        }
+        
+        Output:
+        
+        Member Inner Class
+
+
+
+
 
 2. Can a member inner class have constructors?
+-->Yes.
+        
+        A member inner class can have constructors like any normal class.
+        
+        Example:
+        
+        class Outer {
+        
+            class Inner {
+                Inner() {
+                    System.out.println("Constructor called");
+                }
+            }
+        
+            public static void main(String[] args) {
+                Outer o = new Outer();
+                Outer.Inner i = o.new Inner();
+            }
+        }
+        
+        Output:
+        
+        Constructor called
+
+
+
 
 3. How do you create an object of a member inner class?
+-->First create the outer class object, then create the inner class object.
+
+Syntax:
+
+Outer obj = new Outer();
+Outer.Inner in = obj.new Inner();
+
+Example:
+
+class Outer {
+
+    class Inner {
+        void show() {
+            System.out.println("Hello");
+        }
+    }
+
+    public static void main(String[] args) {
+        Outer obj = new Outer();
+        Outer.Inner in = obj.new Inner();
+        in.show();
+    }
+}
+
+Output:
+
+Hello
+
+
+
 
 4. Can a member inner class have private/protected access modifiers?
+-->Yes.
+
+      A member inner class can be:
+      
+      private
+      protected
+      public
+      default
+      
+      Example:
+      
+      class Outer {
+      
+          private class A { }
+      
+          protected class B { }
+      
+          public class C { }
+      
+          class D { }
+      }
+
+
+
 
 5. Can we declare static methods inside a member inner class?
+-->No.
+
+A non-static member inner class cannot have static methods (except static final constants and, in modern Java, certain static members are allowed, but interview answer: No).
+
+Invalid Example:
+
+class Outer {
+
+    class Inner {
+
+        static void show() { // Compilation error
+            System.out.println("Hello");
+        }
+    }
+}
+
+
+
 
 6. Can a member inner class extend a class and implement an interface?
+-->Yes.
+
+A member inner class can both extend a class and implement an interface.
+
+Example:
+
+class Animal {
+    void sound() {
+        System.out.println("Animal Sound");
+    }
+}
+
+interface Test {
+    void display();
+}
+
+class Outer {
+
+    class Inner extends Animal implements Test {
+
+        public void display() {
+            System.out.println("Display Method");
+        }
+    }
+
+    public static void main(String[] args) {
+        Outer o = new Outer();
+        Outer.Inner i = o.new Inner();
+
+        i.sound();
+        i.display();
+    }
+}
+
+Output:
+
+Animal Sound
+Display Method
+
+
+
+
+
+Interview Tip
+        Inner Class → A class inside another class or interface.
+        Member Inner Class → A non-static inner class that belongs to an object of the outer class.
+        Object creation: Outer.Inner obj = outerObject.new Inner();
+        Access outer object: Outer.this
+        Fully qualified name: Outer.Inner
+        Can access private members of outer class: Yes.
