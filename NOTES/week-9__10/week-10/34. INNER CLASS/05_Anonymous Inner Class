@@ -3,16 +3,128 @@ Anonymous Inner Class
 Interview Questions
 
 1. What is an Anonymous Inner Class?
+-->An Anonymous Inner Class is an inner class without a name. It is declared and instantiated in a single statement. 
+    It is mainly used when an object is needed only once.
+
+      Example:
+      
+      interface Animal {
+          void sound();
+      }
+      
+      public class Test {
+          public static void main(String[] args) {
+              Animal a = new Animal() {
+                  public void sound() {
+                      System.out.println("Dog barks");
+                  }
+              };
+      
+              a.sound();
+          }
+      }
+
+
+
+
 
 2. Why does it not need a name?
+-->It doesn't need a name because:
+
+      It is used only once.
+      We create the object immediately after defining the class.
+      There is no need to reuse the class later.
+
+
+
 
 3. Can we create a constructor inside an anonymous class?
+-->No.
+      Since an anonymous class has no name, we cannot declare a constructor.
+      
+      Instead, we use an instance initializer block if initialization is required.
+      
+      Example:
+      
+      Runnable r = new Runnable() {
+      
+          {
+              System.out.println("Object Created");
+          }
+      
+          public void run() {
+              System.out.println("Running...");
+          }
+      };
+
+
+
+
 
 4. Can an anonymous inner class implement multiple interfaces?
+-->No.
+      An anonymous inner class can:
+      
+      Extend one class, or
+      Implement one interface.
+      
+      It cannot implement multiple interfaces at the same time.
+
+
+
+
 
 5. Is an anonymous inner class compiled? If yes, what is the file name?
+-->Yes.
+      The Java compiler creates a separate .class file.
+      
+      If the outer class is Test, the generated file will be:
+      
+      Test$1.class
+      
+      If there are multiple anonymous classes:
+      
+      Test$1.class
+      Test$2.class
+      Test$3.class
+
+
 
 6. What is the disadvantage of an anonymous inner class?
+-->Disadvantages:
+      Cannot have a constructor.
+      Cannot be reused.
+      Harder to read for large code.
+      Suitable only for one-time use.
+      Cannot implement multiple interfaces.
+
+
+
 
 7. What is the difference between a lambda expression and an anonymous inner class?
+-->
+| Anonymous Inner Class                         | Lambda Expression                     |
+| --------------------------------------------- | ------------------------------------- |
+| Introduced in Java 1.1                        | Introduced in Java 8                  |
+| Can extend a class or implement one interface | Works only with functional interfaces |
+| More code                                     | Less code                             |
+| Can define fields and methods                 | Cannot define new methods or fields   |
+| Has its own `this` reference                  | `this` refers to the enclosing class  |
+| Slower and more verbose                       | Faster and concise                    |
 
+Anonymous Inner Class:
+
+Runnable r = new Runnable() {
+    public void run() {
+        System.out.println("Running");
+    }
+};
+
+Lambda Expression:
+
+Runnable r = () -> System.out.println("Running");
+Interview Tip
+
+Remember this one-line definition:
+
+"An Anonymous Inner Class is a class without a name that is declared and instantiated in a single statement for one-time use."
