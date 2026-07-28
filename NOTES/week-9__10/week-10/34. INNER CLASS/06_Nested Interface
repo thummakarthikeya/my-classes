@@ -1,0 +1,65 @@
+Nested Interface
+
+Interview Questions
+
+1. What is a Nested Interface?
+
+
+2. Why do we declare an interface inside a class?
+
+3. How do you implement a nested interface?
+
+4. What are the access rules for nested interfaces?
+
+5. What is a real-time use case?
+
+
+Programs
+
+1. Write a Student Management System using a member inner class.
+
+   Outer class: School (name, location)
+
+   Inner class: Student (name, rollNo, grade)
+
+   Display student info along with school info.
+
+
+2. Implement a Company class with a static nested class Employee.
+
+   Outer class: Company (companyName)
+
+   Nested class: Employee (id, name, salary)
+
+   Print employee info along with company name.
+
+
+3. Create a Runnable thread using an anonymous inner class.
+
+   Print numbers 1 to 5 with the thread name.
+
+
+4. Write a Calculator interface with the method:
+   
+   int multiply(int a, int b);
+
+   Provide the implementation using an anonymous inner class.
+
+
+
+5. Create a Shape class with a nested interface Drawable.
+
+   Interface method:
+   void draw();
+
+   Implement Drawable in Circle and Rectangle classes.
+
+
+6. Create a multi-level inner class program.
+
+   Outer → Inner → InnerInner
+
+   Access all levels and print the variables.
+
+
+7. Implement a Thread using an anonymous inner class inside a method of an outer class.
