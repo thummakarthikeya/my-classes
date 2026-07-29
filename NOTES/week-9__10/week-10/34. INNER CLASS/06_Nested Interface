@@ -3,15 +3,84 @@ Nested Interface
 Interview Questions
 
 1. What is a Nested Interface?
+-->A Nested Interface is an interface declared inside a class or another interface.
+
+It is used to group related interfaces together.
+
+Example:
+
+class Vehicle {
+
+    interface Engine {
+        void start();
+    }
+}
+
+
 
 
 2. Why do we declare an interface inside a class?
+-->We declare an interface inside a class to:
+
+      Organize related code.
+      Improve code readability.
+      Hide the interface from unrelated classes.
+      Represent functionality closely related to the outer class.
+
+
+
+
 
 3. How do you implement a nested interface?
+-->Use the outer class name followed by the interface name.
+      Syntax:
+      
+            class Outer {
+                interface Inner {
+                    void display();
+                }
+            }
+            
+            class Demo implements Outer.Inner {
+            
+                public void display() {
+                    System.out.println("Nested Interface");
+                }
+            }
+
+
+
+
+
 
 4. What are the access rules for nested interfaces?
+-->A nested interface can be declared inside a class or another interface.
+   It can have access modifiers like public, protected, private, or default (when inside a class).
+   All methods in an interface are public abstract by default.
+   All variables are public static final by default.
+   
+   To implement it outside the outer class, use:
+   
+   Outer.InterfaceName
+
+
+
+
+
 
 5. What is a real-time use case?
+-->A common real-time example is Java Event Handling.
+
+For example:
+         MouseListener
+         ActionListener
+         KeyListener
+
+Nested interfaces are also used in frameworks and APIs to keep related interfaces together.
+
+
+
+
 
 
 Programs
@@ -23,6 +92,45 @@ Programs
    Inner class: Student (name, rollNo, grade)
 
    Display student info along with school info.
+-->class School {
+
+    String schoolName = "ABC School";
+    String location = "Hyderabad";
+
+    class Student {
+
+        String name;
+        int rollNo;
+        String grade;
+
+        Student(String name, int rollNo, String grade) {
+            this.name = name;
+            this.rollNo = rollNo;
+            this.grade = grade;
+        }
+
+        void display() {
+            System.out.println("School Name : " + schoolName);
+            System.out.println("Location    : " + location);
+            System.out.println("Student     : " + name);
+            System.out.println("Roll No     : " + rollNo);
+            System.out.println("Grade       : " + grade);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        School school = new School();
+        School.Student student = school.new Student("Rahul", 101, "A");
+
+        student.display();
+    }
+}
+
+
+
+
+
 
 
 2. Implement a Company class with a static nested class Employee.
@@ -32,11 +140,73 @@ Programs
    Nested class: Employee (id, name, salary)
 
    Print employee info along with company name.
+-->class Company {
+
+    static String companyName = "OpenAI";
+
+    static class Employee {
+
+        int id;
+        String name;
+        double salary;
+
+        Employee(int id, String name, double salary) {
+            this.id = id;
+            this.name = name;
+            this.salary = salary;
+        }
+
+        void display() {
+            System.out.println("Company : " + companyName);
+            System.out.println("ID      : " + id);
+            System.out.println("Name    : " + name);
+            System.out.println("Salary  : " + salary);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Company.Employee emp = new Company.Employee(101, "Karthik", 50000);
+
+        emp.display();
+    }
+}
+
+
+
+
+
+
+
 
 
 3. Create a Runnable thread using an anonymous inner class.
 
    Print numbers 1 to 5 with the thread name.
+
+-->class Demo {
+
+    public static void main(String[] args) {
+
+        Thread t = new Thread(new Runnable() {
+
+            public void run() {
+
+                for (int i = 1; i <= 5; i++) {
+                    System.out.println(Thread.currentThread().getName() + " : " + i);
+                }
+            }
+        });
+
+        t.start();
+    }
+}
+
+
+
+
+
+
 
 
 4. Write a Calculator interface with the method:
@@ -44,6 +214,28 @@ Programs
    int multiply(int a, int b);
 
    Provide the implementation using an anonymous inner class.
+-->interface Calculator {
+
+    int multiply(int a, int b);
+}
+
+public class Demo {
+
+    public static void main(String[] args) {
+
+        Calculator c = new Calculator() {
+
+            public int multiply(int a, int b) {
+                return a * b;
+            }
+        };
+
+        System.out.println("Result = " + c.multiply(10, 20));
+    }
+}
+
+
+
 
 
 
@@ -53,6 +245,49 @@ Programs
    void draw();
 
    Implement Drawable in Circle and Rectangle classes.
+-->Interface method:
+
+void draw();
+
+Implement Drawable in Circle and Rectangle classes.
+
+class Shape {
+
+    interface Drawable {
+        void draw();
+    }
+}
+
+class Circle implements Shape.Drawable {
+
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+class Rectangle implements Shape.Drawable {
+
+    public void draw() {
+        System.out.println("Drawing Rectangle");
+    }
+}
+
+public class Demo {
+
+    public static void main(String[] args) {
+
+        Shape.Drawable c = new Circle();
+        Shape.Drawable r = new Rectangle();
+
+        c.draw();
+        r.draw();
+    }
+}
+
+
+
+
+
 
 
 6. Create a multi-level inner class program.
@@ -60,6 +295,77 @@ Programs
    Outer → Inner → InnerInner
 
    Access all levels and print the variables.
+-->Outer → Inner → InnerInner
+
+Access all levels and print variables.
+
+class Outer {
+
+    int x = 10;
+
+    class Inner {
+
+        int y = 20;
+
+        class InnerInner {
+
+            int z = 30;
+
+            void display() {
+
+                System.out.println("x = " + x);
+                System.out.println("y = " + y);
+                System.out.println("z = " + z);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Outer o = new Outer();
+        Outer.Inner i = o.new Inner();
+        Outer.Inner.InnerInner ii = i.new InnerInner();
+
+        ii.display();
+    }
+}
+
+
+
+
+
+
 
 
 7. Implement a Thread using an anonymous inner class inside a method of an outer class.
+-->class Outer {
+
+    void startThread() {
+
+        Thread t = new Thread() {
+
+            public void run() {
+
+                for (int i = 1; i <= 5; i++) {
+                    System.out.println("Thread : " + i);
+                }
+            }
+        };
+
+        t.start();
+    }
+
+    public static void main(String[] args) {
+
+        Outer obj = new Outer();
+        obj.startThread();
+    }
+}
+Interview Tip
+
+Remember these definitions:
+
+Nested Interface: An interface declared inside another class or interface.
+Member Inner Class: A non-static class declared inside another class.
+Static Nested Class: A static class declared inside another class.
+Anonymous Inner Class: A class without a name, used for one-time implementation.
