@@ -1,19 +1,258 @@
 1. Fundamentals of Spring Core
 
 1. What is Spring Framework?
--->
+-->Answer:
+      Spring is an open-source Java framework used to develop enterprise applications. It simplifies Java development by providing
+      features like IoC (Inversion of Control), Dependency Injection, AOP, transaction management, and integration with databases and
+      web applications.
+      
+      Simple example:
+          Instead of creating dependencies manually:
+      
+      Car car = new Car();
+      Engine engine = new Engine();
+      car.setEngine(engine);
+      
+      Spring can create and inject the Engine object automatically.
+      
+      Interview keywords:
+          IoC, Dependency Injection, AOP, Loose Coupling, Enterprise Applications
 
 
 
 
 
 2. Why do we use Spring?
+-->We use Spring to make Java applications:
+        
+        Loosely coupled
+        Easier to maintain
+        Easier to test
+        More modular
+        Easier to develop and configure
+        Less dependent on concrete classes
+        Example
+        
+        Without Spring:
+        
+        class Car {
+            Engine engine = new Engine();
+        }
+        
+        Here Car directly creates Engine.
+        
+        With Spring:
+        
+        class Car {
+            private Engine engine;
+        
+            Car(Engine engine) {
+                this.engine = engine;
+            }
+        }
+        
+        Spring can provide the Engine object.
+        
+        So the main idea is:
+        
+        Spring → reduces tight coupling through Dependency Injection.
+        
+        
+        
+
 3. What problems does Spring solve?
+-->Spring mainly solves these problems:
+        
+        Tight coupling
+        Manual object creation
+        Difficult dependency management
+        Difficult testing
+        Boilerplate code
+        Transaction management
+        Database integration
+        Enterprise application development
+        Example
+        
+        Without Spring:
+        
+        Service service = new Service();
+        Repository repository = new Repository();
+        service.setRepository(repository);
+        
+        Spring Container can manage these objects and their dependencies for us.
+
+
+
+
+
 4. What are the main features of Spring?
+-->Important Spring features are:
+        1. IoC / Dependency Injection
+              Spring manages objects and their dependencies.
+        
+        2. AOP
+              Used for cross-cutting concerns such as:
+                    Logging
+                    Security
+                    Transactions
+
+        3. Spring MVC
+              Used to develop web applications and REST APIs.
+        
+        4. Spring Data
+              Simplifies database operations.
+        
+        5. Transaction Management
+              Spring provides transaction management.
+        
+        6. Spring Security
+              Used for authentication and authorization.
+        
+        7. Integration
+              Spring can integrate with databases, messaging systems, APIs, etc.
+              
+              Most important for interviews:
+                  IoC + Dependency Injection + AOP + Transaction Management
+        
+                                  
+
+
+
+
+
+
 5. Difference between Spring and Spring Boot?
+-->
+| Spring                             | Spring Boot                      |
+| ---------------------------------- | -------------------------------- |
+| Framework                          | Built on top of Spring           |
+| Requires more configuration        | Requires minimal configuration   |
+| Usually needs manual configuration | Provides auto-configuration      |
+| Server configuration can be manual | Embedded servers available       |
+| More setup                         | Faster development               |
+| XML/configuration may be required  | Uses conventions and annotations |
+
+Example :
+  Traditional Spring application may require considerable configuration.
+
+Spring Boot allows:
+      @SpringBootApplication
+      public class Application {
+          public static void main(String[] args) {
+              SpringApplication.run(Application.class, args);
+          }
+      }
+Interview answer:
+    Spring is a framework that provides features such as IoC and Dependency Injection, while Spring Boot simplifies Spring application 
+    development using auto-configuration, starter dependencies, and embedded servers.
+
+
+
+
 6. What are modules in Spring Framework?
+-->Spring is divided into different modules, where each module provides specific functionality.
+
+Important modules include:
+
+Core Container
+Spring Core
+Spring Beans
+Spring Context
+Spring Expression Language (SpEL)
+Data Access
+JDBC
+ORM
+Transactions
+Web
+Spring Web
+Spring MVC
+WebSocket
+AOP
+
+Provides Aspect-Oriented Programming.
+
+Testing
+
+Provides support for testing Spring applications.
+
+You don't need to memorize every module initially.
+
+Remember:
+
+        Core Container
+            ↓
+        Data Access
+            ↓
+           Web
+            ↓
+           AOP
+            ↓
+         Testing
+
+
+
 7. What is Spring Context?
+-->Spring Context is a module that provides the ApplicationContext interface.
+    
+    It provides additional features on top of the basic BeanFactory.
+    
+    It is responsible for:
+    
+    Creating beans
+    Managing beans
+    Dependency Injection
+    Loading configuration
+    Providing access to application components
+    
+    Example:
+
+    ApplicationContext context =
+            new AnnotationConfigApplicationContext(AppConfig.class);
+    
+    Then we can get a bean:
+    
+    Student student = context.getBean(Student.class);
+    Interview answer:
+    
+    Spring Context provides the ApplicationContext, which is responsible for creating, configuring,
+    and managing Spring beans and their dependencies.
+
+
+
+
+
+
+
+
+
+
+
 8. What is Spring Container?
+-->The Spring Container is the core part of Spring that manages the lifecycle and dependencies of objects called beans.
+
+It:
+
+Creates objects
+      ↓
+Configures objects
+      ↓
+Injects dependencies
+      ↓
+Manages lifecycle
+      ↓
+Destroys objects when required
+
+Example:
+
+ApplicationContext context =
+        new AnnotationConfigApplicationContext(AppConfig.class);
+
+Here ApplicationContext acts as a Spring Container.
+
+
+
+
+
 9. Role of Spring Container?
 10. Why is Spring called lightweight?
 11. Advantages of Spring over traditional Java development?
