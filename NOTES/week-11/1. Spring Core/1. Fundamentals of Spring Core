@@ -447,3 +447,63 @@ Flow:
 Interview answer:
       Dependency management in Spring means that Spring Container creates and manages objects and automatically provides the required
       dependencies to those objects through Dependency Injection.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+⭐ Most Important Concepts to Remember
+
+For these 13 questions, focus especially on this chain:
+
+Spring Framework
+       ↓
+IoC
+       ↓
+Spring Container
+       ↓
+Creates Beans
+       ↓
+Dependency Injection
+       ↓
+Loose Coupling
+       ↓
+Easy Testing & Maintenance
+
+And remember this distinction:
+
+Spring
+  → Framework
+
+Spring Container
+  → Manages objects/beans
+
+ApplicationContext
+  → Interface used to access/manage Spring beans
+
+Bean
+  → Object managed by Spring
+
+Dependency
+  → Object required by another object
+
+Dependency Injection
+  → Spring provides that required object
+
+Spring Boot
+  → Simplifies Spring application development
+
+If you understand this chain, most basic Spring Core interview questions become much easier.
