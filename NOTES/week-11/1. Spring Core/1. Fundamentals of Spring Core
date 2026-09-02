@@ -254,7 +254,196 @@ Here ApplicationContext acts as a Spring Container.
 
 
 9. Role of Spring Container?
+-->The Spring Container performs several important tasks:
+
+1. Creates beans
+      Student student = new Student();
+      Spring does this for us.
+
+2. Injects dependencies
+      For example:
+            Controller
+                ↓
+            Service
+                ↓
+            Repository
+      
+      Spring connects these objects.
+
+3. Manages bean lifecycle
+      It controls:
+            Creation → Initialization → Usage → Destruction
+
+      4. Manages configuration
+            It reads configuration from:
+                  Annotations
+                  Java configuration
+                  XML configuration
+                        
+
+Simple interview answer:   
+      The Spring Container creates, configures, wires, manages, and destroys Spring beans.
+
+
+
+
+
 10. Why is Spring called lightweight?
+-->Spring is called lightweight because:
+            It doesn't require your classes to extend Spring classes.
+            It doesn't force your classes to implement Spring-specific interfaces.
+            It supports POJO-based development.
+            It uses Dependency Injection to manage objects.
+            Applications can use only the required Spring modules.
+
+For example:
+      public class Student {
+          private int id;
+          private String name;
+      }
+
+This is a normal Java class.
+
+Spring can manage it as a bean without requiring:     
+      extends SpringClass
+      
+            or
+      
+      implements SpringInterface
+
+
+Interview answer:
+      Spring is considered lightweight because it allows POJO-based development and provides its services without forcing classes to inherit 
+      from framework classes or implement framework-specific interfaces.
+
+
+
+
+
 11. Advantages of Spring over traditional Java development?
+-->Traditional Java
+
+We often manually create dependencies:
+      Repository repo = new Repository();
+      Service service = new Service(repo);
+      Controller controller = new Controller(service);
+Spring
+
+Spring manages these dependencies.
+
+Controller
+     ↓
+Service
+     ↓
+Repository
+
+Advantages:
+      Loose coupling
+      Dependency Injection
+      Easy testing
+      Modular architecture
+      Less boilerplate
+      Transaction management
+      Easy database integration
+      AOP support
+      Easy integration with other technologies
+
+The biggest advantage to remember:
+      Spring reduces tight coupling and makes applications easier to maintain and test.
+
+
+
+
 12. What is POJO in Spring?
+-->POJO = Plain Old Java Object
+
+It is simply a normal Java class that doesn't need to extend a special framework class or implement a special framework interface.
+
+Example: 
+      public class Student {
+      
+          private int id;
+          private String name;
+      
+          public Student() {
+          }
+      
+          public Student(int id, String name) {
+              this.id = id;
+              this.name = name;
+          }
+      
+          // getters and setters
+      }
+      
+      This is a POJO.
+      
+      Spring can manage this POJO as a bean.
+
+For example:  
+      @Component
+      public class Student {
+      }
+      
+      Now Spring can create and manage the Student object.
+
+Interview point:
+      Spring promotes POJO-based development, which keeps business logic independent of the framework.
+
+
+
+
+
+
 13. What is Dependency Management in Spring?
+-->This is closely related to Dependency Injection.
+
+Suppose:
+      class Car {
+          Engine engine;
+      }
+
+Here:
+      Car → depends on → Engine
+      
+      So Engine is a dependency of Car.
+      
+      Instead of Car creating the Engine itself:
+      
+      class Car {
+      
+          Engine engine = new Engine();
+      
+      }
+
+Spring can provide the dependency:
+      
+      @Component
+      class Engine {
+      }
+      @Component
+      class Car {
+      
+          private Engine engine;
+      
+          @Autowired
+          public Car(Engine engine) {
+              this.engine = engine;
+          }
+      }
+      
+      Spring Container creates Engine and injects it into Car.
+
+Flow:
+      Spring Container
+             ↓
+      Creates Engine
+             ↓
+      Creates Car
+             ↓
+      Injects Engine into Car
+
+
+Interview answer:
+      Dependency management in Spring means that Spring Container creates and manages objects and automatically provides the required
+      dependencies to those objects through Dependency Injection.
