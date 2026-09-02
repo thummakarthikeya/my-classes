@@ -1,0 +1,12 @@
+2. Inversion of Control (IoC)
+
+14. What is IoC?
+15. Why is IoC needed?
+16. What is IoC container?
+17. How does Spring implement IoC?
+18. Difference between traditional object creation and IoC?
+19. What is loose coupling?
+20. How IoC supports loose coupling?
+21. Advantages of IoC?
+22. Real-time example of IoC?
+23. Difference between IoC and Factory Pattern?  
