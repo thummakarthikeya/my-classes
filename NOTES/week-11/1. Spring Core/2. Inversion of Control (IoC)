@@ -1,12 +1,463 @@
 2. Inversion of Control (IoC)
 
 14. What is IoC?
+-->Simple definition
+
+    IoC (Inversion of Control) means the control of creating and managing objects is transferred from the programmer 
+    to the Spring container.
+
+Normally, we create objects ourselves using new.
+
+Engine engine = new Engine();
+Car car = new Car(engine);
+
+Here, we are controlling object creation.
+
+With Spring:
+    
+    @Component
+    class Engine {
+    }
+    @Component
+    class Car {
+    
+        private Engine engine;
+    
+        @Autowired
+        public Car(Engine engine) {
+            this.engine = engine;
+        }
+    }
+
+Now Spring creates the Engine and Car objects and injects Engine into Car.
+
+Interview answer :
+  IoC is a principle where the control of object creation, configuration, and dependency management is transferred 
+    from the application code to the Spring IoC container.
+
+
+Remember
+Without IoC:
+
+  Developer → creates object → manages object
+
+With IoC:
+    Developer → tells Spring what is needed
+                        ↓
+                  Spring Container
+                        ↓
+                creates & manages objects
+
+
+
+
+
+
 15. Why is IoC needed?
+-->IoC is mainly needed to achieve loose coupling and make applications easier to maintain and test.
+
+Consider:
+
+class Car {
+
+    Engine engine = new Engine();
+
+}
+
+Car is directly creating Engine.
+
+If tomorrow we want:
+
+ElectricEngine
+
+we have to modify Car.
+
+With IoC:
+
+class Car {
+
+    private Engine engine;
+
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+}
+
+Now Car doesn't care which implementation of Engine it receives.
+
+Main reasons for IoC
+Loose coupling
+Easier testing
+Easier maintenance
+Dependency management
+Flexible application design
+Easier replacement of implementations
+Interview answer
+
+IoC is needed to reduce tight coupling between classes, manage dependencies automatically, improve testability, and make the
+application easier to maintain and extend.
+
+
+
+
+
+
+
 16. What is IoC container?
+-->The IoC Container is the component in Spring that creates, configures, stores, and manages objects.
+      
+      Objects managed by Spring are called beans.
+      
+      For example:
+      
+      @Component
+      class Engine {
+      }
+      
+      Spring sees @Component and creates an Engine object.
+      
+      The container manages its lifecycle.
+      
+      Two important Spring IoC containers
+      BeanFactory
+      ApplicationContext
+      
+      ApplicationContext is the commonly used one in real Spring applications.
+      
+      Simple flow
+      @Component
+          ↓
+      Spring Container
+          ↓
+      Creates Object
+          ↓
+      Stores Object as Bean
+          ↓
+      Injects Bean wherever required
+      Interview answer
+      
+      The Spring IoC Container is responsible for creating, configuring, managing, and injecting the dependencies of Spring beans.
+      ApplicationContext is the commonly used IoC container in Spring applications.
+
+
+
+
+
+
 17. How does Spring implement IoC?
+-->Spring implements IoC mainly through Dependency Injection (DI).
+    There are three common types of dependency injection:
+
+1. Constructor Injection
+        @Component
+        class Car {
+        
+            private Engine engine;
+        
+            @Autowired
+            Car(Engine engine) {
+                this.engine = engine;
+            }
+        }    
+        Spring creates Engine and passes it to Car.
+
+2. Setter Injection
+      @Component
+      class Car {
+      
+          private Engine engine;
+      
+          @Autowired
+          public void setEngine(Engine engine) {
+              this.engine = engine;
+          }
+      }
+
+
+3. Field Injection
+      @Component
+      class Car {
+      
+          @Autowired
+          private Engine engine;
+      }
+
+Although field injection exists, constructor injection is generally preferred because dependencies are explicit and the object 
+can be immutable.
+      
+      Important relationship
+      IoC
+       ↓
+      Dependency Injection
+       ↓
+      Spring provides required objects
+
+
+Strictly speaking, IoC is the broader principle; Dependency Injection is one way to implement IoC.
+
+Interview answer :
+    Spring implements IoC primarily through Dependency Injection. The container creates the required beans and injects their 
+    dependencies using constructor, setter, or field injection.
+
+
+
+
+
+
+
 18. Difference between traditional object creation and IoC?
+-->This is a very common interview question.
+
+      Traditional approach
+      class Car {
+      
+          Engine engine = new Engine();
+      
+      }
+      
+      Car creates its own dependency.
+      
+      IoC approach
+      class Car {
+      
+          private Engine engine;
+      
+          public Car(Engine engine) {
+              this.engine = engine;
+          }
+      }
+      
+      Spring provides the Engine.
+
+
+Comparison
+| Traditional                            | IoC                             |
+| -------------------------------------- | ------------------------------- |
+| Developer creates objects              | Spring creates objects          |
+| Uses `new` frequently                  | Container manages objects       |
+| Dependencies are often tightly coupled | Dependencies are injected       |
+| Harder to test                         | Easier to test                  |
+| Harder to replace dependencies         | Easy to replace implementations |
+| Developer manages object lifecycle     | Spring manages bean lifecycle   |
+
+Easy way to remember
+Traditional:
+    "I need an Engine, so I'll create one." 
+    new Engine();
+
+IoC:
+    "I need an Engine. Spring, you give me one."
+    Car(Engine engine)
+
+
+
+
+
+
+
+
+
+
 19. What is loose coupling?
+-->Loose coupling means classes have minimum dependency on the concrete implementation of other classes.
+
+For example, this is tightly coupled:
+
+class Car {
+
+    PetrolEngine engine = new PetrolEngine();
+
+}
+
+Car specifically depends on PetrolEngine.
+
+If we want an electric engine, we need to change Car.
+
+Loose coupling
+
+Use an interface:
+
+interface Engine {
+    void start();
+}
+
+Implementations:
+
+class PetrolEngine implements Engine {
+
+    public void start() {
+        System.out.println("Petrol engine started");
+    }
+}
+class ElectricEngine implements Engine {
+
+    public void start() {
+        System.out.println("Electric engine started");
+    }
+}
+
+Now:
+
+class Car {
+
+    private Engine engine;
+
+    Car(Engine engine) {
+        this.engine = engine;
+    }
+}
+
+Car depends on:
+
+Engine
+
+rather than:
+
+PetrolEngine
+
+That's loose coupling.
+
+Interview answer
+
+Loose coupling means reducing the dependency between classes so that one class depends on abstractions rather than concrete implementations.
+
+
+
+
+
+
+
 20. How IoC supports loose coupling?
+-->This is directly related to the previous question.
+
+Without IoC:
+
+class Car {
+
+    Engine engine = new Engine();
+
+}
+
+Car is responsible for creating Engine.
+
+With IoC:
+
+class Car {
+
+    private Engine engine;
+
+    Car(Engine engine) {
+        this.engine = engine;
+    }
+}
+
+Now Car doesn't create the dependency.
+
+Spring provides it.
+
+Car
+ ↓
+depends on
+ ↓
+Engine interface
+ ↑
+Spring injects implementation
+
+For example:
+
+@Component
+class PetrolEngine implements Engine {
+}
+
+Spring can inject that implementation.
+
+Tomorrow:
+
+@Component
+class ElectricEngine implements Engine {
+}
+
+The implementation can be changed/configured without making Car responsible for constructing it.
+
+Interview answer
+
+IoC promotes loose coupling by separating object creation from object usage. A class receives its dependencies from the
+container instead of creating them itself, so it can depend on abstractions rather than concrete implementations.
+
+
+
+
+
+
+
+
+
+
+
 21. Advantages of IoC?
+-->The major advantages are:
+
+1. Loose coupling
+
+Classes don't directly create their dependencies.
+
+2. Easy testing
+
+We can provide mock objects.
+
+Car car = new Car(mockEngine);
+
+Instead of creating a real engine.
+
+3. Easy maintenance
+
+Changes to dependencies don't necessarily require changes to dependent classes.
+
+4. Reusability
+
+Spring-managed beans can be reused wherever needed.
+
+5. Centralized configuration
+
+Dependencies can be configured by the Spring container.
+
+6. Lifecycle management
+
+Spring manages bean creation and destruction.
+
+7. Easy replacement of implementations
+
+For example:
+
+PetrolEngine
+     ↓
+ElectricEngine
+
+can be switched without making Car responsible for creating either one.
+
+Interview answer
+
+The main advantages of IoC are loose coupling, better testability, easier maintenance, centralized dependency management, reusable
+components, lifecycle management, and flexibility in 
+replacing implementations.
+
+
+
+
+
+
+
+
+
 22. Real-time example of IoC?
+--->
+
+
+
+
+
+
+
+
+
 23. Difference between IoC and Factory Pattern?  
