@@ -1,0 +1,23 @@
+3. Dependency Injection (DI)
+
+24. What is Dependency Injection?
+25. Why is DI needed?
+26. How DI is related to IoC?
+27. Types of Dependency Injection?
+28. Constructor Injection?
+29. Setter Injection?
+30. Field Injection?
+31. Which injection is preferred and why?
+
+@Autowired Modes
+
+32. What is @Autowired?
+33. What is autowiring by type?
+34. What is autowiring by name?
+35. What is autowiring by constructor?
+36. What is @Qualifier?
+37. What is @Primary?
+38. What happens when multiple beans of same type exist?
+39. What is circular dependency?
+40. How Spring resolves dependencies?
+41. How to inject primitive values?
