@@ -450,7 +450,62 @@ replacing implementations.
 
 
 22. Real-time example of IoC?
---->
+--->Let's take a payment application.
+
+Suppose an application supports:
+
+Payment
+   |
+   ├── UPI
+   ├── Credit Card
+   └── PayPal
+
+Create an interface:
+
+public interface Payment {
+
+    void pay();
+
+}
+
+UPI implementation:  
+        @Component
+        public class UpiPayment implements Payment {
+        
+            public void pay() {
+                System.out.println("Payment using UPI");
+            }
+        }
+
+Payment service:
+    @Component
+    public class PaymentService {
+    
+        private Payment payment;
+    
+        public PaymentService(Payment payment) {
+            this.payment = payment;
+        }
+    
+        public void makePayment() {
+            payment.pay();
+        }
+    }
+
+Here PaymentService doesn't do:
+        new UpiPayment();
+        
+                Spring provides the object.
+                
+                        Spring Container
+                               ↓
+                        Creates UpiPayment
+                               ↓
+                        Injects into PaymentService
+                               ↓
+                        PaymentService.makePayment()
+
+This is a practical example of IoC.
 
 
 
@@ -461,3 +516,124 @@ replacing implementations.
 
 
 23. Difference between IoC and Factory Pattern?  
+-->Both are related to object creation, but they are not the same.
+
+Factory Pattern
+
+A Factory class is responsible for creating objects.
+
+Example:
+
+class PaymentFactory {
+
+    public Payment getPayment(String type) {
+
+        if (type.equals("UPI")) {
+            return new UpiPayment();
+        }
+
+        return new CreditCardPayment();
+    }
+}
+
+Then:
+
+PaymentFactory factory = new PaymentFactory();
+
+Payment payment = factory.getPayment("UPI");
+
+We are still explicitly asking the factory for an object.
+
+IoC
+
+With Spring:
+
+@Component
+class PaymentService {
+
+    private Payment payment;
+
+    PaymentService(Payment payment) {
+        this.payment = payment;
+    }
+}
+
+Spring automatically creates and injects the required dependency.
+
+| IoC                                        | Factory Pattern                      |
+| ------------------------------------------ | ------------------------------------ |
+| Design principle                           | Creational design pattern            |
+| Framework/container manages objects        | Factory creates objects              |
+| Dependencies can be automatically injected | Usually request object from factory  |
+| Manages dependency relationships           | Mainly focuses on object creation    |
+| Spring Container can manage lifecycle      | Factory usually only creates objects |
+
+
+Interview answer
+
+Factory Pattern centralizes object creation in a factory class, whereas IoC transfers object creation and dependency management to a container such as the Spring Container.
+
+⭐ Very Important: IoC vs DI vs IoC Container
+
+Interviewers commonly ask these together, so don't confuse them.
+
+IoC
+│
+│  Principle
+│  "Don't create dependencies yourself"
+│
+↓
+Dependency Injection (DI)
+│
+│  Technique to implement IoC
+│  "Dependencies are provided from outside"
+│
+↓
+Spring IoC Container
+│
+│  The actual Spring component
+│  that performs the work
+│
+↓
+Creates Beans
+│
+↓
+Injects Dependencies
+│
+↓
+Manages Bean Lifecycle
+
+For example:
+
+@Component
+class Engine {
+}
+
+@Component
+class Car {
+
+    private Engine engine;
+
+    Car(Engine engine) {
+        this.engine = engine;
+    }
+}
+
+Think of it as:
+
+IoC: Who controls object creation? → Spring
+
+DI: How does Car receive Engine? → Spring injects it
+
+IoC Container: Who actually creates and injects these objects? → Spring Container
+
+Bean: What do we call an object managed by Spring? → Spring Bean
+
+This concept is the foundation for understanding @Component, @Autowired, @Bean, constructor injection, and the Spring bean lifecycle.
+
+
+
+
+
+
+
