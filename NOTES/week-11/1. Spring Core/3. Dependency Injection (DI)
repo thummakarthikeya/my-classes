@@ -1,23 +1,879 @@
 3. Dependency Injection (DI)
 
 24. What is Dependency Injection?
+-->Simple explanation
+
+Dependency Injection means Spring provides the required objects to a class instead of the class creating those objects itself.
+
+For example, EmployeeService needs EmployeeRepository.
+
+Without DI:
+  class EmployeeService {
+  
+      EmployeeRepository repository = new EmployeeRepository();
+  
+  }
+  
+  Here, EmployeeService creates its dependency.
+
+With DI:
+    class EmployeeService {
+    
+        private EmployeeRepository repository;
+    
+        EmployeeService(EmployeeRepository repository) {
+            this.repository = repository;
+        }
+    }
+
+Spring creates EmployeeRepository and gives it to EmployeeService.
+
+Interview answer:
+    Dependency Injection is a design principle in which an object's dependencies are provided by an external container
+    rather than the object creating them itself.
+
+
+
+
+
+
 25. Why is DI needed?
+-->DI is mainly used to achieve loose coupling.
+
+Without DI:
+
+class PaymentService {
+    private CreditCardPayment payment = new CreditCardPayment();
+}
+
+PaymentService is tightly coupled to CreditCardPayment.
+
+With DI:
+
+class PaymentService {
+
+    private Payment payment;
+
+    PaymentService(Payment payment) {
+        this.payment = payment;
+    }
+}
+
+Now we can provide:
+
+CreditCardPayment
+
+or
+
+UPIPayment
+
+without changing PaymentService.
+
+Advantages
+Loose coupling
+Easier testing
+Easier maintenance
+Easier to change implementations
+Better code reusability
+Spring manages object creation and dependencies
+Interview answer
+
+DI is needed to reduce tight coupling between classes, improve testability and maintainability, and allow Spring to manage 
+object creation and dependencies.
+
+
+
+
+
+
 26. How DI is related to IoC?
+-->Simple definitions:
+IoC (Inversion of Control): 
+        The control of creating and managing objects is given to an external system like the Spring container.
+DI (Dependency Injection): 
+        The required objects (dependencies) are provided to a class from outside instead of the class creating them itself.
+
+Relationship :
+        DI is a way of implementing IoC.
+  
+
+This is a very important interview question.
+
+        IoC
+        
+        Inversion of Control is the broader principle.
+        
+        It means:
+        
+        Control of object creation and dependency management is transferred from the programmer to Spring.
+        
+        DI
+        
+        Dependency Injection is one way Spring implements IoC.
+        
+        Think:
+
+                IoC
+                 |
+        -------------------
+        |                 |
+       DI          Other mechanisms
+        |
+  Constructor
+  Setter
+  Field
+
+
+Example
+
+Normally:
+
+EmployeeService service = new EmployeeService();
+
+The programmer controls object creation.
+
+With Spring:
+
+EmployeeService service
+
+Spring creates and manages the object.
+
+Interview answer
+
+IoC is a principle where control is transferred to the Spring container, while Dependency Injection is the technique Spring uses
+to implement IoC by injecting dependencies into objects.
+
+⭐ Remember
+
+IoC = Principle
+
+DI = Technique
+
+
+
+
+
+
 27. Types of Dependency Injection?
+-->There are mainly three types:
+
+1. Constructor Injection
+
+Dependency is provided through the constructor.
+
+class EmployeeService {
+
+    private EmployeeRepository repository;
+
+    EmployeeService(EmployeeRepository repository) {
+        this.repository = repository;
+    }
+}
+2. Setter Injection
+
+Dependency is provided through a setter method.
+
+class EmployeeService {
+
+    private EmployeeRepository repository;
+
+    public void setRepository(EmployeeRepository repository) {
+        this.repository = repository;
+    }
+}
+3. Field Injection
+
+Dependency is injected directly into a field.
+
+class EmployeeService {
+
+    @Autowired
+    private EmployeeRepository repository;
+}
+Interview answer
+
+The three common types of Dependency Injection are Constructor Injection, Setter Injection, and Field Injection.
+
+
+
+
+
+
+
+
+
 28. Constructor Injection?
+-->In Constructor Injection, dependencies are passed through the class constructor.
+
+@Component
+class EmployeeService {
+
+    private EmployeeRepository repository;
+
+    @Autowired
+    public EmployeeService(EmployeeRepository repository) {
+        this.repository = repository;
+    }
+}
+
+In modern Spring, if there is only one constructor, @Autowired is not required.
+
+@Component
+class EmployeeService {
+
+    private final EmployeeRepository repository;
+
+    public EmployeeService(EmployeeRepository repository) {
+        this.repository = repository;
+    }
+}
+
+Spring automatically injects EmployeeRepository.
+
+Advantages
+Dependency cannot easily be missing
+Supports final fields
+Good for immutable objects
+Easy to test
+Makes dependencies clearly visible
+
+
+
+
+
+
+
+
+
 29. Setter Injection?
+-->In Setter Injection, Spring injects the dependency using a setter method.
+
+@Component
+class EmployeeService {
+
+    private EmployeeRepository repository;
+
+    @Autowired
+    public void setRepository(EmployeeRepository repository) {
+        this.repository = repository;
+    }
+}
+
+Here Spring calls:
+
+setRepository(repository);
+
+and injects the dependency.
+
+When useful?
+
+Setter injection is useful when the dependency is optional or can be changed after object creation.
+
+
+
+
+
+
+
+
 30. Field Injection?
+-->Field Injection means Spring directly injects the dependency into a field.
+
+@Component
+class EmployeeService {
+
+    @Autowired
+    private EmployeeRepository repository;
+}
+
+Spring finds the EmployeeRepository bean and places it into:
+
+repository
+
+
+
+Disadvantages :
+    Field injection is generally discouraged because:
+          Dependencies are hidden
+          Difficult to unit test without Spring/reflection
+          Cannot easily make dependency final
+          Object can exist in an incompletely initialized state
+
+
+
+
+
+
+
 31. Which injection is preferred and why?
+-->⭐ Constructor Injection is preferred.
+
+Example:
+
+@Component
+class EmployeeService {
+
+    private final EmployeeRepository repository;
+
+    public EmployeeService(EmployeeRepository repository) {
+        this.repository = repository;
+    }
+}
+Why?
+
+Because it:
+      Makes dependencies explicit
+      Supports final
+      Helps create immutable objects
+      Makes unit testing easier
+      Ensures required dependencies are provided during object creation
+      Interview answer
+
+Constructor Injection is generally preferred because it makes dependencies explicit, supports immutability using final fields, 
+improves testability, and ensures required dependencies are available when the object is created.
+
+⭐ Interview shortcut :
+        Constructor → Preferred
+        Setter      → Optional dependencies
+        Field       → Generally discouraged
+
+
+
+
+
+
+
 
 @Autowired Modes
 
 32. What is @Autowired?
+-->@Autowired tells Spring:
+
+"Find a suitable bean and inject it here."
+
+Example:
+    @Component
+    class EmployeeService {
+    
+        @Autowired
+        private EmployeeRepository repository;
+    }
+
+Spring searches for an EmployeeRepository bean and injects it.
+
+It can be used with:
+      Constructor
+      Setter
+      Field
+      Methods
+
+Example constructor:
+      @Autowired
+      public EmployeeService(EmployeeRepository repository) {
+          this.repository = repository;
+      }
+
+
+
+
+
+
+
 33. What is autowiring by type?
+-->This is the important concept behind @Autowired.
+
+Spring primarily looks for a bean based on its type.
+
+Suppose:
+
+@Repository
+class MySQLRepository implements Repository {
+}
+
+and:
+
+@Service
+class EmployeeService {
+
+    @Autowired
+    private Repository repository;
+}
+
+Spring searches:
+
+Repository type
+       ↓
+MySQLRepository bean
+       ↓
+Inject
+
+If there is exactly one matching bean, Spring can inject it.
+
+Interview answer
+
+Autowiring by type means Spring identifies a dependency based on its class or interface type and injects the matching bean.
+
+
+
+
+
+
+
+
+
 34. What is autowiring by name?
+-->Autowiring by name means matching the bean name with the dependency/property name.
+
+For example:
+
+@Component("mysqlRepository")
+class MySQLRepository implements Repository {
+}
+
+And:
+
+private Repository mysqlRepository;
+
+The name:
+
+mysqlRepository
+
+matches the bean name.
+
+Important clarification
+
+With modern @Autowired, type matching is primary. If multiple beans match by type, Spring can use the injection point's name as a fallback for choosing among them.
+
+So don't say:
+
+"@Autowired always autowires by name."
+
+That's incorrect.
+
+
+
+
+
+
+
+
+
+
+
 35. What is autowiring by constructor?
+-->Constructor autowiring means Spring resolves the dependencies required by a constructor and passes the corresponding beans to it.
+
+Example:
+
+@Component
+class EmployeeService {
+
+    private final Repository repository;
+
+    public EmployeeService(Repository repository) {
+        this.repository = repository;
+    }
+}
+
+If Spring has one Repository bean, it injects it.
+
+Important
+
+If a class has only one constructor, Spring can use it without @Autowired.
+
+public EmployeeService(Repository repository) {
+    this.repository = repository;
+}
+
+No annotation required.
+
+
+
+
+
+
+
+
 36. What is @Qualifier?
+-->@Qualifier is used when multiple beans of the same type exist and we want to specify exactly which bean should be injected.
+
+Example:
+
+interface Payment {
+}
+
+Two implementations:
+
+@Component("creditCard")
+class CreditCardPayment implements Payment {
+}
+@Component("upi")
+class UPIPayment implements Payment {
+}
+
+Now:
+
+@Autowired
+private Payment payment;
+
+Spring sees:
+
+Payment
+ ├── CreditCardPayment
+ └── UPIPayment
+
+It doesn't know which one to choose.
+
+So we use:
+
+@Autowired
+@Qualifier("upi")
+private Payment payment;
+
+Now Spring injects:
+
+UPIPayment
+Constructor example
+public PaymentService(
+        @Qualifier("upi") Payment payment) {
+    this.payment = payment;
+}
+Interview answer
+
+@Qualifier is used to resolve ambiguity when multiple beans of the same type are available by specifying the bean that should be injected.
+
+
+
+
+
+
+
 37. What is @Primary?
+-->@Primary tells Spring:
+
+"If multiple beans match this type, prefer this bean by default."
+
+Example:
+
+@Component
+@Primary
+class UPIPayment implements Payment {
+}
+
+Another bean:
+
+@Component
+class CreditCardPayment implements Payment {
+}
+
+Now:
+
+@Autowired
+private Payment payment;
+
+Spring chooses:
+
+UPIPayment
+
+because it is marked:
+
+@Primary
+@Primary vs @Qualifier
+| `@Primary`                      | `@Qualifier`                       |
+| ------------------------------- | ---------------------------------- |
+| Defines default preference      | Explicitly selects a bean          |
+| Used when multiple beans exist  | Used when multiple beans exist     |
+| Less specific                   | More specific                      |
+| Good for default implementation | Good for a specific implementation |
+
+⭐ Easy memory
+@Primary   → "Choose this by default"
+@Qualifier → "Choose exactly this"
+
+
+
+
+
 38. What happens when multiple beans of same type exist?
+-->Suppose:
+
+interface Payment {}
+
+We have:
+
+@Component
+class UPIPayment implements Payment {}
+@Component
+class CreditCardPayment implements Payment {}
+
+And:
+
+@Autowired
+private Payment payment;
+
+Spring finds:
+
+Payment
+   ↓
+2 matching beans
+   ↓
+Ambiguous
+
+Spring cannot decide which bean to inject and normally throws:
+
+NoUniqueBeanDefinitionException
+How can we solve it?
+Option 1: @Primary
+@Primary
+@Component
+class UPIPayment implements Payment {
+}
+Option 2: @Qualifier
+@Autowired
+@Qualifier("creditCardPayment")
+private Payment payment;
+Option 3: Inject a collection
+@Autowired
+private List<Payment> payments;
+
+Then Spring can inject all matching beans.
+
+
+
+
+
+
 39. What is circular dependency?
+-->Circular dependency occurs when two or more beans depend on each other.
+
+Example:
+
+EmployeeService
+      ↓
+EmployeeRepository
+      ↓
+EmployeeService
+
+Or:
+
+class A {
+    B b;
+}
+
+and:
+
+class B {
+    A a;
+}
+
+So:
+
+A needs B
+B needs A
+
+This is called circular dependency.
+
+Constructor example
+@Component
+class A {
+
+    private final B b;
+
+    A(B b) {
+        this.b = b;
+    }
+}
+@Component
+class B {
+
+    private final A a;
+
+    B(A a) {
+        this.a = a;
+    }
+}
+
+Spring cannot create either bean because:
+
+Create A
+ ↓
+Need B
+ ↓
+Create B
+ ↓
+Need A
+ ↓
+A is not created yet
+
+This generally results in a bean creation failure.
+
+Best solution
+
+Avoid circular dependencies by redesigning the classes.
+
+Often you can:
+    Move shared logic into another service
+    Reduce unnecessary dependencies
+    Introduce an intermediate component
+
+
+
+
+
+
+
+
 40. How Spring resolves dependencies?
+-->This is a very important overall question.
+
+When Spring creates a bean, it checks its dependencies and tries to find suitable beans in the ApplicationContext.
+
+For example:
+
+@Component
+class EmployeeService {
+
+    private final Repository repository;
+
+    EmployeeService(Repository repository) {
+        this.repository = repository;
+    }
+}
+
+Spring roughly does:
+
+1. Find EmployeeService bean
+          ↓
+2. See it requires Repository
+          ↓
+3. Search ApplicationContext
+          ↓
+4. Find matching Repository bean
+          ↓
+5. Resolve ambiguity if necessary
+   (@Primary / @Qualifier)
+          ↓
+6. Create EmployeeService
+          ↓
+7. Inject Repository
+
+
+Interview answer :
+    Spring resolves dependencies by examining the injection point, finding matching beans in the ApplicationContext, and using 
+    mechanisms such as type matching, @Qualifier, and @Primary to select the appropriate bean.
+
+
+
+
+
+
+
 41. How to inject primitive values?
+-->Spring can inject values such as:
+
+int
+String
+double
+boolean
+
+using @Value.
+
+Example:
+
+@Component
+class Employee {
+
+    @Value("25")
+    private int age;
+
+    @Value("Karthikeya")
+    private String name;
+}
+
+Spring injects:
+
+age  = 25
+name = Karthikeya
+More commonly, values come from properties
+
+application.properties:
+
+employee.name=Karthikeya
+employee.age=25
+
+Then:
+
+@Component
+class Employee {
+
+    @Value("${employee.name}")
+    private String name;
+
+    @Value("${employee.age}")
+    private int age;
+}
+
+Spring reads the values from the configuration and injects them.
+
+Important
+
+@Autowired is primarily for beans/objects.
+
+@Value is commonly used for configuration values/primitives/String values.
+
+🔥 Quick Interview Revision
+| Q                             | Key Answer                                                     |
+| ----------------------------- | -------------------------------------------------------------- |
+| **24. DI**                    | Spring provides dependencies instead of class creating them    |
+| **25. Why DI?**               | Loose coupling, testing, maintainability                       |
+| **26. DI & IoC**              | DI is a technique to implement IoC                             |
+| **27. Types**                 | Constructor, Setter, Field                                     |
+| **28. Constructor**           | Dependency through constructor                                 |
+| **29. Setter**                | Dependency through setter                                      |
+| **30. Field**                 | Dependency directly into field                                 |
+| **31. Preferred?**            | Constructor Injection                                          |
+| **32. @Autowired**            | Automatically injects matching dependency                      |
+| **33. By type**               | Match dependency primarily by type                             |
+| **34. By name**               | Bean name can be used to resolve a type match                  |
+| **35. Constructor**           | Dependencies resolved through constructor                      |
+| **36. @Qualifier**            | Select a specific bean                                         |
+| **37. @Primary**              | Make one bean the default                                      |
+| **38. Multiple beans**        | Ambiguity → `NoUniqueBeanDefinitionException` unless resolved  |
+| **39. Circular dependency**   | A → B → A                                                      |
+| **40. Dependency resolution** | Spring searches ApplicationContext and resolves matching beans |
+| **41. Primitive values**      | Use `@Value`                                                   |
+
+
+
+
+
+⭐ Most important concepts to remember
+IoC
+ ↓
+Spring controls object creation
+
+DI
+ ↓
+Spring supplies dependencies
+
+@Autowired
+ ↓
+Find and inject a bean
+
+Multiple beans
+ ↓
+@Primary / @Qualifier
+
+Configuration values
+ ↓
+@Value
+
+Preferred DI
+ ↓
+Constructor Injection
+
+If you're preparing for a Java/Spring interview, the next important section after this is usually Spring Bean + @Component, @Service,
+@Repository, @Controller, bean scopes, and bean lifecycle.
+
+
+
