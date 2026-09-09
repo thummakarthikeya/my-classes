@@ -1,5 +1,47 @@
+4. Spring Beans
+----------------
+
 42. What is a Spring Bean?
+-->Simple explanation
+
+A Spring Bean is an object that is created, configured, and managed by the Spring IoC container.
+
+Normally in Java:
+
+Employee employee = new Employee();
+
+Here, we create and manage the object.
+
+In Spring:
+
+      @Component
+      class Employee {
+      }
+      
+      Spring detects the class and creates an object of Employee.
+      
+      That object is called a Spring Bean.
+      
+      Spring Container
+             |
+             ↓
+      Creates Employee object
+             |
+             ↓
+      Manages Employee object
+             |
+             ↓
+      Employee = Spring Bean
+      Interview answer
+      
+      A Spring Bean is an object that is instantiated, configured, and managed by the Spring IoC container.
+
+
+
+
 43. Difference between object and Spring Bean?
+-->
+
 44. How is a bean created?
 45. What is bean definition?
 46. What is bean wiring?
