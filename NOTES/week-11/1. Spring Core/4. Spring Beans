@@ -173,8 +173,393 @@ A Bean Definition is metadata that tells the Spring container how a bean should 
 
 
 46. What is bean wiring?
+-->Bean Wiring means connecting one Spring Bean with another bean that it depends on.
+
+For example:
+
+@Component
+class EmployeeRepository {
+}
+
+And:
+
+@Component
+class EmployeeService {
+
+    private final EmployeeRepository repository;
+
+    @Autowired
+    public EmployeeService(EmployeeRepository repository) {
+        this.repository = repository;
+    }
+}
+
+Here:
+
+EmployeeService
+       |
+       | needs
+       ↓
+EmployeeRepository
+
+Spring connects them.
+
+This is called Bean Wiring.
+
+Interview answer
+
+Bean wiring is the process of connecting a bean with its required dependencies so that Spring can provide those dependencies automatically.
+
+Remember
+DI = Providing dependencies
+
+Bean Wiring = Connecting beans/dependencies
+
+They are closely related.
+
+
+
+
+
+
+
+
+
+
 47. What is component scanning?
+-->Component scanning is the process by which Spring searches specified packages for classes annotated with Spring stereotype 
+annotations such as:
+
+@Component
+@Service
+@Repository
+@Controller
+
+For example:
+
+@Component
+class EmployeeService {
+}
+
+Spring scans the package, finds EmployeeService, and registers it as a bean.
+
+Usually Spring Boot starts scanning from the package containing the main application class and its subpackages.
+
+Example:
+
+com.example
+    |
+    ├── Application.java
+    |
+    ├── service
+    │      └── EmployeeService.java
+    |
+    └── repository
+           └── EmployeeRepository.java
+
+Spring Boot scans these packages and discovers the components.
+
+Interview answer
+
+Component scanning is the mechanism by which Spring automatically detects classes annotated with component stereotypes 
+and registers them as beans in the application context.
+
+
+
+
+
+
 48. What is @Component?
+-->@Component is a stereotype annotation that tells Spring:
+
+"Create and manage an object of this class as a Spring Bean."
+
+Example:
+
+@Component
+public class EmployeeService {
+
+}
+
+During component scanning, Spring finds this class and registers it as a bean.
+
+Then we can inject it:
+
+@Component
+public class EmployeeController {
+
+    private final EmployeeService service;
+
+    public EmployeeController(EmployeeService service) {
+        this.service = service;
+    }
+}
+Interview answer
+
+@Component marks a class as a Spring-managed component so that it can be detected through component scanning and registered as a Spring Bean.
+
+
+
+
+
+
+
+
+
+
 49. Difference between @Component, @Service, @Repository?
+-->All three are Spring stereotype annotations and can make a class eligible for component scanning.
+
+But they communicate different responsibilities.
+
+@Component
+
+General-purpose Spring component.
+
+@Component
+class EmailSender {
+}
+
+Use when the class doesn't specifically belong to another stereotype.
+
+@Service
+
+Used for the service/business logic layer.
+
+@Service
+class EmployeeService {
+}
+
+Example responsibilities:
+
+Business logic
+Calculations
+Validation
+Processing
+@Repository
+
+Used for the data-access/persistence layer.
+
+@Repository
+class EmployeeRepository {
+}
+
+Example responsibilities:
+
+Database operations
+CRUD
+Data access
+
+| Annotation    | Typical layer  | Purpose                  |
+| ------------- | -------------- | ------------------------ |
+| `@Component`  | General        | Generic Spring component |
+| `@Service`    | Service        | Business logic           |
+| `@Repository` | Repository/DAO | Data access              |
+
+
+Important interview point
+
+@Service and @Repository are specialized forms of @Component.
+
+Conceptually:
+
+              @Component
+                  |
+        ----------------------
+        |         |          |
+    @Service  @Repository  @Controller
+Special behavior of @Repository
+
+@Repository also participates in Spring's exception translation mechanism for persistence-related exceptions.
+
+Interview answer
+
+@Component is a general-purpose stereotype, @Service represents the service/business layer, and @Repository represents the data-access
+layer. @Service and @Repository are specialized component stereotypes.
+
+
+
+
+
+
+
 50. What is @Bean?
+-->@Bean is used to explicitly tell Spring:
+
+"The object returned by this method should be registered as a Spring Bean."
+
+Example:
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public Employee employee() {
+        return new Employee();
+    }
+}
+
+Spring calls the method and registers the returned Employee object as a bean.
+
+Then it can be injected:
+
+@Autowired
+private Employee employee;
+When is @Bean useful?
+
+It is particularly useful when:
+
+You need to configure a third-party class
+You don't control the source code of the class
+You want explicit configuration
+You need customized object creation
+
+For example:
+
+@Bean
+public ObjectMapper objectMapper() {
+    return new ObjectMapper();
+}
+
+You can't add @Component to ObjectMapper if it is a class from a library you don't own, but you can register it with @Bean.
+
+
+
+
+
+
 51. Difference between @Bean and @Component?
+-->This is very commonly asked.
+
+@Component
+
+Put the annotation on the class:
+
+@Component
+class EmployeeService {
+}
+
+Spring discovers it through component scanning.
+
+@Bean
+
+Put the annotation on a method, normally inside a @Configuration class:
+
+@Configuration
+class AppConfig {
+
+    @Bean
+    public EmployeeService employeeService() {
+        return new EmployeeService();
+    }
+}
+
+Spring registers the object returned by that method.
+
+
+Comparison :
+| `@Component`                                   | `@Bean`                               |
+| ---------------------------------------------- | ------------------------------------- |
+| Applied to a class                             | Applied to a method                   |
+| Automatically discovered by component scanning | Explicitly declared in configuration  |
+| Good for classes you control                   | Useful for third-party/custom objects |
+| Spring creates the component                   | Method provides the object to Spring  |
+| Less configuration                             | More explicit configuration           |
+
+
+
+⭐ Easy memory trick
+@Component
+     ↓
+"Spring, scan this CLASS"
+
+@Bean
+     ↓
+"Spring, register the OBJECT returned by this METHOD"
+🔥 Complete Spring Beans Revision
+
+Remember this flow:
+
+                  Spring Container
+                        |
+                        ↓
+                 Bean Definition
+                        |
+                        ↓
+                Create Spring Bean
+                        |
+                        ↓
+                  Bean Wiring
+                        |
+                        ↓
+               Dependency Injection
+
+And:
+
+@Component
+   ↓
+Component Scanning
+   ↓
+Spring Bean
+
+Whereas:
+
+@Configuration
+      ↓
+    @Bean
+      ↓
+Object returned by method
+      ↓
+Spring Bean
+⭐ Most Important Interview Answers
+
+If the interviewer asks quickly:
+
+42. Spring Bean?
+
+An object created and managed by the Spring IoC container.
+
+43. Object vs Bean?
+
+A Spring Bean is a Spring-managed object; a normal object may be created and managed directly by application code.
+
+44. How Bean created?
+
+Through component scanning, @Bean configuration, or XML configuration.
+
+45. Bean Definition?
+
+Metadata that tells Spring how to create and manage a bean.
+
+46. Bean Wiring?
+
+Connecting a bean with its required dependencies.
+
+47. Component Scanning?
+
+Spring automatically searches packages for component classes and registers them as beans.
+
+48. @Component?
+
+Marks a class as a Spring-managed component.
+
+49. @Component vs @Service vs @Repository?
+
+All are component stereotypes; @Component is general, @Service represents business logic, and @Repository represents data access.
+
+50. @Bean?
+
+Registers the object returned by a method as a Spring Bean.
+
+51. @Bean vs @Component?
+
+@Component is class-level and discovered through scanning; @Bean is method-level and explicitly registers the returned object.
+
+🎯 One-line memory map
+@Component → Class → Auto discovered
+@Service   → Business Logic
+@Repository → Database/Data Access
+@Bean      → Method → Explicit Bean
+
+Next, the natural Spring Core section is Bean Scopes + Bean Lifecycle, which is where questions like singleton, prototype, request,
+session, @PostConstruct, @PreDestroy, InitializingBean, and DisposableBean usually come in.
