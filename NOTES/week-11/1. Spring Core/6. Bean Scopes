@@ -1,0 +1,25 @@
+6. Bean Scopes
+
+
+
+65. What is bean scope?
+
+66. What are bean scopes in Spring?
+
+Core Scopes
+
+67. What is Singleton scope (default)?
+68. What is Prototype scope?
+
+Web Scopes
+
+69. What is Request scope?
+70. What is Session scope?
+71. What is Global Session scope?
+
+Advanced
+
+72. Why singleton is default scope?
+73. Difference between singleton and prototype?
+74. Which scope is used for shopping cart?
+75. Can singleton use prototype bean?
