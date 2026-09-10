@@ -1,0 +1,15 @@
+5. Bean Lifecycle
+
+52. What is bean lifecycle?
+53. What are the phases of bean lifecycle?
+54. What happens during bean instantiation?
+55. What is dependency injection phase?
+56. What is initialization phase?
+57. What is destroy phase?
+58. What is initialization method?
+59. What is destroy method?
+60. What is @PostConstruct?
+61. What is @PreDestroy?
+62. Constructor vs init method?
+63. What is BeanPostProcessor?
+64. How BeanPostProcessor works?
