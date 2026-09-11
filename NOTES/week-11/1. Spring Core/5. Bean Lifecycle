@@ -1,14 +1,103 @@
 5. Bean Lifecycle
 
 52. What is bean lifecycle?
--->
+-->Answer:
+      
+      The Bean Lifecycle is the sequence of steps a Spring Bean goes through from creation to destruction.
+      
+      In simple words:
+      
+      Spring creates the bean → injects dependencies → initializes it → uses it → destroys it.
+      
+      Basic flow:
+      
+      Bean Instantiation
+             ↓
+      Dependency Injection
+             ↓
+      BeanPostProcessor (Before Initialization)
+             ↓
+      Initialization
+             ↓
+      BeanPostProcessor (After Initialization)
+             ↓
+      Bean is Ready
+             ↓
+      Destroy
+
+
+
 
 
 
 
 
 53. What are the phases of bean lifecycle?
+-->The major phases are:
+
+      Instantiation – Spring creates the bean object.
+      Dependency Injection – Spring injects required dependencies.
+      Pre-initialization – BeanPostProcessor works before initialization.
+      Initialization – initialization methods are executed.
+      Post-initialization – BeanPostProcessor works after initialization.
+      Bean Ready – bean is available for use.
+      Destruction – Spring destroys the bean when the container shuts down.
+      Instantiation
+           ↓
+      Dependency Injection
+           ↓
+      Pre-Initialization
+           ↓
+      Initialization
+           ↓
+      Post-Initialization
+           ↓
+      Ready to Use
+           ↓
+      Destruction
+
+
+
+
+
+
+
 54. What happens during bean instantiation?
+-->Instantiation means creating the bean object.
+
+      Spring creates the object using its constructor.
+      
+      For example:
+      
+      @Component
+      public class EmployeeService {
+      
+          public EmployeeService() {
+              System.out.println("Constructor called");
+          }
+      }
+      
+      When Spring creates this bean:
+      
+      Spring Container
+            ↓
+      Calls EmployeeService constructor
+            ↓
+      EmployeeService object created
+      
+      So:
+      
+      During instantiation, Spring creates the bean object in memory.
+
+
+
+
+
+
+
+
+
+
 55. What is dependency injection phase?
 56. What is initialization phase?
 57. What is destroy phase?
