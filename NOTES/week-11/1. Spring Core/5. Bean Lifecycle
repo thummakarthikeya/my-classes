@@ -99,12 +99,503 @@
 
 
 55. What is dependency injection phase?
+-->After creating the bean, Spring provides the bean's required dependencies.
+      
+      Example:
+      
+      @Component
+      public class EmployeeService {
+      
+          private EmployeeRepository repository;
+      
+          @Autowired
+          public EmployeeService(EmployeeRepository repository) {
+              this.repository = repository;
+          }
+      }
+      
+      Here:
+      
+      Spring creates EmployeeRepository
+                 ↓
+      Spring creates EmployeeService
+                 ↓
+      Spring injects EmployeeRepository
+                 ↓
+      EmployeeService is ready for initialization
+      
+      Interview answer:
+            Dependency Injection is the phase where Spring provides the required dependencies to the newly created bean.
+
+
+
+
+
+
+
+
+
 56. What is initialization phase?
+-->The initialization phase is the stage where Spring performs the final setup of a bean after its dependencies have been injected.
+
+You can perform initialization using:
+      @PostConstruct
+      InitializingBean
+      Custom init-method
+
+Example:
+      @Component
+      public class EmployeeService {
+      
+          @PostConstruct
+          public void init() {
+              System.out.println("Bean initialized");
+          }
+      }
+      
+      The init() method executes after dependency injection.
+      
+      Constructor
+           ↓
+      Dependency Injection
+           ↓
+      @PostConstruct
+           ↓
+      Bean Ready
+
+
+
+
+
+
+
+
+
+
 57. What is destroy phase?
+-->The destroy phase occurs when the Spring container is shutting down and Spring is removing/destroying beans.
+
+            It allows you to perform cleanup operations such as:
+                  Closing database connections
+                  Closing files
+                  Releasing resources
+                  Closing network connections
+                  
+            Example:
+                  @PreDestroy
+                  public void cleanup() {
+                      System.out.println("Cleaning resources...");
+                  }
+            
+            Interview answer:
+                  The destroy phase is the final phase of a bean's lifecycle where Spring performs cleanup before removing the bean.
+
+
+
+
+
+
+
+
 58. What is initialization method?
+-->An initialization method is a method executed after dependency injection and before the bean is ready to use.
+
+Example:
+      @PostConstruct
+      public void init() {
+          System.out.println("Initialization method");
+      }
+
+Another approach:   
+      public void init() {
+          // initialization logic
+      }
+      
+      and configure it as an init-method.
+
+Purpose:
+      Create bean
+           ↓
+      Inject dependencies
+           ↓
+      Initialize bean
+           ↓
+      Use bean
+
+
+
+
+
+
+
+
 59. What is destroy method?
+-->A destroy method is a method executed when Spring destroys the bean.
+
+Example:
+      @PreDestroy
+      public void destroy() {
+          System.out.println("Bean destroyed");
+      }
+      
+      It is generally used for cleanup.
+
+
+Application Running
+       ↓
+Bean Used
+       ↓
+Application Shutdown
+       ↓
+Destroy Method
+
+
+
+
+
+
+
+
+
 60. What is @PostConstruct?
+-->@PostConstruct is used to execute a method after dependency injection is completed.
+
+Example:
+      @Component
+      public class PaymentService {
+      
+          @PostConstruct
+          public void init() {
+              System.out.println("PaymentService initialized");
+          }
+      }
+
+The order is approximately:
+
+      Constructor
+          ↓
+      Dependency Injection
+          ↓
+      @PostConstruct
+          ↓
+      Bean Ready
+
+Important interview point:
+      @PostConstruct is commonly used for initialization logic that requires the bean's dependencies to already be available.
+
+
+
+
+
+
+
+
 61. What is @PreDestroy?
+-->@PreDestroy is used to execute a method before Spring destroys the bean.
+
+Example:
+      @Component
+      public class DatabaseService {
+      
+          @PreDestroy
+          public void cleanup() {
+              System.out.println("Closing resources");
+          }
+      }
+
+Flow:
+      Bean is being destroyed
+              ↓
+      @PreDestroy method
+              ↓
+      Bean removed
+
+Important:
+      @PreDestroy is generally used for cleanup operations.
+
+
+
+
+
+
+
+
+
+
 62. Constructor vs init method?
+-->This is a very important interview question.
+| Constructor                                                | Init Method                         |
+| ---------------------------------------------------------- | ----------------------------------- |
+| Used to create the object                                  | Used to initialize the object       |
+| Executes during instantiation                              | Executes after dependency injection |
+| Creates the bean instance                                  | Performs initialization logic       |
+| Dependencies may be supplied through constructor injection | Dependencies are already available  |
+| Executes before `@PostConstruct`                           | Executes during initialization      |
+
+Example:
+      @Component
+      public class EmployeeService {
+      
+          public EmployeeService() {
+              System.out.println("Constructor");
+          }
+      
+          @PostConstruct
+          public void init() {
+              System.out.println("Init method");
+          }
+      }
+
+Output:
+      Constructor
+      Init method
+
+Simple interview answer:
+      The constructor is mainly used for object creation, whereas the initialization method is used to perform initialization after
+      dependency injection.
+
+
+
+
+
+
+
+
+
+
 63. What is BeanPostProcessor?
+-->BeanPostProcessor is a Spring interface that allows us to perform custom processing on beans before and after initialization.
+
+It provides two important methods:
+
+postProcessBeforeInitialization()
+
+and
+
+postProcessAfterInitialization()
+
+Example:
+
+@Component
+public class MyBeanPostProcessor
+        implements BeanPostProcessor {
+
+    @Override
+    public Object postProcessBeforeInitialization(
+            Object bean, String beanName) {
+
+        System.out.println("Before initialization: " + beanName);
+        return bean;
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(
+            Object bean, String beanName) {
+
+        System.out.println("After initialization: " + beanName);
+        return bean;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 64. How BeanPostProcessor works?
+-->This is where you should remember the exact sequence.
+
+Suppose we have:
+
+@Component
+public class EmployeeService {
+
+    @PostConstruct
+    public void init() {
+        System.out.println("PostConstruct");
+    }
+}
+
+Spring roughly follows:
+
+1. Constructor
+       ↓
+2. Dependency Injection
+       ↓
+3. BeanPostProcessor
+   Before Initialization
+       ↓
+4. @PostConstruct
+       ↓
+5. Initialization method
+       ↓
+6. BeanPostProcessor
+   After Initialization
+       ↓
+7. Bean Ready
+Easy way to remember
+Constructor
+    ↓
+DI
+    ↓
+BEFORE
+    ↓
+INIT
+    ↓
+AFTER
+    ↓
+READY
+Example
+@Component
+public class MyBeanPostProcessor
+        implements BeanPostProcessor {
+
+    @Override
+    public Object postProcessBeforeInitialization(
+            Object bean, String beanName) {
+
+        System.out.println("Before: " + beanName);
+        return bean;
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(
+            Object bean, String beanName) {
+
+        System.out.println("After: " + beanName);
+        return bean;
+    }
+}
+
+If the bean has:
+
+@PostConstruct
+public void init() {
+    System.out.println("Init");
+}
+
+The conceptual order is:
+
+Constructor
+      ↓
+Dependency Injection
+      ↓
+Before Initialization
+      ↓
+@PostConstruct
+      ↓
+After Initialization
+      ↓
+Bean Ready
+⭐ Interview definition
+
+BeanPostProcessor is a Spring extension mechanism used to modify or process beans before and after their initialization.
+
+Why is it important?
+
+Spring itself uses post-processors for many features. They are involved in processing beans for things such as annotations, proxies, and other container functionality.
+
+🔥 Most Important Lifecycle Sequence for Interview
+
+You should memorize this:
+
+          Bean Lifecycle
+               │
+               ↓
+        Bean Instantiation
+               │
+               ↓
+       Dependency Injection
+               │
+               ↓
+ BeanPostProcessor - BEFORE
+               │
+               ↓
+         @PostConstruct
+               │
+               ↓
+      Initialization Method
+               │
+               ↓
+ BeanPostProcessor - AFTER
+               │
+               ↓
+          Bean Ready
+               │
+               ↓
+       Application Runs
+               │
+               ↓
+          @PreDestroy
+               │
+               ↓
+       Destroy Method
+               │
+               ↓
+          Bean Destroyed
+⭐ One-line answers to remember
+
+52. Bean Lifecycle:
+
+The sequence of stages a Spring bean goes through from creation to destruction.
+
+53. Phases:
+
+Instantiation, dependency injection, initialization, post-processing, usage, and destruction.
+
+54. Instantiation:
+
+Spring creates the bean object, usually by calling its constructor.
+
+55. Dependency Injection:
+
+Spring injects the required dependencies into the bean.
+
+56. Initialization:
+
+Spring performs initialization after dependencies are injected.
+
+57. Destroy:
+
+Spring performs cleanup before destroying the bean.
+
+58. Initialization Method:
+
+A method executed after dependency injection to initialize the bean.
+
+59. Destroy Method:
+
+A method executed before the bean is destroyed for cleanup.
+
+60. @PostConstruct:
+
+Executes a method after dependency injection and before the bean is ready.
+
+61. @PreDestroy:
+
+Executes a method before Spring destroys the bean.
+
+62. Constructor vs Init:
+
+Constructor creates the object; init method performs initialization after dependency injection.
+
+63. BeanPostProcessor:
+
+A Spring interface used to process beans before and after initialization.
+
+64. How it works:
+
+It processes a bean before initialization and again after initialization, allowing Spring or developers to customize bean processing.
+
+
+
+
+
+
+
+
+
