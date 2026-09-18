@@ -1,4 +1,4 @@
-What is a server?
+1) What is a server?
 -->A server is a system/program that listens for requests from clients, processes those requests, and sends back an appropriate response.
 
 In a typical MERN application:
@@ -36,7 +36,7 @@ That's a strong interview answer. ✅
 
 
 
-Is Node.js the server?
+2) Is Node.js the server?
 -->"Node.js is a JavaScript runtime environment used to build server-side applications. Express.js is a web framework built on Node.js
     that helps us create HTTP servers and APIs."
 
@@ -50,7 +50,7 @@ Is Node.js the server?
 
 
 
-What is the difference between a Server and a Backend?
+3) What is the difference between a Server and a Backend?
                   React Frontend
                         ↓
                   Node.js + Express
@@ -76,3 +76,201 @@ What is the difference between a Server and a Backend?
 
 
 
+
+
+
+
+
+4) What is the difference between frontend and backend?
+-->The frontend is the client-side part of an application that users interact with, while
+    the backend is the server-side part that handles requests, business logic, authentication,
+    and communication with databases and other services.
+
+
+
+
+
+
+
+
+5) Explain what happens from the moment they click the button until the application data appears on the React screen.
+-->
+        User
+         ↓
+        React
+         ↓
+        API request
+         ↓
+        Backend
+         ↓
+        Authentication
+         ↓
+        Database
+         ↓
+        Response
+         ↓
+        React
+         ↓
+        UI
+
+    1. React doesn't "connect the backend"
+    
+        React sends an HTTP request to a backend API.
+        
+        For example:
+            fetch("http://localhost:3000/api/applications")
+        
+        or:
+            axios.get("/api/applications")
+        
+        So say:
+            "React sends an HTTP request to the backend API."
+
+
+
+
+        
+        2. The request doesn't go from middleware → controller → server
+        This is the biggest correction.
+        You said:
+                "request will hit the backend middleware of the controller and the controller will pass it to the server"
+                
+                Actually, the server receives the request first.
+                
+                A simplified Express flow is:
+                        React
+                          ↓
+                        HTTP Request
+                          ↓
+                        Node.js HTTP Server
+                          ↓
+                        Express
+                          ↓
+                        Middleware
+                          ↓
+                        Route
+                          ↓
+                        Controller
+                          ↓
+                        Service / Business Logic
+                          ↓
+                        Database
+
+
+
+            
+            3. JWT checking is usually middleware
+            
+            You were right about JWT being checked, but normally authentication middleware handles it.
+            
+            For example:
+            
+            app.get(
+              "/applications",
+              authMiddleware,
+              applicationController.getApplications
+            );
+            
+            Flow:
+                
+                Request
+                   ↓
+                authMiddleware
+                   ↓
+                JWT valid?
+                   ↓
+                Controller
+                
+                If JWT is invalid:
+                
+                Request
+                   ↓
+                JWT Middleware
+                   ↓
+                ❌ 401 Unauthorized
+                
+                The controller may never execute.
+
+
+
+                
+                4. Where does the Model fit?
+                
+                You mentioned:
+                
+                "interact with the DB and also the model"
+                
+                This depends on the architecture/framework you're using.
+                
+                For a typical Node + Express application:
+                
+                        Controller
+                            ↓
+                        Service
+                            ↓
+                        Model / ORM
+                            ↓
+                        Database
+                        
+                        For example, with MongoDB + Mongoose:
+                        
+                        Controller
+                            ↓
+                        Service
+                            ↓
+                        Mongoose Model
+                            ↓
+                        MongoDB
+                
+                The model provides the interface for working with the database, while MongoDB is the actual database.
+
+
+
+⭐ Your complete flow
+
+For your application, I'd want you to visualize it like this:
+
+                 USER
+                   ↓
+            Clicks Button
+                   ↓
+              React UI
+                   ↓
+             fetch / Axios
+                   ↓
+             HTTP Request
+                   ↓
+          Node.js HTTP Server
+                   ↓
+                Express
+                   ↓
+              Middleware
+             /           \
+        JWT/Auth       Validation
+             \           /
+                   ↓
+                Route
+                   ↓
+              Controller
+                   ↓
+                Service
+                   ↓
+             Model / ORM
+                   ↓
+                Database
+                   ↓
+             Data returned
+                   ↓
+                Service
+                   ↓
+              Controller
+                   ↓
+             HTTP Response
+                   ↓
+                React
+                   ↓
+             State Update
+                   ↓
+              Re-render
+                   ↓
+               UI shown
