@@ -277,3 +277,142 @@ For your application, I'd want you to visualize it like this:
 
 
 
+
+
+
+
+
+
+
+5) You said React sends an HTTP request to the backend. What exactly is an HTTP request? What information does it contain?"
+-->1. What is HTTP?           
+            HTTP = HyperText Transfer Protocol.
+            
+            It is a protocol/ruleset that defines how clients and servers communicate over a network.
+            
+            It is not an API.
+            
+            Think:
+            
+            HTTP = communication rules
+            API  = interface/endpoints that your application exposes
+
+
+       
+            2. What is an HTTP request?
+            
+                    An HTTP request is a message sent by a client to a server asking it to perform some operation or provide some resource.
+                    
+                    For example:
+                    
+                    React
+                      ↓
+                    HTTP Request
+                      ↓
+                    GET /api/applications
+                    
+                    The request can contain:
+                    
+                    HTTP Request
+                    │
+                    ├── Method
+                    ├── URL
+                    ├── Headers
+                    ├── Query Parameters
+                    ├── Body
+                    └── Other protocol information
+                    
+                    Example:
+                    
+                    POST /api/login HTTP/1.1
+                    Content-Type: application/json
+                    Authorization: Bearer xyz
+                    
+                    Body:
+                    
+                    {
+                      "email": "user@gmail.com",
+                      "password": "123456"
+                    }
+
+
+
+            3. Are HTTP requests packets?
+                    
+                    This is the part I'd change in an interview.
+                    
+                    Don't say:
+                    
+                    "HTTP request is a packet."
+                    
+                    An HTTP request is an application-layer message. When transmitted over the network, that data is carried through lower networking layers and may be divided into packets/segments depending on the underlying protocols.
+                    
+                    For your interview, simply remember:
+                    
+                    HTTP request = message sent by the client to the server.
+
+
+            4. HTTP methods
+                    
+                    You correctly remembered these. ✅
+                    
+                    Common methods:
+                    
+                    Method	Typical purpose
+                    GET	Retrieve data
+                    POST	Create/send data
+                    PUT	Replace/update a resource
+                    PATCH	Partially update a resource
+                    DELETE	Delete a resource
+                    
+                    Example:
+                    
+                    GET     /applications
+                    POST    /applications
+                    PUT     /applications/10
+                    PATCH   /applications/10
+                    DELETE  /applications/10
+
+
+
+            5. HTTP ≠ API
+                    
+                    This is very important.
+                    
+                    Suppose your backend has:
+                    
+                    GET /api/applications
+                    
+                    That endpoint is part of your API.
+                    
+                    When React communicates with that endpoint using HTTP:
+                    
+                    React
+                      │
+                      │ HTTP GET request
+                      ↓
+                    GET /api/applications
+                      │
+                      ↓
+                    Express Backend
+                    
+                    So:
+                    
+                    HTTP → communication protocol
+                    API → interface/endpoints exposed by an application
+                    HTTP request → message sent using HTTP
+                    HTTP method → tells what kind of operation the request represents
+                    
+                    🎯 Interview-ready answer
+                    
+                    If they ask:
+                    
+                    "What is an HTTP request?"
+                    
+                    You can say:
+                    
+                    "An HTTP request is a message sent by a client to a server using the HTTP protocol. It contains information such as the HTTP method, URL, headers, and optionally query parameters and a request body. The server processes the request and sends back an HTTP response."
+                    
+                    That's a solid answer. ✅
+
+
