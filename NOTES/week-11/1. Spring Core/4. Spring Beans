@@ -429,42 +429,47 @@ You can't add @Component to ObjectMapper if it is a class from a library you don
 
 
 51. Difference between @Bean and @Component?
--->This is very commonly asked.
+-->now we have a component to register a perticular class object as a bean in an ioc container now we cannot create a bean for a 3rd party class
+      for example we have a code where we can only read and use it but we cannot write, At that time how can we write @component on that class
+      we cannot do it , so in a normal class we use first @configuration annotation and in that class we can use @bean now with this annotation 
+      we can create an object for a class where we cannot write class . that is how we is bean .
 
-@Component
-
-Put the annotation on the class:
-
-@Component
-class EmployeeService {
-}
-
-Spring discovers it through component scanning.
-
-@Bean
-
-Put the annotation on a method, normally inside a @Configuration class:
-
-@Configuration
-class AppConfig {
-
-    @Bean
-    public EmployeeService employeeService() {
-        return new EmployeeService();
-    }
-}
-
-Spring registers the object returned by that method.
-
-
-Comparison :
-| `@Component`                                   | `@Bean`                               |
-| ---------------------------------------------- | ------------------------------------- |
-| Applied to a class                             | Applied to a method                   |
-| Automatically discovered by component scanning | Explicitly declared in configuration  |
-| Good for classes you control                   | Useful for third-party/custom objects |
-| Spring creates the component                   | Method provides the object to Spring  |
-| Less configuration                             | More explicit configuration           |
+                        This is very commonly asked.
+                        
+                        @Component
+                        
+                        Put the annotation on the class:
+                        
+                        @Component
+                        class EmployeeService {
+                        }
+                        
+                        Spring discovers it through component scanning.
+                        
+                        @Bean
+                        
+                        Put the annotation on a method, normally inside a @Configuration class:
+                        
+                        @Configuration
+                        class AppConfig {
+                        
+                            @Bean
+                            public EmployeeService employeeService() {
+                                return new EmployeeService();
+                            }
+                        }
+                        
+                        Spring registers the object returned by that method.
+                        
+                        
+                        Comparison :
+                        | `@Component`                                   | `@Bean`                               |
+                        | ---------------------------------------------- | ------------------------------------- |
+                        | Applied to a class                             | Applied to a method                   |
+                        | Automatically discovered by component scanning | Explicitly declared in configuration  |
+                        | Good for classes you control                   | Useful for third-party/custom objects |
+                        | Spring creates the component                   | Method provides the object to Spring  |
+                        | Less configuration                             | More explicit configuration           |
 
 
 
