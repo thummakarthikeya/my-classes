@@ -1,0 +1,453 @@
+7. BeanFactory vs ApplicationContext
+---------------------------------------
+
+76. What is BeanFactory?
+-->BeanFactory is the basic/root IoC container in Spring.
+
+Its main responsibility is to:
+
+              Create beans
+              Configure beans
+              Manage bean dependencies
+              Provide beans when requested
+
+For example:
+------------ 
+        BeanFactory factory = new ClassPathXmlApplicationContext("beans.xml");
+        
+        Student student = factory.getBean(Student.class);
+
+Here:
+      BeanFactory
+           ↓
+      Spring IoC Container
+           ↓
+      Creates and manages beans
+
+
+Interview answer
+----------------
+BeanFactory is the basic IoC container provided by Spring. It is responsible for creating, configuring, and managing beans and their
+dependencies.
+
+
+Important point
+----------------
+BeanFactory is the basic container, while ApplicationContext provides additional features on top of it.
+
+
+
+
+
+
+
+
+
+
+
+77. What is ApplicationContext?
+-->ApplicationContext is an advanced Spring IoC container.
+
+It provides all the basic bean-management capabilities of BeanFactory, plus additional features such as:
+
+            Event handling
+            Internationalization (i18n)
+            Resource loading
+            Application-level services
+            Better integration with Spring's ecosystem
+            Automatic processing of many framework features
+            
+            For example, in Spring Boot, you normally interact with an ApplicationContext indirectly.
+            
+            ApplicationContext context =
+                    new AnnotationConfigApplicationContext(AppConfig.class);
+            
+            Student student = context.getBean(Student.class);
+
+
+
+Interview answer
+-----------------
+ApplicationContext is an advanced IoC container in Spring that extends the capabilities of BeanFactory and provides additional
+features such as event handling, internationalization, resource loading, and integration with Spring's other features.
+
+
+
+
+
+
+
+
+
+
+
+78. Difference between BeanFactory and ApplicationContext?
+-->
+| BeanFactory                                        | ApplicationContext                                                 |
+| -------------------------------------------------- | ------------------------------------------------------------------ |
+| Basic IoC container                                | Advanced IoC container                                             |
+| Provides basic bean management                     | Provides bean management + additional features                     |
+| Generally lazy initialization by default           | Singleton beans are generally eagerly initialized by default       |
+| Supports basic dependency injection                | Supports dependency injection plus many additional Spring features |
+| Less commonly used directly in modern applications | Commonly used in Spring/Spring Boot applications                   |
+| Lightweight/basic container                        | More feature-rich container                                        |
+
+
+Think of it like this:
+----------------------
+          BeanFactory
+               ↓
+          Basic Spring container
+               ↓
+          Create + configure + manage beans
+
+Where as:
+---------
+        ApplicationContext
+             ↓
+        BeanFactory capabilities
+             +
+        Events
+        +
+        i18n
+        +
+        Resource loading
+        +
+        Application features
+        +
+        More Spring integration
+
+
+
+Interview answer
+-----------------
+BeanFactory provides the basic IoC container functionality, while ApplicationContext is a more feature-rich container that extends
+BeanFactory and provides features such as event handling, internationalization, resource loading, and better integration with Spring.
+
+
+
+
+
+
+
+
+
+79. What is lazy loading?
+-->Lazy loading means:
+            An object/bean is created only when it is actually needed or requested.
+
+For example:
+          @Component
+          @Lazy
+          public class PaymentService {
+          
+              public PaymentService() {
+                  System.out.println("PaymentService created");
+              }
+          }
+
+
+
+If the application starts:
+--------------------------
+        Application starts
+               ↓
+        PaymentService is NOT created yet
+        
+        When you actually request/use the bean:
+        
+        getBean(PaymentService.class)
+               ↓
+        PaymentService object is created
+
+So:
+----
+
+      Start application
+            ↓
+      Don't create yet
+            ↓
+      Actually request bean
+            ↓
+      Create bean
+      Simple real-world example
+      
+      Imagine a restaurant that prepares a dish only after you order it.
+      
+      Customer orders
+            ↓
+      Dish is prepared
+
+That's similar to lazy loading.
+
+
+
+Interview answer
+-----------------
+Lazy loading means the bean is created only when it is actually requested or needed, rather than during application startup.
+
+
+
+
+
+
+
+
+
+
+
+
+80. What is eager loading?
+-->Eager loading is the opposite.
+
+It means:
+----------
+The bean is created during application/container startup, even if it has not yet been requested.
+
+For example, singleton beans in an ApplicationContext are generally initialized eagerly by default.
+
+Conceptually:
+---------------
+Application starts
+       ↓
+Spring creates bean
+       ↓
+Application ready
+
+
+
+
+You don't have to call:
+-----------------------            
+            getBean()
+            
+            for the bean to be initialized.
+            
+            Real-world example
+            
+            Restaurant prepares commonly ordered dishes before customers order them.
+            
+            Restaurant opens
+                  ↓
+            Dish prepared
+                  ↓
+            Customer orders
+                  ↓
+            Already available
+
+
+
+Interview answer
+-----------------
+Eager loading means the bean is created during application startup, before it is explicitly requested. Singleton beans in 
+ApplicationContext are eagerly initialized by default unless configured otherwise.
+
+
+
+
+
+
+
+
+
+
+
+
+
+81. Why ApplicationContext is preferred?
+-->BeanFactory provides basic functionality, but modern Spring applications generally use ApplicationContext because it provides many
+    additional features.
+
+For example:
+
+1. Event handling
+
+Spring supports application events:
+
+Application
+    ↓
+Event
+    ↓
+Listener
+2. Internationalization
+
+ApplicationContext supports messages for different languages.
+
+For example:
+
+English → "Welcome"
+French  → "Bienvenue"
+3. Resource loading
+
+It can work with resources such as:
+
+XML files
+Properties files
+Files
+Classpath resources
+4. Better Spring integration
+
+It integrates naturally with many Spring features such as:
+
+@Component
+@Service
+@Repository
+@Autowired
+@Configuration
+@Bean
+
+and many other framework facilities.
+
+5. Eager initialization
+
+Singleton beans are generally initialized during startup, allowing configuration/dependency problems to be detected earlier.
+
+Interview answer
+
+ApplicationContext is preferred because it provides all the basic bean-management capabilities of BeanFactory along with additional 
+features such as event handling, internationalization, resource loading, and better integration with the Spring ecosystem.
+
+
+
+
+
+
+
+
+
+82. Types of ApplicationContext?
+-->There are several implementations of ApplicationContext.
+
+The important ones to know for interviews are:
+
+1. ClassPathXmlApplicationContext
+
+Used when configuration is provided through an XML file located in the classpath.
+
+ApplicationContext context =
+    new ClassPathXmlApplicationContext("beans.xml");
+
+Example:
+
+src/main/resources/
+        |
+        └── beans.xml
+2. FileSystemXmlApplicationContext
+
+Used when the XML configuration file is located using a filesystem path.
+
+ApplicationContext context =
+    new FileSystemXmlApplicationContext("C:/config/beans.xml");
+3. AnnotationConfigApplicationContext
+
+Used for Java-based configuration.
+
+For example:
+
+@Configuration
+@ComponentScan("com.example")
+public class AppConfig {
+}
+
+Then:
+
+ApplicationContext context =
+    new AnnotationConfigApplicationContext(AppConfig.class);
+
+This is particularly relevant to modern Spring applications.
+
+4. WebApplicationContext
+
+Used in web applications.
+
+It provides ApplicationContext functionality specifically for web environments and integrates with the web application lifecycle.
+
+In modern Spring MVC applications, you may encounter implementations such as:
+
+AnnotationConfigWebApplicationContext
+⭐ Important Connection Between These Questions
+
+You can remember the entire topic like this:
+
+                 Spring IoC Container
+                         |
+              +----------+----------+
+              |                     |
+         BeanFactory          ApplicationContext
+              |                     |
+        Basic features       BeanFactory features
+                                    +
+                              Event handling
+                              i18n
+                              Resource loading
+                              etc.
+
+Then:
+
+ApplicationContext
+       |
+       +---- Singleton beans
+       |
+       +---- Eager initialization by default
+       |
+       +---- Can use @Lazy
+Lazy vs Eager
+LAZY
+Application starts
+      ↓
+Bean NOT created
+      ↓
+Bean requested
+      ↓
+Bean created
+EAGER
+Application starts
+      ↓
+Bean created
+      ↓
+Application runs
+One-line interview revision
+
+76. BeanFactory:
+
+Basic Spring IoC container for creating and managing beans.
+
+77. ApplicationContext:
+
+Advanced IoC container that extends BeanFactory and provides additional Spring features.
+
+78. Difference:
+
+BeanFactory provides basic bean management; ApplicationContext provides bean management plus additional enterprise/application features.
+
+79. Lazy loading:
+
+Bean is created only when it is needed/requested.
+
+80. Eager loading:
+
+Bean is created during application startup.
+
+81. Why ApplicationContext?
+
+Because it provides additional features such as events, i18n, resource loading, and better Spring integration.
+
+82. Types:
+
+ClassPathXmlApplicationContext, FileSystemXmlApplicationContext, AnnotationConfigApplicationContext, and web-oriented ApplicationContext
+implementations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
