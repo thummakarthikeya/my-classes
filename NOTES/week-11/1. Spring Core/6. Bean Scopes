@@ -3,7 +3,31 @@
 
 
 65. What is bean scope?
--->
+-->Bean scope defines how long a Spring Bean's object should live and how many objects Spring should create for that bean.
+
+In simple words:
+
+Bean Scope tells Spring: "How many objects of this bean should I create, and how long should I keep them?"
+
+For example:
+    
+    @Component
+    public class Student {
+    }
+    
+    By default, Spring creates one object of Student.
+
+But we can change the scope:
+
+    @Scope("prototype")
+    @Component
+    public class Student {
+    }
+
+Now Spring can create a new object whenever the bean is requested.
+
+Interview answer :
+      Bean scope determines the lifecycle and number of instances created for a Spring bean.  
 
 
 
@@ -14,21 +38,539 @@
 
 
 66. What are bean scopes in Spring?
+-->Spring provides these commonly discussed scopes:
+                                        Core scopes
+                                        Singleton
+                                        Prototype
+                                        Web-aware scopes
+                                        Request
+                                        Session
+                                        Application
+                                        WebSocket
+
+You may also see:
+      Global Session — this was associated with older Portlet-based web applications and is generally not relevant to modern Spring Boot
+      applications.
+
+        For your interview list, focus especially on:
+                                            Singleton
+                                            Prototype
+                                            Request
+                                            Session
+                                            Global Session
+
+
+
+
+
+
 
 Core Scopes
 
 67. What is Singleton scope (default)?
+-->Singleton is the default scope in Spring.
+
+It means:
+      Spring creates only one bean instance per Spring IoC container for that bean definition.
+
+Example:
+      @Component
+      @Scope("singleton")
+      public class StudentService {
+      }
+
+Suppose you inject it into two classes:
+      @Autowired
+      StudentService service1;
+
+and:
+
+      @Autowired
+      StudentService service2;
+
+Both references point to the same Spring-managed object.
+
+
+
+Conceptually:
+
+        Spring Container
+               |
+               v
+         StudentService Object
+               ^
+               |
+          +----+----+
+          |         |
+        service1  service2
+
+
+
+Important:
+----------
+Singleton does not mean:
+      "Only one object can ever exist in the entire Java application."
+
+It means one instance per Spring IoC container for that bean definition.
+
+Interview answer
+----------------
+        Singleton is the default Spring bean scope. Spring creates one instance of the bean per IoC container and reuses that instance
+        wherever the bean is injected.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 68. What is Prototype scope?
+-->Prototype means:
+            Spring creates a new bean instance each time the bean is requested from the Spring container.
+
+Example:
+
+      @Component
+      @Scope("prototype")
+      public class Student {
+      }
+
+If you request it multiple times:
+
+          Student s1 = context.getBean(Student.class);
+          Student s2 = context.getBean(Student.class);
+
+Then:
+      s1 → Student Object 1
+      
+      s2 → Student Object 2
+
+So:
+
+      s1 != s2
+      Interview answer
+      
+      Prototype scope tells Spring to create a new bean instance every time the bean is requested from the container.
+
+
+
+
+
+
+
 
 Web Scopes
 
 69. What is Request scope?
+-->Request scope is used in web applications.
+
+It means:
+
+One bean instance is created for each HTTP request.
+
+Suppose:
+--------
+@Component
+@Scope("request")
+public class RequestData {
+}
+
+Imagine users send:
+--------------------
+    Request 1
+    Request 2
+    Request 3
+
+Spring creates:
+---------------
+      Request 1 → RequestData Object 1
+      
+      Request 2 → RequestData Object 2
+      
+      Request 3 → RequestData Object 3
+
+So each HTTP request gets its own bean.
+
+Example use:
+------------
+Suppose you want to store information specific to the current request:
+            Request ID
+            User information
+            Request-specific data
+            
+            Request scope can be useful.
+            
+            Interview answer
+            ----------------
+            Request scope creates one bean instance for each HTTP request. The instance exists only during that request.
+
+
+
+
+
+
+
+
+
 70. What is Session scope?
+-->Session scope is also used in web applications.
+
+It means:
+----------
+      One bean instance is created for each HTTP session.
+      
+      Imagine a user logs into your website.
+      
+      Their session might last for several requests:
+
+User
+ ↓
+Request 1
+Request 2
+Request 3
+Request 4
+
+All those requests from that session can use the same session-scoped bean:
+
+Session
+   |
+   v
+Cart Object
+   |
+   +-- Request 1
+   +-- Request 2
+   +-- Request 3
+   +-- Request 4
+
+Example
+-------
+        A shopping cart is a classic example.
+        
+        @Component
+        @Scope("session")
+        public class ShoppingCart {
+        }
+        
+        The user's cart can remain associated with their session.
+
+Interview answer
+----------------
+    Session scope creates one bean instance per HTTP session. The same instance is used throughout that user's session.
+
+
+
+
+
+
+
+
+
 71. What is Global Session scope?
+-->This is an older web scope associated with Portlet applications.
+
+It means:
+
+A bean instance is created for the lifecycle of a global HTTP session in a Portlet environment.
+
+You generally won't use this in a normal modern Spring Boot REST application.
+
+Interview answer
+
+Global session scope creates one bean instance for the lifecycle of a global session, mainly in Portlet-based web applications. 
+It is not commonly used in modern Spring Boot applications.
+
+
+
+
+
+
+
+
+
+
 
 Advanced
-
+----------
 72. Why singleton is default scope?
+-->This is an important interview question.
+
+Spring uses Singleton by default because many application components are stateless services.
+
+For example:
+------------
+        @Service
+        public class UserService {
+        
+            public User getUser() {
+                // logic
+            }
+        }
+
+The service usually doesn't need its own separate object for every request.
+
+Instead:
+--------
+                 Spring Container
+                       |
+                       v
+                  UserService
+                       |
+          +------------+------------+
+          |            |            |
+       Request 1    Request 2    Request 3
+
+One reusable object is generally enough.
+
+This can reduce unnecessary object creation and allows Spring to manage shared dependencies efficiently.
+
+Interview answer
+-----------------
+Singleton is the default because most Spring beans, such as services and repositories, are stateless and can safely be shared.
+It avoids unnecessary object creation and allows efficient dependency management.
+
+
+
+
+
+
+
+
+
+
+
 73. Difference between singleton and prototype?
+-->
+| Singleton                         | Prototype                                                                              |
+| --------------------------------- | -------------------------------------------------------------------------------------- |
+| Default scope                     | Not default                                                                            |
+| One instance per Spring container | New instance each time the bean is requested                                           |
+| Same object reused                | Different objects                                                                      |
+| Suitable for stateless services   | Suitable when separate object state is needed                                          |
+| Spring manages the bean lifecycle | Spring creates the object, but after creation its lifecycle management is more limited |
+
+Example:
+
+Singleton
+----------
+    @Component
+    @Scope("singleton")
+    class A {
+    }
+    getBean() → Object A
+    getBean() → Object A
+    getBean() → Object A
+    
+    Same object.
+
+Prototype
+----------
+      @Component
+      @Scope("prototype")
+      class B {
+      }
+      getBean() → Object B1
+      getBean() → Object B2
+      getBean() → Object B3
+      
+      Different objects.
+
+Easy memory trick
+-----------------
+      Singleton  → SAME
+      Prototype  → NEW
+
+
+
+
+
+
+
+
+
+
+
 74. Which scope is used for shopping cart?
+-->For a typical web application, a shopping cart is commonly associated with Session scope, because the cart belongs to a particular
+    user's session.
+
+@Component
+@Scope("session")
+public class ShoppingCart {
+}  
+
+Conceptually:
+
+User A
+   ↓
+Session A
+   ↓
+Cart A
+
+User B
+   ↓
+Session B
+   ↓
+Cart B
+
+Each user gets their own cart.
+
+Interview answer
+-----------------
+Session scope is commonly used for a shopping cart because the cart needs to persist across multiple requests belonging to the same
+user's session.
+
+Note: Modern applications may also store carts in a database, Redis, or another external store, especially when persistence across
+devices/sessions is required.
+
+
+
+
+
+
+
+
+
+
+
 75. Can singleton use prototype bean?
+-->Yes.
+
+A Singleton bean can depend on a Prototype bean.
+
+But there is an important problem.
+
+Consider:
+
+@Component
+@Scope("prototype")
+public class PrototypeBean {
+}
+
+And:
+
+@Component
+public class SingletonBean {
+
+    @Autowired
+    private PrototypeBean prototypeBean;
+}
+
+SingletonBean is created once.
+
+When Spring creates the Singleton:
+
+SingletonBean
+      |
+      v
+PrototypeBean Object 1
+
+That prototype object is injected into the singleton.
+
+Now suppose you use the singleton 100 times:
+
+Request 1 → Singleton → Prototype Object 1
+Request 2 → Singleton → Prototype Object 1
+Request 3 → Singleton → Prototype Object 1
+
+You might expect:
+
+Request 1 → Prototype Object 1
+Request 2 → Prototype Object 2
+Request 3 → Prototype Object 3
+
+But simple field injection does not do that.
+
+The prototype bean is resolved when the singleton is created, so the singleton keeps that injected instance.
+
+How can we get a new Prototype object each time?
+
+There are several solutions.
+
+One common solution is ObjectProvider:
+
+@Component
+public class SingletonBean {
+
+    @Autowired
+    private ObjectProvider<PrototypeBean> provider;
+
+    public void test() {
+
+        PrototypeBean p1 = provider.getObject();
+        PrototypeBean p2 = provider.getObject();
+    }
+}
+
+Now:
+
+provider.getObject()
+       ↓
+Prototype Object 1
+
+provider.getObject()
+       ↓
+Prototype Object 2
+Interview answer
+
+Yes, a Singleton bean can depend on a Prototype bean. However, if the prototype is directly injected into the singleton, the same prototype instance will remain in that singleton. To obtain a new prototype instance whenever needed, mechanisms such as ObjectProvider, Provider, or method injection can be used.
+
+⭐ The Complete Picture
+
+Keep this diagram in your mind:
+
+                 SPRING BEAN SCOPES
+                         |
+          +--------------+--------------+
+          |                             |
+       Core scopes                  Web scopes
+          |                             |
+    +-----+-----+             +---------+---------+
+    |           |             |         |         |
+Singleton   Prototype      Request   Session   Application
+    |           |             |
+    |           |             |
+ SAME object   NEW object   One object
+ per container every time  per request
+
+The most important four for your interviews:
+        Singleton
+           ↓
+        One object per Spring container
+        
+        Prototype
+           ↓
+        New object whenever requested
+        
+        Request
+           ↓
+        One object per HTTP request
+        
+        Session
+           ↓
+        One object per HTTP session
+
+And remember the relationship with what you asked previously:
+          @Component
+               ↓
+          Spring creates bean
+               ↓
+          Default scope = Singleton
+               ↓
+          One object reused
+
+
+
+You can also combine them:
+        @Component
+        @Scope("prototype")
+        public class MyService {
+        }
+
+So @Component tells Spring WHAT should become a bean, while @Scope tells Spring HOW MANY instances/lifecycle behavior that bean should have.
