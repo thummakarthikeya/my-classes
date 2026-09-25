@@ -1,0 +1,639 @@
+8. Bean Configuration
+-------------------------
+
+
+
+
+83. What is bean configuration?
+-->Bean configuration means telling Spring:
+Which objects should be created as beans, how they should be created, and how their dependencies should be configured.
+
+For example, suppose we have:
+public class PaymentService {
+}
+
+We need to tell Spring that it should create and manage an object of PaymentService.
+We can do that in different ways:
+Bean Configuration
+       |
+       +---- XML
+       |
+       +---- Java Configuration
+       |
+       +---- Annotations
+
+Interview answer
+Bean configuration is the process of defining beans and their dependencies so that the Spring IoC container can create, configure,
+and manage them.
+
+
+
+
+
+
+
+
+
+
+84. Ways to configure beans?
+-->There are mainly three approaches:
+1. XML-based configuration
+<bean id="paymentService"
+      class="com.example.PaymentService"/>
+
+Spring reads the XML and creates the bean.
+2. Java-based configuration
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public PaymentService paymentService() {
+        return new PaymentService();
+    }
+}
+
+Here @Bean tells Spring to register the returned object as a bean.
+3. Annotation-based configuration
+@Component
+public class PaymentService {
+}
+
+And:
+@ComponentScan("com.example")
+
+Spring scans the package and discovers the @Component.
+Easy way to remember
+XML
+ ↓
+<bean>
+
+Java
+ ↓
+@Configuration + @Bean
+
+Annotations
+ ↓
+@Component + @ComponentScan
+
+
+
+
+
+
+
+
+
+
+XML Configuration
+85. What is XML configuration?
+-->XML configuration is the traditional way of configuring Spring beans using an XML file.
+For example:
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+
+    <bean id="paymentService"
+          class="com.example.PaymentService"/>
+
+</beans>
+
+Spring reads this file and creates the PaymentService object.
+You could then retrieve it:
+ApplicationContext context =
+    new ClassPathXmlApplicationContext("beans.xml");
+
+PaymentService service =
+    context.getBean(PaymentService.class);
+
+Conceptually:
+beans.xml
+    |
+    ↓
+Spring reads configuration
+    |
+    ↓
+Creates PaymentService
+    |
+    ↓
+Stores it in IoC Container
+
+Interview answer
+XML configuration is a method of configuring Spring beans using an XML file, where bean definitions, dependencies, and other configuration 
+details are specified using XML elements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+86. Advantages and disadvantages of XML config?
+-->Advantages
+1. Configuration is separated from Java code
+Your Java class doesn't need Spring configuration annotations.
+public class PaymentService {
+}
+
+Configuration is kept in:
+beans.xml
+
+2. Easy to see configuration in one place
+You can have multiple bean definitions in one XML file.
+3. Useful in legacy applications
+Many older Spring applications use XML configuration.
+Disadvantages
+1. Verbose
+You need to write a lot of XML.
+<bean id="paymentService"
+      class="com.example.PaymentService"/>
+
+Compared with:
+@Component
+public class PaymentService {
+}
+
+2. More difficult to maintain
+As the application grows, XML files can become very large.
+3. Less type-safe
+Java configuration benefits from Java's compiler and IDE support.
+4. Modern Spring applications generally prefer annotations/Java configuration
+Spring Boot especially reduces the need for XML configuration.
+Interview answer
+Advantages: configuration is separated from Java code, centralized, and useful for legacy applications.
+Disadvantages: it is verbose, harder to maintain in large applications, and provides less type safety compared with Java-based configuration.
+
+
+
+
+
+
+
+
+
+
+
+
+Java-Based Configuration
+--------------------------
+87. What is Java-based configuration?
+-->Java-based configuration means:
+Using Java classes and annotations to configure Spring beans instead of XML files.
+
+Example:
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public PaymentService paymentService() {
+        return new PaymentService();
+    }
+}
+
+Here:
+@Bean
+public PaymentService paymentService()
+
+tells Spring:
+Create this object and register it as a bean.
+
+Interview answer
+-----------------
+Java-based configuration is a Spring configuration approach where Java classes and annotations such as @Configuration and @Bean are used
+to define and configure beans instead of XML.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+88. What is @Configuration?
+-->@Configuration tells Spring:
+"This class contains bean definitions/configuration for the Spring application."
+
+Example:
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public PaymentService paymentService() {
+        return new PaymentService();
+    }
+}
+
+Spring sees:
+@Configuration
+       ↓
+This is a configuration class
+       ↓
+Look for @Bean methods
+       ↓
+Register returned objects as beans
+
+Important distinction
+Don't confuse:
+@Configuration
+
+with:
+@Component
+
+@Configuration is itself a specialized form of component that is intended for configuration classes and @Bean methods.
+Interview answer
+@Configuration indicates that a class is a source of bean definitions and can be processed by Spring as a configuration class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+89. Why is Java config preferred over XML?
+-->Modern Spring applications generally prefer Java configuration because it is:
+1. Less verbose
+XML:
+<bean id="paymentService"
+      class="com.example.PaymentService"/>
+
+Java:
+@Bean
+public PaymentService paymentService() {
+    return new PaymentService();
+}
+
+2. Type-safe
+Java configuration is checked by the Java compiler.
+For example:
+@Bean
+public PaymentService paymentService() {
+    return new PaymentService();
+}
+
+Your IDE/compiler can detect many Java-related errors.
+3. Better IDE support
+You get:
+- Code completion
+- Refactoring
+- Navigation
+- Compile-time checking
+4. Easier to maintain
+Configuration stays within the Java project structure.
+5. Integrates well with Spring Boot
+Spring Boot heavily uses Java configuration and annotations.
+Interview answer
+Java configuration is generally preferred because it is less verbose, type-safe, easier to maintain, provides better IDE support,
+and integrates naturally with modern Spring and Spring Boot applications.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Annotation-Based Configuration
+-------------------------------
+90. What is annotation-based configuration?
+-->Annotation-based configuration means:
+Using annotations on classes and methods to tell Spring which classes should become beans and how they should be configured.
+
+For example:
+@Component
+public class PaymentService {
+}
+
+Spring sees @Component and knows:
+This class should be managed as a Spring bean.
+
+Other common annotations include:
+@Component
+@Service
+@Repository
+@Controller
+@Bean
+@Autowired
+@Qualifier
+
+For example:
+@Service
+public class UserService {
+}
+
+@Service is a specialized stereotype annotation used for service-layer classes.
+Interview answer
+----------------
+Annotation-based configuration uses Spring annotations to define and configure beans and their dependencies, reducing the need for 
+XML configuration.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+91. What is @ComponentScan?
+-->@ComponentScan tells Spring:
+"Scan these packages and look for classes that are registered as components."
+
+For example:
+@Configuration
+@ComponentScan("com.example")
+public class AppConfig {
+}
+
+Spring scans:
+com.example
+   |
+   +── PaymentService.java
+   +── UserService.java
+   +── OrderService.java
+
+If it finds:
+@Component
+public class PaymentService {
+}
+
+it registers it as a Spring bean.
+What does it scan for?
+It looks for Spring component/stereotype annotations such as:
+@Component
+@Service
+@Repository
+@Controller
+
+and related component types.
+Interview answer
+@ComponentScan tells Spring which packages to scan for component classes and register the discovered components as Spring beans.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+92. How annotation scanning works?
+-->This is where all the previous concepts come together.
+Suppose we have:
+@Component
+public class PaymentService {
+}
+
+And:
+@Configuration
+@ComponentScan("com.example")
+public class AppConfig {
+}
+
+When Spring starts:
+Step 1 — Spring reads configuration
+@Configuration
+@ComponentScan("com.example")
+
+Spring understands:
+I need to scan com.example.
+
+Step 2 — Spring scans the package
+It searches classes under:
+com.example
+
+For example:
+com.example
+    |
+    +── PaymentService
+    +── UserService
+    +── OrderRepository
+
+Step 3 — Spring finds component annotations
+For example:
+@Component
+public class PaymentService {
+}
+
+Spring recognizes it as a component.
+Likewise:
+@Service
+public class UserService {
+}
+
+and:
+@Repository
+public class OrderRepository {
+}
+
+Step 4 — Spring creates bean definitions
+Spring essentially records:
+PaymentService → bean
+UserService    → bean
+OrderRepository → bean
+
+These are bean definitions, which describe how Spring should create/manage those beans.
+Step 5 — Spring creates and manages the beans
+For singleton beans, the objects are generally created during ApplicationContext startup.
+@Component
+      ↓
+@ComponentScan
+      ↓
+Find class
+      ↓
+Create Bean Definition
+      ↓
+Spring creates object
+      ↓
+Object stored/managed in IoC Container
+
+⭐ Very Important: @ComponentScan vs @Component
+This is a common interview confusion.
+@Component
+Goes on the class:
+@Component
+public class PaymentService {
+}
+
+It says:
+"This class can be managed as a Spring bean."
+
+@ComponentScan
+Usually goes on a configuration class:
+@Configuration
+@ComponentScan("com.example")
+public class AppConfig {
+}
+
+It says:
+"Spring, go and search this package for component classes."
+
+So:
+@Component
+     ↓
+Marks the class
+
+@ComponentScan
+     ↓
+Tells Spring where to search
+
+⭐ One Complete Example
+Imagine this project:
+com.example
+│
+├── AppConfig.java
+│
+├── PaymentService.java
+│
+└── UserService.java
+
+PaymentService
+@Component
+public class PaymentService {
+
+    public void pay() {
+        System.out.println("Payment done");
+    }
+}
+
+UserService
+@Service
+public class UserService {
+}
+
+AppConfig
+@Configuration
+@ComponentScan("com.example")
+public class AppConfig {
+}
+
+When Spring starts:
+AppConfig
+   |
+   ↓
+@ComponentScan
+   |
+   ↓
+Scan com.example
+   |
+   +------ PaymentService
+   |          ↓
+   |       Bean created
+   |
+   +------ UserService
+              ↓
+           Bean created
+
+Then you can inject them:
+@Autowired
+private PaymentService paymentService;
+
+and:
+@Autowired
+private UserService userService;
+
+
+
+
+🔥 Interview Revision
+-----------------------
+| Question | Short answer |
+|---|---|
+| **83. Bean configuration** | Defining how Spring creates, configures, and manages beans |
+| **84. Ways to configure beans** | XML, Java-based, annotation-based |
+| **85. XML configuration** | Defining beans and dependencies using XML |
+| **86. XML advantages/disadvantages** | Centralized/separated config, but verbose and harder to maintain |
+| **87. Java-based configuration** | Using Java classes and annotations to define beans |
+| **88. `@Configuration`** | Marks a class as a source of bean definitions |
+| **89. Why Java config?** | Less verbose, type-safe, maintainable, good IDE support |
+| **90. Annotation-based config** | Using annotations to define/configure Spring beans |
+| **91. `@ComponentScan`** | Tells Spring which packages to scan for components |
+| **92. Annotation scanning** | Spring scans packages, finds component classes, creates bean definitions, and manages their beans |
+
+
+
+
+The main picture to remember
+                    BEAN CONFIGURATION
+                           |
+             +-------------+-------------+
+             |             |             |
+            XML          Java        Annotations
+             |             |             |
+          <bean>     @Configuration    @Component
+                        + @Bean           |
+                                         |
+                                  @ComponentScan
+
+And this connects directly to what we discussed earlier:
+@Component
+    ↓
+Class becomes a candidate for a Spring Bean
+
+@ComponentScan
+    ↓
+Spring finds that class
+
+Spring IoC Container
+    ↓
+Creates/manages the Bean
+
+One subtle but important point: @Component by itself doesn't magically make Spring discover the class. The class needs to be
+discovered through component scanning (which Spring Boot commonly configures automatically) or otherwise registered.
+
+
+
+
+
