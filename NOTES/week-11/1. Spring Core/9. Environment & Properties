@@ -1,0 +1,279 @@
+9. Environment & Properties
+----------------------------
+93. What is application.properties?
+-->application.properties is a configuration file used in Spring Boot to store application-level settings outside the Java code.
+For example:
+------------
+      server.port=8081
+      spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+      spring.datasource.username=root
+      spring.datasource.password=root
+
+Spring Boot automatically reads this file from:
+      src/main/resources/application.properties
+
+Interview answer:
+    application.properties is a configuration file in Spring Boot used to externalize application settings such as server port,
+    database configuration, logging, and other environment-specific properties.
+
+
+
+
+
+
+
+
+
+
+
+94. Why externalize configuration?
+-->Externalizing configuration means keeping configuration values outside the Java source code.
+    For example, instead of:
+        String url = "jdbc:mysql://localhost:3306/mydb";
+
+we use:
+    spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+
+Why?
+1. Easy to change without modifying Java code.
+2. Different environments can have different configurations.
+3. Keeps configuration separate from business logic.
+4. Makes deployment easier.
+5. Sensitive values can be managed more securely using environment variables or secret management.
+
+
+
+Interview answer:
+------------------
+We externalize configuration so that application settings can be changed independently of the source code and different configurations
+can be used for development, testing, and production environments.
+
+
+
+
+
+
+
+
+
+
+
+
+
+95. What is @Value annotation?
+-->@Value is a Spring annotation used to inject a value from configuration into a field, constructor parameter, or method parameter.
+Example:
+application.properties:
+app.name=My Application
+app.version=1.0
+
+Java:
+@Value("${app.name}")
+private String appName;
+
+@Value("${app.version}")
+private String version;
+
+Spring injects:
+appName = "My Application"
+version = "1.0"
+
+It can also have a default value:
+@Value("${app.port:8080}")
+private int port;
+
+If app.port doesn't exist, 8080 is used.
+Interview answer:
+@Value is used to inject individual configuration properties from sources such as application.properties or application.yml into 
+Spring-managed beans.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+96. How @Value works internally?
+-->When Spring creates a bean, it processes annotations such as @Value.
+For:
+@Value("${app.name}")
+private String appName;
+
+the general flow is:
+application.properties
+        ↓
+Environment / PropertySources
+        ↓
+Spring resolves ${app.name}
+        ↓
+@Value processing
+        ↓
+Value converted to required type
+        ↓
+Injected into the bean
+
+For example:
+app.name=My Application
+
+and:
+@Value("${app.name}")
+private String appName;
+
+Spring resolves ${app.name} and injects "My Application".
+Interview answer:
+Internally, Spring's environment and property sources provide the configuration value, and Spring's bean post-processing infrastructure
+resolves the @Value expression and injects the resolved value into the bean, converting it to the required type if necessary.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+97. Difference between .properties and .yml?
+-->Both are commonly used to configure Spring Boot applications.
+      .properties
+      server.port=8080
+      spring.datasource.url=jdbc:mysql://localhost:3306/test
+      spring.datasource.username=root
+      
+      .yml
+      server:
+        port: 8080
+      
+      spring:
+        datasource:
+          url: jdbc:mysql://localhost:3306/test
+          username: root
+
+| `.properties`                                | `.yml`                                         |
+|----------------------------------------------|------------------------------------------------|
+| Key-value format                             | Hierarchical format                            |
+| Simple and easy for small configurations     | More readable for complex/nested configuration |
+| Uses `key=value`                             | Uses indentation                               |
+| Less sensitive to indentation                | Indentation is important                       |
+| Can become lengthy with nested configuration | Nested configuration is cleaner                |
+
+
+
+
+
+
+
+
+98. What is @ConfigurationProperties?
+-->@ConfigurationProperties is used to bind a group of related configuration properties to a Java object.
+Suppose we have:
+app.name=MyApp
+app.version=1.0
+app.author=Karthik
+
+We can create:
+@Component
+@ConfigurationProperties(prefix = "app")
+public class AppProperties {
+
+    private String name;
+    private String version;
+    private String author;
+
+    // getters and setters
+}
+
+Spring binds:
+app.name     → name
+app.version  → version
+app.author   → author
+
+Now we can use:
+appProperties.getName();
+appProperties.getVersion();
+
+Why use it?
+@Value is convenient for individual properties:
+@Value("${app.name}")
+private String name;
+
+@ConfigurationProperties is useful when you have many related properties.
+Interview answer:
+@ConfigurationProperties binds a group of external configuration properties to a strongly typed Java object. It is useful for
+managing related configuration values in a structured way.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+99. What is Spring profile?
+-->A Spring Profile allows us to define different configurations for different environments.
+Common environments are:
+dev
+test
+prod
+
+For example:
+application.properties
+application-dev.properties
+application-test.properties
+application-prod.properties
+
+Development might use:
+server.port=8080
+spring.datasource.url=jdbc:mysql://localhost:3306/devdb
+
+Production might use:
+server.port=80
+spring.datasource.url=jdbc:mysql://production-server:3306/proddb
+
+The application can load the configuration corresponding to the active profile.
+Interview answer:
+A Spring Profile is a mechanism for separating configuration and bean behavior for different environments such as development,
+testing, and production.
+
+
+
+
+
+
+
+
+100. How to activate profiles?
+-->
+
+
+
+
+
+
+
+
+
+
+
+101. How to manage different environments (dev/test/prod)?
