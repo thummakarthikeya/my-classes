@@ -26,6 +26,7 @@ Interview answer:
 
 
 
+
 94. Why externalize configuration?
 -->Externalizing configuration means keeping configuration values outside the Java source code.
     For example, instead of:
