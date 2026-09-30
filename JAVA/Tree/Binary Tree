@@ -1,0 +1,100 @@
+import java.util.*;
+
+class BinaryTree{
+    
+    static int height(Node node){
+        if(node == null){
+            return 0;
+        }
+
+        int leftNode = height(node.left);
+        int rightNode = height(node.right);
+
+        return Math.max(leftNode, rightNode) + 1; 
+    }
+
+
+
+    static int countNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+    
+        int leftCount = countNodes(root.left);
+        int rightCount = countNodes(root.right);
+    
+        return leftCount + rightCount + 1;
+    }
+
+
+    public static void main(String args[]){
+        Node node = new Node(1);
+        node.left = new Node(2);
+        node.right = new Node(3);
+        node.left.left = new Node(4);
+        node.left.right = new Node(5);
+
+        System.out.println("Height :" + height(node));
+        System.out.println("Total nodes :" + countNodes(node));
+
+        
+    }
+
+
+    static int countLeafNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+    
+        // If node has no children
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+    
+        return countLeafNodes(root.left)
+             + countLeafNodes(root.right);
+    }
+
+
+    static int findMin(Node root) {
+    
+        if (root == null) {
+            return Integer.MAX_VALUE;
+        }
+    
+        int leftMin = findMin(root.left);
+        int rightMin = findMin(root.right);
+    
+        return Math.min(root.data, Math.min(leftMin, rightMin));
+    }
+
+
+    static boolean search(Node root, int target) {
+
+        if (root == null) {
+            return false;
+        }
+    
+        if (root.data == target) {
+            return true;
+        }
+    
+        return search(root.left, target)
+            || search(root.right, target);
+    }
+
+    
+}
+
+
+class Node{
+    int data;
+    Node left;
+    Node right;
+
+    Node(int data){
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
