@@ -265,7 +265,43 @@ Interview answer:
 
 
 100. How to activate profiles?
--->
+-->Spring Boot profiles are used to run the application with different configurations such as dev, test, and prod.
+Step 1: Create profile-specific files
+src/main/resources/
+    application.properties
+    application-dev.properties
+    application-test.properties
+    application-prod.properties
+
+Example:
+      application-dev.properties
+      server.port=8081
+      spring.datasource.url=jdbc:mysql://localhost:3306/devdb
+      
+      application-prod.properties
+      server.port=8080
+      spring.datasource.url=jdbc:mysql://prod-server:3306/proddb
+
+Step 2: Activate a profile
+In application.properties:
+      spring.profiles.active=dev
+
+Now Spring Boot will load:
+      application.properties
+      +
+      application-dev.properties
+      
+      Other ways to activate a profile
+Using command line:
+      java -jar app.jar --spring.profiles.active=prod
+
+Using Maven:
+      mvn spring-boot:run -Dspring-boot.run.profiles=dev
+
+Interview answer
+      "Spring Boot profiles allow us to maintain different configurations for different environments. We can create files such as 
+      application-dev.properties, application-test.properties, and application-prod.properties, and activate the required profile using 
+      spring.profiles.active or a command-line argument."
 
 
 
@@ -278,7 +314,60 @@ Interview answer:
 
 
 101. How to manage different environments (dev/test/prod)?
--->
+-->We manage different environments by using Spring Boot Profiles and separate configuration files.
+Example structure
+application.properties
+application-dev.properties
+application-test.properties
+application-prod.properties
+
+For example:
+Development
+# application-dev.properties
+server.port=8081
+spring.datasource.url=jdbc:mysql://localhost:3306/devdb
+
+Testing
+# application-test.properties
+server.port=8082
+spring.datasource.url=jdbc:mysql://localhost:3306/testdb
+
+Production
+# application-prod.properties
+server.port=8080
+spring.datasource.url=jdbc:mysql://prod-server:3306/proddb
+
+Then activate the required environment:
+java -jar app.jar --spring.profiles.active=prod
+
+Important point
+We should not put passwords/secrets directly in Git.
+For example, instead of:
+spring.datasource.password=myPassword123
+
+we can use environment variables:
+spring.datasource.password=${DB_PASSWORD}
+
+Then set:
+DB_PASSWORD=secret
+
+Interview answer:
+-----------------
+            "I manage different environments using Spring Boot Profiles. I create separate configuration files such
+                  as application-dev.properties, application-test.properties, and application-prod.properties. Each environment
+                  has its own database URL, server port, logging configuration, and other settings. I activate the required profile 
+                  using spring.profiles.active. Sensitive information such as database passwords is stored in environment variables or 
+                  a secret-management system rather than committed to Git."
+            
+            ⭐ Easy way to remember
+            DEV  → application-dev.properties
+            TEST → application-test.properties
+            PROD → application-prod.properties
+            
+                      ↓
+            spring.profiles.active
+                      ↓
+               Selected environment
 
 
 
