@@ -1,0 +1,11 @@
+102. Why constructor injection is preferred over field injection?
+
+103. If two beans of same type exist what happens?
+
+104. How does Spring create singleton bean?
+
+105. What happens if dependency bean is missing?
+
+106. How do you switch database configuration between environments?
+
+107. Explain complete bean lifecycle with example.
