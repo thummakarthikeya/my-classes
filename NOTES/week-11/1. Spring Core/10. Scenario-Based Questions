@@ -1,9 +1,120 @@
 102. Why constructor injection is preferred over field injection?
--->
+-->Constructor injection is preferred because it makes dependencies mandatory, supports immutability, improves unit testing, and makes the code easier to maintain.
+
+Example of constructor injection:
+@Service
+public class StudentService {
+
+    private final StudentRepository studentRepository;
+
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+}
+
+
+Example of field injection:
+@Service
+public class StudentService {
+
+    @Autowired
+    private StudentRepository studentRepository;
+}
+
+
+Advantages of constructor injection:
+- Ensures required dependencies are provided when an object is created.
+- Allows fields to be declared final.
+- Makes unit testing easier without requiring Spring to inject dependencies.
+- Helps detect missing dependencies during application startup.
+Interview tip: Since Spring 4.3, if a class has only one constructor, @Autowired is not required.
+
+
+
+
+
+
+
+
+
+
+
 
 103. If two beans of same type exist what happens?
+-->If Spring finds two beans of the same type and cannot determine which one to inject, it throws a NoUniqueBeanDefinitionException.
+        
+        Example:
+        public interface MessageService {
+            void sendMessage();
+        }
+        
+        
+        @Service
+        public class EmailService implements MessageService {
+            public void sendMessage() {
+                System.out.println("Email sent");
+            }
+        }
+        
+        
+        @Service
+        public class SmsService implements MessageService {
+            public void sendMessage() {
+                System.out.println("SMS sent");
+            }
+        }
+        
+        
+        Now, injecting MessageService without specifying which implementation to use can cause ambiguity.
+        
+        Solution 1: Use @Primary
+        @Service
+        @Primary
+        public class EmailService implements MessageService {
+            public void sendMessage() {
+                System.out.println("Email sent");
+            }
+        }
+        
+        
+        Solution 2: Use @Qualifier
+        @Service
+        public class NotificationService {
+        
+            private final MessageService messageService;
+        
+            public NotificationService(
+                    @Qualifier("smsService") MessageService messageService) {
+                this.messageService = messageService;
+            }
+        }
+        
+        
+        Other options include injecting all implementations using a List<MessageService> or Map<String, MessageService>.
+        
+        Interview tip: @Primary defines the default bean; @Qualifier selects a specific bean.
+        
+
+
+
+
+
+
+
+
+
+
 
 104. How does Spring create singleton bean?
+-->
+
+
+
+
+
+
+
+
 
 105. What happens if dependency bean is missing?
 
